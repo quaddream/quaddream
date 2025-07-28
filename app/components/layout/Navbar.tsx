@@ -1,4 +1,4 @@
-import Image from 'next/image'
+
 import React from 'react'
 
 const Navbar = () => {
@@ -7,7 +7,7 @@ const Navbar = () => {
         <div className="container">
             <div className='bg-white rounded-full shadow-md px-3 py-4 flex items-center justify-between'>
                 <div>
-                   {/*  <Image src={} width={} height={} alt=''/> */}
+                    Header
                 </div>
             </div>
         </div>
@@ -15,4 +15,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Navbar 
