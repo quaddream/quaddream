@@ -3,9 +3,9 @@ import Image from 'next/image'
 
 const Commitment = () => {
   return (
-    <section className='py-[150px] rounded-tl-[80px] rounded-tr-[80px] relative z-[50] bg-gray-200'>
-        <Image src="/assets/home/commitment-bg.png" alt="Commitment" width={800} height={500} className='absolute top-[150px] left-0 h-full'/>
-        <div className='container'>
+    <section className='py-[150px] rounded-tl-[80px] rounded-tr-[80px] relative z-[50] bg-white'>
+        <Image src="/assets/home/commitment-bg.png" alt="Commitment" width={900} height={500} className='absolute top-[150px] -left-[60px] h-[80%] z-20'/>
+        <div className='container flex flex-col gap-[150px]'>
             <div className='grid grid-cols-5 w-full'>
                 <div className='col-span-1 mt-6'>
                     <button className='border border-primary rounded-full py-[5px] px-[12px] text-nowrap cursor-pointer flex items-center gap-2 text-19 w-[163px] overflow-x-hidden'>About Us <div className='bg-black w-[5px] h-[5px] rounded-full'></div> About Us</button>
@@ -16,10 +16,33 @@ const Commitment = () => {
                         supporting construction and industrial projects with safe, flexible, and fully compliant services — 
                         from design to dismantling.
                     </p>
-                    <button className='flex items-center gap-2 cursor-pointer text-16 border-2 border-black p-[10px] rounded-[60px] w-fit'>Learn More About Us <span className='bg-primary p-[14px] rounded-full'><Image src="/assets/home/arrow-right.svg" alt="Arrow" width={30} height={30} /></span></button>
+                    <button className='flex items-center gap-2 cursor-pointer text-16 border-2 border-black p-[10px] rounded-[60px] w-fit z-10'>Learn More About Us <span className='bg-primary p-[14px] rounded-full'><Image src="/assets/home/arrow-right.svg" alt="Arrow" width={30} height={30} /></span></button>
+                </div>
+            </div>
+            <div className='flex justify-between w-full items-center'>
+                <div className='flex flex-col gap-2'>
+                    <Image src="/assets/home/cmt-1.svg" alt="Commitment" width={50} height={50}/>
+                    <h3 className='text-75'>21,000<span className='text-primary'>+</span></h3>
+                    <p className='text-19'>Work Completed</p>
+                </div>
+                <div className='flex flex-col gap-2'>
+                    <Image src="/assets/home/cmt-2.svg" alt="Commitment" width={50} height={50}/>
+                    <h3 className='text-75'>110<span className='text-primary'>+</span></h3>
+                    <p className='text-19'>Employees</p>
+                </div>
+                <div className='flex flex-col gap-2'>
+                    <Image src="/assets/home/cmt-3.svg" alt="Commitment" width={50} height={50}/>
+                    <h3 className='text-75'>100<span className='text-primary'>+</span></h3>
+                    <p className='text-19'>Clients</p>
+                </div>
+                <div className='flex flex-col gap-2'>
+                    <Image src="/assets/home/cmt-4.svg" alt="Commitment" width={50} height={50}/>
+                    <h3 className='text-75'>2012</h3>
+                    <p className='text-19'>Year Established</p>
                 </div>
             </div>
         </div>
+            <div className="h-[230px] w-full bg-[linear-gradient(to_top,_white_50%,_transparent_90%)] absolute bottom-0 z-30"></div>
     </section>
   )
 }
