@@ -11,8 +11,8 @@ const Commitment = () => {
                     <button className='border border-primary rounded-full py-[5px] px-[12px] text-nowrap cursor-pointer flex items-center gap-2 text-19 w-[163px] overflow-x-hidden'>About Us <div className='bg-black w-[5px] h-[5px] rounded-full'></div> About Us</button>
                 </div>
                 <div className='col-span-4 flex flex-col gap-10'>
-                    <h2 className='text-65'>With a commitment to safety, reliability, and technical excellence.</h2>
-                    <p className='text-19'>Quad Dream Scaffolding LLC offers reliable, high-quality scaffolding solutions across the UAE, 
+                      <h2 className='text-65 leading-[1.153846153846154]'>With a commitment to safety, reliability, <span className='text-[#bebebe]'>and technical excellence.</span></h2>
+                    <p className='text-19 text-[#7f7f7f] leading-[1.684210526315789]'>Quad Dream Scaffolding LLC offers reliable, high-quality scaffolding solutions across the UAE, 
                         supporting construction and industrial projects with safe, flexible, and fully compliant services — 
                         from design to dismantling.
                     </p>
