@@ -33,7 +33,7 @@ export default function CTA() {
 
         {/* Button */}
         <div className="mt-8 flex justify-center">
-          <button className="flex items-center gap-3 text-white text-16 px-6 py-3 rounded-[60px] font-medium cursor-pointer transition border border-white" >
+          <button className="flex items-center gap-3 text-white text-16 px-6 py-3 rounded-[60px]  cursor-pointer transition border border-white" >
             Get in Touch
             <span className="bg-red-600 text-white p-2 rounded-full">
               <Image src="/assets/home/arrow-right.svg" alt="Arrow" width={24} height={24} />
