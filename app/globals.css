@@ -49,3 +49,6 @@ body {
 .container {
   @apply  mx-auto px-[15px];
 }
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
