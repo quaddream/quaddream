@@ -2,6 +2,7 @@ import React from 'react'
 import Banner from './sections/Banner'
 import Commitment from './sections/Commitment'
 import Services from './sections/Services'
+import CTA from './sections/cta'
 
 const Index = () => {
   return (
@@ -9,6 +10,7 @@ const Index = () => {
     <Banner/>
     <Commitment/>
     <Services/>
+    <CTA/>
    </div>
   )
 }
