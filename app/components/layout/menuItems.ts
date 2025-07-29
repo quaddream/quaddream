@@ -9,7 +9,7 @@ export const menuItems = [
     },
     {
         name: "Products & Services",
-        href: "#"
+        href: "#",
     },
     {
         name: "Projects",
