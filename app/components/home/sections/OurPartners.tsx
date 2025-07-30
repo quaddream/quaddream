@@ -27,7 +27,7 @@ const partners = [
 
 export default function PartnersSection() {
   return (
-    <section className="pt-5 lg:pt-[100px] bg-[#F9F9F9] swiper-partners relative z-[50]">
+    <section className="pt-5 lg:pt-[100px] bg-[#F9F9F9] swiper-partners relative z-[50] overflow-hidden">
       
         <Image
           src="/assets/images/home/partners/partner-bg.png"
