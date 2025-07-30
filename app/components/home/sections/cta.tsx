@@ -20,7 +20,7 @@ export default function CTA() {
     ></div>
 
       {/* Content */}
-      <div className="relative z-10 lg:max-w-4xl px-4 py-[146px]">
+      <div className="relative z-10 lg:max-w-4xl px-4 py-150">
         <h1 className="text-80 font-400 leading-[67px] lg:leading-[90px]">
           Let’s Build Something
           <br />
