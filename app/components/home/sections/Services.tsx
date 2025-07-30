@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const Services = () => {
     return (
-        <section className='py-150'>
+        <section className='py-150 overflow-hidden'>
             <div className='container'>
                 <div className='grid grid-cols-1 2xl:grid-cols-[auto_866.89px] 2xl:gap-[97.23px] text-white gap-y-5'>
                     <div className='flex flex-col gap-[40px]'>
