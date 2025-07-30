@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 export default function CTA() {
@@ -36,7 +35,7 @@ export default function CTA() {
           <button className="flex items-center gap-3 text-white text-16 px-6 py-3 rounded-[60px]  cursor-pointer transition border border-white" >
             Get in Touch
             <span className="bg-red-600 text-white p-2 rounded-full">
-              <Image src="/assets/home/arrow-right.svg" alt="Arrow" width={24} height={24} />
+              <Image src="/assets/images/home/arrow-right.svg" alt="Arrow" width={24} height={24} />
             </span>
           </button>
         </div>

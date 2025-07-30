@@ -4,6 +4,7 @@
   --background: #ffffff;
   --foreground: #171717;
   --primary : #EC1C24;
+  --theme-pink: #F5E7E7;
 
   --text-80: clamp(3.5rem, 6vw, 5rem);   /* min 56px, max 80px */
   --text-75: clamp(3.25rem, 5.5vw, 4.6875rem); /* min 52px, max 75px */
@@ -16,6 +17,8 @@
 
   --spacing-150: clamp(2em, 10vw + 0.5em, 150px);
   --spacing-25: clamp(1em, 2vw + 0.5em, 25px);
+  --spacing-50px: clamp(20px, 15vw, 50px);
+  --spacing-30px: clamp(10px, 5vw + 0.5em, 30px);
 }
 
 @theme inline {
@@ -24,6 +27,7 @@
   --font-sans: "Poppins", sans-serif;
   --font-mono: var(--font-geist-mono);
   --color-primary: var(--primary);
+  --color-theme-pink: var(--theme-pink);
 
   --text-80: var(--text-80);
   --text-75: var(--text-75);
@@ -38,7 +42,8 @@
 
   --spacing-150: var(--spacing-150);
   --spacing-25px: var(--spacing-25);
-
+  --spacing-50px: var(--spacing-50px);
+  --spacing-30px: var(--spacing-30px);
  
 }
 

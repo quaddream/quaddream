@@ -11,7 +11,6 @@ import {
   FaLinkedinIn,
   FaYoutube,
 } from "react-icons/fa";
-import { ChevronDown } from "lucide-react";
 
 const Navbar = () => {
 
