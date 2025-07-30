@@ -37,7 +37,7 @@ const Commitment = () => {
                     <div className='2xl:col-span-1 mt-6'>
                         <Link href="/about" className='border border-primary rounded-full py-[5px] px-[12px] text-nowrap cursor-pointer flex items-center gap-2 text-19 w-[163px] overflow-x-hidden'>
                             <ul className='flex items-center list-inside list-disc animate-ticker gap-2' ref={containerRef}>
-                                <li className="ticker ml-[5px]" id="tickerList" ref={contentRef}>About Us</li>
+                                <li className="ticker ml-[5px] text-19" id="tickerList" ref={contentRef}>About Us</li>
                             </ul>
                         </Link>
                     </div>

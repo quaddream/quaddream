@@ -105,9 +105,33 @@ const Footer = () => {
             <div>
               <h3 className="text-[16px] text-[#828D91]  uppercase mb-[36px] font-inter">Follow Us</h3>
               <div className="flex space-x-4 gap-3">
-                <a href="#" className="hover:text-gray-300"><Image src="/assets/insta.svg" alt='' width={30} height={30} /></a>
-                <a href="#" className="hover:text-gray-300"><Image src="/assets/fb.svg" alt='' width={30} height={30} /></a>
-                <a href="#" className="hover:text-gray-300"><Image src="/assets/linkedin.svg" alt='' width={30} height={30} /></a>
+              <a href="#" className="group"> {/* Add 'group' class to the anchor tag */}
+  <Image
+    src="/assets/insta.svg"
+    alt="Instagram" // Always good to have a descriptive alt text
+    width={30}
+    height={30}
+    className="invert brightness-0 group-hover:invert-0 group-hover:brightness-100 transition-all duration-300"
+  />
+</a>
+<a href="#" className="group"> {/* Add 'group' class to the anchor tag */}
+  <Image
+    src="/assets/fb.svg"
+    alt="Facebook"
+    width={30}
+    height={30}
+    className="invert brightness-0 group-hover:invert-0 group-hover:brightness-100 transition-all duration-300"
+  />
+</a>
+<a href="#" className="group"> {/* Add 'group' class to the anchor tag */}
+  <Image
+    src="/assets/linkedin.svg"
+    alt="LinkedIn"
+    width={30}
+    height={30}
+    className="invert brightness-0 group-hover:invert-0 group-hover:brightness-100 transition-all duration-300"
+  />
+</a>
               </div>
             </div>
           </div>
