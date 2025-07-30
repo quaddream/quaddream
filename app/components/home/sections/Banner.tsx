@@ -28,7 +28,7 @@ const Banner = () => {
     }
   };
   return (
-    <section className='h-[60vh] xl:h-screen bg-black relative z-[1] hero'>
+    <section className='h-[60vh] xl:h-screen bg-black relative z-[1] hero overflow-hidden'>
       <div className='absolute top-0 left-0 w-full h-full bg-black z-0 transition-all duration-300'>
         <Image src={homeData.banner.items[0].image} alt="Banner" width={2500} height={1500} className="h-full w-full object-cover" />
       </div>
