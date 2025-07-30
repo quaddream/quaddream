@@ -47,16 +47,17 @@ const PortfolioSwiperSlider: React.FC = () => {
   const swiperRef = React.useRef<any>(null);
 
   return (
-    <section className="bg-white py-[150px]">
+    <section className="bg-white py-150">
       {/* Header with left padding to match container */}
       <div className="">
         <div className="container ">
           <div className="flex  justify-between items-center mb-10">
             <h2 className="text-80">Portfolio</h2>
             <div className="flex items-center space-x-4">
-               <Link href="" className='flex items-center gap-2 cursor-pointer text-16 border-2 border-black py-3 lg:py-[15px] px-[10px] rounded-[60px] w-fit z-10 group'>
-                        <span>View Projects</span>
-                        <span className='bg-primary p-[14px] rounded-full block group-hover:translate-x-[5px] transition-all duration-300'>
+               
+                      <Link href="" className='flex items-center gap-2 cursor-pointer text-16 border-2 border-black py-[10px] px-[20px] rounded-[60px] w-fit z-10 group'>
+                        <span>View Project</span>
+                        <span className='bg-primary p-[14px] rounded-full block group-hover:translate-x-[10px] transition-all duration-300'>
                             <Image src="/assets/images/home/arrow-right.svg" alt="Arrow" width={30} height={30} />
                         </span>
                       </Link>
@@ -133,8 +134,8 @@ const PortfolioSwiperSlider: React.FC = () => {
     {project.badge}
 </div>
                       <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/50 to-transparent text-white" >
-                        <h3 className="text-33 leading-[40px]">{project.title}</h3>
-                        <p className="text-33  leading-[40px]">{project.location}</p>
+                        <h3 className="text-33 leading-[1.2]">{project.title}</h3>
+                        <p className="text-33  leading-[1.2]">{project.location}</p>
                       </div>
                     </div>
                   </SwiperSlide>
