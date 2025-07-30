@@ -96,25 +96,4 @@ body {
   animation: scroll var(--duration) linear infinite;
 }
 
-.hero .hero-slider .swiper-horizontal>.swiper-pagination-bullets,
-.hero .swiper-pagination-bullets.swiper-pagination-horizontal {
-  @apply flex justify-center gap-2 mt-6 container;
-  position: absolute;
-  bottom: 20%;
-  right: 0;
-  margin-left: auto;
-  width: fit-content;
-  z-index: 10;
-  
-}
 
-.hero .hero-slider .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
-.hero .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
-  @apply w-[9px] h-1 rounded-full bg-white opacity-60 transition-all duration-300 m-0;
-}
-
-
-.hero .hero-slider .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
-.hero .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet-active {
-  @apply w-[41px] opacity-100;
-}
