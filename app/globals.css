@@ -96,4 +96,77 @@ body {
   animation: scroll var(--duration) linear infinite;
 }
 
+.hero .hero-slider .swiper-horizontal>.swiper-pagination-bullets,
+.hero .swiper-pagination-bullets.swiper-pagination-horizontal {
+  @apply flex justify-center gap-2 mt-6 container;
+  position: absolute;
+  bottom: 20%;
+  right: 0;
+  margin-left: auto;
+  width: fit-content;
+  z-index: 10;
+}
+ 
+.hero .hero-slider .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
+.hero .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+  @apply w-[9px] h-1 rounded-full bg-white opacity-60 transition-all duration-300 m-0;
+}
+ 
+ 
+.hero .hero-slider .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
+.hero .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet-active {
+  @apply w-[41px] opacity-100;
+}
 
+.swiper-partners {
+/* Custom styles for Swiper pagination */
+.swiper-pagination-bullet {
+  background: #D5D5D5 !important; /* A light grey color for inactive */
+  opacity: 1 !important; /* Ensure full visibility */
+  width: 9px; /* Width for inactive circular bullet */
+  height: 5px; /* Height for inactive circular bullet */
+  border-radius: 10px !important;
+  margin: 0 4px !important; /* Adjust spacing between bullets */
+  transition: background-color 0.3s ease, width 0.3s ease; /* Smooth transition for color and width */
+}
+ 
+.swiper-pagination-bullet-active {
+  background: #ef4444 !important;
+    width: 41px !important;
+    border-radius: 10px !important;
+    height: 5px !important;
+}
+ 
+/* Position the pagination container */
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 40px;
+  bottom: unset !important;
+  left: 0 !important;
+  width: auto !important;
+  display: flex;
+  justify-content: center; /* CHANGE THIS LINE */
+  transform: none !important;
+}
+ 
+/* Margin for the swiper-wrapper to make space for pagination */
+.mySwiperPartners .swiper-wrapper {
+  margin-bottom: 40px; /* Ensures space between slides and pagination */
+}
+.mySwiperPartners .swiper-wrapper{
+  margin-bottom: 40px;
+}
+.bg-img{
+  object-fit: cover;
+  position: absolute;
+  bottom: 0;
+  right: -130px;
+  z-index: 20;
+}
+@media (max-width: 992.98px) {
+  .bg-img {
+    right: auto; /* Adjust for smaller screens */
+    left: 0;
+  }
+}
+}
