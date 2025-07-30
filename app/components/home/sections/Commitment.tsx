@@ -1,10 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
-
+import Link from 'next/link'
 const Commitment = () => {
   return (
-    <section className='py-[150px] rounded-tl-[80px] rounded-tr-[80px] relative z-[50] bg-white'>
-        <Image src="/assets/home/commitment-bg.png" alt="Commitment" width={900} height={500} className='absolute top-[150px] -left-[60px] h-[80%] z-20'/>
+    <section className='py-[150px] rounded-tl-[80px] rounded-tr-[80px] relative z-[50] bg-white mt-[-4.5%]'>
+        <Image src="/assets/home/commitment-bg.png" alt="Commitment" width={900} height={500} className='absolute top-[150px] -left-[60px] h-[80%] z-0'/>
         <div className='container flex flex-col gap-[150px]'>
             <div className='grid grid-cols-5 w-full'>
                 <div className='col-span-1 mt-6'>
@@ -16,7 +16,12 @@ const Commitment = () => {
                         supporting construction and industrial projects with safe, flexible, and fully compliant services — 
                         from design to dismantling.
                     </p>
-                    <button className='flex items-center gap-2 cursor-pointer text-16 border-2 border-black p-[10px] rounded-[60px] w-fit z-10'>Learn More About Us <span className='bg-primary p-[14px] rounded-full'><Image src="/assets/images/home/arrow-right.svg" alt="Arrow" width={30} height={30} /></span></button>
+                      <Link href="/about" className='flex items-center gap-2 cursor-pointer text-16 border-2 border-black py-[10px] px-[20px] rounded-[60px] w-fit z-10 group'>
+                        <span>Learn More About Us</span>
+                        <span className='bg-primary p-[14px] rounded-full block group-hover:translate-x-[10px] transition-all duration-300'>
+                            <Image src="/assets/images/home/arrow-right.svg" alt="Arrow" width={30} height={30} />
+                        </span>
+                      </Link>
                 </div>
             </div>
             <div className='flex justify-between w-full items-center'>

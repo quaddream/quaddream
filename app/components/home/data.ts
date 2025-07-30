@@ -1,4 +1,23 @@
 export const homeData = {
+  banner: {
+    items: [
+      {
+        image: "/assets/images/home/banners/banner-1.jpg",
+        title: "Reliable. Safe. Scaffolding Solutions That Support Your Success.",
+        slug: "",
+      },
+      {
+        image: "/assets/images/home/banners/banner-1.jpg",
+        title: "Reliable. Safe. Scaffolding Solutions That Support Your Success.",
+        slug: "",
+      },
+      {
+        image: "/assets/images/home/banners/banner-1.jpg",
+        title: "Reliable. Safe. Scaffolding Solutions That Support Your Success.",
+        slug: "",
+      },
+    ],
+  },
   industriesList: {
     title: "Industries We Serve",
     items: [
