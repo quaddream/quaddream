@@ -134,8 +134,8 @@ const PortfolioSwiperSlider: React.FC = () => {
     {project.badge}
 </div>
                       <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/50 to-transparent text-white" >
-                        <h3 className="text-33 leading-[40px]">{project.title}</h3>
-                        <p className="text-33  leading-[40px]">{project.location}</p>
+                        <h3 className="text-33 leading-[1.2]">{project.title}</h3>
+                        <p className="text-33  leading-[1.2]">{project.location}</p>
                       </div>
                     </div>
                   </SwiperSlide>

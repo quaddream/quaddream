@@ -21,12 +21,12 @@ export default function CTA() {
 
       {/* Content */}
       <div className="relative z-10 lg:max-w-4xl px-4 py-150">
-        <h1 className="text-80 font-400 leading-[67px] lg:leading-[90px]">
+        <h1 className="text-80 font-400 leading-[1.125]">
           Let’s Build Something
           <br />
           Safe — Together.
         </h1>
-        <p className="my-[39px] text-19 text-[#BCBCBC] leading-[32px]">
+        <p className="my-[39px] text-19 text-[#BCBCBC] leading-[1.7]">
           Need scaffolding support for your next project? Contact us today to discuss your requirements.
         </p>
 

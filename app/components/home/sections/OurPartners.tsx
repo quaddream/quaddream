@@ -38,7 +38,7 @@ export default function PartnersSection() {
     
       <div className="container pb-5 lg:pb-[150px] text-left">
         <h2 className="text-80 mb-4">Our Partners</h2>
-        <p className="text-19 text-[#696969] leading-[32px] lg:max-w-[758px] mb-10">
+        <p className="text-19 text-[#696969] leading-[1.7] lg:max-w-[758px] mb-10">
           At Quaddream, we believe strong partnerships are the foundation of every successful journey.
         </p>
 
