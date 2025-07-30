@@ -16,27 +16,27 @@ const Commitment = () => {
                         supporting construction and industrial projects with safe, flexible, and fully compliant services — 
                         from design to dismantling.
                     </p>
-                    <button className='flex items-center gap-2 cursor-pointer text-16 border-2 border-black p-[10px] rounded-[60px] w-fit z-10'>Learn More About Us <span className='bg-primary p-[14px] rounded-full'><Image src="/assets/home/arrow-right.svg" alt="Arrow" width={30} height={30} /></span></button>
+                    <button className='flex items-center gap-2 cursor-pointer text-16 border-2 border-black p-[10px] rounded-[60px] w-fit z-10'>Learn More About Us <span className='bg-primary p-[14px] rounded-full'><Image src="/assets/images/home/arrow-right.svg" alt="Arrow" width={30} height={30} /></span></button>
                 </div>
             </div>
             <div className='flex justify-between w-full items-center'>
                 <div className='flex flex-col gap-2'>
-                    <Image src="/assets/home/cmt-1.svg" alt="Commitment" width={50} height={50}/>
+                    <Image src="/assets/images/home/cmt-1.svg" alt="Commitment" width={50} height={50}/>
                     <h3 className='text-75'>21,000<span className='text-primary'>+</span></h3>
                     <p className='text-19'>Work Completed</p>
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <Image src="/assets/home/cmt-2.svg" alt="Commitment" width={50} height={50}/>
+                    <Image src="/assets/images/home/cmt-2.svg" alt="Commitment" width={50} height={50}/>
                     <h3 className='text-75'>110<span className='text-primary'>+</span></h3>
                     <p className='text-19'>Employees</p>
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <Image src="/assets/home/cmt-3.svg" alt="Commitment" width={50} height={50}/>
+                    <Image src="/assets/images/home/cmt-3.svg" alt="Commitment" width={50} height={50}/>
                     <h3 className='text-75'>100<span className='text-primary'>+</span></h3>
                     <p className='text-19'>Clients</p>
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <Image src="/assets/home/cmt-4.svg" alt="Commitment" width={50} height={50}/>
+                    <Image src="/assets/images/home/cmt-4.svg" alt="Commitment" width={50} height={50}/>
                     <h3 className='text-75'>2012</h3>
                     <p className='text-19'>Year Established</p>
                 </div>
