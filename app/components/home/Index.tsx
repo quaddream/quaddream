@@ -6,6 +6,8 @@ import HomeTicker from './sections/HomeTicker'
 import CTA from './sections/cta'
 import IndustriesList from './sections/IndustriesList'
 import WhyChoose from './sections/WhyChoose'
+import OurPartners from './sections/OurPartners'
+import ProjectSwiperSlider from './sections/ProjectSwiper'
 const Index = () => {
   
   return (
@@ -16,6 +18,8 @@ const Index = () => {
     <Services/>
     <IndustriesList/>
     <WhyChoose/>
+    <ProjectSwiperSlider/>
+    <OurPartners/>
     <CTA/>
    </div>
   )
