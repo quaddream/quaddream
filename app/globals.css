@@ -95,3 +95,4 @@ body {
 .animate-scroll {
   animation: scroll var(--duration) linear infinite;
 }
+
