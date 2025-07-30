@@ -30,7 +30,7 @@ const Commitment = () => {
         }
     }, []);
     return (
-        <section className='py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-[50] bg-white mt-[-4.5%]'>
+        <section className='py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-[50] bg-white mt-[-4.5%] overflow-hidden'>
             <Image src="/assets/home/commitment-bg.png" alt="Commitment" width={900} height={500} className='absolute bottom-0 2xl:top-[150px] -left-[60px] h-[80%] z-[-1]' />
             <div className='container flex flex-col gap-150'>
                 <div className='grid 2xl:grid-cols-5 w-full gap-y-4'>
