@@ -5,7 +5,7 @@ import { useState } from "react";
 const WhyChoose = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <section className="py-150">
+    <section className="py-150 overflow-hidden">
       <div className="container">
         <h2 className="text-80 leading-[1.125] mb-10 2xl:mb-50px text-white">Why Choose Us</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 2xl:gap-22">

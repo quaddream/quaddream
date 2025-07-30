@@ -47,7 +47,7 @@ const PortfolioSwiperSlider: React.FC = () => {
   const swiperRef = React.useRef<any>(null);
 
   return (
-    <section className="bg-white py-150">
+    <section className="bg-white py-150 overflow-hidden">
       {/* Header with left padding to match container */}
       <div className="">
         <div className="container ">
