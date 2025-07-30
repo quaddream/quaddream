@@ -33,8 +33,8 @@ const Services = () => {
                                     <Link href="/" className="flex items-center gap-2 group cursor-pointer">
                                         <span>Explore</span> <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg" 
                                         className='group-hover:translate-x-2 transition-all duration-300'>
-                                            <path d="M11.8843 1.2334L17.9543 7.3034L11.8843 13.3734" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" className='group-hover:stroke-primary transition-all duration-300' />
-                                            <path d="M0.954102 7.30322H17.7841" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" className='group-hover:stroke-primary transition-all duration-300' />
+                                            <path d="M11.8843 1.2334L17.9543 7.3034L11.8843 13.3734" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                                            <path d="M0.954102 7.30322H17.7841" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
                                     </Link>
                                 </div>
@@ -55,8 +55,8 @@ const Services = () => {
                                     <Link href="/" className="flex items-center gap-2 group cursor-pointer" >
                                         <span>Explore</span> <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg" 
                                         className='group-hover:translate-x-2 transition-all duration-300'>
-                                            <path d="M11.8843 1.2334L17.9543 7.3034L11.8843 13.3734" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" className='group-hover:stroke-primary transition-all duration-300' />
-                                            <path d="M0.954102 7.30322H17.7841" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" className='group-hover:stroke-primary transition-all duration-300' />
+                                            <path d="M11.8843 1.2334L17.9543 7.3034L11.8843 13.3734" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                                            <path d="M0.954102 7.30322H17.7841" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
                                     </Link>
                                 </div>
@@ -79,8 +79,8 @@ const Services = () => {
                                         <span>Explore</span> 
                                         <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg" 
                                         className='group-hover:translate-x-2 transition-all duration-300'>
-                                            <path d="M11.8843 1.2334L17.9543 7.3034L11.8843 13.3734" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" className='group-hover:stroke-primary transition-all duration-300' />
-                                            <path d="M0.954102 7.30322H17.7841" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" className='group-hover:stroke-primary transition-all duration-300' />
+                                            <path d="M11.8843 1.2334L17.9543 7.3034L11.8843 13.3734" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                                            <path d="M0.954102 7.30322H17.7841" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
                                     </Link>
                                 </div>
@@ -101,8 +101,8 @@ const Services = () => {
                                     <Link href="/" className="flex items-center gap-2 group cursor-pointer">
                                         <span>Explore</span> <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg" 
                                         className='group-hover:translate-x-2 transition-all duration-300'>
-                                            <path d="M11.8843 1.2334L17.9543 7.3034L11.8843 13.3734" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" className='group-hover:stroke-primary transition-all duration-300' />
-                                            <path d="M0.954102 7.30322H17.7841" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" className='group-hover:stroke-primary transition-all duration-300' />
+                                            <path d="M11.8843 1.2334L17.9543 7.3034L11.8843 13.3734" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                                            <path d="M0.954102 7.30322H17.7841" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
                                     </Link>
                                 </div>
