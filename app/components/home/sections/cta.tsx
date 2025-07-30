@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import Link from "next/link";
 export default function CTA() {
   return (
     <section
@@ -32,12 +32,13 @@ export default function CTA() {
 
         {/* Button */}
         <div className="mt-8 flex justify-center">
-          <button className="flex items-center gap-3 text-white text-16 px-6 py-3 rounded-[60px]  cursor-pointer transition border border-white" >
-            Get in Touch
-            <span className="bg-red-600 text-white p-2 rounded-full">
-              <Image src="/assets/images/home/arrow-right.svg" alt="Arrow" width={24} height={24} />
-            </span>
-          </button>
+         
+          <Link href="" className='flex items-center gap-2 cursor-pointer text-16 border-2 border-white py-[10px] px-[20px] rounded-[60px] w-fit z-10 group'>
+                        <span>Get in Touch</span>
+                        <span className='bg-primary p-[14px] rounded-full block group-hover:translate-x-[10px] transition-all duration-300'>
+                            <Image src="/assets/images/home/arrow-right.svg" alt="Arrow" width={30} height={30} />
+                        </span>
+                      </Link>
         </div>
       </div>
     </section>
