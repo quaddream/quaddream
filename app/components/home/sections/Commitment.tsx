@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Commitment = () => {
   return (
-    <section className='py-[150px] rounded-tl-[80px] rounded-tr-[80px] relative z-[50] bg-white'>
+    <section className='py-[150px] rounded-tl-[80px] rounded-tr-[80px] relative z-[50] bg-white mt-[-4.5%]'>
         <Image src="/assets/home/commitment-bg.png" alt="Commitment" width={900} height={500} className='absolute top-[150px] -left-[60px] h-[80%] z-20'/>
         <div className='container flex flex-col gap-[150px]'>
             <div className='grid grid-cols-5 w-full'>
