@@ -5,7 +5,7 @@ export default function CTA() {
     <section
       className="relative  flex items-center justify-center text-center text-white"
       style={{
-        backgroundImage: "url('/assets/home/cta-bg-image.jpg')", // replace with your actual image path
+        backgroundImage: "url('/assets/images/home/cta-bg-image.jpg')", // replace with your actual image path
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
