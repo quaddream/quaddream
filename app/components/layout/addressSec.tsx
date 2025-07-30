@@ -80,7 +80,7 @@ const AddressSection = () => {
         {data.lines.map((line, i) => (
           <p className='text-[19px] text-[#B9B9B9]' key={i}>{line}</p>
         ))}
-        <p className="flex items-start gap-2 pt-2 text-[19px] text-[#B9B9B9] leading-[37px]">
+        <p className="flex items-start gap-2 pt-2 text-[19px] text-[#B9B9B9] leading-[1.9]">
           <span className="mt-1 text-red-500">
             {/* Phone icon SVG */}
             <Image src="/assets/phone.svg" alt="Phone Icon" width={16} height={16} />
@@ -88,7 +88,7 @@ const AddressSection = () => {
           {data.phones.join(' | ')}
         </p>
         {data.emails.map((email, i) => (
-          <p key={i} className="flex items-center gap-2 text-[19px] text-[#B9B9B9] leading-[37px]">
+          <p key={i} className="flex items-center gap-2 text-[19px] text-[#B9B9B9] leading-[1.9]">
             <span className="text-red-500">
               {/* Mail icon SVG */}
                <Image src="/assets/mail.svg" alt="Mail Icon" width={16} height={16} />

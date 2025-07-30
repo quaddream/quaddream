@@ -170,6 +170,7 @@ body {
   }
 }
 }
+
 @keyframes ticker-scroll {
   0% {
     transform: translateX(0%);
