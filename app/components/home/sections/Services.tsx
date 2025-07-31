@@ -17,7 +17,7 @@ const Services = () => {
                     </div>
                     <div className='flex flex-col w-full gap-3 h-fit'>
                         <div className='grid grid-cols-2 xl:grid-cols-5 2xl:grid-rows-[336px_339px] gap-3'>
-                            <div className='relative col-span-2 overflow-hidden rounded-2xl p-8 flex flex-col group'>
+                            <div className='relative col-span-2 overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer'>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/home/service-1.jpg" alt="Services" width={500} height={300} className='h-full w-full' />
                                 </div>
@@ -39,7 +39,7 @@ const Services = () => {
                                     </Link>
                                 </div>
                             </div>
-                            <div className='relative col-span-3 overflow-hidden rounded-2xl p-8 flex flex-col group'>
+                            <div className='relative col-span-3 overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer'>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/home/service-2.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
                                 </div>
@@ -62,7 +62,7 @@ const Services = () => {
                                 </div>
                             </div>
 
-                            <div className='col-span-3 relative overflow-hidden rounded-2xl p-8 flex flex-col   group'>
+                            <div className='col-span-3 relative overflow-hidden rounded-2xl p-8 flex flex-col   group cursor-pointer'>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/home/service-3.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
                                 </div>
@@ -85,7 +85,7 @@ const Services = () => {
                                     </Link>
                                 </div>
                             </div>
-                            <div className='col-span-2 relative overflow-hidden rounded-2xl p-8 flex flex-col group'>
+                            <div className='col-span-2 relative overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer'>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/home/service-4.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
                                 </div>

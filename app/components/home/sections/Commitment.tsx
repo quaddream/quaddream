@@ -3,6 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
+import Counter from './Counter' // auto-incrementing counter Component.
 const Commitment = () => {
     const containerRef = useRef<HTMLUListElement | null>(null);
     const contentRef = useRef<HTMLLIElement | null>(null);
@@ -57,6 +58,7 @@ const Commitment = () => {
                 <div className='flex justify-between w-full items-center flex-wrap 2xl:flex-nowrap gap-6 2xl:gap-0'>
                     <div className='flex flex-col gap-2'>
                         <Image src="/assets/images/home/cmt-1.svg" alt="Commitment" width={50} height={50} />
+                        {/* Use the <Counter end={number} /> component to animate numbers from 0 to your target value. Simply replace static numbers with <Counter end={TargetNumber} />*/}
                         <h3 className='text-75'>21,000<span className='text-primary'>+</span></h3>
                         <p className='text-19'>Work Completed</p>
                     </div>

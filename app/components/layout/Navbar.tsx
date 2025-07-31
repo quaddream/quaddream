@@ -1,7 +1,7 @@
 
 "use client"
 
-import React, { useState } from 'react'
+import React, { use, useState,useEffect } from 'react'
 import { menuItems } from './menuItems'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -16,10 +16,20 @@ const Navbar = () => {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0)
+  const [scrolled ,setScrolled] = useState(false);
+
+ useEffect(() => {
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 50) // Change to any value that makes sense
+  }
+
+  window.addEventListener("scroll", handleScroll)
+  return () => window.removeEventListener("scroll", handleScroll)
+}, [])
 
   return (
     <>
-      <header className='fixed w-full z-[100] top-[95px] hidden lg:block'>
+      <header className={`fixed w-full z-[100]  hidden lg:block transition-all duration-300 ${scrolled ? 'top-[30px]':'top-[95px]'}`}>
         <div className="container w-full">
           <div className='bg-white rounded-full shadow-md pr-[37px] pl-[20px] py-[25px] flex items-center justify-between w-fit gap-[58px]'>
             <div className=''>
