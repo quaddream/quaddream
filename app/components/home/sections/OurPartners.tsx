@@ -33,8 +33,8 @@ export default function PartnersSection({ title, description, items,bgImg }: Par
       )}
 
       <div className="container pb-[47px] lg:pb-[150px] text-left">
-        <h2 className="text-80 mb-4">{title}</h2>
-        <p className="text-19 text-[#696969] leading-[1.7] lg:max-w-[758px] mb-10 font-normal">{description}</p>
+        <h2 className="text-80 mb-5 lg:mb-[50px]">{title}</h2>
+        <p className="text-19 text-[#696969] leading-[1.7] lg:max-w-[758px] mb-[29px] font-normal">{description}</p>
 
         <Swiper
           modules={[Autoplay, Pagination]}
