@@ -2,14 +2,14 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { Autoplay, Pagination } from 'swiper/modules' // Ensure Pagination is imported
+import { Autoplay } from 'swiper/modules' 
+import type { Swiper as SwiperType } from 'swiper';
 import Image from 'next/image';
 import Link from 'next/link'
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { title } from 'process';
 
 type Project = {
   id: number;
@@ -26,7 +26,7 @@ type ProjectSwiperProps = {
 };
 
 const PortfolioSwiperSlider: React.FC<ProjectSwiperProps> = ({ title,buttonLink,buttonText,projects }) => {
-  const swiperRef = React.useRef<any>(null);
+  const swiperRef = React.useRef<SwiperType | null>(null);
 
   return (
     <section className="bg-white py-150 overflow-hidden">
