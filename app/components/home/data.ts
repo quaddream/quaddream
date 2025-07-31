@@ -88,4 +88,61 @@ export const homeData = {
       },
     ],
   },
+
 };
+export const partnersSection= {
+    title: "Our Partners",
+    description:
+      "At Quaddream, we believe strong partnerships are the foundation of every successful journey.",
+      bgImg: "/assets/images/home/partners/partner-bg.png",
+    items: [
+      { src: "/assets/images/home/partners/jel.png", alt: "JEL" },
+      { src: "/assets/images/home/partners/bhatla.png", alt: "Bhatia" },
+      { src: "/assets/images/home/partners/bam.png", alt: "BAM" },
+      { src: "/assets/images/home/partners/darwish.png", alt: "Darwish" },
+      { src: "/assets/images/home/partners/kabri.png", alt: "Kabri" },
+      { src: "/assets/images/home/partners/green-oasis.png", alt: "Green Oasis" },
+      { src: "/assets/images/home/partners/jlw.png", alt: "JLW" },
+      { src: "/assets/images/home/partners/al-tayer.png", alt: "Al Tayer Stocks" },
+    
+    ],
+  };
+  export const ctaSection = {
+    title: "Let’s Build Something Safe — Together.",
+    bgImg: "/assets/images/home/cta-bg-image.jpg", 
+    description: "Need scaffolding support for your next project? Contact us today to discuss your requirements.",
+    buttonText: "Get in Touch",
+    buttonLink: "",
+  };
+  export const projects = {
+  portfolio: {
+    title: "Our Projects",
+    buttonText: "View Project",
+    buttonLink: "#",
+    projects: [
+      {
+        id: 1,
+        title: 'ADC ',
+        location: 'Abu Dhabi ',
+        imageUrl: '/assets/images/home/portfolio/port_1.jpg',
+        badge: 'Abu Dhabi',
+      },
+      {
+        id: 2,
+        title: 'Nakheel Mall',
+        location: 'Dubai',
+        imageUrl: '/assets/images/home/portfolio/port_2.jpg',
+        badge: 'Dubai',
+      },
+      {
+        id: 3,
+        title: 'EXPO 2020',
+        location: 'Sweden',
+        imageUrl: '/assets/images/home/portfolio/port_3.jpg',
+        badge: 'Dubai',
+      },
+    ],
+  },
+};
+
+

@@ -8,8 +8,8 @@ import IndustriesList from './sections/IndustriesList'
 import WhyChoose from './sections/WhyChoose'
 import OurPartners from './sections/OurPartners'
 import ProjectSwiperSlider from './sections/ProjectSwiper'
+import { partnersSection ,ctaSection ,projects } from "./data";
 const Index = () => {
-  
   return (
    <div className='bg-black'>
     <Banner/>
@@ -18,9 +18,11 @@ const Index = () => {
     <Services/>
     <IndustriesList/>
     <WhyChoose/>
-    <ProjectSwiperSlider/>
-    <OurPartners/>
-    <CTA/>
+    <ProjectSwiperSlider projects={projects.portfolio.projects} title={projects.portfolio.title} buttonLink={projects.portfolio.buttonLink} buttonText={projects.portfolio.buttonText}/>
+    <OurPartners   title={partnersSection.title}
+        description={partnersSection.description}
+        items={partnersSection.items} bgImg={partnersSection.bgImg}/>
+    <CTA title={ctaSection.title} description={ctaSection.description} buttonLink={ctaSection.buttonLink} buttonText={ctaSection.buttonText} bgImg={ctaSection.bgImg}/>
    </div>
   )
 }

@@ -129,7 +129,9 @@ body {
   margin: 0 4px !important; /* Adjust spacing between bullets */
   transition: background-color 0.3s ease, width 0.3s ease; /* Smooth transition for color and width */
 }
- 
+.swiper-pagination-bullet:nth-child(n+4) {
+  display: none !important;
+}
 .swiper-pagination-bullet-active {
   background: #ef4444 !important;
     width: 41px !important;
@@ -191,4 +193,7 @@ body {
 .animate-ticker li::marker {
   margin-right: 5px;
 
+}
+.mb-93{
+  margin-bottom: clamp(2em, 5vw + 1em, 93px);
 }
