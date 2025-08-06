@@ -19,7 +19,7 @@ const Services = () => {
                         <div className='grid grid-cols-2 xl:grid-cols-5 2xl:grid-rows-[336px_339px] gap-3'>
                             <div className='relative col-span-2 overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer'>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
-                                    <Image src="/assets/home/service-1.jpg" alt="Services" width={500} height={300} className='h-full w-full' />
+                                    <Image src="/assets/images/home/service-1.jpg" alt="Services" width={500} height={300} className='h-full w-full' />
                                 </div>
                                 <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/50 group-hover:to-primary/75 transition-all duration-300 to-100% z-20'></div>
                                 <div className='relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300'>
@@ -41,7 +41,7 @@ const Services = () => {
                             </div>
                             <div className='relative col-span-3 overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer'>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
-                                    <Image src="/assets/home/service-2.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
+                                    <Image src="/assets/images/home/service-2.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
                                 </div>
                                 <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 transition-all duration-300 z-20'></div>
                                 <div className='relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300'>
@@ -64,7 +64,7 @@ const Services = () => {
 
                             <div className='col-span-3 relative overflow-hidden rounded-2xl p-8 flex flex-col   group cursor-pointer'>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
-                                    <Image src="/assets/home/service-3.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
+                                    <Image src="/assets/home/images/service-3.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
                                 </div>
                                 <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 transition-all duration-300 z-20'></div>
                                 <div className='relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300'>
@@ -87,7 +87,7 @@ const Services = () => {
                             </div>
                             <div className='col-span-2 relative overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer'>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
-                                    <Image src="/assets/home/service-4.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
+                                    <Image src="/assets/home/images/service-4.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
                                 </div>
                                 <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 transition-all duration-300 z-20'></div>
                                 <div className='relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300'>
@@ -109,7 +109,6 @@ const Services = () => {
                             </div>
                         </div>
                     </div>
-                    <Image src="/assets/home/service-1.jpg" alt="Services" width={500} height={300} className='h-full w-full hidden' />
                 </div>
             </div>
         </section>
