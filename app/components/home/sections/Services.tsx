@@ -109,6 +109,7 @@ const Services = () => {
                             </div>
                         </div>
                     </div>
+                    <Image src="/assets/home/service-1.jpg" alt="Services" width={500} height={300} className='h-full w-full hidden' />
                 </div>
             </div>
         </section>
