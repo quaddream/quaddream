@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import {motion} from 'motion/react'
+import {fadeIn} from '../../motionVarients'
 
 export default function HomeTicker() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -31,7 +33,7 @@ export default function HomeTicker() {
   }, []);
 
   return (
-    <div className="ticker-wrapper overflow-hidden bg-primary text-white py-4 2xl:py-[26px]">
+    <motion.div className="ticker-wrapper overflow-hidden bg-primary text-white py-4 2xl:py-[26px]" variants={fadeIn(1)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
       <div ref={containerRef} className="ticker-inner flex gap-8 w-max animate-scroll whitespace-nowrap">
         <div ref={contentRef} className="flex pr-8 border-r-[0.5px] border-white">
           <div className="border-[0.5px] border-white rounded-3xl px-[11px] py-[3px]"><span className='text-30 leading-[1.333333333333333] font-semibold'>QUAD</span></div>
@@ -57,6 +59,6 @@ export default function HomeTicker() {
 
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
