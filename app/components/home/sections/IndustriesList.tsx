@@ -1,15 +1,18 @@
+'use client'
 import { homeData } from "../data";
 import Image from "next/image";
+import { motion } from "motion/react";
+import { moveUp } from "../../motionVarients";
 const IndustriesList = () => {
   return (
     <section className="py-150 bg-white">
       <div className="container">
-        <h2 className="text-80 leading-[1.125] mb-10 2xl:mb-50px">Industries We Serve</h2>
+        <motion.h2 className="text-80 leading-[1.125] mb-10 2xl:mb-50px" variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>Industries We Serve</motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-[1px] relative">
           <div className="absolute top-[50%] left-0 translate-y-[-50%] h-[0.5px] w-full bg-black z-40 hidden 2xl:block"></div>
           {homeData.industriesList.items.map((item, index) => (
-            <div key={index} className="bg-theme-pink overflow-hidden rounded-2xl relative flex flex-col justify-between group">
+            <motion.div key={index} className="bg-theme-pink overflow-hidden rounded-2xl relative flex flex-col justify-between group" variants={moveUp(index * 0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
               <div className="absolute top-0 left-0 w-full h-full bg-white z-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
                 <Image src={item.image} alt={item.title} width={500} height={500} className="h-full w-full object-cover" />
               </div>
@@ -28,7 +31,7 @@ const IndustriesList = () => {
               <div className="px-30px 2xl:pt-[33.3x] pb-4 2xl:pb-[28px] relative z-10">
                 <h3 className="text-25 leading-[1.6] font-light group-hover:text-white transition-all duration-300">{item.title}</h3>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

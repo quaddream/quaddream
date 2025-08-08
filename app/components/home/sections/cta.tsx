@@ -1,6 +1,8 @@
 'use client';
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "motion/react";
+import { moveUp} from "../../motionVarients";
 
 type CTAProps = {
   title:string;
@@ -31,15 +33,15 @@ export default function CTA({title,description,buttonLink, buttonText,bgImg }:CT
 
       {/* Content */}
       <div className="relative z-10 lg:max-w-4xl px-4 py-150">
-        <h1 className="text-80 font-400 leading-[1.125]">
+        <motion.h1 className="text-80 font-400 leading-[1.125]" variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
           {title}
-        </h1>
-        <p className="my-[39px] text-19 text-[#BCBCBC] leading-[1.7]">
+        </motion.h1>
+        <motion.p className="my-[39px] text-19 text-[#BCBCBC] leading-[1.7]" variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
          {description}
-        </p>
+        </motion.p>
 
         {/* Button */}
-        <div className="mt-8 flex justify-center">
+        <motion.div className="mt-8 flex justify-center" variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
          
           <Link href={buttonLink} className='flex items-center gap-2 cursor-pointer text-16 border-2 border-white py-[5px] md:py-[10px] px-[20px] rounded-[60px] w-fit z-10 group'>
                         <span>{buttonText}</span>
@@ -47,7 +49,7 @@ export default function CTA({title,description,buttonLink, buttonText,bgImg }:CT
                             <Image src="/assets/images/home/arrow-right.svg" alt="Arrow" width={30} height={30} />
                         </span>
                       </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

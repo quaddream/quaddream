@@ -6,6 +6,8 @@ import 'swiper/css/pagination'
 import { Autoplay, Pagination } from 'swiper/modules'
 import Image from 'next/image'
 import { StaticImageData } from 'next/image'
+import { motion } from 'motion/react';
+import { moveUp } from '../../motionVarients';
 
 type Partner = {
   src: string
@@ -33,8 +35,8 @@ export default function PartnersSection({ title, description, items,bgImg }: Par
       )}
 
       <div className="container pb-[47px] lg:pb-[150px] text-left">
-        <h2 className="text-80 mb-5 lg:mb-[50px]">{title}</h2>
-        <p className="text-19 text-[#696969] leading-[1.7] lg:max-w-[758px] mb-[29px] font-normal">{description}</p>
+        <motion.h2 className="text-80 mb-5 lg:mb-[50px]" variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>{title}</motion.h2>
+        <motion.p className="text-19 text-[#696969] leading-[1.7] lg:max-w-[758px] mb-[29px] font-normal" variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>{description}</motion.p>
 
         <Swiper
           modules={[Autoplay, Pagination]}
@@ -61,7 +63,7 @@ export default function PartnersSection({ title, description, items,bgImg }: Par
                 key={i}
                 className={i + 2 >= items.length ? '' : 'border-r border-solid border-[#BCBCBC] mr-0'}
               >
-                <div className="flex gap-4 flex-col">
+                <motion.div className="flex gap-4 flex-col" variants={moveUp(i * 0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                   <div className="ml-[20px] xl:ml-[85px] mr-[20px] xl:mr-0">
                     <Image src={first.src} alt={first.alt} width={200} height={100} className="object-contain" />
                   </div>
@@ -71,7 +73,7 @@ export default function PartnersSection({ title, description, items,bgImg }: Par
                       <Image src={second.src} alt={second.alt} width={200} height={100} className="object-contain" />
                     </div>
                   )}
-                </div>
+                </motion.div>
               </SwiperSlide>
             )
           })}

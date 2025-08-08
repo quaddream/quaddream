@@ -5,6 +5,8 @@ import React, { use, useState,useEffect } from 'react'
 import { menuItems } from './menuItems'
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion } from 'motion/react'
+import {fadeIn } from '../../components/motionVarients'
 import {
   FaFacebookF,
   FaInstagram,
@@ -29,7 +31,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className={`fixed w-full z-[100]  hidden lg:block transition-all duration-300 ${scrolled ? 'top-[30px]':'top-[95px]'}`}>
+      <motion.header className={`fixed w-full z-[100]  hidden lg:block transition-all duration-300 ${scrolled ? 'top-[30px]':'top-[95px]'}`} variants={fadeIn(0.5)} initial="hidden" whileInView="show">
         <div className="container w-full">
           <div className='bg-white rounded-full shadow-md pr-[37px] pl-[20px] py-[25px] flex items-center justify-between w-fit gap-[58px]'>
             <div className=''>
@@ -57,7 +59,7 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-      </header>
+      </motion.header>
 
 
 

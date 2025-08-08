@@ -1,23 +1,25 @@
+'use client'
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-
+import { motion } from 'motion/react'
+import {moveUp, containerStagger,paragraphItem} from '../../motionVarients'
 const Services = () => {
     return (
         <section className='py-150 overflow-hidden'>
             <div className='container'>
                 <div className='grid grid-cols-1 2xl:grid-cols-[auto_866.89px] 2xl:gap-[97.23px] text-white gap-y-5'>
-                    <div className='flex flex-col gap-[40px]'>
+                    <motion.div className='flex flex-col gap-[40px]' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                         <h2 className='text-80 leading-[1.125]'>Our Services</h2>
-                        <h4 className='text-30 leading-[1.333333333333333]'>At Quaddream, We offer Rentals and Sales to suit your requirement and Budget.</h4>
-                        <p className='text-19 leading-[1.684210526315789] text-[#bcbcbc]'>Quaddream is committed to your project’s success and budget. With flexible rental and sales
+                        <motion.h4 className='text-30 leading-[1.333333333333333]' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>At Quaddream, We offer Rentals and Sales to suit your requirement and Budget.</motion.h4>
+                        <motion.p className='text-19 leading-[1.684210526315789] text-[#bcbcbc]' variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>Quaddream is committed to your project’s success and budget. With flexible rental and sales
                             options for high-quality materials, we ensure smooth execution—whether you need temporary equipment
                             or a permanent solution. Partner with us for reliable results within your financial goals.
-                        </p>
-                    </div>
+                        </motion.p>
+                    </motion.div>
                     <div className='flex flex-col w-full gap-3 h-fit'>
-                        <div className='grid grid-cols-2 xl:grid-cols-5 2xl:grid-rows-[336px_339px] gap-3'>
-                            <div className='relative col-span-2 overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer'>
+                        <motion.div className='grid grid-cols-2 xl:grid-cols-5 2xl:grid-rows-[336px_339px] gap-3' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+                            <motion.div className='relative col-span-2 overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/images/home/service-1.jpg" alt="Services" width={500} height={300} className='h-full w-full' />
                                 </div>
@@ -38,8 +40,8 @@ const Services = () => {
                                         </svg>
                                     </Link>
                                 </div>
-                            </div>
-                            <div className='relative col-span-3 overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer'>
+                            </motion.div>
+                            <motion.div className='relative col-span-3 overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer' variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/images/home/service-2.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
                                 </div>
@@ -60,9 +62,9 @@ const Services = () => {
                                         </svg>
                                     </Link>
                                 </div>
-                            </div>
+                            </motion.div>
 
-                            <div className='col-span-3 relative overflow-hidden rounded-2xl p-8 flex flex-col   group cursor-pointer'>
+                            <motion.div className='col-span-3 relative overflow-hidden rounded-2xl p-8 flex flex-col   group cursor-pointer' variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/images/home/service-3.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
                                 </div>
@@ -84,8 +86,8 @@ const Services = () => {
                                         </svg>
                                     </Link>
                                 </div>
-                            </div>
-                            <div className='col-span-2 relative overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer'>
+                            </motion.div>
+                            <motion.div className='col-span-2 relative overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer' variants={moveUp(0.8)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/images/home/service-4.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
                                 </div>
@@ -106,8 +108,8 @@ const Services = () => {
                                         </svg>
                                     </Link>
                                 </div>
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
                     </div>
                 </div>
             </div>

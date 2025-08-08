@@ -7,6 +7,9 @@ import type { Swiper as SwiperType } from 'swiper';
 import Image from 'next/image';
 import Link from 'next/link'
 
+import { motion } from 'motion/react';
+import { moveUp } from '../../motionVarients';
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -34,8 +37,8 @@ const PortfolioSwiperSlider: React.FC<ProjectSwiperProps> = ({ title,buttonLink,
       <div className="">
         <div className="container ">
           <div className="flex  justify-between items-center mb-10">
-            <h2 className="text-80">{title}</h2>
-            <div className="flex items-center space-x-4">
+            <motion.h2 className="text-80" variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>{title}</motion.h2>
+            <motion.div className="flex items-center space-x-4" variants={moveUp(0.5)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
               {/* Navigation buttons */}
               {buttonLink && (
                <Link href={buttonLink} className='flex items-center gap-2 cursor-pointer text-16 border-2 border-black py-[5px] md:py-[10px] px-[10px] md:px-[20px] rounded-[60px] w-fit z-10 group'>
@@ -57,7 +60,7 @@ const PortfolioSwiperSlider: React.FC<ProjectSwiperProps> = ({ title,buttonLink,
               >
                 &rarr;
               </button> */}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -101,9 +104,9 @@ const PortfolioSwiperSlider: React.FC<ProjectSwiperProps> = ({ title,buttonLink,
                   paddingRight: 0, // No right padding to make it full-width
                 }}
               >
-                {projects.map((project) => (
+                {projects.map((project,index) => (
                   <SwiperSlide key={project.id} className="!w-auto">
-                    <div className="relative rounded-[12px] overflow-hidden shadow-lg h-[300px] w-[350px] lg:h-[542px] lg:w-[757.67px] cursor-pointer" >
+                    <motion.div className="relative rounded-[12px] overflow-hidden shadow-lg h-[300px] w-[350px] lg:h-[542px] lg:w-[757.67px] cursor-pointer" variants={moveUp(index * 0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                        <div >
                        </div>
                       <Image
@@ -121,7 +124,7 @@ const PortfolioSwiperSlider: React.FC<ProjectSwiperProps> = ({ title,buttonLink,
                         <h3 className="text-33 leading-[1.2] capitalize">{project.title}</h3>
                         <p className="text-33  leading-[1.2] capitalize">{project.location}</p>
                       </div>
-                    </div>
+                    </motion.div>
                   </SwiperSlide>
                 ))}
               </Swiper>
