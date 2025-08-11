@@ -60,23 +60,23 @@ const Commitment = () => {
                 </div>
                 <motion.div className='flex justify-between w-full items-center flex-wrap 2xl:flex-nowrap gap-6 2xl:gap-0' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                     <motion.div className='flex flex-col gap-2' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
-                        <Image src="/assets/images/home/cmt-1.svg" alt="Commitment" width={50} height={50} />
+                        <Image src="/assets/images/home/building-icon.svg" alt="Commitment" width={50} height={50} />
                         {/* Use the <Counter end={number} /> component to animate numbers from 0 to your target value. Simply replace static numbers with <Counter end={TargetNumber} />*/}
                         <h3 className='text-75'>21,000<span className='text-primary'>+</span></h3>
                         <p className='text-19'>Work Completed</p>
                     </motion.div>
                     <motion.div className='flex flex-col gap-2' variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
-                        <Image src="/assets/images/home/cmt-2.svg" alt="Commitment" width={50} height={50} />
+                        <Image src="/assets/images/home/emp-icon.svg" alt="Commitment" width={50} height={50} />
                         <h3 className='text-75'>110<span className='text-primary'>+</span></h3>
                         <p className='text-19'>Employees</p>
                     </motion.div>
                     <motion.div className='flex flex-col gap-2' variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
-                        <Image src="/assets/images/home/cmt-3.svg" alt="Commitment" width={50} height={50} />
+                        <Image src="/assets/images/home/clients-icon.svg" alt="Commitment" width={50} height={50} />
                         <h3 className='text-75'>100<span className='text-primary'>+</span></h3>
                         <p className='text-19'>Clients</p>
                     </motion.div>
                     <motion.div className='flex flex-col gap-2' variants={moveUp(0.8)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
-                        <Image src="/assets/images/home/cmt-4.svg" alt="Commitment" width={50} height={50} />
+                        <Image src="/assets/images/home/calender-icon.svg" alt="Commitment" width={50} height={50} />
                         <h3 className='text-75'>2012</h3>
                         <p className='text-19'>Year Established</p>
                     </motion.div>
