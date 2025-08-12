@@ -5,6 +5,7 @@
   --foreground: #171717;
   --primary : #EC1C24;
   --theme-pink: #F5E7E7;
+  --lite-gray: #BCBCBC;
 
   --text-80: clamp(2rem, 6vw + 0.3rem, 5rem);   /* min 56px, max 80px */
   --text-75: clamp(2rem, 5.5vw, 4.6875rem); /* min 52px, max 75px */
@@ -28,6 +29,7 @@
   --font-mono: var(--font-geist-mono);
   --color-primary: var(--primary);
   --color-theme-pink: var(--theme-pink);
+  --color-lite-gray: var(--lite-gray);
 
   --text-80: var(--text-80);
   --text-75: var(--text-75);
@@ -196,4 +198,12 @@ body {
 }
 .mb-93{
   margin-bottom: clamp(2em, 5vw + 1em, 93px);
+}
+
+.mask-reveal h2 {
+  transform: translateY(100%);
+}
+
+.hero-slider .swiper-slide {
+  overflow: hidden;
 }
