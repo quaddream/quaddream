@@ -31,32 +31,30 @@ const Navbar = () => {
 
   return (
     <>
-      <motion.header className={`fixed w-full z-[100]  hidden lg:block transition-all duration-300 ${scrolled ? 'top-[30px]':'top-[95px]'}`} variants={fadeIn(0.5)} initial="hidden" whileInView="show">
+      <motion.header className={`fixed w-full z-[100] hidden lg:block transition-all duration-300 ${scrolled ? 'top-[30px]':'top-[95px]'}`} variants={fadeIn(0.5)} initial="hidden" whileInView="show">
         <div className="container w-full">
-          <div className='bg-white rounded-full shadow-md pr-[37px] pl-[20px] py-[25px] flex items-center justify-between w-fit gap-[58px]'>
-            <div className=''>
-              <Image src="/assets/logo-quad.png" alt="Logo" width={550} height={550} />
+          <div className='bg-white rounded-full shadow-md pr-[37px] flex items-center justify-between w-full '>
+            <div className='mr-4 xl:w-[404px]'>
+              <Image src="/assets/logo-quad.png" alt="Logo" width={550} height={550} className='h-auto w-auto object-contain' />
             </div>
-            <ul className='flex w-full justify-between gap-5'>
+            <ul className='flex w-fit xl:gap-[43px] ml-auto'>
               {menuItems.map((item, index) => {
                 const isActive = activeIndex === index;
                 const textColorClass = isActive ? 'text-[#1E1E1E]' : 'opacity-50';
                 const spanWidthClass = isActive ? 'w-full' : 'w-[0px] group-hover:w-full';
                 return (
-                  <div
-                    className='flex flex-col group cursor-pointer'
-                    key={index}
-                    onClick={() => setActiveIndex(index)}
-                  >
+                  <div className='flex flex-col group cursor-pointer' key={index} onClick={() => setActiveIndex(index)}>
                     <li className={`text-nowrap text-19 ${textColorClass}`}>{item.name}</li>
-                    <span className={`bg-primary h-[2px] transition-all duration-300 ${spanWidthClass}`}></span>
+                    <span className={`bg-primary h-[1px] transition-all duration-300 ${spanWidthClass}`}></span>
                   </div>
                 )
               })}
             </ul>
-            <button className='bg-primary text-white rounded-full py-[30px] px-[50px] text-nowrap cursor-pointer text-19'>
-              Contact Us
-            </button>
+            <div className='py-[25px] ml-6'>
+              <button className='bg-primary text-white rounded-full py-[30px] px-[50px] xl:py-[30px] xl:px-[58.5px] text-nowrap cursor-pointer text-19'>
+                Contact Us
+              </button>
+            </div>
           </div>
         </div>
       </motion.header>
