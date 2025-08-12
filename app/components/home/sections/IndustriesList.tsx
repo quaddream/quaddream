@@ -20,16 +20,13 @@ const IndustriesList = () => {
               <div className="absolute top-[50%] translate-y-[-50%] left-0 w-0 h-[3px] bg-white z-40 opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-300"></div>
               <div className="absolute top-[50%] translate-y-[-50%] left-0 w-[51px] h-[51px] bg-white rounded-full
                z-40 opacity-0 group-hover:opacity-100 group-hover:left-[75%] transition-all duration-500 flex items-center justify-center">
-                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M14.9283 6.32861L21.0144 12.3986L14.9283 18.4686" stroke="#FF0000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M3.96924 12.3979H20.8437" stroke="#FF0000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <Image src="/assets/images/bold-arrow.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px]' />
               </div>
               <div className="pb-5 2xl:pb-[57.7px] px-30px pt-30px relative z-10">
                 <Image src={item.icon} alt={item.title} width={50} height={50} className=" group-hover:invert group-hover:brightness-0 transition-all duration-300" />
               </div>
               <div className="px-30px 2xl:pt-[33.3x] pb-4 2xl:pb-[28px] relative z-10">
-                <h3 className="text-25 leading-[1.6] font-light group-hover:text-white transition-all duration-300">{item.title}</h3>
+                <h3 className="text-25 leading-[1.6] font-light group-hover:text-white transition-all duration-300 max-w-[15ch]">{item.title}</h3>
               </div>
             </motion.div>
           ))}

@@ -8,12 +8,12 @@ export const homeData = {
       },
       {
         image: "/assets/images/home/banners/banner-1.jpg",
-        title: "Reliable. Safe. Scaffolding Solutions That Support Your Success.",
+        title: "Reliable. Safe. Scaffolding Solutions That Support Your test1",
         slug: "",
       },
       {
         image: "/assets/images/home/banners/banner-1.jpg",
-        title: "Reliable. Safe. Scaffolding Solutions That Support Your Success.",
+        title: "Reliable. Safe. Scaffolding Solutions That Support Your test2",
         slug: "",
       },
     ],
@@ -94,7 +94,7 @@ export const partnersSection= {
     title: "Our Partners",
     description:
       "At Quaddream, we believe strong partnerships are the foundation of every successful journey.",
-      bgImg: "/assets/images/home/partners/partner-bg.png",
+      bgImg: "/assets/images/home/partners/partner-bg.svg",
     items: [
       { src: "/assets/images/home/partners/jel.png", alt: "JEL" },
       { src: "/assets/images/home/partners/bhatla.png", alt: "Bhatia" },
@@ -116,8 +116,8 @@ export const partnersSection= {
   };
   export const projects = {
   portfolio: {
-    title: "Our Projects",
-    buttonText: "View Project",
+    title: "Portfolio",
+    buttonText: "View Projects",
     buttonLink: "#",
     projects: [
       {
@@ -136,6 +136,27 @@ export const partnersSection= {
       },
       {
         id: 3,
+        title: 'EXPO 2020',
+        location: 'Sweden',
+        imageUrl: '/assets/images/home/portfolio/port_3.jpg',
+        badge: 'Dubai',
+      },
+      {
+        id: 4,
+        title: 'ADC ',
+        location: 'Abu Dhabi ',
+        imageUrl: '/assets/images/home/portfolio/port_1.jpg',
+        badge: 'Abu Dhabi',
+      },
+      {
+        id: 5,
+        title: 'Nakheel Mall',
+        location: 'Dubai',
+        imageUrl: '/assets/images/home/portfolio/port_2.jpg',
+        badge: 'Dubai',
+      },
+      {
+        id: 6,
         title: 'EXPO 2020',
         location: 'Sweden',
         imageUrl: '/assets/images/home/portfolio/port_3.jpg',

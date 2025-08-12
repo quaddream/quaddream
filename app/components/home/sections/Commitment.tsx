@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { motion } from 'motion/react'
 import {containerStagger,moveUp, paragraphItem,moveRight} from '../../motionVarients'
+import Counter from './Counter'
 const Commitment = () => {
     const containerRef = useRef<HTMLUListElement | null>(null);
     const contentRef = useRef<HTMLLIElement | null>(null);
@@ -49,35 +50,35 @@ const Commitment = () => {
                             supporting construction and industrial projects with safe, flexible, and fully compliant services — from design to dismantling.
                         </motion.p>
                         <motion.div variants={paragraphItem} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
-                        <Link href="/about" className='flex items-center gap-2 cursor-pointer text-16 border-2 border-black py-[10px] px-[20px] rounded-[60px] w-fit z-10 group'>
+                        <Link href="/about" className='flex items-center gap-2 cursor-pointer text-16 font-normal border-2 border-black py-[10px] px-[20px] rounded-[60px] w-fit z-10 group'>
                             <span>Learn More About Us</span>
-                            <span className='bg-primary p-[14px] rounded-full block group-hover:translate-x-[10px] transition-all duration-300'>
-                                <Image src="/assets/images/home/arrow-right.svg" alt="Arrow" width={30} height={30} />
+                            <span className='bg-primary w-[51.7px] h-[51.7px] flex items-center justify-center rounded-full  group-hover:translate-x-[10px] transition-all duration-300'>
+                                <Image src="/assets/images/home/arrow-right.svg" alt="Arrow" width={30} height={30} className="w-[24px] h-[24px]" />
                             </span>
                         </Link>
                         </motion.div>
                     </motion.div>
                 </div>
                 <motion.div className='flex justify-between w-full items-center flex-wrap 2xl:flex-nowrap gap-6 2xl:gap-0' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
-                    <motion.div className='flex flex-col gap-2' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+                    <motion.div className='flex flex-col gap-2 xl:min-w-[300px]' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                         <Image src="/assets/images/home/building-icon.svg" alt="Commitment" width={50} height={50} />
                         {/* Use the <Counter end={number} /> component to animate numbers from 0 to your target value. Simply replace static numbers with <Counter end={TargetNumber} />*/}
-                        <h3 className='text-75'>21,000<span className='text-primary'>+</span></h3>
+                        <h3 className='text-75 xl:min-w-max'><Counter from={0} to={Number(21000)} duration={2} /><span className='text-primary'>+</span></h3>
                         <p className='text-19'>Work Completed</p>
                     </motion.div>
-                    <motion.div className='flex flex-col gap-2' variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+                    <motion.div className='flex flex-col gap-2 xl:min-w-[300px]' variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                         <Image src="/assets/images/home/emp-icon.svg" alt="Commitment" width={50} height={50} />
-                        <h3 className='text-75'>110<span className='text-primary'>+</span></h3>
+                        <h3 className='text-75'><Counter from={0} to={Number(110)} duration={2} /><span className='text-primary'>+</span></h3>
                         <p className='text-19'>Employees</p>
                     </motion.div>
-                    <motion.div className='flex flex-col gap-2' variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+                    <motion.div className='flex flex-col gap-2 xl:min-w-[300px]' variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                         <Image src="/assets/images/home/clients-icon.svg" alt="Commitment" width={50} height={50} />
-                        <h3 className='text-75'>100<span className='text-primary'>+</span></h3>
+                        <h3 className='text-75'><Counter from={0} to={Number(100)} duration={2} /><span className='text-primary'>+</span></h3>
                         <p className='text-19'>Clients</p>
                     </motion.div>
-                    <motion.div className='flex flex-col gap-2' variants={moveUp(0.8)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+                    <motion.div className='flex flex-col gap-2 xl:min-w-[300px]' variants={moveUp(0.8)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                         <Image src="/assets/images/home/calender-icon.svg" alt="Commitment" width={50} height={50} />
-                        <h3 className='text-75'>2012</h3>
+                        <h3 className='text-75'><Counter from={0} to={Number(2012)} duration={2} /></h3>
                         <p className='text-19'>Year Established</p>
                     </motion.div>
                 </motion.div>
