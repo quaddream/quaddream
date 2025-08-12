@@ -11,8 +11,8 @@ const Footer = () => {
         {/* Top Section */}
         <div className="flex flex-row justify-between items-center mb-8 xl:mb-10 gap-6">
           <Image src="/assets/images/logo.svg" alt="Logo" width={600} height={600} className='h-auto w-auto xl:h-[102.43px] object-contain' />
-          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="bg-white/20 hover:bg-white/30 transition rounded-full w-10 h-10 flex items-center justify-center cursor-pointer" >
-            <Image src="/assets/up_arrow.svg" alt="Scroll to Top" width={12} height={11} />
+          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="bg-white/20 hover:bg-white/30 transition rounded-full w-10 h-10 xl:w-[64px] xl:h-[64px] flex items-center justify-center cursor-pointer" >
+            <Image src="/assets/up_arrow.svg" alt="Scroll to Top" width={24} height={24} className='w-[12.99px] h-auto' />
           </button>
         </div>
         {/* Links Section */}
