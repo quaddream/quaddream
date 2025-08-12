@@ -36,8 +36,8 @@ const WhyChoose = () => {
           <motion.div
             key={activeIndex}
             className="rounded-2xl overflow-hidden flex flex-col h-full relative transition-all duration-700"
-            variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}
-          >
+            variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/64 to-100% transition-all duration-300 z-20"></div>
             <Image
               src={homeData.whyChoose.items[activeIndex].image}
               alt={homeData.whyChoose.title}

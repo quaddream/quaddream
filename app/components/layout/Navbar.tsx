@@ -34,10 +34,10 @@ const Navbar = () => {
       <motion.header className={`fixed w-full z-[100] hidden lg:block transition-all duration-300 ${scrolled ? 'top-[30px]':'top-[95px]'}`} variants={fadeIn(0.5)} initial="hidden" whileInView="show">
         <div className="container w-full">
           <div className='bg-white rounded-full shadow-md pr-[37px] flex items-center justify-between w-full '>
-            <div className='mr-4 xl:w-[404px]'>
+            <div className='mr-4 xl:w-[404px] xl:pl-[1em]'>
               <Image src="/assets/logo-quad.png" alt="Logo" width={550} height={550} className='h-auto w-auto object-contain' />
             </div>
-            <ul className='flex w-fit xl:gap-[43px] ml-auto'>
+            <ul className='flex w-fit xl:gap-[43px] xl:pr-[37px] ml-auto'>
               {menuItems.map((item, index) => {
                 const isActive = activeIndex === index;
                 const textColorClass = isActive ? 'text-[#1E1E1E]' : 'opacity-50';
@@ -70,9 +70,9 @@ const Navbar = () => {
                 <Image
                   src="/assets/logo-quad.png"
                   alt="Assent"
-                  width={80}
-                  height={40}
-                  className="h-[40px] w-auto"
+                  width={300}
+                  height={300}
+                  className="h-[60px] w-auto object-contain"
                 />
               </Link>
             </div>

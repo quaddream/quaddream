@@ -56,11 +56,7 @@ const AddressSection = () => {
   {Object.keys(addresses).map((key) => (
     <div key={key} className="flex items-center gap-4">
       {/* Round Indicator */}
-      <div
-        className={`w-[9px] h-[9px] rounded-full ${
-          selected === key ? 'bg-red-500' : 'bg-[#828D91]'
-        }`}
-      ></div>
+      <div className={`w-[9px] h-[9px] rounded-full ${ selected === key ? 'bg-red-500' : 'bg-[#828D91]' }`} ></div>
 
       {/* Button */}
       <button
@@ -76,25 +72,25 @@ const AddressSection = () => {
 </div>
 
 
-      <div className=" space-y-1 mt-[26px]">
+      <div className="mt-[26px]">
         {data.lines.map((line, i) => (
           <p className='text-[19px] text-[#B9B9B9] leading-[1.9]' key={i}>{line}</p>
         ))}
-        <p className="flex items-start gap-2 pt-2 text-[19px] text-[#B9B9B9] leading-[1.9]">
+        <div className="flex items-center gap-2 pt-2 text-[19px] text-[#B9B9B9] leading-[1.9]">
           <span className="mt-1 text-red-500">
             {/* Phone icon SVG */}
-            <Image src="/assets/phone.svg" alt="Phone Icon" width={16} height={16} />
+            <Image src="/assets/phone.svg" alt="Phone Icon" width={50} height={50} className='w-[24px] h-[24px]' />
           </span>
           {data.phones.join(' | ')}
-        </p>
+        </div>
         {data.emails.map((email, i) => (
-          <p key={i} className="flex items-center gap-2 text-[19px] text-[#B9B9B9] leading-[1.9]">
+          <div key={i} className="flex items-center gap-2 text-[19px] text-[#B9B9B9] leading-[1.9]">
             <span className="text-red-500">
               {/* Mail icon SVG */}
-               <Image src="/assets/mail.svg" alt="Mail Icon" width={16} height={16} />
+               <Image src="/assets/mail.svg" alt="Mail Icon" width={50}  height={50}  className='w-[24px] h-[24px]' />
             </span>
             <a href={`mailto:${email}`} className="hover:underline">{email}</a>
-          </p>
+          </div>
         ))}
       </div>
     </div>
