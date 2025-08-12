@@ -9,10 +9,10 @@ const Services = () => {
         <section className='py-150 overflow-hidden'>
             <div className='container'>
                 <div className='grid grid-cols-1 2xl:grid-cols-[auto_866.89px] 2xl:gap-[97.23px] text-white gap-y-5'>
-                    <motion.div className='flex flex-col gap-[40px]' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
-                        <h2 className='text-80 leading-[1.125]'>Our Services</h2>
-                        <motion.h4 className='text-30 leading-[1.333333333333333]' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>At Quaddream, We offer Rentals and Sales to suit your requirement and Budget.</motion.h4>
-                        <motion.p className='text-19 leading-[1.684210526315789] text-[#bcbcbc]' variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>Quaddream is committed to your project’s success and budget. With flexible rental and sales
+                    <motion.div className='flex flex-col' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+                        <motion.h2 className='text-80 leading-[1.125] mb-50px' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>Our Services</motion.h2>
+                        <motion.h4 className='text-30 leading-[1.333333333333333] mb-4 xl:mb-[29.7px]' variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>At Quaddream, We offer Rentals and Sales to suit your requirement and Budget.</motion.h4>
+                        <motion.p className='text-19 leading-[1.684210526315789] text-[#bcbcbc]' variants={moveUp(0.8)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>Quaddream is committed to your project’s success and budget. With flexible rental and sales
                             options for high-quality materials, we ensure smooth execution—whether you need temporary equipment
                             or a permanent solution. Partner with us for reliable results within your financial goals.
                         </motion.p>
@@ -21,7 +21,7 @@ const Services = () => {
                         <motion.div className='grid grid-cols-2 xl:grid-cols-5 2xl:grid-rows-[336px_339px] gap-3' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                             <motion.div className='relative col-span-2 overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
-                                    <Image src="/assets/images/home/service-1.jpg" alt="Services" width={500} height={300} className='h-full w-full' />
+                                    <Image src="/assets/images/home/service-1.jpg" alt="Services" width={500} height={300} className='h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
                                 <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/50 group-hover:to-primary/75 transition-all duration-300 to-100% z-20'></div>
                                 <div className='relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300'>
@@ -36,7 +36,7 @@ const Services = () => {
                             </motion.div>
                             <motion.div className='relative col-span-3 overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer' variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
-                                    <Image src="/assets/images/home/service-2.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
+                                    <Image src="/assets/images/home/service-2.jpg" alt="Services" width={500} height={500} className='h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
                                 <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 transition-all duration-300 z-20'></div>
                                 <div className='relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300'>
@@ -53,7 +53,7 @@ const Services = () => {
 
                             <motion.div className='col-span-3 relative overflow-hidden rounded-2xl p-8 flex flex-col   group cursor-pointer' variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
-                                    <Image src="/assets/images/home/service-3.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
+                                    <Image src="/assets/images/home/service-3.jpg" alt="Services" width={500} height={500} className='h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
                                 <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 transition-all duration-300 z-20'></div>
                                 <div className='relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300'>
@@ -69,7 +69,7 @@ const Services = () => {
                             </motion.div>
                             <motion.div className='col-span-2 relative overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer' variants={moveUp(0.8)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
-                                    <Image src="/assets/images/home/service-4.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
+                                    <Image src="/assets/images/home/service-4.jpg" alt="Services" width={500} height={500} className='h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
                                 <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 transition-all duration-300 z-20'></div>
                                 <div className='relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300'>

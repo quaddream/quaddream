@@ -1,7 +1,7 @@
 export const quickLinks = [
   { qLTitle: "Home", qLLink: "/" },
-  { qLTitle: "About Us", qLLink: "/about" },
   { qLTitle: "Projects", qLLink: "/projects" },
+  { qLTitle: "About", qLLink: "/about" },
   { qLTitle: "Contact", qLLink: "/contact" },
   { qLTitle: "Services", qLLink: "/services" },
   { qLTitle: "Downloads", qLLink: "/downloads" },
