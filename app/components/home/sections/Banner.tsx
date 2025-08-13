@@ -46,7 +46,7 @@ const Banner = () => {
       y: "100%",
       opacity: 0,
       transition: {
-        duration: 1.2,
+        duration: 0.2,
         ease: [0.25, 1, 0.5, 1]
       }
     },
@@ -54,7 +54,7 @@ const Banner = () => {
       y: "0%",
       opacity: 1,
       transition: {
-        duration: 1.2,
+        duration: 0.2,
         ease: [0.25, 1, 0.5, 1],
         delay: 0.5 // button lags behind title
       }
@@ -63,7 +63,7 @@ const Banner = () => {
       y: "-100%",
       opacity: 0,
       transition: {
-        duration: 1.2,
+        duration: 0.2,
         ease: [0.25, 1, 0.5, 1]
       }
     }
@@ -101,24 +101,12 @@ const Banner = () => {
                         {activeIndex === index && (
                           <>
                             <div className="overflow-hidden mb-6 xl:mb-50px" key={`title-${index}`}>
-                              <motion.h2
-                                className="text-80 leading-[1.125] text-white"
-                                variants={titleVariants}
-                                initial="hidden"
-                                animate="visible"
-                                exit="exit"
-                              >
+                              <motion.h2 className="text-80 leading-[1.125] text-white" variants={titleVariants} initial="hidden" animate="visible" exit="exit" >
                                 {item.title}
                               </motion.h2>
                             </div>
                             <div className="overflow-hidden" key={`btn-${index}`}>
-                              <motion.a
-                                href={item.slug}
-                                variants={buttonVariants}
-                                initial="hidden"
-                                animate="visible"
-                                exit="exit"
-                                className="fade-item flex items-center gap-2 cursor-pointer text-16 border-1 border-white py-1 2xl:py-[10px] px-3 2xl:px-5 rounded-[60px] w-fit text-white relative group overflow-hidden transition-all duration-700 z-20 isolation-isolate fade-item"
+                              <motion.a href={item.slug} variants={buttonVariants} initial="hidden" animate="visible" exit="exit" className="fade-item flex items-center gap-2 cursor-pointer text-16 border-1 border-white py-1 2xl:py-[10px] px-3 2xl:px-5 rounded-[60px] w-fit text-white relative group overflow-hidden transition-all duration-700 z-20 isolation-isolate fade-item"
                               >
                                 <div className="absolute top-0 left-0 w-0 h-full bg-primary z-[-1] transition-all duration-300 group-hover:w-full"></div>
                                 <span>View Our Projects</span>

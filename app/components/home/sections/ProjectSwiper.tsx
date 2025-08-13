@@ -1,14 +1,13 @@
 'use client';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
-import { Autoplay } from 'swiper/modules'
+import { Navigation, Autoplay, Mousewheel } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import Image from 'next/image';
 import Link from 'next/link'
 
 import { motion } from 'motion/react';
-import { moveUp } from '../../motionVarients';
+import { moveUp, containerStagger,paragraphItem } from '../../motionVarients';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -72,17 +71,23 @@ const PortfolioSwiperSlider: React.FC<ProjectSwiperProps> = ({ title, buttonLink
             <div className="ml-0"> {/* This creates the left space matching the header */}
               <Swiper
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
+                onSlideChange={(swiper) => {
+                  if (swiper.realIndex === projects.length - 1) {
+                    swiper.mousewheel.disable(); // stop scrolling after 1 full cycle
+                  }
+                }}
+                mousewheel={{ releaseOnEdges: true, sensitivity: 1 }}
                 spaceBetween={20}
                 slidesPerView={1}
                 centeredSlides={false}
-                loop={true}
+                loop={false}
                 loopAdditionalSlides={3}
                 speed={1000}
                 autoplay={{
                   delay: 3000,
                   disableOnInteraction: false,
                 }}
-                modules={[Autoplay, Navigation]}
+                modules={[Autoplay, Navigation, Mousewheel]}
                 breakpoints={{
                   640: {
                     slidesPerView: 1,
@@ -108,20 +113,18 @@ const PortfolioSwiperSlider: React.FC<ProjectSwiperProps> = ({ title, buttonLink
               >
                 {projects.map((project, index) => (
                   <SwiperSlide key={project.id} className="!w-auto">
-                    <motion.div className="relative rounded-[12px] overflow-hidden shadow-lg h-[300px] w-[350px] lg:h-[542px] lg:w-[757.67px] cursor-pointer" variants={moveUp(index * 0.2)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>
-                      <div>
-                      </div>
+                    <div className="relative rounded-[12px] overflow-hidden shadow-lg h-[300px] w-[350px] lg:h-[542px] lg:w-[757.67px] cursor-pointer">
                       <Image src={project.imageUrl} alt={project.title} layout="fill" objectFit="cover" className="transition-transform duration-300 hover:scale-105"/>
                       <div className="absolute top-[33px] left-[43px] bg-[#fafafa70] text-white px-[10px] py-[11px] rounded-full text-19 font-light flex items-center
                        backdrop-blur-[18px] w-[250px] h-[53px]">
                         <span className=" mr-[15px]"> <Image src="/assets/images/home/portfolio/location.svg" width={30} height={30} alt='' /></span>
                         {project.badge}
                       </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/50 to-transparent text-white" >
-                        <h3 className="text-33 leading-[1.2] capitalize">{project.title}</h3>
-                        <p className="text-33  leading-[1.2] capitalize">{project.location}</p>
-                      </div>
-                    </motion.div>
+                      <motion.div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/50 to-transparent text-white" variants={containerStagger} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: false }}>
+                        <motion.h3 className="text-33 leading-[1.2] capitalize" variants={paragraphItem} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: false }}>{project.title}</motion.h3>
+                        <motion.p className="text-33  leading-[1.2] capitalize" variants={paragraphItem} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: false }}>{project.location}</motion.p>
+                      </motion.div>
+                    </div>
                   </SwiperSlide>
                 ))}
               </Swiper>
