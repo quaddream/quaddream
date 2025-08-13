@@ -5,7 +5,7 @@ import React, { use, useState,useEffect } from 'react'
 import { menuItems } from './menuItems'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import {fadeIn } from '../../components/motionVarients'
 import {
   FaFacebookF,
@@ -20,18 +20,81 @@ const Navbar = () => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [scrolled ,setScrolled] = useState(false);
 
- useEffect(() => {
-  const handleScroll = () => {
-    setScrolled(window.scrollY > 50) // Change to any value that makes sense
-  }
+//  useEffect(() => {
+//   const handleScroll = () => {
+//     setScrolled(window.scrollY > 50) // Change to any value that makes sense
+//   }
 
-  window.addEventListener("scroll", handleScroll)
-  return () => window.removeEventListener("scroll", handleScroll)
-}, [])
+//   window.addEventListener("scroll", handleScroll)
+//   return () => window.removeEventListener("scroll", handleScroll)
+// }, [])
+
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    const updateScroll = () => {
+      const currentY = window.scrollY;
+
+      if (currentY > lastScrollY) {
+        console.log("down");
+      } else if (currentY < lastScrollY) {
+        console.log("up");
+      }
+
+      setScrollY(currentY);
+      lastScrollY = currentY;
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScroll);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+const renderHeader = ()=>{
+  return (
+    <motion.header className={`w-full z-[100] hidden lg:block  absolute ${scrollY > 550 ? 'top-0 bg-white' : 'top-[95px]'}`}>
+      <div className={`w-full container ${scrolled ? '' : ''}`}>
+        <div className={`pr-[37px] flex items-center justify-between w-full bg-white ${scrollY > 550 ? 'py-2 shadow-none' : 'rounded-full shadow-md py-[12px]'}`}>
+          <div className={`mr-4 ${scrollY > 550 ? 'xl:w-[250px]' : 'xl:w-[404px] xl:pl-[2em]'}`}>
+            <Image src="/assets/images/logo-main.svg" alt="Logo" width={550} height={550} className='h-auto w-auto xl:h-[107px] object-contain' />
+          </div>
+          <ul className='flex w-fit xl:gap-[43px] xl:pr-[37px] ml-auto'>
+            {menuItems.map((item, index) => {
+              const isActive = activeIndex === index;
+              const textColorClass = isActive ? 'text-[#1E1E1E]' : 'opacity-50';
+              const spanWidthClass = isActive ? 'w-full' : 'w-[0px] group-hover:w-full';
+              return (
+                <div className='flex flex-col group cursor-pointer' key={index} onClick={() => setActiveIndex(index)}>
+                  <li className={`text-nowrap text-19 ${textColorClass}`}>{item.name}</li>
+                  <span className={`bg-primary h-[1px] transition-all duration-300 ${spanWidthClass}`}></span>
+                </div>
+              )
+            })}
+          </ul>
+          <div className={`ml-6`}>
+            <button className={`bg-primary text-white rounded-full  text-nowrap cursor-pointer  ${scrollY > 550 ? 'py-2 px-4 text-sm' : 'py-[30px] px-[50px] xl:py-[30px] xl:px-[58.5px] text-19'}`}>
+              Contact Us
+            </button>
+          </div>
+        </div>
+      </div>
+    </motion.header>
+  )
+}
 
   return (
     <>
-      <motion.header className={`fixed w-full z-[100] hidden lg:block transition-all duration-300 ${scrolled ? 'top-0 bg-white':'top-[95px]'}`} variants={fadeIn(0.5)} initial="hidden" whileInView="show">
+      {/* <motion.header className={`fixed w-full z-[100] hidden lg:block transition-all duration-300 ${scrolled ? 'top-0 bg-white':'top-[95px]'}`} variants={fadeIn(0.5)} initial="hidden" whileInView="show">
         <div className={`w-full container ${scrolled ? '' :''}`}>
           <div className={`bg-white pr-[37px] flex items-center justify-between w-full ${scrolled ? 'py-2' :'rounded-full shadow-md py-[12px]'}`}>
             <div className={`mr-4 ${scrolled ? 'xl:w-[250px]' :'xl:w-[404px] xl:pl-[2em]'}`}>
@@ -57,7 +120,22 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-      </motion.header>
+      </motion.header> */}
+      <AnimatePresence>
+      {renderHeader()}
+        {scrollY > 550 && (
+          <motion.header
+            key="navbar"
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -100, opacity: 0 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className={`fixed top-0 left-0 w-full z-[999] bg-white text-black shadow-md`}
+          >
+            {renderHeader()}
+          </motion.header>
+        )}
+      </AnimatePresence>
 
       <div className='relative z-1000'>
         {/* Navbar */}
