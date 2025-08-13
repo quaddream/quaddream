@@ -13,61 +13,24 @@ import {motion, Variants, AnimatePresence} from 'motion/react'
 const Banner = () => {
   const [activeIndex, setActiveIndex] = useState(0)
 
-  const titleVariants: Variants = {
-    hidden: {
-      y: "100%",
-      opacity: 0,
-      transition: {
-        duration: 1.2,
-        ease: [0.25, 1, 0.5, 1] // smooth up and down
-      }
-    },
+  const textContainerVariants = {
+    hidden: { opacity: 0 },
     visible: {
-      y: "0%",
       opacity: 1,
-      transition: {
-        duration: 1.2,
-        ease: [0.25, 1, 0.5, 1],
-        delay: 0.3 // wait a bit before moving up
-      }
+      transition: { staggerChildren: 0.3, delayChildren: 0.5 },
     },
-    exit: {
-      y: "-100%",
-      opacity: 0,
-      transition: {
-        duration: 1.2,
-        ease: [0.25, 1, 0.5, 1]
-      }
-    }
+  };
+
+
+  const titleVariants: Variants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
+  }
+  const btnVariants: Variants = {
+    hidden: { opacity: 0, y: 70 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeInOut" } },
   }
 
-  const buttonVariants: Variants = {
-    hidden: {
-      y: "100%",
-      opacity: 0,
-      transition: {
-        duration: 0.2,
-        ease: [0.25, 1, 0.5, 1]
-      }
-    },
-    visible: {
-      y: "0%",
-      opacity: 1,
-      transition: {
-        duration: 0.2,
-        ease: [0.25, 1, 0.5, 1],
-        delay: 0.5 // button lags behind title
-      }
-    },
-    exit: {
-      y: "-100%",
-      opacity: 0,
-      transition: {
-        duration: 0.2,
-        ease: [0.25, 1, 0.5, 1]
-      }
-    }
-  }
 
   return (
     <section className='h-[60vh] xl:h-screen 2xl:h-[110vh] bg-black relative z-[1] hero overflow-hidden'>
@@ -99,14 +62,18 @@ const Banner = () => {
                     <div>
                       <AnimatePresence mode="wait">
                         {activeIndex === index && (
-                          <>
+                          <motion.div
+                            className="container flex flex-col"
+                            variants={textContainerVariants}
+                            initial="hidden"
+                            animate="visible">
                             <div className="overflow-hidden mb-6 xl:mb-50px" key={`title-${index}`}>
-                              <motion.h2 className="text-80 leading-[1.125] text-white" variants={titleVariants} initial="hidden" animate="visible" exit="exit" >
+                              <motion.h2 className="text-80 leading-[1.125] text-white" variants={titleVariants} >
                                 {item.title}
                               </motion.h2>
                             </div>
                             <div className="overflow-hidden" key={`btn-${index}`}>
-                              <motion.a href={item.slug} variants={buttonVariants} initial="hidden" animate="visible" exit="exit" className="fade-item flex items-center gap-2 cursor-pointer text-16 border-1 border-white py-1 2xl:py-[10px] px-3 2xl:px-5 rounded-[60px] w-fit text-white relative group overflow-hidden transition-all duration-700 z-20 isolation-isolate fade-item"
+                              <motion.a href={item.slug} variants={btnVariants}   className="fade-item flex items-center gap-2 cursor-pointer text-16 border-1 border-white py-1 2xl:py-[10px] px-3 2xl:px-5 rounded-[60px] w-fit text-white relative group overflow-hidden  z-20 isolation-isolate fade-item"
                               >
                                 <div className="absolute top-0 left-0 w-0 h-full bg-primary z-[-1] transition-all duration-300 group-hover:w-full"></div>
                                 <span>View Our Projects</span>
@@ -121,7 +88,7 @@ const Banner = () => {
                                 </span>
                               </motion.a>
                             </div>
-                          </>
+                          </motion.div>
                         )}
                       </AnimatePresence>
 

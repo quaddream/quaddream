@@ -76,7 +76,7 @@ const PortfolioSwiperSlider: React.FC<ProjectSwiperProps> = ({ title, buttonLink
                     swiper.mousewheel.disable(); // stop scrolling after 1 full cycle
                   }
                 }}
-                mousewheel={{ releaseOnEdges: true, sensitivity: 1 }}
+                mousewheel={true}
                 spaceBetween={20}
                 slidesPerView={1}
                 centeredSlides={false}
