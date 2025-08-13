@@ -33,9 +33,9 @@ const Navbar = () => {
     <>
       <motion.header className={`fixed w-full z-[100] hidden lg:block transition-all duration-300 ${scrolled ? 'top-0 bg-white':'top-[95px]'}`} variants={fadeIn(0.5)} initial="hidden" whileInView="show">
         <div className={`w-full container ${scrolled ? '' :''}`}>
-          <div className={`bg-white pr-[37px] flex items-center justify-between w-full ${scrolled ? 'py-2' :'rounded-full shadow-md py-[25px]'}`}>
-            <div className={`mr-4 ${scrolled ? 'xl:w-[250px]' :'xl:w-[404px] xl:pl-[1em]'}`}>
-              <Image src="/assets/images/logo-main.svg" alt="Logo" width={550} height={550} className='h-auto w-auto object-contain' />
+          <div className={`bg-white pr-[37px] flex items-center justify-between w-full ${scrolled ? 'py-2' :'rounded-full shadow-md py-[12px]'}`}>
+            <div className={`mr-4 ${scrolled ? 'xl:w-[250px]' :'xl:w-[404px] xl:pl-[2em]'}`}>
+              <Image src="/assets/images/logo-main.svg" alt="Logo" width={550} height={550} className='h-auto w-auto xl:h-[107px] object-contain' />
             </div>
             <ul className='flex w-fit xl:gap-[43px] xl:pr-[37px] ml-auto'>
               {menuItems.map((item, index) => {
