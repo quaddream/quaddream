@@ -6,9 +6,49 @@ import { useEffect, useRef } from 'react'
 import { motion } from 'motion/react'
 import {containerStagger,moveUp, paragraphItem,moveRight} from '../../motionVarients'
 import Counter from './Counter'
+import {gsap} from "gsap"
+import {ScrollTrigger} from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger);
 const Commitment = () => {
     const containerRef = useRef<HTMLUListElement | null>(null);
     const contentRef = useRef<HTMLLIElement | null>(null);
+    const textRef = useRef<HTMLHeadingElement | null>(null);
+
+    useEffect(() => {
+        if (!textRef.current) return;
+
+        const spanElement = textRef.current.querySelector("span");
+        if (!spanElement) return;
+
+        // Split text into characters wrapped in span
+        const originalText = spanElement.textContent || "";
+        spanElement.innerHTML = originalText
+            .split("")
+            .map((char) => `<span class="inline-block">${char}</span>`)
+            .join("");
+
+        const letters = spanElement.querySelectorAll<HTMLSpanElement>("span");
+
+        gsap.fromTo(
+            letters,
+            { color: "#bebebe" },
+            {
+                color: "#000000",
+                stagger: 0.08,
+                ease: "power1.inOut",
+                scrollTrigger: {
+                    trigger: textRef.current,
+                    start: "top 20%",
+                    end: "top 80%",
+                    scrub: false,
+                    toggleActions: "play none none reverse", // play on enter, reverse on leave
+                    markers: false
+                }
+            }
+        );
+    }, []);
+
+
     useEffect(() => {
         const container = containerRef.current;
         const content = contentRef.current;
@@ -45,7 +85,9 @@ const Commitment = () => {
                         </Link>
                     </motion.div>
                     <motion.div className='2xl:col-span-4 flex flex-col' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
-                        <motion.h2 variants={paragraphItem} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}} className='text-65 leading-[1.153846153846154] mb-50px'>With a commitment to safety, reliability, <span className='text-[#bebebe]'>and technical excellence.</span></motion.h2>
+                        <motion.h2 ref={textRef} variants={paragraphItem} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}} className='text-65 leading-[1.153846153846154] mb-50px'>
+                            With a commitment to safety, reliability,{" "}<span className='text-[#bebebe]'>and technical excellence.</span>
+                        </motion.h2>
                         <motion.p variants={paragraphItem} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}} className='text-19 text-[#7f7f7f] leading-[1.684210526315789] xl:mb-10'>Quad Dream Scaffolding LLC offers reliable, high-quality scaffolding solutions across the UAE,
                             supporting construction and industrial projects with safe, flexible, and fully compliant services — from design to dismantling.
                         </motion.p>

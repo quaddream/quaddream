@@ -23,9 +23,10 @@ const Services = () => {
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/images/home/service-1.jpg" alt="Services" width={500} height={300} className='h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
-                                <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/50 group-hover:to-primary/75 transition-all duration-300 to-100% z-20'></div>
+                                <div className='absolute bottom-0 left-0 h-full  w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:opacity-0 transition-all duration-300 z-20'></div>
+                                <div className='absolute bottom-0 left-0 h-0 w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 group-hover:h-full transition-all duration-300 z-20'></div>
                                 <div className='relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300'>
-                                    <Image src="/assets/images/arrow-top-right.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px]' />
+                                    <Image src="/assets/images/arrow-top-right.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300' />
                                 </div>
                                 <div className='relative z-30 mt-auto'>
                                     <h3 className='text-33 leading-[1.212121212121212] mb-25px'>High-Quality Materials</h3>
@@ -38,9 +39,10 @@ const Services = () => {
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/images/home/service-2.jpg" alt="Services" width={500} height={500} className='h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
-                                <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 transition-all duration-300 z-20'></div>
+                                <div className='absolute bottom-0 left-0 h-full  w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:opacity-0 transition-all duration-300 z-20'></div>
+                                <div className='absolute bottom-0 left-0 h-0 w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 group-hover:h-full transition-all duration-300 z-20'></div>
                                 <div className='relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300'>
-                                    <Image src="/assets/images/arrow-top-right.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px]' />
+                                    <Image src="/assets/images/arrow-top-right.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300' />
                                 </div>
                                 <div className='relative z-30 mt-auto'>
                                     <h3 className='text-33 leading-[1.212121212121212] mb-25px'>Cuplock Scaffolding & Aluminum Mobile Tower Rental & Sales</h3>
@@ -55,9 +57,10 @@ const Services = () => {
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/images/home/service-3.jpg" alt="Services" width={500} height={500} className='h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
-                                <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 transition-all duration-300 z-20'></div>
+                                <div className='absolute bottom-0 left-0 h-full  w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:opacity-0 transition-all duration-300 z-20'></div>
+                                <div className='absolute bottom-0 left-0 h-0 w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 group-hover:h-full transition-all duration-300 z-20'></div>
                                 <div className='relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300'>
-                                    <Image src="/assets/images/arrow-top-right.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px]' />
+                                    <Image src="/assets/images/arrow-top-right.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300' />
                                 </div>
                                 <div className='relative z-30 mt-auto'>
                                     <h3 className='text-33 leading-[1.212121212121212] mb-25px'>Scaffolding <br /> Formwork</h3>
@@ -71,9 +74,10 @@ const Services = () => {
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/images/home/service-4.jpg" alt="Services" width={500} height={500} className='h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
-                                <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 transition-all duration-300 z-20'></div>
+                                <div className='absolute bottom-0 left-0 h-full  w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:opacity-0 transition-all duration-300 z-20'></div>
+                                <div className='absolute bottom-0 left-0 h-0 w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 group-hover:h-full transition-all duration-300 z-20'></div>
                                 <div className='relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300'>
-                                    <Image src="/assets/images/arrow-top-right.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px]' />
+                                    <Image src="/assets/images/arrow-top-right.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300' />
                                 </div>
                                 <div className='relative z-30 mt-auto'>
                                     <h3 className='text-33 leading-[1.212121212121212] mb-25px'>Equipment Rentals</h3>
