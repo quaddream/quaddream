@@ -24,14 +24,14 @@ const Commitment = () => {
     // Split into words and wrap each in a span
     textRef.current.innerHTML = originalText
         .split(" ")
-        .map(word => `<span class="inline-block" style="color:#7f7f7f">${word}&nbsp;</span>`)
+        .map(word => `<span class="inline-block" style="color:#BEBEBE">${word}&nbsp;</span>`)
         .join("");
 
     const words = textRef.current.querySelectorAll<HTMLSpanElement>("span");
 
     gsap.fromTo(
         words,
-        { color: "#7f7f7f" },
+        { color: "#BEBEBE" },
         {
             color: "#000000",
             stagger: 0.2,
