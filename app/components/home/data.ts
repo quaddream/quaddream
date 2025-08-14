@@ -141,13 +141,13 @@ export const partnersSection= {
         imageUrl: '/assets/images/home/portfolio/port_3.jpg',
         badge: 'Dubai',
       },
-      {
-        id: 4,
-        title: 'ADC ',
-        location: 'Abu Dhabi ',
-        imageUrl: '/assets/images/home/portfolio/port_1.jpg',
-        badge: 'Abu Dhabi',
-      },
+      // {
+      //   id: 4,
+      //   title: 'ADC ',
+      //   location: 'Abu Dhabi ',
+      //   imageUrl: '/assets/images/home/portfolio/port_1.jpg',
+      //   badge: 'Abu Dhabi',
+      // },
       // {
       //   id: 5,
       //   title: 'Nakheel Mall',
