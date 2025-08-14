@@ -207,3 +207,12 @@ body {
 .hero-slider .swiper-slide {
   overflow: hidden;
 }
+
+.sticky-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  /* Full viewport height while stuck */
+  overflow: hidden;
+  /* Prevent scrolling inside */
+}

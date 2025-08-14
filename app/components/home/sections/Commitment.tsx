@@ -14,39 +14,70 @@ const Commitment = () => {
     const contentRef = useRef<HTMLLIElement | null>(null);
     const textRef = useRef<HTMLHeadingElement | null>(null);
 
+    // useEffect(() => {
+    //     if (!textRef.current) return;
+
+    //     const spanElement = textRef.current.querySelector("span");
+    //     if (!spanElement) return;
+
+    //     // Split text into characters wrapped in span
+    //     const originalText = spanElement.textContent || "";
+    //     spanElement.innerHTML = originalText
+    //         .split("")
+    //         .map((char) => `<span class="inline-block">${char}</span>`)
+    //         .join("");
+
+    //     const letters = spanElement.querySelectorAll<HTMLSpanElement>("span");
+
+    //     gsap.fromTo(
+    //         letters,
+    //         { color: "#bebebe" },
+    //         {
+    //             color: "#000000",
+    //             stagger: 0.08,
+    //             ease: "power1.inOut",
+    //             scrollTrigger: {
+    //                 trigger: textRef.current,
+    //                 start: "top 20%",
+    //                 end: "top 80%",
+    //                 scrub: false,
+    //                 toggleActions: "play none none reverse", // play on enter, reverse on leave
+    //                 markers: false
+    //             }
+    //         }
+    //     );
+    // }, []);
+
     useEffect(() => {
         if (!textRef.current) return;
 
-        const spanElement = textRef.current.querySelector("span");
-        if (!spanElement) return;
-
-        // Split text into characters wrapped in span
-        const originalText = spanElement.textContent || "";
-        spanElement.innerHTML = originalText
+        const originalText = textRef.current.textContent || "";
+        textRef.current.innerHTML = originalText
             .split("")
-            .map((char) => `<span class="inline-block">${char}</span>`)
+            .map((char) => `<span class="inline-block">${char === " " ? "&nbsp;" : char}</span>`)
             .join("");
 
-        const letters = spanElement.querySelectorAll<HTMLSpanElement>("span");
+        const letters = textRef.current.querySelectorAll<HTMLSpanElement>("span");
 
         gsap.fromTo(
             letters,
             { color: "#bebebe" },
             {
                 color: "#000000",
-                stagger: 0.08,
+                stagger: 0.1,
                 ease: "power1.inOut",
                 scrollTrigger: {
                     trigger: textRef.current,
-                    start: "top 20%",
-                    end: "top 80%",
+                    start: "top 80%",   // starts animating earlier
+                    end: "top 20%",     // ends when it scrolls near top
                     scrub: false,
-                    toggleActions: "play none none reverse", // play on enter, reverse on leave
+                    toggleActions: "play none none reverse", // ✅ enter = play, leave up = reverse
                     markers: false
                 }
             }
         );
     }, []);
+
 
 
     useEffect(() => {
@@ -86,7 +117,8 @@ const Commitment = () => {
                     </motion.div>
                     <motion.div className='2xl:col-span-4 flex flex-col' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                         <motion.h2 ref={textRef} variants={paragraphItem} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}} className='text-65 leading-[1.153846153846154] mb-50px'>
-                            With a commitment to safety, reliability,{" "}<span className='text-[#bebebe]'>and technical excellence.</span>
+                            {/* With a commitment to safety, reliability,{" "}<span className='text-[#bebebe]'>and technical excellence.</span> */}
+                            With a commitment to safety, reliability and technical excellence.
                         </motion.h2>
                         <motion.p variants={paragraphItem} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}} className='text-19 text-[#7f7f7f] leading-[1.684210526315789] xl:mb-10'>Quad Dream Scaffolding LLC offers reliable, high-quality scaffolding solutions across the UAE,
                             supporting construction and industrial projects with safe, flexible, and fully compliant services — from design to dismantling.
