@@ -210,7 +210,7 @@ const PortfolioSwiperSlider: React.FC<ProjectSwiperProps> = ({ title, buttonLink
                     spaceBetween: 20,
                   },
                   768: {
-                    slidesPerView: 1.8,
+                    slidesPerView: 1,
                     spaceBetween: 20,
                   },
                   1024: {
@@ -218,7 +218,7 @@ const PortfolioSwiperSlider: React.FC<ProjectSwiperProps> = ({ title, buttonLink
                     spaceBetween: 30,
                   },
                   1280: {
-                    slidesPerView: 2.5,
+                    slidesPerView: 2,
                     spaceBetween: 30,
                   },
                 }}
