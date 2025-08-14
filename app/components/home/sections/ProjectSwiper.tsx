@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay, Mousewheel } from 'swiper/modules';
+// import { Navigation, Autoplay, Mousewheel } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import Image from 'next/image';
 import Link from 'next/link'
@@ -36,12 +36,13 @@ const PortfolioSwiperSlider: React.FC<ProjectSwiperProps> = ({ title, buttonLink
   // --- refs & state (put at top of component) ---
   const sectionRef = useRef<HTMLElement | null>(null);
   const contentBoxRef = useRef<HTMLDivElement | null>(null);
-  const swiperRef = useRef<SwiperType | null>(null); 
+  const swiperRef = useRef<SwiperType | null>(null);
 
   const [stickyActive, setStickyActive] = useState(false);
   // const [loopStarted, setLoopStarted] = useState(false);
   const loopStartedRef = useRef(false);
 
+  // stable code start
 
   // useEffect(() => {
   //   const handleWheel = (e: WheelEvent) => {
@@ -62,6 +63,7 @@ const PortfolioSwiperSlider: React.FC<ProjectSwiperProps> = ({ title, buttonLink
   //             console.log("🔓 Unlock scroll after loop");
   //             setStickyActive(false);
   //             loopStartedRef.current = false;
+  //             return; // ✅ Let browser handle scroll to next section
   //           }
   //         } else {
   //           swiper.slideNext();
@@ -74,8 +76,53 @@ const PortfolioSwiperSlider: React.FC<ProjectSwiperProps> = ({ title, buttonLink
   //             console.log("🔓 Unlock scroll after loop");
   //             setStickyActive(false);
   //             loopStartedRef.current = false;
+  //             return; // ✅ Let browser handle scroll to previous section
   //           }
   //         } else {
+  //           swiper.slidePrev();
+  //           loopStartedRef.current = true;
+  //         }
+  //       }
+
+  //       // ✅ Only prevent default if still sticky
+  //       if (stickyActive) {
+  //         e.preventDefault();
+  //       }
+  //     }
+  //   };
+
+  //   window.addEventListener("wheel", handleWheel, { passive: false });
+  //   return () => window.removeEventListener("wheel", handleWheel);
+  // }, [stickyActive]);
+
+  // stable code end
+
+  // stable code 2 start
+
+  const goingDownRef = useRef(false);
+
+  // useEffect(() => {
+  //   const handleWheel = (e: WheelEvent) => {
+  //     if (!contentBoxRef.current || !swiperRef.current) return;
+
+  //     const rect = contentBoxRef.current.getBoundingClientRect();
+  //     const fullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+  //     const swiper = swiperRef.current;
+
+  //     if (fullyVisible) {
+  //       setStickyActive(true);
+
+  //       if (e.deltaY > 0) {
+  //         // Down
+  //         if (!swiper.isEnd) {
+  //           goingDownRef.current = true;
+  //           swiper.slideNext();
+  //           loopStartedRef.current = true;
+  //         }
+  //       } else {
+  //         // Up
+  //         if (!swiper.isBeginning) {
+  //           goingDownRef.current = false;
   //           swiper.slidePrev();
   //           loopStartedRef.current = true;
   //         }
@@ -87,59 +134,362 @@ const PortfolioSwiperSlider: React.FC<ProjectSwiperProps> = ({ title, buttonLink
 
   //   window.addEventListener("wheel", handleWheel, { passive: false });
   //   return () => window.removeEventListener("wheel", handleWheel);
-  // }, []); 
+  // }, []);
 
+
+  // useEffect(() => {
+  //   if (!swiperRef.current) return;
+
+  //   swiperRef.current.on("slideChange", (sw) => {
+  //     if (goingDownRef.current && sw.isEnd && loopStartedRef.current) {
+  //       console.log("🔓 Unlock scroll after LAST slide fully visible");
+  //       setStickyActive(false);
+  //       loopStartedRef.current = false;
+  //     }
+  //     if (!goingDownRef.current && sw.isBeginning && loopStartedRef.current) {
+  //       console.log("🔓 Unlock scroll after FIRST slide fully visible");
+  //       setStickyActive(false);
+  //       loopStartedRef.current = false;
+  //     }
+  //   });
+  // }, []);
+
+// stable code 2 end
+
+  // const goingDownRef = useRef(false);
+  // const loopStartedRef = useRef(false);
+
+  // useEffect(() => {
+  //   const handleWheel = (e: WheelEvent) => {
+  //     if (!contentBoxRef.current || !swiperRef.current) return;
+
+  //     const rect = contentBoxRef.current.getBoundingClientRect();
+  //     const fullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+  //     const swiper = swiperRef.current;
+
+  //     // Reset sticky when scrolling away from the section
+  //     if (!fullyVisible && stickyActive) {
+  //       setStickyActive(false);
+  //       loopStartedRef.current = false;
+  //       return; // Let normal scroll behavior take over
+  //     }
+
+  //     // Only handle wheel events when section is fully visible AND we want sticky behavior
+  //     if (fullyVisible) {
+  //       // Check if we should activate sticky mode
+  //       if (!stickyActive) {
+  //         setStickyActive(true);
+  //       }
+
+  //       // Only prevent default and handle swiper navigation when sticky is active
+  //       if (stickyActive || !loopStartedRef.current) {
+  //         if (e.deltaY > 0) {
+  //           // Scrolling Down
+  //           if (!swiper.isEnd) {
+  //             goingDownRef.current = true;
+  //             swiper.slideNext();
+  //             loopStartedRef.current = true;
+  //             e.preventDefault(); // Prevent default only when handling swiper
+  //           }
+  //           // If at end, don't prevent default - let normal scroll happen
+  //         } else {
+  //           // Scrolling Up
+  //           if (!swiper.isBeginning) {
+  //             goingDownRef.current = false;
+  //             swiper.slidePrev();
+  //             loopStartedRef.current = true;
+  //             e.preventDefault(); // Prevent default only when handling swiper
+  //           }
+  //           // If at beginning, don't prevent default - let normal scroll happen
+  //         }
+  //       }
+  //     }
+  //     // When not fully visible or sticky not active, don't prevent default - allow normal scrolling
+  //   };
+
+  //   window.addEventListener("wheel", handleWheel, { passive: false });
+  //   return () => window.removeEventListener("wheel", handleWheel);
+  // }, [stickyActive]); // Include stickyActive as dependency
+
+  // useEffect(() => {
+  //   if (!swiperRef.current) return;
+
+  //   const swiper = swiperRef.current;
+
+  //   const handleSlideChange = (sw: any) => {
+  //     // When going down and reached the last slide
+  //     if (goingDownRef.current && sw.isEnd && loopStartedRef.current) {
+  //       console.log("🔓 Unlock scroll after LAST slide fully visible");
+  //       setStickyActive(false);
+  //       loopStartedRef.current = false;
+  //       // Small delay to ensure state is updated before next wheel event
+  //       setTimeout(() => {
+  //         goingDownRef.current = false;
+  //       }, 50);
+  //     }
+
+  //     // When going up and reached the first slide
+  //     if (!goingDownRef.current && sw.isBeginning && loopStartedRef.current) {
+  //       console.log("🔓 Unlock scroll after FIRST slide fully visible");
+  //       setStickyActive(false);
+  //       loopStartedRef.current = false;
+  //       // Small delay to ensure state is updated before next wheel event
+  //       setTimeout(() => {
+  //         goingDownRef.current = false;
+  //       }, 50);
+  //     }
+  //   };
+
+  //   swiper.on("slideChange", handleSlideChange);
+
+  //   // Cleanup
+  //   return () => {
+  //     swiper.off("slideChange", handleSlideChange);
+  //   };
+  // }, []);
+
+
+
+  // *************
+
+  // const goingDownRef = useRef(false);
+  // const loopStartedRef = useRef(false);
+  const unlockTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const canUnlockRef = useRef(false);
+
+  // const goingDownRef = useRef(false);
+  // const loopStartedRef = useRef(false);
+  // const unlockTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  // const canUnlockRef = useRef(false);
+
+
+  const stickyActiveRef = useRef(true); // Use ref instead of state for immediate updates
+
+  const mousewheelDisabledRef = useRef(false);
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      if (!contentBoxRef.current) return;
+      if (!contentBoxRef.current || !swiperRef.current) return;
 
       const rect = contentBoxRef.current.getBoundingClientRect();
       const fullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+      const swiper = swiperRef.current;
 
-      if (fullyVisible && swiperRef.current) {
-        const swiper = swiperRef.current;
+      // Reset sticky when scrolling away from the section
+      if (!fullyVisible && stickyActiveRef.current) {
+        stickyActiveRef.current = false;
+        setStickyActive(false);
+        loopStartedRef.current = false;
+        canUnlockRef.current = false;
+        mousewheelDisabledRef.current = false;
+        // Re-enable mousewheel when leaving section
+        if (swiper.mousewheel) {
+          swiper.mousewheel.enable();
+        }
+        return;
+      }
 
-        setStickyActive(true);
-
-        if (e.deltaY > 0) {
-          // Down
-          if (swiper.isEnd) {
-            if (loopStartedRef.current) {
-              console.log("🔓 Unlock scroll after loop");
-              setStickyActive(false);
-              loopStartedRef.current = false;
-              return; // ✅ Let browser handle scroll to next section
-            }
-          } else {
-            swiper.slideNext();
-            loopStartedRef.current = true;
-          }
-        } else {
-          // Up
-          if (swiper.isBeginning) {
-            if (loopStartedRef.current) {
-              console.log("🔓 Unlock scroll after loop");
-              setStickyActive(false);
-              loopStartedRef.current = false;
-              return; // ✅ Let browser handle scroll to previous section
-            }
-          } else {
-            swiper.slidePrev();
-            loopStartedRef.current = true;
-          }
+      // Only handle wheel events when section is fully visible
+      if (fullyVisible) {
+        // Activate sticky mode if not already active
+        if (!stickyActiveRef.current) {
+          stickyActiveRef.current = true;
+          setStickyActive(true);
         }
 
-        // ✅ Only prevent default if still sticky
-        if (stickyActive) {
-          e.preventDefault();
+        if (e.deltaY > 0) {
+          // Scrolling Down
+          if (!swiper.isEnd) {
+            goingDownRef.current = true;
+            swiper.slideNext();
+            loopStartedRef.current = true;
+            canUnlockRef.current = false;
+            mousewheelDisabledRef.current = false;
+            e.preventDefault();
+          } else {
+            // At the end slide
+            if (canUnlockRef.current) {
+              // Second scroll attempt - unlock and allow normal scroll
+              console.log("🔓 Unlocking scroll - user scrolled down at last slide");
+              stickyActiveRef.current = false;
+              setStickyActive(false);
+              loopStartedRef.current = false;
+              canUnlockRef.current = false;
+              goingDownRef.current = false;
+              mousewheelDisabledRef.current = false;
+              // Re-enable mousewheel for future use
+              if (swiper.mousewheel) {
+                swiper.mousewheel.enable();
+              }
+              // Don't prevent default - let scroll continue to next section
+              return;
+            } else if (!mousewheelDisabledRef.current) {
+              // First time at end - prepare to unlock on next scroll
+              console.log("🔓 Preparing to unlock scroll after LAST slide - waiting for additional scroll attempt...");
+              canUnlockRef.current = true;
+              mousewheelDisabledRef.current = true;
+              // Keep mousewheel enabled so we can catch the next scroll
+              if (swiper.mousewheel) {
+                swiper.mousewheel.enable();
+              }
+              e.preventDefault();
+            } else {
+              // Already prepared, waiting for unlock
+              e.preventDefault();
+            }
+          }
+        } else {
+          // Scrolling Up
+          if (!swiper.isBeginning) {
+            goingDownRef.current = false;
+            swiper.slidePrev();
+            loopStartedRef.current = true;
+            canUnlockRef.current = false;
+            mousewheelDisabledRef.current = false;
+            e.preventDefault();
+          } else {
+            // At the beginning slide
+            if (canUnlockRef.current) {
+              // Second scroll attempt - unlock and allow normal scroll
+              console.log("🔓 Unlocking scroll - user scrolled up at first slide");
+              stickyActiveRef.current = false;
+              setStickyActive(false);
+              loopStartedRef.current = false;
+              canUnlockRef.current = false;
+              goingDownRef.current = false;
+              mousewheelDisabledRef.current = false;
+              // Don't prevent default - let scroll continue to previous section
+              return;
+            } else if (!mousewheelDisabledRef.current) {
+              // First time at beginning - prepare to unlock on next scroll
+              console.log("🔓 Preparing to unlock scroll after FIRST slide - waiting for additional scroll attempt...");
+              canUnlockRef.current = true;
+              mousewheelDisabledRef.current = true;
+              e.preventDefault();
+            } else {
+              // Already prepared, waiting for unlock
+              e.preventDefault();
+            }
+          }
         }
       }
     };
 
     window.addEventListener("wheel", handleWheel, { passive: false });
     return () => window.removeEventListener("wheel", handleWheel);
-  }, [stickyActive]);
+  }, []);
+
+  useEffect(() => {
+    if (!swiperRef.current) return;
+
+    const swiper = swiperRef.current;
+
+    const handleSlideChange = (sw: SwiperType) => {
+      // When going down and reached the last slide
+      if (goingDownRef.current && sw.isEnd && loopStartedRef.current) {
+        console.log("🔓 Preparing to unlock scroll after LAST slide - waiting for additional scroll attempt...");
+        canUnlockRef.current = true;
+        // Don't disable mousewheel here - we need it for the unlock mechanism
+        // Override the original onSlideChange behavior
+        mousewheelDisabledRef.current = true;
+      }
+
+      // When going up and reached the first slide
+      if (!goingDownRef.current && sw.isBeginning && loopStartedRef.current) {
+        console.log("🔓 Preparing to unlock scroll after FIRST slide - waiting for additional scroll attempt...");
+        canUnlockRef.current = true;
+        mousewheelDisabledRef.current = true;
+      }
+    };
+
+    swiper.on("slideChange", handleSlideChange);
+
+    // Cleanup
+    return () => {
+      swiper.off("slideChange", handleSlideChange);
+    };
+  }, []);
+
+  // *******************
+
+  
+
+  // add:
+  // const goingDownRef = useRef<boolean | null>(null);
+ 
+  // const justUnlockedRef = useRef(false);
+  // const transitionEndHandlerRef = useRef<((sw: SwiperType) => void) | null>(null);
+
+  // useEffect(() => {
+  //   const handleWheel = (e: WheelEvent) => {
+  //     const box = contentBoxRef.current;
+  //     const swiper = swiperRef.current;
+  //     if (!box || !swiper) return;
+
+  //     const rect = box.getBoundingClientRect();
+  //     const fullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+
+  //     if (!fullyVisible) return;            // only act when box fully visible
+
+  //     // if we just unlocked, let THIS wheel event pass to scroll page
+  //     if (justUnlockedRef.current) {
+  //       justUnlockedRef.current = false;
+  //       return;
+  //     }
+
+  //     // lock/stick while we drive slides
+  //     if (!stickyActive) setStickyActive(true);
+
+  //     if (e.deltaY > 0) {
+  //       // scrolling down
+  //       goingDownRef.current = true;
+
+  //       if (!swiper.isEnd) {
+  //         swiper.slideNext();
+  //         loopStartedRef.current = true;
+  //         e.preventDefault();               // block page scroll while sliding
+  //       } else {
+  //         // already on last slide
+  //         if (loopStartedRef.current) {
+  //           // cycle done, unlock now and let next wheel pass
+  //           setStickyActive(false);
+  //           loopStartedRef.current = false;
+  //           justUnlockedRef.current = true;
+  //           return;
+  //         } else {
+  //           // no loop yet; start a loop forward
+  //           // (optional) keep blocking until we move at least once
+  //           e.preventDefault();
+  //         }
+  //       }
+  //     } else {
+  //       // scrolling up
+  //       goingDownRef.current = false;
+
+  //       if (!swiper.isBeginning) {
+  //         swiper.slidePrev();
+  //         loopStartedRef.current = true;
+  //         e.preventDefault();
+  //       } else {
+  //         if (loopStartedRef.current) {
+  //           // cycle done, unlock now and let next wheel pass
+  //           setStickyActive(false);
+  //           loopStartedRef.current = false;
+  //           justUnlockedRef.current = true;
+  //           return;
+  //         } else {
+  //           // no loop yet; keep blocking to start loop on first move
+  //           e.preventDefault();
+  //         }
+  //       }
+  //     }
+  //   };
+
+  //   window.addEventListener("wheel", handleWheel, { passive: false });
+  //   return () => window.removeEventListener("wheel", handleWheel);
+  // }, [stickyActive]);
+
+
 
 
 
@@ -186,24 +536,18 @@ const PortfolioSwiperSlider: React.FC<ProjectSwiperProps> = ({ title, buttonLink
                 onSwiper={(instance) => {
                   swiperRef.current = instance; // ✅ now swiperRef.current is the Swiper instance
                 }}
-                onSlideChange={(swiper) => {
-                  if (swiper.realIndex === projects.length - 1) {
-                    // disable after one loop
-                    swiper.mousewheel.disable();
-                  }
-                }}
-                // mousewheel={false}
+                // onSlideChange={(swiper) => {
+                //   if (swiper.realIndex === projects.length - 1) {
+                //     // disable after one loop
+                //     swiper.mousewheel.disable();
+                //   }
+                // }}
                 spaceBetween={20}
                 slidesPerView={1}
                 centeredSlides={false}
                 loop={false}
                 loopAdditionalSlides={3}
                 speed={1000}
-                // autoplay={{
-                //   delay: 3000,
-                //   disableOnInteraction: false,
-                // }}
-                modules={[Autoplay, Navigation]}
                 breakpoints={{
                   640: {
                     slidesPerView: 1,
