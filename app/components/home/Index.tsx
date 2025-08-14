@@ -7,8 +7,9 @@ import CTA from './sections/cta'
 import IndustriesList from './sections/IndustriesList'
 import WhyChoose from './sections/WhyChoose'
 import OurPartners from './sections/OurPartners'
-import ProjectSwiperSlider from './sections/ProjectSwiper'
+/* import ProjectSwiperSlider from './sections/ProjectSwiper' */
 import { partnersSection ,ctaSection ,projects } from "./data";
+import PortfolioHorizontalScroll from './sections/PortfolioHorizontalScroll'
 const Index = () => {
   return (
    <div className='bg-black'>
@@ -18,7 +19,8 @@ const Index = () => {
     <Services/>
     <IndustriesList/>
     <WhyChoose/>
-    <ProjectSwiperSlider projects={projects.portfolio.projects} title={projects.portfolio.title} buttonLink={projects.portfolio.buttonLink} buttonText={projects.portfolio.buttonText}/>
+    <PortfolioHorizontalScroll projects={projects.portfolio.projects} title={projects.portfolio.title} buttonLink={projects.portfolio.buttonLink} buttonText={projects.portfolio.buttonText}/>
+    {/* <ProjectSwiperSlider projects={projects.portfolio.projects} title={projects.portfolio.title} buttonLink={projects.portfolio.buttonLink} buttonText={projects.portfolio.buttonText}/> */}
     <OurPartners   title={partnersSection.title}
         description={partnersSection.description}
         items={partnersSection.items} bgImg={partnersSection.bgImg}/>
