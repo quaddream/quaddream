@@ -104,7 +104,7 @@ const PortfolioHorizontalScroll: React.FC<ProjectSwiperProps> = ({ title, button
         {projects.map(project => (
           <div
             key={project.id}
-            className="relative rounded-[12px] overflow-hidden shadow-lg h-[300px] w-[350px] lg:h-[542px] lg:w-[757.67px] flex-shrink-0"
+            className="relative rounded-[12px] overflow-hidden shadow-lg h-[300px] w-[350px] lg:h-[500px] 2xl:h-[542px] lg:w-[630px] 2xl:w-[757.67px] flex-shrink-0"
           >
             <Image
               src={project.imageUrl}
