@@ -62,7 +62,7 @@ const Navbar = () => {
 
 const renderHeader = ()=>{
   return (
-    <motion.header className={`w-full z-[100] hidden lg:block  absolute ${scrollY > 550 ? 'top-0 bg-white' : 'top-[95px]'}`}>
+    <motion.header className={`w-full z-[100] hidden lg:block  absolute ${scrollY > 550 ? 'top-0 bg-white border-b-gray-100 border-b' : 'top-[95px]'}`}>
       <div className={`w-full container ${scrolled ? '' : ''}`}>
         <div className={`pr-[37px] flex items-center justify-between w-full bg-white ${scrollY > 550 ? 'py-2 shadow-none' : 'rounded-full shadow-md py-[12px]'}`}>
           <div className={`mr-4 ${scrollY > 550 ? 'xl:w-[250px]' : 'xl:w-[404px] xl:pl-[2em]'}`}>
