@@ -1,5 +1,3 @@
-import { data } from "motion/react-client";
-
  
 export const partnersSection= {
     title: "Our Partners",
@@ -29,56 +27,54 @@ export const partnersSection= {
     }
   ]
   };
-  export const projects = {
-  portfolio: {
-    title: "Portfolio",
-    buttonText: "View Projects",
-    buttonLink: "#",
-    projects: [
+  export const methodologysection = {
+    data:[
       {
-        id: 1,
-        title: 'ADC ',
-        location: 'Abu Dhabi ',
-        imageUrl: '/assets/images/home/portfolio/port_1.jpg',
-        badge: 'Abu Dhabi',
-      },
+      title: "Our Methodology at Quaddream Scaffolding Contracting LLC",
+      bgImg: "/assets/images/aboutus/bnas.jpg", 
+     description:"Since 2012, Quaddream Scaffolding Contracting LLC has been a trusted supplier of Cuplock systems, aluminum towers, and scaffolding accessories across the UAE. We prioritize quality, safety, and on-time delivery to meet the demands of today’s fast-paced construction industry."
+    }
+  ]
+  };
+  export const missionsection = {
+    data:[
       {
-        id: 2,
-        title: 'Nakheel Mall',
-        location: 'Dubai',
-        imageUrl: '/assets/images/home/portfolio/port_2.jpg',
-        badge: 'Dubai',
-      },
+      heading: "Our Mission & Vision", 
+      items: [
+        { icon:"/assets/images/aboutus/mission.svg",
+           title: "Our Vision", 
+           desc: "Scaffolding Contracting LLC, the UAE’s rising leader, offers innovative solutions in building, electromechanical, oil & gas, and power sectors. We rent, sell, and expertly handle all scaffolding needs – industrial, marine, cuplock, and more. From dismantling to maintenance, our certified team ensures safety compliance for high-rises, power plants, and complex projects. Reliable, competitive, and offering 24/7 support, we’re your trusted scaffolding partner in the UAE." 
+          },
+        { icon:"/assets/images/aboutus/vision.svg", 
+          title: "Our Mission", 
+          desc: "Dedicated to fostering collaboration, sharing interests, and delivering top-notch materials at competitive prices, Quaddream Scaffolding Contracting LLC aspires to be the most customer-friendly and preferred company in Building Contracting, Interiors, Event Management, Oil & Gas, Power, and Petrochemical industries. Our focus on supplying quality products and innovative services sets us apart, aiming to be the employer of choice in our field." 
+        }, 
+      ],
+    }
+  ]
+  };
+  export const corevaluesection = {
+    data:[
       {
-        id: 3,
-        title: 'EXPO 2020',
-        location: 'Sweden',
-        imageUrl: '/assets/images/home/portfolio/port_3.jpg',
-        badge: 'Dubai',
-      },
-      {
-        id: 4,
-        title: 'ADC ',
-        location: 'Abu Dhabi ',
-        imageUrl: '/assets/images/home/portfolio/port_1.jpg',
-        badge: 'Abu Dhabi',
-      },
-      {
-        id: 5,
-        title: 'Nakheel Mall',
-        location: 'Dubai',
-        imageUrl: '/assets/images/home/portfolio/port_2.jpg',
-        badge: 'Dubai',
-      },
-      {
-        id: 6,
-        title: 'EXPO 2020',
-        location: 'Sweden',
-        imageUrl: '/assets/images/home/portfolio/port_3.jpg',
-        badge: 'Dubai',
-      },
-    ],
-  },
-};
+      heading: "Our Core Values", 
+      subheading:"We are committed to delivering trusted, forward-thinking scaffolding solutions while building strong, long-term client relationships.",
+      items: [
+        { icon:"/assets/images/aboutus/value1.svg",
+           title: "Reliability", 
+           },
+           { icon:"/assets/images/aboutus/value2.svg", 
+             title: "Safety", 
+            }, 
+            { icon:"/assets/images/aboutus/value3.svg", 
+              title: "Innovation", 
+             }, 
+             { icon:"/assets/images/aboutus/value4.svg", 
+               title: "Partnership", 
+              }, 
+      ],
+    }
+  ]
+  };
+  
 
 
