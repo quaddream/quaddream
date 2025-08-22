@@ -22,11 +22,11 @@ type BannerProps = {
   const BannerInner: React.FC<BannerProps> = ({   bannerData }) => {
     
   return (
-    <section className=' pt-[349px] pb-[70px] bg-image bg-cover bg-center bg-no-repeat  relative z-[1] hero overlaybanner ' style={{backgroundImage: `url(${bannerData[0].bgImg})`}}>
+    <section className=' pt-[150px] lg:pt-[280px] xl:pt-[349px] pb-6 sm:pb-10 md:pb-[70px]   bg-image bg-cover bg-center bg-no-repeat  relative z-[1] hero overlaybanner ' style={{backgroundImage: `url(${bannerData[0].bgImg})`}}>
        <div className="relative z-10">
        <div className='container h-full '>
       <div><h1 className='text-white text-75 leading-[1.07] pb-3 border-b-[.5px] border-white'>{bannerData[0].title}</h1></div>
-      <div className='pt-[135px] pb-[100px]'>
+      <div className='pt-10 lg:pt-16 xl:pt-[135px]  pb-10 lg:pb-15 xl:pb-[100px]'>
       
         <ul className='flex gap-4 items-center'  >
           <li className='text-primary'>{bannerData[0].navigation[0].title}</li>

@@ -1,15 +1,22 @@
 import React from 'react'
-import BannerInner from './sections/BannerInner' 
-import Commitment from './sections/Commitment' 
+import BannerInner from '../common/BannerInner' 
+import About from './sections/About' 
+import Methodology from './sections/Methodology' 
+import Mission from './sections/Mission' 
+import CoreValue from './sections/CoreValue' 
 /* import ProjectSwiperSlider from './sections/ProjectSwiper' */
-import {bannersection } from "./data"; 
+import {bannersection,methodologysection,missionsection,corevaluesection } from "./data"; 
 const Index = () => {
   return (
-   <div className='bg-black'>
+   <>
     <BannerInner bannerData={bannersection.data}/>
-    <Commitment/>
+    <About/>
+    <Methodology Data={methodologysection.data}/>
+    <Mission Data={missionsection.data}/>
+    <CoreValue Data={corevaluesection.data}/>
+
     
-   </div>
+   </>
   )
 }
 

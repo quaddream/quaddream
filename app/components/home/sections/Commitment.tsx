@@ -114,7 +114,7 @@ const Commitment = () => {
                             whileInView="show"
                             transition={{ duration: 0.6 }}
                             viewport={{ amount: 0.1, once: true }}
-                            className='text-65 leading-[1.153846153846154] mb-50px'
+                            className='text-65 leading-[1.153846153846154] mb-4 md:mb-5 lg:mb-50px '
                         >
                             With a commitment to safety, reliability and technical excellence.
                         </motion.h2>
@@ -124,7 +124,7 @@ const Commitment = () => {
                             whileInView="show"
                             transition={{ duration: 0.6 }}
                             viewport={{ amount: 0.1, once: true }}
-                            className='text-19 text-[#7f7f7f] leading-[1.684210526315789] xl:mb-10'
+                            className='text-19 text-[#7f7f7f] leading-[1.684210526315789]  mb-4 md:mb-5 xl:mb-10'
                         >
                             Quad Dream Scaffolding LLC offers reliable, high-quality scaffolding solutions across the UAE,
                             supporting construction and industrial projects with safe, flexible, and fully compliant services — from design to dismantling.
@@ -136,10 +136,10 @@ const Commitment = () => {
                             transition={{ duration: 0.6 }}
                             viewport={{ amount: 0.1, once: true }}
                         >
-                            <Link href="/about" className='flex items-center gap-2 cursor-pointer text-16 font-normal border-2 border-black py-[10px] px-[20px] rounded-[60px] w-fit z-10 group'>
+                            <Link href="/about" className='flex items-center gap-2 cursor-pointer text-16 font-normal border-2 border-black py-2 px-4 md:px-5 rounded-[60px] w-fit z-10 group'>
                                 <span>Learn More About Us</span>
-                                <span className='bg-primary w-[51.7px] h-[51.7px] flex items-center justify-center rounded-full  group-hover:translate-x-[10px] transition-all duration-300'>
-                                    <Image src="/assets/images/home/arrow-right.svg" alt="Arrow" width={30} height={30} className="w-[24px] h-[24px]" />
+                                <span className='bg-primary w-[35px] h-[35px] lg:w-[51.7px] lg:h-[51.7px] flex items-center justify-center rounded-full  group-hover:translate-x-[10px] transition-all duration-300'>
+                                    <Image src="/assets/images/home/arrow-right.svg" alt="Arrow" width={30} height={30} className="w-[18px] h-[18px] lg:w-[24px] lg:h-[24px]" />
                                 </span>
                             </Link>
                         </motion.div>
@@ -148,7 +148,7 @@ const Commitment = () => {
 
                 {/* Counter Section */}
                 <motion.div
-                    className=' grid grid-cols-2 lg:grid-cols-4 justify-between gap-20 2xl:gap-20'
+                    className=' grid grid-cols-2 lg:grid-cols-4 justify-between gap-y-8 gap-x-20-20 2xl:gap-20'
                     variants={containerStagger}
                     initial="hidden"
                     whileInView="show"
