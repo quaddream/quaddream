@@ -64,18 +64,18 @@ const renderHeader = ()=>{
   return (
     <motion.header className={`w-full z-[100] hidden lg:block  absolute ${scrollY > 550 ? 'top-0 bg-white border-b-gray-100 border-b' : 'top-[95px]'}`}>
       <div className={`w-full container ${scrolled ? '' : ''}`}>
-        <div className={`pr-[37px] flex items-center justify-between w-full bg-white ${scrollY > 550 ? 'py-2 shadow-none' : 'rounded-full shadow-md py-[12px]'}`}>
-          <div className={`mr-4 ${scrollY > 550 ? 'xl:w-[250px]' : 'xl:w-[404px] xl:pl-[2em]'}`}>
-            <Image src="/assets/images/logo-main.svg" alt="Logo" width={550} height={550} className='h-auto w-auto xl:h-[107px] object-contain' />
+        <div className={`px-3 2xl:pr-[37px] flex items-center justify-between w-full bg-white ${scrollY > 550 ? 'py-2 shadow-none' : 'rounded-full shadow-md py-[12px]'}`}>
+          <div className={`mr-4 ${scrollY > 550 ? 'xl:w-[250px]' : 'xl:w-[404px] xl:pl-[1em] 2xl:pl-[2em]'}`}>
+            <Image src="/assets/images/logo-main.svg" alt="Logo" width={550} height={550} className='h-auto w-auto lg:h-[53px] xl:h-[65px] 2xl:h-[107px] object-contain' />
           </div>
-          <ul className='flex w-fit xl:gap-[43px] xl:pr-[37px] ml-auto'>
+          <ul className='flex w-fit lg:gap-3 xl:gap-8 2xl:gap-[43px] 2xl:pr-[37px] 2xl:ml-auto'>
             {menuItems.map((item, index) => {
               const isActive = activeIndex === index;
               const textColorClass = isActive ? 'text-[#1E1E1E]' : 'opacity-50';
               const spanWidthClass = isActive ? 'w-full' : 'w-[0px] group-hover:w-full';
               return (
                 <div className='flex flex-col group cursor-pointer' key={index} onClick={() => setActiveIndex(index)}>
-                  <li className={`text-nowrap text-19 ${textColorClass}`}>{item.name}</li>
+                  <li className={`text-nowrap font-16 xl:text-19 ${textColorClass}`}>{item.name}</li>
                   <span className={`bg-primary h-[1px] transition-all duration-300 ${spanWidthClass}`}></span>
                 </div>
               )

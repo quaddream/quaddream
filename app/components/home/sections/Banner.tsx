@@ -35,16 +35,33 @@ const Banner = () => {
   }, [activeIndex])
 
   return (
-    <section className='h-[60vh] xl:h-screen 2xl:h-[110vh] bg-black relative z-[1] hero overflow-hidden'>
+    // <section className='h-[60vh] xl:h-screen 2xl:h-[100vh] bg-black relative z-[1] hero overflow-hidden'>
+    //   {/* Background image (static first slide bg fallback) */}
+    //   <div className='absolute top-0 left-0 w-full h-full bg-black z-0 transition-all duration-300'>
+    //     <Image
+    //       src={homeData.banner.items[0].image}
+    //       alt="Banner"
+    //       width={2500}
+    //       height={1500}
+    //       className="h-full w-full object-cover"
+    //     />
+    //   </div>
+    <section className='h-[350px] md:h-screen 2xl:h-[100vh] bg-black relative z-[1] hero overflow-hidden'>
       {/* Background image (static first slide bg fallback) */}
+      {/* <div className='absolute top-[-62px] md:top-[-185px] left-0 w-full h-full bg-black z-0 transition-all duration-300'>
+        
+          <video src="/assets/images/home/banner-video.mp4" autoPlay loop muted className="h-[140%] w-full object-cover" />
+
+      </div> */}
       <div className='absolute top-0 left-0 w-full h-full bg-black z-0 transition-all duration-300'>
-        <Image
+          <Image
           src={homeData.banner.items[0].image}
           alt="Banner"
           width={2500}
           height={1500}
-          className="h-full w-full object-cover"
-        />
+          className="h-[140%] xl:h-full w-full object-cover"
+        />  
+
       </div>
       <div className='absolute top-0 left-0 w-full h-full bg-black/41 z-0 transition-all duration-300'></div>
       <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/71 z-0 transition-all duration-300'></div>
@@ -70,7 +87,7 @@ const Banner = () => {
     
   >
     <div className='container relative z-20 h-full'>
-      <div className='flex flex-col gap-5 h-full justify-center 2xl:pt-25'>
+      <div className='flex flex-col gap-5 h-full justify-center lg:pt-25'>
         <div
           ref={(el) => { contentRefs.current[index] = el }}
           className="flex flex-col gap-4"

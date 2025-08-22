@@ -148,7 +148,7 @@ const Commitment = () => {
 
                 {/* Counter Section */}
                 <motion.div
-                    className='flex justify-between w-full items-center flex-wrap 2xl:flex-nowrap gap-6 2xl:gap-0'
+                    className=' grid grid-cols-2 lg:grid-cols-4 justify-between gap-20 2xl:gap-20'
                     variants={containerStagger}
                     initial="hidden"
                     whileInView="show"

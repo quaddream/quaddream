@@ -7,7 +7,7 @@ import { moveUp, containerStagger, paragraphItem } from "../../motionVarients";
 const WhyChoose = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <section className="py-150 overflow-hidden">
+    <section className="py-150 overflow-hidden bg-black">
       <div className="container">
         <motion.h2 className="text-80 leading-[1.125] mb-10 2xl:mb-50px text-white" variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>Why Choose Quad Dream</motion.h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 2xl:gap-22">

@@ -39,10 +39,10 @@ const Index = () => {
   }, [])
 
   return (
-    <div className='bg-black'>
+    <div >
       <div className='frtsn'>
         {/* Sticky Banner */}
-        <div className="sticky top-0 h-screen z-10">
+        <div className="lg:sticky top-0 lg:h-screen z-10">
           <Banner />
         </div>
 
