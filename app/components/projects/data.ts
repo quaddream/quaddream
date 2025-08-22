@@ -1,13 +1,12 @@
  
- 
   export const bannersection = {
     data:[
       {
-      title: "About Us",
+      title: "Projects",
       bgImg: "/assets/images/aboutus/banner.jpg", 
       navigation: [
         { title: "Home", slug: "/" },
-        { title: "About Us", slug: "" }, 
+        { title: "Projects", slug: "" }, 
       ],
     }
   ]
