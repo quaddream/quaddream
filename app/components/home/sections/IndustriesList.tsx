@@ -20,7 +20,7 @@ const IndustriesList = () => {
         return (
           <motion.div
             key={index}
-            className={`bg-theme-pink overflow-hidden rounded-2xl relative flex flex-col justify-between cursor-pointer min-h-[210px] xl:min-h-auto`}
+            className={`bg-theme-pink overflow-hidden rounded-2xl relative group flex flex-col justify-between cursor-pointer min-h-[210px] xl:min-h-auto`}
             variants={moveUp(index * 0.2)}
             initial="hidden"
             whileInView="show"
@@ -31,7 +31,7 @@ const IndustriesList = () => {
             {/* Background image */}
             <div
               className={`absolute top-0 left-0 w-full h-full bg-white z-0 transition-all duration-300 ${
-                isActive ? "opacity-100" : "opacity-0"
+                isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
               }`}
             >
               <Image
@@ -46,14 +46,14 @@ const IndustriesList = () => {
             {/* Gradient overlay */}
             <div
               className={`absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/40 z-10 transition-all duration-300 ${
-                isActive ? "opacity-100" : "opacity-0"
+                isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
               }`}
             ></div>
 
             {/* Animated line */}
             <div
               className={`absolute top-[50%] translate-y-[-50%] left-0 h-[3px] bg-white z-40 transition-all duration-300 ${
-                isActive ? "opacity-100 w-full" : "opacity-0 w-0"
+                isActive ? "opacity-100 w-full" : "opacity-0 w-0 group-hover:opacity-100 group-hover:w-full"
               }`}
             ></div>
 
@@ -62,7 +62,7 @@ const IndustriesList = () => {
               className={`absolute top-[50%] translate-y-[-50%] left-0 w-[51px] h-[51px] bg-white rounded-full z-40 flex items-center justify-center transition-all duration-500 ${
                 isActive
                   ? "opacity-100 left-[75%]"
-                  : "opacity-0 left-0"
+                  : "opacity-0 left-0 group-hover:opacity-100 group-hover:left-[75%]"
               }`}
             >
               <Image
@@ -82,7 +82,7 @@ const IndustriesList = () => {
                 width={50}
                 height={50}
                 className={`transition-all duration-300 ${
-                  isActive ? "invert brightness-0" : ""
+                  isActive ? "invert brightness-0" : "group-hover:invert brightness-0"
                 }`}
               />
             </div>
@@ -91,7 +91,7 @@ const IndustriesList = () => {
             <div className="px-30px 2xl:pt-[33.3px] pb-4 2xl:pb-[28px] relative z-10">
               <h3
                 className={`text-25 leading-[1.6] font-light transition-all duration-300 max-w-[15ch] ${
-                  isActive ? "text-white" : ""
+                  isActive ? "text-white" : "group-hover:text-white"
                 }`}
               >
                 {item.title}
