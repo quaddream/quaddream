@@ -11,42 +11,63 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger);
 
 const Commitment = () => {
+    const sectionRef = useRef<HTMLElement | null>(null); // ✅ new ref for whole section
     const containerRef = useRef<HTMLUListElement | null>(null);
     const contentRef = useRef<HTMLLIElement | null>(null);
     const textRef = useRef<HTMLHeadingElement | null>(null);
 
-    // Animate heading words from grey to black
-   useEffect(() => {
-    if (!textRef.current) return;
-
-    const originalText = textRef.current.textContent || "";
-
-    // Split into words and wrap each in a span
-    textRef.current.innerHTML = originalText
-        .split(" ")
-        .map(word => `<span class="inline-block" style="color:#BEBEBE">${word}&nbsp;</span>`)
-        .join("");
-
-    const words = textRef.current.querySelectorAll<HTMLSpanElement>("span");
-
-    gsap.fromTo(
-        words,
-        { color: "#BEBEBE" },
-        {
-            color: "#000000",
-            stagger: 0.2,
-            ease: "none", // smoother for scrub
-            scrollTrigger: {
-                trigger: textRef.current,
-                start: "top 90%",
-                end: "top 30%",
-                scrub: true, // progress ties to scroll
-                markers: false
+    // ✅ Section entry animation
+/*     useEffect(() => {
+        if (!sectionRef.current) return;
+        gsap.fromTo(
+            sectionRef.current,
+            { autoAlpha: 0, scale: 1, y: 280 },
+            {
+                autoAlpha: 1,
+                y: 0,
+                scale: 1,
+                duration: 2,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "top 85%",
+                    toggleActions: "play reverse play reverse",
+                },
             }
-        }
-    );
-}, []);
+        );
+        
+    }, []); */
 
+    // Animate heading words from grey to black
+    useEffect(() => {
+        if (!textRef.current) return;
+
+        const originalText = textRef.current.textContent || "";
+
+        textRef.current.innerHTML = originalText
+            .split(" ")
+            .map(word => `<span class="inline-block" style="color:#BEBEBE">${word}&nbsp;</span>`)
+            .join("");
+
+        const words = textRef.current.querySelectorAll<HTMLSpanElement>("span");
+
+        gsap.fromTo(
+            words,
+            { color: "#BEBEBE" },
+            {
+                color: "#000000",
+                stagger: 0.2,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: textRef.current,
+                    start: "top 90%",
+                    end: "top 30%",
+                    scrub: true,
+                    markers: false
+                }
+            }
+        );
+    }, []);
 
     // Infinite ticker animation clones
     useEffect(() => {
@@ -56,7 +77,6 @@ const Commitment = () => {
         if (container && content) {
             const contentWidth = content.offsetWidth;
 
-            // Clone 9 more times
             for (let i = 0; i < 9; i++) {
                 const clone = content.cloneNode(true) as HTMLLIElement;
                 clone.setAttribute('aria-hidden', 'true');
@@ -66,13 +86,16 @@ const Commitment = () => {
             const totalWidth = contentWidth * 1000;
             container.style.setProperty('--scroll-width', `${totalWidth}px`);
 
-            const duration = totalWidth / 60; 
+            const duration = totalWidth / 60;
             container.style.setProperty('--duration', `${duration}s`);
         }
     }, []);
 
     return (
-        <section className='py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-[50] bg-white mt-[-4.5%] overflow-hidden'>
+        <section
+            ref={sectionRef} // ✅ hook GSAP animation here
+            className='py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-[50] bg-white  overflow-hidden'
+        >
             <Image src="/assets/images/home/commitment-bg.png" alt="Commitment" width={900} height={500} className='absolute bottom-0 2xl:top-[150px] -left-[60px] h-[80%] z-[-1]' />
             <div className='container flex flex-col gap-150'>
                 <div className='grid 2xl:grid-cols-5 w-full gap-y-4'>
@@ -125,7 +148,7 @@ const Commitment = () => {
 
                 {/* Counter Section */}
                 <motion.div
-                    className='flex justify-between w-full items-center flex-wrap 2xl:flex-nowrap gap-6 2xl:gap-0'
+                    className=' grid grid-cols-2 lg:grid-cols-4 justify-between gap-20 2xl:gap-20'
                     variants={containerStagger}
                     initial="hidden"
                     whileInView="show"

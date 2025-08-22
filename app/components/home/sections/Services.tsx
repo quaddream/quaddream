@@ -6,7 +6,7 @@ import { motion } from 'motion/react'
 import {moveUp, containerStagger,paragraphItem} from '../../motionVarients'
 const Services = () => {
     return (
-        <section className='py-150 overflow-hidden'>
+        <section className='py-150 overflow-hidden bg-black'>
             <div className='container'>
                 <div className='grid grid-cols-1 2xl:grid-cols-[auto_866.89px] 2xl:gap-[97.23px] text-white gap-y-5'>
                     <motion.div className='flex flex-col' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
@@ -21,7 +21,7 @@ const Services = () => {
                         <motion.div className='grid grid-cols-2 xl:grid-cols-5 2xl:grid-rows-[336px_339px] gap-3' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                             <motion.div className='relative col-span-2 overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
-                                    <Image src="/assets/images/home/service-1.jpg" alt="Services" width={500} height={300} className='h-full w-full group-hover:scale-110 transition-all duration-300' />
+                                    <Image src="/assets/images/home/service-1.jpg" alt="Services" width={500} height={300} className='object-cover h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
                                 <div className='absolute bottom-0 left-0 h-full  w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:opacity-0 transition-all duration-300 z-20'></div>
                                 <div className='absolute bottom-0 left-0 h-0 w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 group-hover:h-full transition-all duration-300 z-20'></div>
@@ -37,7 +37,7 @@ const Services = () => {
                             </motion.div>
                             <motion.div className='relative col-span-3 overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer' variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
-                                    <Image src="/assets/images/home/service-2.jpg" alt="Services" width={500} height={500} className='h-full w-full group-hover:scale-110 transition-all duration-300' />
+                                    <Image src="/assets/images/home/service-2.jpg" alt="Services" width={500} height={500} className='object-cover h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
                                 <div className='absolute bottom-0 left-0 h-full  w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:opacity-0 transition-all duration-300 z-20'></div>
                                 <div className='absolute bottom-0 left-0 h-0 w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 group-hover:h-full transition-all duration-300 z-20'></div>
@@ -55,7 +55,7 @@ const Services = () => {
 
                             <motion.div className='col-span-3 relative overflow-hidden rounded-2xl p-8 flex flex-col   group cursor-pointer' variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
-                                    <Image src="/assets/images/home/service-3.jpg" alt="Services" width={500} height={500} className='h-full w-full group-hover:scale-110 transition-all duration-300' />
+                                    <Image src="/assets/images/home/service-3.jpg" alt="Services" width={500} height={500} className='object-cover h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
                                 <div className='absolute bottom-0 left-0 h-full  w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:opacity-0 transition-all duration-300 z-20'></div>
                                 <div className='absolute bottom-0 left-0 h-0 w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 group-hover:h-full transition-all duration-300 z-20'></div>
@@ -72,7 +72,7 @@ const Services = () => {
                             </motion.div>
                             <motion.div className='col-span-2 relative overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer' variants={moveUp(0.8)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
-                                    <Image src="/assets/images/home/service-4.jpg" alt="Services" width={500} height={500} className='h-full w-full group-hover:scale-110 transition-all duration-300' />
+                                    <Image src="/assets/images/home/eqp.jpg" alt="Services" width={500} height={500} className='object-cover h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
                                 <div className='absolute bottom-0 left-0 h-full  w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:opacity-0 transition-all duration-300 z-20'></div>
                                 <div className='absolute bottom-0 left-0 h-0 w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 group-hover:h-full transition-all duration-300 z-20'></div>
