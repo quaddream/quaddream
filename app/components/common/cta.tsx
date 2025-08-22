@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { moveUp } from "../../motionVarients";
+import { moveUp } from "../motionVarients";
 
 type CTAProps = {
   title: string;

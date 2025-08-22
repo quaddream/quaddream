@@ -29,9 +29,21 @@ type BannerProps = {
       <div className='pt-10 lg:pt-16 xl:pt-[135px]  pb-10 lg:pb-15 xl:pb-[100px]'>
       
         <ul className='flex gap-4 items-center'  >
-          <li className='text-primary'>{bannerData[0].navigation[0].title}</li>
-          <li><p className='w-[6px] h-[6px] bg-[#D9D9D9] rounded-full m-0'></p></li>
-          <li className='text-lite-gray'><Link href={bannerData[0].navigation[1].slug}>{bannerData[0].navigation[1].title}</Link></li>
+          {bannerData.map((item, index) => (
+            item.navigation.map((nav, navIndex) => (
+              <li key={navIndex} className= {` ${nav.slug ? 'text-primary' : 'text-lite-gray'}`}>
+                {nav.slug&&(
+                  <div className='flex items-center gap-3'>
+                  <Link href={nav.slug}>{nav.title}</Link>
+                  <p className='w-[6px] h-[6px] bg-[#D9D9D9] rounded-full m-0'></p>
+                   </div>
+                  )} 
+                 
+                {!nav.slug&&nav.title}
+              </li>
+            ))
+          ))}
+           
         </ul> 
       </div>
       </div>
