@@ -77,7 +77,7 @@ const Banner = () => {
           fadeEffect={{ crossFade: true }}
           speed={800}
           loop={true}
-          autoplay={{ delay: 6000 }}
+          // autoplay={{ delay: 6000 }}
           className='hero-slider relative h-full w-full'
         >
           {homeData.banner.items.map((item, index) => (
@@ -99,13 +99,13 @@ const Banner = () => {
                       >
                         <div className="absolute top-0 left-0 w-0 h-full bg-primary z-[-1] transition-all duration-300 group-hover:w-full"></div>
                         <span>View Our Projects</span>
-                        <span className="bg-primary group-hover:bg-white group-hover:translate-x-[10px] w-[51.7px] h-[51.7px] flex items-center justify-center rounded-full transition-all duration-300">
+                        <span className="bg-primary group-hover:bg-white group-hover:translate-x-[10px] h-8 w-8 md:w-[51.7px] md:h-[51.7px] flex items-center justify-center rounded-full transition-all duration-300">
                           <Image
                             src="/assets/images/bold-arrow.svg"
                             alt="Arrow"
                             width={30}
                             height={30}
-                            className="invert w-[24px] h-[24px] brightness-0 group-hover:invert-0 group-hover:brightness-100 transition-all duration-300"
+                            className="invert w-[18px] h-[18px] md:w-[24px] md:h-[24px] brightness-0 group-hover:invert-0 group-hover:brightness-100 transition-all duration-300"
                           />
                         </span>
                       </a>

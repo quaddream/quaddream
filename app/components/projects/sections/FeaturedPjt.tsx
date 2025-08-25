@@ -18,7 +18,7 @@ type MissionProps = {
     Data:datapop[];
 }
  
-  const Mission: React.FC<MissionProps> = ({   Data }) => { 
+  const FeaturedPjt: React.FC<MissionProps> = ({   Data }) => { 
    
 
     return (
@@ -55,4 +55,4 @@ type MissionProps = {
     )
 }
 
-export default Mission
+export default FeaturedPjt
