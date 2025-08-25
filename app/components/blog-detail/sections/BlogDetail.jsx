@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { blogDetail } from "@/app/components/blog-detail/data";
-
+import { GoShareAndroid } from "react-icons/go";
 const BlogDetail = () => {
   return (
     <section className="bg-background py-150">
@@ -13,9 +13,12 @@ const BlogDetail = () => {
           </h1>
 
           {/* Category & Date */}
-          <div className="text-19 flex gap-[50px] mb-[20px]">
-            <span className="text-primary">{blogDetail.category}</span>
-            <span className="text-[#696969]">{blogDetail.date}</span>
+          <div className="text-19 font-normal flex mb-[20px] justify-between items-center">
+            <div className="flex gap-[50px] items-center">
+              <span className="text-primary">{blogDetail.category}</span>
+              <span className="text-[#696969]">{blogDetail.date}</span>
+            </div>
+            <GoShareAndroid size={22} />
           </div>
 
           {/* Main Image */}
@@ -23,9 +26,9 @@ const BlogDetail = () => {
             <Image
               src={blogDetail.mainImage}
               alt="Scaffolding"
-              width={1024}
-              height={600}
-              className="w-full h-auto rounded-md"
+              width={1317}
+              height={673}
+              className="w-full max-h-[673px] rounded-[16px]"
             />
           </div>
 
