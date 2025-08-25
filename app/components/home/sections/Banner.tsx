@@ -45,15 +45,15 @@ const Banner = () => {
     //       height={1500}
     //       className="h-full w-full object-cover"
     //     />
-    //   </div>
+    //   </div> 
     <section className='h-[350px] md:h-screen 2xl:h-[100vh] bg-black relative z-[1] hero overflow-hidden'>
       {/* Background image (static first slide bg fallback) */}
-      {/* <div className='absolute top-[-62px] md:top-[-185px] left-0 w-full h-full bg-black z-0 transition-all duration-300'>
-        
-          <video src="/assets/images/home/banner-video.mp4" autoPlay loop muted className="h-[140%] w-full object-cover" />
-
-      </div> */}
       <div className='absolute top-0 left-0 w-full h-full bg-black z-0 transition-all duration-300'>
+        
+          <video src="/assets/images/home/banners/banner-video.mp4" autoPlay loop muted className="w-full h-full object-cover" />
+
+      </div>
+      {/* <div className='absolute top-0 left-0 w-full h-full bg-black z-0 transition-all duration-300'>
           <Image
           src={homeData.banner.items[0].image}
           alt="Banner"
@@ -62,7 +62,7 @@ const Banner = () => {
           className="h-[140%] xl:h-full w-full object-cover"
         />  
 
-      </div>
+      </div> */}
       <div className='absolute top-0 left-0 w-full h-full bg-black/41 z-0 transition-all duration-300'></div>
       <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/71 z-0 transition-all duration-300'></div>
 
@@ -77,7 +77,7 @@ const Banner = () => {
           fadeEffect={{ crossFade: true }}
           speed={800}
           loop={true}
-          // autoplay={{ delay: 6000 }}
+          autoplay={{ delay: 6000 }}
           className='hero-slider relative h-full w-full'
         >
           {homeData.banner.items.map((item, index) => (

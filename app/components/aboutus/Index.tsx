@@ -15,6 +15,7 @@ const Index = () => {
     <Mission Data={missionsection.data}/>
     <CoreValue Data={corevaluesection.data}/>
     <CTA
+    
             title={ctaSection.title}
             description={ctaSection.description}
             buttonLink={ctaSection.buttonLink}

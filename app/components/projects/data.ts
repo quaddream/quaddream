@@ -46,38 +46,52 @@
                  icon:"/assets/images/projects/location.svg",
       
                 },
-                { title:"City Night", 
+                { title:"Regalia Business Bay Project", 
                   image:"/assets/images/projects/pjt5.jpg",
                    city: "Dubai ", 
                    status: "Completed" ,
                    icon:"/assets/images/projects/location.svg",
         
                   },
+                { title:"City Night", 
+                  image:"/assets/images/projects/pjt6.jpg",
+                   city: "Dubai ", 
+                   status: "Completed" ,
+                   icon:"/assets/images/projects/location.svg",
+        
+                  },
                   { title:"Sharjah Cement Factory", 
-                    image:"/assets/images/projects/pjt6.jpg",
+                    image:"/assets/images/projects/pjt7.jpg",
                      city: "Dubai ", 
                      status: "Completed" ,
                      icon:"/assets/images/projects/location.svg",
           
                     },
                     { title:"EXPO 2020, Sweden Pavilion", 
-                      image:"/assets/images/projects/pjt7.jpg",
+                      image:"/assets/images/projects/pjt8.jpg",
                        city: "Dubai ", 
                        status: "Completed" ,
                        icon:"/assets/images/projects/location.svg",
             
-                      },
-                      { title:"EXPO 2020, Switzerland Pavilion", 
-                        image:"/assets/images/projects/pjt8.jpg",
-                         city: "Dubai ", 
-                         status: "Completed" ,
-                         icon:"/assets/images/projects/location.svg",
-              
-                        },
+                      }, 
+                        { title:"EXPO 2020, Switzerland Pavilion", 
+                          image:"/assets/images/projects/pjt9.jpg",
+                           city: "Dubai ", 
+                           status: "Completed" ,
+                           icon:"/assets/images/projects/location.svg",
+                
+                          },
          
       ],
     }
   ]
   };
- 
+  export const ctaSection = {
+    title: "Have A Project In Mind?",
+    bgImg: "/assets/images/aboutus/cta-about.jpg", 
+    description: "Let's discuss how we can bring your vision to life. Our team of experts is ready to help you achieve your goals.",
+    buttonText: "Contact Us Now",
+    buttonLink: "",
+  };
+
  
