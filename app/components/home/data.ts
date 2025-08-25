@@ -42,13 +42,13 @@ export const homeData = {
       {
         icon: "/assets/images/home/industries/icon-4.svg",
         title: "Marine & Offshore",
-        image: "/assets/images/home/industries/ind-bg4.jpg",
+        image: "/assets/images/home/industries/ind-bg5.jpg",
         slug: "",
       },
       {
         icon: "/assets/images/home/industries/icon-5.svg",
         title: "Industrial & Manufacturing",
-        image: "/assets/images/home/industries/ind-bg5.jpg",
+        image: "/assets/images/home/industries/ind-bg4.jpg",
         slug: "",
       },
     ],

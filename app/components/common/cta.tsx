@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { moveUp } from "../motionVarients";
 
 type CTAProps = {
+  maxwidth?:number;
   title: string;
   description: string;
   buttonText: string;
@@ -12,7 +13,7 @@ type CTAProps = {
   bgImg?: string;
 };
 
-export default function CTA({ title, description, buttonLink, buttonText, bgImg }: CTAProps) {
+export default function CTA({ title, description, buttonLink, buttonText, bgImg ,maxwidth}: CTAProps) {
   return (
     <section
       className="relative  flex items-center justify-center text-center text-white"
@@ -32,8 +33,8 @@ export default function CTA({ title, description, buttonLink, buttonText, bgImg 
       ></div>
 
       {/* Content */}
-      <div className="relative z-10 lg:max-w-4xl px-4 py-150">
-        <motion.h1 className="text-80 font-400 leading-[1.125]" variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>
+      <div className="relative z-10 px-4 py-150">
+        <motion.h1 className={`text-80 font-400 leading-[1.125] ${maxwidth? `max-w-[${maxwidth}ch] m-auto` : ''}`}  variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>
           {title}
         </motion.h1>
         <motion.p className="my-[39px] text-19 text-[#BCBCBC] leading-[1.7]" variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>

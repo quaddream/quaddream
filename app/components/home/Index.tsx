@@ -69,6 +69,7 @@ const Index = () => {
         bgImg={partnersSection.bgImg}
       />
       <CTA
+       maxwidth={19}
         title={ctaSection.title}
         description={ctaSection.description}
         buttonLink={ctaSection.buttonLink}
