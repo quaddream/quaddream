@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import { Inter } from "next/font/google";
 import "../globals.css";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/footer";
 
-const poppins = Poppins({
-  weight: ["100","200", "300","400", "500", "600", "700", "900"],
-  variable: "--font-poppins",
+const openSans = Open_Sans({
   subsets: ["latin"],
+  weight: "variable",   // loads all weights
+  variable: "--font-open-sans",
 });
-const inter = Inter({
-  weight: ["100", "300", "400", "500", "600", "700", "800"],
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
+
+
+// const inter = Inter({
+//   weight: ["100", "300", "400", "500", "600", "700", "800"],
+//   variable: "--font-inter",
+//   subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
   title: "QUAD DREAM GROUP",
   description: "Reliable Access Solutions",
-};
+}; 
 
 export default function RootLayout({
   children,
@@ -28,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${inter.variable} antialiased`} >
+      <body className={`${openSans.variable} antialiased`} >
         <Navbar />
         {children}
         <Footer />
