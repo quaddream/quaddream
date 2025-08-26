@@ -45,15 +45,15 @@ const Banner = () => {
     //       height={1500}
     //       className="h-full w-full object-cover"
     //     />
-    //   </div>
+    //   </div> 
     <section className='h-[350px] md:h-screen 2xl:h-[100vh] bg-black relative z-[1] hero overflow-hidden'>
       {/* Background image (static first slide bg fallback) */}
-      {/* <div className='absolute top-[-62px] md:top-[-185px] left-0 w-full h-full bg-black z-0 transition-all duration-300'>
-        
-          <video src="/assets/images/home/banner-video.mp4" autoPlay loop muted className="h-[140%] w-full object-cover" />
-
-      </div> */}
       <div className='absolute top-0 left-0 w-full h-full bg-black z-0 transition-all duration-300'>
+        
+          <video src="/assets/images/home/banners/banner-video.mp4" autoPlay loop muted className="w-full h-full object-cover" />
+
+      </div>
+      {/* <div className='absolute top-0 left-0 w-full h-full bg-black z-0 transition-all duration-300'>
           <Image
           src={homeData.banner.items[0].image}
           alt="Banner"
@@ -62,7 +62,7 @@ const Banner = () => {
           className="h-[140%] xl:h-full w-full object-cover"
         />  
 
-      </div>
+      </div> */}
       <div className='absolute top-0 left-0 w-full h-full bg-black/41 z-0 transition-all duration-300'></div>
       <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/71 z-0 transition-all duration-300'></div>
 
@@ -99,13 +99,13 @@ const Banner = () => {
                       >
                         <div className="absolute top-0 left-0 w-0 h-full bg-primary z-[-1] transition-all duration-300 group-hover:w-full"></div>
                         <span>View Our Projects</span>
-                        <span className="bg-primary group-hover:bg-white group-hover:translate-x-[10px] w-[51.7px] h-[51.7px] flex items-center justify-center rounded-full transition-all duration-300">
+                        <span className="bg-primary group-hover:bg-white group-hover:translate-x-[10px] h-8 w-8 md:w-[51.7px] md:h-[51.7px] flex items-center justify-center rounded-full transition-all duration-300">
                           <Image
                             src="/assets/images/bold-arrow.svg"
                             alt="Arrow"
                             width={30}
                             height={30}
-                            className="invert w-[24px] h-[24px] brightness-0 group-hover:invert-0 group-hover:brightness-100 transition-all duration-300"
+                            className="invert w-[18px] h-[18px] md:w-[24px] md:h-[24px] brightness-0 group-hover:invert-0 group-hover:brightness-100 transition-all duration-300"
                           />
                         </span>
                       </a>

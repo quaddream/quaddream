@@ -20,6 +20,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dropbox": "^10.34.0",
+    "@headlessui/react": "^2.2.7",
     "gsap": "^3.13.0",
     "jose": "^6.0.12",
     "lucide-react": "^0.533.0",
