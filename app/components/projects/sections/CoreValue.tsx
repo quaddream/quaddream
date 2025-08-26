@@ -1,9 +1,6 @@
 'use client'
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link' 
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
  
 type items={
     icon:string,

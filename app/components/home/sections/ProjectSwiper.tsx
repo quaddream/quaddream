@@ -254,7 +254,7 @@ const PortfolioSwiperSlider: React.FC<ProjectSwiperProps> = ({ title, buttonLink
 
   // const goingDownRef = useRef(false);
   // const loopStartedRef = useRef(false);
-  const unlockTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  // const unlockTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const canUnlockRef = useRef(false);
 
   // const goingDownRef = useRef(false);
@@ -571,7 +571,7 @@ const PortfolioSwiperSlider: React.FC<ProjectSwiperProps> = ({ title, buttonLink
                   paddingRight: 0, // No right padding to make it full-width
                 }}
               >
-                {projects.map((project, index) => (
+                {projects.map((project) => (
                   <SwiperSlide key={project.id} className="!w-auto">
                     <div className="relative rounded-[12px] overflow-hidden shadow-lg h-[300px] w-[350px] lg:h-[542px] lg:w-[757.67px] cursor-pointer">
                       <Image src={project.imageUrl} alt={project.title} layout="fill" objectFit="cover" className="transition-transform duration-300 hover:scale-105" />

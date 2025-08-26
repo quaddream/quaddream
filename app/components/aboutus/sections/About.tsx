@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'motion/react'
-import { containerStagger, moveUp, paragraphItem, moveRight } from '../../motionVarients' 
+import { containerStagger, paragraphItem, moveRight } from '../../motionVarients' 
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 

@@ -3,7 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'motion/react'
-import {moveUp, containerStagger,paragraphItem} from '../../motionVarients'
+import {moveUp, containerStagger} from '../../motionVarients'
 const Services = () => {
     return (
         <section className='py-150 overflow-hidden bg-black'>

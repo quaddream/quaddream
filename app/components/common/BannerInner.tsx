@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -39,7 +39,7 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
 
           <div className="pt-10 lg:pt-16 xl:pt-[135px] pb-10 lg:pb-15 xl:pb-[100px]">
             <ul className="flex gap-4 items-center">
-              {bannerData.map((item, index) =>
+              {bannerData.map((item) =>
                 item.navigation.map((nav, navIndex) => (
                   <li
                     key={navIndex}
