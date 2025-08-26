@@ -46,7 +46,6 @@ interface ProjectPageProps {
 
 export default function Projects() {
 
-  const [oldLocation, setOldLocation] = useState<string>("");
   const [sector, setSector] = useState<string>("");
   const [location, setLocation] = useState<string>("");
   const [projectList, setProjectList] = useState<{_id:string,firstSection:{title:string,description:string}}[]>([]);
@@ -191,7 +190,6 @@ export default function Projects() {
         const data = await response.json();
         alert(data.message);
         handleFetchLocation();
-        setOldLocation("");
       } else {
         const data = await response.json();
         alert(data.message);
@@ -526,7 +524,7 @@ export default function Projects() {
                     </div>
                     <div className="flex gap-5">
                       <Dialog>
-                        <DialogTrigger onClick={() => { setLocation(item.name); setOldLocation(item.name) }}><MdEdit /></DialogTrigger>
+                        <DialogTrigger onClick={() => { setLocation(item.name)}}><MdEdit /></DialogTrigger>
                         <DialogContent>
                           <DialogHeader>
                             <DialogTitle>Edit Location</DialogTitle>

@@ -1,12 +1,11 @@
 
 "use client"
 
-import React, { use, useState,useEffect } from 'react'
+import React, { useState,useEffect } from 'react'
 import { menuItems } from './menuItems'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AnimatePresence, motion } from 'motion/react'
-import {fadeIn } from '../../components/motionVarients'
 import {
   FaFacebookF,
   FaInstagram,
@@ -18,7 +17,6 @@ const Navbar = () => {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0)
-  const [scrolled ,setScrolled] = useState(false);
 
 //  useEffect(() => {
 //   const handleScroll = () => {
@@ -63,7 +61,7 @@ const Navbar = () => {
 const renderHeader = ()=>{
   return (
     <motion.header className={`w-full z-[100] hidden lg:block  absolute ${scrollY > 550 ? 'top-0 bg-white border-b-gray-100 border-b' : 'top-[95px]'}`}>
-      <div className={`w-full container ${scrolled ? '' : ''}`}>
+      <div className={`w-full container`}>
         <div className={`px-3 2xl:pr-[37px] flex items-center justify-between w-full bg-white ${scrollY > 550 ? 'py-2 shadow-none' : 'rounded-full shadow-md py-[12px]'}`}>
           <div className={`mr-4 ${scrollY > 550 ? 'xl:w-[250px]' : 'xl:w-[404px] xl:pl-[1em] 2xl:pl-[2em]'}`}>
             <Image src="/assets/images/logo-main.svg" alt="Logo" width={550} height={550} className='h-auto w-auto lg:h-[53px] xl:h-[65px] 2xl:h-[107px] object-contain' />

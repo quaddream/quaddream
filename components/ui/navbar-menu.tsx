@@ -1,16 +1,15 @@
 "use client";
 import React, { ReactNode, useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, spring } from "framer-motion";
 import Link, { LinkProps } from "next/link";
 import Image from "next/image";
 import arrow from "@/public/assets/img/home/arrow.svg";
 import { FaChevronRight } from "react-icons/fa6";
 import { IoSearchOutline } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
-import { useSearchContext } from "@/contexts/searchContext";
 
 const transition = {
-  type: "spring",
+  type: spring,
   mass: 0.5,
   damping: 11.5,
   stiffness: 100,
@@ -85,7 +84,6 @@ export const Menu = ({
   const searchRef = useRef<HTMLDivElement>(null);
   const searchButtonRef = useRef<HTMLDivElement>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const {setSearchActive: globalSetSearchActive} = useSearchContext();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -143,14 +141,12 @@ export const Menu = ({
       document.body.style.overflow = 'hidden';
       document.body.style.top = `-${scrollY}px`;
       document.body.style.width = '100%';
-      globalSetSearchActive(true);
     } else {
       const scrollY = document.body.dataset.scrollY;
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
       window.scrollTo(0, scrollY ? parseInt(scrollY) : 0);
-      globalSetSearchActive(false);
     }
   }, [searchActive]);
 

@@ -9,10 +9,6 @@ import { Button } from '@/components/ui/button'
 import { ImageUploader } from '@/components/ui/image-uploader'
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Textarea } from '@/components/ui/textarea'
-const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false })
-import 'react-quill-new/dist/quill.snow.css';
-import dynamic from 'next/dynamic'
-import { VideoUploader } from '@/components/ui/video-uploader';
 import AdminItemContainer from '@/app/components/common/AdminItemContainer';
 
 interface HomeFormProps {

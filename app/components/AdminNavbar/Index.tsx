@@ -8,7 +8,6 @@ import {
     UserGroupIcon,
     EnvelopeIcon,
     BriefcaseIcon,
-    GlobeAltIcon,
   } from "@heroicons/react/24/outline";
 import { AwardIcon, GalleryThumbnails, HeartHandshake, LeafIcon, Settings, ThumbsUp, Workflow } from 'lucide-react';
 import { useEffect } from 'react';
