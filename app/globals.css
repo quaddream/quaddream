@@ -100,7 +100,7 @@ body {
 .hero .swiper-pagination-bullets.swiper-pagination-horizontal {
   @apply flex justify-center gap-2 mt-6 container;
   position: absolute;
-  bottom: 20%;
+  bottom: 10%;
   right: 0;
   margin-left: auto;
   width: fit-content;
