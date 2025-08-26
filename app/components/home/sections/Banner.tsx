@@ -66,7 +66,7 @@ const Banner = () => {
       <div className='absolute top-0 left-0 w-full h-full bg-black/41 z-0 transition-all duration-300'></div>
       <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/71 z-0 transition-all duration-300'></div>
 
-      <div className='container h-full   mt-28'>
+      <div className='container h-full'>
         <Swiper
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           navigation={false}
@@ -87,7 +87,7 @@ const Banner = () => {
     
   >
     <div className='container relative z-20 h-full'>
-      <div className='flex flex-col gap-5 h-full justify-center lg:pt-25'>
+      <div className='flex flex-col gap-5 h-full justify-end lg:pt-25 pb-20'>
         <div
           ref={(el) => { contentRefs.current[index] = el }}
           className="flex flex-col gap-4"
