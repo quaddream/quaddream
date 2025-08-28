@@ -19,7 +19,7 @@ const Services = () => {
                     </motion.div>
                     <div className='flex flex-col w-full gap-3 h-fit'>
                         <motion.div className='grid md:grid-cols-2 xl:grid-cols-5 2xl:grid-rows-[336px_339px] gap-3' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
-                            <motion.div className='relative min-h-[195px] lg:min-h-auto xl:col-span-2 overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group cursor-pointer' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+                            <motion.div className='relative min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto xl:col-span-2 overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group cursor-pointer' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/images/home/service-1.jpg" alt="Services" width={500} height={300} className='object-cover h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
@@ -35,7 +35,7 @@ const Services = () => {
                                     </Link>
                                 </div>
                             </motion.div>
-                            <motion.div className='relative min-h-[195px] lg:min-h-auto xl:col-span-3 overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group cursor-pointer' variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+                            <motion.div className='relative min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto xl:col-span-3 overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group cursor-pointer' variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/images/home/service-2.jpg" alt="Services" width={500} height={500} className='object-cover h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
@@ -53,7 +53,7 @@ const Services = () => {
                                 </div>
                             </motion.div>
 
-                            <motion.div className='xl:col-span-3 min-h-[195px] lg:min-h-auto relative overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col   group cursor-pointer' variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+                            <motion.div className='xl:col-span-3 min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto relative overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col   group cursor-pointer' variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/images/home/service-3.jpg" alt="Services" width={500} height={500} className='object-cover h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
@@ -70,7 +70,7 @@ const Services = () => {
                                     </Link>
                                 </div>
                             </motion.div>
-                            <motion.div className='xl:col-span-2 min-h-[195px] lg:min-h-auto relative overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group cursor-pointer' variants={moveUp(0.8)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+                            <motion.div className='xl:col-span-2 min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto relative overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group cursor-pointer' variants={moveUp(0.8)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/images/home/eqp.jpg" alt="Services" width={500} height={500} className='object-cover h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
