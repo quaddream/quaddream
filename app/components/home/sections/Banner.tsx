@@ -63,8 +63,8 @@ const Banner = () => {
         />  
 
       </div> */}
-      <div className='absolute top-0 left-0 w-full h-full bg-black/41 z-0 transition-all duration-300'></div>
-      <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/71 z-0 transition-all duration-300'></div>
+      <div className='absolute top-0 left-0 w-full h-full bg-black/55 z-0 transition-all duration-300'></div>
+      {/* <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/71 z-0 transition-all duration-300'></div> */}
 
       <div className='container h-full'>
         <Swiper

@@ -60,13 +60,13 @@ const Navbar = () => {
 
 const renderHeader = ()=>{
   return (
-    <motion.header className={`w-full z-[100] hidden lg:block  absolute ${scrollY > 550 ? 'top-0 bg-white border-b-gray-100 border-b' : 'top-[95px]'}`}>
+    <motion.header className={`w-full z-[100] hidden lg:block  absolute ${scrollY > 550 ? 'top-0 bg-white border-b-gray-100 border-b' : 'top-15'}`}>
       <div className={`w-full container`}>
         <div className={`px-3 2xl:pr-[37px] flex items-center justify-between w-full bg-white ${scrollY > 550 ? 'py-2 shadow-none' : 'rounded-full shadow-md py-[12px]'}`}>
           <div className={`mr-4 ${scrollY > 550 ? 'xl:w-[250px]' : 'xl:w-[404px] xl:pl-[1em] 2xl:pl-[2em]'}`}>
             <Image src="/assets/images/logo-main.svg" alt="Logo" width={550} height={550} className='h-auto w-auto lg:h-[53px] xl:h-[65px] 2xl:h-[107px] object-contain' />
           </div>
-          <ul className='flex w-fit lg:gap-3 xl:gap-8 2xl:gap-[43px] 2xl:pr-[37px] 2xl:ml-auto'>
+          <ul className='flex w-fit lg:gap-3 xl:gap-7 2xl:gap-[43px] 2xl:pr-[37px] 2xl:ml-auto'>
             {menuItems.map((item, index) => {
               const isActive = activeIndex === index;
               const textColorClass = isActive ? 'text-[#1E1E1E]' : 'opacity-50';

@@ -13,35 +13,34 @@ type AddressData = {
 const addresses: Record<AddressKey, AddressData> = {
   'Head Office': {
     lines: [
-      'Office No. 110, Al Mansoor Building, Damascus Street',
-      'Al Qusais Industrial Area 2 – Dubai.',
+      'Office No. 110, Al Mansour Building, Damascus Street 3,',
+      'Al Qusais Industrial Area 2, Dubai, UAE',
+      
     ],
     phones: ['+971 4 263 7784', '+971 56 544 5987', '+971 50 545 2385'],
     emails: ['enquiries@quaddream.com', 'info@quaddream.com'],
   },
   Yard: {
     lines: [
-      'Office No. 111,',
-      'Yard',
+      'Al Quoz Industrial Area – 2 ,',
+      'Near Bartawi  Dubai, UAE',
     ],
-    phones: ['+971 4 263 7784', '+971 56 544 5987', '+971 50 545 2385'],
-    emails: ['enquiries@quaddream.com', 'info@quaddream.com'],
+    phones: ['+971 56 544 5987', '+971 50 545 2385'],
+    emails: ['sales@quaddream.com'],
   },
   'UAE Branch': {
    lines: [
-      'Office No. 112',
-      'UAE Branch.',
+      'Quaddream Branch office, Abu dhabi.', 
     ],
-    phones: ['+971 4 263 7784', '+971 56 544 5987', '+971 50 545 2385'],
-    emails: ['enquiries@quaddream.com', 'info@quaddream.com'],
+    phones: ['+971 503 525 314'],
+    emails: ['sales@quaddream.com'],
   },
   Canada: {
    lines: [
-      'Office No. 113',
-      'Canada.',
+      'Bradford , Ontario', 
     ],
-    phones: ['+971 4 263 7784', '+971 56 544 5987', '+971 50 545 2385'],
-    emails: ['enquiries@quaddream.com', 'info@quaddream.com'],
+    phones: ['+416 970 1617'],
+    emails: ['sales@quaddream.com'],
   },
 };
 
