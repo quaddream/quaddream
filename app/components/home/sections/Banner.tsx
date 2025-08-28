@@ -86,8 +86,8 @@ const Banner = () => {
     className='h-full w-full overflow-hidden relative'
     
   >
-    <div className='container relative z-20 h-full'>
-      <div className='flex flex-col gap-5 h-full justify-end lg:pt-25 pb-20'>
+    <div className=' relative z-20 h-full'>
+      <div className='flex flex-col gap-5 h-full justify-end lg:pt-25 pb-8 md:pb-20'>
         <div
           ref={(el) => { contentRefs.current[index] = el }}
           className="flex flex-col gap-4"
