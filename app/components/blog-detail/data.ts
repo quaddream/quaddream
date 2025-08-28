@@ -6,12 +6,11 @@ export interface BlogPost {
   author?: string;
   content: BlogSection[];
   mainImage: string;
-  secondImage?: string;
 }
 
 interface BlogSection {
-  type: "paragraph" | "heading" | "list";
-  content: string | string[];
+  type: "paragraph" | "heading" | "list" | "image";
+  content: string | string[]; 
 }
 
 export const blogDetail: BlogPost = {
@@ -20,7 +19,6 @@ export const blogDetail: BlogPost = {
   date: "March 18, 2025",
   category: "Equipment",
   mainImage: "/assets/images/blog-detail/img1.png",
-  secondImage: "/assets/images/blog-detail/img2.png",
   content: [
     {
       type: "paragraph",
@@ -83,6 +81,10 @@ export const blogDetail: BlogPost = {
       content: "Why Bother with Scaffolding Rentals?",
     },
     {
+      type: "image",
+      content: "/assets/images/blog-detail/img2.png", 
+    },
+    {
       type: "paragraph",
       content:
         "Definitely, scaffold rental services have become a go-to solution. Rentals reduce the pressure that can be heavy on budgets, providing on-demand, scalable support with minimal maintenance responsibility.",
@@ -107,15 +109,69 @@ export const blogDetail: BlogPost = {
     },
   ],
 };
+
 export const bannersection = {
   data: [
     {
       title: "",
-      bgImg: "/assets/images/downloads/banner.jpg",
+      bgImg: "/assets/images/blog-detail/banner.jpg",
       navigation: [
-        { title: "Home", slug: "" },
+        { title: "Home", slug: "/" },
         { title: "Blog Detail", slug: "" },
       ],
     },
   ],
 };
+
+export interface BlogItem {
+  id: string;
+  category: string;
+  date: string;
+  image: string;
+  title?: string;
+}
+
+export const blogList: BlogItem[] = [
+  {
+    id: "blog-1",
+    title: "Why Choose Foldable Aluminum Scaffolding for Your Project?",
+    category: "Equipment",
+    date: "March 18, 2025",
+    image: "/assets/images/blog-detail/slider1.jpg",
+  },
+  {
+    id: "blog-2",
+    title: "Cuplock Scaffolding: Strong Support for Heavy-Duty Construction Work",
+    category: "Scaffolding",
+    date: "March 18, 2025",
+    image: "/assets/images/blog-detail/slider2.jpg",
+  },
+  {
+    id: "blog-3",
+    title: "Top Scaffolding for Rent Reliable, and Affordable",
+    category: "Safety",
+    date: "March 18, 2025",
+    image: "/assets/images/blog-detail/slider3.jpg", 
+  },
+  {
+    id: "blog-4",
+    title: "Cuplock Scaffolding: Strong Support for Heavy-Duty Construction Work",
+    category: "Scaffolding",
+    date: "March 18, 2025", 
+    image: "/assets/images/blog-detail/slider2.jpg",
+  },
+  {
+    id: "blog-5",
+    title: "Cuplock Scaffolding: Strong Support for Heavy-Duty Construction Work",
+    category: "Scaffolding",
+    date: "March 18, 2025",
+    image: "/assets/images/blog-detail/slider2.jpg",
+  },
+  {
+    id: "blog-6",
+    title: "Cuplock Scaffolding: Strong Support for Heavy-Duty Construction Work",
+    category: "Scaffolding",
+    date: "March 18, 2025",
+    image: "/assets/images/blog-detail/slider2.jpg",
+  },
+];
