@@ -22,8 +22,7 @@ const addresses: Record<AddressKey, AddressData> = {
   },
   Yard: {
     lines: [
-      'Al Quoz Industrial Area – 2 ,',
-      'Near Bartawi  Dubai, UAE',
+      'Al Quoz Industrial Area – 2, Near Bartawi Dubai, UAE',
     ],
     phones: ['+971 56 544 5987', '+971 50 545 2385'],
     emails: ['sales@quaddream.com'],
