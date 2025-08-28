@@ -99,7 +99,7 @@ const Commitment = () => {
             <Image src="/assets/images/home/commitment-bg.png" alt="Commitment" width={900} height={500} className='absolute bottom-0 2xl:top-[150px] -left-[60px] h-[80%] z-[-1]' />
             <div className='container flex flex-col gap-150'>
                 <div className='grid 2xl:grid-cols-5 w-full gap-y-4'>
-                    <motion.div className='2xl:col-span-1 mt-6' variants={moveRight(0.2)} initial="hidden" whileInView="show" viewport={{ amount: 0.1, once: true }}>
+                    <motion.div className='2xl:col-span-1 2xl:mt-6' variants={moveRight(0.2)} initial="hidden" whileInView="show" viewport={{ amount: 0.1, once: true }}>
                         <Link href="/about" className='border border-primary rounded-full py-[5px] px-[12px] text-nowrap cursor-pointer flex items-center gap-2 text-19 w-[163px] overflow-x-hidden'>
                             <ul className='flex items-center list-inside list-disc animate-ticker gap-2' ref={containerRef}>
                                 <li className="ticker ml-[5px] text-19" id="tickerList" ref={contentRef}>About Us</li>

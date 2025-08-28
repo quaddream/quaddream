@@ -8,7 +8,7 @@ const Services = () => {
     return (
         <section className='py-150 overflow-hidden bg-black'>
             <div className='container'>
-                <div className='grid grid-cols-1 2xl:grid-cols-[auto_866.89px] 2xl:gap-[97.23px] text-white gap-y-8 lg:gap-y-5'>
+                <div className='grid grid-cols-1 xl:grid-cols-[auto_706.89px] 2xl:grid-cols-[auto_866.89px] lg:gap-x-5 2xl:gap-[97.23px] text-white gap-y-8 lg:gap-y-5'>
                     <motion.div className='flex flex-col' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                         <motion.h2 className='text-80 leading-[1.125] mb-5 lg:mb-8 2xl:mb-12' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>Our Services</motion.h2>
                         <motion.h4 className='text-25 md:text-30 leading-[1.333333333333333] mb-4 xl:mb-[29.7px]' variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>At Quaddream, We offer Rentals and Sales to suit your requirement and Budget.</motion.h4>
@@ -18,8 +18,8 @@ const Services = () => {
                         </motion.p>
                     </motion.div>
                     <div className='flex flex-col w-full gap-3 h-fit'>
-                        <motion.div className='grid grid-cols-2 xl:grid-cols-5 2xl:grid-rows-[336px_339px] gap-3' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
-                            <motion.div className='relative min-h-[195px] lg:min-h-auto col-span-2 overflow-hidden rounded-2xl p-4 lg:p-8 flex flex-col group cursor-pointer' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+                        <motion.div className='grid md:grid-cols-2 xl:grid-cols-5 2xl:grid-rows-[336px_339px] gap-3' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+                            <motion.div className='relative min-h-[195px] lg:min-h-auto xl:col-span-2 overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group cursor-pointer' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/images/home/service-1.jpg" alt="Services" width={500} height={300} className='object-cover h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
@@ -29,13 +29,13 @@ const Services = () => {
                                     <Image src="/assets/images/arrow-top-right.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300' />
                                 </div>
                                 <div className='relative z-30 mt-auto'>
-                                    <h3 className='text-25 md:text-33 leading-[1.212121212121212] mb-3 md:mb-6'>Scaffolding Contracting</h3>
+                                    <h3 className='text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6'>Scaffolding Contracting</h3>
                                     <Link href="/" className="flex items-center gap-2 group cursor-pointer">
                                         <span>Explore</span> <Image src="/assets/images/bold-arrow-white.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] group-hover:translate-x-2 transition-all duration-300' />
                                     </Link>
                                 </div>
                             </motion.div>
-                            <motion.div className='relative min-h-[195px] lg:min-h-auto col-span-3 overflow-hidden rounded-2xl p-4 lg:p-8 flex flex-col group cursor-pointer' variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+                            <motion.div className='relative min-h-[195px] lg:min-h-auto xl:col-span-3 overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group cursor-pointer' variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/images/home/service-2.jpg" alt="Services" width={500} height={500} className='object-cover h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
@@ -45,7 +45,7 @@ const Services = () => {
                                     <Image src="/assets/images/arrow-top-right.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300' />
                                 </div>
                                 <div className='relative z-30 mt-auto'>
-                                    <h3 className='text-25 md:text-33 leading-[1.212121212121212] mb-3 md:mb-6'>Cuplock Scaffolding & Aluminum Mobile Tower Rental & Sales</h3>
+                                    <h3 className='text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6'>Cuplock Scaffolding & Aluminum Mobile Tower Rental & Sales</h3>
                                     <Link href="/" className="flex items-center gap-2 group cursor-pointer" >
                                         <span>Explore</span> 
                                         <Image src="/assets/images/bold-arrow-white.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] group-hover:translate-x-2 transition-all duration-300' />
@@ -53,7 +53,7 @@ const Services = () => {
                                 </div>
                             </motion.div>
 
-                            <motion.div className='col-span-3 min-h-[195px] lg:min-h-auto relative overflow-hidden rounded-2xl p-4 lg:p-8 flex flex-col   group cursor-pointer' variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+                            <motion.div className='xl:col-span-3 min-h-[195px] lg:min-h-auto relative overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col   group cursor-pointer' variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/images/home/service-3.jpg" alt="Services" width={500} height={500} className='object-cover h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
@@ -63,14 +63,14 @@ const Services = () => {
                                     <Image src="/assets/images/arrow-top-right.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300' />
                                 </div>
                                 <div className='relative z-30 mt-auto'>
-                                    <h3 className='text-25 md:text-33 leading-[1.212121212121212] mb-3 md:mb-6'>Scaffolding <br /> Formwork</h3>
+                                    <h3 className='text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6'>Scaffolding <br /> Formwork</h3>
                                     <Link href="/" className="flex items-center gap-2 group cursor-pointer">
                                         <span>Explore</span>
                                         <Image src="/assets/images/bold-arrow-white.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] group-hover:translate-x-2 transition-all duration-300' />
                                     </Link>
                                 </div>
                             </motion.div>
-                            <motion.div className='col-span-2 min-h-[195px] lg:min-h-auto relative overflow-hidden rounded-2xl p-4 lg:p-8 flex flex-col group cursor-pointer' variants={moveUp(0.8)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+                            <motion.div className='xl:col-span-2 min-h-[195px] lg:min-h-auto relative overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group cursor-pointer' variants={moveUp(0.8)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                                 <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
                                     <Image src="/assets/images/home/eqp.jpg" alt="Services" width={500} height={500} className='object-cover h-full w-full group-hover:scale-110 transition-all duration-300' />
                                 </div>
@@ -80,7 +80,7 @@ const Services = () => {
                                     <Image src="/assets/images/arrow-top-right.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300' />
                                 </div>
                                 <div className='relative z-30 mt-auto'>
-                                    <h3 className='text-25 md:text-33 leading-[1.212121212121212] mb-3 md:mb-6'>Equipment Rentals</h3>
+                                    <h3 className='text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6'>Equipment Rentals</h3>
                                     <Link href="/" className="flex items-center gap-2 group cursor-pointer">
                                         <span>Explore</span> 
                                         <Image src="/assets/images/bold-arrow-white.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] group-hover:translate-x-2 transition-all duration-300' />

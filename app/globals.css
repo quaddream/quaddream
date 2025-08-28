@@ -6,16 +6,16 @@
   --primary : #EC1C24;
   --theme-pink: #F5E7E7;
   --lite-gray: #BCBCBC;
-  --text-80: clamp(2rem, 6vw + 0.3rem, 5rem);   /* min 56px, max 80px */
+  --text-80: clamp(2rem, 4vw + 0.3rem, 5rem);   /* min 56px, max 80px */
   --text-75: clamp(2rem, 5.5vw, 4.6875rem); /* min 52px, max 75px */
-  --text-65: clamp(2.5rem, 4.8vw, 4.0625rem); /* min 44px, max 65px */
-  --text-33: clamp(1.75rem, 3vw + 0.5em, 2.0625rem);   /* min 28px, max 33px */
+  --text-65: clamp(2.5rem, 4vw, 4.0625rem); /* min 44px, max 65px */
+  --text-33: clamp(1.2rem, 1.5vw + 0.5em, 2.0625rem);   /* min 28px, max 33px */
   --text-30: clamp(1.625rem, 2.5vw, 1.875rem); /* min 26px, max 30px */
-  --text-25: clamp(1.375rem, 2vw, 1.5625rem);  /* min 22px, max 25px */
+  --text-25: clamp(1.375rem, 1.5vw, 1.5625rem);  /* min 22px, max 25px */
   --text-19: clamp(1rem, 1.5vw, 1.1875rem);    /* min 16px, max 19px */ 
   --text-16: clamp(0.9rem, 1.2vw, 1rem);    /* min 16px, max 19px */ 
 
-  --spacing-150: clamp(2em, 10vw + 0.5em, 150px);
+  --spacing-150: clamp(2em, 7vw + 0.5em, 150px);
   --spacing-25: clamp(1em, 2vw + 0.5em, 25px);
   --spacing-50px: clamp(20px, 15vw, 50px);
   --spacing-30px: clamp(10px, 5vw + 0.5em, 30px);
