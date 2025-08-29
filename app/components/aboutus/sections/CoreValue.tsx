@@ -22,27 +22,30 @@ type MissionProps = {
         <section className='py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative bg-black  '>
             <div className='container '>
                 <div>
-                    <h2 className='text-80 leading-[1.125] mb-10 text-white  '>{Data[0].heading}</h2>
-                    <p className='text-lite-gray text-19 leading-[1.684210526315789]   max-w-[75ch] mb-7'>{Data[0].subheading}</p>
+                    <h2 className='text-80 leading-[1.125] mb-5 lg:mb-10 text-white  '>{Data[0].heading}</h2>
+                    <p className='text-lite-gray text-19 leading-[1.684210526315789]   max-w-[75ch] mb-5 lg:mb-7'>{Data[0].subheading}</p>
                 </div>
-                <div className='flex gap-20  '>
-                    {Data[0].items.map((item,index)=>(
-                        <div key={index} className='group w-fit flex align-center gap-20'>
-                            
-                                <div className=' transition-all duration-300' >
-                                    <div className='flex items-baseline gap-7 '>
-                                    <div className='w-[67px] h-[67px] rounded-2xl bg-primary flex items-center justify-center'>
-                                    <Image src={item.icon} alt={item.title} width={32} height={32}  />
-                                    </div>
-                                    <h3 className='relative  text-33 leading-[1] font-light  text-white transition-all duration-300 max-w-[15ch]'>{item.title}</h3>
-                                    </div> 
-                                </div> 
-                                {index<Data[0].items.length-1 &&   
-                                <div className='border-r-1   border-[#BEBEBE] h-full w-[1px] '> </div> 
-                                }
-                        </div>
-                    ))}
-                </div>
+                <div className="grid grid-cols-2 xs:grid-cols-2 xl:flex gap-5 sm:gap-8">
+  {Data[0].items.map((item, index) => (
+    <div key={index} className="group flex items-center gap-10 sm:gap-20">
+      <div className="transition-all duration-300">
+        <div className="flex items-baseline gap-3 sm:gap-7">
+          <div className="w-[40px] h-[40px] md:w-[67px] md:h-[67px] md:rounded-2xl rounded-sm bg-primary flex items-center justify-center">
+            <Image src={item.icon} alt={item.title} width={32} height={32} className='w-[22px] h-[24px] md:w-[32px] md:h-[32px]' />
+          </div>
+          <h3 className="relative text-20 md:text-33 leading-[1] font-light text-white transition-all duration-300 max-w-[15ch]">
+            {item.title}
+          </h3>
+        </div>
+      </div>
+
+      {index < Data[0].items.length - 1 && (
+        <div className="hidden xl:block border-r border-[#BEBEBE] h-full w-[1px]" />
+      )}
+    </div>
+  ))}
+</div>
+
  
                 
             </div> 

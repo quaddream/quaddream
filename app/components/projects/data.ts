@@ -3,7 +3,7 @@
     data:[
       {
       title: "Projects",
-      bgImg: "/assets/images/aboutus/banner.jpg", 
+      bgImg: "/assets/images/projects/abtbanner.jpg", 
       navigation: [
         { title: "Home", slug: "/" },
         { title: "Projects", slug: "" }, 
@@ -88,7 +88,7 @@
   };
   export const ctaSection = {
     title: "Have A Project In Mind?",
-    bgImg: "/assets/images/aboutus/cta-about.jpg", 
+    bgImg: "/assets/images/projects/abtcta.jpg", 
     description: "Let's discuss how we can bring your vision to life. Our team of experts is ready to help you achieve your goals.",
     buttonText: "Contact Us Now",
     buttonLink: "",
