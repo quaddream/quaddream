@@ -40,7 +40,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
   const [Locationselected, setLocationSelected] = useState(Location[0]);
 
   return (
-    <section className="py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative  ">
+    <section className='py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10  bg-white mt-[-4.5%] '>
       <div className="container ">
         <div>
           <h2 className="text-80 leading-[1.125] mb-10  ">{Data[0].heading}</h2>
@@ -48,12 +48,12 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
             {Data[0].desc}
           </p>
         </div>
-        <div className="flex items-center justify-between gap-5 my-7 mb-12 pb-12 border-b border-[#BCBCBC]">
-            <div className="grid grid-cols-3 gap-5 w-6/7">
-                <div >
+        <div className="flex md:flex-row flex-col items-center justify-between gap-5 my-7 mb-12 pb-12 border-b border-[#BCBCBC]">
+            <div className="md:grid md:grid-cols-3 gap-5 w-full md:w-5/7 2xl:w-6/7 justify-between">
+                <div className="mb-5 md:mb-0" >
                     <Listbox value={sectorselected} onChange={setsectorSelected}>
                     <div className="relative">
-                        <Listbox.Button className="flex w-full items-center justify-between rounded-full bg-[#F9F9F9]  p-7 text-left shadow-sm border-0  ">
+                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 md:p-7 text-left shadow-sm border-0  ">
                         <span>{sectorselected.name}</span>
                         <ChevronDown size={18} />
                         </Listbox.Button>
@@ -90,10 +90,10 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                     </div>
                     </Listbox>
                 </div>
-                <div >
+                <div className="mb-5 md:mb-0"  >
                     <Listbox value={Statusselected} onChange={setStatusSelected}>
                     <div className="relative">
-                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-7 text-left shadow-sm border-0 ">
+                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 md:p-7 text-left shadow-sm border-0 ">
                         <span>{Statusselected.name}</span>
                         <ChevronDown size={18} />
                         </Listbox.Button>
@@ -133,7 +133,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                 <div >
                     <Listbox value={Locationselected} onChange={setLocationSelected}>
                     <div className="relative">
-                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-7 text-left shadow-sm border-0 ">
+                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 md:p-7 text-left shadow-sm border-0 ">
                         <span>{Locationselected.name}</span>
                         <ChevronDown size={18} />
                         </Listbox.Button>
@@ -171,9 +171,9 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                     </Listbox>
                 </div>
             </div>
-            <div className="w-1/7">
-                <div>
-                <button className="bg-primary text-white p-7 rounded-full w-[219px] flex items-center justify-between"><p>search</p>
+            <div className="w-full md:w-2/7 2xl:w-1/7">
+                <div className="flex items-center justify-center ">
+                <button className="bg-primary text-white p-5 md:p-7 rounded-full w-full md:w-[219px] flex items-center justify-between"><p>search</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M22 22L20 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -184,9 +184,9 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
         </div>
         <div className="grid md:grid-cols-3 gap-5 ">
             {Data[0].items.map((item,index)=>(
-            <div className="h-[502px] overflow-hidden rounded-xl bg-cover bg-center relative group bgrd" style={{backgroundImage: `url(${item.image})`,}} key={index}>
-                    <div className="absolute bottom-0 w-full p-10 z-10 ">
-                    <div className=" flex items-center justify-between mb-7 pb-7 border-b-3  border-white group-hover:border-primary transition-all duration-300">
+            <div className="h-[300px] lg:h-[408px] xl:h-[502px] overflow-hidden rounded-xl bg-cover bg-center relative group bgrd" style={{backgroundImage: `url(${item.image})`,}} key={index}>
+                    <div className="absolute bottom-0 w-full p-5 lg:p-10 z-10 ">
+                    <div className=" flex items-center justify-between lg:mb-7 lg:pb-7 mb-3 pb-3 border-b-3  border-white group-hover:border-primary transition-all duration-300">
                         <div className="flex items-center gap-2">
                         <Image src={item.icon} alt={item.title} width={20} height={20}  /> 
                             <p className="transition-all duration-300 text-white">{item.city}</p> 
