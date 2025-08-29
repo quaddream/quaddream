@@ -75,8 +75,8 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
     const router = useRouter();
     const {id} = useParams();
 
-    const [sectorList, setSectorList] = useState<{ name: string }[]>([]);
-    const [locationList, setLocationList] = useState<{ name: string }[]>([]);
+    const [sectorList, setSectorList] = useState<{_id: string; name: string }[]>([]);
+    const [locationList, setLocationList] = useState<{ _id: string; name: string }[]>([]);
     const [reorderMode, setReorderMode] = useState(false);
 
     const { register, handleSubmit, setValue, watch, control, formState: { errors } } = useForm<ProjectFormProps>();
@@ -114,8 +114,13 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
             const response = await fetch(`/api/admin/project?id=${id}`);
             if (response.ok) {
                 const data = await response.json();
+                console.log(data);
                 setValue("bannerSection", data.data.bannerSection);
-                setValue("firstSection", data.data.firstSection);
+                setValue("firstSection", {
+                    ...data.data.firstSection,
+                    sector: data.data.firstSection.sector?._id || "",
+                    location: data.data.firstSection.location?._id || "",
+                  });
                 setValue("secondSection", data.data.secondSection);
                 setValue("thirdSection", data.data.thirdSection);
                 setValue("thirdSection.items", data.data.thirdSection.items);
@@ -291,12 +296,13 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                                         value={field.value}
                                         defaultValue=""
                                     >
+                                        
                                         <SelectTrigger className="w-full">
                                             <SelectValue placeholder="Select Sector" />
                                         </SelectTrigger>
                                         <SelectContent>
                                             {sectorList.map((item, index) => (
-                                                <SelectItem key={index} value={item.name}>
+                                                <SelectItem key={index} value={item._id}>
                                                     {item.name}
                                                 </SelectItem>
                                             ))}
@@ -325,7 +331,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                                         </SelectTrigger>
                                         <SelectContent>
                                             {locationList.map((item, index) => (
-                                                <SelectItem key={index} value={item.name}>
+                                                <SelectItem key={index} value={item._id}>
                                                     {item.name}
                                                 </SelectItem>
                                             ))}
