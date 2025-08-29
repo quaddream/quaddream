@@ -37,7 +37,7 @@ export default function CTA({ title, description, buttonLink, buttonText, bgImg 
         <motion.h2 className={`text-80 font-400 leading-[1.125] ${maxwidth? `max-w-[${maxwidth}ch] m-auto` : ''}`}  variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>
           {title}
         </motion.h2>
-        <motion.p className="my-[39px] text-19 text-[#BCBCBC] leading-[1.7]" variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>
+        <motion.p className="my-[39px] text-19 text-lite-gray leading-[1.7]" variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>
           {description}
         </motion.p>
 

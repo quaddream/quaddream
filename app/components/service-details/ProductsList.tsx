@@ -8,7 +8,7 @@ const ProductsList = () => {
         <h2 className="text-80 leading-[1.125] mb-5 lg:mb-8 2xl:mb-12 text-black">Products</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 xl:gap-10 items-stretch">
           {serviceDetails.products.map((product, index) => (
-            <div key={index} className="bg-white rounded-xl border border-[#bcbcbc]  group grid grid-cols-1 grid-rows-[3fr_auto] justify-between h-full relative overflow-hidden">
+            <div key={index} className="bg-white rounded-xl border border-lite-gray  group grid grid-cols-1 grid-rows-[3fr_auto] justify-between h-full relative overflow-hidden">
              <div className="relative py-[22.85px]">
                 <Image src={product.image} alt="" width={100} height={100} className="w-full h-auto object-contain max-h-[278.56px]" />
              </div>

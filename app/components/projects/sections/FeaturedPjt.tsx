@@ -48,7 +48,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
             {Data[0].desc}
           </p>
         </div>
-        <div className="flex md:flex-row flex-col items-center justify-between gap-5 my-7 mb-12 pb-12 border-b border-[#BCBCBC]">
+        <div className="flex md:flex-row flex-col items-center justify-between gap-5 my-7 mb-12 pb-12 border-b border-lite-gray">
             <div className="md:grid md:grid-cols-3 gap-5 w-full md:w-5/7 2xl:w-6/7 justify-between">
                 <div className="mb-5 md:mb-0" >
                     <Listbox value={sectorselected} onChange={setsectorSelected}>
