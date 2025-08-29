@@ -49,7 +49,7 @@ const WhyChoose = () => {
                      }`}>
                   <div className=" flex items-center gap-3">
                   <div className="relative z-[2] bg-[#1b1b1b] rounded-md w-[96px] h-[96px] flex items-center justify-center">
-                    <Image src={item.icon} alt={item.title} width={50} height={50} className=" group-hover:invert group-hover:brightness-0 transition-all duration-300" />
+                    <Image src={item.icon} alt={item.title} width={40} height={40} className="  transition-all duration-300" />
                   </div>
                   <div>
                     <h3 className="relative z-[2] text-25 leading-[1.6] text-white font-light group-hover:text-white transition-all duration-300">{item.title}</h3>
