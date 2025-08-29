@@ -51,8 +51,7 @@ export const blogData: BlogType[] = [
   {
     category: "Equipment",
     date: "March 18, 2025",
-    title:
-      "Why Choose Foldable Aluminum Scaffolding for Your Project?",
+    title: "Why Choose Foldable Aluminum Scaffolding for Your Project?",
     description:
       "Keep your gear in top condition by following maintenance routines tailored to the UAE’s climate.",
     image: "/assets/images/blog-detail/slider1.jpg",
@@ -61,7 +60,8 @@ export const blogData: BlogType[] = [
   {
     category: "Scaffolding",
     date: "March 18, 2025",
-    title: "Cuplock Scaffolding: Strong Support for Heavy-Duty Construction Work",
+    title:
+      "Cuplock Scaffolding: Strong Support for Heavy-Duty Construction Work",
     description:
       "Cuplock systems are ideal for heavy-duty builds. Learn why professionals rely on them.",
     image: "/assets/images/blog-detail/slider2.jpg",
@@ -70,7 +70,8 @@ export const blogData: BlogType[] = [
   {
     category: "Safety",
     date: "March 18, 2025",
-    title: "Top Scaffolding for Rent in Dubai: Safe, Reliable, and Affordable Options",
+    title:
+      "Top Scaffolding for Rent in Dubai: Safe, Reliable, and Affordable Options",
     description:
       "Looking for scaffold rentals? Here's how to ensure safety and value when renting equipment.",
     image: "/assets/images/blog-detail/slider3.jpg",
@@ -97,11 +98,20 @@ export const blogData: BlogType[] = [
   {
     category: "Safety",
     date: "March 18, 2025",
-    title:
-      "Top Scaffolding Companies in Dubai: Choosing the Right Contractor",
+    title: "Top Scaffolding Companies in Dubai: Choosing the Right Contractor",
     description:
       "Choosing the right scaffolding contractor ensures safety and project success. Here’s how to pick the best.",
     image: "/assets/images/blog-detail/img3.jpg",
+    link: "#",
+  },
+  {
+    category: "Equipment",
+    date: "March 18, 2025",
+    title:
+      "The Role of Formwork Systems in Modern Construction Projects in Dubai",
+    description:
+      "Formwork is the temporary structure used to support the fresh concrete until it gains enough strength for support. Furthermore, it offers shape, alignment, & desired finishing to the final structure...",
+    image: "/assets/images/blog/blogCon.jpg",
     link: "#",
   },
   // {

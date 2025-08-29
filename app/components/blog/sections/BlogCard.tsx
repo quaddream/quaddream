@@ -11,8 +11,8 @@ const BlogCard = ({blogData}: {blogData: BlogType[]}) => {
       {/* Left Image */}
       <div className="w-full md:w-[45%] flex-shrink-0">
         <Image
-          src={blogData[0].image}
-          alt={blogData[0].title}
+          src={blogData[9].image}
+          alt={blogData[9].title}
           width={671}
           height={482}
           className="w-full max-h-[482px] object-cover rounded-[16px]"
@@ -23,23 +23,23 @@ const BlogCard = ({blogData}: {blogData: BlogType[]}) => {
       <div className="flex flex-col justify-between w-full md:w-[55%]">
         {/* Top row */}
         <div className="flex justify-between items-center text-19 leading-[32px] mb-[12px] lg:mb-[30px]">
-          <span className="text-primary">{blogData[0].category}</span>
-          <span className="text-gray-para">{blogData[0].date}</span>
+          <span className="text-primary">{blogData[9].category}</span>
+          <span className="text-gray-para">{blogData[9].date}</span>
         </div>
 
         {/* Title */}
         <h2 className="text-30 leading-[40px] text-black mb-[8px] lg:mb-[20px]">
-          {blogData[0].title}
+          {blogData[9].title}
         </h2>
 
         {/* Description */}
         <p className="text-gray-para text-19 leading-[32px] mb-[8px] lg:mb-[20px]">
-          {blogData[0].description}
+          {blogData[9].description}
         </p>
 
         {/* Continue Reading */}
         <Link
-          href={blogData[0].link || "#"}
+          href={blogData[9].link || "#"}
           className="text-primary leading-[32px] text-19 font-medium underline"
         >
           Continue Reading

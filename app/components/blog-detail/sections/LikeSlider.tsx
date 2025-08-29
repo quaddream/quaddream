@@ -16,7 +16,7 @@ const LikeSlider = () => {
     <section className="mt-[30px] md:mt-[50px] xl:mt-[124px]">
       {/* Heading + Mobile Arrows + Desktop Button */}
       <div className="flex justify-between items-center mb-[10px] lg:mb-[50px]">
-        <h2 className="text-80 xl:leading-[90px] leading-[60px]">
+        <h2 className="text-80 xl:leading-[90px] leading-[60px] text-black">
           You may also like
         </h2>
 

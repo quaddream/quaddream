@@ -48,7 +48,7 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
   return (
     <div className="lg:py-[124px] pb-[20px] lg::pb-0">
       {/* Header */}
-      <h1 className="text-80 lg:leading-[90px] leading-[60px] mt-[8px] xl:mt-0 mb-2">
+      <h1 className="text-80 lg:leading-[90px] leading-[60px] mt-[8px] xl:mt-0 mb-2 text-black">
         Latest Blogs
       </h1>
       {/* Category Tabs */}
