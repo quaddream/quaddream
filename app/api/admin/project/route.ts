@@ -9,14 +9,14 @@ export async function GET(request: NextRequest) {
         await connectDB();
         const id = request.nextUrl.searchParams.get("id");
         if(id){
-            const project = await Project.findOne({});
+            const project = await Project.findOne({}).populate("projects.firstSection.sector","name _id").populate("projects.firstSection.location","name _id");
             const foundProject = project.projects.find((project: { _id: string }) => project._id.toString() === id);
             if (!foundProject) {
                 return NextResponse.json({ message: "Project not found" }, { status: 404 });
             }
             return NextResponse.json({data:foundProject,message:"Project fetched successfully"}, { status: 200 });
         }
-        const project = await Project.findOne({});
+        const project = await Project.findOne({}).populate("projects.firstSection.sector","name _id").populate("projects.firstSection.location","name _id");
         if (!project) {
             return NextResponse.json({ message: "Project not found" }, { status: 404 });
         }
