@@ -1,9 +1,5 @@
 'use client'
-import React, { useEffect, useRef } from 'react' 
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
-import "swiper/css/effect-fade"  
+import React, { useEffect, useRef } from 'react'  
 import { motion } from 'motion/react'
 import { containerStagger, paragraphItem } from '../../motionVarients' 
 import { gsap } from "gsap"

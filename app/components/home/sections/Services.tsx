@@ -12,7 +12,7 @@ const Services = () => {
                     <motion.div className='flex flex-col' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                         <motion.h2 className='text-80 leading-[1.125] mb-5 lg:mb-8 2xl:mb-12' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>Our Services</motion.h2>
                         <motion.h4 className='text-25 md:text-30 leading-[1.333333333333333] mb-4 xl:mb-[29.7px]' variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>At Quaddream, We offer Rentals and Sales to suit your requirement and Budget.</motion.h4>
-                        <motion.p className='text-19 leading-[1.684210526315789] text-[#bcbcbc]' variants={moveUp(0.8)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>Quaddream is committed to your project’s success and budget. With flexible rental and sales
+                        <motion.p className='text-19 leading-[1.684210526315789] text-lite-gray' variants={moveUp(0.8)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>Quaddream is committed to your project’s success and budget. With flexible rental and sales
                             options for high-quality materials, we ensure smooth execution—whether you need temporary equipment
                             or a permanent solution. Partner with us for reliable results within your financial goals.
                         </motion.p>

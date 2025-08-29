@@ -19,7 +19,7 @@ type MissionProps = {
    
 
     return (
-        <section className='py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative bg-black  '>
+        <section className='py-150   relative bg-black  '>
             <div className='container '>
                 <div>
                     <h2 className='text-80 leading-[1.125] mb-5 lg:mb-10 text-white  '>{Data[0].heading}</h2>

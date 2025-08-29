@@ -23,7 +23,7 @@ type MissionProps = {
         <section className='py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative  '>
             <div className='container '>
                 <div>
-                    <h2 className='text-80 leading-[1.125] mb-10  '>{Data[0].heading}</h2>
+                    <h2 className='text-80 leading-[1.125] mb-10  text-black'>{Data[0].heading}</h2>
                 </div>
                 <div className='grid md:grid-cols-2 gap-5 '>
                     {Data[0].items.map((item,index)=>(
