@@ -23,8 +23,8 @@ const projectSchema = new mongoose.Schema({
         },
         firstSection:{
             title:{type:String,required:true},
-            sector:{type:String,required:true},
-            location:{type:String,required:true},
+            sector:{type:mongoose.Schema.Types.ObjectId,required:true,ref:"Sector"},
+            location:{type:mongoose.Schema.Types.ObjectId,required:true,ref:"Location"},
             status:{type:String,required:true},
             client:{type:String,required:true},
             coverImage:{type:String,required:true},

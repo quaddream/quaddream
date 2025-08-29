@@ -4,12 +4,11 @@ import ClientSideLink from '@/app/(admin)/admin/client-side-link';
 import React, { useState } from 'react'
 import {
     HomeIcon,
-    NewspaperIcon,
     UserGroupIcon,
     EnvelopeIcon,
-    BriefcaseIcon,
+    QuestionMarkCircleIcon,
   } from "@heroicons/react/24/outline";
-import { AwardIcon, GalleryThumbnails, HeartHandshake, LeafIcon, Settings, ThumbsUp, Workflow } from 'lucide-react';
+import { GalleryThumbnails, HeartHandshake, Workflow } from 'lucide-react';
 import { useEffect } from 'react';
 import { useRefetchServices } from '@/app/contexts/refetchServices';
 
@@ -48,37 +47,20 @@ const AdminNavbar = () => {
     const navItems = [
         { name: "Home", href: "/admin/home", icon: HomeIcon },
         { name: "About", href: "/admin/about", icon: UserGroupIcon },
-        // { name: "Clients", href: "/admin/clients", icon: PresentationChartBarIcon },
         { name: "Services", href: "#", icon: EnvelopeIcon,hasChild:true,children: [
           { name: "Main Page", href: "/admin/services" },
             ...serviceData.map((service: { _id: string,thumbnailTitle:string }) => (
               { name: service.thumbnailTitle.split(" ").slice(0,2).join(" ") + "...", href: `/admin/services/${service._id}` }
             )),
           ] },
-        // { name: "Industries", href: "/admin/industries", icon: BriefcaseIcon },
-        // { name: "Global Presence", href: "##", icon: GlobeAltIcon , hasChild:true,children: [
-        //   { name: "Main Page", href: "/admin/global-presence" },
-        //   ...countries.map((country: { _id: string,title:string }) => (
-        //     { name: country.title, href: `/admin/global-presence/${country._id}` }
-        //   )),
-        // ] },
         { name: "Projects", href: "/admin/projects", icon: Workflow },
-        { name: "News", href: "/admin/news", icon: NewspaperIcon },
         { name: "Gallery", href: "/admin/gallery", icon: GalleryThumbnails },
-        { name: "Awards", href: "/admin/awards", icon:AwardIcon },
-        { name: "Team", href: "/admin/team", icon:UserGroupIcon },
-        { name: "Careers", href: "####", icon:BriefcaseIcon,hasChild:true,children: [
-          { name: "Main Page", href: "/admin/careers" },
-          {name:"Enquiries",href:"/admin/careers/enquiries"}
-        ] },
         { name: "Contact", href: "###", icon: EnvelopeIcon,hasChild:true,children: [
           { name: "Main Page", href: "/admin/contact" },
           {name:"Enquiries",href:"/admin/contact/enquiries"}
         ] },
-        { name: "Quality", href: "/admin/quality", icon: ThumbsUp },
-        { name: "HSE", href: "/admin/hse", icon: HeartHandshake },
-        { name: "Sustainability", href: "/admin/sustainability", icon: LeafIcon },
-        { name: "Settings", href: "/admin/settings", icon: Settings},
+        { name: "Faq", href: "/admin/faq", icon: QuestionMarkCircleIcon },
+        { name: "QHSE", href: "/admin/qhse", icon: HeartHandshake },
       ];
 
   return (
