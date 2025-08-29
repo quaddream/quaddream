@@ -53,7 +53,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                 <div >
                     <Listbox value={sectorselected} onChange={setsectorSelected}>
                     <div className="relative">
-                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-7 text-left shadow-sm border-0  ">
+                        <Listbox.Button className="flex w-full items-center justify-between rounded-full bg-[#F9F9F9]  p-7 text-left shadow-sm border-0  ">
                         <span>{sectorselected.name}</span>
                         <ChevronDown size={18} />
                         </Listbox.Button>
