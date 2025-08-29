@@ -2,10 +2,10 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #686868;
+  --foreground: #696969;
   --primary: #EC1C24;
   --theme-pink: #F5E7E7;
-  --gray-para: #686868;
+  --gray-para: #696969;
   --lite-gray: #BCBCBC;
   --text-80: clamp(2rem, 4vw + 0.3rem, 5rem);
   /* min 56px, max 80px */
