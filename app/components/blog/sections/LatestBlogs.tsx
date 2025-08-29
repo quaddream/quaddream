@@ -34,7 +34,6 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
     return () => window.removeEventListener("resize", updateBlogsPerPage);
   }, []);
 
-
   const filteredBlogs =
     selectedCategory === "All"
       ? blogData

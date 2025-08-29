@@ -1,0 +1,60 @@
+"use client";
+import Image from "next/image";
+
+type SafetyItem = {
+  icon: string;
+  title: string;
+  highlight?: boolean;
+};
+
+type HealthSafetyProps = {
+  safetyData: {
+    heading: string;
+    subheading: string;
+    description: string;
+    items: SafetyItem[];
+  };
+};
+
+const HealthSafety = ({ safetyData }: HealthSafetyProps) => {
+  return (
+    <section className="bg-black py-124 xl:py-150">
+      <div className="container">
+        {/* Heading */}
+        <div>
+          <h2 className="text-80 xl:leading-[90px] leading-[60px] mb-[15px] xl:mb-[50px] text-white">
+            {safetyData.heading}
+          </h2>
+          <p className="text-33 leading-[42px] mb-[15px] xl:mb-[30px] text-white">
+            {safetyData.subheading}
+          </p>
+          <p className="text-19 leading-[32px] text-lite-gray mb-[15px] xl:mb-[30px]">
+            {safetyData.description}
+          </p>
+        </div>
+        {/* Cards */}
+        <div className="grid gap-[15px] xl:gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
+          {safetyData.items.map((item, idx) => (
+            <div
+              key={idx}
+              className={`relative group flex flex-col xl:p-[40px] p-[25px] rounded-[16px] bg-[#111111] transition-all duration-300 hover:bg-gradient-to-r from-[#111111] from-0% to-[#6C0004] to-100%`}
+            >
+              <div className="w-[67px] h-[67px] bg-[#1B1B1B] rounded-[8px] flex items-center justify-center mb-[15px] xl:mb-[30px] group-hover:bg-primary transition-all duration-200">
+                <Image
+                  src={item.icon}
+                  alt={item.title}
+                  width={34}
+                  height={34}
+                  className="group-hover:invert group-hover:brightness-0 transition-all duration-300"
+                />
+              </div>
+              <p className="text-25 xl:leading-[40px] leading-[36px]  text-white">{item.title}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HealthSafety;

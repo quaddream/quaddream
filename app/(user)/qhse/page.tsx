@@ -1,4 +1,4 @@
-import Index from "../../components/projects/Index";
+import Index from "../../components/qhse/Index";
 
 export default function Home() {
   return (
