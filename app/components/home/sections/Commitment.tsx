@@ -92,14 +92,11 @@ const Commitment = () => {
     }, []);
 
     return (
-        <section
-            ref={sectionRef} // ✅ hook GSAP animation here
-            className='py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-[50] bg-white  overflow-hidden'
-        >
+        <section ref={sectionRef} className='py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-[50] bg-white  overflow-hidden'>
             <Image src="/assets/images/home/commitment-bg.png" alt="Commitment" width={900} height={500} className='absolute bottom-0 2xl:top-[150px] -left-[60px] h-[80%] z-[-1]' />
             <div className='container flex flex-col gap-150'>
                 <div className='grid 2xl:grid-cols-5 w-full gap-y-4'>
-                    <motion.div className='2xl:col-span-1 mt-6' variants={moveRight(0.2)} initial="hidden" whileInView="show" viewport={{ amount: 0.1, once: true }}>
+                    <motion.div className='2xl:col-span-1 2xl:mt-6' variants={moveRight(0.2)} initial="hidden" whileInView="show" viewport={{ amount: 0.1, once: true }}>
                         <Link href="/about" className='border border-primary rounded-full py-[5px] px-[12px] text-nowrap cursor-pointer flex items-center gap-2 text-19 w-[163px] overflow-x-hidden'>
                             <ul className='flex items-center list-inside list-disc animate-ticker gap-2' ref={containerRef}>
                                 <li className="ticker ml-[5px] text-19" id="tickerList" ref={contentRef}>About Us</li>
@@ -156,22 +153,22 @@ const Commitment = () => {
                     viewport={{ amount: 0.1, once: true }}
                 >
                     <motion.div className='flex flex-col gap-2 xl:min-w-[300px]' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>
-                        <Image src="/assets/images/home/building-icon.svg" alt="Commitment" width={50} height={50} />
+                        <Image src="/assets/images/home/building-icon.svg" alt="Commitment"className='md:w-12 md:h-12 w-8 h-8' width={50} height={50} />
                         <h3 className='text-75 xl:min-w-max'><Counter from={0} to={Number(21000)} duration={2} /><span className='text-primary'>+</span></h3>
                         <p className='text-19'>Work Completed</p>
                     </motion.div>
                     <motion.div className='flex flex-col gap-2 xl:min-w-[300px]' variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>
-                        <Image src="/assets/images/home/emp-icon.svg" alt="Commitment" width={50} height={50} />
+                        <Image src="/assets/images/home/emp-icon.svg" alt="Commitment"className='md:w-12 md:h-12 w-8 h-8' width={50} height={50} />
                         <h3 className='text-75'><Counter from={0} to={Number(110)} duration={2} /><span className='text-primary'>+</span></h3>
                         <p className='text-19'>Employees</p>
                     </motion.div>
                     <motion.div className='flex flex-col gap-2 xl:min-w-[300px]' variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>
-                        <Image src="/assets/images/home/clients-icon.svg" alt="Commitment" width={50} height={50} />
+                        <Image src="/assets/images/home/clients-icon.svg" alt="Commitment"className='md:w-12 md:h-12 w-8 h-8' width={50} height={50} />
                         <h3 className='text-75'><Counter from={0} to={Number(100)} duration={2} /><span className='text-primary'>+</span></h3>
                         <p className='text-19'>Clients</p>
                     </motion.div>
                     <motion.div className='flex flex-col gap-2 xl:min-w-[300px]' variants={moveUp(0.8)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>
-                        <Image src="/assets/images/home/calender-icon.svg" alt="Commitment" width={50} height={50} />
+                        <Image src="/assets/images/home/calender-icon.svg" alt="Commitment"className='md:w-12 md:h-12 w-8 h-8' width={50} height={50} />
                         <h3 className='text-75'><Counter from={0} to={Number(2012)} duration={2} /></h3>
                         <p className='text-19'>Year Established</p>
                     </motion.div>

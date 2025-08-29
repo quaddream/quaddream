@@ -1,10 +1,28 @@
 import React from "react";
 import Image from "next/image";
-import { blogDetail } from "@/app/components/blog-detail/data";
 import { GoShareAndroid } from "react-icons/go";
 import LikeSlider from "./LikeSlider";
 
-const BlogDetail = () => {
+export interface BlogPost {
+  id: string;
+  title: string;
+  date: string;
+  category: string;
+  author?: string;
+  content: BlogSection[];
+  mainImage: string;
+}
+
+interface BlogSection {
+  type: "paragraph" | "heading" | "list" | "image" | string;
+  content: string | string[]; 
+}
+
+interface BlogDetailProps {
+  blogDetail: BlogPost;
+}
+
+const BlogDetail: React.FC<BlogDetailProps> = ({blogDetail}) => {
   return (
     <section className="relative z-10 bg-background pt-150 xl:pb-150 pb-7 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%]">
       <div className="container">

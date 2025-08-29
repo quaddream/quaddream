@@ -26,7 +26,7 @@ const EnvironmentalResponsibility: React.FC<
         <h1 className="text-80 xl:leading-[90px] leading-[50px] mb-[25px] xl:mb-[50px] text-black">
           {heading}
         </h1>
-        <h2 className="text-30 xl:leading-[40px] mb-[15px] xl:mb-[30px]">
+        <h2 className="text-30 xl:leading-[40px] mb-[15px] xl:mb-[30px] text-black">
           {subheading}
         </h2>
         <p className="text-19 leading-[32px] text-gray-para">{description}</p>

@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import Link from "next/link";
+import { StaticImageData } from "next/image";
 
 type Navigation = {
   title: string;
@@ -13,7 +14,7 @@ type Navigation = {
 
 type ServicesItem = {
   title?: string;
-  bgImg: string;
+  bgImg: string | StaticImageData;
   navigation: Navigation[];
 };
 
@@ -24,7 +25,7 @@ type BannerProps = {
 const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
   return (
     <section
-      className=" pt-[150px] lg:pt-[280px] xl:pt-[349px] pb-6 sm:pb-10 md:pb-[70px] bg-image bg-cover bg-center bg-no-repeat relative z-[1] hero overlaybanner"
+      className="pt-[150px] lg:pt-[280px] xl:pt-[349px] pb-6 sm:pb-10 md:pb-[70px] bg-image bg-cover bg-center bg-no-repeat relative z-[1] hero overlaybanner"
       style={{ backgroundImage: `url(${bannerData[0].bgImg})` }}
     >
       <div className="relative z-10">
@@ -39,7 +40,7 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
 
           <div className="pt-10 lg:pt-16 xl:pt-[135px] pb-10 lg:pb-15 xl:pb-[100px]">
             <ul className="flex gap-4 items-center">
-              {bannerData.map((item, index) =>
+              {bannerData.map((item) =>
                 item.navigation.map((nav, navIndex) => (
                   <li
                     key={navIndex}

@@ -12,6 +12,8 @@ export const certificateDocuments = [
   { name: "Safety Certification", size: "2.7MB" },
   { name: "Quality Assurance", size: "3.1MB" },
 ];
+
+
 export const bannersection = {
   data: [
     {

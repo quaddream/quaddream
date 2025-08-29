@@ -1,19 +1,4 @@
-export interface BlogPost {
-  id: string;
-  title: string;
-  date: string;
-  category: string;
-  author?: string;
-  content: BlogSection[];
-  mainImage: string;
-}
-
-interface BlogSection {
-  type: "paragraph" | "heading" | "list" | "image";
-  content: string | string[]; 
-}
-
-export const blogDetail: BlogPost = {
+export const blogDetail = {
   id: "aluminum-scaffolding-uae",
   title: "Why is Aluminum Scaffolding Best for Construction in the UAE?",
   date: "March 18, 2025",
@@ -123,15 +108,8 @@ export const bannersection = {
   ],
 };
 
-export interface BlogItem {
-  id: string;
-  category: string;
-  date: string;
-  image: string;
-  title?: string;
-}
 
-export const blogList: BlogItem[] = [
+export const blogList = [
   {
     id: "blog-1",
     title: "Why Choose Foldable Aluminum Scaffolding for Your Project?",
@@ -152,26 +130,5 @@ export const blogList: BlogItem[] = [
     category: "Safety",
     date: "March 18, 2025",
     image: "/assets/images/blog-detail/slider3.jpg", 
-  },
-  {
-    id: "blog-4",
-    title: "Cuplock Scaffolding: Strong Support for Heavy-Duty Construction Work",
-    category: "Scaffolding",
-    date: "March 18, 2025", 
-    image: "/assets/images/blog-detail/slider2.jpg",
-  },
-  {
-    id: "blog-5",
-    title: "Cuplock Scaffolding: Strong Support for Heavy-Duty Construction Work",
-    category: "Scaffolding",
-    date: "March 18, 2025",
-    image: "/assets/images/blog-detail/slider2.jpg",
-  },
-  {
-    id: "blog-6",
-    title: "Cuplock Scaffolding: Strong Support for Heavy-Duty Construction Work",
-    category: "Scaffolding",
-    date: "March 18, 2025",
-    image: "/assets/images/blog-detail/slider2.jpg",
   },
 ];

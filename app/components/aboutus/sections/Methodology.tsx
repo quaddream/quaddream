@@ -1,10 +1,9 @@
 'use client'
-import React, {  useState } from 'react' 
+import React from 'react' 
 import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
 import "swiper/css/effect-fade"  
-import Link from 'next/link'
  
 type ServicesItem = {
   title: string;
@@ -21,7 +20,7 @@ type BannerProps = {
   return (
     <section >
    <div className="container">
-    <div style={{backgroundImage: `url(${Data[0].bgImg})`}} className='p-17  lg:pt-[237px] relative rounded-xl z-10'>
+    <div style={{backgroundImage: `url(${Data[0].bgImg})`}} className='p-5 md:p-8 lg:p-17  lg:pt-[237px] relative rounded-xl z-10'>
     <div className='relative z-10  ' >
     <h2 className='text-white text-80 leading-[1.07] pb-12 '>{Data[0].title}</h2>
     <p className='text-lite-gray text-19 leading-[1.684210526315789] mb-0'>{Data[0].description}</p>

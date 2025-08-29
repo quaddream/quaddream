@@ -22,14 +22,13 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
   useEffect(() => {
     const updateBlogsPerPage = () => {
       if (window.innerWidth < 1024) {
-        // Tailwind `lg` breakpoint is 1024px
         setBlogsPerPage(5);
       } else {
         setBlogsPerPage(9);
       }
     };
 
-    updateBlogsPerPage(); // run on mount
+    updateBlogsPerPage();
     window.addEventListener("resize", updateBlogsPerPage);
     return () => window.removeEventListener("resize", updateBlogsPerPage);
   }, []);
@@ -45,8 +44,6 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
     startIndex,
     startIndex + blogsPerPage
   );
-
-  const options = categories.map((cat) => ({ value: cat, label: cat }));
 
   return (
     <div className="lg:py-[124px] pb-[20px] lg::pb-0">
