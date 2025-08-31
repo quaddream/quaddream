@@ -8,8 +8,7 @@ import "swiper/css/effect-fade"
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules'
 import Image from 'next/image'
 import { homeData } from '../data'
-import gsap from 'gsap'
-import { Link } from 'lucide-react'
+import gsap from 'gsap' 
 
 const Banner = () => {
   const [activeIndex, setActiveIndex] = useState(0)
