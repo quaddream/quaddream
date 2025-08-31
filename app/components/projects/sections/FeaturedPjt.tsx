@@ -43,7 +43,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
     <section className='py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10  bg-white mt-[-4.5%] '>
       <div className="container ">
         <div>
-          <h2 className="text-80 leading-[1.125] mb-10  ">{Data[0].heading}</h2>
+          <h2 className="text-80 leading-[1.125] mb-10  text-black">{Data[0].heading}</h2>
           <p className="text-19 leading-[1.684210526315789] mb-0 max-w-[65ch] text-[#696969]">
             {Data[0].desc}
           </p>
