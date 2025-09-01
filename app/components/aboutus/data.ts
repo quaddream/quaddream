@@ -68,7 +68,7 @@
           title: "Founding & Initial Growth",
         },
         {
-          year:"2010",
+          year:"2022",
           description:"Expanded service offerings and entered new markets, gaining recognition for tailored enterprise solutions.",
           image: "/assets/images/aboutus/sliderimg.jpg",
           title: "Founding & Initial Growth",

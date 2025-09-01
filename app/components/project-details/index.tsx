@@ -1,7 +1,7 @@
 import BannerInner from "@/app/components/common/BannerInner";
 import { projectDetails } from "./data";
 import Main from "./sections/Main";
-import Highlights from "./sections/Highlights";
+import Highlights from "./sections/Highlights"; 
 const Index = () => {
   return (
     <>

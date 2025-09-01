@@ -42,3 +42,22 @@ export const projectDetails = {
     }
   }
 }
+export const hghlightssection = {
+  data:[
+    {
+    heading: "Project Highlights", 
+    subheading:"The project included tailored access, quick Cuplock setup, full safety compliance, and uninterrupted mall operations.",
+    items: [
+      { icon:"/assets/images/aboutus/value1.svg",
+         title: "Multi-Level Access Solutions", 
+         },
+         { icon:"/assets/images/aboutus/value2.svg", 
+           title: "Strict Adherence to Safety Standards", 
+          }, 
+          { icon:"/assets/images/aboutus/value3.svg", 
+            title: "Zero disruption", 
+           } 
+    ],
+  }
+]
+};
