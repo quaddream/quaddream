@@ -5,7 +5,7 @@ import React from "react";
 import Link from "next/link";
 import { BlogType } from "../data";
 
-const BlogCard = ({blogData}: {blogData: BlogType[]}) => {
+const BlogCard = ({ blogData }: { blogData: BlogType[] }) => {
   return (
     <div className="flex flex-col md:flex-row items-center gap-[10px] xl:gap-[88px] mb-[20px] lg:mb-[110px]">
       {/* Left Image */}
@@ -40,7 +40,7 @@ const BlogCard = ({blogData}: {blogData: BlogType[]}) => {
         {/* Continue Reading */}
         <Link
           href={blogData[9].link || "#"}
-          className="text-primary leading-[32px] text-19 font-medium underline"
+          className="text-primary leading-[32px] text-19 underline decoration-0"
         >
           Continue Reading
         </Link>

@@ -1,173 +1,155 @@
 "use client";
 
-import React, { useState } from "react";
-import { faqContent } from "../data";
-import Pagination from "@/app/components/common/Pagination";
+import React, { useEffect, useState } from "react";
+import { BlogType } from "../data";
 import Image from "next/image";
-import Select from "react-select"; // ✅ use react-select, not radix
+import Pagination from "@/app/components/common/Pagination";
+import Select from "react-select";
 
-const FaqList = () => {
-  interface FaqItem {
-    question: string;
-    answer: string;
-  }
-
-  interface FaqCategory {
-    category: string;
-    items: FaqItem[];
-  }
-
-  interface FaqContent {
-    heading: string;
-    description: string;
-    categories: FaqCategory[];
-  }
-
-  const data: FaqContent = faqContent;
-
-  const [activeTab, setActiveTab] = useState(data.categories[0].category);
-  const [openQuestion, setOpenQuestion] = useState<string | null>(null);
-
-  // Pagination states
+const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
+  const categories = [
+    "All",
+    "Scaffolding",
+    "Equipment",
+    "Sustainability",
+    "Industry News",
+    "Safety",
+  ];
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const [blogsPerPage, setBlogsPerPage] = useState(9);
 
-  const currentCategory = data.categories.find(
-    (cat) => cat.category === activeTab
-  );
+  useEffect(() => {
+    const updateBlogsPerPage = () => {
+      if (window.innerWidth < 1024) {
+        setBlogsPerPage(5);
+      } else {
+        setBlogsPerPage(9);
+      }
+    };
 
-  const totalPages = currentCategory
-    ? Math.ceil(currentCategory.items.length / itemsPerPage)
-    : 1;
+    updateBlogsPerPage();
+    window.addEventListener("resize", updateBlogsPerPage);
+    return () => window.removeEventListener("resize", updateBlogsPerPage);
+  }, []);
 
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedItems = currentCategory?.items.slice(
+  const filteredBlogs =
+    selectedCategory === "All"
+      ? blogData
+      : blogData.filter((blog) => blog.category === selectedCategory);
+
+  const totalPages = Math.ceil(filteredBlogs.length / blogsPerPage);
+  const startIndex = (currentPage - 1) * blogsPerPage;
+  const currentBlogs = filteredBlogs.slice(
     startIndex,
-    startIndex + itemsPerPage
+    startIndex + blogsPerPage
   );
-
-  const handleToggle = (question: string) => {
-    setOpenQuestion(openQuestion === question ? null : question);
-  };
 
   return (
-    <section className="relative z-10 bg-background py-124 xl:py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%] overflow-hidden">
-      <div className="container">
-        {/* Heading */}
-        <h1 className="text-80 lg:leading-[90px] leading-[50px] mb-[15px] xl:mb-[50px] text-black">
-          {data.heading}
-        </h1>
-        <p className="text-gray-para text-19 leading-[32px] mb-[15px] xl:mb-[50px]">
-          {data.description}
-        </p>
-
-        {/* Desktop Tabs */}
-        <div className="hidden lg:flex gap-[35px] xl:gap-[55px] border-b border-lite-gray mb-[50px]">
-          {data.categories.map((cat) => (
+    <div className="lg:py-[124px] pb-[20px] lg::pb-0">
+      {/* Header */}
+      <h1 className="text-80 lg:leading-[90px] leading-[60px] mt-[8px] xl:mt-0 mb-2 text-black">
+        Latest Blogs
+      </h1>
+      {/* Category Tabs */}
+      <div className="hidden lg:block relative">
+        <div className="flex justify-end space-x-[50px] text-25 leading-[40px] text-gray-para border-b border-lite-gray">
+          {categories.map((cat) => (
             <button
-              key={cat.category}
+              key={cat}
               onClick={() => {
-                setActiveTab(cat.category);
-                setOpenQuestion(null);
+                setSelectedCategory(cat);
                 setCurrentPage(1);
               }}
-              className={`pb-[20px] text-25 leading-[40px] ${
-                activeTab === cat.category
-                  ? "border-b-3 border-primary text-black"
-                  : "text-foreground"
+              className={`relative pb-[21px] ${
+                selectedCategory === cat ? "text-black" : ""
               }`}
             >
-              {cat.category}
+              {cat}
+              {selectedCategory === cat && (
+                <span className="absolute bottom-0 left-0 right-0 h-[3px] bg-primary" />
+              )}
             </button>
           ))}
         </div>
-
-        {/* Mobile Dropdown */}
-        <div className="block lg:hidden mb-6">
-          <Select
-            instanceId="category-select"
-            options={data.categories.map((cat) => ({
-              value: cat.category,
-              label: cat.category,
-            }))}
-            value={{ value: activeTab, label: activeTab }}
-            onChange={(option) => {
-              if (option) {
-                setActiveTab(option.value);
-                setOpenQuestion(null);
-                setCurrentPage(1);
-              }
-            }}
-            className="text-19 font-light"
-            classNamePrefix="react-select"
-            styles={{
-              control: (base) => ({
-                ...base,
-                borderRadius: "8px",
-                padding: "2px",
-                borderColor: "#BCBCBC",
-                boxShadow: "none",
-              }),
-              option: (base, state) => ({
-                ...base,
-                backgroundColor: state.isSelected ? "#EC1C24" : "white",
-                color: state.isSelected ? "white" : "black",
-                cursor: "pointer",
-              }),
-            }}
-          />
-        </div>
-
-        {/* FAQ Items */}
-        <div className="space-y-[50px]">
-          {paginatedItems?.map((item) => (
-            <div
-              key={item.question}
-              className="border-b-1 border-lite-gray pb-[50px] cursor-pointer"
-              onClick={() => handleToggle(item.question)}
-            >
-              <div className="flex justify-between items-center">
-                <h3 className="text-30 leading-[40px]">{item.question}</h3>
-                <span className="text-xl">
-                  {openQuestion === item.question ? (
-                    <Image
-                      src="/assets/images/faqUp.svg"
-                      alt="faqUp"
-                      width={24}
-                      height={11}
-                    />
-                  ) : (
-                    <Image
-                      src="/assets/images/faqDown.svg"
-                      alt="faqDown"
-                      width={26}
-                      height={11}
-                    />
-                  )}
-                </span>
-              </div>
-              {openQuestion === item.question && (
-                <p className="text-19 leading-[32px] text-gray-para">
-                  {item.answer}
-                </p>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="mt-8">
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={setCurrentPage}
-            />
-          </div>
-        )}
       </div>
-    </section>
+
+      <div className="block lg:hidden">
+        <Select
+          instanceId="category-select"
+          options={categories.map((cat) => ({ value: cat, label: cat }))}
+          value={{ value: selectedCategory, label: selectedCategory }}
+          onChange={(option) => {
+            if (option) {
+              setSelectedCategory(option.value);
+              setCurrentPage(1);
+            }
+          }}
+          className="text-19 font-light"
+          classNamePrefix="react-select"
+          styles={{
+            control: (base) => ({
+              ...base,
+              borderRadius: "8px",
+              padding: "2px",
+              borderColor: "#BCBCBC",
+              boxShadow: "none",
+            }),
+            option: (base, state) => ({
+              ...base,
+              backgroundColor: state.isSelected ? "#EC1C24" : "white",
+              color: state.isSelected ? "white" : "black",
+              cursor: "pointer",
+            }),
+          }}
+        />
+      </div>
+
+      {/* Blog Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[30px] gap-y-[22px] xl:gap-y-[50px] mt-[25px] xl:mt-[50px]">
+        {currentBlogs.map((blog, index) => (
+          <div key={index} className="rounded-md overflow-hidden">
+            <div className="relative group">
+              <Image
+                src={blog.image}
+                alt={blog.title}
+                width={487}
+                height={348}
+                className="h-[300px] xl:h-[348px] w-full object-cover rounded-[16px]"
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-[16px]" />
+              <div className="absolute flex items-center justify-center top-[40px] right-[40px] bg-white w-[66px] h-[66px] rounded-[16px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <Image
+                  src="/assets/images/blog/group.svg"
+                  alt="Arrow"
+                  width={21}
+                  height={21}
+                />
+              </div>
+            </div>
+
+            <div>
+              <div className="flex justify-between items-center text-19 leading-[32px] my-[4px] xl:my-[15px]">
+                <span className="text-primary">{blog.category}</span>
+                <span className="text-gray-para">{blog.date}</span>
+              </div>
+              <h3 className="text-25 xl:leading-[42px] leading-[32px]  text-black">
+                {blog.title}
+              </h3>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Pagination */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
+      />
+    </div>
   );
 };
 
-export default FaqList;
+export default LatestBlog;

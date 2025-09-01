@@ -1,13 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { faqContent } from "../data";
 import Pagination from "@/app/components/common/Pagination";
 import Image from "next/image";
 import Select from "react-select";
 
-const FaqList = () => {
-  interface FaqItem {
+interface FaqItem {
     question: string;
     answer: string;
   }
@@ -23,7 +21,8 @@ const FaqList = () => {
     categories: FaqCategory[];
   }
 
-  const data: FaqContent = faqContent;
+const FaqList = ({ faqData }: { faqData: FaqContent }) => {
+  const data: FaqContent = faqData;
 
   const [activeTab, setActiveTab] = useState(data.categories[0].category);
   const [openQuestion, setOpenQuestion] = useState<string | null>(null);
@@ -145,7 +144,7 @@ const FaqList = () => {
                       alt="faqDown"
                       width={20}
                       height={8}
-                      className="md:w-[24px] md:h-[11px]" 
+                      className="md:w-[24px] md:h-[11px]"
                     />
                   )}
                 </span>
