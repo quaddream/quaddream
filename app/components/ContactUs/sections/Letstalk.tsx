@@ -105,7 +105,7 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
         </div>
           </div>
           <div>
-          <div className="mb-5 md:mb-7" >
+          <div className="mb-7 md:mb-7" >
             <div className="flex w-full items-center justify-between rounded-full  mb-5 lg:mb-7  bg-[#F9F9F9]  p-5 md:p-7 text-left  border-0  "> 
               <input type="text" placeholder="Enter Your Name *" className="w-full focus:outline-none" /> 
             </div>

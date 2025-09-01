@@ -5,6 +5,7 @@ export const projectDetails = {
       navigation: [
         { title: "Home", slug: "/" },
         { title: "Project", slug: "/projects" },
+        { title: "Project Details", slug: "" },
       ],
     },
   ],
@@ -41,23 +42,30 @@ export const projectDetails = {
       ]
     }
   }
-}
-export const hghlightssection = {
-  data:[
+} 
+export const mediaData = {
+  heading: "Media",  
+  items: [
     {
-    heading: "Project Highlights", 
-    subheading:"The project included tailored access, quick Cuplock setup, full safety compliance, and uninterrupted mall operations.",
-    items: [
-      { icon:"/assets/images/aboutus/value1.svg",
-         title: "Multi-Level Access Solutions", 
-         },
-         { icon:"/assets/images/aboutus/value2.svg", 
-           title: "Strict Adherence to Safety Standards", 
-          }, 
-          { icon:"/assets/images/aboutus/value3.svg", 
-            title: "Zero disruption", 
-           } 
-    ],
-  }
-]
+      image: "/assets/images/projects/details/media1.jpg", 
+    },
+    {
+      image: "/assets/images/projects/details/media2.jpg", 
+    },
+    {
+      image: "/assets/images/projects/details/media3.jpg", 
+    },
+  ],
 };
+export const FeaturedPjtdata = {
+  data: [
+    {
+      heading: "More to Explore",    items: [
+        { title: "Sharjah Cement Factory", image: "/assets/images/projects/details/explore1.jpg", city: "Dubai", status: "Completed", icon: "/assets/images/projects/location.svg" },
+        { title: "EXPO 2020, Sweden Pavilion", image: "/assets/images/projects/details/explore2.jpg", city: "Dubai", status: "Completed", icon: "/assets/images/projects/location.svg" },
+        { title: "EXPO 2020, Switzerland Pavilion", image: "/assets/images/projects/details/explore3.jpg", city: "Dubai ", status: "Completed", icon: "/assets/images/projects/location.svg" },
+         ],
+
+    }
+  ]
+  };

@@ -21,7 +21,7 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ qhseData }) => {
     <section className="relative z-10 bg-background py-124 xl:py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%] overflow-hidden">
       <div className="container">
         {/* Heading */}
-        <h1 className="text-80 lg:leading-[90px] leading-[50px] mb-[15px] xl:mb-[50px] text-black">
+        <h1 className="text-80  leading-[1.12] mb-[15px] xl:mb-[50px] text-black">
           {qhseData.heading}
         </h1>
 
@@ -29,7 +29,7 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ qhseData }) => {
         {qhseData.paragraphs.map((para, idx) => (
           <p
             key={idx}
-            className="text-gray-para text-19 leading-[32px] mb-4 xl:mb-10"
+            className="text-gray-para text-19 leading-[1.68] mb-4 xl:mb-10"
           >
             {para}
           </p>

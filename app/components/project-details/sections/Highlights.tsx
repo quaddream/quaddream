@@ -9,17 +9,17 @@ import Image from "next/image";
     <div className='container '>
         <div>
             <h2 className='text-80 leading-[1.125] mb-5 lg:mb-10 text-white  '>{projectDetails.project.highlights.title}</h2>
-            <p className='text-lite-gray text-19 leading-[1.684210526315789]   max-w-[75ch] mb-5 lg:mb-7'>{projectDetails.project.highlights.description}</p>
+            <p className='text-lite-gray text-19 leading-[1.684210526315789]   max-w-[75ch] mb-8 lg:mb-7'>{projectDetails.project.highlights.description}</p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:flex gap-5 lg:gap-5 2xl:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:flex gap-10 lg:gap-5 2xl:gap-12">
 {projectDetails.project.highlights.items.map((item, index) => (
 <div key={index} className="group flex items-center gap-10 sm:gap-12">
 <div className="transition-all duration-300">
-<div className="flex  gap-3 sm:gap-7">
+<div className="flex  gap-3 sm:gap-7 items-center">
   <div className="w-[40px] h-[40px] md:min-w-[67px] md:min-h-[67px] md:rounded-2xl rounded-sm bg-primary flex items-center justify-center">
     <Image src={item.icon} alt={item.title} width={32} height={32} className='w-[22px] h-[24px] md:w-[32px] md:h-[32px]' />
   </div>
-  <h3 className="relative text-20 xl:text-33 leading-[1.2] font-light text-white transition-all duration-300 max-w-[17ch]">
+  <h3 className="relative text-25 xl:text-33 leading-[1.3] font-light text-white transition-all duration-300 max-w-[17ch]">
     {item.title}
   </h3>
 </div>

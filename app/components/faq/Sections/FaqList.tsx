@@ -53,10 +53,10 @@ const FaqList = ({ faqData }: { faqData: FaqContent }) => {
     <section className="relative z-10 bg-background py-124 xl:py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%] overflow-hidden">
       <div className="container">
         {/* Heading */}
-        <h1 className="text-80 lg:leading-[90px] leading-[50px] mb-[15px] xl:mb-[50px] text-black">
+        <h1 className="text-80  leading-[1.12] mb-[15px] xl:mb-[50px] text-black">
           {data.heading}
         </h1>
-        <p className="text-gray-para text-19 leading-[32px] mb-[15px] xl:mb-[50px]">
+        <p className="text-gray-para text-19 leading-[1.7] mb-[15px] xl:mb-[50px]">
           {data.description}
         </p>
         {/* Tabs */}
@@ -152,7 +152,7 @@ const FaqList = ({ faqData }: { faqData: FaqContent }) => {
 
               {/* Answer */}
               {openQuestion === item.question && (
-                <p className="text-19 leading-[32px] text-gray-para pt-[10px] xl:pt-[20px] pr-[20px] lg:pr-[100px]">
+                <p className="text-19 leading-[1.7] text-gray-para pt-[10px] xl:pt-[20px] pr-[20px] lg:pr-[100px]">
                   {item.answer}
                 </p>
               )}

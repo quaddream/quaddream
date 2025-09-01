@@ -20,7 +20,7 @@ const CoreServices: React.FC<MissionProps> = ({ Data }) => {
     <section className="pb-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative  ">
       <div className="container ">
         <div>
-          <h2 className="text-80 leading-[1.125] mb-12 text-black ">{Data[0].heading}</h2>
+          <h2 className="text-80 leading-[1.125] mb-6 md:mb-12 text-black ">{Data[0].heading}</h2>
         </div>
         <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5 ">
 
@@ -32,11 +32,11 @@ const CoreServices: React.FC<MissionProps> = ({ Data }) => {
     onMouseLeave={() => setActiveIndex(null)} 
   >
     <div
-      className="h-[300px] xl:h-[408px] relative rounded-2xl bg-no-repeat bg-cover p-5 lg:p-10"
+      className="h-[300px] xl:h-[408px] relative rounded-2xl bg-no-repeat bg-cover p-7 lg:p-10"
       style={{ backgroundImage: `url(${item.image})` }}
     >
       <div className="flex flex-col justify-between gap-5 h-full relative z-20">
-        <div className={`transition-all duration-500 group-hover:translate-y-0 w-[66px] h-[66px] group-hover:opacity-100 rounded-2xl bg-white flex items-center justify-center ml-auto
+        <div className={`transition-all duration-500 group-hover:translate-y-0 w-10 h-10 md:w-[66px] md:h-[66px] group-hover:opacity-100 rounded-md md:rounded-2xl bg-white flex items-center justify-center ml-auto
           ${activeIndex === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,6 +44,7 @@ const CoreServices: React.FC<MissionProps> = ({ Data }) => {
             height="23"
             viewBox="0 0 23 23"
             fill="none"
+            className="w-[15px] h-[15px] md:w-[23px] md:h-[23px] "
           >
             <path
               d="M21.5 1.5L1 22"

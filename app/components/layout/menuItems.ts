@@ -5,11 +5,11 @@ export const menuItems = [
     },
     {
         name: "About Us",
-        href: "/about"
+        href: "/about-us"
     },
     {
         name: "Products & Services",
-        href: "#",
+        href: "/products-and-services",
     },
     {
         name: "Projects",

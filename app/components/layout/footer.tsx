@@ -16,7 +16,7 @@ const Footer = () => {
           </button>
         </div>
         {/* Links Section */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-8 md:gap-[170px] mb-[93px]">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-8 md:gap-[170px] mb-10 md:mb-[93px]">
           {/* Quick Links */}
           <div>
             <h3 className="text-[16px] text-lite-gray uppercase mb-[36px] font-medium">Quick Link</h3>

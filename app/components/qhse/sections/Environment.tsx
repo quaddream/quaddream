@@ -23,13 +23,13 @@ const EnvironmentalResponsibility: React.FC<
   return (
     <section className="py-124 xl:py-150 bg-[#F9F9F9]">
       <div className="container">
-        <h1 className="text-80 xl:leading-[90px] leading-[50px] mb-[25px] xl:mb-[50px] text-black">
+        <h1 className="text-80   leading-[1.14] mb-[25px] xl:mb-[50px] text-black">
           {heading}
         </h1>
         <h2 className="text-30 xl:leading-[40px] mb-[15px] xl:mb-[30px] text-black">
           {subheading}
         </h2>
-        <p className="text-19 leading-[32px] text-gray-para">{description}</p>
+        <p className="text-19 leading-[1.7] text-gray-para">{description}</p>
 
         <div>
           {items?.map((item, index) => (

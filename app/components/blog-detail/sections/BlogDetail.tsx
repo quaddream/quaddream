@@ -29,7 +29,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({blogDetail}) => {
         <div className="2xl:px-[100px] md:px-4 mx-auto">
           <div className="md:px-4 mx-auto mb-[30px] md:mb-[50px] xl:mb-[124px]">
             {/* Title */}
-            <h1 className="font-normal text-80 text-black mb-[25px] lg:mb-[50px] xl:leading-[90px] leading-[60px]">
+            <h1 className="font-normal text-80 text-black mb-[25px] lg:mb-[50px] leading-[1.12]">
               {blogDetail.title}
             </h1>
             {/* Category & Date */}
@@ -47,7 +47,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({blogDetail}) => {
                 alt="Scaffolding"
                 width={1317}
                 height={673}
-                className="w-full max-h-[673px] rounded-[16px] object-cover"
+                className="w-full max-h-[350px] lg:max-h-[673px] rounded-[16px] object-cover"
               />
             </div>
             {/* Content Rendering */}
@@ -58,7 +58,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({blogDetail}) => {
                     return (
                       <h2
                         key={idx}
-                        className="text-30 leading-[40px] pt-[20px] lg:pt-[30px] text-black"
+                        className="text-30 leading-[1.35] pt-[20px] lg:pt-[30px] text-black"
                       >
                         {block.content}
                       </h2>
@@ -67,7 +67,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({blogDetail}) => {
                     return (
                       <p
                         key={idx}
-                        className="pt-[13px] text-19 leading-[32px] lg:pt-[20px] text-gray-para"
+                        className="pt-[13px] text-19 leading-[1.7] lg:pt-[20px] text-gray-para"
                       >
                         {block.content}
                       </p>
@@ -93,7 +93,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({blogDetail}) => {
                               alt="blog image"
                               width={1317}
                               height={477}
-                              className="rounded-[16px]"
+                              className="rounded-[16px] max-h-[350px] lg:max-h-[477px] object-cover "
                             />
                           )}
                       </div>
