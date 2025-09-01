@@ -3,7 +3,6 @@ import Image from "next/image";
 import AddressSection from "./addressSec";
 import Link from "next/link";
 import { quickLinks, socialLinks } from "./footerItems";
-import { FaDivide } from "react-icons/fa";
 
 const Footer = () => {
   return (
