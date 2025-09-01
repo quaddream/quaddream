@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { faqContent } from "../data";
 import Pagination from "@/app/components/common/Pagination";
 import Image from "next/image";
-import Select from "react-select"; // ✅ use react-select, not radix
+import Select from "react-select";
 
 const FaqList = () => {
   interface FaqItem {
@@ -60,9 +60,8 @@ const FaqList = () => {
         <p className="text-gray-para text-19 leading-[32px] mb-[15px] xl:mb-[50px]">
           {data.description}
         </p>
-
-        {/* Desktop Tabs */}
-        <div className="hidden lg:flex gap-[35px] xl:gap-[55px] border-b border-lite-gray mb-[50px]">
+        {/* Tabs */}
+        <div className="hidden md:flex gap-[35px] xl:gap-[55px] border-b border-lite-gray mb-[50px]">
           {data.categories.map((cat) => (
             <button
               key={cat.category}
@@ -83,7 +82,7 @@ const FaqList = () => {
         </div>
 
         {/* Mobile Dropdown */}
-        <div className="block lg:hidden mb-6">
+        <div className="block md:hidden mb-[20px]">
           <Select
             instanceId="category-select"
             options={data.categories.map((cat) => ({
@@ -119,35 +118,42 @@ const FaqList = () => {
         </div>
 
         {/* FAQ Items */}
-        <div className="space-y-[50px]">
+        <div className="space-y-[25px] lg:space-y-[50px] ">
           {paginatedItems?.map((item) => (
             <div
               key={item.question}
-              className="border-b-1 border-lite-gray pb-[50px] cursor-pointer"
+              className="border-b border-lite-gray pb-[25px] lg:pb-[50px] cursor-pointer"
               onClick={() => handleToggle(item.question)}
             >
-              <div className="flex justify-between items-center">
-                <h3 className="text-30 leading-[40px]">{item.question}</h3>
-                <span className="text-xl">
+              {/* Question Text */}
+              <div className="flex justify-between lg:items-center gap-[15px]">
+                <h3 className="lg:text-30 text-25 lg:leading-[40px] leading-[36px] text-black">
+                  {item.question}
+                </h3>
+                <span className="flex items-start lg:items-center mt-3 lg:mt-0 flex-shrink-0">
                   {openQuestion === item.question ? (
                     <Image
                       src="/assets/images/faqUp.svg"
                       alt="faqUp"
-                      width={24}
-                      height={11}
+                      width={20}
+                      height={8}
+                      className="md:w-[24px] md:h-[11px]"
                     />
                   ) : (
                     <Image
                       src="/assets/images/faqDown.svg"
                       alt="faqDown"
-                      width={26}
-                      height={11}
+                      width={20}
+                      height={8}
+                      className="md:w-[24px] md:h-[11px]" 
                     />
                   )}
                 </span>
               </div>
+
+              {/* Answer */}
               {openQuestion === item.question && (
-                <p className="text-19 leading-[32px] text-gray-para">
+                <p className="text-19 leading-[32px] text-gray-para pt-[10px] xl:pt-[20px] pr-[20px] lg:pr-[100px]">
                   {item.answer}
                 </p>
               )}
@@ -157,7 +163,7 @@ const FaqList = () => {
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="mt-8">
+          <div>
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
