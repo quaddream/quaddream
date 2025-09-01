@@ -62,7 +62,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
   }, []);
   return (
     <section className="py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10  bg-white mt-[-4.5%] ">
-      <div className="container flex flex-col gap-12">
+      <div className="container flex flex-col gap-8 md:gap-12">
         <div className=" w-full gap-y-4">
           <motion.div
             className="flex flex-col"
@@ -79,7 +79,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
               whileInView="show"
               transition={{ duration: 0.6 }}
               viewport={{ amount: 0.1, once: true }}
-              className="text-80 leading-[1.153846153846154] mb-50px"
+              className="text-80 leading-[1.153846153846154] mb-6 md:mb-12"
             >
               {Data[0].title}
             </motion.h2>
@@ -116,7 +116,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
         ))}
       </div>
  
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-5 lg:mt-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-5 lg:mt-12">
         <div> 
           <div className="border rounded-2xl mb-5 lg:mb-7 p-7 border-lite-gray hover:border-primary transition-all duration-300">
             <div className="flex items-center gap-5 border-b border-lite-gray mb-5 pb-5">

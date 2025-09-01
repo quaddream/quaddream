@@ -15,7 +15,7 @@ const ProductsList = () => {
               <div className="bg-[#f9f9f9] p-5 xl:p-9 rounded-t-[15px] group-hover:bg-primary transition-all duration-300">
                 <h3 className="text-33 leading-[1.212121212121212] text-black group-hover:text-white transition-all duration-300">{product.title}</h3>
               </div>
-              <div className="translate-y-full bg-primary absolute tranlate-y-full w-full h-full group-hover:translate-y-0 transition-all duration-300 opacity-0 group-hover:opacity-100
+              <div className="translate-y-full rounded-lg bg-primary absolute tranlate-y-full w-full h-full group-hover:translate-y-0 transition-all duration-300 opacity-0 group-hover:opacity-100
               flex flex-col justify-end p-5 xl:p-[43.94px]">
                 <h3 className="text-33 leading-[1.212121212121212] text-white pb-4 xl:pb-[43.94px] border-b border-white">{product.title}</h3>
                 <div className="mt-3">

@@ -6,7 +6,7 @@ const Main = () => {
     <section className="py-150 rounded-t-2xl xl:rounded-t-[100px] relative z-[50] mt-[-4.5%] bg-white">
       <div className="container">
         <h2 className="text-80 leading-[1.125] mb-5 lg:mb-8 2xl:mb-30px text-black border-b border-lite-gray pb-8 xl:pb-50px">{projectDetails.project.title}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 items-center mb-50px">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 items-center mb-50px gap-y-10 lg:gap-y-0">
           <div className="flex items-center gap-4 xl:gap-5">
             <div className="flex items-center justify-center rounded-full border border-lite-gray w-10 h-10 xl:w-[78px] xl:h-[78px]">
               <Image src={assets.clientIcon} alt="" width={24} height={24} className="w-5 xl:w-8 h-auto object-contain" />
@@ -44,14 +44,14 @@ const Main = () => {
             </div>
           </div>
         </div>
-        <Image src={projectDetails.project.image} alt="" width={1920} height={1280} className="object-cover w-full mb-5 lg:mb-8 2xl:mb-50px h-400 xl:h-[601px] rounded-t-2xl" />
+        <Image src={projectDetails.project.image} alt="" width={1920} height={1280} className="object-cover w-full mb-5 lg:mb-8 2xl:mb-50px h-[400px] xl:h-[601px] rounded-t-2xl" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-8 2xl:gap-25">
           <div>
-            <h2 className="text-33 leading-text33 text-black mb-8 xl:mb-50px">Project Description</h2>
+            <h2 className="text-80 leading-[1.125] text-black mb-8 xl:mb-50px">Project Description</h2>
             <p className="text-19 leading-lh-text19">{projectDetails.project.description}</p>
           </div>
-          <div>
-            <h3 className="text-25 leading-text25 text-black mb-8 xl:mb-50px border-b border-lite-gray pb-4 xl:pb-5">Services Delivered</h3>
+          <div className="mt-0 lg:mt-5">
+            <h3 className="text-30 leading-text25 text-black mb-8 xl:mb-12 border-b border-lite-gray pb-4">Services Delivered</h3>
             <ul className="list-disc list-inside marker:text-primary">
               {projectDetails.project.servicesDelivered.map((service, index) => (
                 <li key={index} className="text-19 leading-lh-text19">{service}</li>

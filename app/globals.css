@@ -281,7 +281,7 @@ body {
   width: 100%;
   height: 100%;
   background: #000000;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.73) 23%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.73) 58%, rgba(0, 0, 0, 0) 100%);
 
 }
 
@@ -314,4 +314,49 @@ body {
 
 .modal-open {
   overflow: hidden;
+}
+
+
+.modal-open {
+  overflow: hidden;
+}
+
+
+.modal-open {
+  overflow: hidden;
+}
+
+.afterline::after{
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 6px;
+    width: 1px;
+    height: 100%;
+    background: #696969;
+}
+.yrslider .swiper-slide{
+   opacity: 0.3;
+}
+ .yrslider .swiper-slide-active{
+    color: var(--primary);
+    font-weight: 500;
+    opacity: 1;
+ }
+ .afterline::after{
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 6px;
+  width: 1px;
+  height: 100%;
+  background: #696969;
+}
+.yrslider .swiper-slide{
+ opacity: 0.3;
+}
+.yrslider .swiper-slide-active{
+  color: var(--primary);
+  font-weight: 500;
+  opacity: 1;
 }

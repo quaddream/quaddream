@@ -22,18 +22,18 @@ const BlogCard = ({ blogData }: { blogData: BlogType[] }) => {
       {/* Right Content */}
       <div className="flex flex-col justify-between w-full md:w-[55%]">
         {/* Top row */}
-        <div className="flex justify-between items-center text-19 leading-[32px] mb-[12px] lg:mb-[30px]">
+        <div className="flex justify-between items-center text-19 leading-[1.7] mb-[12px] lg:mb-[30px]">
           <span className="text-primary">{blogData[9].category}</span>
           <span className="text-gray-para">{blogData[9].date}</span>
         </div>
 
         {/* Title */}
-        <h2 className="text-30 leading-[40px] text-black mb-[8px] lg:mb-[20px]">
+        <h2 className="text-30 leading-[1.35] text-black mb-[8px] lg:mb-[20px]">
           {blogData[9].title}
         </h2>
 
         {/* Description */}
-        <p className="text-gray-para text-19 leading-[32px] mb-[8px] lg:mb-[20px]">
+        <p className="text-gray-para text-19 leading-[1.7] mb-[8px] lg:mb-[20px]">
           {blogData[9].description}
         </p>
 

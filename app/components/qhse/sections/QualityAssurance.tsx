@@ -31,17 +31,17 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({qaData}) => {
     <section className="pt-124 lg:pt-150">
       <div className="container overflow-hidden pb-[15px] lg:pb-[30px]">
         {/* Heading */}
-        <h2 className="text-80 leading-[90px] xl:mb-[50px] text-black">
+        <h2 className="text-80 leading-[1.12] mb-8 xl:mb-[50px] text-black">
           {qaData.heading}
         </h2>
         {/* Sub-title */}
-        <p className="text-30 xl:leading-[40px] leading-[36px] mb-[15px] xl:mb-[30px] text-black">
+        <p className="text-30   leading-[1.3] mb-[15px] xl:mb-[30px] text-black">
           {qaData.subheading}
         </p>
         {/* Paragraph */}
         <div className="flex xl:flex-row flex-col items-end xl:gap-[75px] gap-[10px]">
           <div className="flex">
-            <p className="text-gray-para text-19 leading-[32px]">
+            <p className="text-gray-para text-19 leading-[1.7]">
               {qaData.description}
             </p>
           </div>
@@ -107,7 +107,7 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({qaData}) => {
                   width={40}
                   height={40}
                 />
-                <p className="text-black text-25 leading-[40px]">
+                <p className="text-black text-25 leading-[1.6]">
                   {item.content}
                 </p>
               </div>
