@@ -10,6 +10,7 @@ import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import SliderViewAllBtn from "@/app/components/common/SliderViewAllBtn";
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
+import Image from "next/image";
 
 const LikeSlider = () => {
   return (
@@ -62,9 +63,11 @@ const LikeSlider = () => {
           <SwiperSlide key={blog.id}>
             <div className="flex flex-col">
               {/* Image */}
-              <img
+              <Image
                 src={blog.image}
                 alt={blog.title}
+                width={586}
+                height={348}
                 className="w-full max-w-[586px] h-[300px] md:h-[348px] object-cover rounded-[16px]"
               />
 

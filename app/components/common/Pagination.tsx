@@ -50,9 +50,7 @@ export default function Pagination({
 
     return pages.map((page, idx) =>
       page === "..." ? (
-        <span key={`dots-${idx}`}>
-          ...
-        </span>
+        <span key={`dots-${idx}`}>...</span>
       ) : (
         <button
           key={page}
