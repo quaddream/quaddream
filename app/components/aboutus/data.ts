@@ -38,6 +38,48 @@
     }
   ]
   };
+  export const journey = {
+    data:[
+      {
+      heading: "Our Journey", 
+      items: [
+        {
+          year:"2010",
+          description:"Expanded service offerings and entered new markets, gaining recognition for tailored enterprise solutions.",
+          image: "/assets/images/aboutus/sliderimg.jpg",
+          title: "Founding & Initial Growth",
+        },
+        {
+          year:"2012",
+          description:"Expanded service offerings and entered new markets, gaining recognition for tailored enterprise solutions.",
+          image: "/assets/images/aboutus/sliderimg.jpg",
+          title: "Founding & Initial Growth",
+        },
+        {
+          year:"2015",
+          description:"Expanded service offerings and entered new markets, gaining recognition for tailored enterprise solutions.",
+          image: "/assets/images/aboutus/sliderimg.jpg",
+          title: "Founding & Initial Growth",
+        },
+        {
+          year:"2020",
+          description:"Expanded service offerings and entered new markets, gaining recognition for tailored enterprise solutions.",
+          image: "/assets/images/aboutus/sliderimg.jpg",
+          title: "Founding & Initial Growth",
+        },
+        {
+          year:"2010",
+          description:"Expanded service offerings and entered new markets, gaining recognition for tailored enterprise solutions.",
+          image: "/assets/images/aboutus/sliderimg.jpg",
+          title: "Founding & Initial Growth",
+        },
+      ],
+    }
+  ]
+  };
+
+  
+  
   export const corevaluesection = {
     data:[
       {

@@ -1,9 +1,5 @@
 'use client'
-import React, { useEffect, useRef } from 'react' 
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
-import "swiper/css/effect-fade"  
+import React, { useEffect, useRef } from 'react'  
 import { motion } from 'motion/react'
 import { containerStagger, paragraphItem } from '../../motionVarients' 
 import { gsap } from "gsap"
@@ -82,7 +78,7 @@ type BannerProps = {
                          
                     </motion.div>
                 </div>
-    <div style={{backgroundImage: `url(${Data[0].bgImg})`}} className='p-5 md:p-8 lg:p-17  lg:pt-[237px] relative rounded-xl z-10'>
+    <div style={{backgroundImage: `url(${Data[0].bgImg})`}} className='bg-top-center p-5 md:p-8 lg:p-17  lg:pt-[237px] relative rounded-xl z-10'>
     <div className='relative z-10  ' >
     <h2 className={`text-white text-80 leading-[1.07] pb-12 `}
   style={{ maxWidth: titlewidth ? `${titlewidth}ch` : "none" }}>{Data[0].title}</h2>

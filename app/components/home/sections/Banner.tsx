@@ -8,7 +8,7 @@ import "swiper/css/effect-fade"
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules'
 import Image from 'next/image'
 import { homeData } from '../data'
-import gsap from 'gsap'
+import gsap from 'gsap' 
 
 const Banner = () => {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -90,7 +90,7 @@ const Banner = () => {
       <div className='flex flex-col gap-5 h-full justify-end lg:pt-25 pb-8 md:pb-20'>
         <div
           ref={(el) => { contentRefs.current[index] = el }}
-          className="flex flex-col gap-4"
+          className="flex flex-col gap-4 md:gap-12  "
         >
           <h2 className="text-65 leading-[1.125] text-white opacity-0">{item.title}</h2>
                       <a
@@ -108,7 +108,9 @@ const Banner = () => {
                             className="invert w-[18px] h-[18px] md:w-[24px] md:h-[24px] brightness-0 group-hover:invert-0 group-hover:brightness-100 transition-all duration-300"
                           />
                         </span>
+                        
                       </a>
+                     
                     </div>
                   </div>
                 </div>

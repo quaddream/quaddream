@@ -20,28 +20,54 @@
      items: [
       { 
          location: "Head Office", 
+         image:"/assets/images/contactus/hoffice.jpg",
+         address:"Office No. 110, Al Mansour Building, Damascus Street 3  |   Al Qusais Industrial Area 2, Dubai, UAE",
          contact: 
           [
           "+971 4 263 7784",
           "+971 56 544 5987",
           "+971 50 545 2385"
+          ],
+          mail: 
+          [
+          "info@quaddream.com",
+          "enquiries@quaddream.com"
           ]
+
          },
          { 
             location: "Yard", 
+            image:"/assets/images/contactus/hoffice.jpg",
+            address:"Al Quoz Industrial Area – 2, Near Bartawi Dubai, UAE",
             contact:[
           "+971 56 544 5987",
           "+971 50 545 2385"
+          ],
+          mail: 
+          [
+          "sales@quaddream.com"
           ]
          },
          { 
             location: "UAE Branch", 
+            image:"/assets/images/contactus/hoffice.jpg",
+            address:"Quaddream Branch office, Abu dhabi.",
             contact:[ "+971 503 525 314"
+          ],
+          mail: 
+          [
+          "sales@quaddream.com"
           ]
          },
          { 
             location: "Canada", 
+            image:"/assets/images/contactus/hoffice.jpg",
+            address:"Bradford , Ontario",
             contact:["+416 970 1617"
+          ],
+          mail: 
+          [
+          "sales@quaddream.com"
           ]
          }, 
          
@@ -49,59 +75,15 @@
     }
   ]
   };
-  export const coresection = {
-    data:[
-      {
-      heading: "Our Core Services", 
-      items: [
-        { 
-           title: "Cuplock Scaffolding & Aluminum Mobile Tower Rental & Sales", 
-           image:"/assets/images/productservices/coreser1.jpg", 
-           }, 
-           { 
-              title: "Scaffolding contracting ", 
-              image:"/assets/images/productservices/coreser2.jpg", 
-              }, 
-              { 
-                 title: "Scaffolding Formwork Rentals", 
-                 image:"/assets/images/productservices/coreser3.jpg", 
-                 }, 
-                 { 
-                    title: "Equipment Rentals", 
-                    image:"/assets/images/productservices/coreser4.jpg", 
-                    }, 
-      ],
-    }
-  ]
-  };
-  export const corevaluesection = {
-    data:[
-      {
-      heading: "Our Core Values", 
-      subheading:"We are committed to delivering trusted, forward-thinking scaffolding solutions while building strong, long-term client relationships.",
-      items: [
-        { icon:"/assets/images/aboutus/value1.svg",
-           title: "Reliability", 
-           },
-           { icon:"/assets/images/aboutus/value2.svg", 
-             title: "Safety", 
-            }, 
-            { icon:"/assets/images/aboutus/value3.svg", 
-              title: "Innovation", 
-             }, 
-             { icon:"/assets/images/aboutus/value4.svg", 
-               title: "Partnership", 
-              }, 
-      ],
-    }
-  ]
-  };
   
-  export const ctaSection = {
-    title: "Want to Work With a Reliable Partner?",
-    bgImg: "/assets/images/aboutus/cta-about.jpg", 
-    description: "Count on us for safe, timely, and expert scaffolding solutions you can trust.",
-    buttonText: "Let’s Talk",
-    buttonLink: "",
+  export const letstalk = {
+    data:[
+      {
+      title: "Let’s Talk", 
+     description:"We’re here to make your scaffolding needs simple and hassle-free. Just complete the form with your details, and our team will reach out to assist you with the right solution—fast, safe, and professional.",
+      
+    }
+  ]
   };
+ 
 
