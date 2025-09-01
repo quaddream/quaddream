@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${openSans.variable} antialiased`} >
-        {/* <Navbar /> */}
+        <Navbar />
         {children}
         <Footer />
       </body>
