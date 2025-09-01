@@ -25,7 +25,7 @@ type BannerProps = {
 const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
   return (
     <section
-      className="pt-[150px] lg:pt-[280px] xl:pt-[349px] pb-6 sm:pb-10 md:pb-[70px] bg-image bg-cover bg-center bg-no-repeat relative z-[1] hero overlaybanner "
+      className="pt-[150px] lg:pt-[280px] xl:pt-[349px] pb-6 sm:pb-10 md:pb-[70px] bg-image bg-cover bg-center bg-no-repeat relative z-[1] hero overlaybanner"
       style={{ backgroundImage: `url(${bannerData[0].bgImg})` }}
     >
       <div className="relative z-10">
