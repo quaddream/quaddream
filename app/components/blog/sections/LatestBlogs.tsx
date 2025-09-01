@@ -48,7 +48,7 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
   return (
     <div className="lg:py-[124px] pb-[20px] lg::pb-0">
       {/* Header */}
-      <h1 className="text-80 lg:leading-[90px] leading-[60px] mt-[8px] xl:mt-0 mb-2 text-black">
+      <h1 className="text-80 lg:leading-[1.12] mt-[8px] xl:mt-0 mb-2 text-black">
         Latest Blogs
       </h1>
       {/* Category Tabs */}
@@ -130,11 +130,11 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
             </div>
 
             <div>
-              <div className="flex justify-between items-center text-19 leading-[32px] my-[4px] xl:my-[15px]">
+              <div className="flex justify-between items-center text-19 leading-[1.7] my-[4px] xl:my-[15px]">
                 <span className="text-primary">{blog.category}</span>
                 <span className="text-gray-para">{blog.date}</span>
               </div>
-              <h3 className="text-25 xl:leading-[42px] leading-[32px]  text-black">
+              <h3 className="text-25 xl:leading-[1.7]  text-black">
                 {blog.title}
               </h3>
             </div>

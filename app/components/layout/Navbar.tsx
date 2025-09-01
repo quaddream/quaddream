@@ -73,7 +73,7 @@ const renderHeader = ()=>{
               const spanWidthClass = isActive ? 'w-full' : 'w-[0px] group-hover:w-full';
               return (
                 <div className='flex flex-col group cursor-pointer' key={index} onClick={() => setActiveIndex(index)}>
-                  <li className={`text-nowrap font-16 xl:text-19 ${textColorClass}`}>{item.name}</li>
+                  <li className={`text-nowrap font-16 xl:text-19 ${textColorClass}`}><Link href={item.href}>{item.name}</Link></li>
                   <span className={`bg-primary h-[1px] transition-all duration-300 ${spanWidthClass}`}></span>
                 </div>
               )
@@ -81,7 +81,7 @@ const renderHeader = ()=>{
           </ul>
           <div className={`ml-6`}>
             <button className={`bg-primary text-white rounded-full  text-nowrap cursor-pointer  ${scrollY > 550 ? 'py-2 px-4 text-sm' : 'py-[30px] px-[50px] xl:py-[30px] xl:px-[58.5px] text-19'}`}>
-              Contact Us
+            <Link href="/contact-us">  Contact Us</Link>
             </button>
           </div>
         </div>

@@ -25,7 +25,7 @@ type MissionProps = {
                     <h2 className='text-80 leading-[1.125] mb-5 lg:mb-10 text-white  '>{Data[0].heading}</h2>
                     <p className='text-lite-gray text-19 leading-[1.684210526315789]   max-w-[75ch] mb-5 lg:mb-7'>{Data[0].subheading}</p>
                 </div>
-                <div className="grid grid-cols-2 xs:grid-cols-2 xl:flex gap-5 sm:gap-8">
+                <div className="grid grid-cols-2 xs:grid-cols-2 xl:flex gap-5 lg:gap-5 2xl:gap-20">
   {Data[0].items.map((item, index) => (
     <div key={index} className="group flex items-center gap-10 sm:gap-20">
       <div className="transition-all duration-300">
