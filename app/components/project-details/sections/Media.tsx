@@ -56,12 +56,12 @@ const Media: React.FC<QualityAssuranceProps> = ({qaData}) => {
           </div>
     <section className="py-150 overflow-hidden">
       <div className="container pb-150  border-b border-b-lite-gray">
-        <div className="flex justify-between items-center">
-        <h2 className="text-80 leading-[1.12] mb-8 xl:mb-[50px] text-black">
+        <div className="flex justify-between items-end md:text-center">
+        <h2 className="text-80 leading-[1.12] mb-10 md:mb-12 text-black">
           {qaData.heading}
         </h2>
        
-        <div className="flex xl:flex-row flex-col items-end xl:gap-[75px] gap-[10px]">
+        <div className="flex xl:flex-row flex-col items-end xl:gap-[75px] gap-[10px] mb-4 md:mb-0">
             
           <div className="flex justify-end gap-1"> 
             <div
@@ -87,7 +87,7 @@ const Media: React.FC<QualityAssuranceProps> = ({qaData}) => {
         </div>
 
       {/* Swiper */}
-      <div className="container !overflow-visible relative swiper-area cursor-none"
+      <div className="container !overflow-visible relative swiper-area cursor-none  " style={{paddingInline:"0"}}
 onMouseEnter={() => setIsHovering(true)}
 onMouseLeave={() => setIsHovering(false)}>
         <Swiper

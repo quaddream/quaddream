@@ -24,14 +24,14 @@ const Certification: React.FC<CertificationProps> = ({ certificationData }) => {
   const { heading, items } = certificationData;
 
   return (
-    <section className="py-124 xl:py-150 overflow-hidden">
-      <div className="container">
-        <h2 className="text-80 xl:leading-[90px] leading-[60px] mb-[18px] xl:mb-[50px] text-black">
+    <section className=" pt-150 overflow-hidden ">
+      <div className="container ">
+        <h2 className="text-[25px] md:text-80 leading-[1.12] mb-5 md:mb-8 lg:mb-12 text-black">
           {heading}
         </h2>
       </div>
 
-      <div className="container md:!overflow-visible">
+      <div className="container md:!overflow-visible ">
         <Swiper
           className="md:!overflow-visible"
           spaceBetween={60}
@@ -51,8 +51,8 @@ const Certification: React.FC<CertificationProps> = ({ certificationData }) => {
           {items.map((item, idx) => (
             <SwiperSlide key={idx}>
               <div className="flex flex-col xl:border-r-1 xl:border-r-lite-gray">
-                <div className="flex lg:items-center gap-[30px]">
-                  <div className="w-[67px] h-[67px] flex flex-shrink-0">
+                <div className="flex lg:items-center gap-3 md:gap-[30px] items-center">
+                  <div className="w-[67px] h-[67px] md:w-[101px] md:h-[101px] flex flex-shrink-0">
                     <Image
                       src={item.icon}
                       alt={item.CertificationName}
@@ -61,10 +61,10 @@ const Certification: React.FC<CertificationProps> = ({ certificationData }) => {
                     />
                   </div>
                   <div className="flex flex-col ">
-                    <p className="text-black text-25 2xl:text-33 leading-[36px] xl:leading-[40px]">
+                    <p className="text-black text-19 2xl:text-33 leading-[1.2]">
                       {item.CertificationID}
                     </p>
-                    <p className="text-black text-25 2xl:text-33 leading-[36px] xl:leading-[40px]">
+                    <p className="text-black text-19 2xl:text-33 leading-[1.2]">
                       {item.CertificationName}
                     </p>
                   </div>
@@ -76,6 +76,10 @@ const Certification: React.FC<CertificationProps> = ({ certificationData }) => {
             <div className="swiper-pagination certification-pagination"></div>
           </div>
         </Swiper>
+      </div>
+      
+      <div className="container border-b border-[#BEBEBE] pb-5 lg:pb-31 mb-150">
+
       </div>
     </section>
   );

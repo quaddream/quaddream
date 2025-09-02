@@ -25,7 +25,7 @@ const MediaGallery: React.FC<MediaGalleryProps> = ({ galleryData }) => {
       <div className="container">
         {/* Title & Description */}
         <div className="mb-[20px] xl:mb-[50px] ">
-          <h1 className="text-80 lg:leading-[90px] leading-[50px] mb-[12px] xl:mb-[50px] text-black">
+          <h1 className="text-80 lg:leading-[90px] leading-[50px] mb-5 md:mb-8 lg:mb-12 text-black">
             {galleryData.title}
           </h1>
           <p className="text-gray-para text-19 leading-[32px] mb-[15px] xl:mb-[50px]">

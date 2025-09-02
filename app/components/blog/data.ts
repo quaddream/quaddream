@@ -28,7 +28,7 @@ export const blogData: BlogType[] = [
     description:
       "Aluminum scaffolding is lightweight, rust-resistant, and ideal for UAE’s climate. Find out why it’s preferred.",
     image: "/assets/images/blog/blogCon1.jpg",
-    link: "#",
+    link: "1",
   },
   {
     category: "Scaffolding",
@@ -37,7 +37,7 @@ export const blogData: BlogType[] = [
     description:
       "Make informed decisions when selecting suppliers for your next project. Here's what to look for.",
     image: "/assets/images/blog/blogCon2.jpg",
-    link: "#",
+    link: "2",
   },
   {
     category: "Equipment",
@@ -46,7 +46,7 @@ export const blogData: BlogType[] = [
     description:
       "Choosing the right timber can improve safety and performance in construction work. Here’s how to find top suppliers.",
     image: "/assets/images/blog/blogCon3.jpg",
-    link: "#",
+    link: "2",
   },
   {
     category: "Equipment",
@@ -55,7 +55,7 @@ export const blogData: BlogType[] = [
     description:
       "Keep your gear in top condition by following maintenance routines tailored to the UAE’s climate.",
     image: "/assets/images/blog-detail/slider1.jpg",
-    link: "#",
+    link: "2",
   },
   {
     category: "Scaffolding",
@@ -65,7 +65,7 @@ export const blogData: BlogType[] = [
     description:
       "Cuplock systems are ideal for heavy-duty builds. Learn why professionals rely on them.",
     image: "/assets/images/blog-detail/slider2.jpg",
-    link: "#",
+    link: "2",
   },
   {
     category: "Safety",
@@ -75,7 +75,7 @@ export const blogData: BlogType[] = [
     description:
       "Looking for scaffold rentals? Here's how to ensure safety and value when renting equipment.",
     image: "/assets/images/blog-detail/slider3.jpg",
-    link: "#",
+    link: "2",
   },
   {
     category: "Equipment",
@@ -84,7 +84,7 @@ export const blogData: BlogType[] = [
     description:
       "Foldable aluminum scaffolding is a game-changer for quick, safe, and efficient access. Learn how it works.",
     image: "/assets/images/blog-detail/img4.jpg",
-    link: "#",
+    link: "2",
   },
   {
     category: "Scaffolding",
@@ -93,7 +93,7 @@ export const blogData: BlogType[] = [
     description:
       "Discover the best scaffolding and formwork companies in the UAE. Here's a guide to help you find the right contractor.",
     image: "/assets/images/blog-detail/img5.jpg",
-    link: "#",
+    link: "2",
   },
   {
     category: "Safety",
@@ -102,7 +102,7 @@ export const blogData: BlogType[] = [
     description:
       "Choosing the right scaffolding contractor ensures safety and project success. Here’s how to pick the best.",
     image: "/assets/images/blog-detail/img3.jpg",
-    link: "#",
+    link: "2",
   },
   {
     category: "Equipment",
@@ -112,7 +112,7 @@ export const blogData: BlogType[] = [
     description:
       "Formwork is the temporary structure used to support the fresh concrete until it gains enough strength for support. Furthermore, it offers shape, alignment, & desired finishing to the final structure...",
     image: "/assets/images/blog/blogCon.jpg",
-    link: "#",
+    link: "2",
   },
   // {
   //   category: "Equipment",
