@@ -7,6 +7,8 @@ import {
   brochureDocuments,
   certificateDocuments,
 } from "@/app/components/downloads/data";
+import { motion } from "framer-motion";
+import { moveUp, containerStagger } from "@/app/components/motionVarients";
 
 export default function DocumentList() {
   const [activeTab, setActiveTab] = useState<"brochure" | "certificates">(
@@ -45,10 +47,21 @@ export default function DocumentList() {
           </div>
         </div>
         {/* Document List */}
-        <div className="mt-[30px] md:mt-[50px] space-y-[18px] sm:space-y-[50px]">
+        <motion.div
+          className="mt-[30px] md:mt-[50px] space-y-[18px] sm:space-y-[50px]"
+          variants={containerStagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {documents.map((doc, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={moveUp( index * 0.20)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              custom={index}
               className="border-b border-lite-gray pb-3 md:pb-5"
             >
               <div className="flex flex-col sm:flex-row gap-[1px] sm:gap-0">
@@ -87,9 +100,9 @@ export default function DocumentList() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
