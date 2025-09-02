@@ -428,8 +428,8 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
           {/* Search button (optional, can trigger a function if needed) */}
           <div className="w-full md:w-2/7 2xl:w-1/7 flex items-center justify-center">
             <button
-              className="group bg-primary text-white border-2 border-transparent 
-               p-5 lg:p-7 rounded-full w-full md:w-[219px] flex items-center justify-between 
+              className="group bg-primary  text-white border-2 border-transparent 
+               p-5 lg:p-7 rounded-full w-full  flex items-center justify-between 
                cursor-pointer transition-all duration-300 ease-in-out
                hover:bg-white hover:text-primary hover:border-primary"
               onClick={() => setCurrentPage(1)} // reset page on filter change
