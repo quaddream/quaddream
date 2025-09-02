@@ -13,8 +13,8 @@ const WhatYouGet = () => {
   return ( 
     <section className="bg-black py-150 overflow-hidden">
       <div className="container !overflow-visible">
-        <div className="flex justify-between items-center mb-10">
-          <h2 className="text-80 leading-[1.125] mb-5 lg:mb-8 2xl:mb-12 text-white">What You Get</h2>
+        <div className="flex justify-between items-center mb-7 lg:mb-8 2xl:mb-12">
+          <h2 className="text-80 leading-[1.125]  text-white">What You Get</h2>
           <div className="flex gap-4">
             <button onClick={() => swiperRef.current?.swiper.slidePrev()}><Image src={assets.arrowLeft} alt="" width={20} height={20} className="cursor-pointer brightness-0 invert-100 hover:brightness-100 hover:invert-0 hover:scale-125 transition-all duration-300" /></button>
             <button onClick={() => swiperRef.current?.swiper.slideNext()}><Image src={assets.arrowRight} alt="" width={20} height={20} className="cursor-pointer brightness-0 invert-100 hover:brightness-100 hover:invert-0 hover:scale-125 transition-all duration-300" /></button>

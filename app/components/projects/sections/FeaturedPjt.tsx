@@ -56,7 +56,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                 <div className="mb-5 md:mb-0" >
                     <Listbox value={sectorselected} onChange={setsectorSelected}>
                     <div className="relative">
-                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 lg:p-7 text-left   border-0  ">
+                        <Listbox.Button className="focus:outline-none flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 lg:p-7 text-left   border-0  ">
                         <span>{sectorselected.name}</span>
                         <ChevronDown size={18} />
                         </Listbox.Button>
@@ -68,7 +68,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                         leaveTo="opacity-0"
                         >
                         <Listbox.Options
-                            className="absolute mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200  z-10 bg-white "
+                            className="focus:outline-none absolute mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200  z-10 bg-white "
                         >
                             {sector.map((option) => (
                             <Listbox.Option
@@ -96,7 +96,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                 <div className="mb-5 md:mb-0"  >
                     <Listbox value={Statusselected} onChange={setStatusSelected}>
                     <div className="relative">
-                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 lg:p-7 text-left  border-0 ">
+                        <Listbox.Button className=" focus:outline-none flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 lg:p-7 text-left  border-0 ">
                         <span>{Statusselected.name}</span>
                         <ChevronDown size={18} />
                         </Listbox.Button>
@@ -108,7 +108,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                         leaveTo="opacity-0"
                         >
                         <Listbox.Options
-                            className="absolute mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200 z-10  bg-white "
+                            className="focus:outline-none absolute mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200 z-10  bg-white "
                         >
                             {Status.map((option) => (
                             <Listbox.Option
@@ -136,7 +136,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                 <div >
                     <Listbox value={Locationselected} onChange={setLocationSelected}>
                     <div className="relative">
-                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 lg:p-7 text-left  border-0 ">
+                        <Listbox.Button className="focus:outline-none flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 lg:p-7 text-left  border-0 ">
                         <span>{Locationselected.name}</span>
                         <ChevronDown size={18} />
                         </Listbox.Button>
@@ -148,7 +148,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                         leaveTo="opacity-0"
                         >
                         <Listbox.Options
-                            className="absolute mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200 z-10  bg-white "
+                            className="focus:outline-none absolute mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200 z-10  bg-white "
                         >
                             {Location.map((option) => (
                             <Listbox.Option
