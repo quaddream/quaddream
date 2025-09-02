@@ -49,7 +49,7 @@ type BannerProps = {
     }, []);
   return (
     <section className='py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10  bg-white mt-[-4.5%] '>
-            <div className='container flex flex-col gap-8 lg:gap-12'>
+            <div className='container flex flex-col gap-5 lg:gap-12'>
                     <div className=' w-full gap-y-4'>
                     
                     <motion.div className='flex flex-col' variants={containerStagger} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>
@@ -60,7 +60,7 @@ type BannerProps = {
                             whileInView="show"
                             transition={{ duration: 0.6 }}
                             viewport={{ amount: 0.1, once: true }}
-                            className='text-80 leading-[1.153846153846154] mb-6 lg:mb-12'
+                            className='text-80 leading-[1.153846153846154] mb-5 lg:mb-12'
                         >
                             Comprehensive Scaffolding Solutions Under One Roof
                         </motion.h2>
