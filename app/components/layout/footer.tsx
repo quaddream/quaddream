@@ -105,7 +105,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
-      <div className="fixed bottom-35 right-[2px] w-full z-99999 cursor-pointer">
+      <div className="fixed bottom-18 right-[2px] w-full z-99999 cursor-pointer">
         <div className="container flex justify-end pointer-events-none">
           <div className="rounded-full">
             <Image
