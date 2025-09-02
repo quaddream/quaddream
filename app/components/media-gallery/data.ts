@@ -22,7 +22,7 @@ export const bannersection = {
       {
         id: 1,
         category: "Team at Work",
-        images: ["/assets/images/gallery/team-at-work/11.jpg", "/assets/images/gallery/team-at-work/22.jpg","/assets/images/gallery/team-at-work/33.jpg","/assets/images/gallery/team-at-work/11.jpg","/assets/images/gallery/team-at-work/22.jpg"],
+        images: ["/assets/images/gallery/team-at-work/111.jpg","/assets/images/gallery/team-at-work/11.jpg", "/assets/images/gallery/team-at-work/22.jpg","/assets/images/gallery/team-at-work/33.jpg","/assets/images/gallery/team-at-work/11.jpg","/assets/images/gallery/team-at-work/22.jpg"],
       },
       {
         id: 2,
