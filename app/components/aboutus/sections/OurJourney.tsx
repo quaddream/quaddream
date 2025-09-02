@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react"; 
+import React, { useEffect, useState, useRef } from "react"; 
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay, Thumbs } from "swiper/modules";
@@ -25,6 +25,8 @@ type MissionProps = {
 const OurJourney: React.FC<MissionProps> = ({ Data }) => { 
   
 
+  const prevRef = useRef<HTMLDivElement>(null);
+  const nextRef = useRef<HTMLDivElement>(null);
   const textVariant = {
     hidden: { opacity: 0, y: 40 },
     show: { 
@@ -86,34 +88,57 @@ const OurJourney: React.FC<MissionProps> = ({ Data }) => {
 
     <section className="pt-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative  bg-[#F9F9F9]"
     >
-     <div className="bg-contain pb-150  bg-no-repeat bg-left" style={{backgroundImage: `url(/assets/images/aboutus/abtbgs.png)`, }}>
+     <div className="bg-contain pb-150  bg-no-repeat bg-left  " style={{backgroundImage: `url(/assets/images/aboutus/abtbgs.png)`, backgroundPositionY:"40px"}}>
      <div className="container ">
     
-    <div>
-      <h2 className="text-80 leading-[1.125] mb-6 lg:mb-10  text-black">
+    <div className="flex justify-between items-end mb-6 lg:mb-12">
+      <h2 className="text-80 leading-[1.125]  text-black">
         {Data[0].heading}
       </h2>
+            <div className="flex justify-end gap-3 md:gap-4">
+              {/* Prev button */}
+              <div
+                ref={prevRef}
+                className="group cursor-pointer transition-transform duration-300 hover:scale-[1.4] group hover:-translate-x-1"
+              > 
+                <Image src="/assets/images/icons/arrow-left.svg" alt="" width={16} height={16} className="min-w-[16px] min-h-[16px]  brightness-0 invert-0 group-hover:brightness-100  transition-all duration-300" />
+               
+              </div>
+  
+              {/* Next button */}
+              <div
+                ref={nextRef}
+                className="group cursor-pointer transition-transform duration-300 hover:scale-[1.4] hover:translate-x-1 group"
+              >
+                <Image src="/assets/images/icons/arrow-right.svg" alt="" width={16} height={16} className="min-w-[16px] min-h-[16px] brightness-0 invert-0 group-hover:brightness-100   transition-all duration-300 " />
+               
+              </div>
+            </div>
     </div>
     <div className="relative"> 
 <div className="absolute h-full w-4/7 right-0 yrslider hidden md:block">
 <Swiper
-  onSwiper={setThumbsSwiper}
-  slidesPerView={3}
-  spaceBetween={60}
+  onSwiper={setThumbsSwiper} 
+  spaceBetween={190}
   loop={true}   
-  
+  navigation={{
+    prevEl: prevRef.current,
+    nextEl: nextRef.current,
+  }}
   allowTouchMove={false}    
 simulateTouch={false} 
   breakpoints={{
     0: {
       slidesPerView: 2,
+      spaceBetween:45
     },
     768: {
       slidesPerView: 2,
+      spaceBetween:55
     },
     
     992: {
-      slidesPerView: 3,
+      slidesPerView: 4,
     },
   }}
   watchSlidesProgress={true}
@@ -150,6 +175,10 @@ spaceBetween={40}
 loop={true}
 speed={800}
 modules={[Navigation, Autoplay, Thumbs]}
+navigation={{
+  prevEl: prevRef.current,
+  nextEl: nextRef.current,
+}}
 thumbs={{ swiper: thumbsSwiper }}
 onSlideChange={(swiper) => {
   if (thumbsSwiper) {
@@ -170,7 +199,7 @@ onSlideChange={(swiper) => {
         <h3 className="text-80 xl:text-[150px] font-light mb-5 md:mb-7 leading-[1.125] text-black">
           {item.year}
         </h3>
-        <p className="text-19 leading-[1.684210526315789] max-w-[75ch] mb-0 text-gray-para">
+        <p className="text-19 leading-[1.684210526315789] max-w-[50ch] mb-0 text-gray-para">
           {item.description}
         </p>
       </motion.div>
@@ -190,7 +219,7 @@ onSlideChange={(swiper) => {
           alt=""
           width={673}
           height={320}
-          className="img-fluid group-hover:brightness-0 group-hover:invert-100 transition-all duration-300  object-cover"
+          className="img-fluid group-hover:brightness-0 rounded-2xl group-hover:invert-100 transition-all duration-300  object-cover"
         />
       </motion.div>
     </div>

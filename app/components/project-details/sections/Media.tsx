@@ -6,7 +6,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
-import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
+
 
 
 type QAItem = {
@@ -63,26 +63,25 @@ const Media: React.FC<QualityAssuranceProps> = ({qaData}) => {
        
         <div className="flex xl:flex-row flex-col items-end xl:gap-[75px] gap-[10px]  ">
             
-          <div className="flex justify-end gap-1"> 
-            <div
-              ref={prevRef}
-              className="group cursor-pointer transition-transform duration-300 hover:scale-[1.75] hover:-translate-x-3"
-            >
-              <IoIosArrowRoundBack
-                size={24}
-                className="text-black transition-colors duration-300 group-hover:text-primary"
-              />
-            </div> 
-            <div
-              ref={nextRef}
-              className="group cursor-pointer transition-transform duration-300 hover:scale-[1.75] hover:translate-x-3"
-            >
-              <IoIosArrowRoundForward
-                size={24}
-                className="text-black transition-colors duration-300 group-hover:text-primary"
-              />
-            </div>
-          </div>
+           <div className="flex justify-end gap-3 md:gap-5">
+                      {/* Prev button */}
+                      <div
+                        ref={prevRef}
+                        className="group cursor-pointer transition-transform duration-300 hover:scale-[1.4] group hover:-translate-x-1"
+                      > 
+                        <Image src="/assets/images/icons/arrow-left.svg" alt="" width={24} height={24} className="w-[16px] h-[16px]  brightness-0 invert-0 group-hover:brightness-100  transition-all duration-300" />
+                       
+                      </div>
+          
+                      {/* Next button */}
+                      <div
+                        ref={nextRef}
+                        className="group cursor-pointer transition-transform duration-300 hover:scale-[1.4] hover:translate-x-1 group"
+                      >
+                        <Image src="/assets/images/icons/arrow-right.svg" alt="" width={24} height={24} className="w-[24px] h-[24px] brightness-0 invert-0 group-hover:brightness-100   transition-all duration-300 " />
+                       
+                      </div>
+                    </div>
         </div>
         </div>
 

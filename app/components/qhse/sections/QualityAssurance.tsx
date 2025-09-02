@@ -6,7 +6,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
-import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
+
 
 
 type QAItem = {
@@ -46,27 +46,23 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({qaData}) => {
             </p>
           </div>
           {/* Navigation buttons */}
-          <div className="flex justify-end gap-1">
+          <div className="flex justify-end gap-3 md:gap-5">
             {/* Prev button */}
             <div
               ref={prevRef}
-              className="group cursor-pointer transition-transform duration-300 hover:scale-[1.75] hover:-translate-x-3"
-            >
-              <IoIosArrowRoundBack
-                size={24}
-                className="text-black transition-colors duration-300 group-hover:text-primary"
-              />
+              className="group cursor-pointer transition-transform duration-300 hover:scale-[1.4] group hover:-translate-x-1"
+            > 
+              <Image src="/assets/images/icons/arrow-left.svg" alt="" width={24} height={24} className="min-w-[24px] min-h-[24px]  brightness-0 invert-0 group-hover:brightness-100  transition-all duration-300" />
+             
             </div>
 
             {/* Next button */}
             <div
               ref={nextRef}
-              className="group cursor-pointer transition-transform duration-300 hover:scale-[1.75] hover:translate-x-3"
+              className="group cursor-pointer transition-transform duration-300 hover:scale-[1.4] hover:translate-x-1 group"
             >
-              <IoIosArrowRoundForward
-                size={24}
-                className="text-black transition-colors duration-300 group-hover:text-primary"
-              />
+              <Image src="/assets/images/icons/arrow-right.svg" alt="" width={24} height={24} className="min-w-[24px] min-h-[24px] brightness-0 invert-0 group-hover:brightness-100   transition-all duration-300 " />
+             
             </div>
           </div>
         </div>
@@ -104,8 +100,8 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({qaData}) => {
                 <Image
                   src={item.icon}
                   alt={item.content}
-                  width={48}
-                  height={48}
+                  width={67}
+                  height={57}
                 />
                 <p className="text-black text-19 md:text-25 leading-[1.6]">
                   {item.content}
