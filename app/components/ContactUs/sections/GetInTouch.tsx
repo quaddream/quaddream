@@ -62,7 +62,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
   }, []);
   return (
     <section className="py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10  bg-white mt-[-4.5%] ">
-      <div className="container flex flex-col gap-8 md:gap-12">
+      <div className="container flex flex-col gap-5 md:gap-8 lg:gap-12">
         <div className=" w-full gap-y-4">
           <motion.div
             className="flex flex-col"
@@ -79,7 +79,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
               whileInView="show"
               transition={{ duration: 0.6 }}
               viewport={{ amount: 0.1, once: true }}
-              className="text-80 leading-[1.153846153846154] mb-6 md:mb-12"
+              className="text-80 leading-[1.12] mb-5 md:mb-8 lg:mb-12"
             >
               {Data[0].title}
             </motion.h2>
@@ -100,23 +100,23 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
 
 
         <div> 
-      <div className="flex gap-8 border-b border-[#BEBEBE]">
+      <div className="flex gap-[14px] sm:gap-8 border-b border-[#BEBEBE]">
         {Data[0].items.map((item, index) => (
           <button
             key={index}
             onClick={() => setActiveIndex(index)}
             className={`group flex items-center gap-10 sm:gap-20 border-b-3 
-              ${activeIndex === index ? "border-primary text-black" : "border-transparent text-[#696969]"} 
+              ${activeIndex === index ? "border-primary text-black" : "border-transparent text-gray-para"} 
               hover:text-black relative top-[1.5px] transition-all duration-300 cursor-pointer`}
           >
-            <h3 className="relative text-20 md:text-25 leading-[1.6] pb-5 transition-all duration-300 max-w-[15ch]">
+            <h3 className="relative text-19 md:text-25 leading-[1.6] pb-2 md:pb-5 transition-all duration-300 max-w-[15ch]">
               {item.location}
             </h3>
           </button>
         ))}
       </div>
  
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-5 lg:mt-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-5 md:mt-8 lg:mt-12">
         <div> 
           <div className="border rounded-2xl mb-5 lg:mb-7 p-7 border-lite-gray hover:border-primary transition-all duration-300">
             <div className="flex items-center gap-5 border-b border-lite-gray mb-5 pb-5">
@@ -136,7 +136,8 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
             </div>
             <div className="flex items-center gap-4 lg:gap-7  flex-wrap">
               {Data[0].items[activeIndex].contact.map((item, index) => (
-                <div key={index} className="flex items-center gap-3">
+                <a href={`tel:${item}`} key={index}>
+                <div  className="flex items-center gap-3">
                   <Image
                     src="/assets/images/contactus/call.svg"
                     alt="call"
@@ -146,6 +147,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
                   />
                   <p className="text-19 text-black">{item}</p>
                 </div>
+                </a>
               ))}
             </div>
           </div>
@@ -168,7 +170,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
             </div>
             <div className="flex items-center gap-4 lg:gap-7 flex-wrap">
               {Data[0].items[activeIndex].mail?.map((email, index) => (
-                <div key={index} className="flex items-center gap-3">
+                <a href={`mailto:${email}`} key={index} className="flex items-center gap-3">
                   <Image
                     src="/assets/images/contactus/msg.svg"
                     alt="email"
@@ -177,13 +179,13 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
                     className="w-[18px] h-[18px] lg:w-[24px] lg:h-[24px]"
                   />
                   <p className="text-19 text-black">{email}</p>
-                </div>
+                </a>
               ))}
             </div>
           </div>
 
-          <div className="flex mt-5 md:mt-7 gap-2 cursor-pointer group w-fit">
-            <p className="text-30 mb-0 text-primary border-b border-primary transition-all duration-300 group-hover:pb-1 group-hover:border-b-2">
+          <div className="flex mt-7 md:mt-7 gap-2 cursor-pointer group w-fit ml-auto lg:ml-0">
+            <p className="text-19 lg:text-30 mb-0 text-primary border-b border-primary transition-all duration-300 group-hover:pb-1 group-hover:border-b-2">
               GET DIRECTION
             </p>
             <Image
@@ -191,13 +193,13 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
               alt="direction"
               width={19}
               height={19}
-              className="border-b border-primary transition-transform duration-300 group-hover:translate-x-1"
+              className="border-b border-primary transition-transform duration-300 group-hover:translate-x-1  "
             />
           </div>
         </div>
 
         <div>
-          <div className="mb-7">
+          <div className="mb-3 md:mb-7">
             <Image
               src={Data[0].items[activeIndex].image}
               alt={Data[0].items[activeIndex].location}

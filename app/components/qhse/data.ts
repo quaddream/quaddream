@@ -73,7 +73,7 @@ export const environmentalData = {
     },
     {
       icon: "/assets/images/qhse/environment/eco.svg",
-      text: "Eco-friendly material usage wherepossible",
+      text: "Eco-friendly material usage where possible",
     },
     {
       icon: "/assets/images/qhse/environment/waste.svg",

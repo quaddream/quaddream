@@ -7,7 +7,7 @@ import { BlogType } from "../data";
 
 const BlogCard = ({ blogData }: { blogData: BlogType[] }) => {
   return (
-    <div className="flex flex-col md:flex-row items-center gap-[10px] xl:gap-[88px] mb-[20px] lg:mb-[110px]">
+    <div className="flex flex-col md:flex-row items-center gap-5 md:gap-9 lg:gap-12 xl:gap-[88px]  mb-8 lg:mb-[110px]">
       {/* Left Image */}
       <div className="w-full md:w-[45%] flex-shrink-0">
         <Image

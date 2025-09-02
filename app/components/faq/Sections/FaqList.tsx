@@ -53,14 +53,14 @@ const FaqList = ({ faqData }: { faqData: FaqContent }) => {
     <section className="relative z-10 bg-background py-124 xl:py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%] overflow-hidden">
       <div className="container">
         {/* Heading */}
-        <h1 className="text-80  leading-[1.12] mb-[15px] xl:mb-[50px] text-black">
+        <h1 className="text-80  leading-[1.12] mb-6 md:mb-8 lg:mb-12 text-black">
           {data.heading}
         </h1>
-        <p className="text-gray-para text-19 leading-[1.7] mb-[15px] xl:mb-[50px]">
+        <p className="text-gray-para text-19 leading-[1.7] mb-6 md:mb-8 lg:mb-12 max-w-[107ch]">
           {data.description}
         </p>
         {/* Tabs */}
-        <div className="hidden md:flex gap-[35px] xl:gap-[55px] border-b border-lite-gray mb-[50px]">
+        <div className="hidden md:flex gap-[35px] xl:gap-[55px] border-b border-lite-gray mb-6 lg:mb-[50px]">
           {data.categories.map((cat) => (
             <button
               key={cat.category}
@@ -81,7 +81,7 @@ const FaqList = ({ faqData }: { faqData: FaqContent }) => {
         </div>
 
         {/* Mobile Dropdown */}
-        <div className="block md:hidden mb-[20px]">
+        <div className="block md:hidden mb-7">
           <Select
             instanceId="category-select"
             options={data.categories.map((cat) => ({
@@ -117,19 +117,19 @@ const FaqList = ({ faqData }: { faqData: FaqContent }) => {
         </div>
 
         {/* FAQ Items */}
-        <div className="space-y-[25px] lg:space-y-[50px] ">
+        <div className="space-y-4 lg:space-y-[50px] ">
           {paginatedItems?.map((item) => (
             <div
               key={item.question}
-              className="border-b border-lite-gray pb-[25px] lg:pb-[50px] cursor-pointer"
+              className="border-b border-lite-gray pb-3 lg:pb-12 cursor-pointer"
               onClick={() => handleToggle(item.question)}
             >
               {/* Question Text */}
-              <div className="flex justify-between lg:items-center gap-[15px]">
-                <h3 className="lg:text-30 text-25 lg:leading-[40px] leading-[36px] text-black">
+              <div className="flex justify-between lg:items-center gap-[15px] items-center">
+                <h3 className="lg:text-30 text-19  leading-[1.35] text-black">
                   {item.question}
                 </h3>
-                <span className="flex items-start lg:items-center mt-3 lg:mt-0 flex-shrink-0">
+                <span className="flex items-start lg:items-center flex-shrink-0">
                   {openQuestion === item.question ? (
                     <Image
                       src="/assets/images/faqUp.svg"

@@ -32,7 +32,7 @@ export default function PartnersSection({ title, description, items,bgImg }: Par
         <motion.h2 className="text-80 mb-5 lg:mb-[50px] leading-[1.125]" variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
           {title}
         </motion.h2>
-        <motion.p className="text-19 text-[#696969] leading-[1.7] lg:max-w-[758px] mb-[29.7px] font-normal" variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>{description}</motion.p>
+        <motion.p className="text-19 text-gray-para leading-[1.7] lg:max-w-[758px] mb-[29.7px] font-normal" variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>{description}</motion.p>
         <Swiper
           modules={[Autoplay, Pagination]}
           spaceBetween={0}

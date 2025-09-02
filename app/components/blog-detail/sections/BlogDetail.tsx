@@ -36,7 +36,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({blogDetail}) => {
             <div className="text-19 font-normal flex mb-[20px] justify-between items-center">
               <div className="flex gap-[50px] items-center">
                 <span className="text-primary">{blogDetail.category}</span>
-                <span className="text-[#696969]">{blogDetail.date}</span>
+                <span className="text-gray-para">{blogDetail.date}</span>
               </div>
               <GoShareAndroid size={22} />
             </div>
@@ -58,7 +58,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({blogDetail}) => {
                     return (
                       <h2
                         key={idx}
-                        className="text-30 leading-[1.35] pt-[20px] lg:pt-[30px] text-black"
+                        className="text-25 md:text-30 leading-[1.35] pt-[20px] lg:pt-[30px] text-black"
                       >
                         {block.content}
                       </h2>

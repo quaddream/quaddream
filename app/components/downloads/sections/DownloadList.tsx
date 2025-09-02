@@ -68,7 +68,7 @@ export default function DocumentList() {
 
                   {/* Size */}
                   <div className="w-auto sm:w-1/4 flex justify-center sm:justify-end px-0 sm:px-4">
-                    <span className="text-19 text-[#696969] font-normal bg-[#F9F9F9] w-[77px] h-[42px] md:h-[52px] p-0 md:p-[10px] rounded-[60px] flex items-center justify-center">
+                    <span className="text-19 text-gray-para font-normal bg-[#F9F9F9] w-[77px] h-[42px] md:h-[52px] p-0 md:p-[10px] rounded-[60px] flex items-center justify-center">
                       {doc.size}
                     </span>
                   </div>

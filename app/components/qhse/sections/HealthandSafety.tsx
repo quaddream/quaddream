@@ -22,7 +22,7 @@ const HealthSafety = ({ safetyData }: HealthSafetyProps) => {
       <div className="container">
         {/* Heading */}
         <div>
-          <h2 className="text-80  leading-[1.13] mb-[15px] xl:mb-[50px] text-white">
+          <h2 className="text-80  leading-[1.13] mb-5 md:mb-8  lg:mb-12 text-white">
             {safetyData.heading}
           </h2>
           <p className="text-33 leading-[1.21] mb-[15px] xl:mb-[30px] text-white">
@@ -48,7 +48,7 @@ const HealthSafety = ({ safetyData }: HealthSafetyProps) => {
                   className="group-hover:invert group-hover:brightness-0 transition-all duration-300"
                 />
               </div>
-              <p className="text-25   leading-[1.6]  text-white">
+              <p className="text-19 md:text-25   leading-[1.6]  text-white">
                 {item.title}
               </p>
             </div>

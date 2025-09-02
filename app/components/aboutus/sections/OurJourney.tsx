@@ -90,7 +90,7 @@ const OurJourney: React.FC<MissionProps> = ({ Data }) => {
      <div className="container ">
     
     <div>
-      <h2 className="text-80 leading-[1.125] mb-4 lg:mb-10  text-black">
+      <h2 className="text-80 leading-[1.125] mb-6 lg:mb-10  text-black">
         {Data[0].heading}
       </h2>
     </div>
@@ -98,7 +98,7 @@ const OurJourney: React.FC<MissionProps> = ({ Data }) => {
 <div className="absolute h-full w-4/7 right-0 yrslider hidden md:block">
 <Swiper
   onSwiper={setThumbsSwiper}
-  slidesPerView={4}
+  slidesPerView={3}
   spaceBetween={60}
   loop={true}   
   
@@ -113,7 +113,7 @@ simulateTouch={false}
     },
     
     992: {
-      slidesPerView: 4,
+      slidesPerView: 3,
     },
   }}
   watchSlidesProgress={true}
@@ -170,7 +170,7 @@ onSlideChange={(swiper) => {
         <h3 className="text-80 xl:text-[150px] font-light mb-5 md:mb-7 leading-[1.125] text-black">
           {item.year}
         </h3>
-        <p className="text-19 leading-[1.684210526315789] max-w-[75ch] mb-0">
+        <p className="text-19 leading-[1.684210526315789] max-w-[75ch] mb-0 text-gray-para">
           {item.description}
         </p>
       </motion.div>
