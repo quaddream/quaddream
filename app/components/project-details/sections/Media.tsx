@@ -56,12 +56,12 @@ const Media: React.FC<QualityAssuranceProps> = ({qaData}) => {
           </div>
     <section className="py-150 overflow-hidden">
       <div className="container pb-150  border-b border-b-lite-gray">
-        <div className="flex justify-between items-end md:text-center">
-        <h2 className="text-80 leading-[1.12] mb-10 md:mb-12 text-black">
+        <div className="flex justify-between items-end mb-5 md:mb-8 lg:mb-12">
+        <h2 className="text-80 leading-[1.12]  text-black">
           {qaData.heading}
         </h2>
        
-        <div className="flex xl:flex-row flex-col items-end xl:gap-[75px] gap-[10px] mb-4 md:mb-0">
+        <div className="flex xl:flex-row flex-col items-end xl:gap-[75px] gap-[10px]  ">
             
           <div className="flex justify-end gap-1"> 
             <div

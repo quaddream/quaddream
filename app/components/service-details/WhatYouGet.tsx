@@ -49,7 +49,7 @@ const WhatYouGet = () => {
           className="what-you-get-swiper !overflow-visible"
           >
          {serviceDetails.secondSection.items.map((item, index) => (
-          <SwiperSlide key={index} className="border group hover:bg-primary hover:border-primary transition-all duration-300">
+          <SwiperSlide key={index} className="border group hover:bg-primary hover:border-primary border-lite-gray transition-all duration-300">
             <div className="p-10 flex flex-col justify-between h-[250px] xl:h-[299px]">
               <Image src={item.icon} alt="" width={50} height={50} className="group-hover:brightness-0 group-hover:invert-100 transition-all duration-300" />
                <h3 className="text-33 leading-[1.212121212121212] text-white">{item.title}</h3>
