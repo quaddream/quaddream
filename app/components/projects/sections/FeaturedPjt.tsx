@@ -80,12 +80,11 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                                 }`
                                 }
                             >
-                                {({ selected }) => (
+                                 
                                 <div className="flex items-center justify-between">
                                     <span>{option.name}</span>
                                     
-                                </div>
-                                )}
+                                </div> 
                             </Listbox.Option>
                             ))}
                         </Listbox.Options>
@@ -119,13 +118,11 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                                     active ? "bg-primary text-white" : "text-gray-700"
                                 }`
                                 }
-                            >
-                                {({ selected }) => (
+                            > 
                                 <div className="flex items-center justify-between">
                                     <span>{option.name}</span>
                                     
-                                </div>
-                                )}
+                                </div> 
                             </Listbox.Option>
                             ))}
                         </Listbox.Options>
@@ -159,13 +156,11 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                                     active ? "bg-primary text-white" : "text-gray-700"
                                 }`
                                 }
-                            >
-                                {({ selected }) => (
+                            > 
                                 <div className="flex items-center justify-between ">
                                     <span>{option.name}</span>
                                     
-                                </div>
-                                )}
+                                </div> 
                             </Listbox.Option>
                             ))}
                         </Listbox.Options>
