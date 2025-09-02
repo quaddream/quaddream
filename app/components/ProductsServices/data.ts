@@ -46,28 +46,7 @@
     }
   ]
   };
-  export const corevaluesection = {
-    data:[
-      {
-      heading: "Our Core Values", 
-      subheading:"We are committed to delivering trusted, forward-thinking scaffolding solutions while building strong, long-term client relationships.",
-      items: [
-        { icon:"/assets/images/aboutus/value1.svg",
-           title: "Reliability", 
-           },
-           { icon:"/assets/images/aboutus/value2.svg", 
-             title: "Safety", 
-            }, 
-            { icon:"/assets/images/aboutus/value3.svg", 
-              title: "Innovation", 
-             }, 
-             { icon:"/assets/images/aboutus/value4.svg", 
-               title: "Partnership", 
-              }, 
-      ],
-    }
-  ]
-  };
+   
   
   export const ctaSection = {
     title: "Want to Work With a Reliable Partner?",
