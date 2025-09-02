@@ -83,7 +83,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                                 {({ selected }) => (
                                 <div className="flex items-center justify-between">
                                     <span>{option.name}</span>
-                                    {selected && <Check size={16} />}
+                                    
                                 </div>
                                 )}
                             </Listbox.Option>
@@ -123,7 +123,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                                 {({ selected }) => (
                                 <div className="flex items-center justify-between">
                                     <span>{option.name}</span>
-                                    {selected && <Check size={16} />}
+                                    
                                 </div>
                                 )}
                             </Listbox.Option>
@@ -163,7 +163,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                                 {({ selected }) => (
                                 <div className="flex items-center justify-between ">
                                     <span>{option.name}</span>
-                                    {selected && <Check size={16} />}
+                                    
                                 </div>
                                 )}
                             </Listbox.Option>
@@ -216,13 +216,16 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
             {Data[0].items.map((item,index)=>(
             <div className="h-[300px] lg:h-[408px] xl:h-[502px] overflow-hidden rounded-xl bg-cover bg-center relative group bgrd" style={{backgroundImage: `url(${item.image})`,}} key={index}>
                     <div className="absolute bottom-0 w-full p-7 lg:p-10 z-10 ">
-                    <div className=" flex items-center justify-between lg:mb-7 lg:pb-7 mb-3 pb-3 border-b-3  border-white group-hover:border-primary transition-all duration-300">
+                    <div className="relative flex items-center justify-between lg:mb-7 lg:pb-7 mb-3 pb-3 border-b-3  border-white  transition-all duration-300">
                         <div className="flex items-center gap-2">
                         <Image src={item.icon} alt={item.title} width={20} height={20}  /> 
                             <p className="transition-all duration-300 text-white">{item.city}</p> 
                         </div>
                         <div>
                             <p className="transition-all duration-300 text-white">{item.status}</p>
+                        </div>
+                        <div className="absolute bottom-[-3px] w-0 h-[3px] group-hover:w-full bg-primary  transition-all duration-300">
+                             
                         </div>
                     </div>
                     <div>
