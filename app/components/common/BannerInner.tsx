@@ -38,7 +38,7 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
             </div>
           )}
 
-          <div className="pt-5 pb-3 lg:pt-16 xl:pt-[135px]   lg:pb-15 xl:pb-[100px]">
+          <div className="pt-5 pb-3 lg:pt-16 xl:pt-[135px]   lg:pb-15 xl:pb-19">
             <ul className="flex gap-2 md:gap-3 items-center">
               {bannerData.map((item) =>
                 item.navigation.map((nav, navIndex) => (

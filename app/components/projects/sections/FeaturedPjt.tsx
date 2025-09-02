@@ -25,14 +25,17 @@ const sector = [
   { id: 3, name: "Sector 3" },
 ];
 const Status = [
-  { id: 1, name: "Completed" },
-  { id: 2, name: "In Progress" },
-  { id: 3, name: "Upcoming" },
+    
+  { id: 1, name: "Status" },
+  { id: 2, name: "Completed" },
+  { id: 3, name: "In Progress" },
+  { id: 4, name: "Upcoming" },
 ];
 const Location = [
-  { id: 1, name: "Abu Dhabi" },
-  { id: 2, name: "Dubai" },
-  { id: 3, name: "Sharjah" },
+    { id: 1, name: "Location" },
+    { id: 2, name: "Abu Dhabi" },
+  { id: 3, name: "Dubai" },
+  { id: 4, name: "Sharjah" },
 ];
 const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
   const [sectorselected, setsectorSelected] = useState(sector[0]);
@@ -44,16 +47,16 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
       <div className="container ">
         <div>
           <h2 className="text-80 leading-[1.125] mb-10  text-black">{Data[0].heading}</h2>
-          <p className="text-19 leading-[1.684210526315789] mb-0 max-w-[65ch] text-[#696969]">
+          <p className="text-19 leading-[1.684210526315789] mb-0 max-w-[65ch] text-gray-para">
             {Data[0].desc}
           </p>
         </div>
-        <div className="flex md:flex-row flex-col items-center justify-between gap-5 my-7 mb-12 pb-12 border-b border-lite-gray">
-            <div className="md:grid md:grid-cols-3 gap-5 w-full md:w-5/7 2xl:w-6/7 justify-between">
+        <div className="flex md:flex-row flex-col items-center justify-between gap-5 lg:gap-8 my-7 mb-12 pb-12 border-b border-lite-gray">
+            <div className="md:grid md:grid-cols-3 gap-5 lg:gap-8 w-full md:w-5/7 2xl:w-6/7 justify-between">
                 <div className="mb-5 md:mb-0" >
                     <Listbox value={sectorselected} onChange={setsectorSelected}>
                     <div className="relative">
-                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 md:p-7 text-left shadow-sm border-0  ">
+                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 md:p-7 text-left   border-0  ">
                         <span>{sectorselected.name}</span>
                         <ChevronDown size={18} />
                         </Listbox.Button>
@@ -65,7 +68,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                         leaveTo="opacity-0"
                         >
                         <Listbox.Options
-                            className="absolute mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200  z-10 bg-white shadow-lg"
+                            className="absolute mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200  z-10 bg-white "
                         >
                             {sector.map((option) => (
                             <Listbox.Option
@@ -93,7 +96,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                 <div className="mb-5 md:mb-0"  >
                     <Listbox value={Statusselected} onChange={setStatusSelected}>
                     <div className="relative">
-                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 md:p-7 text-left shadow-sm border-0 ">
+                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 md:p-7 text-left  border-0 ">
                         <span>{Statusselected.name}</span>
                         <ChevronDown size={18} />
                         </Listbox.Button>
@@ -105,7 +108,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                         leaveTo="opacity-0"
                         >
                         <Listbox.Options
-                            className="absolute mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200 z-10  bg-white shadow-lg"
+                            className="absolute mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200 z-10  bg-white "
                         >
                             {Status.map((option) => (
                             <Listbox.Option
@@ -133,7 +136,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                 <div >
                     <Listbox value={Locationselected} onChange={setLocationSelected}>
                     <div className="relative">
-                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 md:p-7 text-left shadow-sm border-0 ">
+                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 md:p-7 text-left  border-0 ">
                         <span>{Locationselected.name}</span>
                         <ChevronDown size={18} />
                         </Listbox.Button>
@@ -145,7 +148,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                         leaveTo="opacity-0"
                         >
                         <Listbox.Options
-                            className="absolute mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200 z-10  bg-white shadow-lg"
+                            className="absolute mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200 z-10  bg-white "
                         >
                             {Location.map((option) => (
                             <Listbox.Option
@@ -172,20 +175,47 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                 </div>
             </div>
             <div className="w-full md:w-2/7 2xl:w-1/7">
-                <div className="flex items-center justify-center ">
-                <button className="bg-primary text-white p-5 md:p-7 rounded-full w-full md:w-[219px] flex items-center justify-between"><p>search</p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M22 22L20 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                </button>
-                </div>
+            <div className="flex items-center justify-center">
+  <button
+    className="group bg-primary text-white border-2 border-transparent 
+               p-5 md:p-7 rounded-full w-full md:w-[219px] flex items-center justify-between 
+               cursor-pointer transition-all duration-300 ease-in-out
+               hover:bg-white hover:text-primary hover:border-primary"
+  >
+    <p className="transition-colors duration-300">Search</p>
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      className="transition-transform duration-300 group-hover:scale-110 group-hover:stroke-primary"
+    >
+      <path
+        d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M22 22L20 20"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </button>
+</div>
+
             </div>
         </div>
-        <div className="grid md:grid-cols-3 gap-5 ">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 ">
             {Data[0].items.map((item,index)=>(
             <div className="h-[300px] lg:h-[408px] xl:h-[502px] overflow-hidden rounded-xl bg-cover bg-center relative group bgrd" style={{backgroundImage: `url(${item.image})`,}} key={index}>
-                    <div className="absolute bottom-0 w-full p-5 lg:p-10 z-10 ">
+                    <div className="absolute bottom-0 w-full p-7 lg:p-10 z-10 ">
                     <div className=" flex items-center justify-between lg:mb-7 lg:pb-7 mb-3 pb-3 border-b-3  border-white group-hover:border-primary transition-all duration-300">
                         <div className="flex items-center gap-2">
                         <Image src={item.icon} alt={item.title} width={20} height={20}  /> 
@@ -196,7 +226,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                         </div>
                     </div>
                     <div>
-                        <p className=" text-33 uppercase text-white">{item.title}</p>
+                        <p className=" text-33 leading-[1.2] uppercase text-white">{item.title}</p>
                     </div>
                     </div>
                     <div className="absolute top-0 w-full h-full bg-black opacity-50  rounded-xl  transition-all duration-300"></div>

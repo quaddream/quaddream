@@ -106,7 +106,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
             key={index}
             onClick={() => setActiveIndex(index)}
             className={`group flex items-center gap-10 sm:gap-20 border-b-3 
-              ${activeIndex === index ? "border-primary text-black" : "border-transparent text-[#696969]"} 
+              ${activeIndex === index ? "border-primary text-black" : "border-transparent text-gray-para"} 
               hover:text-black relative top-[1.5px] transition-all duration-300 cursor-pointer`}
           >
             <h3 className="relative text-20 md:text-25 leading-[1.6] pb-5 font-light transition-all duration-300 max-w-[15ch]">

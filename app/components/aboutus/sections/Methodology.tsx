@@ -20,7 +20,7 @@ type BannerProps = {
   return (
     <section >
    <div className="container">
-    <div style={{backgroundImage: `url(${Data[0].bgImg})`}} className='bg-top-right  p-5 pt-30 md:p-8 md:pt-35 lg:p-17  lg:pt-[237px] relative rounded-xl z-10'>
+    <div style={{backgroundImage: `url(${Data[0].bgImg})`}} className='bg-top-right  p-6 pt-32 md:p-8 md:pt-35 lg:p-17  lg:pt-[237px] relative rounded-xl z-10'>
     <div className='relative z-10  ' >
     <h2 className='text-white text-80 leading-[1.07] pb-6 md:pb-12 '>{Data[0].title}</h2>
     <p className='text-lite-gray text-19 leading-[1.684210526315789] mb-0'>{Data[0].description}</p>

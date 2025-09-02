@@ -36,7 +36,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({blogDetail}) => {
             <div className="text-19 font-normal flex mb-[20px] justify-between items-center">
               <div className="flex gap-[50px] items-center">
                 <span className="text-primary">{blogDetail.category}</span>
-                <span className="text-[#696969]">{blogDetail.date}</span>
+                <span className="text-gray-para">{blogDetail.date}</span>
               </div>
               <GoShareAndroid size={22} />
             </div>
