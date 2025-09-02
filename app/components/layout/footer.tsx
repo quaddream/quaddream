@@ -105,7 +105,9 @@ const Footer = () => {
           </p>
         </div>
       </div>
-      <div className="fixed bottom-4 lg:bottom-18 right-0 w-full z-[99999] cursor-pointer">
+      
+      <div className="container relative">
+      <div className="fixed bottom-4 lg:bottom-5 right-0 w-full z-10 cursor-pointer">
         <div className="container flex justify-end pointer-events-none">
           <div className="rounded-full pointer-events-auto">
             <div className="w-[42px] h-[42px] lg:w-[58px] lg:h-[58px]">
@@ -119,6 +121,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </footer>
   );

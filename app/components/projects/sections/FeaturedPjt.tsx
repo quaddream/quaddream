@@ -2,7 +2,7 @@
 import React, { useState, Fragment } from "react";
 import Image from "next/image";
 import { Listbox, Transition } from "@headlessui/react";
-import { Check, ChevronDown } from "lucide-react";
+import {  ChevronDown } from "lucide-react";
 
 type items = {
   title: string;
