@@ -21,23 +21,23 @@ export default function DocumentList() {
       {/* Tabs */}
       <div className="container">
         <div className="flex items-center justify-between border-b border-lite-gray">
-          <div className="flex justify-start text-right w-full text-19 md:text-25 space-x-[50px] overflow-hidden">
+          <div className="flex justify-start text-right w-full text-19 md:text-25 space-x-[50px] ">
             <button
               onClick={() => setActiveTab("brochure")}
-              className={`pb-[16px] md:pb-[20px] text-black font-normal ${
+              className={`pb-[16px] md:pb-[20px] text-black font-normal cursor-pointer relative top-[2px] border-b-3  transition-all duration-300 ${
                 activeTab === "brochure"
-                  ? "border-b-3 border-primary"
-                  : "opacity-50"
+                  ? " border-primary"
+                  : "opacity-50 border-transparent"
               }`}
             >
               Company Brochure
             </button>
             <button
               onClick={() => setActiveTab("certificates")}
-              className={`pb-[16px] md:pb-[20px] text-black font-normal ${
+              className={`pb-[16px] md:pb-[20px] text-black font-normal cursor-pointer relative top-[2px] border-b-3  transition-all duration-300 ${
                 activeTab === "certificates"
-                  ? "border-b-3 border-primary"
-                  : "opacity-50"
+                  ? " border-primary"
+                  : "opacity-50 border-transparent"
               }`}
             >
               Certificates
@@ -49,7 +49,7 @@ export default function DocumentList() {
           {documents.map((doc, index) => (
             <div
               key={index}
-              className="border-b border-lite-gray pb-[18px] md:pb-[25px]"
+              className="border-b border-lite-gray pb-3 md:pb-5"
             >
               <div className="flex flex-col sm:flex-row gap-[1px] sm:gap-0">
                 {/* Document Name */}
@@ -68,7 +68,7 @@ export default function DocumentList() {
 
                   {/* Size */}
                   <div className="w-auto sm:w-1/4 flex justify-center sm:justify-end px-0 sm:px-4">
-                    <span className="text-19 text-[#696969] font-normal bg-[#F9F9F9] w-[77px] h-[52px] p-[10px] rounded-[60px] flex items-center justify-center">
+                    <span className="text-19 text-[#696969] font-normal bg-[#F9F9F9] w-[77px] h-[42px] md:h-[52px] p-0 md:p-[10px] rounded-[60px] flex items-center justify-center">
                       {doc.size}
                     </span>
                   </div>
@@ -81,7 +81,7 @@ export default function DocumentList() {
                         alt="Download"
                         width={28}
                         height={26}
-                        className="w-[28px] h-[26px]"
+                        className="w-6 h-6 md:w-[28px] md:h-[26px]"
                       />
                     </button>
                   </div>

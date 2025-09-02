@@ -38,8 +38,8 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
             </div>
           )}
 
-          <div className="pt-10 lg:pt-16 xl:pt-[135px] pb-10 lg:pb-15 xl:pb-[100px]">
-            <ul className="flex gap-4 items-center">
+          <div className="pt-5 pb-3 lg:pt-16 xl:pt-[135px]   lg:pb-15 xl:pb-[100px]">
+            <ul className="flex gap-2 md:gap-3 items-center">
               {bannerData.map((item) =>
                 item.navigation.map((nav, navIndex) => (
                   <li
@@ -49,13 +49,13 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
                     }`}
                   >
                     {nav.slug && (
-                      <div className="flex items-center gap-3">
-                        <Link href={nav.slug}>{nav.title}</Link>
+                      <div className="flex items-center gap-2 md:gap-3">
+                        <Link href={nav.slug} className="text-16 md:text-19">{nav.title}</Link>
                         <p className="w-[6px] h-[6px] bg-[#D9D9D9] rounded-full m-0"></p>
                       </div>
                     )}
 
-                    {!nav.slug && nav.title}
+                    <span className="text-16 md:text-19"> {!nav.slug && nav.title}</span>
                   </li>
                 ))
               )}
