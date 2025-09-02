@@ -76,7 +76,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                                 value={option}
                                 className={({ active }) =>
                                 `cursor-pointer px-4 py-2 ${
-                                    active ? "bg-blue-500 text-white" : "text-gray-700"
+                                    active ? "bg-primary text-white" : "text-gray-700"
                                 }`
                                 }
                             >
@@ -116,7 +116,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                                 value={option}
                                 className={({ active }) =>
                                 `cursor-pointer px-4 py-2 ${
-                                    active ? "bg-blue-500 text-white" : "text-gray-700"
+                                    active ? "bg-primary text-white" : "text-gray-700"
                                 }`
                                 }
                             >
@@ -156,7 +156,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                                 value={option}
                                 className={({ active }) =>
                                 `cursor-pointer px-4 py-2 ${
-                                    active ? "bg-blue-500 text-white" : "text-gray-700"
+                                    active ? "bg-primary text-white" : "text-gray-700"
                                 }`
                                 }
                             >
