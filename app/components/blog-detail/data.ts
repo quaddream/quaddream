@@ -102,6 +102,7 @@ export const bannersection = {
       bgImg: "/assets/images/blog-detail/banner.jpg",
       navigation: [
         { title: "Home", slug: "/" },
+        { title: "Blog", slug: "/blog" },
         { title: "Blog Detail", slug: "" },
       ],
     },

@@ -97,7 +97,7 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
               whileInView="show"
               transition={{ duration: 0.6 }}
               viewport={{ amount: 0.1, once: true }}
-              className="text-19 text-[#7f7f7f] leading-[1.684210526315789] mb-0 max-w-[107ch]"
+              className="text-19 text-gray-para leading-[1.684210526315789] mb-0 max-w-[107ch]"
             >
               {Data[0].description}
             </motion.p>
