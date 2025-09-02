@@ -36,7 +36,7 @@ export const FeaturedPjtdata = {
     bgImg: "/assets/images/projects/abtcta.jpg", 
     description: "Let's discuss how we can bring your vision to life. Our team of experts is ready to help you achieve your goals.",
     buttonText: "Contact Us Now",
-    buttonLink: "",
+    buttonLink: "/contact-us",
   };
 
 
