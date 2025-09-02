@@ -2,7 +2,7 @@ export const bannersection = {
   data: [
     {
       title: "Projects",
-      bgImg: "/assets/images/aboutus/banner.jpg",
+      bgImg: "/assets/images/projects/details/bnr.jpg",
       navigation: [
         { title: "Home", slug: "/" },
         { title: "Projects", slug: "" },

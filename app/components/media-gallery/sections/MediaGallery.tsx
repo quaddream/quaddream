@@ -21,14 +21,14 @@ interface MediaGalleryProps {
 const MediaGallery: React.FC<MediaGalleryProps> = ({ galleryData }) => {
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
   return (
-    <section className="relative bg-background py-124 xl:py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%] overflow-hidden">
+    <section className="relative   py-124 xl:py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%] z-10 bg-white overflow-hidden">
       <div className="container">
         {/* Title & Description */}
-        <div className="mb-[20px] xl:mb-[50px] ">
-          <h1 className="text-80 lg:leading-[90px] leading-[50px] mb-5 md:mb-8 lg:mb-12 text-black">
+        <div className="mb-6 xl:mb-12 ">
+          <h1 className="text-80  leading-[1.13] mb-5 md:mb-8 lg:mb-12 text-black">
             {galleryData.title}
           </h1>
-          <p className="text-gray-para text-19 leading-[32px] mb-[15px] xl:mb-[50px]">
+          <p className="text-gray-para text-19 leading-[1.7] mb-5 xl:mb-[50px] max-w-[105ch]">
             {galleryData.description}
           </p>
           <hr className="border-0 border-b border-lite-gray" />
@@ -47,7 +47,7 @@ const MediaGallery: React.FC<MediaGalleryProps> = ({ galleryData }) => {
                 alt={item.category}
                 width={487}
                 height={573}
-                className="w-full h-[480px] lg:h-[503px] 2xl:h-[573px] object-cover"
+                className="w-full h-[300px] md:h-[400px] lg:h-[503px] 2xl:h-[573px] object-cover"
               />
               {/* Black Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-100 rounded-[16px]" />
@@ -65,7 +65,7 @@ const MediaGallery: React.FC<MediaGalleryProps> = ({ galleryData }) => {
               {/* Category & small avatars (mocked) */}
               <div className="absolute bottom-0 text-white font-medium w-full 2xl:p-[40px] p-[30px] will-change-opacity">
                 <div className="flex justify-between gap-[10px] items-end">
-                  <h3 className="2xl:text-33 text-30 leading-[40px] text-white">
+                  <h3 className="2xl:text-33 text-25 leading-[40px] text-white">
                     {item.category}
                   </h3>
                   <div className="flex -space-x-2 items-center">

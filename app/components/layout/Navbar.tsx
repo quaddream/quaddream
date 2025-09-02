@@ -64,7 +64,7 @@ const renderHeader = ()=>{
       <div className={`w-full container`}>
         <div className={`px-3 2xl:pr-[37px] flex items-center justify-between w-full bg-white ${scrollY > 550 ? 'py-2 shadow-none' : 'rounded-full shadow-md py-[12px]'}`}>
           <div className={`mr-4 ${scrollY > 550 ? 'xl:w-[250px]' : 'xl:w-[404px] xl:pl-[1em] 2xl:pl-[2em]'}`}>
-            <Image src="/assets/images/logo-main.svg" alt="Logo" width={550} height={550} className='h-auto w-auto lg:h-[53px] xl:h-[65px] 2xl:h-[107px] object-contain' />
+           <Link href="/"> <Image src="/assets/images/logo-main.svg" alt="Logo" width={550} height={550} className='h-auto w-auto lg:h-[53px] xl:h-[65px] 2xl:h-[107px] object-contain' /></Link>
           </div>
           <ul className='flex w-fit lg:gap-3 xl:gap-7 2xl:gap-[43px] 2xl:pr-[37px] 2xl:ml-auto'>
             {menuItems.map((item, index) => {
@@ -80,9 +80,17 @@ const renderHeader = ()=>{
             })}
           </ul>
           <div className={`ml-6`}>
-            <button className={`bg-primary text-white rounded-full  text-nowrap cursor-pointer  ${scrollY > 550 ? 'py-2 px-4 text-sm' : 'py-[30px] px-[50px] xl:py-[30px] xl:px-[58.5px] text-19'}`}>
-            <Link href="/contact-us">  Contact Us</Link>
-            </button>
+          <button
+  className={`bg-primary text-white rounded-full text-nowrap cursor-pointer transition-all   duration-300 border border-primary
+    ${scrollY > 550 
+      ? "py-2 px-4 text-sm " 
+      : "py-[30px] px-[50px] xl:py-[30px] xl:px-[58.5px] text-19"}
+    hover:bg-white hover:text-primary   hover:border-primary    hover:translate-x-1  
+    active:scale-95`}
+>
+  <Link href="/contact-us"  >Contact Us</Link>
+</button>
+
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 export const serviceDetails = {
   data: [
     {
-      bgImg: "/assets/images/aboutus/banner.jpg",
+      bgImg: "/assets/images/productservices/pdtbanner.jpg",
       navigation: [
         { title: "Home", slug: "/" },
         { title: "Product and services", slug: "" },
