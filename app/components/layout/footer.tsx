@@ -15,8 +15,9 @@ const Footer = () => {
             alt="Logo"
             width={600}
             height={600}
-            className="h-auto w-auto xl:h-[102.43px] object-contain"
+            className="h-[100px] w-auto xl:h-[102.43px] object-contain"
           />
+
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="bg-white/20 hidden flex-shrink-0 hover:bg-white/30 transition rounded-full w-10 h-10 lg:w-[64px] lg:h-[64px] md:flex items-center justify-center cursor-pointer"
@@ -42,7 +43,7 @@ const Footer = () => {
                 <Link
                   key={index}
                   href={item.qLLink}
-                  className="text-30 font-light hover:text-[#EC1C24] cursor-pointer leading-[1.333333333333333] transition-all duration-300"
+                  className="text-25 md:text-30 font-light hover:text-[#EC1C24] cursor-pointer leading-[1.333333333333333] transition-all duration-300"
                 >
                   {item.qLTitle}
                 </Link>
@@ -105,7 +106,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
-      <div className="fixed bottom-4 lg:bottom-18 right-0 w-full z-[99999] cursor-pointer">
+      <div className="fixed bottom-4 lg:bottom-20 right-0 w-full z-[99999] cursor-pointer">
         <div className="container flex justify-end pointer-events-none">
           <div className="rounded-full pointer-events-auto">
             <div className="w-[42px] h-[42px] lg:w-[58px] lg:h-[58px]">
@@ -114,7 +115,7 @@ const Footer = () => {
                 alt="WhatsApp"
                 width={58}
                 height={58}
-                className="w-full h-full"
+                className="w-full h-full hover:scale-110 transition-all duration-300"
               />
             </div>
           </div>

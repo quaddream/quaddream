@@ -50,7 +50,7 @@ const AddressSection = () => {
   return (
     <div className="text-white">
 
-      <div className="flex flex-wrap gap-5 2xl:gap-[46px] mb-4">
+      <div className="flex flex-wrap gap-4 gap-x-8 md:gap-x-4 2xl:gap-[46px] mb-4">
   {Object.keys(addresses).map((key) => (
     <div key={key} className="flex items-center gap-4">
       {/* Round Indicator */}
@@ -59,7 +59,7 @@ const AddressSection = () => {
       {/* Button */}
       <button
         onClick={() => setSelected(key as AddressKey)}
-        className={`transition duration-200 text-30 font-normal cursor-pointer leading-[1.3] ${
+        className={`transition duration-200 text-25 md:text-30 font-normal cursor-pointer leading-[1.3] ${
           selected === key ? 'text-white' : 'text-[#828D91] hover:text-white '
         }`}
       >
@@ -74,7 +74,7 @@ const AddressSection = () => {
         {data.lines.map((line, i) => (
           <p className='text-[19px] text-[#B9B9B9] leading-[1.9]' key={i}>{line}</p>
         ))}
-        <div className="flex items-center gap-2 pt-2 text-[19px] text-[#B9B9B9] leading-[1.9]">
+        <div className="flex md:items-center gap-2 pt-2 text-[19px] text-[#B9B9B9] leading-[1.9]">
           <span className="mt-1 text-red-500">
             {/* Phone icon SVG */}
             <Image src="/assets/phone.svg" alt="Phone Icon" width={50} height={50} className='w-[24px] h-[24px]' />
