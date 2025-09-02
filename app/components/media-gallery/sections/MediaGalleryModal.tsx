@@ -55,7 +55,7 @@ const MediaGalleryModal: React.FC<MediaGalleryModalProps> = ({
             {/* Close Button on the right */}
             <button
               onClick={onClose}
-              className="ml-auto text-white text-[40px] font-light z-20"
+              className="ml-auto text-white text-[40px] font-light z-20 cursor-pointer"
             >
               &times;
             </button>
@@ -66,7 +66,7 @@ const MediaGalleryModal: React.FC<MediaGalleryModalProps> = ({
             {/* Navigation Buttons */}
             <button
               onClick={goPrev}
-              className="absolute left-0 lg:top-1/2 top-0 lg:-translate-y-1/2 translate-y-0"
+              className="absolute left-0 lg:top-1/2 top-0 lg:-translate-y-1/2 translate-y-0 cursor-pointer"
             >
               <SlArrowLeft className="text-white hover:text-primary transition-all duration-300 h-[20px] lg:h-[28px] w-[20px] lg:w-[28px]" />
             </button>
@@ -82,7 +82,7 @@ const MediaGalleryModal: React.FC<MediaGalleryModalProps> = ({
             </div>
             <button
               onClick={goNext}
-              className="absolute right-0 lg:top-1/2 top-0 lg:-translate-y-1/2 translate-y-0"
+              className="absolute right-0 lg:top-1/2 top-0 lg:-translate-y-1/2 translate-y-0 cursor-pointer"
             >
               <SlArrowRight className="text-white hover:text-primary transition-all duration-300 h-[20px] lg:h-[28px] w-[20px] lg:w-[28px]" />
             </button>
