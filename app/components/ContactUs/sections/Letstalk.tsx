@@ -69,7 +69,7 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
     <section className="pb-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10   ">
       <div className="container flex flex-col gap-12">
        
-        <div className="grid grid-cols-1 lg:grid-cols-2  gap-5 mt-5 lg:mt-12 border-b border-[#BEBEBE] pb-12 lg:pb-31" > 
+        <div className="grid grid-cols-1 lg:grid-cols-2  gap-5  border-b border-[#BEBEBE] pb-12 lg:pb-31" > 
           <div>
           <div className=" w-full gap-y-4">
           <motion.div
@@ -87,7 +87,7 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
               whileInView="show"
               transition={{ duration: 0.6 }}
               viewport={{ amount: 0.1, once: true }}
-              className="text-80 leading-[1.153846153846154] mb-10 text-black"
+              className="text-80 leading-[1.153846153846154] mb-5 mb:mb-10 text-black"
             >
               {Data[0].title}
             </motion.h2>
@@ -119,7 +119,7 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
                    <div className="mb-5 lg:mb-7">
                    <Listbox value={sectorselected} onChange={setsectorSelected}>
                     <div className="relative">
-                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 md:p-7 text-left  border-0  ">
+                        <Listbox.Button className="flex w-full items-center justify-between rounded-full text-gray-para   bg-[#F9F9F9]  p-5 md:p-7 text-left  border-0  ">
                         <span>{sectorselected.name}</span>
                         <ChevronDown size={18} />
                         </Listbox.Button>
@@ -167,7 +167,7 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
                                             transition={{ duration: 0.6 }}
                                             viewport={{ amount: 0.1, once: true }}
                                         >
-                                            <Link href="" className='flex items-center gap-2 cursor-pointer text-16 font-normal border-2 border-black py-2 px-4 md:px-5 rounded-[60px] w-fit z-10 group'>
+                                            <Link href="" className='flex items-center gap-2 cursor-pointer text-16 font-normal border-1 border-black py-2 px-4 md:px-5 rounded-[60px] w-fit z-10 group'>
                                                 <span>Submit </span>
                                                 <span className='bg-primary w-[35px] h-[35px] lg:w-[51.7px] lg:h-[51.7px] flex items-center justify-center rounded-full  group-hover:translate-x-[10px] transition-all duration-300'>
                                                     <Image src="/assets/images/home/arrow-right.svg" alt="Arrow" width={30} height={30} className="w-[18px] h-[18px] lg:w-[24px] lg:h-[24px]" />

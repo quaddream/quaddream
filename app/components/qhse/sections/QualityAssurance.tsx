@@ -31,11 +31,11 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({qaData}) => {
     <section className="pt-124 lg:pt-150">
       <div className="container overflow-hidden pb-[15px] lg:pb-[30px]">
         {/* Heading */}
-        <h2 className="text-80 leading-[1.12] mb-8 xl:mb-[50px] text-black">
+        <h2 className="text-80 leading-[1.12] mb-7 md:mb-8 lg:mb-12 text-black">
           {qaData.heading}
         </h2>
         {/* Sub-title */}
-        <p className="text-30   leading-[1.3] mb-[15px] xl:mb-[30px] text-black">
+        <p className="text-25 md:text-30   leading-[1.3] mb-[15px] xl:mb-[30px] text-black">
           {qaData.subheading}
         </p>
         {/* Paragraph */}
@@ -104,10 +104,10 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({qaData}) => {
                 <Image
                   src={item.icon}
                   alt={item.content}
-                  width={40}
-                  height={40}
+                  width={48}
+                  height={48}
                 />
-                <p className="text-black text-25 leading-[1.6]">
+                <p className="text-black text-19 md:text-25 leading-[1.6]">
                   {item.content}
                 </p>
               </div>

@@ -46,17 +46,17 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
     <section className='py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10  bg-white mt-[-4.5%] '>
       <div className="container ">
         <div>
-          <h2 className="text-80 leading-[1.125] mb-10  text-black">{Data[0].heading}</h2>
+          <h2 className="text-80 leading-[1.125] mb-5 md:mb-8 lg:mb-10  text-black">{Data[0].heading}</h2>
           <p className="text-19 leading-[1.684210526315789] mb-0 max-w-[65ch] text-gray-para">
             {Data[0].desc}
           </p>
         </div>
-        <div className="flex md:flex-row flex-col items-center justify-between gap-5 lg:gap-8 my-7 mb-12 pb-12 border-b border-lite-gray">
+        <div className="flex md:flex-row flex-col items-center justify-between gap-5 lg:gap-8 my-7 mb-7 pb-7 md:mb-12 md:pb-12 border-b border-lite-gray">
             <div className="md:grid md:grid-cols-3 gap-5 lg:gap-8 w-full md:w-5/7 2xl:w-6/7 justify-between">
                 <div className="mb-5 md:mb-0" >
                     <Listbox value={sectorselected} onChange={setsectorSelected}>
                     <div className="relative">
-                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 md:p-7 text-left   border-0  ">
+                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 lg:p-7 text-left   border-0  ">
                         <span>{sectorselected.name}</span>
                         <ChevronDown size={18} />
                         </Listbox.Button>
@@ -96,7 +96,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                 <div className="mb-5 md:mb-0"  >
                     <Listbox value={Statusselected} onChange={setStatusSelected}>
                     <div className="relative">
-                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 md:p-7 text-left  border-0 ">
+                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 lg:p-7 text-left  border-0 ">
                         <span>{Statusselected.name}</span>
                         <ChevronDown size={18} />
                         </Listbox.Button>
@@ -136,7 +136,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                 <div >
                     <Listbox value={Locationselected} onChange={setLocationSelected}>
                     <div className="relative">
-                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 md:p-7 text-left  border-0 ">
+                        <Listbox.Button className="flex w-full items-center justify-between rounded-full    bg-[#F9F9F9]  p-5 lg:p-7 text-left  border-0 ">
                         <span>{Locationselected.name}</span>
                         <ChevronDown size={18} />
                         </Listbox.Button>
@@ -178,7 +178,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
             <div className="flex items-center justify-center">
   <button
     className="group bg-primary text-white border-2 border-transparent 
-               p-5 md:p-7 rounded-full w-full md:w-[219px] flex items-center justify-between 
+               p-5 lg:p-7 rounded-full w-full md:w-[219px] flex items-center justify-between 
                cursor-pointer transition-all duration-300 ease-in-out
                hover:bg-white hover:text-primary hover:border-primary"
   >

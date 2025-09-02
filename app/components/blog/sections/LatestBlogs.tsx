@@ -5,6 +5,7 @@ import { BlogType } from "../data";
 import Image from "next/image";
 import Pagination from "@/app/components/common/Pagination";
 import Select from "react-select";
+import Link from "next/link";
 
 const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
   const categories = [
@@ -46,7 +47,7 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
   );
 
   return (
-    <div className="lg:py-[124px] pb-[20px] lg::pb-0">
+    <div className="pt-4 pb-12 lg:py-12 xl:py-[124px] lg::pb-0">
       {/* Header */}
       <h1 className="text-80 lg:leading-[1.12] mt-[8px] xl:mt-0 mb-2 text-black">
         Latest Blogs
@@ -106,10 +107,11 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
       </div>
 
       {/* Blog Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[30px] gap-y-[22px] xl:gap-y-[50px] mt-[25px] xl:mt-[50px]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[30px] gap-y-7 xl:gap-y-[50px] mt-[25px] xl:mt-[50px]">
         {currentBlogs.map((blog, index) => (
-          <div key={index} className="rounded-md overflow-hidden">
-            <div className="relative group">
+          <div key={index} className="rounded-md overflow-hidden" >
+          <Link href={`/blog/${blog.link}`}>
+          <div className="relative group">
               <Image
                 src={blog.image}
                 alt={blog.title}
@@ -130,14 +132,15 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
             </div>
 
             <div>
-              <div className="flex justify-between items-center text-19 leading-[1.7] my-[4px] xl:my-[15px]">
+              <div className="flex justify-between items-center text-19 leading-[1.7] mt-3 mb-1 xl:my-[15px]">
                 <span className="text-primary">{blog.category}</span>
                 <span className="text-gray-para">{blog.date}</span>
               </div>
-              <h3 className="text-25 xl:leading-[1.7]  text-black">
+              <h3 className="text-22 md:text-25 xl:leading-[1.7]  text-black">
                 {blog.title}
               </h3>
             </div>
+            </Link>
           </div>
         ))}
       </div>

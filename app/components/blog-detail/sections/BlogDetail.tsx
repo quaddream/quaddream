@@ -58,7 +58,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({blogDetail}) => {
                     return (
                       <h2
                         key={idx}
-                        className="text-30 leading-[1.35] pt-[20px] lg:pt-[30px] text-black"
+                        className="text-25 md:text-30 leading-[1.35] pt-[20px] lg:pt-[30px] text-black"
                       >
                         {block.content}
                       </h2>

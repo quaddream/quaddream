@@ -293,7 +293,7 @@ body {
 /* Default bullet */
 .certification-pagination .swiper-pagination-bullet {
   width: 8px;
-  height: 8px;
+  height: 4px;
   border-radius: 9999px;
   background-color: var(--lite-gray); /* Tailwind's gray-300 (lite-gray) */
   opacity: 1;

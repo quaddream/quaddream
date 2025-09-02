@@ -89,7 +89,7 @@ const About = () => {
                             whileInView="show"
                             transition={{ duration: 0.6 }}
                             viewport={{ amount: 0.1, once: true }}
-                            className='text-65 leading-[1.153846153846154]  mb-5 lg:mb-12'
+                            className='text-65 leading-[1.153846153846154]  mb-5 md:mb-8 lg:mb-12'
                         >
                             Quaddream Scaffolding, leading suppliers of scaffolding solutions since 2012.
                         </motion.h2>

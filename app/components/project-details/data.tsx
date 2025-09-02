@@ -5,7 +5,7 @@ export const projectDetails = {
       navigation: [
         { title: "Home", slug: "/" },
         { title: "Project", slug: "/projects" },
-        { title: "Project Details", slug: "" },
+        { title: "Nakheel Mall", slug: "" },
       ],
     },
   ],
