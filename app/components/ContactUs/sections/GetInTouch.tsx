@@ -109,7 +109,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
               ${activeIndex === index ? "border-primary text-black" : "border-transparent text-gray-para"} 
               hover:text-black relative top-[1.5px] transition-all duration-300 cursor-pointer`}
           >
-            <h3 className="relative text-20 md:text-25 leading-[1.6] pb-5 font-light transition-all duration-300 max-w-[15ch]">
+            <h3 className="relative text-20 md:text-25 leading-[1.6] pb-5 transition-all duration-300 max-w-[15ch]">
               {item.location}
             </h3>
           </button>
@@ -131,7 +131,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
               </div>
               <div>
                 <p className="text-30 text-black">Call Us</p>
-                <p className="text-19">Need Help? Give Us a Ring.</p>
+                <p className="text-19 text-gray-para">Need Help? Give Us a Ring.</p>
               </div>
             </div>
             <div className="flex items-center gap-4 lg:gap-7  flex-wrap">
@@ -163,7 +163,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
               </div>
               <div>
                 <p className="text-30 text-black">Email Us</p>
-                <p className="text-19">We usually reply in 24 hours.</p>
+                <p className="text-19 text-gray-para">We usually reply in 24 hours.</p>
               </div>
             </div>
             <div className="flex items-center gap-4 lg:gap-7 flex-wrap">
@@ -206,7 +206,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
               height={466}
             />
           </div>
-          <p>{Data[0].items[activeIndex].address}</p>
+          <p className="text-19 text-gray-para">{Data[0].items[activeIndex].address}</p>
         </div>
       </div>
     </div>
