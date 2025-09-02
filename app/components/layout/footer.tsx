@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="bg-black text-white relative z-[99] py-[50px]">
       <div className="container mx-auto px-4">
         {/* Top Section */}
-        <div className="flex flex-row justify-between items-center mb-8 xl:mb-10 gap-6">
+        <div className="flex flex-row justify-between items-center mb-8 xl:mb-10 gap-3 lg:gap-6">
           <Image
             src="/assets/images/logo.svg"
             alt="Logo"
@@ -19,7 +19,7 @@ const Footer = () => {
           />
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="bg-white/20 hover:bg-white/30 transition rounded-full w-10 h-10 xl:w-[64px] xl:h-[64px] flex items-center justify-center cursor-pointer"
+            className="bg-white/20 hidden flex-shrink-0 hover:bg-white/30 transition rounded-full w-10 h-10 lg:w-[64px] lg:h-[64px] md:flex items-center justify-center cursor-pointer"
           >
             <Image
               src="/assets/up_arrow.svg"
@@ -34,7 +34,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-8 md:gap-[170px] mb-10 md:mb-[93px]">
           {/* Quick Links */}
           <div>
-            <h3 className="text-[16px] text-lite-gray uppercase mb-[36px] font-medium">
+            <h3 className="text-[16px] text-lite-gray tracking-[0.04em] uppercase mb-[20px] lg:mb-[36px] font-medium">
               Quick Link
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-y-3 md:gap-y-[25px] lg:gap-y-[30px]">
@@ -53,13 +53,13 @@ const Footer = () => {
           {/* Address & Social */}
           <div className="flex justify-between gap-10 lg:gap-0 flex-col lg:flex-row">
             <div>
-              <h3 className="text-[16px] text-lite-gray uppercase mb-[36px] font-medium">
+              <h3 className="text-[16px] text-lite-gray uppercase mb-[20px] lg:mb-[36px] font-medium">
                 Address
               </h3>
               <AddressSection />
             </div>
             <div>
-              <h3 className="text-[16px] text-lite-gray uppercase mb-[36px] xl:mb-[41px] font-medium">
+              <h3 className="text-[16px] text-lite-gray tracking-[0.04em] uppercase mb-[20px] lg:mb-[20px] xl:mb-[41px] font-medium">
                 Follow us
               </h3>
               <div className="flex space-x-4 gap-3">
@@ -88,7 +88,7 @@ const Footer = () => {
           <div className="flex gap-4 xl:gap-10 justify-left items-baseline mb-4 md:mb-0">
             <Link
               href="/"
-              className="hover:text-white text-lite-gray text-16 leading-[1.5] font-[400]"
+              className="hover:text-white text-lite-gray text-16  leading-[1.5] font-[400]"
             >
               Terms & conditions
             </Link>
@@ -105,15 +105,18 @@ const Footer = () => {
           </p>
         </div>
       </div>
-      <div className="fixed bottom-18 right-[2px] w-full z-99999 cursor-pointer">
+      <div className="fixed bottom-18 right-[2px] w-full z-[99999] cursor-pointer">
         <div className="container flex justify-end pointer-events-none">
-          <div className="rounded-full">
-            <Image
-              src="/assets/images/whatsapp.svg"
-              alt="WhatsApp"
-              width={58}
-              height={58}
-            />
+          <div className="rounded-full pointer-events-auto">
+            <div className="w-[42px] h-[42px] lg:w-[58px] lg:h-[58px]">
+              <Image
+                src="/assets/images/whatsapp.svg"
+                alt="WhatsApp"
+                width={58}
+                height={58}
+                className="w-full h-full"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -54,7 +54,7 @@ const MediaGallery: React.FC<MediaGalleryProps> = ({ galleryData }) => {
               {/* Red gradient overlay on hover */}
               <div className="absolute inset-0 bg-primary bg-opacity-100 opacity-0 group-hover:opacity-75 transition-opacity duration-300 will-change-opacity"></div>
               {/* Arrow icon top-right */}
-              <div className="absolute flex items-center justify-center top-[40px] right-[40px] bg-white w-[66px] h-[66px] rounded-[16px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 will-change-opacity">
+              <div className="absolute flex items-center justify-center top-[30px] 2xl:right-[40px] right-[30px] bg-white w-[66px] h-[66px] rounded-[16px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 will-change-opacity">
                 <Image
                   src="/assets/images/blog/Group.svg"
                   alt="Arrow"
@@ -63,7 +63,7 @@ const MediaGallery: React.FC<MediaGalleryProps> = ({ galleryData }) => {
                 />
               </div>
               {/* Category & small avatars (mocked) */}
-              <div className="absolute bottom-0 text-white font-medium w-full 2xl:p-[40px] p-[30px] xl:p-[30px]  will-change-opacity">
+              <div className="absolute bottom-0 text-white font-medium w-full 2xl:p-[40px] p-[30px] will-change-opacity">
                 <div className="flex justify-between gap-[10px] items-end">
                   <h3 className="2xl:text-33 text-30 leading-[40px] text-white">
                     {item.category}
