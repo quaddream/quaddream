@@ -121,7 +121,7 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-[16px]" />
               <div className="absolute flex items-center justify-center top-[40px] right-[40px] bg-white w-[66px] h-[66px] rounded-[16px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <Image
-                  src="/assets/images/blog/group.svg"
+                  src="/assets/images/blog/Group.svg"
                   alt="Arrow"
                   width={21}
                   height={21}
