@@ -56,7 +56,7 @@ const MediaGallery: React.FC<MediaGalleryProps> = ({ galleryData }) => {
               {/* Arrow icon top-right */}
               <div className="absolute flex items-center justify-center top-[40px] right-[40px] bg-white w-[66px] h-[66px] rounded-[16px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 will-change-opacity">
                 <Image
-                  src="/assets/images/blog/group.svg"
+                  src="/assets/images/blog/Group.svg"
                   alt="Arrow"
                   width={21}
                   height={21}
