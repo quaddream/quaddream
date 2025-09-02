@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React from "react"; 
 import { useState } from "react";
 type items = {
@@ -31,6 +32,7 @@ const CoreServices: React.FC<MissionProps> = ({ Data }) => {
     onMouseEnter={() => setActiveIndex(activeIndex === index ? null : index)}
     onMouseLeave={() => setActiveIndex(null)} 
   >
+    <Link href={'/services/1'}>
     <div
       className="h-[300px] xl:h-[408px] relative rounded-2xl bg-no-repeat bg-cover p-7 lg:p-10"
       style={{ backgroundImage: `url(${item.image})` }}
@@ -74,6 +76,7 @@ const CoreServices: React.FC<MissionProps> = ({ Data }) => {
       <div className={`absolute transition-all duration-500 top-0 left-0 w-full h-full bg-primary rounded-2xl z-10 group-hover:opacity-100
         ${activeIndex === index ? "opacity-100" : "opacity-0"}`}></div>
     </div>
+    </Link>
   </div>
 ))}
 

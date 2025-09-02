@@ -139,7 +139,7 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
                                 value={option}
                                 className={({ active }) =>
                                 `cursor-pointer px-4 py-2 ${
-                                    active ? "bg-blue-500 text-white" : "text-gray-700"
+                                    active ? " text-white" : "text-gray-700"
                                 }`
                                 }
                             >
