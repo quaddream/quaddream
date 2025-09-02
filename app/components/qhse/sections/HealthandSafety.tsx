@@ -43,9 +43,9 @@ const HealthSafety = ({ safetyData }: HealthSafetyProps) => {
                 <Image
                   src={item.icon}
                   alt={item.title}
-                  width={34}
-                  height={34}
-                  className="group-hover:invert group-hover:brightness-0 transition-all duration-300"
+                  width={67}
+                  height={67}
+                  className="group-hover:invert group-hover:brightness-0 transition-all duration-300 w-[67px] h-[67px]"
                 />
               </div>
               <p className="text-19 md:text-25   leading-[1.6]  text-white">

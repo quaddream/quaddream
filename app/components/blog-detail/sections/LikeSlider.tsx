@@ -22,12 +22,14 @@ const LikeSlider = () => {
         </h2>
 
         {/* Mobile navigation arrows */}
-        <div className="flex md:hidden">
-          <button className="like-prev">
-            <IoIosArrowRoundBack size={30} />
+        <div className="flex md:hidden gap-3 ">
+          <button className="like-prev group cursor-pointer transition-transform duration-300 hover:scale-[1.4] hover:translate-x-1 group">
+          <Image src="/assets/images/icons/arrow-left.svg" alt="" width={24} height={24} className="min-w-[24px] min-h-[24px] brightness-0 invert-0 group-hover:brightness-100   transition-all duration-300 " />
+                 
           </button>
-          <button className="like-next">
-            <IoIosArrowRoundForward size={30} />
+          <button className="like-next group cursor-pointer transition-transform duration-300 hover:scale-[1.4] hover:translate-x-1 group">
+               <Image src="/assets/images/icons/arrow-right.svg" alt="" width={24} height={24} className="min-w-[24px] min-h-[24px] brightness-0 invert-0 group-hover:brightness-100   transition-all duration-300 " />
+                         
           </button>
         </div>
 

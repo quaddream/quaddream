@@ -326,15 +326,7 @@ body {
   overflow: hidden;
 }
 
-.afterline::after{
-    content: "";
-    position: absolute;
-    top: 20px;
-    left: 6px;
-    width: 1px;
-    height: 100%;
-    background: #696969;
-}
+ 
 .yrslider .swiper-slide{
    opacity: 0.3;
 }
@@ -347,16 +339,10 @@ body {
   content: "";
   position: absolute;
   top: 20px;
-  left: 6px;
+  left: 7px;
   width: 1px;
   height: 100%;
   background: #696969;
 }
-.yrslider .swiper-slide{
- opacity: 0.3;
-}
-.yrslider .swiper-slide-active{
-  color: var(--primary);
-  font-weight: 500;
-  opacity: 1;
-}
+ 
+ 

@@ -30,8 +30,8 @@ type MissionProps = {
     <div key={index} className="group flex items-center gap-10 sm:gap-20">
       <div className="transition-all duration-300">
         <div className="flex items-center gap-3 sm:gap-7">
-          <div className="w-[40px] h-[40px] md:w-[67px] md:h-[67px] md:rounded-2xl rounded-sm bg-primary flex items-center justify-center">
-            <Image src={item.icon} alt={item.title} width={32} height={32} className='w-[22px] h-[24px] md:w-[32px] md:h-[32px]' />
+          <div className="w-[40px] h-[40px] md:w-[67px] md:h-[67px] md:rounded-lg rounded-sm bg-primary flex items-center justify-center">
+            <Image src={item.icon} alt={item.title} width={32} height={32} className='w-[40px] h-[40px] md:w-[67px] md:h-[67px]' />
           </div>
           <h3 className="relative xl:top-[13px] text-20 md:text-33 leading-[1] font-light text-white transition-all duration-300 max-w-[15ch]">
             {item.title}
