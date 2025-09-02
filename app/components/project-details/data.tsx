@@ -10,12 +10,12 @@ export const projectDetails = {
     },
   ],
   project:{
-    title:"Nakheel Mal",
+    title:"Nakheel Mall",
     image:"/assets/images/projects/details/main.jpg",
     description: "Quaddream Scaffolding Contracting LLC was entrusted with the scaffolding requirements for Nakheel Mall, one of Dubai’s premier retail and lifestyle destinations located on the iconic Palm Jumeirah. The project involved the design, supply, and installation of safe, high-performance scaffolding systems to support various construction, maintenance, and interior works within the mall premises.",
-    client:"Nakheel",
-    status:"Completed",
-    sector:"Residential",
+    client:"Nakheel Mall",
+    status:"Completed all works",
+    sector:"Construction & Scaffolding",
     location:"Dubai",
     servicesDelivered:[
       "Site survey & planning",
