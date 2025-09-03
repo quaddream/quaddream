@@ -57,19 +57,15 @@ const HealthSafety = ({ safetyData }: HealthSafetyProps) => {
         </motion.div>
 
         {/* Cards */}
-        <motion.div
-          variants={containerStagger}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
+        <div
           className="grid gap-[15px] xl:gap-[30px] sm:grid-cols-2 lg:grid-cols-3"
         >
           {safetyData.items.map((item, index) => (
             <motion.div
-              variants={moveUp(index * 0.13)}
+              variants={moveUp(index * 0.2)}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true }}
+              viewport={{ once: true }}          
               key={index}
               className={`relative group flex flex-col xl:p-[40px] p-[25px] rounded-[16px] bg-[#111111] transition-all duration-300 hover:bg-[linear-gradient(138deg,rgba(17,17,17,1)_22%,rgba(108,0,4,1)_100%)]`}
             >
@@ -87,7 +83,7 @@ const HealthSafety = ({ safetyData }: HealthSafetyProps) => {
               </p>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

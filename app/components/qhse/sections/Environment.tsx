@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { containerStagger, moveUp } from "../../motionVarients";
+import { containerStagger, moveUp, paragraphItem } from "../../motionVarients";
 
 type Item = {
   icon: string;
@@ -55,19 +55,15 @@ const EnvironmentalResponsibility: React.FC<
           {description}
         </motion.p>
 
-        <motion.div
-          variants={containerStagger}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-           className="mt-3 md:mt-4 lg:mt-0">
+        <motion.div className="mt-3 md:mt-4 lg:mt-0">
           {items?.map((item, index) => (
             <motion.div
-              variants={moveUp(index * 0.1)}
+              key={index}
+              variants={moveUp(index * 0.2)}
               initial="hidden"
               whileInView="show"
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              key={index}
               className="flex items-center group py-[15px] xl:py-[50px] gap-2 lg:gap-[30px] border-b border-lite-gray hover:border-primary transition duration-300"
             >
               <div className="flex-shrink-0  md:mt-0 w-[42px] h-[42px] flex items-center justify-center">
