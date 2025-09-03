@@ -1,5 +1,9 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { containerStagger, moveUp } from "../../motionVarients";
 
 type Item = {
   icon: string;
@@ -23,17 +27,46 @@ const EnvironmentalResponsibility: React.FC<
   return (
     <section className="py-124 xl:py-150 bg-[#F9F9F9]">
       <div className="container">
-        <h1 className="text-80   leading-[1.14] mb-5 md:mb-8 lg:mb-12 text-black">
+        <motion.h1
+          variants={moveUp(0.1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="text-80   leading-[1.14] mb-5 md:mb-8 lg:mb-12 text-black"
+        >
           {heading}
-        </h1>
-        <h2 className="text-25 md:text-30 leading-[1.34] mb-[15px] xl:mb-[30px] text-black">
+        </motion.h1>
+        <motion.h2
+          variants={moveUp(0.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="text-25 md:text-30 leading-[1.34] mb-[15px] xl:mb-[30px] text-black"
+        >
           {subheading}
-        </h2>
-        <p className="text-19 leading-[1.7] text-gray-para">{description}</p>
+        </motion.h2>
+        <motion.p
+          variants={moveUp(0.3)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="text-19 leading-[1.7] text-gray-para"
+        >
+          {description}
+        </motion.p>
 
-        <div className="mt-3 md:mt-4 lg:mt-0">
+        <motion.div
+          variants={containerStagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+           className="mt-3 md:mt-4 lg:mt-0">
           {items?.map((item, index) => (
-            <div
+            <motion.div
+              variants={moveUp(index * 0.1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
               key={index}
               className="flex items-center group py-[15px] xl:py-[50px] gap-2 lg:gap-[30px] border-b border-lite-gray hover:border-primary transition duration-300"
             >
@@ -50,9 +83,9 @@ const EnvironmentalResponsibility: React.FC<
               <p className="text-19 md:text-25 leading-[1.6] text-black">
                 {item.text}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

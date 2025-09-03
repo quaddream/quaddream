@@ -131,12 +131,12 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
         variants={containerStagger}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true }}
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[30px] gap-y-7 xl:gap-y-[50px] mt-[25px] xl:mt-[50px]"
       >
         {currentBlogs.map((blog, index) => (
           <motion.div
-            variants={moveUp(index * 0.13)}
+            variants={moveUp(index * 0.2)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
