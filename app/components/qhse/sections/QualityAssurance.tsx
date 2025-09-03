@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import type { Swiper as SwiperType } from "swiper";
+import type { NavigationOptions } from "swiper/types";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { moveLeft, moveUp } from "@/app/components/motionVarients";
@@ -26,6 +28,26 @@ interface QualityAssuranceProps {
 const QualityAssurance: React.FC<QualityAssuranceProps> = ({ qaData }) => {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
+
+  useEffect(() => {
+    if (
+      swiperRef.current &&
+      swiperRef.current.params &&
+      swiperRef.current.params.navigation &&
+      typeof swiperRef.current.params.navigation !== "boolean"
+    ) {
+      const navigation = swiperRef.current.params
+        .navigation as NavigationOptions;
+
+      navigation.prevEl = prevRef.current;
+      navigation.nextEl = nextRef.current;
+
+      swiperRef.current.navigation.destroy();
+      swiperRef.current.navigation.init();
+      swiperRef.current.navigation.update();
+    }
+  }, []);
 
   return (
     <section className="pt-124 lg:pt-150">
@@ -40,6 +62,7 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({ qaData }) => {
         >
           {qaData.heading}
         </motion.h2>
+
         {/* Sub-title */}
         <motion.p
           variants={moveUp(0.2)}
@@ -50,7 +73,8 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({ qaData }) => {
         >
           {qaData.subheading}
         </motion.p>
-        {/* Paragraph */}
+
+        {/* Paragraph + navigation */}
         <div className="flex xl:flex-row flex-col items-end xl:gap-[75px] gap-[10px]">
           <div className="flex">
             <motion.p
@@ -63,6 +87,7 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({ qaData }) => {
               {qaData.description}
             </motion.p>
           </div>
+
           {/* Navigation buttons */}
           <motion.div
             variants={moveLeft()}
@@ -71,7 +96,6 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({ qaData }) => {
             viewport={{ once: true }}
             className="flex justify-end gap-3 md:gap-5"
           >
-            {/* Prev button */}
             <div
               ref={prevRef}
               className="group cursor-pointer transition-transform duration-300 hover:scale-[1.4] group hover:-translate-x-1"
@@ -81,11 +105,9 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({ qaData }) => {
                 alt=""
                 width={24}
                 height={24}
-                className="min-w-[24px] min-h-[24px]  brightness-0 invert-0 group-hover:brightness-100  transition-all duration-300"
+                className="min-w-[24px] min-h-[24px] brightness-0 group-hover:brightness-100 transition-all duration-300"
               />
             </div>
-
-            {/* Next button */}
             <div
               ref={nextRef}
               className="group cursor-pointer transition-transform duration-300 hover:scale-[1.4] hover:translate-x-1 group"
@@ -95,7 +117,7 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({ qaData }) => {
                 alt=""
                 width={24}
                 height={24}
-                className="min-w-[24px] min-h-[24px] brightness-0 invert-0 group-hover:brightness-100   transition-all duration-300 "
+                className="min-w-[24px] min-h-[24px] brightness-0 group-hover:brightness-100 transition-all duration-300"
               />
             </div>
           </motion.div>
@@ -111,28 +133,16 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({ qaData }) => {
           speed={600}
           slidesPerView={1}
           breakpoints={{
-            768: {
-              slidesPerView: 2.3,
-            },
-          }}
-          navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
+            768: { slidesPerView: 2.3 },
           }}
           onBeforeInit={(swiper) => {
-            if (
-              swiper.params.navigation &&
-              typeof swiper.params.navigation !== "boolean"
-            ) {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-            }
+            swiperRef.current = swiper;
           }}
         >
           {qaData.items.map((item, idx) => (
             <SwiperSlide key={idx}>
               <motion.div
-                variants={moveUp(idx * 0.3)}
+                variants={moveUp(idx * 0.25)}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}

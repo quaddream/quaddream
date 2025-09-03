@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Listbox, Transition } from "@headlessui/react";
 import { useRouter } from "next/navigation";
 import Pagination from "@/app/components/common/Pagination";
+import { motion } from "motion/react";
+import { moveUp } from "../../motionVarients";
 
 type Item = {
   title: string;
@@ -83,12 +85,25 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
       <div className="container">
         {/* Heading & Description */}
         <div>
-          <h2 className="text-80 leading-[1.125] mb-5 md:mb-8 lg:mb-10 text-black">
+          <motion.h2
+            className="text-80 leading-[1.125] mb-5 md:mb-8 lg:mb-10 text-black"
+            variants={moveUp()}
+            initial="hidden"
+            whileInView="show"
+            transition={{ duration: 0.6 }}
+            viewport={{ amount: 0.1, once: true }}
+          >
             {Data[0].heading}
-          </h2>
-          <p className="text-19 leading-[1.684] mb-0 max-w-[65ch] text-gray-para">
+          </motion.h2>
+          <motion.p
+            variants={moveUp(0.3)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ amount: 0.1, once: true }}
+            className="text-19 leading-[1.684] mb-0 max-w-[65ch] text-gray-para"
+          >
             {Data[0].desc}
-          </p>
+          </motion.p>
         </div>
 
         {/* Filters */}
@@ -111,7 +126,14 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                 options: locationOptions,
               },
             ].map((filter, idx) => (
-              <div key={idx} className="mb-5 md:mb-0">
+              <motion.div
+                variants={moveUp(idx * 0.2)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ amount: 0.1, once: true }}
+                key={idx}
+                className="mb-5 md:mb-0"
+              >
                 <Listbox value={filter.state} onChange={filter.setState}>
                   <div className="relative">
                     <Listbox.Button className="cursor-pointer focus:outline-none flex w-full items-center justify-between rounded-full bg-[#F9F9F9] p-5 lg:p-7 text-left border-0">
@@ -155,12 +177,18 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                     </Transition>
                   </div>
                 </Listbox>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {/* Search button (optional, can trigger a function if needed) */}
-          <div className="w-full md:w-2/7 2xl:w-1/7 flex items-center justify-center">
+          <motion.div
+            variants={moveUp(0.5)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ amount: 0.1, once: true }}
+            className="w-full md:w-2/7 2xl:w-1/7 flex items-center justify-center"
+          >
             <button
               className="group bg-primary  text-white border-2 border-transparent 
                p-5 lg:p-7 rounded-full w-full  flex items-center justify-between 
@@ -193,13 +221,17 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                 />
               </svg>
             </button>
-          </div>
+          </motion.div>
         </div>
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {paginatedItems.map((item, index) => (
-            <div
+            <motion.div
+              variants={moveUp(index * 0.15)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ amount: 0.1, once: true }}
               className="cursor-pointer h-[300px] lg:h-[408px] xl:h-[502px] overflow-hidden rounded-xl bg-cover bg-center relative group bgrd"
               style={{ backgroundImage: `url(${item.image})` }}
               key={index}
@@ -233,7 +265,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
               </div>
               <div className="absolute top-0 w-full h-full bg-black opacity-50 rounded-xl transition-all duration-300"></div>
               <div className="absolute bottom-0 w-full h-0 group-hover:h-full rounded-xl hrbg transition-all duration-300"></div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
