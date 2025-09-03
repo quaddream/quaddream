@@ -10,32 +10,62 @@ import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import SliderViewAllBtn from "@/app/components/common/SliderViewAllBtn";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { moveRight, moveLeft } from "../../motionVarients";
 
 const LikeSlider = () => {
   return (
     <section className="mt-[30px] md:mt-[50px] xl:mt-[124px]">
       {/* Heading + Mobile Arrows + Desktop Button */}
-      <div className="flex justify-between items-center mb-[10px] lg:mb-[50px]">
-        <h2 className="text-80 xl:leading-[90px] leading-[60px] text-black">
+      <div className="flex justify-between items-center mb-[10px] lg:mb-[45px]">
+        <motion.h2
+          variants={moveRight()}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="text-80 xl:leading-[90px] leading-[60px] text-black"
+        >
           You may also like
-        </h2>
+        </motion.h2>
 
         {/* Mobile navigation arrows */}
-        <div className="flex md:hidden gap-3 ">
+        <motion.div
+          variants={moveLeft()}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="flex md:hidden gap-3"
+        >
           <button className="like-prev group cursor-pointer transition-transform duration-300 hover:scale-[1.4] hover:translate-x-1 group">
-          <Image src="/assets/images/icons/arrow-left.svg" alt="" width={24} height={24} className="min-w-[24px] min-h-[24px] brightness-0 invert-0 group-hover:brightness-100   transition-all duration-300 " />
-                 
+            <Image
+              src="/assets/images/icons/arrow-left.svg"
+              alt=""
+              width={24}
+              height={24}
+              className="min-w-[24px] min-h-[24px] brightness-0 invert-0 group-hover:brightness-100   transition-all duration-300 "
+            />
           </button>
           <button className="like-next group cursor-pointer transition-transform duration-300 hover:scale-[1.4] hover:translate-x-1 group">
-               <Image src="/assets/images/icons/arrow-right.svg" alt="" width={24} height={24} className="min-w-[24px] min-h-[24px] brightness-0 invert-0 group-hover:brightness-100   transition-all duration-300 " />
-                         
+            <Image
+              src="/assets/images/icons/arrow-right.svg"
+              alt=""
+              width={24}
+              height={24}
+              className="min-w-[24px] min-h-[24px] brightness-0 invert-0 group-hover:brightness-100   transition-all duration-300 "
+            />
           </button>
-        </div>
+        </motion.div>
 
         {/* Desktop button */}
-        <div className="hidden md:block">
+        <motion.div
+          variants={moveLeft()}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="hidden md:block"
+        >
           <SliderViewAllBtn text="View all Blogs" />
-        </div>
+        </motion.div>
       </div>
 
       {/* Swiper Carousel */}
@@ -62,15 +92,17 @@ const LikeSlider = () => {
       >
         {blogList.map((blog) => (
           <SwiperSlide key={blog.id}>
-            <div className="flex flex-col">
-              {/* Image */}
-              <Image
-                src={blog.image}
-                alt={blog.title}
-                width={586}
-                height={348}
-                className="w-full max-w-[586px] h-[300px] md:h-[348px] object-cover rounded-[16px]"
-              />
+            <div className="flex flex-col cursor-pointer transform transition-all duration-300 hover:-translate-y-[5px] py-[5px]">
+              {/* Image wrapper for zoom effect */}
+              <div className="overflow-hidden rounded-[16px]">
+                <Image
+                  src={blog.image}
+                  alt={blog.title}
+                  width={586}
+                  height={348}
+                  className="w-full max-w-[586px] h-[300px] md:h-[348px] object-cover rounded-[16px] transform transition-transform duration-500 ease-in-out hover:scale-105"
+                />
+              </div>
 
               {/* Category & Date */}
               <div className="flex justify-between mt-[12px] lg:mt-[15px] text-gray-para text-19 leading-[22px] lg:leading-[32px]">
@@ -85,9 +117,15 @@ const LikeSlider = () => {
             </div>
 
             {/* Mobile-only button (appears after each content) */}
-            <div className="md:hidden flex mt-[18px]">
+            <motion.div
+              variants={moveRight()}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="md:hidden flex mt-[18px]"
+            >
               <SliderViewAllBtn text="View all Blogs" />
-            </div>
+            </motion.div>
           </SwiperSlide>
         ))}
       </Swiper>
