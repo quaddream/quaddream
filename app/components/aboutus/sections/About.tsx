@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'motion/react'
-import { containerStagger, paragraphItem, moveRight } from '../../motionVarients' 
+import { containerStagger, paragraphItem, moveRight, moveLeft } from '../../motionVarients' 
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -71,7 +71,7 @@ const About = () => {
     }, []);
 
     return (
-        <section className='py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10  bg-white mt-[-4.5%] '>
+        <section className='py-150 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10  bg-white mt-[-4.5%] '>
             <div className='container flex flex-col gap-150'>
                 <div className='grid 2xl:grid-cols-5 w-full gap-y-4'>
                     <motion.div className='2xl:col-span-1 mt-6' variants={moveRight(0.2)} initial="hidden" whileInView="show" viewport={{ amount: 0.1, once: true }}>
@@ -120,8 +120,9 @@ const About = () => {
                 {/* Counter Section */}
                 
             </div> 
-             <Image src="/assets/images/overlay-rt.png" alt="rtimage" width={924} height={1100} className='absolute bottom-0 2xl:top-[150px] right-0   w-fit z-[0]' />
-           
+            <motion.div className='absolute bottom-0 2xl:top-[150px] right-0   w-fit z-[0]' variants={moveLeft(0.2)} initial="hidden" whileInView="show" viewport={{ amount: 0.1, once: true }}>
+             <Image src="/assets/images/overlay-rt.png" alt="rtimage" width={924} height={1100} />
+            </motion.div>
         </section>
     )
 }

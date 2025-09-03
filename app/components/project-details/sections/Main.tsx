@@ -3,7 +3,7 @@ import Image from "next/image";
 import { assets } from "@/public/assets/assets";
 const Main = () => {
   return (
-    <section className="py-150 rounded-t-2xl xl:rounded-t-[100px] relative z-[50] mt-[-4.5%] bg-white">
+    <section className="py-150 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-[50] mt-[-4.5%] bg-white">
       <div className="container">
         <h2 className="text-80 leading-[1.125] mb-5 lg:mb-8 2xl:mb-30px text-black border-b border-lite-gray pb-5 md:pb-8 xl:pb-12">{projectDetails.project.title}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 items-center mb-6 md:mb-12 gap-y-5 lg:gap-y-0">

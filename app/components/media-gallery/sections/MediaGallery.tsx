@@ -21,7 +21,7 @@ interface MediaGalleryProps {
 const MediaGallery: React.FC<MediaGalleryProps> = ({ galleryData }) => {
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
   return (
-    <section className="relative   py-124 xl:py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%] z-10 bg-white overflow-hidden">
+    <section className="relative   py-124 xl:py-150 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%] z-10 bg-white overflow-hidden">
       <div className="container">
         {/* Title & Description */}
         <div className="mb-6 xl:mb-12 ">

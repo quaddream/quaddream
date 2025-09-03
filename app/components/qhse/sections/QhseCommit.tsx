@@ -20,7 +20,7 @@ interface QHSECommitmentProps {
 
 const QHSECommitment: React.FC<QHSECommitmentProps> = ({ qhseData }) => {
   return (
-    <section className="relative z-10 bg-background py-124 xl:py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%] overflow-hidden">
+    <section className="relative z-10 bg-background py-124 xl:py-150 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%] overflow-hidden">
       <div className="container">
         {/* Heading */}
         <motion.h1

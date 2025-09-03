@@ -61,38 +61,58 @@ const Navbar = () => {
 const renderHeader = ()=>{
   return (
     <motion.header className={`w-full z-[100] hidden lg:block  absolute ${scrollY > 550 ? 'top-0 bg-white border-b-gray-100 border-b' : 'top-15'}`}>
-      <div className={`w-full container`}>
-        <div className={`px-3 2xl:pr-[37px] flex items-center justify-between w-full bg-white ${scrollY > 550 ? 'py-2 shadow-none' : 'rounded-full shadow-md py-[12px]'}`}>
-          <div className={`mr-4 ${scrollY > 550 ? 'xl:w-[250px]' : 'xl:w-[404px] xl:pl-[1em] 2xl:pl-[2em]'}`}>
-           <Link href="/"> <Image src="/assets/images/logo-main.svg" alt="Logo" width={550} height={550} className='h-auto w-auto lg:h-[53px] xl:h-[65px] 2xl:h-[107px] object-contain' /></Link>
-          </div>
-          <ul className='flex w-fit lg:gap-3 xl:gap-7 2xl:gap-[43px] 2xl:pr-[37px] 2xl:ml-auto'>
-            {menuItems.map((item, index) => {
-              const isActive = activeIndex === index;
-              const textColorClass = isActive ? 'text-[#1E1E1E]' : 'opacity-50';
-              const spanWidthClass = isActive ? 'w-full' : 'w-[0px] group-hover:w-full';
-              return (
-                <div className='flex flex-col group cursor-pointer' key={index} onClick={() => setActiveIndex(index)}>
-                  <li className={`text-nowrap font-16 xl:text-19 ${textColorClass}`}><Link href={item.href}>{item.name}</Link></li>
-                  <span className={`bg-primary h-[1px] transition-all duration-300 ${spanWidthClass}`}></span>
-                </div>
-              )
-            })}
-          </ul>
-          <div className={`ml-6`}>
-          <button
-  className={`bg-primary text-white rounded-full text-nowrap cursor-pointer transition-all   duration-300 border border-primary
-    ${scrollY > 550 
-      ? "py-2 px-4 text-sm " 
-      : "py-[30px] px-[50px] xl:py-[30px] xl:px-[58.5px] text-19"}
-    hover:bg-white hover:text-primary   hover:border-primary    hover:translate-x-1  
-    active:scale-95`}
->
-  <Link href="/contact-us"  >Contact Us</Link>
-</button>
-
-          </div>
+      <div className={`w-full container`}>  
+      <motion.div
+        initial={{ y: -20, opacity: 0 }} 
+        animate={{ y: 0, opacity: 1 }}    
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={`px-3 2xl:pr-[37px] flex items-center justify-between w-full bg-white 
+          ${scrollY > 550 ? 'py-2 shadow-none' : 'rounded-full shadow-md py-[12px]'}`}
+      >
+        <div className={`mr-4 ${scrollY > 550 ? 'xl:w-[250px]' : 'xl:w-[404px] xl:pl-[1em] 2xl:pl-[2em]'}`}>
+          <Link href="/">
+            <Image 
+              src="/assets/images/logo-main.svg" 
+              alt="Logo" 
+              width={550} 
+              height={550} 
+              className="h-auto w-auto lg:h-[53px] xl:h-[65px] 2xl:h-[107px] object-contain" 
+            />
+          </Link>
         </div>
+
+        <ul className="flex w-fit lg:gap-3 xl:gap-7 2xl:gap-[43px] 2xl:pr-[37px] 2xl:ml-auto">
+          {menuItems.map((item, index) => {
+            const isActive = activeIndex === index;
+            const textColorClass = isActive ? 'text-[#1E1E1E]' : 'opacity-50';
+            const spanWidthClass = isActive ? 'w-full' : 'w-[0px] group-hover:w-full';
+            return (
+              <div
+                className="flex flex-col group cursor-pointer"
+                key={index}
+                onClick={() => setActiveIndex(index)}
+              >
+                <li className={`text-nowrap font-16 xl:text-19 ${textColorClass}`}>
+                  <Link href={item.href}>{item.name}</Link>
+                </li>
+                <span className={`bg-primary h-[1px] transition-all duration-300 ${spanWidthClass}`} />
+              </div>
+            );
+          })}
+        </ul>
+
+        <div className="ml-6">
+          <button
+            className={`bg-primary text-white rounded-full text-nowrap cursor-pointer transition-all duration-300 border border-primary
+              ${scrollY > 550 
+                ? "py-3 px-4 text-sm" 
+                : "py-[30px] px-[50px] xl:py-[30px] xl:px-[58.5px] text-19"}
+              hover:bg-white hover:text-primary hover:border-primary hover:translate-x-1 active:scale-95`}
+          >
+            <Link href="/contact-us">Contact Us</Link>
+          </button>
+        </div>
+      </motion.div> 
       </div>
     </motion.header>
   )
@@ -180,7 +200,7 @@ const renderHeader = ()=>{
         {/* Sliding Menu */}
         <div className={`fixed top-0 right-0 z-1000 h-full w-[300px] bg-white shadow-2xl transform transition-transform duration-500
           ${menuOpen ? "translate-x-0" : "translate-x-full"}`}>
-          <div className="min-h-full px-6 pt-[30px] pb-[40px] flex flex-col relative">
+          <div className="min-h-full px-6 pt-[30px] pb-[25px] flex flex-col relative">
             {/* Close Button */}
             <button className="absolute top-8 right-4 text-[23px] text-primary font-[600]" onClick={() => setMenuOpen(false)}>
               ✕
@@ -189,7 +209,7 @@ const renderHeader = ()=>{
             {/* Logo */}
             <div className="text-left mb-[50px]">
               <Link href="/">
-                <Image src="/assets/logo-quad.png" alt="Assent" width={80} height={50} className="h-[40px] w-auto" />
+                <Image src="/assets/logo-quad.png" alt="Assent" width={80} height={50} className="h-[60px] w-auto" />
               </Link>
             </div>
 
@@ -222,10 +242,10 @@ const renderHeader = ()=>{
             <div className="mt-auto">
               <hr />
               <div className="flex space-x-4 mt-4">
-                <FaFacebookF className="cursor-pointer w-6 h-6 hover:text-primary transition-all duration-500" />
-                <FaLinkedinIn className="cursor-pointer w-6 h-6 hover:text-primary transition-all duration-500" />
-                <FaInstagram className="cursor-pointer w-6 h-6 hover:text-primary transition-all duration-500" />
-                <FaYoutube className="cursor-pointer w-6 h-6 hover:text-primary transition-all duration-500" />
+                <FaFacebookF className="cursor-pointer w-5 h-5 hover:text-primary transition-all duration-500" />
+                <FaLinkedinIn className="cursor-pointer w-5 h-5 hover:text-primary transition-all duration-500" />
+                <FaInstagram className="cursor-pointer w-5 h-5 hover:text-primary transition-all duration-500" />
+                <FaYoutube className="cursor-pointer w-5 h-5 hover:text-primary transition-all duration-500" />
               </div>
             </div>
           </div>

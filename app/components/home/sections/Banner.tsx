@@ -46,7 +46,7 @@ const Banner = () => {
     //       className="h-full w-full object-cover"
     //     />
     //   </div> 
-    <section className='h-[350px] md:h-screen 2xl:h-[100vh] bg-black relative z-[1] hero overflow-hidden'>
+    <section className='h-[400px] md:h-screen 2xl:h-[100vh] bg-black relative z-[1] hero overflow-hidden'>
       {/* Background image (static first slide bg fallback) */}
       <div className='absolute top-0 left-0 w-full h-full bg-black z-0 transition-all duration-300'>
         

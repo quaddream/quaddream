@@ -96,14 +96,14 @@ export const partnersSection= {
       "At Quaddream, we believe strong partnerships are the foundation of every successful journey.",
       bgImg: "/assets/images/home/partners/partner-bg.svg",
     items: [
-      { src: "/assets/images/home/partners/jel.png", alt: "JEL" },
-      { src: "/assets/images/home/partners/bhatla.png", alt: "Bhatia" },
-      { src: "/assets/images/home/partners/bam.png", alt: "BAM" },
-      { src: "/assets/images/home/partners/darwish.png", alt: "Darwish" },
-      { src: "/assets/images/home/partners/kabri.png", alt: "Kabri" },
-      { src: "/assets/images/home/partners/green-oasis.png", alt: "Green Oasis" },
-      { src: "/assets/images/home/partners/jlw.png", alt: "JLW" },
-      { src: "/assets/images/home/partners/al-tayer.png", alt: "Al Tayer Stocks" },
+      { src: "/assets/images/home/partners/product1.png", alt: "JEL" },
+      { src: "/assets/images/home/partners/product5.png", alt: "Kabri" },
+      { src: "/assets/images/home/partners/product2.png", alt: "Bhatia" },
+      { src: "/assets/images/home/partners/product6.png", alt: "Green Oasis" },
+      { src: "/assets/images/home/partners/product3.png", alt: "BAM" },
+      { src: "/assets/images/home/partners/product7.png", alt: "JLW" },
+      { src: "/assets/images/home/partners/product4.png", alt: "Darwish" }, 
+      { src: "/assets/images/home/partners/product8.png", alt: "Al Tayer Stocks" }, 
     
     ],
   };

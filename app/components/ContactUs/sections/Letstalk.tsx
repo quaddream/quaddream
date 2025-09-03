@@ -7,8 +7,7 @@ import "swiper/css/effect-fade";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
-import { Listbox, Transition } from "@headlessui/react";
-import { Check, ChevronDown } from "lucide-react";
+import { Listbox, Transition } from "@headlessui/react"; 
 import { containerStagger, paragraphItem } from "../../motionVarients";
 import { gsap } from "gsap"; 
 type ServicesItem = {
@@ -121,7 +120,13 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
                     <div className="relative">
                         <Listbox.Button className="flex w-full items-center justify-between rounded-full text-gray-para   bg-[#F9F9F9]  p-5 md:p-7 text-left  border-0  ">
                         <span>{sectorselected.name}</span>
-                        <ChevronDown size={18} />
+                         <Image
+                                                src="/assets/images/arrow-down.svg"
+                                                alt="arrow-down"
+                                                width={20}
+                                                height={8}
+                                                className="md:w-[18px] md:h-[12px]"
+                                              />
                         </Listbox.Button>
 
                         <Transition
@@ -138,17 +143,18 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
                                 key={option.id}
                                 value={option}
                                 className={({ active }) =>
-                                `cursor-pointer px-4 py-2 ${
-                                    active ? " text-white" : "text-gray-700"
-                                }`
+                                  `cursor-pointer px-4 py-2 ${
+                                    active
+                                      ? "bg-primary text-white"
+                                      : "text-gray-700"
+                                  }`
                                 }
                             >
-                                {({ selected }) => (
+                           
                                 <div className="flex items-center justify-between">
-                                    <span>{option.name}</span>
-                                    {selected && <Check size={16} />}
+                                    <span>{option.name}</span> 
                                 </div>
-                                )}
+                                
                             </Listbox.Option>
                             ))}
                         </Listbox.Options>
@@ -167,10 +173,10 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
                                             transition={{ duration: 0.6 }}
                                             viewport={{ amount: 0.1, once: true }}
                                         >
-                                            <Link href="" className='flex items-center gap-2 cursor-pointer text-16 font-normal border-1 border-black py-2 px-4 md:px-5 rounded-[60px] w-fit z-10 group'>
-                                                <span>Submit </span>
-                                                <span className='bg-primary w-[35px] h-[35px] lg:w-[51.7px] lg:h-[51.7px] flex items-center justify-center rounded-full  group-hover:translate-x-[10px] transition-all duration-300'>
-                                                    <Image src="/assets/images/home/arrow-right.svg" alt="Arrow" width={30} height={30} className="w-[18px] h-[18px] lg:w-[24px] lg:h-[24px]" />
+                                            <Link href="" className='flex items-center gap-2 hover:bg-primary hover:border-primary cursor-pointer text-16 font-normal border-1 border-black py-2 px-4 md:px-5 rounded-[60px] w-fit z-10 group transition-all duration-300'>
+                                                <span className="group-hover:text-white transition-all duration-300">Submit </span>
+                                                <span className='bg-primary group-hover:bg-white w-[35px] h-[35px] lg:w-[51.7px] lg:h-[51.7px] flex items-center justify-center rounded-full  group-hover:translate-x-[10px] transition-all duration-300'>
+                                                    <Image src="/assets/images/icons/arrow-right.svg" alt="Arrow" width={30} height={30} className="w-[18px] h-[18px] lg:w-[24px] lg:h-[24px] brightness-0 invert-100 group-hover:brightness-100 group-hover:invert-0 transition-all duration-300" />
                                                 </span>
                                             </Link>
                                         </motion.div>

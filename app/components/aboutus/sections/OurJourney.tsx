@@ -6,6 +6,7 @@ import { Navigation, Autoplay, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper/types';
 import Image from "next/image";
+import { moveUp,moveLeft } from '../../motionVarients' 
 
 import { motion } from "framer-motion";
 type datapop = {
@@ -70,7 +71,7 @@ const OurJourney: React.FC<MissionProps> = ({ Data }) => {
       <div className="relative"> 
       {isHovering && (
         <div
-          className="fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-[9999] flex flex-col items-center"
+          className="hidden  lg:flex fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-[9999]  flex-col items-center"
           style={{ transform: `translate(${pos.x}px, ${pos.y}px)` }}
         > 
           <div className="w-[75px] h-[75px] xl:w-[108px] xl:h-[108px] bg-primary rounded-full flex gap-[6px] items-center justify-center">
@@ -92,9 +93,11 @@ const OurJourney: React.FC<MissionProps> = ({ Data }) => {
      <div className="container ">
     
     <div className="flex justify-between items-end mb-6 lg:mb-12">
-      <h2 className="text-80 leading-[1.125]  text-black">
+      <motion.h2 className="text-80 leading-[1.125]  text-black"
+      variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}
+        >
         {Data[0].heading}
-      </h2>
+      </motion.h2>
             <div className="flex justify-end gap-3 md:gap-4">
               {/* Prev button */}
               <div
@@ -125,8 +128,7 @@ const OurJourney: React.FC<MissionProps> = ({ Data }) => {
     prevEl: prevRef.current,
     nextEl: nextRef.current,
   }}
-  allowTouchMove={false}    
-simulateTouch={false} 
+  
   breakpoints={{
     0: {
       slidesPerView: 2,
@@ -138,7 +140,7 @@ simulateTouch={false}
     },
     
     992: {
-      slidesPerView: 4,
+      slidesPerView: 3,
     },
   }}
   watchSlidesProgress={true}
@@ -147,8 +149,9 @@ simulateTouch={false}
 >
   {Data[0].items.map((itm, i) => (
     <SwiperSlide key={i}>
-      <div
+      <motion.div
         className={`afterline relative h-full   cursor-pointer `}
+        variants={moveLeft(i * 0.2)} initial="hidden" whileInView="show" viewport={{ amount: 0.1, once: true }}
       >
        <div>
        <div className="flex items-center gap-2 relative z-10">
@@ -158,7 +161,7 @@ simulateTouch={false}
           </p>
         </div>
        </div>
-      </div>
+      </motion.div>
     </SwiperSlide>
   ))}
 </Swiper>

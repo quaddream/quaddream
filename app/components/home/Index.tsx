@@ -20,23 +20,46 @@ const Index = () => {
 
   useEffect(() => {
     if (commitmentRef.current) {
-      gsap.fromTo(
-        commitmentRef.current,
-        { borderTopLeftRadius: "120px", borderTopRightRadius: "120px" },
-        {
-          borderTopLeftRadius: "0px",
-          borderTopRightRadius: "0px",
-          ease: "power2.inOut",
-          scrollTrigger: {
-            trigger: commitmentRef.current,
-            start: "top bottom",   // when Commitment enters viewport
-            end: "top -100px",        // when Commitment reaches top
-            scrub: true,           // smooth scroll animation
-          },
-        }
-      )
+      ScrollTrigger.matchMedia({ 
+        "(max-width: 767px)": function () {
+          gsap.fromTo(
+            commitmentRef.current,
+            { borderTopLeftRadius: "0px", borderTopRightRadius: "0px" }, // smaller radius for mobile
+            {
+              borderTopLeftRadius: "0px",
+              borderTopRightRadius: "0px",
+              ease: "power2.inOut",
+              scrollTrigger: {
+                trigger: commitmentRef.current,
+                start: "top bottom",
+                end: "top -100px",
+                scrub: true,
+              },
+            }
+          );
+        },
+   
+        "(min-width: 768px)": function () {
+          gsap.fromTo(
+            commitmentRef.current,
+            { borderTopLeftRadius: "120px", borderTopRightRadius: "120px" },
+            {
+              borderTopLeftRadius: "0px",
+              borderTopRightRadius: "0px",
+              ease: "power2.inOut",
+              scrollTrigger: {
+                trigger: commitmentRef.current,
+                start: "top bottom",
+                end: "top -100px",
+                scrub: true,
+              },
+            }
+          );
+        },
+      });
     }
-  }, [])
+  }, []);
+  
 
   return (
     <div >
