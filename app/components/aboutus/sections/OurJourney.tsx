@@ -1,14 +1,15 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react"; 
-import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation, Autoplay, Thumbs } from "swiper/modules";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import type { Swiper as SwiperType } from 'swiper/types';
 import Image from "next/image";
-import { moveUp,moveLeft } from '../../motionVarients' 
-
+import { moveUp } from '../../motionVarients';
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Splide as SplideCore, Components, Options } from '@splidejs/splide';
+import '@splidejs/splide/dist/css/splide.min.css';
 import { motion } from "framer-motion";
+
+// Type for the Splide instance
+type SplideType = SplideCore;
+
 type datapop = {
   heading: string;
 
@@ -25,6 +26,29 @@ type MissionProps = {
 
 const OurJourney: React.FC<MissionProps> = ({ Data }) => { 
   
+
+  const [mainSplide, setMainSplide] = useState<SplideCore | null>(null);
+  const [thumbsSplide, setThumbsSplide] = useState<SplideCore | null>(null);
+
+  // Sync sliders
+  useEffect(() => {
+    if (mainSplide && thumbsSplide) {
+      mainSplide.sync(thumbsSplide);
+    }
+  }, [mainSplide, thumbsSplide]);
+
+  // Handle navigation
+  const goPrev = () => {
+    if (mainSplide) {
+      mainSplide.go('-1');
+    }
+  };
+
+  const goNext = () => {
+    if (mainSplide) {
+      mainSplide.go('+1');
+    }
+  };
 
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
@@ -53,7 +77,7 @@ const OurJourney: React.FC<MissionProps> = ({ Data }) => {
     },
   } as const;
 
-  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+  // const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const [isHovering, setIsHovering] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
 
@@ -101,136 +125,118 @@ const OurJourney: React.FC<MissionProps> = ({ Data }) => {
             <div className="flex justify-end gap-3 md:gap-4">
               {/* Prev button */}
               <div
-                ref={prevRef}
+                onClick={goPrev}
                 className="group cursor-pointer transition-transform duration-300 hover:scale-[1.4] group hover:-translate-x-1"
               > 
-                <Image src="/assets/images/icons/arrow-left.svg" alt="" width={16} height={16} className="min-w-[16px] min-h-[16px]  brightness-0 invert-0 group-hover:brightness-100  transition-all duration-300" />
-               
+                <Image src="/assets/images/icons/arrow-left.svg" alt="Previous" width={16} height={16} className="min-w-[16px] min-h-[16px] brightness-0 invert-0 group-hover:brightness-100 transition-all duration-300" />
               </div>
   
               {/* Next button */}
               <div
-                ref={nextRef}
-                className="group cursor-pointer transition-transform duration-300 hover:scale-[1.4] hover:translate-x-1 group"
+                onClick={goNext}
+                className="group cursor-pointer transition-transform duration-300 hover:scale-[1.4] hover:translate-x-1"
               >
-                <Image src="/assets/images/icons/arrow-right.svg" alt="" width={16} height={16} className="min-w-[16px] min-h-[16px] brightness-0 invert-0 group-hover:brightness-100   transition-all duration-300 " />
-               
+                <Image src="/assets/images/icons/arrow-right.svg" alt="Next" width={16} height={16} className="min-w-[16px] min-h-[16px] brightness-0 invert-0 group-hover:brightness-100 transition-all duration-300" />
               </div>
             </div>
     </div>
-    <div className="relative"> 
-<div className="absolute h-full w-4/7 right-0 yrslider hidden md:block">
-<Swiper
-  onSwiper={setThumbsSwiper} 
-  spaceBetween={190}
-  loop={true}   
-  navigation={{
-    prevEl: prevRef.current,
-    nextEl: nextRef.current,
-  }}
-  
-  breakpoints={{
-    0: {
-      slidesPerView: 2,
-      spaceBetween:45
-    },
-    768: {
-      slidesPerView: 2,
-      spaceBetween:55
-    },
-    
-    992: {
-      slidesPerView: 3,
-    },
-  }}
-  watchSlidesProgress={true}
-  modules={[Navigation, Autoplay, Thumbs]}
-  className="h-full"
->
-  {Data[0].items.map((itm, i) => (
-    <SwiperSlide key={i}>
-      <motion.div
-        className={`afterline relative h-full   cursor-pointer `}
-        variants={moveLeft(i * 0.2)} initial="hidden" whileInView="show" viewport={{ amount: 0.1, once: true }}
-      >
-       <div>
-       <div className="flex items-center gap-2 relative z-10">
-        <div className="w-3 h-3 bg-primary rounded-full transition-all duration-300"></div>
-          <p className="text-19 leading-[1.684210526315789]  transition-all duration-300">
-            {itm.year}
-          </p>
-        </div>
-       </div>
-      </motion.div>
-    </SwiperSlide>
-  ))}
-</Swiper>
-</div>
+     <div className="relative">
+      {/* Thumbs Slider */}
+      <div className="absolute h-full w-4/7 right-0 yrslider  hidden md:block">
+        <Splide
+          options={{
+            type: "loop",
+            gap: "9rem",
+            pagination: false,
+            arrows: false,
+            perPage: 4,
+            drag: false,
+            focus: 0,
+            breakpoints: {
+              0: { perPage: 2, gap: "1.2rem" },
+              1280: { perPage: 2, gap: "1.8rem" },
+              1920: { perPage: 4, gap: "9rem" },
+            },
+          }}
+          onMounted={(splide) => {
+            setThumbsSplide(splide);
+          }}
+          className="h-full"
+        >
+          {Data[0].items.map((itm, i) => (
+            <SplideSlide key={i}>
+              <div
+                className="afterline relative h-full cursor-pointer" 
+              >
+                <div className="flex items-center gap-2 relative z-10">
+                  <div className="w-3 h-3 bg-primary rounded-full transition-all duration-300"></div>
+                  <p className="text-19 font-medium leading-[1.68] transition-all duration-300">
+                    {itm.year}
+                  </p>
+                </div>
+              </div>
+            </SplideSlide>
+          ))}
+        </Splide>
+      </div>
 
-<div
-className="relative top-0 md:top-10 lg:top-20 md:pb-10 lg:pb-20 swiper-area cursor-none"
+      {/* Main Slider */}
+      <div className="relative top-0 md:top-10 lg:top-20 md:pb-10 lg:pb-20 swiper-area cursor-none "
 onMouseEnter={() => setIsHovering(true)}
-onMouseLeave={() => setIsHovering(false)}
->
-<Swiper
-slidesPerView={1}
-spaceBetween={40}
-loop={true}
-speed={800}
-modules={[Navigation, Autoplay, Thumbs]}
-navigation={{
-  prevEl: prevRef.current,
-  nextEl: nextRef.current,
-}}
-thumbs={{ swiper: thumbsSwiper }}
-onSlideChange={(swiper) => {
-  if (thumbsSwiper) {
-    thumbsSwiper.slideToLoop(swiper.realIndex, 600);
-  }
-}}
->
-{Data[0].items.map((item, index) => (
-  <SwiperSlide key={index}>
-    <div className="grid grid-cols-1 md:grid-cols-[40%_60%] gap-5 md:gap-15 lg:gap-25 items-end">
-      {/* Left Column (Text) */}
-      <motion.div
-        variants={textVariant}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: false, amount: 0.6 }}
-      >
-        <h3 className="text-80 xl:text-[150px] font-light mb-5 md:mb-7 leading-[1.125] text-black">
-          {item.year}
-        </h3>
-        <p className="text-19 leading-[1.684210526315789] max-w-[50ch] mb-0 text-gray-para">
-          {item.description}
-        </p>
-      </motion.div>
+onMouseLeave={() => setIsHovering(false)}>
+        <Splide
+          options={{
+            type: "loop",
+            pagination: false,
+            arrows: false,
+            gap: "2rem",
+          }}
+          onMounted={(splide) => {
+            setMainSplide(splide);
+          }}
+        >
+          {Data[0].items.map((item, index) => (
+            <SplideSlide key={index}>
+              <div className="grid grid-cols-1 md:grid-cols-[40%_60%] gap-5 md:gap-15 lg:gap-25 items-end">
+                {/* Left Column */}
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: false, amount: 0.6 }}
+                >
+                  <h3 className="text-80 xl:text-[150px] font-light mb-5 md:mb-7 leading-[1.125] text-black">
+                    {item.year}
+                  </h3>
+                  <p className="text-19 leading-[1.68] max-w-[50ch] mb-0 text-gray-para">
+                    {item.description}
+                  </p>
+                </motion.div>
 
-      {/* Right Column (Image + Title) */}
-      <motion.div
-        variants={imageVariant}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: false, amount: 0.3 }}
-      >
-        <p className="text-30 text-black leading-[1.2] mb-5 lg:mb-7">
-          {item.title}
-        </p>
-        <Image
-          src={item.image}
-          alt=""
-          width={673}
-          height={320}
-          className="img-fluid group-hover:brightness-0 rounded-2xl group-hover:invert-100 transition-all duration-300  object-cover"
-        />
-      </motion.div>
+                {/* Right Column */}
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: false, amount: 0.3 }}
+                >
+                  <p className="text-30 text-black leading-[1.2] mb-5 lg:mb-7">
+                    {item.title}
+                  </p>
+                  <Image
+                    src={item.image}
+                    alt=""
+                    width={673}
+                    height={320}
+                    className="img-fluid rounded-2xl transition-all duration-300 object-cover"
+                  />
+                </motion.div>
+              </div>
+            </SplideSlide>
+          ))}
+        </Splide>
+      </div>
     </div>
-  </SwiperSlide>
-))}
-</Swiper>
-</div>
-</div>
       </div>
      </div>
     </section></>

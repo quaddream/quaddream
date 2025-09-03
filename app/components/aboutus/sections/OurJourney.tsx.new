@@ -1,0 +1,267 @@
+"use client";
+import React, { useEffect, useState, useRef } from "react"; 
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+import { Navigation, Thumbs } from "swiper/modules";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper/types';
+import Image from "next/image";
+import { motion } from "framer-motion";
+
+// Animation variants
+const moveUp = (delay = 0) => ({
+  hidden: { opacity: 0, y: 40 },
+  show: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+      delay
+    }
+  }
+});
+
+const moveLeft = (delay = 0) => ({
+  hidden: { opacity: 0, x: -40 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay,
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+});
+
+type DataItem = {
+  year: string;
+  description: string;
+  image: string;
+  title: string;
+};
+
+type DataPop = {
+  heading: string;
+  items: DataItem[];
+};
+
+type MissionProps = {
+  Data: DataPop[];
+};
+
+const OurJourney: React.FC<MissionProps> = ({ Data }) => { 
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+  const [isHovering, setIsHovering] = useState(false);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const prevRef = useRef<HTMLDivElement>(null);
+  const nextRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const moveCursor = (e: MouseEvent) => {
+      setPos({ x: e.clientX, y: e.clientY });
+    };
+
+    document.addEventListener("mousemove", moveCursor);
+    return () => document.removeEventListener("mousemove", moveCursor);
+  }, []);
+
+  const textVariant = {
+    hidden: { opacity: 0, y: 40 },
+    show: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        duration: 0.6, 
+        ease: "easeOut" as const
+      } 
+    },
+  } as const;
+
+  const imageVariant = {
+    hidden: { opacity: 0, scale: 0.95 },
+    show: { 
+      opacity: 1, 
+      scale: 1, 
+      transition: { 
+        duration: 0.6, 
+        ease: "easeOut" as const,
+        delay: 0.2 
+      } 
+    },
+  } as const;
+
+  if (!Data?.[0]?.items?.length) return null;
+
+  return (
+    <>
+      <div className="relative"> 
+        {isHovering && (
+          <div
+            className="hidden lg:flex fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-[9999] flex-col items-center"
+            style={{ transform: `translate(${pos.x}px, ${pos.y}px)` }}
+          > 
+            <div className="w-[75px] h-[75px] xl:w-[108px] xl:h-[108px] bg-primary rounded-full flex gap-[6px] items-center justify-center">
+              <Image src="/assets/images/icons/rtwt.svg" alt="" width={7} height={15} className="rotate-180" />
+              <p className="mb-0 text-center text-[14px] xl:text-[19px] uppercase text-white leading-none">
+                DRAG
+              </p>
+              <Image src="/assets/images/icons/rtwt.svg" alt="" width={7} height={15} />
+            </div>
+          </div>
+        )} 
+      </div>
+
+      <section className="pt-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative bg-[#F9F9F9]">
+        <div className="bg-contain pb-150 bg-no-repeat bg-left" style={{ backgroundImage: 'url(/assets/images/aboutus/abtbgs.png)', backgroundPositionY: '40px' }}>
+          <div className="container">
+            <div className="flex justify-between items-end mb-6 lg:mb-12">
+              <motion.h2 
+                className="text-80 leading-[1.125] text-black"
+                variants={moveUp(0.2)} 
+                initial="hidden" 
+                whileInView="show" 
+                transition={{ duration: 0.6 }} 
+                viewport={{ amount: 0.1, once: true }}
+              >
+                {Data[0].heading}
+              </motion.h2>
+              
+              <div className="flex justify-end gap-3 md:gap-4">
+                <div
+                  ref={prevRef}
+                  className="group cursor-pointer transition-transform duration-300 hover:scale-[1.4] hover:-translate-x-1"
+                > 
+                  <Image 
+                    src="/assets/images/icons/arrow-left.svg" 
+                    alt="Previous" 
+                    width={16} 
+                    height={16} 
+                    className="min-w-[16px] min-h-[16px] brightness-0 invert-0 group-hover:brightness-100 transition-all duration-300" 
+                  />
+                </div>
+                
+                <div
+                  ref={nextRef}
+                  className="group cursor-pointer transition-transform duration-300 hover:scale-[1.4] hover:translate-x-1"
+                >
+                  <Image 
+                    src="/assets/images/icons/arrow-right.svg" 
+                    alt="Next" 
+                    width={16} 
+                    height={16} 
+                    className="min-w-[16px] min-h-[16px] brightness-0 invert-0 group-hover:brightness-100 transition-all duration-300" 
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="relative w-full">
+              {/* Thumbs Navigation */}
+              <div className="absolute h-full w-4/7 right-0 yrslider hidden md:block">
+                <Swiper
+                  onSwiper={setThumbsSwiper}
+                  spaceBetween={20}
+                  slidesPerView={4}
+                  watchSlidesProgress
+                  modules={[Thumbs]}
+                  className="h-full"
+                  breakpoints={{
+                    0: { slidesPerView: 2, spaceBetween: 20 },
+                    768: { slidesPerView: 2, spaceBetween: 30 },
+                    992: { slidesPerView: 4, spaceBetween: 80 },
+                  }}
+                >
+                  {Data[0].items.map((item, i) => (
+                    <SwiperSlide key={i}>
+                      <motion.div
+                        className="afterline relative h-full cursor-pointer"
+                        variants={moveLeft(i * 0.2)}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ amount: 0.1, once: true }}
+                      >
+                        <div className="flex items-center gap-2 relative z-10">
+                          <div className="w-3 h-3 bg-primary rounded-full transition-all duration-300"></div>
+                          <p className="text-19 font-medium leading-[1.68] transition-all duration-300">
+                            {item.year}
+                          </p>
+                        </div>
+                      </motion.div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+
+              {/* Main Slider */}
+              <div 
+                className="relative top-0 md:top-10 lg:top-20 md:pb-10 lg:pb-20 swiper-area cursor-none"
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+              >
+                <Swiper
+                  modules={[Navigation, Thumbs]}
+                  spaceBetween={20}
+                  navigation={{
+                    prevEl: prevRef.current,
+                    nextEl: nextRef.current,
+                  }}
+                  thumbs={{ swiper: thumbsSwiper }}
+                  onSwiper={(swiper) => {
+                    if (prevRef.current && nextRef.current) {
+                      swiper.navigation.init();
+                      swiper.navigation.update();
+                    }
+                  }}
+                  className="w-full"
+                >
+                  {Data[0].items.map((item, index) => (
+                    <SwiperSlide key={index}>
+                      <div className="grid grid-cols-1 md:grid-cols-[40%_60%] gap-5 md:gap-15 lg:gap-25 items-end">
+                        <motion.div
+                          variants={textVariant}
+                          initial="hidden"
+                          whileInView="show"
+                          viewport={{ once: false, amount: 0.6 }}
+                        >
+                          <h3 className="text-80 xl:text-[150px] font-light mb-5 md:mb-7 leading-[1.125] text-black">
+                            {item.year}
+                          </h3>
+                          <p className="text-19 leading-[1.68] max-w-[50ch] mb-0 text-gray-para">
+                            {item.description}
+                          </p>
+                        </motion.div>
+
+                        <motion.div
+                          variants={imageVariant}
+                          initial="hidden"
+                          whileInView="show"
+                          viewport={{ once: false, amount: 0.3 }}
+                        >
+                          <p className="text-30 text-black leading-[1.2] mb-5 lg:mb-7">
+                            {item.title}
+                          </p>
+                          <Image
+                            src={item.image}
+                            alt={item.title}
+                            width={673}
+                            height={320}
+                            className="img-fluid group-hover:brightness-0 rounded-2xl group-hover:invert-100 transition-all duration-300 object-cover"
+                          />
+                        </motion.div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default OurJourney;

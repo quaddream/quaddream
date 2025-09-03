@@ -192,14 +192,8 @@ body {
   }
 
   /* Margin for the swiper-wrapper to make space for pagination */
-  .mySwiperPartners .swiper-wrapper {
-    margin-bottom: 40px;
-    /* Ensures space between slides and pagination */
-  }
-
-  .mySwiperPartners .swiper-wrapper {
-    margin-bottom: 40px;
-  }
+  
+ 
 
   .bg-img {
     object-fit: cover;
@@ -328,7 +322,7 @@ body {
 
  
 .yrslider .swiper-slide{
-   opacity: 0.3;
+   opacity: 0.1;
 }
  .yrslider .swiper-slide-active{
     color: var(--primary);
@@ -344,5 +338,13 @@ body {
   height: 100%;
   background: #696969;
 }
- 
+.yrslider .splide__track{
+  height: 100%; 
+}
+.yrslider .splide__slide {
+  opacity: 0.1;
+}
+.yrslider .is-active{
+  opacity: 1 !important;
+}
  
