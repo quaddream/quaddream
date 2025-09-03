@@ -5,7 +5,13 @@ import { BlogType } from "../data";
 import Image from "next/image";
 import Pagination from "@/app/components/common/Pagination";
 import Select from "react-select";
+import {
+  containerStagger,
+  moveRight,
+  moveUp,
+} from "@/app/components/motionVarients";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
   const categories = [
@@ -47,16 +53,31 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
   );
 
   return (
-    <div className="pt-4 pb-12 lg:py-12 xl:py-[124px] lg::pb-0">
+    <div className="pt-4 pb-12 lg:py-12 xl:py-[124px] lg::pb-0 overflow-hidden">
       {/* Header */}
-      <h1 className="text-80 lg:leading-[1.12] mt-[8px] xl:mt-0 mb-2 text-black">
+      <motion.h1
+        variants={moveRight()}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="text-80 lg:leading-[1.12] mt-[8px] xl:mt-0 mb-2 text-black"
+      >
         Latest Blogs
-      </h1>
+      </motion.h1>
       {/* Category Tabs */}
       <div className="hidden lg:block relative">
-        <div className="flex justify-end space-x-[50px] text-25 leading-[40px] text-gray-para border-b border-lite-gray">
-          {categories.map((cat) => (
-            <button
+        <motion.div 
+        variants={moveUp()}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="flex justify-end space-x-[50px] text-25 leading-[40px] text-gray-para border-b border-lite-gray">
+          {categories.map((cat, index) => (
+            <motion.button
+              variants={moveUp(index * 0.15)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
               key={cat}
               onClick={() => {
                 setSelectedCategory(cat);
@@ -70,9 +91,9 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
               {selectedCategory === cat && (
                 <span className="absolute bottom-0 left-0 right-0 h-[3px] bg-primary" />
               )}
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <div className="block lg:hidden">
@@ -107,43 +128,56 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
       </div>
 
       {/* Blog Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[30px] gap-y-7 xl:gap-y-[50px] mt-[25px] xl:mt-[50px]">
+      <motion.div
+        variants={containerStagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[30px] gap-y-7 xl:gap-y-[50px] mt-[25px] xl:mt-[50px]"
+      >
         {currentBlogs.map((blog, index) => (
-          <div key={index} className="rounded-md overflow-hidden" >
-          <Link href={`/blog/${blog.link}`}>
-          <div className="relative group">
-              <Image
-                src={blog.image}
-                alt={blog.title}
-                width={487}
-                height={348}
-                className="h-[300px] xl:h-[348px] w-full object-cover rounded-[16px]"
-              />
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-[16px]" />
-              <div className="absolute flex items-center justify-center top-[40px] right-[40px] bg-white w-[66px] h-[66px] rounded-[16px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <motion.div
+            variants={moveUp(index * 0.13)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            key={index}
+            className="rounded-md overflow-hidden"
+          >
+            <Link href={`/blog/${blog.link}`}>
+              <div className="relative group">
                 <Image
-                  src="/assets/images/blog/Group.svg"
-                  alt="Arrow"
-                  width={21}
-                  height={21}
+                  src={blog.image}
+                  alt={blog.title}
+                  width={487}
+                  height={348}
+                  className="h-[300px] xl:h-[348px] w-full object-cover rounded-[16px]"
                 />
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-[16px]" />
+                <div className="absolute flex items-center justify-center top-[40px] right-[40px] bg-white w-[66px] h-[66px] rounded-[16px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Image
+                    src="/assets/images/blog/Group.svg"
+                    alt="Arrow"
+                    width={21}
+                    height={21}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div>
-              <div className="flex justify-between items-center text-19 leading-[1.7] mt-3 mb-1 xl:my-[15px]">
-                <span className="text-primary">{blog.category}</span>
-                <span className="text-gray-para">{blog.date}</span>
+              <div>
+                <div className="flex justify-between items-center text-19 leading-[1.7] mt-3 mb-1 xl:my-[15px]">
+                  <span className="text-primary">{blog.category}</span>
+                  <span className="text-gray-para">{blog.date}</span>
+                </div>
+                <h3 className="text-22 md:text-25 xl:leading-[1.7]  text-black">
+                  {blog.title}
+                </h3>
               </div>
-              <h3 className="text-22 md:text-25 xl:leading-[1.7]  text-black">
-                {blog.title}
-              </h3>
-            </div>
             </Link>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {/* Pagination */}
       <Pagination
