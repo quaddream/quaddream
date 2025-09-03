@@ -7,7 +7,6 @@ import Pagination from "@/app/components/common/Pagination";
 import Select from "react-select";
 import {
   containerStagger,
-  moveRight,
   moveUp,
 } from "@/app/components/motionVarients";
 import Link from "next/link";
@@ -56,7 +55,7 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
     <div className="pt-4 pb-12 lg:py-12 xl:py-[124px] lg::pb-0 overflow-hidden">
       {/* Header */}
       <motion.h1
-        variants={moveRight()}
+        variants={moveUp()}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
