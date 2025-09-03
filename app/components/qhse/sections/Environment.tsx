@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { containerStagger, moveUp, paragraphItem } from "../../motionVarients";
+import { moveUp } from "../../motionVarients";
 
 type Item = {
   icon: string;

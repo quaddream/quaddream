@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { containerStagger, moveUp } from "../../motionVarients";
+import { moveUp } from "../../motionVarients";
 
 type SafetyItem = {
   icon: string;
