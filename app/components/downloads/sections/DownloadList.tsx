@@ -22,7 +22,13 @@ export default function DocumentList() {
     <section className="relative z-10 bg-background py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%]">
       {/* Tabs */}
       <div className="container">
-        <div className="flex items-center justify-between border-b border-lite-gray">
+        <motion.div
+          variants={moveUp()}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="flex items-center justify-between border-b border-lite-gray"
+        >
           <div className="flex justify-start text-right w-full text-19 md:text-25 space-x-[50px] ">
             <button
               onClick={() => setActiveTab("brochure")}
@@ -45,19 +51,19 @@ export default function DocumentList() {
               Certificates
             </button>
           </div>
-        </div>
+        </motion.div>
         {/* Document List */}
         <motion.div
           className="mt-[30px] md:mt-[50px] space-y-[18px] sm:space-y-[50px]"
           variants={containerStagger}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true }}
         >
           {documents.map((doc, index) => (
             <motion.div
               key={index}
-              variants={moveUp( index * 0.20)}
+              variants={moveUp(index * 0.2)}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
