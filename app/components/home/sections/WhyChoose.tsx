@@ -33,7 +33,7 @@ const WhyChoose = () => {
     <section className="py-150 overflow-hidden bg-black">
       <div className="container">
         <motion.h2 className="text-80 leading-[1.125] mb-6 md:mb-8 lg:mb-12 text-white" variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>Why Choose Quad Dream</motion.h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 2xl:gap-22">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-4 2xl:gap-22">
 
           <motion.div className="flex flex-col gap-5   2xl:gap-[40px]" variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
             {homeData.whyChoose.items.map((item, index) => {
@@ -48,7 +48,7 @@ const WhyChoose = () => {
                        : "bg-[#111111]"
                      }`}>
                   <div className=" flex items-center gap-3">
-                  <div className="relative z-[2] bg-[#1b1b1b] rounded-md w-[96px] h-[96px] flex items-center justify-center">
+                  <div className="relative z-[2] bg-[#1b1b1b] rounded-md min-w-[80px] min-h-[80px] md:min-w-[96px] md:min-h-[96px] flex items-center justify-center">
                     <Image src={item.icon} alt={item.title} width={40} height={40} className="  transition-all duration-300" />
                   </div>
                   <div>
@@ -66,7 +66,7 @@ const WhyChoose = () => {
 
           <motion.div
             key={activeIndex}
-            className="rounded-2xl overflow-hidden flex flex-col h-full relative transition-all duration-700"
+            className="rounded-2xl overflow-hidden flex flex-col h-full relative "
             variants={moveUp(0.2)}
             initial="hidden"
             animate={activeIndex === activeIndex ? "show" : "hidden"}  

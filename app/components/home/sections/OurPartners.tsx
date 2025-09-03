@@ -58,12 +58,12 @@ export default function PartnersSection({ title, description, items,bgImg }: Par
                 <motion.div className="flex gap-4 flex-col" variants={moveUp(i * 0.2)} initial="hidden" whileInView="show"
                  transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
                   <div className="flex justify-center">
-                    <Image src={first.src} alt={first.alt} width={500} height={500} className="object-contain h-[100px] xl:h-[123.84px] w-auto" />
+                    <Image src={first.src} alt={first.alt} width={500} height={500} className="object-contain h-[50px] md:h-[100px] xl:h-[123.84px] w-auto" />
                   </div>
                   <div className="border-t border-lite-gray" />
                   {second && (
                     <div className="flex justify-center">
-                      <Image src={second.src} alt={second.alt} width={500} height={500} className="object-contain h-[100px] xl:h-[123.84px] w-auto" />
+                      <Image src={second.src} alt={second.alt} width={500} height={500} className="object-contain h-[50px] md:h-[100px] xl:h-[123.84px] w-auto" />
                     </div>
                   )}
                 </motion.div>

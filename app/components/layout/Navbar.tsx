@@ -67,7 +67,7 @@ const renderHeader = ()=>{
         animate={{ y: 0, opacity: 1 }}    
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`px-3 2xl:pr-[37px] flex items-center justify-between w-full bg-white 
-          ${scrollY > 550 ? 'py-2 shadow-none' : 'rounded-full shadow-md py-[12px]'}`}
+          ${scrollY > 550 ? 'py-3 xl:py-2 shadow-none' : 'rounded-full shadow-md py-[12px]'}`}
       >
         <div className={`mr-4 ${scrollY > 550 ? 'xl:w-[250px]' : 'xl:w-[404px] xl:pl-[1em] 2xl:pl-[2em]'}`}>
           <Link href="/">
@@ -105,7 +105,7 @@ const renderHeader = ()=>{
           <button
             className={`bg-primary text-white rounded-full text-nowrap cursor-pointer transition-all duration-300 border border-primary
               ${scrollY > 550 
-                ? "py-3 px-4 text-sm" 
+                ? "py-[10px] px-4 text-19" 
                 : "py-[30px] px-[50px] xl:py-[30px] xl:px-[58.5px] text-19"}
               hover:bg-white hover:text-primary hover:border-primary hover:translate-x-1 active:scale-95`}
           >
@@ -165,7 +165,7 @@ const renderHeader = ()=>{
 
       <div className='relative z-1000'>
         {/* Navbar */}
-        <nav className="w-full bg-white text-white tanspheader py-4  top-0 z-[1000] lg:hidden">
+        <nav className="w-full bg-white text-white tanspheader py-2 md:py-4  top-0 z-[1000] lg:hidden">
           <div className="container mx-auto flex items-center justify-between">
             <div className="flex items-center">
               <Link href="/">
