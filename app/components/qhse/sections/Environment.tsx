@@ -64,7 +64,7 @@ const EnvironmentalResponsibility: React.FC<
               whileInView="show"
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="flex items-center group py-[15px] xl:py-[50px] gap-2 lg:gap-[30px] border-b border-lite-gray hover:border-primary transition duration-300"
+              className="flex items-center group py-[15px] xl:py-[50px] gap-2 lg:gap-[30px] border-b border-lite-gray hover:border-primary transition-colors duration-500"
             >
               <div className="flex-shrink-0  md:mt-0 w-[42px] h-[42px] flex items-center justify-center">
                 <Image

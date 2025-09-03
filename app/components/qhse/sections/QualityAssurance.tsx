@@ -46,7 +46,7 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({ qaData }) => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="text-25 md:text-30   leading-[1.3] mb-[15px] xl:mb-[30px] text-black"
+          className="text-25 md:text-30  leading-[1.3] mb-[15px] xl:mb-[30px] text-black"
         >
           {qaData.subheading}
         </motion.p>
