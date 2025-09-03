@@ -9,7 +9,7 @@ const IndustriesList = () => {
   return (
     <section className="py-150 bg-white">
       <div className="container">
-        <motion.h2 className="text-80 leading-[1.125] mb-10 2xl:mb-50px" variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>Industries We Serve</motion.h2>
+        <motion.h2 className="text-80 leading-[1.125] mb-6 md:mb-8 lg:mb-12" variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>Industries We Serve</motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5  xl:gap-[1px] relative">
       <div className="absolute top-[50%] left-0 translate-y-[-50%] h-[0.5px] w-full bg-black z-40 hidden 2xl:block"></div>

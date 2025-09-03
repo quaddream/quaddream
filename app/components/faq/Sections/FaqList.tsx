@@ -50,7 +50,7 @@ const FaqList = ({ faqData }: { faqData: FaqContent }) => {
   };
 
   return (
-    <section className="relative z-10 bg-background py-124 xl:py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%] overflow-hidden">
+    <section className="relative z-10 bg-background py-124 xl:py-150 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%] overflow-hidden">
       <div className="container">
         {/* Heading */}
         <h1 className="text-80  leading-[1.12] mb-6 md:mb-8 lg:mb-12 text-black">
