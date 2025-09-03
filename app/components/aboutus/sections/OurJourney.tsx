@@ -1,14 +1,12 @@
 "use client";
-import React, { useEffect, useState, useRef } from "react"; 
+import React, { useEffect, useState } from "react"; 
 import Image from "next/image";
 import { moveUp } from '../../motionVarients';
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import { Splide as SplideCore, Components, Options } from '@splidejs/splide';
+import { Splide as SplideCore } from '@splidejs/splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import { motion } from "framer-motion";
-
-// Type for the Splide instance
-type SplideType = SplideCore;
+ 
 
 type datapop = {
   heading: string;
@@ -49,33 +47,8 @@ const OurJourney: React.FC<MissionProps> = ({ Data }) => {
       mainSplide.go('+1');
     }
   };
-
-  const prevRef = useRef<HTMLDivElement>(null);
-  const nextRef = useRef<HTMLDivElement>(null);
-  const textVariant = {
-    hidden: { opacity: 0, y: 40 },
-    show: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
-        duration: 0.6, 
-        ease: "easeOut" as const
-      } 
-    },
-  } as const;
-
-  const imageVariant = {
-    hidden: { opacity: 0, scale: 0.95 },
-    show: { 
-      opacity: 1, 
-      scale: 1, 
-      transition: { 
-        duration: 0.6, 
-        ease: "easeOut" as const,
-        delay: 0.2 
-      } 
-    },
-  } as const;
+ 
+  
 
   // const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const [isHovering, setIsHovering] = useState(false);
