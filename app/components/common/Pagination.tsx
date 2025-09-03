@@ -4,6 +4,8 @@ import {
   MdOutlineArrowBackIos,
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
+import { moveUp } from "../motionVarients";
+import { motion } from "framer-motion";
 
 type PaginationProps = {
   currentPage: number;
@@ -68,7 +70,12 @@ export default function Pagination({
   };
 
   return (
-    <div className="flex justify-center mt-[25px] xl:mt-[50px] items-center space-x-[10px] lg:space-x-[15px] text-19 font-light">
+    <motion.div 
+    variants={moveUp()}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true }}
+    className="flex justify-center mt-[25px] xl:mt-[50px] items-center space-x-[10px] lg:space-x-[15px] text-19 font-light">
       {/* Prev Button */}
       {currentPage > 1 && (
         <button
@@ -91,6 +98,6 @@ export default function Pagination({
           <MdOutlineArrowForwardIos className="text-[#D3D3D3]" size={24} />
         </button>
       )}
-    </div>
+    </motion.div>
   );
 }

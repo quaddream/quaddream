@@ -3,6 +3,8 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import MediaGalleryModal from "./MediaGalleryModal";
+import { AnimatePresence, motion } from "framer-motion";
+import { moveUp } from "../../motionVarients";
 
 export interface GalleryItem {
   id: number;
@@ -21,23 +23,51 @@ interface MediaGalleryProps {
 const MediaGallery: React.FC<MediaGalleryProps> = ({ galleryData }) => {
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
   return (
-    <section className="relative   py-124 xl:py-150 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%] z-10 bg-white overflow-hidden">
+    <section className="relative py-124 xl:py-150 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%] z-10 bg-white overflow-hidden">
       <div className="container">
         {/* Title & Description */}
         <div className="mb-6 xl:mb-12 ">
-          <h1 className="text-80  leading-[1.13] mb-5 md:mb-8 lg:mb-12 text-black">
+          <motion.h1
+            variants={moveUp(0)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="text-80  leading-[1.13] mb-5 md:mb-8 lg:mb-12 text-black"
+          >
             {galleryData.title}
-          </h1>
-          <p className="text-gray-para text-19 leading-[1.7] mb-5 xl:mb-[50px] max-w-[105ch]">
+          </motion.h1>
+          <motion.p
+            variants={moveUp(0.15)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="text-gray-para text-19 leading-[1.7] mb-5 xl:mb-[50px] max-w-[105ch]"
+          >
             {galleryData.description}
-          </p>
-          <hr className="border-0 border-b border-lite-gray" />
+          </motion.p>
+          <motion.hr
+            variants={moveUp(0.3)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="border-0 border-b border-lite-gray"
+          />
         </div>
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[15px] lg:gap-[20px] xl:gap-[30px]">
+        <motion.div
+          variants={moveUp(0.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[15px] lg:gap-[20px] xl:gap-[30px]"
+        >
           {galleryData.gallery.map((item) => (
-            <div
+            <motion.div
               key={item.id}
+              variants={moveUp(item.id * 0.3)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
               className="relative group cursor-pointer overflow-hidden rounded-[16px]"
               onClick={() => setSelectedItem(item)}
             >
@@ -108,15 +138,17 @@ const MediaGallery: React.FC<MediaGalleryProps> = ({ galleryData }) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-        {selectedItem && (
-          <MediaGalleryModal
-            item={selectedItem}
-            onClose={() => setSelectedItem(null)}
-          />
-        )}
+        </motion.div>
+        <AnimatePresence>
+          {selectedItem && (
+            <MediaGalleryModal
+              item={selectedItem}
+              onClose={() => setSelectedItem(null)}
+            />
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

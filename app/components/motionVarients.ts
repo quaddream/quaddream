@@ -5,6 +5,7 @@ export const containerStagger = {
   show: {
     transition: {
       staggerChildren: 0.15,
+      ease: easeOut,
     },
   },
 };

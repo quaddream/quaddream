@@ -6,6 +6,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
+import { motion } from "framer-motion";
+import { moveUp } from "../../motionVarients";
 
 type Item = {
   icon: string;
@@ -26,9 +28,14 @@ const Certification: React.FC<CertificationProps> = ({ certificationData }) => {
   return (
     <section className=" pt-150 overflow-hidden ">
       <div className="container ">
-        <h2 className="text-[25px] md:text-80 leading-[1.12] mb-5 md:mb-8 lg:mb-12 text-black">
+        <motion.h2 
+        variants={moveUp()}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="text-[25px] md:text-80 leading-[1.12] mb-5 md:mb-8 lg:mb-12 text-black">
           {heading}
-        </h2>
+        </motion.h2>
       </div>
 
       <div className="container md:!overflow-visible ">
@@ -50,7 +57,12 @@ const Certification: React.FC<CertificationProps> = ({ certificationData }) => {
         >
           {items.map((item, idx) => (
             <SwiperSlide key={idx}>
-              <div className="flex flex-col xl:border-r-1 xl:border-r-lite-gray">
+              <motion.div 
+              variants={moveUp(idx * 0.25)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="flex flex-col xl:border-r-1 xl:border-r-lite-gray">
                 <div className="flex lg:items-center gap-3 md:gap-[30px] items-center">
                   <div className="w-[67px] h-[67px] md:w-[101px] md:h-[101px] flex flex-shrink-0">
                     <Image
@@ -69,7 +81,7 @@ const Certification: React.FC<CertificationProps> = ({ certificationData }) => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </SwiperSlide>
           ))}
           <div className="flex justify-center mt-12 md:hidden">
@@ -77,10 +89,8 @@ const Certification: React.FC<CertificationProps> = ({ certificationData }) => {
           </div>
         </Swiper>
       </div>
-      
-      <div className="container border-b border-[#BEBEBE] pb-5 lg:pb-31 mb-150">
 
-      </div>
+      <div className="container border-b border-[#BEBEBE] pb-5 lg:pb-31 mb-150"></div>
     </section>
   );
 };

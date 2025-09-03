@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { GalleryItem } from "./MediaGallery";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
+import { createPortal } from "react-dom";
+import { motion, AnimatePresence } from "motion/react";
 
 interface MediaGalleryModalProps {
   item: GalleryItem;
@@ -15,8 +17,10 @@ const MediaGalleryModal: React.FC<MediaGalleryModalProps> = ({
   onClose,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = "auto";
@@ -35,14 +39,23 @@ const MediaGalleryModal: React.FC<MediaGalleryModalProps> = ({
     setCurrentIndex(index);
   };
 
-  return (
-    <div className="fixed inset-0 z-9999 flex items-center justify-center bg-black/80">
+  if (!mounted) return null;
+
+  return createPortal(
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80"
+    >
       <div className="container overflow-hidden">
         {/* Overlay */}
         <div
           className="absolute bg-black/80 inset-0 cursor-pointer"
           onClick={onClose}
-        ></div>
+        />
+
         {/* Modal Content */}
         <div className="relative z-10 w-full overflow-y-auto">
           {/* Header with centered title and right-aligned close button */}
@@ -70,16 +83,29 @@ const MediaGalleryModal: React.FC<MediaGalleryModalProps> = ({
             >
               <SlArrowLeft className="text-white hover:text-primary transition-all duration-300 h-[20px] lg:h-[28px] w-[20px] lg:w-[28px]" />
             </button>
+
             {/* Image Container */}
-            <div className="relative mt-10 lg:mt-0 w-full lg:w-[800px] rounded-[12px] xl:w-[1000px] 2xl:w-[1264px] h-[450px] max-h-[640px] flex items-center justify-center">
-              <Image
-                src={item.images[currentIndex]}
-                alt={`slide-${currentIndex}`}
-                fill
-                className="object-cover rounded-[12px]"
-                sizes="(max-width: 768px) 100vw, 80vw"
-              />
+            <div className="relative mt-10 lg:mt-0 w-full lg:w-[800px] rounded-[12px] xl:w-[1000px] 2xl:w-[1264px] h-[450px] max-h-[640px] flex items-center justify-center overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={item.images[currentIndex]}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={item.images[currentIndex]}
+                    alt={`slide-${currentIndex}`}
+                    fill
+                    className="object-cover rounded-[12px]"
+                    sizes="(max-width: 768px) 100vw, 80vw"
+                  />
+                </motion.div>
+              </AnimatePresence>
             </div>
+
             <button
               onClick={goNext}
               className="absolute right-0 lg:top-1/2 top-0 lg:-translate-y-1/2 translate-y-0 cursor-pointer"
@@ -87,6 +113,7 @@ const MediaGalleryModal: React.FC<MediaGalleryModalProps> = ({
               <SlArrowRight className="text-white hover:text-primary transition-all duration-300 h-[20px] lg:h-[28px] w-[20px] lg:w-[28px]" />
             </button>
           </div>
+
           {/* Thumbnails */}
           <div className="flex flex-wrap justify-center items-center mt-[15px] lg:mt-[30px] gap-[10px]">
             {item.images.map((img, idx) => {
@@ -96,7 +123,7 @@ const MediaGalleryModal: React.FC<MediaGalleryModalProps> = ({
                 <div
                   key={idx}
                   onClick={() => selectImage(idx)}
-                  className={`relative flex items-center justify-center rounded-[9px] overflow-hidden cursor-pointer transition-all duration-200`}
+                  className="relative flex items-center justify-center rounded-[9px] overflow-hidden cursor-pointer transition-all duration-200"
                   style={{ height: "73px" }}
                 >
                   <div
@@ -125,7 +152,8 @@ const MediaGalleryModal: React.FC<MediaGalleryModalProps> = ({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>,
+    document.body
   );
 };
 
