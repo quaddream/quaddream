@@ -50,16 +50,16 @@ const AddressSection = () => {
   return (
     <div className="text-white">
 
-      <div className="flex flex-wrap gap-4 gap-x-8 md:gap-x-4 2xl:gap-[46px] mb-4">
+      <div className="flex flex-wrap gap-2 gap-x-3 md:gap-x-4 2xl:gap-[46px] mb-4">
   {Object.keys(addresses).map((key) => (
-    <div key={key} className="flex items-center gap-4">
+    <div key={key} className="flex items-center gap-2 md:gap-4">
       {/* Round Indicator */}
-      <div className={`w-[9px] h-[9px] rounded-full ${ selected === key ? 'bg-red-500' : 'bg-[#828D91]' }`} ></div>
+      <div className={`w-[6px] h-[6px] md:w-[9px] md:h-[9px] rounded-full ${ selected === key ? 'bg-red-500' : 'bg-[#828D91]' }`} ></div>
 
       {/* Button */}
       <button
         onClick={() => setSelected(key as AddressKey)}
-        className={`transition duration-200 text-25 md:text-30 font-normal cursor-pointer leading-[1.3] ${
+        className={`transition duration-200 text-[16px] md:text-30 font-normal cursor-pointer leading-[1.3] ${
           selected === key ? 'text-white' : 'text-[#828D91] hover:text-white '
         }`}
       >
@@ -70,11 +70,11 @@ const AddressSection = () => {
 </div>
 
 
-      <div className="mt-[26px]">
+      <div className="md:mt-[26px]">
         {data.lines.map((line, i) => (
-          <p className='text-[19px] text-[#B9B9B9] leading-[1.9]' key={i}>{line}</p>
+          <p className='text-[14px] md:text-[19px] text-[#B9B9B9] leading-[1.6] md:leading-[1.9]' key={i}>{line}</p>
         ))}
-        <div className="flex md:items-center gap-2 pt-2 text-[19px] text-[#B9B9B9] leading-[1.9]">
+        <div className="flex md:items-center gap-2 pt-3 md:pt-2 pb-2 md:pb-0 text-[15px] md:text-19 text-[#B9B9B9] leading-[1.9]">
           <span className="mt-1 text-red-500">
             {/* Phone icon SVG */}
             <Image src="/assets/phone.svg" alt="Phone Icon" width={50} height={50} className='w-[24px] h-[24px]' />
@@ -82,7 +82,7 @@ const AddressSection = () => {
           {data.phones.join(' | ')}
         </div>
         {data.emails.map((email, i) => (
-          <div key={i} className="flex items-center gap-2 text-[19px] text-[#B9B9B9] leading-[1.9]">
+          <div key={i} className="flex items-center gap-2 text-3 md:text-[19px] text-[#B9B9B9] leading-[1.9] mb-1">
             <span className="text-red-500">
               {/* Mail icon SVG */}
                <Image src="/assets/mail.svg" alt="Mail Icon" width={50}  height={50}  className='w-[24px] h-[24px]' />

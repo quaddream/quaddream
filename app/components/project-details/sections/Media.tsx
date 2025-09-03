@@ -40,7 +40,7 @@ const Media: React.FC<QualityAssuranceProps> = ({qaData}) => {
     <div className="relative"> 
           {isHovering && (
             <div
-              className="fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-[9999] flex flex-col items-center"
+              className="hidden  lg:flex fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-[9999]  flex-col items-center"
               style={{ transform: `translate(${pos.x}px, ${pos.y}px)` }}
             > 
               <div className="w-[75px] h-[75px] xl:w-[108px] xl:h-[108px] bg-primary rounded-full flex gap-[6px] items-center justify-center">
@@ -69,7 +69,7 @@ const Media: React.FC<QualityAssuranceProps> = ({qaData}) => {
                         ref={prevRef}
                         className="group cursor-pointer transition-transform duration-300 hover:scale-[1.4] group hover:-translate-x-1"
                       > 
-                        <Image src="/assets/images/icons/arrow-left.svg" alt="" width={24} height={24} className="w-[16px] h-[16px]  brightness-0 invert-0 group-hover:brightness-100  transition-all duration-300" />
+                        <Image src="/assets/images/icons/arrow-left.svg" alt="" width={24} height={24} className="w-[24px] h-[24px]  brightness-0 invert-0 group-hover:brightness-100  transition-all duration-300" />
                        
                       </div>
           

@@ -32,18 +32,18 @@ const Footer = () => {
           </button>
         </div>
         {/* Links Section */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-8 md:gap-[170px] mb-10 md:mb-[93px]">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-6 md:gap-[170px] mb-6 md:mb-[93px]">
           {/* Quick Links */}
           <div>
-            <h3 className="text-[16px] text-lite-gray tracking-[0.04em] uppercase mb-[20px] lg:mb-[36px] font-medium">
+            <h3 className="text-[16px] text-lite-gray tracking-[0.04em] uppercase mb-3 md:mb-[20px] lg:mb-[36px] font-medium">
               Quick Link
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-y-3 md:gap-y-[25px] lg:gap-y-[30px]">
+            <div className="grid grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-y-2 md:gap-y-[25px] lg:gap-y-[30px]">
               {quickLinks.map((item, index) => (
                 <Link
                   key={index}
                   href={item.qLLink}
-                  className="text-25 md:text-30 font-light hover:text-[#EC1C24] cursor-pointer leading-[1.333333333333333] transition-all duration-300"
+                  className="text-19 md:text-30 font-light hover:text-[#EC1C24] cursor-pointer leading-[1.333333333333333] transition-all duration-300"
                 >
                   {item.qLTitle}
                 </Link>
@@ -52,15 +52,15 @@ const Footer = () => {
           </div>
 
           {/* Address & Social */}
-          <div className="flex justify-between gap-10 lg:gap-0 flex-col lg:flex-row">
+          <div className="flex justify-between gap-5 md:gap-10 lg:gap-0 flex-col lg:flex-row">
             <div>
-              <h3 className="text-[16px] text-lite-gray uppercase mb-[20px] lg:mb-[36px] font-medium">
+              <h3 className="text-[16px] text-lite-gray uppercase mb-2 lg:mb-[36px] font-medium">
                 Address
               </h3>
               <AddressSection />
             </div>
             <div>
-              <h3 className="text-[16px] text-lite-gray tracking-[0.04em] uppercase mb-[20px] lg:mb-[20px] xl:mb-[41px] font-medium">
+              <h3 className="text-[16px] text-lite-gray tracking-[0.04em] uppercase mb-3 md:mb-4 lg:mb-[20px] xl:mb-[41px] font-medium">
                 Follow us
               </h3>
               <div className="flex space-x-4 gap-3">

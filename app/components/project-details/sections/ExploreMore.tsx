@@ -27,7 +27,7 @@ const ExploreMore: React.FC<PjtProps> = ({ Data }) => {
           <h2 className="text-80 leading-[1.125]   text-black">{Data[0].heading}</h2>
            {/* Button */}
         <motion.div className=" flex justify-center" variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>
-          <Link href='#' className='flex items-center gap-2 cursor-pointer text-16 font-normal border-1 border-black py-[5px] md:py-[10px] px-[20px] rounded-[60px] w-fit z-10 group hover:border-primary hover:bg-primary hover:text-white transition-all duration-300'>
+          <Link href='/projects' className='flex items-center gap-2 cursor-pointer text-16 font-normal border-1 border-black py-[5px] md:py-[10px] px-[20px] rounded-[60px] w-fit z-10 group hover:border-primary hover:bg-primary hover:text-white transition-all duration-300'>
             <span>View All Projects</span>
             <span className='bg-primary w-[51.7px] h-[51.7px] flex items-center justify-center rounded-full group-hover:translate-x-[10px] group-hover:bg-white group-hover:text-primary transition-all duration-300 '>
               <Image src="/assets/images/icons/arrow-right.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] brightness-0 invert-100 group-hover:brightness-100 group-hover:invert-0' />

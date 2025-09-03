@@ -345,7 +345,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
   const paginatedItems = filteredItems.slice(startIndex, endIndex);
 
   return (
-    <section className="py-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10 bg-white mt-[-4.5%]">
+    <section className="py-150 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10 bg-white mt-[-4.5%]">
       <div className="container">
         {/* Heading & Description */}
         <div>

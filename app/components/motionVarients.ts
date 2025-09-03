@@ -60,6 +60,7 @@ export const moveRight = (delay: number = 0) => ({
   },
 });
 
+
 export const fadeIn = (delay: number = 0) => ({
   hidden: { opacity: 0 },
   show: {
