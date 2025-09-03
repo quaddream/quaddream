@@ -83,12 +83,13 @@ const PortfolioHorizontalScroll: React.FC<ProjectSwiperProps> = ({ title, button
               className="flex items-center gap-2 cursor-pointer text-16 border border-black py-[5px] md:py-[10px] px-[10px] md:px-[20px] rounded-[60px] w-fit z-10 group font-normal"
             >
               <span>{buttonText}</span>
-              <span className="bg-primary w-[51.7px] h-[51.7px] flex items-center justify-center rounded-full group-hover:translate-x-[10px] transition-all duration-300">
+              <span className="bg-primary w-8 h-8 md:w-[51.7px] md:h-[51.7px] flex items-center justify-center rounded-full group-hover:translate-x-[10px] transition-all duration-300">
                 <Image
                   src="/assets/images/home/arrow-right.svg"
                   alt="Arrow"
                   width={24}
                   height={24}
+                  className='w-4 h-4 md:w-[24px] md:h-[24px]'
                 />
               </span>
             </Link>
