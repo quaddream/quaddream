@@ -5,6 +5,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import type { Swiper as SwiperType } from "swiper";
+import type { NavigationOptions } from "swiper/types";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { moveLeft, moveUp } from "@/app/components/motionVarients";
@@ -26,17 +28,20 @@ interface QualityAssuranceProps {
 const QualityAssurance: React.FC<QualityAssuranceProps> = ({ qaData }) => {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
-  const swiperRef = useRef<any>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
 
-  // ✅ ensure navigation refs work on both desktop + mobile
   useEffect(() => {
     if (
       swiperRef.current &&
       swiperRef.current.params &&
-      swiperRef.current.params.navigation
+      swiperRef.current.params.navigation &&
+      typeof swiperRef.current.params.navigation !== "boolean"
     ) {
-      swiperRef.current.params.navigation.prevEl = prevRef.current;
-      swiperRef.current.params.navigation.nextEl = nextRef.current;
+      const navigation = swiperRef.current.params
+        .navigation as NavigationOptions;
+
+      navigation.prevEl = prevRef.current;
+      navigation.nextEl = nextRef.current;
 
       swiperRef.current.navigation.destroy();
       swiperRef.current.navigation.init();
