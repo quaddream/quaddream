@@ -60,7 +60,7 @@ const HealthSafety = ({ safetyData }: HealthSafetyProps) => {
         <div className="grid gap-[15px] xl:gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
           {safetyData.items.map((item, index) => (
             <motion.div
-              variants={moveUp(index * 0.3)}
+              variants={moveUp(index * 0.2)}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}

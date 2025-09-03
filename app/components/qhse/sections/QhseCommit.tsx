@@ -36,7 +36,7 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ qhseData }) => {
         {/* Paragraphs */}
         {qhseData.paragraphs.map((para, idx) => (
           <motion.p
-            variants={moveUp(idx * 0.1)}
+            variants={moveUp(idx * 0.25)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
@@ -65,7 +65,7 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ qhseData }) => {
         </motion.div>
       </div>
 
-      <QualityAssurance qaData={qa} />  
+      <QualityAssurance qaData={qa} />
     </section>
   );
 };
