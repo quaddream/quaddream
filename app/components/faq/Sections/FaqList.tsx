@@ -4,22 +4,24 @@ import React, { useState } from "react";
 import Pagination from "@/app/components/common/Pagination";
 import Image from "next/image";
 import Select from "react-select";
+import { motion } from "framer-motion";
+import { moveUp, moveRight } from "../../motionVarients";
 
 interface FaqItem {
-    question: string;
-    answer: string;
-  }
+  question: string;
+  answer: string;
+}
 
-  interface FaqCategory {
-    category: string;
-    items: FaqItem[];
-  }
+interface FaqCategory {
+  category: string;
+  items: FaqItem[];
+}
 
-  interface FaqContent {
-    heading: string;
-    description: string;
-    categories: FaqCategory[];
-  }
+interface FaqContent {
+  heading: string;
+  description: string;
+  categories: FaqCategory[];
+}
 
 const FaqList = ({ faqData }: { faqData: FaqContent }) => {
   const data: FaqContent = faqData;
@@ -53,16 +55,38 @@ const FaqList = ({ faqData }: { faqData: FaqContent }) => {
     <section className="relative z-10 bg-background py-124 xl:py-150 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%] overflow-hidden">
       <div className="container">
         {/* Heading */}
-        <h1 className="text-80  leading-[1.12] mb-6 md:mb-8 lg:mb-12 text-black">
+        <motion.h1
+          variants={moveUp(0)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="text-80  leading-[1.12] mb-6 md:mb-8 lg:mb-12 text-black"
+        >
           {data.heading}
-        </h1>
-        <p className="text-gray-para text-19 leading-[1.7] mb-6 md:mb-8 lg:mb-12 max-w-[107ch]">
+        </motion.h1>
+        <motion.p
+          variants={moveUp(0.15)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="text-gray-para text-19 leading-[1.7] mb-6 md:mb-8 lg:mb-12 max-w-[107ch]"
+        >
           {data.description}
-        </p>
+        </motion.p>
         {/* Tabs */}
-        <div className="hidden md:flex gap-[35px] xl:gap-[55px] border-b border-lite-gray mb-6 lg:mb-[50px]">
-          {data.categories.map((cat) => (
-            <button
+        <motion.div
+          variants={moveRight()}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="hidden md:flex gap-[35px] xl:gap-[55px] border-b border-lite-gray mb-6 lg:mb-[50px]"
+        >
+          {data.categories.map((cat, index) => (
+            <motion.button
+              variants={moveRight(index * 0.2)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
               key={cat.category}
               onClick={() => {
                 setActiveTab(cat.category);
@@ -76,12 +100,18 @@ const FaqList = ({ faqData }: { faqData: FaqContent }) => {
               }`}
             >
               {cat.category}
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Mobile Dropdown */}
-        <div className="block md:hidden mb-7">
+        <motion.div
+          variants={moveUp()}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="block md:hidden mb-7"
+        >
           <Select
             instanceId="category-select"
             options={data.categories.map((cat) => ({
@@ -114,13 +144,22 @@ const FaqList = ({ faqData }: { faqData: FaqContent }) => {
               }),
             }}
           />
-        </div>
+        </motion.div>
 
         {/* FAQ Items */}
-        <div className="space-y-4 lg:space-y-[50px] ">
-          {paginatedItems?.map((item) => (
-            <div
-              key={item.question}
+        <motion.div
+          variants={moveUp()}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="space-y-4 lg:space-y-[50px] ">
+          {paginatedItems?.map((item, index) => (
+            <motion.div
+              key={index}
+              variants={moveUp(index * 0.15)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
               className="border-b border-lite-gray pb-3 lg:pb-12 cursor-pointer"
               onClick={() => handleToggle(item.question)}
             >
@@ -156,9 +195,9 @@ const FaqList = ({ faqData }: { faqData: FaqContent }) => {
                   {item.answer}
                 </p>
               )}
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Pagination */}
         {totalPages > 1 && (
