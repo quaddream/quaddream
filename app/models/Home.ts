@@ -8,10 +8,10 @@ const homeSchema = new mongoose.Schema({
         type: String,
     },
     bannerSection:{
+        video:{type:String,required:true},
+        poster:{type:String,required:true},
         items:[
             {
-                image:{type:String,required:true},
-                imageAlt:{type:String},
                 title:{type:String,required:true},
             }
         ]
