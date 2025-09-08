@@ -8,7 +8,7 @@ const Index = () => {
     <>
       <BannerInner bannerData={bannersection.data} />
       <GetInTouch Data={getintouch.data} titlewidth={17} />
-      <Letstalk Data={letstalk.data} titlewidth={17} />
+      <Letstalk Data={letstalk.data} />
     </>
   );
 };
