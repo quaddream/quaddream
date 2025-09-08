@@ -2,8 +2,9 @@ import { z } from "zod";
 
 const sectorList = [
   { id: 1, name: "Service Looking For" },
-  { id: 2, name: "Project Type1" },
-  { id: 3, name: "Project Type2" },
+  { id: 2, name: "Scaffolding Contracting" },
+  { id: 3, name: "Scaffolding & Formwork Rentals" },
+  { id: 4, name: "Mobile Tower Sale & Rentals" },
 ];
 
 export const letstalkSchema = z.object({
