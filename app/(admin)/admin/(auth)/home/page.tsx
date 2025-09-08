@@ -10,15 +10,16 @@ import { ImageUploader } from '@/components/ui/image-uploader'
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Textarea } from '@/components/ui/textarea'
 import AdminItemContainer from '@/app/components/common/AdminItemContainer';
+import { VideoUploader } from '@/components/ui/video-uploader';
 
 interface HomeFormProps {
 
     metaTitle: string;
     metaDescription: string;
     bannerSection: {
+        video: string;
+        poster: string;
         items: {
-            image: string;
-            imageAlt: string;
             title: string;
         }[];
     };
@@ -155,6 +156,7 @@ const Home = () => {
                 setValue("partnersSection.items", data.data.partnersSection.items);
                 setValue("servicesSection", data.data.servicesSection);
                 setValue("servicesSection.items", data.data.servicesSection.items);
+                setValue("bannerSection", data.data.bannerSection);
                 setValue("bannerSection.items", data.data.bannerSection.items);
                 setValue("seventhSection", data.data.seventhSection);
             } else {
@@ -181,20 +183,35 @@ const Home = () => {
                 <AdminItemContainer>
                     <Label className='' main>Banner Section</Label>
                     <div className='p-5 rounded-md flex flex-col gap-5'>
-
-                        {bannerSectionItems.map((field, index) => (
-                            <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b pb-5'>
-                                <div className='absolute top-2 right-2'>
-                                    <RiDeleteBinLine onClick={() => bannerSectionRemove(index)} className='cursor-pointer text-red-600' />
-                                </div>
-
-                                <div className='flex flex-col gap-2'>
+                    <div className='flex flex-col gap-2'>
                                     <div className='flex flex-col gap-2'>
-                                        <Label className='font-bold'>Image</Label>
+                                        <Label className=''>Video</Label>
                                         <Controller
-                                            name={`bannerSection.items.${index}.image`}
+                                            name={`bannerSection.video`}
                                             control={control}
-                                            rules={{ required: "Image is required" }}
+                                            rules={{ required: "Video is required" }}
+                                            render={({ field }) => (
+                                                <VideoUploader
+                                                    value={field.value}
+                                                    onChange={field.onChange}
+                                                />
+                                            )}
+                                        />
+                                        {errors.bannerSection?.video && (
+                                            <p className="text-red-500">{errors.bannerSection?.video.message}</p>
+                                        )}
+                                    </div>
+
+                                    
+
+                                </div>
+                                <div className='flex flex-col gap-2'>
+                                <div className='flex flex-col gap-2'>
+                                        <Label className='text-[16px] font-light'>Poster</Label>
+                                        <Controller
+                                            name={`bannerSection.poster`}
+                                            control={control}
+                                            rules={{ required: "Poster is required" }}
                                             render={({ field }) => (
                                                 <ImageUploader
                                                     value={field.value}
@@ -202,23 +219,22 @@ const Home = () => {
                                                 />
                                             )}
                                         />
-                                        {errors.bannerSection?.items?.[index]?.image && (
-                                            <p className="text-red-500">{errors.bannerSection?.items?.[index]?.image.message}</p>
+                                        {errors.bannerSection?.poster && (
+                                            <p className="text-red-500">{errors.bannerSection?.poster.message}</p>
                                         )}
                                     </div>
-
-                                    <div className='flex flex-col gap-2'>
-                                        <div className='flex flex-col gap-2'>
-                                            <Label className='font-bold'>Alt Tag</Label>
-                                            <Input type='text' placeholder='Alt Tag' {...register(`bannerSection.items.${index}.imageAlt`, {
-                                                required: "Value is required"
-                                            })} />
-                                            {errors.bannerSection?.items?.[index]?.imageAlt && <p className='text-red-500'>{errors.bannerSection?.items?.[index]?.imageAlt.message}</p>}
-                                        </div>
-                                    </div>
-
-
+                                    <div>
+                                    
                                 </div>
+                                
+                            </div>
+
+                        {bannerSectionItems.map((field, index) => (
+                            <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b pb-5'>
+                                <div className='absolute top-2 right-2'>
+                                    <RiDeleteBinLine onClick={() => bannerSectionRemove(index)} className='cursor-pointer text-red-600' />
+                                </div>
+
 
                                 <div className='flex flex-col gap-2'>
                                     <div className='flex flex-col gap-2'>
@@ -236,7 +252,7 @@ const Home = () => {
                         ))}
 
                         <div className='flex justify-end mt-2'>
-                            <Button type='button' className="" addItem onClick={() => bannerSectionAppend({ title: "", image: "", imageAlt: "" })}>Add Item</Button>
+                            <Button type='button' className="" addItem onClick={() => bannerSectionAppend({ title: "" })}>Add Item</Button>
                         </div>
 
                     </div>
