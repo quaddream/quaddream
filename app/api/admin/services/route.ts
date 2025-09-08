@@ -8,21 +8,31 @@ export async function GET(request: NextRequest) {
     try {
         await connectDB();
         const id = request.nextUrl.searchParams.get("id");
-        
-        if(id){
+        const slug = request.nextUrl.searchParams.get("slug");
+
+        if (id) {
             const service = await Service.findOne({});
-        const foundService = service.thirdSection.items.find((service: {_id:string}) => service._id.toString() === id);
+            const foundService = service.thirdSection.items.find((service: { _id: string }) => service._id.toString() === id);
             if (!foundService) {
                 return NextResponse.json({ message: "Service not found" }, { status: 404 });
             }
-            return NextResponse.json({data:foundService,message:"Service fetched successfully"}, { status: 200 });
+            return NextResponse.json({ data: foundService, message: "Service fetched successfully" }, { status: 200 });
         }
 
-        const service = await Service.findOne({});
-        if (!service) {
-            return NextResponse.json({ message: "Service not found" }, { status: 404 });
+        else if (slug) {
+            const service = await Service.findOne({});
+            const foundService = service.thirdSection.items.find((service: { slug: string }) => service.slug === slug);
+            if (!foundService) {
+                return NextResponse.json({ message: "Service not found" }, { status: 404 });
+            }
+            return NextResponse.json({ data: foundService, message: "Service fetched successfully" }, { status: 200 });
+        } else {
+            const service = await Service.findOne({});
+            if (!service) {
+                return NextResponse.json({ message: "Service not found" }, { status: 404 });
+            }
+            return NextResponse.json({ data: service, message: "Service fetched successfully" }, { status: 200 });
         }
-        return NextResponse.json({data:service,message:"Service fetched successfully"}, { status: 200 });
     } catch (error) {
         console.log(error);
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
@@ -38,9 +48,9 @@ export async function PATCH(request: NextRequest) {
         }
         await connectDB();
         const id = request.nextUrl.searchParams.get("id");
-        if(id){
+        if (id) {
             const service = await Service.findOne({});
-            const foundService = service.thirdSection.items.find((service: {_id:string}) => service._id.toString() == id);
+            const foundService = service.thirdSection.items.find((service: { _id: string }) => service._id.toString() == id);
             if (!foundService) {
                 return NextResponse.json({ message: "Service not found" }, { status: 404 });
             }
@@ -52,15 +62,15 @@ export async function PATCH(request: NextRequest) {
             foundService.secondSection = body.secondSection;
             foundService.productSection = body.productSection;
             foundService.fourthSection = body.fourthSection;
-            
+
             await service.save();
-            return NextResponse.json({data:service,message:"Service updated successfully"}, { status: 200 });
+            return NextResponse.json({ data: service, message: "Service updated successfully" }, { status: 200 });
         }
-        const service = await Service.findOneAndUpdate({}, body,{upsert:true,new:true});
+        const service = await Service.findOneAndUpdate({}, body, { upsert: true, new: true });
         if (!service) {
             return NextResponse.json({ message: "Service not found" }, { status: 404 });
         }
-        return NextResponse.json({data:service,message:"Service updated successfully"}, { status: 200 });
+        return NextResponse.json({ data: service, message: "Service updated successfully" }, { status: 200 });
     } catch (error) {
         console.log(error);
         return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
