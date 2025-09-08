@@ -174,7 +174,7 @@ const Navbar = () => {
       transition-all duration-300 ease-in-out
       ${
         openDropdown === index
-          ? "opacity-100 translate-y-9 pointer-events-auto"
+          ? "opacity-100 translate-y-0 pointer-events-auto pt-9"
           : "opacity-0 -translate-y-0 pointer-events-none"
       }
     `}
@@ -186,13 +186,14 @@ const Navbar = () => {
                           return (
                             <li
                               key={idx}
-                              className="flex items-center justify-center py-4 cursor-pointer rounded-[8px]"
+                              className="flex items-center justify-center cursor-pointer rounded-[8px]"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 setActiveChild(childKey);
+                                setActiveParent(index);  
                               }}
                             >
-                              <div className="flex items-center gap-4 w-full px-7">
+                              <div className="flex items-center gap-4 w-full px-7 py-4">
                                 <SlArrowRight
                                   className={`transition-all duration-300 ${
                                     isChildActive
