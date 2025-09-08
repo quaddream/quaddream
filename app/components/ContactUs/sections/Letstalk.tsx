@@ -28,7 +28,7 @@ const sector = [
 const Letstalk: React.FC<BannerProps> = ({ Data }) => {
   const [sectorselected, setsectorSelected] = useState(sector[0]);
   return (
-    <section className="pb-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10   ">
+    <section className="pb-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10">
       <div className="container flex flex-col gap-12">
         <div className="grid grid-cols-1 lg:grid-cols-2  gap-5  border-b border-[#BEBEBE] pb-12 lg:pb-31">
           <div>
@@ -165,7 +165,7 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
                 whileInView="show"
                 transition={{ duration: 0.6 }}
                 viewport={{ amount: 0.1, once: true }}
-                className="flex w-full items-center justify-between rounded-3xl    bg-[#F9F9F9]  p-5 md:p-7 text-left shadow-sm border-0  "
+                className="flex w-full items-center justify-between rounded-3xl bg-[#F9F9F9]  p-5 md:p-7 text-left shadow-sm border-0  "
               >
                 <textarea
                   placeholder="Message..."
