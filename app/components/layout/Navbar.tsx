@@ -171,7 +171,7 @@ const Navbar = () => {
                       <ul
                         className={`
       absolute left-1/2 top-full -translate-x-1/2 flex-col rounded-[8px] bg-white w-[190px]
-      transition-all duration-300 ease-in-out
+      transition-all duration-300 ease-in-out pb-5
       ${
         openDropdown === index
           ? "opacity-100 translate-y-0 pointer-events-auto pt-9"
@@ -190,10 +190,10 @@ const Navbar = () => {
                               onClick={(e) => {
                                 e.stopPropagation();
                                 setActiveChild(childKey);
-                                setActiveParent(index);    
+                                setActiveParent(index);
                               }}
                             >
-                              <div className="flex ml-1 items-center gap-[13px] w-full px-7 py-4">
+                              <div className="flex ml-1 items-center gap-[13px] w-full px-7 py-[6px]">
                                 <SlArrowRight
                                   className={`transition-all duration-300 ${
                                     isChildActive
