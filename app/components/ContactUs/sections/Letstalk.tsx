@@ -33,7 +33,7 @@ const sector = [
 const Letstalk: React.FC<BannerProps> = ({ Data }) => {
   const [sectorselected, setsectorSelected] = useState(sector[0]);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-
+  
   const {
     register,
     handleSubmit,
@@ -56,7 +56,6 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
       alert("Please complete the captcha verification");
       return;
     }
-    console.log("Form Data:", data);
 
     try {
       await sendContactAction(data);
