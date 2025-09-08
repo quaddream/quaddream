@@ -24,9 +24,10 @@ type BannerProps = {
 };
 
 const sector = [
-  { id: 1, name: "Service Looking For " },
-  { id: 2, name: "Project Type1" },
-  { id: 3, name: "Project Type2" },
+  { id: 1, name: "Service Looking For" },
+  { id: 2, name: "Scaffolding Contracting" },
+  { id: 3, name: "Scaffolding & Formwork Rentals" },
+  { id: 4, name: "Mobile Tower Sale & Rentals" },
 ];
 
 const Letstalk: React.FC<BannerProps> = ({ Data }) => {
