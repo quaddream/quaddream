@@ -73,7 +73,7 @@ export default function DocumentList() {
               <div className="flex flex-col sm:flex-row gap-[1px] sm:gap-0">
                 {/* Document Name */}
                 <div className="w-full sm:w-1/4 pr-0 sm:pr-4 pb-2 sm:pb-0">
-                  <span className="lg:text-30 text-black font-normal">
+                  <span className="lg:text-30 text-black font-normal leading-[1.33]">
                     {doc.name}
                   </span>
                 </div>

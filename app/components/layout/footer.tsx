@@ -4,7 +4,32 @@ import AddressSection from "./addressSec";
 import Link from "next/link";
 import { quickLinks, socialLinks } from "./footerItems";
 
+import { useEffect, useState } from "react";
 const Footer = () => {
+  const [isBottom, setIsBottom] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const windowH = window.innerHeight;
+      const docH = document.documentElement.scrollHeight;
+
+      // check if user is near bottom (e.g., 100px from footer)
+      if (scrollY + windowH >= docH - 100) {
+        setIsBottom(true);
+      } else {
+        setIsBottom(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="bg-black text-white relative z-[99] py-[50px]">
       <div className="container mx-auto px-4">
@@ -32,17 +57,17 @@ const Footer = () => {
           </button>
         </div>
         {/* Links Section */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-6 md:gap-[170px] mb-6 md:mb-[93px]">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-6 md:gap-[170px] mb-6 lg:mb-10 xl:mb-[93px]">
           {/* Quick Links */}
           <div>
             <h3 className="text-[16px] text-lite-gray tracking-[0.04em] uppercase mb-3 md:mb-[20px] lg:mb-[36px] font-medium">
               Quick Link
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-y-2 md:gap-y-[25px] lg:gap-y-[30px]">
+            <div className="grid grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-y-2 md:gap-y-5 xl:gap-y-[30px]">
               {quickLinks.map((item, index) => (
                 <Link
                   key={index}
-                  href={item.qLLink}
+                  href={item.qLLink} 
                   className="text-19 md:text-30 font-light hover:text-[#EC1C24] cursor-pointer leading-[1.333333333333333] transition-all duration-300"
                 >
                   {item.qLTitle}
@@ -108,7 +133,10 @@ const Footer = () => {
       </div>
       
       <div className="container relative">
-      <div className="fixed bottom-4 lg:bottom-5 right-0 w-full z-10 cursor-pointer">
+      <div onClick={scrollToTop}
+       className={`fixed right-0 w-full z-10 cursor-pointer transition-all duration-300  ${
+        isBottom ? "bottom-4 md:bottom-22" : "bottom-4 lg:bottom-5 "
+      }`}>
         <div className="container flex justify-end pointer-events-none">
           <div className="rounded-full pointer-events-auto">
             <div className="w-[42px] h-[42px] lg:w-[58px] lg:h-[58px]">

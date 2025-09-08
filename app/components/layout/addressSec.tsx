@@ -79,6 +79,8 @@ const AddressSection = () => {
             {/* Phone icon SVG */}
             <Image src="/assets/phone.svg" alt="Phone Icon" width={50} height={50} className='w-[24px] h-[24px]' />
           </span>
+          
+     
           {data.phones.join(' | ')}
         </div>
         {data.emails.map((email, i) => (
