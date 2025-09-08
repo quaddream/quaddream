@@ -190,10 +190,10 @@ const Navbar = () => {
                               onClick={(e) => {
                                 e.stopPropagation();
                                 setActiveChild(childKey);
-                                setActiveParent(index);  
+                                setActiveParent(index);    
                               }}
                             >
-                              <div className="flex items-center gap-4 w-full px-7 py-4">
+                              <div className="flex ml-1 items-center gap-[13px] w-full px-7 py-4">
                                 <SlArrowRight
                                   className={`transition-all duration-300 ${
                                     isChildActive
