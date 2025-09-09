@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
 import Project from "@/app/models/Project";
 import { verifyAdmin } from "@/lib/verifyAdmin";
+import "@/app/models/Sector";
+import "@/app/models/Location";
 
 
 export async function GET(request: NextRequest) {
