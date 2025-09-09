@@ -11,6 +11,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { Textarea } from '@/components/ui/textarea'
 import AdminItemContainer from '@/app/components/common/AdminItemContainer';
 import { VideoUploader } from '@/components/ui/video-uploader';
+import { toast } from 'sonner';
 
 interface HomeFormProps {
 
@@ -131,7 +132,7 @@ const Home = () => {
             });
             if (response.ok) {
                 const data = await response.json();
-                alert(data.message);
+                toast.success(data.message);
                 // router.push("/admin/commitment");
             }
         } catch (error) {
@@ -161,7 +162,7 @@ const Home = () => {
                 setValue("seventhSection", data.data.seventhSection);
             } else {
                 const data = await response.json();
-                alert(data.message);
+                toast.error(data.message);
             }
         } catch (error) {
             console.log("Error in fetching home data", error);

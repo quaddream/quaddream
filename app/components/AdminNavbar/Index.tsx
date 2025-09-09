@@ -11,7 +11,7 @@ import {
 import { GalleryThumbnails, HeartHandshake, Workflow } from 'lucide-react';
 import { useEffect } from 'react';
 import { useRefetchServices } from '@/app/contexts/refetchServices';
-
+import { toast } from 'sonner';
 
 
 const AdminNavbar = () => {
@@ -35,7 +35,7 @@ const AdminNavbar = () => {
             setServiceData(data.data.thirdSection.items);
         } else {
             const data = await response.json();
-            alert(data.message);
+            toast.error(data.message);
         }
     } catch (error) {
         console.log("Error in fetching service data", error);

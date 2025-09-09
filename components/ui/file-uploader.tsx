@@ -5,6 +5,7 @@ import { useDropzone } from "react-dropzone";
 import { File, X, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
+import { toast } from "sonner";
 
 interface FileUploaderProps {
   value?: string;
@@ -63,7 +64,7 @@ export function FileUploader({
         });
 
         if (response.status !== 200) {
-          alert("Upload failed");
+          toast.error("Upload failed");
           return;
         }
 
