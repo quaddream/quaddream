@@ -13,14 +13,10 @@ import {
   LetstalkFormValues,
 } from "@/lib/validation/letstalkSchema";
 import { sendContactAction } from "@/lib/mail/contactAction";
-
-type ServicesItem = {
-  title: string;
-  description: string;
-};
+import { ContactUs } from "../type";
 
 type BannerProps = {
-  Data: ServicesItem[];
+  Data: ContactUs["secondSection"];
 };
 
 const sector = [
@@ -33,7 +29,7 @@ const sector = [
 const Letstalk: React.FC<BannerProps> = ({ Data }) => {
   const [sectorselected, setsectorSelected] = useState(sector[0]);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-  
+
   const {
     register,
     handleSubmit,
@@ -89,7 +85,7 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
                 viewport={{ amount: 0.1, once: true }}
                 className="text-80 leading-[1.153846153846154] mb-5 mb:mb-10 text-black"
               >
-                {Data[0].title}
+                {Data.title}
               </motion.h2>
               <motion.p
                 variants={paragraphItem}
@@ -99,7 +95,7 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
                 viewport={{ amount: 0.1, once: true }}
                 className="text-19 text-gray-para leading-[1.684210526315789] mb-0 max-w-[107ch]"
               >
-                {Data[0].description}
+                {Data.description}
               </motion.p>
             </motion.div>
           </div>
