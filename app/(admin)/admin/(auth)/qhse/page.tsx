@@ -62,6 +62,7 @@ interface HomeFormProps {
             logo: string;
             logoAlt: string;
             title: string;
+            code: string;
         }[];
     };
 }
@@ -640,6 +641,10 @@ const Home = () => {
 
                                                 <div className='flex flex-col gap-2'>
                                                     <div className='flex flex-col gap-2'>
+                                                        <Label className='font-bold'>Code</Label>
+                                                        <Input type='text' placeholder='Code' {...register(`fifthSection.items.${index}.code`)} />
+                                                    </div>
+                                                    <div className='flex flex-col gap-2'>
                                                         <Label className='font-bold'>Title</Label>
                                                         <Input type='text' placeholder='Title' {...register(`fifthSection.items.${index}.title`, {
                                                             required: "Value is required"
@@ -656,7 +661,7 @@ const Home = () => {
                                     ))}
 
                                     <div className='flex justify-end'>
-                                        <Button type='button' className="" addItem onClick={() => fifthSectionAppend({ title: "", logo: "", logoAlt: "" })}>Add Item</Button>
+                                        <Button type='button' className="" addItem onClick={() => fifthSectionAppend({ title: "", logo: "", logoAlt: "", code: "" })}>Add Item</Button>
                                     </div>
 
                                 </div>
