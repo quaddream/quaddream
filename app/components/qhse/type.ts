@@ -39,6 +39,7 @@ export interface QhseData {
   fourthSection: {
     mainTitle: "string";
     subTitle: "string";
+    description: "string";
     items: [
       {
         logo: "string";

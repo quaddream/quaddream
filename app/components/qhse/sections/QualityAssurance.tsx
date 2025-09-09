@@ -137,7 +137,11 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({ qaData }) => {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="flex flex-col gap-[20px] xl:border-r-1 xl:border-r-[#BEBEBE]"
+                className={`flex flex-col gap-[20px] ${
+                  idx !== qaData.items.length - 1
+                    ? "xl:border-r xl:border-r-[#BEBEBE]"
+                    : ""
+                }`}
               >
                 <Image
                   src={item.logo}

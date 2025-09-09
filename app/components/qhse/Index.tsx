@@ -1,8 +1,4 @@
 import React from "react";
-import {
-  environmentalData,
-  certificationData,
-} from "./data";
 import BannerInner from "../common/BannerInner";
 import QHSECommitment from "./sections/QhseCommit";
 import HealthSafety from "./sections/HealthandSafety";
@@ -16,7 +12,7 @@ const Index = ({ data }: { data: QhseData }) => {
       <BannerInner bannerData={data.bannerSection} />
       <QHSECommitment qhseData={data} />
       <HealthSafety safetyData={data.thirdSection} />
-      <Environment environmentalData={environmentalData} />
+      <Environment environmentalData={data.fourthSection} />
       <Certification certificationData={data.fifthSection} />
     </>
   );

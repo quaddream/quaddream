@@ -55,7 +55,11 @@ const Certification: React.FC<CertificationProps> = ({ certificationData }) => {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="flex flex-col xl:border-r-1 xl:border-r-lite-gray"
+                className={`flex flex-col ${
+                  idx !== items.length - 1
+                    ? "xl:border-r xl:border-r-lite-gray"
+                    : ""
+                }`}
               >
                 <div className="flex lg:items-center gap-3 md:gap-[30px] items-center">
                   <div className="w-[67px] h-[67px] md:w-[99px] md:h-[101px] flex flex-shrink-0">
