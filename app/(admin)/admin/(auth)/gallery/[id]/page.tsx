@@ -13,6 +13,7 @@ import ImageCard from '@/app/components/AdminProject/ImageCard'
 import Image from 'next/image';
 import { TbReorder } from "react-icons/tb";
 import { GiConfirmed } from "react-icons/gi";
+import { toast } from 'sonner';
 
 
 interface GalleryForm {
@@ -37,7 +38,7 @@ const IndiGallery = () => {
                 setImageUrls(data.data.images);
             } else {
                 const data = await response.json();
-                alert(data.message);
+                toast.error(data.message);
             }
         } catch (error) {
             console.log("Error in fetching gallery data", error);
@@ -83,7 +84,7 @@ const IndiGallery = () => {
             });
             if (response.ok) {
                 const data = await response.json();
-                alert(data.message);
+                toast.success(data.message);
                 router.push("/admin/gallery");
             }
         } catch (error) {

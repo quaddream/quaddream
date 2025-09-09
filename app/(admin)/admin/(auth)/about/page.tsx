@@ -10,6 +10,7 @@ import { ImageUploader } from '@/components/ui/image-uploader'
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Textarea } from '@/components/ui/textarea'
 import AdminItemContainer from '@/app/components/common/AdminItemContainer';
+import { toast } from 'sonner';
 
 interface AboutFormProps {
 
@@ -99,10 +100,11 @@ const About = () => {
             });
             if (response.ok) {
                 const data = await response.json();
-                alert(data.message);
+                toast.success(data.message);
                 // router.push("/admin/commitment");
             }
         } catch (error) {
+            toast.error("Error in adding about");
             console.log("Error in adding home", error);
         }
     }
@@ -126,9 +128,10 @@ const About = () => {
                 setValue("sixthSection", data.data.sixthSection);
             } else {
                 const data = await response.json();
-                alert(data.message);
+                toast.error(data.message);
             }
         } catch (error) {
+            toast.error("Error in fetching about data");
             console.log("Error in fetching about data", error);
         }
     }

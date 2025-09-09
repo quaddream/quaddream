@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 import { useParams } from 'next/navigation';
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Textarea } from '@/components/ui/textarea'
+import { toast } from 'sonner';
 
 
 interface FaqForm {
@@ -40,7 +41,7 @@ const IndiFaq = () => {
                 setValue("faqSection.items", data.data);
             } else {
                 const data = await response.json();
-                alert(data.message);
+                toast.error(data.message);
             }
         } catch (error) {
             console.log("Error in fetching faq data", error);
@@ -56,7 +57,7 @@ const IndiFaq = () => {
             });
             if (response.ok) {
                 const data = await response.json();
-                alert(data.message);
+                toast.success(data.message);
                 router.push("/admin/faq");
             }
         } catch (error) {

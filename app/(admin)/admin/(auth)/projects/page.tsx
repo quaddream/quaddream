@@ -19,6 +19,7 @@ import AdminItemContainer from '@/app/components/common/AdminItemContainer';
 import { useForm, Controller } from "react-hook-form";
 import { ImageUploader } from '@/components/ui/image-uploader'
 import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
 
 
 interface ProjectPageProps {
@@ -64,7 +65,7 @@ export default function Projects() {
         setProjectList(data.data.projects);
       } else {
         const data = await response.json();
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log("Error fetching projects", error);
@@ -80,11 +81,11 @@ export default function Projects() {
       if (response.ok) {
         const data = await response.json();
         setSector("");
-        alert(data.message);
+        toast.success(data.message);
         handleFetchSector();
       } else {
         const data = await response.json();
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log("Error adding sector", error);
@@ -99,7 +100,7 @@ export default function Projects() {
         setSectorList(data.data);
       } else {
         const data = await response.json();
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log("Error fetching sector", error);
@@ -114,12 +115,12 @@ export default function Projects() {
       });
       if (response.ok) {
         const data = await response.json();
-        alert(data.message);
+        toast.success(data.message);
         handleFetchSector();
         setSector("");
       } else {
         const data = await response.json();
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log("Error editing sector", error);
@@ -133,11 +134,11 @@ export default function Projects() {
       });
       if (response.ok) {
         const data = await response.json();
-        alert(data.message);
+        toast.success(data.message);
         handleFetchSector();
       } else {
         const data = await response.json();
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log("Error deleting sector", error);
@@ -153,7 +154,7 @@ export default function Projects() {
         setLocationList(data.data);
       } else {
         const data = await response.json();
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log("Error fetching location", error);
@@ -169,11 +170,11 @@ export default function Projects() {
       if (response.ok) {
         const data = await response.json();
         setLocation("");
-        alert(data.message);
+        toast.success(data.message);
         handleFetchLocation();
       } else {
         const data = await response.json();
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log("Error adding location", error);
@@ -188,11 +189,11 @@ export default function Projects() {
       });
       if (response.ok) {
         const data = await response.json();
-        alert(data.message);
+        toast.success(data.message);
         handleFetchLocation();
       } else {
         const data = await response.json();
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log("Error editing location", error);
@@ -206,11 +207,11 @@ export default function Projects() {
       });
       if (response.ok) {
         const data = await response.json();
-        alert(data.message);
+        toast.success(data.message);
         handleFetchLocation();
       } else {
         const data = await response.json();
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log("Error deleting location", error);
@@ -224,11 +225,11 @@ export default function Projects() {
       });
       if (response.ok) {
         const data = await response.json();
-        alert(data.message);
+        toast.success(data.message);
         handleFetchProjects();
       } else {
         const data = await response.json();
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log("Error deleting project", error);
@@ -243,7 +244,7 @@ export default function Projects() {
         });
         if (response.ok) {
             const data = await response.json();
-            alert(data.message);
+            toast.success(data.message);
             // router.push("/admin/commitment");
         }
     } catch (error) {
@@ -263,7 +264,7 @@ export default function Projects() {
         setValue("lastSection", data.data.lastSection);
       }else{
         const data = await response.json();
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log("Error fetching project details", error);
