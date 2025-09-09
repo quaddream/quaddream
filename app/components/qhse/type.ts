@@ -1,26 +1,26 @@
 export interface QhseData {
-  metaTitle: "string";
-  metaDescription: "string";
+  metaTitle: string;
+  metaDescription: string;
   bannerSection: {
-    image: "string";
-    imageAlt: "string";
-    title: "string";
+    image: string;
+    imageAlt: string;
+    title: string;
   };
   firstSection: {
-    image: "string";
-    imageAlt: "string";
-    title: "string";
-    description: "string";
+    image: string;
+    imageAlt: string;
+    title: string;
+    description: string;
   };
   secondSection: {
-    mainTitle: "string";
-    subTitle: "string";
-    description: "string";
+    mainTitle: string;
+    subTitle: string;
+    description: string;
     items: [
       {
-        logo: "string";
-        logoAlt: "string";
-        title: "string";
+        logo: string;
+        logoAlt: string;
+        title: string;
       },
     ];
   };

@@ -1,14 +1,13 @@
 import React from "react";
-import {bannersection} from "./data";
 import BannerInner from "../common/BannerInner";
 import FaqList from "./Sections/FaqList";
-import { faqContent } from "./data";
+import { FaqData } from "./type";
 
-const Index = () => {
+const Index = ({ data }: { data: FaqData }) => {
   return (
     <>
-      <BannerInner bannerData={bannersection.data} />
-      <FaqList faqData={faqContent} />  
+      <BannerInner bannerData={data.bannerSection} />
+      <FaqList faqData={data} />
     </>
   );
 };
