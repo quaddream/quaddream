@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
 import Project from "@/app/models/Project";
 import { verifyAdmin } from "@/lib/verifyAdmin";
+import "@/app/models/Sector";
+import "@/app/models/Location";
 
 
 export async function GET(request: NextRequest) {
@@ -24,6 +26,7 @@ export async function GET(request: NextRequest) {
             }
             return NextResponse.json({ data: foundProject, message: "Project fetched successfully" }, { status: 200 });
         } else {
+            console.log("hereeee")
             const project = await Project.findOne({}).populate("projects.firstSection.sector", "name _id").populate("projects.firstSection.location", "name _id");
             if (!project) {
                 return NextResponse.json({ message: "Project not found" }, { status: 404 });
