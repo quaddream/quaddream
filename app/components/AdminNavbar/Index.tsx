@@ -61,6 +61,7 @@ const AdminNavbar = () => {
         ] },
         { name: "Faq", href: "/admin/faq", icon: QuestionMarkCircleIcon },
         { name: "QHSE", href: "/admin/qhse", icon: HeartHandshake },
+        { name: "Blogs", href: "/admin/blogs", icon: Workflow },
       ];
 
   return (
