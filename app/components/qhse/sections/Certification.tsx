@@ -8,33 +8,26 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { motion } from "framer-motion";
 import { moveUp } from "../../motionVarients";
-
-type Item = {
-  icon: string;
-  CertificationID: string;
-  CertificationName: string;
-};
+import { QhseData } from "../type";
 
 type CertificationProps = {
-  certificationData: {
-    heading: string;
-    items: Item[];
-  };
+  certificationData: QhseData["fifthSection"];
 };
 
 const Certification: React.FC<CertificationProps> = ({ certificationData }) => {
-  const { heading, items } = certificationData;
+  const { title, items } = certificationData;
 
   return (
     <section className=" pt-150 overflow-hidden ">
       <div className="container ">
-        <motion.h2 
-        variants={moveUp()}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="text-[25px] md:text-80 leading-[1.12] mb-5 md:mb-8 lg:mb-12 text-black">
-          {heading}
+        <motion.h2
+          variants={moveUp()}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="text-[25px] md:text-80 leading-[1.12] mb-5 md:mb-8 lg:mb-12 text-black"
+        >
+          {title}
         </motion.h2>
       </div>
 
@@ -57,27 +50,37 @@ const Certification: React.FC<CertificationProps> = ({ certificationData }) => {
         >
           {items.map((item, idx) => (
             <SwiperSlide key={idx}>
-              <motion.div 
-              variants={moveUp(idx * 0.25)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="flex flex-col xl:border-r-1 xl:border-r-lite-gray">
+              <motion.div
+                variants={moveUp(idx * 0.25)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="flex flex-col xl:border-r-1 xl:border-r-lite-gray"
+              >
                 <div className="flex lg:items-center gap-3 md:gap-[30px] items-center">
-                  <div className="w-[67px] h-[67px] md:w-[101px] md:h-[101px] flex flex-shrink-0">
+                  <div className="w-[67px] h-[67px] md:w-[99px] md:h-[101px] flex flex-shrink-0">
                     <Image
-                      src={item.icon}
-                      alt={item.CertificationName}
-                      width={100}
-                      height={100}
+                      src={item.logo}
+                      alt={item.title}
+                      width={99}
+                      height={101}
                     />
                   </div>
                   <div className="flex flex-col ">
                     <p className="text-black text-19 2xl:text-33 leading-[1.2]">
-                      {item.CertificationID}
-                    </p>
-                    <p className="text-black text-19 2xl:text-33 leading-[1.2]">
-                      {item.CertificationName}
+                      {(() => {
+                        const parts = item.title.split(" ");
+                        const line1 = parts.slice(0, 2).join(" ");
+                        const line2 = parts.slice(2).join(" ");
+
+                        return (
+                          <>
+                            {line1}
+                            <br />
+                            {line2}
+                          </>
+                        );
+                      })()}
                     </p>
                   </div>
                 </div>

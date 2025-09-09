@@ -10,19 +10,10 @@ import type { NavigationOptions } from "swiper/types";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { moveLeft, moveUp } from "@/app/components/motionVarients";
-
-type QAItem = {
-  icon: string;
-  content: string;
-};
+import { QhseData } from "../type";
 
 interface QualityAssuranceProps {
-  qaData: {
-    heading: string;
-    subheading: string;
-    description: string;
-    items: QAItem[];
-  };
+  qaData: QhseData["secondSection"];
 }
 
 const QualityAssurance: React.FC<QualityAssuranceProps> = ({ qaData }) => {
@@ -60,7 +51,7 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({ qaData }) => {
           viewport={{ once: true }}
           className="text-80 leading-[1.12] mb-7 md:mb-8 lg:mb-12 text-black"
         >
-          {qaData.heading}
+          {qaData.mainTitle}
         </motion.h2>
 
         {/* Sub-title */}
@@ -71,7 +62,7 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({ qaData }) => {
           viewport={{ once: true }}
           className="text-25 md:text-30  leading-[1.3] mb-[15px] xl:mb-[30px] text-black"
         >
-          {qaData.subheading}
+          {qaData.subTitle}
         </motion.p>
 
         {/* Paragraph + navigation */}
@@ -149,13 +140,13 @@ const QualityAssurance: React.FC<QualityAssuranceProps> = ({ qaData }) => {
                 className="flex flex-col gap-[20px] xl:border-r-1 xl:border-r-[#BEBEBE]"
               >
                 <Image
-                  src={item.icon}
-                  alt={item.content}
+                  src={item.logo}
+                  alt={item.logoAlt}
                   width={67}
                   height={57}
                 />
                 <p className="text-black text-19 md:text-25 leading-[1.6]">
-                  {item.content}
+                  {item.title}
                 </p>
               </motion.div>
             </SwiperSlide>
