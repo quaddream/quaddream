@@ -38,7 +38,7 @@ import { Home } from "../home/type";
 
         {/* Button */}
         <motion.div className="md:mt-8 flex justify-center" variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>
-          <Link href='#' className='flex items-center gap-2 cursor-pointer text-16 font-normal border-2 border-white py-[5px] md:py-[8px] px-2 md:px-5 rounded-[60px] w-fit z-10 group hover:border-primary hover:bg-primary hover:text-white transition-all duration-300'>
+          <Link href='/contact-us' className='flex items-center gap-2 cursor-pointer text-16 font-normal border-2 border-white py-[5px] md:py-[8px] px-2 md:px-5 rounded-[60px] w-fit z-10 group hover:border-primary hover:bg-primary hover:text-white transition-all duration-300'>
             <span>{data.buttonText}</span>
             <span className='bg-primary w-8 h-8  md:w-[51.7px] md:h-[51.7px] flex items-center justify-center rounded-full group-hover:translate-x-[10px] group-hover:bg-white group-hover:text-primary transition-all duration-300 '>
               <Image src="/assets/images/icons/arrow-right.svg" alt="Arrow" width={30} height={30} className='w-4 h-4 md:w-[24px] md:h-[24px] brightness-0 invert-100 group-hover:brightness-100 group-hover:invert-0' />

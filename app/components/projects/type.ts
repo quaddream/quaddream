@@ -14,7 +14,8 @@ export type Projects =
     title: string,
     description: string
   },
-  projects: [
+  projects: [ 
+      
     {
       bannerSection: {
         image: string,
@@ -75,4 +76,13 @@ export type Projects =
     maxwidth?: number | undefined;
 
   }
+}
+
+export type Location = 
+{ 
+    name: string 
+}
+export type sector = 
+{ 
+    name: string 
 }

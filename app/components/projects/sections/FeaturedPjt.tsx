@@ -6,51 +6,55 @@ import { useRouter } from "next/navigation";
 import Pagination from "@/app/components/common/Pagination";
 import { motion } from "motion/react";
 import { moveUp } from "../../motionVarients";
+import { Projects,Location,sector } from "../type";
 
-type Item = {
-  title: string;
-  image: string;
-  city: string;
-  status: string;
-  icon: string;
-  sector?: string;
-};
+ 
 
-type DataPop = {
-  heading: string;
-  desc: string;
-  items: Item[];
-};
+ 
 
-type PjtProps = {
-  Data: DataPop[];
-};
+type PjtProps = { 
+  firstSection: Projects["firstSection"];
+  projectlist: Projects["projects"]; 
+  locationdata: Location;
+  sectordata: sector;
+}
 
 // Filter options
-const sectorOptions = [
-  { id: 1, name: "Sector" },
-  { id: 2, name: "Construction & Scaffolding" },
-  { id: 3, name: "Hospitality" },
-  { id: 4, name: "Commercial" },
-];
+ 
 
 const statusOptions = [
-  { id: 1, name: "Status" },
-  { id: 2, name: "Completed" },
-  { id: 3, name: "In Progress" },
-  { id: 4, name: "Upcoming" },
+  { id: 0, name: "Status" },
+  { id: 1, name: "Completed all works" },
+  { id: 2, name: "Completed partial works" },
+  { id: 3, name: "Not started" },
 ];
 
-const locationOptions = [
-  { id: 1, name: "Location" },
-  { id: 2, name: "Abu Dhabi" },
-  { id: 3, name: "Dubai" },
-  { id: 4, name: "Sharjah" },
-];
+ 
 
-const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
-  const router = useRouter();
+const FeaturedPjt: React.FC<PjtProps> = ({ firstSection ,projectlist,locationdata,sectordata }) => {
+  const router = useRouter(); 
 
+  const locationOptions = [
+    { id: 1, name: "Location" },
+    ...(Array.isArray(locationdata) 
+      ? locationdata.map((city, index) => ({
+          id: index + 2,
+          name: city.name || city,
+        }))
+      : []
+    )
+  ];
+
+  const sectorOptions = [
+    { id: 1, name: "Sector" },
+    ...(Array.isArray(sectordata) 
+      ? sectordata.map((city, index) => ({
+          id: index + 2,
+          name: city.name || city,
+        }))
+      : []
+    )
+  ];
   // Filters state
   const [sectorSelected, setSectorSelected] = useState(sectorOptions[0]);
   const [statusSelected, setStatusSelected] = useState(statusOptions[0]);
@@ -61,14 +65,14 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
   const itemsPerPage = 9;
 
   // Filter items
-  const filteredItems = Data[0].items.filter((item) => {
+  const filteredItems = projectlist.filter((item) => {
     const sectorMatch =
-      sectorSelected.name === "Sector" || item.sector === sectorSelected.name;
+      sectorSelected.name === "Sector" || item.firstSection.sector.name === sectorSelected.name;
     const statusMatch =
-      statusSelected.name === "Status" || item.status === statusSelected.name;
+      statusSelected.name === "Status" || item.firstSection.status === statusSelected.name;
     const locationMatch =
       locationSelected.name === "Location" ||
-      item.city === locationSelected.name;
+      item.firstSection.location.name === locationSelected.name;
 
     return sectorMatch && statusMatch && locationMatch;
   });
@@ -93,7 +97,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
             transition={{ duration: 0.6 }}
             viewport={{ amount: 0.1, once: true }}
           >
-            {Data[0].heading}
+            {firstSection.title}
           </motion.h2>
           <motion.p
             variants={moveUp(0.3)}
@@ -102,7 +106,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
             viewport={{ amount: 0.1, once: true }}
             className="text-19 leading-[1.684] mb-0 max-w-[65ch] text-gray-para"
           >
-            {Data[0].desc}
+            {firstSection.description}
           </motion.p>
         </div>
 
@@ -226,40 +230,40 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {paginatedItems.map((item, index) => (
+          {filteredItems.map((item, index) => (
             <motion.div
               variants={moveUp(index * 0.15)}
               initial="hidden"
               whileInView="show"
               viewport={{ amount: 0.1, once: true }}
               className="cursor-pointer h-[300px] lg:h-[408px] xl:h-[502px] overflow-hidden rounded-xl bg-cover bg-center relative group bgrd"
-              style={{ backgroundImage: `url(${item.image})` }}
+              style={{ backgroundImage: `url(${item.thumbnail})` }}
               key={index}
-              onClick={() => router.push(`/projects/1`)}
+              onClick={() => router.push(`/projects/${item.slug}`)}
             >
               <div className="absolute bottom-0 w-full p-7 lg:p-10 z-10">
                 <div className="relative flex items-center justify-between lg:mb-7 lg:pb-7 mb-3 pb-3 border-b-3 border-white transition-all duration-300">
                   <div className="flex items-center gap-2">
                     <Image
-                      src={item.icon}
-                      alt={item.title}
+                      src={"/assets/images/projects/location.svg"}
+                      alt={item.firstSection.title}
                       width={20}
                       height={20}
                     />
                     <p className="transition-all duration-300 text-white">
-                      {item.city}
+                      {item.firstSection.location.name}
                     </p>
                   </div>
                   <div>
                     <p className="transition-all duration-300 text-white">
-                      {item.status}
+                      {item.firstSection.status}
                     </p>
                   </div>
                   <div className="absolute bottom-[-3px] w-0 h-[3px] group-hover:w-full bg-primary transition-all duration-300"></div>
                 </div>
                 <div>
                   <p className="text-33 leading-[1.2] uppercase text-white">
-                    {item.title}
+                    {item.firstSection.title}
                   </p>
                 </div>
               </div>
