@@ -26,6 +26,7 @@ import AdminItemContainer from '../common/AdminItemContainer'
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Textarea } from '@/components/ui/textarea'
 import { toast } from 'sonner'
+import { statusData } from './statusData'
 
 
 
@@ -361,12 +362,8 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                                             <SelectValue placeholder="Select Status" />
                                         </SelectTrigger>
                                         <SelectContent>
-                                            {[
-                                                { name: "Completed all works" },
-                                                { name: "Completed partial works" },
-                                                { name: "Not started" },
-                                            ].map((item, index) => (
-                                                <SelectItem key={index} value={item.name}>
+                                            {statusData.map((item, index) => (
+                                                <SelectItem key={index} value={item.value.toString()}>
                                                     {item.name}
                                                 </SelectItem>
                                             ))}
