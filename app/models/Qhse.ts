@@ -45,6 +45,7 @@ const qhseSchema = new mongoose.Schema({
     fourthSection:{
         mainTitle:{type:String,required:true},
         subTitle:{type:String,required:true},
+        description:{type:String,required:true},
         items:[
             {
                 logo:{type:String,required:true},

@@ -49,6 +49,7 @@ interface HomeFormProps {
     fourthSection: {
         mainTitle: string;
         subTitle: string;
+        description:string;
         items: {
             logo: string;
             logoAlt: string;
@@ -483,6 +484,13 @@ const Home = () => {
                                     required: "Title is required"
                                 })} />
                                 {errors.fourthSection?.subTitle && <p className='text-red-500'>{errors.fourthSection?.subTitle.message}</p>}
+                            </div>
+                            <div className='flex flex-col gap-1'>
+                                <Label className=' font-bold'>Description</Label>
+                                <Textarea placeholder='Description' {...register("fourthSection.description", {
+                                    required: "Title is required"
+                                })} />
+                                {errors.fourthSection?.description && <p className='text-red-500'>{errors.fourthSection?.description.message}</p>}
                             </div>
                         </div>
 
