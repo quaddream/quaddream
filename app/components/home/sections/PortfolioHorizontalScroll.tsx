@@ -68,7 +68,7 @@ const PortfolioHorizontalScroll: React.FC<ProjectSwiperProps> = ({ title, button
           transition={{ duration: 0.6 }}
           viewport={{ amount: 0.1, once: true }}
         >
-          {title}
+          Portfolio
         </motion.h2>
         {buttonLink && (
           <motion.div
@@ -79,7 +79,7 @@ const PortfolioHorizontalScroll: React.FC<ProjectSwiperProps> = ({ title, button
             viewport={{ amount: 0.1, once: true }}
           >
             <Link
-              href={buttonLink}
+              href={'/projects'}
               className="flex items-center gap-2 cursor-pointer text-16 border border-black py-[5px] md:py-[10px] px-[10px] md:px-[20px] rounded-[60px] w-fit z-10 group font-normal"
             >
               <span>{buttonText}</span>

@@ -4,18 +4,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'motion/react'
 import {moveUp, containerStagger} from '../../motionVarients'
-const Services = () => {
+import { Home } from '../type'
+const Services = ({data}: {data: Home['servicesSection']}) => {
     return (
         <section className='py-150 overflow-hidden bg-black'>
             <div className='container'>
                 <div className='grid grid-cols-1 xl:grid-cols-[auto_706.89px] 2xl:grid-cols-[auto_866.89px] lg:gap-x-5 2xl:gap-[97.23px] text-white gap-y-8 lg:gap-y-5'>
                     <motion.div className='flex flex-col' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
-                        <motion.h2 className='text-80 leading-[1.125] mb-5 lg:mb-8 2xl:mb-12' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>Our Services</motion.h2>
-                        <motion.h4 className='text-25 md:text-30 leading-[1.333333333333333] mb-4 xl:mb-[29.7px]' variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>At Quaddream, We offer Rentals and Sales to suit your requirement and Budget.</motion.h4>
-                        <motion.p className='text-19 leading-[1.684210526315789] text-lite-gray' variants={moveUp(0.8)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>Quaddream is committed to your project’s success and budget. With flexible rental and sales
-                            options for high-quality materials, we ensure smooth execution—whether you need temporary equipment
-                            or a permanent solution. Partner with us for reliable results within your financial goals.
-                        </motion.p>
+                        <motion.h2 className='text-80 leading-[1.125] mb-5 lg:mb-8 2xl:mb-12' variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>{data.mainTitle}</motion.h2>
+                        <motion.h4 className='text-25 md:text-30 leading-[1.333333333333333] mb-4 xl:mb-[29.7px]' variants={moveUp(0.6)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>{data.subTitle}</motion.h4>
+                        <motion.p className='text-19 leading-[1.684210526315789] text-lite-gray' variants={moveUp(0.8)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>{data.description}</motion.p>
                     </motion.div>
                     <div className='flex flex-col w-full gap-3 h-fit'>
                         <motion.div className='grid md:grid-cols-2 xl:grid-cols-5 2xl:grid-rows-[336px_339px] gap-3' variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
@@ -29,7 +27,7 @@ const Services = () => {
                                     <Image src="/assets/images/arrow-top-right.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300' />
                                 </div>
                                 <div className='relative z-30 mt-auto'>
-                                    <h3 className='text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6'>Scaffolding Contracting</h3>
+                                    <h3 className='text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6'>{data.items[0].title}</h3>
                                     <Link href="/" className="flex items-center gap-2 group cursor-pointer">
                                         <span>Explore</span> <Image src="/assets/images/bold-arrow-white.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] group-hover:translate-x-2 transition-all duration-300' />
                                     </Link>
@@ -45,7 +43,7 @@ const Services = () => {
                                     <Image src="/assets/images/arrow-top-right.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300' />
                                 </div>
                                 <div className='relative z-30 mt-auto'>
-                                    <h3 className='text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6'>Cuplock Scaffolding & Aluminum Mobile Tower Rental & Sales</h3>
+                                    <h3 className='text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6'>{data.items[1].title}</h3>
                                     <Link href="/" className="flex items-center gap-2 group cursor-pointer" >
                                         <span>Explore</span> 
                                         <Image src="/assets/images/bold-arrow-white.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] group-hover:translate-x-2 transition-all duration-300' />
@@ -63,7 +61,7 @@ const Services = () => {
                                     <Image src="/assets/images/arrow-top-right.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300' />
                                 </div>
                                 <div className='relative z-30 mt-auto'>
-                                    <h3 className='text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6'>Scaffolding <br /> Formwork</h3>
+                                    <h3 className='text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6 max-w-[10ch]'>{data.items[2].title}</h3>
                                     <Link href="/" className="flex items-center gap-2 group cursor-pointer">
                                         <span>Explore</span>
                                         <Image src="/assets/images/bold-arrow-white.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] group-hover:translate-x-2 transition-all duration-300' />
@@ -80,7 +78,7 @@ const Services = () => {
                                     <Image src="/assets/images/arrow-top-right.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300' />
                                 </div>
                                 <div className='relative z-30 mt-auto'>
-                                    <h3 className='text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6'>Equipment Rentals</h3>
+                                    <h3 className='text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6'>{data.items[3].title}</h3>
                                     <Link href="/" className="flex items-center gap-2 group cursor-pointer">
                                         <span>Explore</span> 
                                         <Image src="/assets/images/bold-arrow-white.svg" alt="Arrow" width={30} height={30} className='w-[24px] h-[24px] group-hover:translate-x-2 transition-all duration-300' />

@@ -4,7 +4,8 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { moveUp } from "../../motionVarients";
 import { useState } from "react";
-const IndustriesList = () => {
+import { Home } from "../type";
+const IndustriesList = ({data}: {data: Home['industriesSection']}) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   return (
     <section className="py-150 bg-white">
@@ -14,7 +15,7 @@ const IndustriesList = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5  xl:gap-[1px] relative">
       <div className="absolute top-[50%] left-0 translate-y-[-50%] h-[0.5px] w-full bg-black z-40 hidden 2xl:block"></div>
 
-      {homeData.industriesList.items.map((item, index) => {
+      {data.items.map((item, index) => {
         const isActive = activeIndex === index;
 
         return (
@@ -77,8 +78,8 @@ const IndustriesList = () => {
             {/* Icon */}
             <div className="pb-5 2xl:pb-[57.7px] px-30px pt-30px relative z-10">
               <Image
-                src={item.icon}
-                alt={item.title}
+                src={item.logo}
+                alt={item.logoAlt}
                 width={50}
                 height={50}
                 className={`transition-all duration-300 ${

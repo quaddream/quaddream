@@ -12,38 +12,16 @@ import {
 import Counter from "./Counter";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Home } from "../type";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Commitment = () => {
+const Commitment = ({ data }: { data: Home["firstSection"] }) => {
   const sectionRef = useRef<HTMLElement | null>(null); // ✅ new ref for whole section
   const containerRef = useRef<HTMLUListElement | null>(null);
   const contentRef = useRef<HTMLLIElement | null>(null);
   const textRef = useRef<HTMLHeadingElement | null>(null);
 
-  // ✅ Section entry animation
-  /*     useEffect(() => {
-        if (!sectionRef.current) return;
-        gsap.fromTo(
-            sectionRef.current,
-            { autoAlpha: 0, scale: 1, y: 280 },
-            {
-                autoAlpha: 1,
-                y: 0,
-                scale: 1,
-                duration: 2,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 85%",
-                    toggleActions: "play reverse play reverse",
-                },
-            }
-        );
-        
-    }, []); */
-
-  // Animate heading words from grey to black
   useEffect(() => {
     if (!textRef.current) return;
 
@@ -133,7 +111,7 @@ const Commitment = () => {
                   id="tickerList"
                   ref={contentRef}
                 >
-                  About Us
+                  {data.movingText}
                 </li>
               </ul>
             </Link>
@@ -155,7 +133,7 @@ const Commitment = () => {
               viewport={{ amount: 0.1, once: true }}
               className="text-65 leading-[1.153846153846154] mb-4 md:mb-5 lg:mb-50px "
             >
-              With a commitment to safety, reliability and technical excellence.
+              {data.title}
             </motion.h2>
             <motion.p
               variants={paragraphItem}
@@ -165,10 +143,7 @@ const Commitment = () => {
               viewport={{ amount: 0.1, once: true }}
               className="text-19 text-[#7f7f7f] leading-[1.684210526315789]  mb-4 md:mb-5 xl:mb-10"
             >
-              Quad Dream Scaffolding LLC offers reliable, high-quality
-              scaffolding solutions across the UAE, supporting construction and
-              industrial projects with safe, flexible, and fully compliant
-              services — from design to dismantling.
+              {data.description}
             </motion.p>
             <motion.div
               variants={paragraphItem}
@@ -181,7 +156,7 @@ const Commitment = () => {
                 href="/about-us"
                 className="flex items-center gap-2 cursor-pointer text-16 font-normal border-2 border-black py-2 px-4 md:px-5 rounded-[60px] w-fit z-10 group"
               >
-                <span>Learn More About Us</span>
+                <span>{data.buttonText}</span>
                 <span className="bg-primary w-[35px] h-[35px] lg:w-[51.7px] lg:h-[51.7px] flex items-center justify-center rounded-full  group-hover:translate-x-[10px] transition-all duration-300">
                   <Image
                     src="/assets/images/home/arrow-right.svg"
@@ -198,7 +173,6 @@ const Commitment = () => {
 
         {/* Counter Section */}
         <motion.div
-          className=" grid grid-cols-2 lg:grid-cols-4 justify-between gap-y-8 gap-x-20-20 2xl:gap-20"
           variants={containerStagger}
           initial="hidden"
           whileInView="show"
@@ -206,87 +180,29 @@ const Commitment = () => {
           viewport={{ amount: 0.1, once: true }}
         >
           <motion.div
-            className="flex flex-col gap-2 xl:min-w-[300px]"
+            className=" grid grid-cols-2 lg:grid-cols-4 justify-between gap-y-8 gap-x-20-20 2xl:gap-20"
             variants={moveUp(0.2)}
             initial="hidden"
             whileInView="show"
             transition={{ duration: 0.6 }}
             viewport={{ amount: 0.1, once: true }}
           >
-            <Image
-              src="/assets/images/home/building-icon.svg"
-              alt="Commitment"
-              className="md:w-12 md:h-12 w-8 h-8"
-              width={50}
-              height={50}
-            />
-            <h3 className="text-75 xl:min-w-max">
-              <Counter from={0} to={Number(21000)} duration={2} />
-              <span className="text-primary">+</span>
-            </h3>
-            <p className="text-19">Work Completed</p>
-          </motion.div>
-          <motion.div
-            className="flex flex-col gap-2 xl:min-w-[300px]"
-            variants={moveUp(0.4)}
-            initial="hidden"
-            whileInView="show"
-            transition={{ duration: 0.6 }}
-            viewport={{ amount: 0.1, once: true }}
-          >
-            <Image
-              src="/assets/images/home/emp-icon.svg"
-              alt="Commitment"
-              className="md:w-12 md:h-12 w-8 h-8"
-              width={50}
-              height={50}
-            />
-            <h3 className="text-75">
-              <Counter from={0} to={Number(110)} duration={2} />
-              <span className="text-primary">+</span>
-            </h3>
-            <p className="text-19">Employees</p>
-          </motion.div>
-          <motion.div
-            className="flex flex-col gap-2 xl:min-w-[300px]"
-            variants={moveUp(0.6)}
-            initial="hidden"
-            whileInView="show"
-            transition={{ duration: 0.6 }}
-            viewport={{ amount: 0.1, once: true }}
-          >
-            <Image
-              src="/assets/images/home/clients-icon.svg"
-              alt="Commitment"
-              className="md:w-12 md:h-12 w-8 h-8"
-              width={50}
-              height={50}
-            />
-            <h3 className="text-75">
-              <Counter from={0} to={Number(100)} duration={2} />
-              <span className="text-primary">+</span>
-            </h3>
-            <p className="text-19">Clients</p>
-          </motion.div>
-          <motion.div
-            className="flex flex-col gap-2 xl:min-w-[300px]"
-            variants={moveUp(0.8)}
-            initial="hidden"
-            whileInView="show"
-            transition={{ duration: 0.6 }}
-            viewport={{ amount: 0.1, once: true }}
-          >
-            <Image
-              src="/assets/images/home/calender-icon.svg"
-              alt="Commitment"
-              className="md:w-12 md:h-12 w-8 h-8"
-              width={50}
-              height={50}
-            />
-            <h3 className="text-75">
-              <Counter from={0} to={Number(2012)} duration={2} />
-            </h3>
-            <p className="text-19">Year Established</p>
+            {data.items.map((item, index) => (
+              <motion.div className="flex flex-col gap-2 xl:min-w-[300px]" key={index}>
+                <Image
+                  src={item.logo}
+                  alt={item.logoAlt}
+                  className="md:w-12 md:h-12 w-8 h-8"
+                  width={50}
+                  height={50}
+                />
+                <h3 className="text-75 xl:min-w-max">
+                  <Counter from={0} to={Number(item.number)} duration={2} />
+                  <span className="text-primary">+</span>
+                </h3>
+                <p className="text-19">{item.value}</p>
+              </motion.div>
+            ))}
           </motion.div>
         </motion.div>
       </div>

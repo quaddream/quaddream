@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import BannerInner from '../common/BannerInner' 
 import About from './sections/About' 
@@ -7,7 +8,9 @@ import OurJourney from './sections/OurJourney'
 import CoreValue from './sections/CoreValue' 
 import CTA from '../common/cta' 
 import {bannersection,methodologysection,missionsection,corevaluesection,ctaSection,journey } from "./data"; 
-const Index = () => {
+import { aboutus } from './type' 
+  
+  const Index = async ({ data}: { data: aboutus  }) => {  
   return (
    <>
     <BannerInner bannerData={bannersection.data}/>
@@ -18,11 +21,7 @@ const Index = () => {
     <OurJourney Data={journey.data}/>
     <CTA
     maxwidth={17}
-            title={ctaSection.title}
-            description={ctaSection.description}
-            buttonLink={ctaSection.buttonLink}
-            buttonText={ctaSection.buttonText}
-            bgImg={ctaSection.bgImg}
+   {...data.sixthSection}
           />
          
 

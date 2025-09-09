@@ -347,4 +347,11 @@ body {
 .yrslider .is-active{
   opacity: 1 !important;
 }
- 
+@keyframes scrollmar {
+  0% {
+    transform: translateX(0%); /* start off-screen right */
+  }
+  100% {
+    transform: translateX(-100%); /* move completely off-screen left */
+  }
+}

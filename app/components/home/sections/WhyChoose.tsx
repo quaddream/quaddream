@@ -4,7 +4,8 @@ import { homeData } from "../data";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { moveUp, containerStagger, paragraphItem } from "../../motionVarients";
-const WhyChoose = () => {
+import { Home } from "../type";
+const WhyChoose = ({data}: {data: Home["fourthSection"]}) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const delay = 3000;  
@@ -32,11 +33,11 @@ const WhyChoose = () => {
   return (
     <section className="py-150 overflow-hidden bg-black">
       <div className="container">
-        <motion.h2 className="text-80 leading-[1.125] mb-6 md:mb-8 lg:mb-12 text-white" variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>Why Choose Quad Dream</motion.h2>
+        <motion.h2 className="text-80 leading-[1.125] mb-6 md:mb-8 lg:mb-12 text-white" variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>{data.title}</motion.h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-4 2xl:gap-22">
 
           <motion.div className="flex flex-col gap-5   2xl:gap-[40px]" variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
-            {homeData.whyChoose.items.map((item, index) => {
+            {data.items.map((item, index) => {
                const isActive = activeIndex === index;
                return(
               <motion.div className="relative group" key={index}  variants={paragraphItem} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
@@ -49,11 +50,11 @@ const WhyChoose = () => {
                      }`}>
                   <div className=" flex items-center gap-3">
                   <div className="relative z-[2] bg-[#1b1b1b] rounded-md min-w-[80px] min-h-[80px] md:min-w-[96px] md:min-h-[96px] flex items-center justify-center">
-                    <Image src={item.icon} alt={item.title} width={40} height={40} className="  transition-all duration-300" />
+                    <Image src={item.logo} alt={item.logoAlt} width={40} height={40} className="  transition-all duration-300" />
                   </div>
                   <div>
-                    <h3 className="relative z-[2] text-25 leading-[1.6] text-white font-light group-hover:text-white transition-all duration-300">{item.title}</h3>
-                    <p className="relative z-[2] text-19 leading-[1.684210526315789] text-[#D5D5D5]">{item.description}</p>
+                    <h3 className="relative z-[2] text-25 leading-[1.6] text-white font-light group-hover:text-white transition-all duration-300">{item.mainTitle}</h3>
+                    <p className="relative z-[2] text-19 leading-[1.684210526315789] text-[#D5D5D5]">{item.subTitle}</p>
                   </div>
                   </div>
                 </button>
@@ -73,8 +74,8 @@ const WhyChoose = () => {
             transition={{ duration: 0.6 }}>
               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/64 to-100% transition-all duration-300 z-20"></div>
             <Image
-              src={homeData.whyChoose.items[activeIndex].image}
-              alt={homeData.whyChoose.title}
+              src={data.items[activeIndex].image}
+              alt={data.title}
               width={1500}
               height={1500}
               className="h-full w-full object-cover absolute top-0 left-0 transition-opacity duration-700 opacity-100"

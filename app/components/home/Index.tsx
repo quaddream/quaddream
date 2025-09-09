@@ -12,10 +12,12 @@ import { partnersSection, ctaSection, projects } from "./data";
 import PortfolioHorizontalScroll from './sections/PortfolioHorizontalScroll'
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { Home } from './type'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const Index = () => {
+
+const Index = async ({ data}: { data: Home  }) => { 
   const commitmentRef = useRef(null)
 
   useEffect(() => {
@@ -63,41 +65,31 @@ const Index = () => {
 
   return (
     <div >
-      <div className='frtsn'>
-        {/* Sticky Banner */}
+      <div className='frtsn'> 
         <div className="lg:sticky top-0 lg:h-screen z-10">
-          <Banner />
+          <Banner data={data.bannerSection} />
         </div>
-
-        {/* Commitment with GSAP animated border radius */}
+ 
         <div ref={commitmentRef} className="relative z-20 bg-white overflow-hidden ">
-          <Commitment />
+          <Commitment data={data.firstSection}  />
         </div>
       </div>
 
       <HomeTicker />
-      <Services />
-      <IndustriesList />
-      <WhyChoose />
+      <Services data={data.servicesSection}/>
+      <IndustriesList data={data.industriesSection}/>
+      <WhyChoose data={data.fourthSection} />
       <PortfolioHorizontalScroll
         projects={projects.portfolio.projects}
         title={projects.portfolio.title}
         buttonLink={projects.portfolio.buttonLink}
         buttonText={projects.portfolio.buttonText}
       />
-      <OurPartners
-        title={partnersSection.title}
-        description={partnersSection.description}
-        items={partnersSection.items}
-        bgImg={partnersSection.bgImg}
-      />
-      <CTA
-       maxwidth={19}
-        title={ctaSection.title}
-        description={ctaSection.description}
-        buttonLink={ctaSection.buttonLink}
-        buttonText={ctaSection.buttonText}
-        bgImg={ctaSection.bgImg}
+  <OurPartners {...data.partnersSection} />
+      <CTA 
+      maxwidth={19} 
+      {...data.seventhSection}
+        
       />
     </div>
   )
