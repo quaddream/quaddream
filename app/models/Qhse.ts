@@ -61,6 +61,7 @@ const qhseSchema = new mongoose.Schema({
                 logo:{type:String,required:true},
                 logoAlt:{type:String},
                 title:{type:String,required:true},
+                code:{type:String},
             }
         ]
     },
