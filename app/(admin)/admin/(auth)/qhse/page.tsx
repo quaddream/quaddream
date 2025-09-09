@@ -10,6 +10,7 @@ import { ImageUploader } from '@/components/ui/image-uploader'
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Textarea } from '@/components/ui/textarea'
 import AdminItemContainer from '@/app/components/common/AdminItemContainer';
+import { toast } from 'sonner';
 
 interface HomeFormProps {
     metaTitle: string;
@@ -48,6 +49,7 @@ interface HomeFormProps {
     fourthSection: {
         mainTitle: string;
         subTitle: string;
+        description:string;
         items: {
             logo: string;
             logoAlt: string;
@@ -99,7 +101,7 @@ const Home = () => {
             });
             if (response.ok) {
                 const data = await response.json();
-                alert(data.message);
+                toast.success(data.message);
                 // router.push("/admin/commitment");
             }
         } catch (error) {
@@ -126,7 +128,7 @@ const Home = () => {
                 setValue("fifthSection.items", data.data.fifthSection.items);
             } else {
                 const data = await response.json();
-                alert(data.message);
+                toast.error(data.message);
             }
         } catch (error) {
             console.log("Error in fetching qhse data", error);
@@ -482,6 +484,13 @@ const Home = () => {
                                     required: "Title is required"
                                 })} />
                                 {errors.fourthSection?.subTitle && <p className='text-red-500'>{errors.fourthSection?.subTitle.message}</p>}
+                            </div>
+                            <div className='flex flex-col gap-1'>
+                                <Label className=' font-bold'>Description</Label>
+                                <Textarea placeholder='Description' {...register("fourthSection.description", {
+                                    required: "Title is required"
+                                })} />
+                                {errors.fourthSection?.description && <p className='text-red-500'>{errors.fourthSection?.description.message}</p>}
                             </div>
                         </div>
 

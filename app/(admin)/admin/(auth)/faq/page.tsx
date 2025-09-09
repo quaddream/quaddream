@@ -21,6 +21,7 @@ import AdminItemContainer from '@/app/components/common/AdminItemContainer';
 import { Textarea } from '@/components/ui/textarea';
 import { Controller, useForm } from 'react-hook-form';
 import { MdOutlineQuestionAnswer } from "react-icons/md";
+import { toast } from 'sonner';
 
 interface FAQPageProps {
     metaTitle: string;
@@ -54,11 +55,11 @@ const AdminFAQ = () => {
             if(response.ok) {
                 const data = await response.json();
                 setCategory("");
-                alert(data.message);
+                toast.success(data.message);
                 fetchFAQData();
             }else{
                 const data = await response.json();
-                alert(data.message);
+                toast.error(data.message);
             }
         } catch (error) {
             console.log("Error adding category", error);
@@ -73,11 +74,11 @@ const AdminFAQ = () => {
             });
             if(response.ok) {
                 const data = await response.json();
-                alert(data.message);
+                toast.success(data.message);
                 fetchFAQData();
             }else{
                 const data = await response.json();
-                alert(data.message);
+                toast.error(data.message);
             }
         } catch (error) {
             console.log("Error editing category", error);
@@ -91,11 +92,11 @@ const AdminFAQ = () => {
             });
             if(response.ok) {
                 const data = await response.json();
-                alert(data.message);
+                toast.success(data.message);
                 fetchFAQData();
             }else{
                 const data = await response.json();
-                alert(data.message);
+                toast.error(data.message);
             }
         } catch (error) {
             console.log("Error deleting category", error);
@@ -114,7 +115,7 @@ const AdminFAQ = () => {
                 setCategoryList(data.data.faq);
             } else {
                 const data = await response.json();
-                alert(data.message);
+                toast.error(data.message);
             }
         } catch (error) {
             console.log("Error in fetching faq data", error);
@@ -133,7 +134,7 @@ const AdminFAQ = () => {
             });
             if (response.ok) {
                 const data = await response.json();
-                alert(data.message);
+                toast.success(data.message);
                 // router.push("/admin/commitment");
             }
         } catch (error) {

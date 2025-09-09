@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../../../app/globals.css";
 import { RefetchServicesProvider } from "@/app/contexts/refetchServices";
+import { Toaster } from 'sonner';
 
 export const metadata: Metadata = {
   title: "Assent | Backend Console",
@@ -15,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <RefetchServicesProvider>
-      <body className={`antialiased overflow-x-hidden overflow-y-hidden`}>{children}</body>
+      <body className={`antialiased overflow-x-hidden overflow-y-hidden`}>{children}<Toaster /></body>
       </RefetchServicesProvider>
     </html>
   );

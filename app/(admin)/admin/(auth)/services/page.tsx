@@ -12,6 +12,7 @@ import { Textarea } from '@/components/ui/textarea'
 import AdminItemContainer from '@/app/components/common/AdminItemContainer';
 import { RiAiGenerateText } from 'react-icons/ri'
 import { useRefetchServices } from '@/app/contexts/refetchServices';
+import { toast } from 'sonner';
 
 interface ServiceFormProps {
 
@@ -64,7 +65,7 @@ const ServiceMainPage = () => {
             });
             if (response.ok) {
                 const data = await response.json();
-                alert(data.message);
+                toast.success(data.message);
                 setRefetchServices(!refetchServices);
                 // router.push("/admin/commitment");
             }
@@ -87,7 +88,7 @@ const ServiceMainPage = () => {
                 setValue("thirdSection.items", data.data.thirdSection.items);
             } else {
                 const data = await response.json();
-                alert(data.message);
+                toast.error(data.message);
             }
         } catch (error) {
             console.log("Error in fetching service data", error);

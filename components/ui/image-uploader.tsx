@@ -77,7 +77,6 @@ export function ImageUploader({ value, onChange, className, deleteAfterUpload = 
         // }
 
         // const data = await response.json();
-        alert("hereeee")
         const filePath = `/uploads/images/${Date.now()}${file.name}`;
         const uploadResult = await uploadToDropbox(file, filePath);
         setLocalImageUrl(uploadResult);
