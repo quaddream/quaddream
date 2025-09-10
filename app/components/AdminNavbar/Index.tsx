@@ -8,7 +8,7 @@ import {
     EnvelopeIcon,
     QuestionMarkCircleIcon,
   } from "@heroicons/react/24/outline";
-import { GalleryThumbnails, HeartHandshake, Workflow } from 'lucide-react';
+import { DownloadIcon, GalleryThumbnails, HeartHandshake, PaperclipIcon, Workflow } from 'lucide-react';
 import { useEffect } from 'react';
 import { useRefetchServices } from '@/app/contexts/refetchServices';
 import { toast } from 'sonner';
@@ -61,7 +61,8 @@ const AdminNavbar = () => {
         ] },
         { name: "Faq", href: "/admin/faq", icon: QuestionMarkCircleIcon },
         { name: "QHSE", href: "/admin/qhse", icon: HeartHandshake },
-        { name: "Blogs", href: "/admin/blogs", icon: Workflow },
+        { name: "Blogs", href: "/admin/blogs", icon: PaperclipIcon },
+        { name: "Downloads", href: "/admin/downloads", icon: DownloadIcon },
       ];
 
   return (
