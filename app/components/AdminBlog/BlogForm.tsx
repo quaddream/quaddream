@@ -30,6 +30,8 @@ interface BlogFormProps {
     title:string;
     category:string;
     content:string;
+    thumbnail:string;
+    thumbnailAlt:string;
     date:string;
     slug:string;
     metaTitle:string;
@@ -71,6 +73,8 @@ const BlogForm = ({ editMode }: { editMode?: boolean }) => {
                 setValue("bannerSection", data.data.bannerSection);
                 setValue("title", data.data.title);
                 setValue("category", data.data.category._id);
+                setValue("thumbnail", data.data.thumbnail);
+                setValue("thumbnailAlt", data.data.thumbnailAlt);
                 setValue("content", data.data.content);
                 setValue("slug", data.data.slug);
                 const isoDate = new Date(data.data.date).toISOString().split("T")[0];
@@ -208,6 +212,22 @@ const BlogForm = ({ editMode }: { editMode?: boolean }) => {
                             {errors.category && <p className="text-red-500">{errors.category.message}</p>}
 
                         </div>
+
+                        <div className='grid grid-cols-1 gap-2'>
+                                                    <div>
+                                                        <div>
+                                                            <Label className=''>Thumbnail</Label>
+                                                            <ImageUploader onChange={(url) => setValue("thumbnail", url)} value={watch("thumbnail")} />
+                                                            {errors.thumbnail && <p className='text-red-500'>{errors.thumbnail.message}</p>}
+                                                        </div>
+                                                        <div>
+                                                            <Label className=''>Thumbnail Alt</Label>
+                                                            <Input type='text' placeholder='Alt Tag' {...register("thumbnailAlt")} />
+                                                        </div>
+                                                    </div>
+                        
+                        
+                                                </div>
 
                         <div className="flex flex-col gap-1">
                     <Label className=''>Content</Label>
