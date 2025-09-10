@@ -19,6 +19,7 @@ import { RiAiGenerateText } from 'react-icons/ri'
 import AdminItemContainer from '../common/AdminItemContainer'
 import { toast } from 'sonner'
 import TinyEditor from "@/app/components/TinyMce/TinyEditor";
+import { Textarea } from '@/components/ui/textarea'
 
 
 
@@ -28,6 +29,7 @@ interface BlogFormProps {
             imageAlt: string;
     };
     title:string;
+    description:string;
     category:string;
     content:string;
     thumbnail:string;
@@ -72,6 +74,7 @@ const BlogForm = ({ editMode }: { editMode?: boolean }) => {
                 console.log(data);
                 setValue("bannerSection", data.data.bannerSection);
                 setValue("title", data.data.title);
+                setValue("description", data.data.description);
                 setValue("category", data.data.category._id);
                 setValue("thumbnail", data.data.thumbnail);
                 setValue("thumbnailAlt", data.data.thumbnailAlt);
@@ -166,6 +169,10 @@ const BlogForm = ({ editMode }: { editMode?: boolean }) => {
                             <Label className=''>Title</Label>
                             <Input type='text' placeholder='Title' {...register("title", { required: "Title is required" })} />
                             {errors.title && <p className='text-red-500'>{errors.title.message}</p>}
+                        </div>
+                        <div>
+                            <Label className=''>Description</Label>
+                            <Textarea placeholder='Description' {...register("description")} />
                         </div>
                         <div>
                             <Label className='flex gap-2 items-center mb-1'>
