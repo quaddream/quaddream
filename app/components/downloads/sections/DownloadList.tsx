@@ -3,20 +3,25 @@
 import { useState } from "react";
 import { FaFilePdf } from "react-icons/fa";
 import Image from "next/image";
-import {
-  brochureDocuments,
-  certificateDocuments,
-} from "@/app/components/downloads/data";
 import { motion } from "framer-motion";
 import { moveUp, containerStagger } from "@/app/components/motionVarients";
+import { DownloadsData } from "../type";
 
-export default function DocumentList() {
+export default function DocumentList({
+  Data,
+}: {
+  Data: DownloadsData["categories"];
+}) {
   const [activeTab, setActiveTab] = useState<"brochure" | "certificates">(
     "brochure"
   );
 
   const documents =
-    activeTab === "brochure" ? brochureDocuments : certificateDocuments;
+    Data.find((cat) =>
+      activeTab === "brochure"
+        ? cat.category === "Company Brochure"
+        : cat.category === "Certificates"
+    )?.files || [];
 
   return (
     <section className="relative z-10 bg-background py-150 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%]">
@@ -54,6 +59,7 @@ export default function DocumentList() {
         </motion.div>
         {/* Document List */}
         <motion.div
+          key={activeTab}
           className="mt-[30px] md:mt-[50px] space-y-[18px] sm:space-y-[50px]"
           variants={containerStagger}
           initial="hidden"
@@ -74,7 +80,7 @@ export default function DocumentList() {
                 {/* Document Name */}
                 <div className="w-full sm:w-1/4 pr-0 sm:pr-4 pb-2 sm:pb-0">
                   <span className="lg:text-30 text-black font-normal leading-[1.33]">
-                    {doc.name}
+                    {doc.title}
                   </span>
                 </div>
 
@@ -94,15 +100,23 @@ export default function DocumentList() {
 
                   {/* Download Icon */}
                   <div className="w-auto sm:w-1/4 flex justify-end pl-0 sm:pl-4">
-                    <button className="cursor-pointer">
-                      <Image
-                        src="/assets/images/downloads/download.svg"
-                        alt="Download"
-                        width={28}
-                        height={26}
-                        className="w-6 h-6 md:w-[28px] md:h-[26px]"
-                      />
-                    </button>
+                    <a
+                      href={doc.file}
+                      download
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-pointer"
+                    >
+                      <button className="cursor-pointer">
+                        <Image
+                          src="/assets/images/downloads/download.svg"
+                          alt="Download"
+                          width={28}
+                          height={26}
+                          className="w-6 h-6 md:w-[28px] md:h-[26px]"
+                        />
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>

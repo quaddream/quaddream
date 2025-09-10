@@ -16,13 +16,25 @@ type BannerSection = {
   title: string;
 };
 
+type BannerSectionProps = {
+  banner: string;
+  bannerAlt: string;
+  pageTitle: string;
+};
+
 type BannerProps = {
-  bannerData: BannerSection;
+  bannerData: BannerSection | BannerSectionProps;
 };
 
 const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
+
+  const image = "image" in bannerData ? bannerData.image : bannerData.banner;
+  const imageAlt =
+    "imageAlt" in bannerData ? bannerData.imageAlt : bannerData.bannerAlt;
+  const title =
+    "title" in bannerData ? bannerData.title : bannerData.pageTitle;
 
   // Build breadcrumb items
   const navigation: Navigation[] = [
@@ -32,7 +44,7 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
 
       // If it's the last segment, replace with API title
       if (i === segments.length - 1) {
-        return { title: bannerData?.title || seg, slug: "" }; // last one not clickable
+        return { title: title || seg, slug: "" }; // last one not clickable
       }
 
       // Capitalize first letter for parent segments
@@ -43,11 +55,11 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
   return (
     <section
       className="pt-[150px] lg:pt-[280px] xl:pt-[300px] 2xl:pt-[349px] pb-6 sm:pb-10 md:pb-[70px] bg-image bg-cover bg-center bg-no-repeat relative z-[1] hero overlaybanner"
-      style={{ backgroundImage: `url(${bannerData.image})` }}
+      style={{ backgroundImage: `url(${image})` }}
     >
       <div className="relative z-10">
         <div className="container">
-          {bannerData.title && (
+          {title && (
             <div>
               {/* Page Title */}
               <motion.h1
@@ -56,7 +68,7 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
                 animate={{ opacity: 1, x: 0, clipPath: "inset(0 0% 0 0)" }}
                 transition={{ duration: 1, ease: "easeOut" }}
               >
-                {bannerData.title}
+                {title}
               </motion.h1>
 
               {/* Border */}
@@ -73,7 +85,7 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
           {/* Breadcrumb */}
           <div
             className={`pb-3 lg:pb-15 xl:pb-19 ${
-              bannerData.title ? "pt-5 lg:pt-16 xl:pt-16 2xl:pt-[135px]" : ""
+              title ? "pt-5 lg:pt-16 xl:pt-16 2xl:pt-[135px]" : ""
             }`}
           >
             <ul className="flex gap-2 md:gap-3 items-center">
