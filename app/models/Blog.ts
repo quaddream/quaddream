@@ -20,6 +20,7 @@ const blogSchema = new mongoose.Schema({
         title:{type:String,required:true},
         thumbnail:{type:String,required:true},
         thumbnailAlt:{type:String},
+        description:{type:String},
         content:{type:String,required:true},
         category:{type:mongoose.Schema.Types.ObjectId,required:true,ref:"Category"},
         date:{type:Date,required:true},
