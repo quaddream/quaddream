@@ -4,8 +4,8 @@ import { RefetchServicesProvider } from "@/app/contexts/refetchServices";
 import { Toaster } from 'sonner';
 
 export const metadata: Metadata = {
-  title: "Assent | Backend Console",
-  description: "Assent",
+  title: "Quad Dream | Backend Console",
+  description: "Quad Dream",
 };
 
 export default function RootLayout({
