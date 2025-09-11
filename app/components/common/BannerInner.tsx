@@ -49,7 +49,7 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
       const slug = "/" + segments.slice(0, i + 1).join("/");
 
       // Format slug to readable title
-      let segmentTitle = formatTitle(seg);
+      const segmentTitle = formatTitle(seg);
 
       // If it's the last segment, use API title and not clickable
       if (i === segments.length - 1) {
