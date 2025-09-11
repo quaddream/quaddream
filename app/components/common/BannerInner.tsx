@@ -35,19 +35,28 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
     "imageAlt" in bannerData ? bannerData.imageAlt : bannerData.bannerAlt;
   const title = "title" in bannerData ? bannerData.title : bannerData.pageTitle;
 
+  // Helper function to format slug to title
+  const formatTitle = (slug: string) =>
+    slug
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+
   // Build breadcrumb items
   const navigation: Navigation[] = [
     { title: "Home", slug: "/" },
     ...segments.map((seg, i) => {
       const slug = "/" + segments.slice(0, i + 1).join("/");
 
-      // If it's the last segment, replace with API title
+      // Format slug to readable title
+      let segmentTitle = formatTitle(seg);
+
+      // If it's the last segment, use API title and not clickable
       if (i === segments.length - 1) {
-        return { title: title || seg, slug: "" }; // last one not clickable
+        return { title: title || segmentTitle, slug: "" };
       }
 
-      // Capitalize first letter for parent segments
-      return { title: seg.charAt(0).toUpperCase() + seg.slice(1), slug };
+      return { title: segmentTitle, slug, index: i }; // add index for CSS width control
     }),
   ];
 
@@ -88,27 +97,41 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
               title ? "pt-5 lg:pt-16 xl:pt-16 2xl:pt-[135px]" : ""
             }`}
           >
-            <ul className="flex gap-2 md:gap-3 items-center">
+            <ul className="flex gap-2 md:gap-3 items-center overflow-hidden">
               {navigation.map((nav, index) => (
                 <motion.li
                   key={index}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: index * 0.2, duration: 0.6 }}
-                  className={`${nav.slug ? "text-primary" : "text-lite-gray"}`}
+                  className={`${nav.slug ? "text-primary" : "text-lite-gray"} flex-shrink-0`}
                 >
                   {nav.slug ? (
-                    <div className="flex items-center gap-2 md:gap-3">
+                    <div className="flex items-center gap-2 md:gap-3 overflow-hidden">
                       <Link
                         href={nav.slug}
-                        className="text-16 md:text-19 max-w-[210px] md:max-w-none overflow-hidden text-ellipsis whitespace-nowrap block"
+                        className={`text-16 md:text-19 overflow-hidden text-ellipsis whitespace-nowrap block ${
+                          index === 1
+                            ? "max-w-[10ch] md:max-w-none"
+                            : index === 2
+                              ? "max-w-[30ch] md:max-w-none"
+                              : "max-w-[200px] md:max-w-none"
+                        }`}
                       >
                         {nav.title}
                       </Link>
-                      <p className="w-[6px] h-[6px] bg-[#D9D9D9] rounded-full m-0"></p>
+                      <p className="w-[6px] h-[6px] bg-[#D9D9D9] rounded-full m-0 flex-shrink-0"></p>
                     </div>
                   ) : (
-                    <span className="text-16 md:text-19 max-w-[210px] md:max-w-none overflow-hidden text-ellipsis whitespace-nowrap block">
+                    <span
+                      className={`text-16 md:text-19 overflow-hidden text-ellipsis whitespace-nowrap block ${
+                        index === 1
+                          ? "max-w-[10ch] md:max-w-none"
+                          : index === 2
+                            ? "max-w-[18ch] md:max-w-none"
+                            : "max-w-[200px] md:max-w-none"
+                      }`}
+                    >
                       {nav.title}
                     </span>
                   )}
