@@ -56,6 +56,7 @@ export async function PATCH(request: NextRequest) {
             }
             foundBlog.bannerSection = body.bannerSection;
             foundBlog.title = body.title;
+            foundBlog.description = body.description;
             foundBlog.category = body.category;
             foundBlog.thumbnail = body.thumbnail;
             foundBlog.thumbnailAlt = body.thumbnailAlt;
