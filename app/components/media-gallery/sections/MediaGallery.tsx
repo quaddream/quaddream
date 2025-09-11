@@ -75,7 +75,14 @@ const MediaGallery: React.FC<MediaGalleryProps> = ({ galleryData }) => {
               {/* Black Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-100 rounded-[16px]" />
               {/* Red gradient overlay on hover */}
-              <div className="absolute inset-0 bg-primary bg-opacity-100 opacity-0 group-hover:opacity-75 transition-opacity duration-300 will-change-opacity"></div>
+              <div
+                className="absolute inset-0 bg-primary
+               rounded-[16px]
+               translate-y-full opacity-0
+               group-hover:translate-y-0 group-hover:opacity-75
+               transition-all duration-300 ease-in-out"
+              />
+
               {/* Arrow icon top-right */}
               <div className="absolute flex items-center justify-center top-[30px] 2xl:right-[40px] right-[30px] bg-white w-[66px] h-[66px] rounded-[16px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 will-change-opacity">
                 <Image
@@ -83,6 +90,7 @@ const MediaGallery: React.FC<MediaGalleryProps> = ({ galleryData }) => {
                   alt="Arrow"
                   width={21}
                   height={21}
+                  className="-translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300"
                 />
               </div>
               {/* Category & small avatars (mocked) */}

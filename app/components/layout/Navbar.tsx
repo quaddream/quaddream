@@ -12,12 +12,14 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { SlArrowRight } from "react-icons/sl";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeParent, setActiveParent] = useState<number | null>(null);
   const [activeChild, setActiveChild] = useState<string | null>(null);
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
+  const pathname = usePathname();
 
   //  useEffect(() => {
   //   const handleScroll = () => {
@@ -58,6 +60,28 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    let parentIndex: number | null = null;
+    let childKey: string | null = null;
+
+    menuItems.forEach((item, index) => {
+      if (item.href && pathname === item.href) {
+        parentIndex = index;
+      }
+      if (item.children) {
+        item.children.forEach((child, idx) => {
+          if (pathname === child.href) {
+            parentIndex = index;
+            childKey = `${index}-${idx}`;
+          }
+        });
+      }
+    });
+
+    setActiveParent(parentIndex);
+    setActiveChild(childKey);
+  }, [pathname]);
 
   const renderHeader = () => {
     return (
@@ -458,7 +482,9 @@ const Navbar = () => {
                     setActiveParent(null);
                     setActiveChild(null);
                   }}
-                  className={`font-semibold opacity-50`}
+                  className={`font-semibold transition-all duration-300 ${
+                    pathname === "/contact-us" ? "text-[#1E1E1E]" : "opacity-50"
+                  }`}
                 >
                   Contact Us
                 </Link>
