@@ -47,7 +47,27 @@ export async function GET(request: NextRequest) {
             if (!foundService) {
                 return NextResponse.json({ message: "Service not found" }, { status: 404 });
             }
-            return NextResponse.json({ data: foundService, message: "Service fetched successfully" }, { status: 200 });
+            const productIds = foundService.productSection.items.map(
+                (item: { _id: mongoose.Types.ObjectId | string }) => item._id
+              );
+
+            
+              // 2. Fetch only products that are in productIds
+              const products = await Product.findOne({})
+            const productData = products.items.filter((item: { _id: mongoose.Types.ObjectId }) =>
+                productIds.map((id: string) => id.toString()).includes(item._id.toString())
+              );
+              const updatedProductSection = {
+                ...foundService.productSection.toObject(),
+                items: productData, // only the relevant product documents
+              };
+            
+              // 4. Construct the response with the updated productSection
+              const responseData = {
+                ...foundService.toObject(),
+                productSection: updatedProductSection,
+              };
+            return NextResponse.json({ data: responseData, message: "Service fetched successfully" }, { status: 200 });
         } else {
             const service = await Service.findOne({});
             if (!service) {

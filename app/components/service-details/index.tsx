@@ -10,6 +10,7 @@ const Index = ({
 }: {
   service: ProductsServicesData["thirdSection"]["items"][number];
 }) => {
+  console.log("service", service)
   return (
     <>
       <BannerInner
