@@ -357,6 +357,36 @@ body {
   color: #000; /* text-black */
 }
 
+#blogContent h1 {
+  font-size: var(--text-30); /* text-30 */
+  line-height: 1.35; /* leading-[1.35] */
+  color: #000; /* text-black */
+}
+
+#blogContent h3 {
+  font-size: 20px; 
+  line-height: 1.35;
+  color: #000; /* text-black */
+}
+
+#blogContent h4 {
+  font-size: var(--text-19); 
+  line-height: 1.35;
+  color: #000; /* text-black */
+}
+
+#blogContent h5 {
+  font-size: var(--text-16); 
+  line-height: 1.35;
+  color: #000; /* text-black */
+}
+
+#blogContent h6 {
+  font-size: var(--text-16); 
+  line-height: 1.35;
+  color: #000; /* text-black */
+}
+
 @media (min-width: 768px) {
   #blogContent h2 {
     font-size: var(--text-30); /* md:text-30 */

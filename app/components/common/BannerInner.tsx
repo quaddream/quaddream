@@ -35,6 +35,10 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
     "imageAlt" in bannerData ? bannerData.imageAlt : bannerData.bannerAlt;
   const title = "title" in bannerData ? bannerData.title : bannerData.pageTitle;
 
+  // Helper function to truncate string
+  const truncate = (str: string, maxLength: number) =>
+    str.length > maxLength ? str.slice(0, maxLength) + "..." : str;
+
   // Build breadcrumb items
   const navigation: Navigation[] = [
     { title: "Home", slug: "/" },
@@ -99,13 +103,18 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
                 >
                   {nav.slug ? (
                     <div className="flex items-center gap-2 md:gap-3">
-                      <Link href={nav.slug} className="text-16 md:text-19">
+                      <Link
+                        href={nav.slug}
+                        className="text-16 md:text-19 max-w-[210px] md:max-w-none overflow-hidden text-ellipsis whitespace-nowrap block"
+                      >
                         {nav.title}
                       </Link>
                       <p className="w-[6px] h-[6px] bg-[#D9D9D9] rounded-full m-0"></p>
                     </div>
                   ) : (
-                    <span className="text-16 md:text-19">{nav.title}</span>
+                    <span className="text-16 md:text-19 max-w-[210px] md:max-w-none overflow-hidden text-ellipsis whitespace-nowrap block">
+                      {nav.title}
+                    </span>
                   )}
                 </motion.li>
               ))}
