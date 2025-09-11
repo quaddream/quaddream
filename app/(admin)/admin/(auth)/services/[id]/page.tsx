@@ -295,7 +295,7 @@ const IndividualService = () => {
                 </AdminItemContainer>
 
 
-                <AdminItemContainer>
+                {/* <AdminItemContainer>
                     <Label className='' main>Second Section</Label>
                     <div className='p-5  flex flex-col gap-2'>
                         <div className='flex flex-col gap-2'>
@@ -383,7 +383,7 @@ const IndividualService = () => {
 
 
                     </div>
-                </AdminItemContainer>
+                </AdminItemContainer> */}
 
 
                 <AdminItemContainer>

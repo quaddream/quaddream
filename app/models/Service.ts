@@ -23,6 +23,16 @@ const serviceSchema = new mongoose.Schema({
         image:{type:String},
         imageAlt:{type:String},
     },
+    servicesSection:{
+        title:{type:String},
+        items:[
+            {
+                logo:{type:String},
+                logoAlt:{type:String},
+                title:{type:String},
+            }
+        ]
+    },
     thirdSection:{
         title:{type:String},
         items:[

@@ -50,6 +50,7 @@ const AdminNavbar = () => {
         { name: "About", href: "/admin/about", icon: UserGroupIcon },
         { name: "Services", href: "#", icon: EnvelopeIcon,hasChild:true,children: [
           { name: "Main Page", href: "/admin/services" },
+          { name: "Services Section", href: "/admin/services/services-section" },
             ...serviceData.map((service: { _id: string,thumbnailTitle:string }) => (
               { name: service.thumbnailTitle.split(" ").slice(0,2).join(" ") + "...", href: `/admin/services/${service._id}` }
             )),
