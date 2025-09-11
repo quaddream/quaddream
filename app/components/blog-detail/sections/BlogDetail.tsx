@@ -8,11 +8,13 @@ import { moveRight, moveUp } from "../../motionVarients";
 import { BlogType } from "../../blog/type";
 import BlogContentParser from "./utils/BlogContentParser";
 
+
 interface BlogDetailProps {
   blogDetail: BlogType["blogs"][number];
+  allBlogs: BlogType["blogs"];
 }
 
-const BlogDetail: React.FC<BlogDetailProps> = ({ blogDetail }) => {
+const BlogDetail: React.FC<BlogDetailProps> = ({ blogDetail, allBlogs }) => {
   return (
     <section className="relative z-10 bg-background pt-150 xl:pb-150 pb-7 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%]">
       <div className="container">
@@ -58,7 +60,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ blogDetail }) => {
         <hr />
         <div className="2xl:px-[100px] md:px-4">
           <div className="md:px-4 mx-auto">
-            <LikeSlider />
+            <LikeSlider blogList={allBlogs} />
           </div>
         </div>
       </div>

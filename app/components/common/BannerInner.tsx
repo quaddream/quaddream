@@ -33,8 +33,7 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
   const image = "image" in bannerData ? bannerData.image : bannerData.banner;
   const imageAlt =
     "imageAlt" in bannerData ? bannerData.imageAlt : bannerData.bannerAlt;
-  const title =
-    "title" in bannerData ? bannerData.title : bannerData.pageTitle;
+  const title = "title" in bannerData ? bannerData.title : bannerData.pageTitle;
 
   // Build breadcrumb items
   const navigation: Navigation[] = [
@@ -57,6 +56,7 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
       className="pt-[150px] lg:pt-[280px] xl:pt-[300px] 2xl:pt-[349px] pb-6 sm:pb-10 md:pb-[70px] bg-image bg-cover bg-center bg-no-repeat relative z-[1] hero overlaybanner"
       style={{ backgroundImage: `url(${image})` }}
     >
+      <img src={image} alt={imageAlt} className="hidden" />
       <div className="relative z-10">
         <div className="container">
           {title && (

@@ -6,7 +6,6 @@ const Blog = async () => {
     // next: { revalidate: 60 },
   });
   const data = await response.json();
-  console.log(data, "hi");
   return (
     <>
       <Index data={data.data} />

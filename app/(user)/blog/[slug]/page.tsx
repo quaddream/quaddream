@@ -8,14 +8,22 @@ type Props = {
 
 async function getBlog(slug: string) {
   const url = `${process.env.BASE_URL}/api/admin/blog?slug=${slug}`;
-  console.log("Fetching service from:", url);
   const res = await fetch(url, { cache: "no-store" });
   return res.json();
 }
 
+async function getAllBlogs() {
+  const url = `${process.env.BASE_URL}/api/admin/blog`;
+  const res = await fetch(url, { cache: "no-store" });
+  return res.json();
+}
+
+
 export default async function BlogDetailsPage({ params }: Props) {
   const { slug } = await params;
   const blog = await getBlog(slug as string);
+  const allBlogs = await getAllBlogs();
+  console.log(allBlogs,"hiss");
 
-  return <Index blogDetail={blog.data} />;
+  return <Index blogDetail={blog.data} allBlogs={allBlogs.data.blogs} />;
 };

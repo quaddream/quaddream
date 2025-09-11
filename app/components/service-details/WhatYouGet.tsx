@@ -4,7 +4,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
-import { serviceDetails } from "./data";
 import { useRef } from "react";
 import type { SwiperRef } from "swiper/react";
 import { assets } from "../../../public/assets/assets";

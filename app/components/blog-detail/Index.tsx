@@ -3,8 +3,13 @@ import BannerInner from "../common/BannerInner";
 import { BlogType } from "../blog/type";
 import BlogDetail from "./sections/BlogDetail";
 
-const Index = ({ blogDetail }: { blogDetail: BlogType["blogs"][number] }) => {
-  console.log(blogDetail, "njn");
+const Index = ({
+  blogDetail,
+  allBlogs,
+}: {
+  blogDetail: BlogType["blogs"][number];
+  allBlogs: BlogType["blogs"];
+}) => {
   return (
     <>
       <BannerInner
@@ -14,7 +19,7 @@ const Index = ({ blogDetail }: { blogDetail: BlogType["blogs"][number] }) => {
           title: blogDetail.title,
         }}
       />
-      <BlogDetail blogDetail={blogDetail} />
+      <BlogDetail blogDetail={blogDetail} allBlogs={allBlogs} />
     </>
   );
 };

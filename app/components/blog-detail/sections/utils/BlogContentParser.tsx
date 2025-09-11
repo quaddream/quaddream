@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import parse, { DOMNode, domToReact } from "html-react-parser";
+import parse, { DOMNode, Element, domToReact } from "html-react-parser";
 import { motion } from "framer-motion";
 import { moveUp } from "@/app/components/motionVarients";
 
@@ -10,16 +10,15 @@ interface BlogContentProps {
 }
 
 const BlogContent = ({ html }: BlogContentProps) => {
-  let imgIndex = 0;
-
   return (
     <article id="blogContent">
       {parse(html, {
         replace: (domNode: DOMNode) => {
-          if (domNode.type === "tag") {
-            const children = domToReact((domNode as any).children);
+          if ("name" in domNode) {
+            const el = domNode as Element;
+            const children = domToReact(el.children as unknown as DOMNode[]);
 
-            switch (domNode.name) {
+            switch (el.name) {
               case "h2":
                 return (
                   <motion.h2
@@ -57,8 +56,7 @@ const BlogContent = ({ html }: BlogContentProps) => {
                 );
 
               case "img":
-                imgIndex++;
-                const src = domNode.attribs.src;
+                const src = el.attribs.src;
                 if (!src) return null;
 
                 return (
@@ -68,7 +66,7 @@ const BlogContent = ({ html }: BlogContentProps) => {
                     whileInView="show"
                     viewport={{ once: true }}
                   >
-                    <img src={src} alt={domNode.attribs.alt || "blog image"} data-first={imgIndex === 1 ? "true" : "false"} />
+                    <img src={src} alt={el.attribs.alt || "blog image"} />
                   </motion.div>
                 );
 

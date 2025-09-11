@@ -1,12 +1,12 @@
 import React from 'react'
-import BannerInner from '../common/BannerInner'  
+// import BannerInner from '../common/BannerInner'  
 import FeaturedPjt from './sections/FeaturedPjt' 
-import {bannersection,FeaturedPjtdata,ctaSection } from "./data"; 
+import {FeaturedPjtdata,ctaSection } from "./data"; 
 import CTA from '../common/cta' 
 const Index = () => {
   return (
    <>
-    <BannerInner bannerData={bannersection.data}/>  
+    {/* <BannerInner bannerData={bannersection.data}/>   */}
     <FeaturedPjt Data={FeaturedPjtdata.data}/>
   <CTA
             maxwidth={12}

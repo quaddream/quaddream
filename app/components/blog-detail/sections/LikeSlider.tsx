@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { blogList } from "@/app/components/blog-detail/data";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
@@ -12,8 +11,9 @@ import SliderViewAllBtn from "@/app/components/common/SliderViewAllBtn";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { moveRight, moveLeft } from "../../motionVarients";
+import { BlogType } from "../../blog/type";
 
-const LikeSlider = () => {
+const LikeSlider = ({ blogList }: { blogList: BlogType["blogs"] }) => {
   return (
     <section className="mt-[30px] md:mt-[50px] xl:mt-[124px]">
       {/* Heading + Mobile Arrows + Desktop Button */}
@@ -90,13 +90,13 @@ const LikeSlider = () => {
         }}
         className="w-full"
       >
-        {blogList.map((blog) => (
-          <SwiperSlide key={blog.id}>
+        {blogList?.map((blog, index) => (
+          <SwiperSlide key={index}>
             <div className="flex flex-col cursor-pointer transform transition-all duration-300 hover:-translate-y-[5px] py-[5px]">
               {/* Image wrapper for zoom effect */}
               <div className="overflow-hidden rounded-[16px]">
                 <Image
-                  src={blog.image}
+                  src={blog.thumbnail}
                   alt={blog.title}
                   width={586}
                   height={348}
@@ -106,8 +106,12 @@ const LikeSlider = () => {
 
               {/* Category & Date */}
               <div className="flex justify-between mt-[12px] lg:mt-[15px] text-gray-para text-19 leading-[22px] lg:leading-[32px]">
-                <span className="text-primary">{blog.category}</span>
-                <span>{blog.date}</span>
+                <span className="text-primary">{blog.category.name}</span>
+                {new Date(blog.date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
               </div>
 
               {/* Title */}

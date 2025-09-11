@@ -1,5 +1,4 @@
 "use client";
-import { serviceDetails } from "./data";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { moveUp } from "../motionVarients";
