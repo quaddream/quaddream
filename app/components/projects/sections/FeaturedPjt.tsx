@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useRef } from "react";
 import Image from "next/image";
 import { Listbox, Transition } from "@headlessui/react";
 import { useRouter } from "next/navigation";
@@ -68,6 +68,8 @@ const FeaturedPjt: React.FC<PjtProps> = ({
     locationOptions[0]
   );
   const [searchQuery, setSearchQuery] = useState("");
+
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
@@ -358,12 +360,14 @@ const FeaturedPjt: React.FC<PjtProps> = ({
             className="w-full flex items-center justify-center"
           >
             <div
+              onClick={() => searchInputRef.current?.focus()}
               className="group bg-primary text-white border-2 border-transparent
                    p-5 lg:p-7 rounded-full w-full flex items-center justify-between
                    cursor-pointer transition-all duration-300 ease-in-out
                    hover:bg-white hover:text-primary hover:border-primary"
             >
               <input
+                ref={searchInputRef}
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
