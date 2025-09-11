@@ -57,10 +57,7 @@ const serviceSchema = new mongoose.Schema({
                     title:{type:String},
                     items:[
                         {
-                            image:{type:String},
-                            imageAlt:{type:String},
-                            title:{type:String},
-                            description:{type:String},
+                            _id:{type:mongoose.Schema.Types.ObjectId,ref:"Product"},
                         }
                     ]
                 },

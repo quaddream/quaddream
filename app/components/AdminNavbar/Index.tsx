@@ -12,6 +12,7 @@ import { DownloadIcon, GalleryThumbnails, HeartHandshake, PaperclipIcon, Workflo
 import { useEffect } from 'react';
 import { useRefetchServices } from '@/app/contexts/refetchServices';
 import { toast } from 'sonner';
+import { RiProductHuntLine } from 'react-icons/ri';
 
 
 const AdminNavbar = () => {
@@ -53,6 +54,7 @@ const AdminNavbar = () => {
               { name: service.thumbnailTitle.split(" ").slice(0,2).join(" ") + "...", href: `/admin/services/${service._id}` }
             )),
           ] },
+          { name: "Products", href: "/admin/products", icon: RiProductHuntLine },
         { name: "Projects", href: "/admin/projects", icon: Workflow },
         { name: "Gallery", href: "/admin/gallery", icon: GalleryThumbnails },
         { name: "Contact", href: "###", icon: EnvelopeIcon,hasChild:true,children: [
