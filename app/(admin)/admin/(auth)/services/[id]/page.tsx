@@ -63,10 +63,6 @@ const IndividualService = () => {
     const { register, handleSubmit, setValue, control, formState: { errors }, getValues } = useForm<IndividualServiceFormProps>();
 
 
-    const { fields: secondSectionItems, append: secondSectionAppend, remove: secondSectionRemove } = useFieldArray({
-        control,
-        name: "secondSection.items"
-    });
 
 
     // const { fields: productSectionItems, append: productSectionAppend, remove: productSectionRemove } = useFieldArray({
@@ -295,7 +291,7 @@ const IndividualService = () => {
                 </AdminItemContainer>
 
 
-                <AdminItemContainer>
+                {/* <AdminItemContainer>
                     <Label className='' main>Second Section</Label>
                     <div className='p-5  flex flex-col gap-2'>
                         <div className='flex flex-col gap-2'>
@@ -383,7 +379,7 @@ const IndividualService = () => {
 
 
                     </div>
-                </AdminItemContainer>
+                </AdminItemContainer> */}
 
 
                 <AdminItemContainer>
