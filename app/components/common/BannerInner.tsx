@@ -35,10 +35,6 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
     "imageAlt" in bannerData ? bannerData.imageAlt : bannerData.bannerAlt;
   const title = "title" in bannerData ? bannerData.title : bannerData.pageTitle;
 
-  // Helper function to truncate string
-  const truncate = (str: string, maxLength: number) =>
-    str.length > maxLength ? str.slice(0, maxLength) + "..." : str;
-
   // Build breadcrumb items
   const navigation: Navigation[] = [
     { title: "Home", slug: "/" },
