@@ -1,13 +1,13 @@
 import React from "react";
-import {bannersection,mediaGalleryData} from "./data";
 import BannerInner from "../common/BannerInner";
 import MediaGallery from "./sections/MediaGallery";
+import { MediaGalleryData } from "./type";
 
-const Index = () => {
+const Index = ({ data }: { data: MediaGalleryData }) => {
   return (
     <>
-      <BannerInner bannerData={bannersection.data} /> 
-      <MediaGallery galleryData={mediaGalleryData} />
+      <BannerInner bannerData={data.bannerSection} />
+      <MediaGallery galleryData={data} />
     </>
   );
 };

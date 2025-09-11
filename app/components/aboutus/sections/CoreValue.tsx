@@ -2,21 +2,10 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { moveUp } from "../../motionVarients";
-type items = {
-  icon: string;
-  title: string;
-};
-type datapop = {
-  heading: string;
-  subheading: string;
-  items: items[];
-};
-type MissionProps = {
-  Data: datapop[];
-};
-
-const CoreValue: React.FC<MissionProps> = ({ Data }) => {
+import { moveUp } from "../../motionVarients"; 
+import { aboutus } from '../type'
+      
+      const CoreValue = ({data}: {data: aboutus["fourthSection"]}) => {
   return (
     <section className="py-150   relative bg-black  ">
       <div className="container ">
@@ -29,7 +18,7 @@ const CoreValue: React.FC<MissionProps> = ({ Data }) => {
             transition={{ duration: 0.6 }}
             viewport={{ amount: 0.1, once: true }}
           >
-            {Data[0].heading}
+            {data.title}
           </motion.h2>
           <motion.p
             variants={moveUp(0.3)}
@@ -38,11 +27,11 @@ const CoreValue: React.FC<MissionProps> = ({ Data }) => {
             viewport={{ amount: 0.1, once: true }}
             className="text-lite-gray text-19 leading-[1.684210526315789]   max-w-[75ch] mb-5 lg:mb-7"
           >
-            {Data[0].subheading}
+            {data.description}
           </motion.p>
         </div>
         <div className="grid grid-cols-2 xs:grid-cols-2 xl:flex gap-5 lg:gap-5 2xl:gap-20">
-      {Data[0].items.map((item, index) => (
+      {data.items.map((item, index) => (
         <motion.div
           key={index}
           className="group flex items-center gap-10 sm:gap-20"
@@ -52,8 +41,8 @@ const CoreValue: React.FC<MissionProps> = ({ Data }) => {
             <div className="flex items-center gap-3 sm:gap-7">
               <div className="w-[40px] h-[40px] md:w-[67px] md:h-[67px] md:rounded-lg rounded-sm bg-primary flex items-center justify-center">
                 <Image
-                  src={item.icon}
-                  alt={item.title}
+                  src={item.logo}
+                  alt={item.logoAlt}
                   width={32}
                   height={32}
                   className="w-[40px] h-[40px] md:w-[67px] md:h-[67px]"
@@ -65,7 +54,7 @@ const CoreValue: React.FC<MissionProps> = ({ Data }) => {
             </div>
           </div>
 
-          {index < Data[0].items.length - 1 && (
+          {index < data.items.length - 1 && (
             <div className="hidden xl:block border-r border-[#BEBEBE] h-full w-[1px]" />
           )}
         </motion.div>

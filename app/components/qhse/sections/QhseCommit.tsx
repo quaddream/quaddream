@@ -3,19 +3,12 @@
 import Image from "next/image";
 import React from "react";
 import QualityAssurance from "./QualityAssurance";
-import { qa } from "../data";
 import { moveUp } from "@/app/components/motionVarients";
 import { motion } from "framer-motion";
-
-type QHSEData = {
-  heading: string;
-  paragraphs: string[];
-  imageSrc: string;
-  imageAlt: string;
-};
+import { QhseData } from "../type";
 
 interface QHSECommitmentProps {
-  qhseData: QHSEData;
+  qhseData: QhseData;
 }
 
 const QHSECommitment: React.FC<QHSECommitmentProps> = ({ qhseData }) => {
@@ -30,22 +23,25 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ qhseData }) => {
           viewport={{ once: true }}
           className="text-80  leading-[1.12] mb-5 md:mb-8 lg:mb-12 text-black"
         >
-          {qhseData.heading}
+          {qhseData.firstSection.title}
         </motion.h1>
 
         {/* Paragraphs */}
-        {qhseData.paragraphs.map((para, idx) => (
-          <motion.p
-            variants={moveUp(idx * 0.25)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            key={idx}
-            className="text-gray-para text-19 leading-[1.68] mb-4 xl:mb-10"
-          >
-            {para}
-          </motion.p>
-        ))}
+        {qhseData.firstSection.description
+          .split("\n")
+          .filter(Boolean)
+          .map((para, idx) => (
+            <motion.p
+              variants={moveUp(idx * 0.25)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              key={idx}
+              className="text-gray-para text-19 leading-[1.68] mb-4 xl:mb-10"
+            >
+              {para}
+            </motion.p>
+          ))}
 
         {/* Image */}
         <motion.div
@@ -56,8 +52,8 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ qhseData }) => {
           className="relative w-full rounded-[16px] overflow-hidden"
         >
           <Image
-            src={qhseData.imageSrc}
-            alt={qhseData.imageAlt}
+            src={qhseData.firstSection.image}
+            alt={qhseData.firstSection.imageAlt}
             width={1245}
             height={601}
             className="max-h-[601px] w-full object-cover"
@@ -65,7 +61,7 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ qhseData }) => {
         </motion.div>
       </div>
 
-      <QualityAssurance qaData={qa} />
+      <QualityAssurance qaData={qhseData.secondSection}  />
     </section>
   );
 };

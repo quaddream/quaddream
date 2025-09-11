@@ -4,25 +4,16 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { moveUp } from "../../motionVarients";
-
-type Item = {
-  icon: string;
-  text: string;
-};
+import { QhseData } from "../type";
 
 type EnvironmentalResponsibilityProps = {
-  environmentalData: {
-    heading: string;
-    subheading: string;
-    description: string;
-    items: Item[];
-  };
+  environmentalData: QhseData["fourthSection"];
 };
 
 const EnvironmentalResponsibility: React.FC<
   EnvironmentalResponsibilityProps
 > = ({ environmentalData }) => {
-  const { heading, subheading, description, items } = environmentalData;
+  const { mainTitle, subTitle, items, description } = environmentalData;
 
   return (
     <section className="py-124 xl:py-150 bg-[#F9F9F9]">
@@ -34,7 +25,7 @@ const EnvironmentalResponsibility: React.FC<
           viewport={{ once: true }}
           className="text-80   leading-[1.14] mb-5 md:mb-8 lg:mb-12 text-black"
         >
-          {heading}
+          {mainTitle}
         </motion.h1>
         <motion.h2
           variants={moveUp(0.2)}
@@ -43,7 +34,7 @@ const EnvironmentalResponsibility: React.FC<
           viewport={{ once: true }}
           className="text-25 md:text-30 leading-[1.34] mb-[15px] xl:mb-[30px] text-black"
         >
-          {subheading}
+          {subTitle}
         </motion.h2>
         <motion.p
           variants={moveUp(0.3)}
@@ -68,8 +59,8 @@ const EnvironmentalResponsibility: React.FC<
             >
               <div className="flex-shrink-0  md:mt-0 w-[42px] h-[42px] flex items-center justify-center">
                 <Image
-                  src={item.icon}
-                  alt={item.text}
+                  src={item.logo}
+                  alt={item.title}
                   width={42}
                   height={42}
                   className="w-[25px] h-[25px]  md:w-[42px] md:h-[42px] brightness-0 group-hover:invert-0 group-hover:brightness-100 transition-all duration-300"
@@ -77,7 +68,7 @@ const EnvironmentalResponsibility: React.FC<
               </div>
 
               <p className="text-19 md:text-25 leading-[1.6] text-black">
-                {item.text}
+                {item.title}
               </p>
             </motion.div>
           ))}

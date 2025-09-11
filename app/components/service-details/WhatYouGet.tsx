@@ -4,14 +4,18 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
-import { serviceDetails } from "./data";
 import { useRef } from "react";
 import type { SwiperRef } from "swiper/react";
 import { assets } from "../../../public/assets/assets";
 import { motion } from "framer-motion";
 import { moveUp, moveLeft } from "../motionVarients";
+import { ProductsServicesData } from "../ProductsServices/type";
 
-const WhatYouGet = () => {
+type WhatYouGetProps = {
+  Data: ProductsServicesData["thirdSection"]["items"][number]["secondSection"];
+};
+
+const WhatYouGet: React.FC<WhatYouGetProps> = ({ Data }) => {
   const swiperRef = useRef<SwiperRef>(null);
   return (
     <section className="bg-black py-150 overflow-hidden">
@@ -24,7 +28,7 @@ const WhatYouGet = () => {
             viewport={{ once: true }}
             className="text-80 leading-[1.125]  text-white"
           >
-            What You Get
+            {Data.title}
           </motion.h2>
           <motion.div
             variants={moveLeft()}
@@ -81,7 +85,7 @@ const WhatYouGet = () => {
           }}
           className="what-you-get-swiper !overflow-visible"
         >
-          {serviceDetails.secondSection.items.map((item, index) => (
+          {Data.items.map((item, index) => (
             <SwiperSlide
               key={index}
               className="border group hover:bg-primary hover:border-primary border-lite-gray transition-all duration-300"
@@ -94,8 +98,8 @@ const WhatYouGet = () => {
                 className="p-10 flex flex-col justify-between h-[250px] xl:h-[299px]"
               >
                 <Image
-                  src={item.icon}
-                  alt=""
+                  src={item.logo}
+                  alt={item.logoAlt}
                   width={50}
                   height={50}
                   className="group-hover:brightness-0 group-hover:invert-100 transition-all duration-300"

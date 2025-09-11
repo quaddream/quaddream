@@ -6,36 +6,22 @@ import Image from "next/image";
 import Select from "react-select";
 import { motion } from "framer-motion";
 import { moveUp, moveRight } from "../../motionVarients";
+import { FaqData } from "../type";
 
-interface FaqItem {
-  question: string;
-  answer: string;
-}
+const FaqList = ({ faqData }: { faqData: FaqData }) => {
+  const heading = faqData.firstSection.title;
+  const description = faqData.firstSection.description;
+  const categories = faqData.faq.map((f) => ({
+    category: f.title,
+    items: f.items,
+  }));
 
-interface FaqCategory {
-  category: string;
-  items: FaqItem[];
-}
-
-interface FaqContent {
-  heading: string;
-  description: string;
-  categories: FaqCategory[];
-}
-
-const FaqList = ({ faqData }: { faqData: FaqContent }) => {
-  const data: FaqContent = faqData;
-
-  const [activeTab, setActiveTab] = useState(data.categories[0].category);
+  const [activeTab, setActiveTab] = useState(categories[0].category);
   const [openQuestion, setOpenQuestion] = useState<string | null>(null);
-
-  // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  const currentCategory = data.categories.find(
-    (cat) => cat.category === activeTab
-  );
+  const currentCategory = categories.find((cat) => cat.category === activeTab);
 
   const totalPages = currentCategory
     ? Math.ceil(currentCategory.items.length / itemsPerPage)
@@ -62,7 +48,7 @@ const FaqList = ({ faqData }: { faqData: FaqContent }) => {
           viewport={{ once: true }}
           className="text-80  leading-[1.12] mb-6 md:mb-8 lg:mb-12 text-black"
         >
-          {data.heading}
+          {heading}
         </motion.h1>
         <motion.p
           variants={moveUp(0.15)}
@@ -71,7 +57,7 @@ const FaqList = ({ faqData }: { faqData: FaqContent }) => {
           viewport={{ once: true }}
           className="text-gray-para text-19 leading-[1.7] mb-6 md:mb-8 lg:mb-12 max-w-[107ch]"
         >
-          {data.description}
+          {description}
         </motion.p>
         {/* Tabs */}
         <motion.div
@@ -81,7 +67,7 @@ const FaqList = ({ faqData }: { faqData: FaqContent }) => {
           viewport={{ once: true }}
           className="hidden md:flex gap-[35px] xl:gap-[55px] border-b border-lite-gray mb-6 lg:mb-[50px]"
         >
-          {data.categories.map((cat, index) => (
+          {categories.map((cat, index) => (
             <motion.button
               variants={moveRight(index * 0.2)}
               initial="hidden"
@@ -114,7 +100,7 @@ const FaqList = ({ faqData }: { faqData: FaqContent }) => {
         >
           <Select
             instanceId="category-select"
-            options={data.categories.map((cat) => ({
+            options={categories.map((cat) => ({
               value: cat.category,
               label: cat.category,
             }))}
@@ -152,7 +138,8 @@ const FaqList = ({ faqData }: { faqData: FaqContent }) => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="space-y-4 lg:space-y-[50px] ">
+          className="space-y-4 lg:space-y-[50px] "
+        >
           {paginatedItems?.map((item, index) => (
             <motion.div
               key={index}
@@ -161,32 +148,36 @@ const FaqList = ({ faqData }: { faqData: FaqContent }) => {
               whileInView="show"
               viewport={{ once: true }}
               className="border-b border-lite-gray pb-3 lg:pb-12 cursor-pointer"
-              onClick={() => handleToggle(item.question)}
+              onClick={() => {
+                if (item.answer) handleToggle(item.question);
+              }}
             >
               {/* Question Text */}
               <div className="flex justify-between lg:items-center gap-[15px] items-center">
                 <h3 className="lg:text-30 text-19  leading-[1.35] text-black">
                   {item.question}
                 </h3>
-                <span className="flex items-start lg:items-center flex-shrink-0">
-                  {openQuestion === item.question ? (
-                    <Image
-                      src="/assets/images/faqUp.svg"
-                      alt="faqUp"
-                      width={20}
-                      height={8}
-                      className="md:w-[24px] md:h-[11px]"
-                    />
-                  ) : (
-                    <Image
-                      src="/assets/images/faqDown.svg"
-                      alt="faqDown"
-                      width={20}
-                      height={8}
-                      className="md:w-[24px] md:h-[11px]"
-                    />
-                  )}
-                </span>
+                {item.answer && (
+                  <span className="flex items-start lg:items-center flex-shrink-0">
+                    {openQuestion === item.question ? (
+                      <Image
+                        src="/assets/images/faqUp.svg"
+                        alt="faqUp"
+                        width={20}
+                        height={8}
+                        className="md:w-[24px] md:h-[11px]"
+                      />
+                    ) : (
+                      <Image
+                        src="/assets/images/faqDown.svg"
+                        alt="faqDown"
+                        width={20}
+                        height={8}
+                        className="md:w-[24px] md:h-[11px]"
+                      />
+                    )}
+                  </span>
+                )}
               </div>
 
               {/* Answer */}

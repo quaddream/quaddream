@@ -1,10 +1,14 @@
 "use client";
-import { serviceDetails } from "./data";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { moveUp } from "../motionVarients";
+import { ProductsServicesData } from "../ProductsServices/type";
 
-const SaftySection = () => {
+type SaftySectionProps = {
+  Data: ProductsServicesData["thirdSection"]["items"][number]["fourthSection"];
+};
+
+const SaftySection = ({ Data }: SaftySectionProps) => {
   return (
     <section className="py-150 bg-[#f9f9f9]">
       <div className="container">
@@ -15,7 +19,7 @@ const SaftySection = () => {
           viewport={{ once: true }}
           className="text-80 leading-[1.125] mb-5 lg:mb-8 2xl:mb-12 "
         >
-          {serviceDetails.safetySection.title}
+          {Data.title}
         </motion.h2>
         <motion.p
           variants={moveUp(0.2)}
@@ -24,11 +28,11 @@ const SaftySection = () => {
           viewport={{ once: true }}
           className="text-19 leading-text19   text-gray-para mb-0"
         >
-          {serviceDetails.safetySection.description}
+          {Data.description}
         </motion.p>
         <div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:flex justify-between gap-8 lg:gap-0 mt-8 2xl:mt-12">
-            {serviceDetails.safetySection.items.map((item, index) => (
+            {Data.items.map((item, index) => (
               <motion.div
                 variants={moveUp(index * 0.2)}
                 initial="hidden"
@@ -39,8 +43,8 @@ const SaftySection = () => {
               >
                 <div className="bg-primary p-3 rounded-lg w-fit mb-4 xl:mb-[30px] group-hover:bg-black group-hover:-translate-y-2 transition-all duration-300">
                   <Image
-                    src={item.icon}
-                    alt=""
+                    src={item.logo}
+                    alt={item.logoAlt}
                     width={100}
                     height={100}
                     className="w-10 h-10 group-hover:scale-110 transition-all duration-300"

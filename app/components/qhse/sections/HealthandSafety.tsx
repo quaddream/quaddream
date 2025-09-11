@@ -3,20 +3,10 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { moveUp } from "../../motionVarients";
-
-type SafetyItem = {
-  icon: string;
-  title: string;
-  highlight?: boolean;
-};
+import { QhseData } from "../type";
 
 type HealthSafetyProps = {
-  safetyData: {
-    heading: string;
-    subheading: string;
-    description: string;
-    items: SafetyItem[];
-  };
+  safetyData: QhseData["thirdSection"];
 };
 
 const HealthSafety = ({ safetyData }: HealthSafetyProps) => {
@@ -32,7 +22,7 @@ const HealthSafety = ({ safetyData }: HealthSafetyProps) => {
             viewport={{ once: true }}
             className="text-80 leading-[1.13] mb-5 md:mb-8 lg:mb-12 text-white"
           >
-            {safetyData.heading}
+            {safetyData.mainTitle}
           </motion.h2>
 
           <motion.p
@@ -42,7 +32,7 @@ const HealthSafety = ({ safetyData }: HealthSafetyProps) => {
             viewport={{ once: true }}
             className="text-33 leading-[1.21] mb-[15px] xl:mb-[30px] text-white"
           >
-            {safetyData.subheading}
+            {safetyData.subTitle}
           </motion.p>
 
           <motion.p
@@ -70,7 +60,7 @@ const HealthSafety = ({ safetyData }: HealthSafetyProps) => {
               <div className="absolute z-0 inset-0 bg-[linear-gradient(138deg,rgba(17,17,17,1)_22%,rgba(108,0,4,1)_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[16px] pointer-events-none"></div>
               <div className="z-10 w-[67px] h-[67px] bg-[#1B1B1B] rounded-[8px] flex items-center justify-center mb-[15px] xl:mb-[30px] group-hover:bg-primary transition-colors duration-200">
                 <Image
-                  src={item.icon}
+                  src={item.logo}
                   alt={item.title}
                   width={67}
                   height={67}

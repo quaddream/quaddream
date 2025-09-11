@@ -1,19 +1,19 @@
 import React from "react";
-import {bannersection,safetyData,environmentalData,certificationData, qhseContent} from "./data";
 import BannerInner from "../common/BannerInner";
 import QHSECommitment from "./sections/QhseCommit";
 import HealthSafety from "./sections/HealthandSafety";
 import Environment from "./sections/Environment";
 import Certification from "./sections/Certification";
+import { QhseData } from "./type";
 
-const Index = () => {
+const Index = ({ data }: { data: QhseData }) => {
   return (
     <>
-      <BannerInner bannerData={bannersection.data} />
-      <QHSECommitment qhseData={qhseContent}/> 
-      <HealthSafety safetyData={safetyData}/>
-      <Environment environmentalData={environmentalData}/>  
-      <Certification certificationData={certificationData}/>
+      <BannerInner bannerData={data.bannerSection} />
+      <QHSECommitment qhseData={data} />
+      <HealthSafety safetyData={data.thirdSection} />
+      <Environment environmentalData={data.fourthSection} />
+      <Certification certificationData={data.fifthSection} />
     </>
   );
 };

@@ -1,10 +1,14 @@
 "use client";
-import { serviceDetails } from "./data";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { moveUp } from "../motionVarients";
+import { ProductsServicesData } from "../ProductsServices/type";
 
-const ProductsList = () => {
+type ProductsListProps = {
+  Data: ProductsServicesData["thirdSection"]["items"][number]["productSection"];
+};
+
+const ProductsList = ({ Data }: ProductsListProps) => {
   return (
     <section className="py-150">
       <div className="container">
@@ -18,7 +22,7 @@ const ProductsList = () => {
           Products
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 xl:gap-10 items-stretch">
-          {serviceDetails.products.map((product, index) => (
+          {Data.items.map((product, index) => (
             <motion.div
               variants={moveUp(index * 0.1)}
               initial="hidden"
@@ -30,7 +34,7 @@ const ProductsList = () => {
               <div className="relative py-[22.85px]">
                 <Image
                   src={product.image}
-                  alt=""
+                  alt={product.imageAlt}
                   width={100}
                   height={100}
                   className="w-full h-auto object-contain max-h-[278.56px]"
