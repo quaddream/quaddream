@@ -143,22 +143,26 @@ const LatestBlog = ({ blogData }: LatestBlogProps) => {
             className="rounded-md overflow-hidden"
           >
             <Link href={`/blog/${blog.slug}`}>
-              <div className="relative group">
+              <div className="relative group w-full h-[300px] xl:h-[348px] rounded-[16px] overflow-hidden">
                 <Image
                   src={blog.thumbnail}
                   alt={blog.thumbnailAlt}
-                  width={487}
-                  height={348}
-                  className="h-[300px] xl:h-[348px] w-full object-cover rounded-[16px]"
+                  fill
+                  className="object-cover rounded-[16px]"
                 />
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-[16px]" />
-                <div className="absolute flex items-center justify-center top-[40px] right-[40px] bg-white w-[66px] h-[66px] rounded-[16px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/0 rounded-[16px]
+  translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                />
+
+                <div className="absolute top-[40px] right-[40px] bg-white w-[66px] h-[66px] rounded-[16px] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <Image
                     src="/assets/images/blog/Group.svg"
                     alt="Arrow"
                     width={21}
                     height={21}
+                    className="group-hover:translate-x-[5px] group-hover:-translate-y-[5px] transition-all duration-300"
                   />
                 </div>
               </div>
