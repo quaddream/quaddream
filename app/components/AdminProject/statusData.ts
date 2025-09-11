@@ -1,5 +1,5 @@
 export const statusData = [
-    { name: "Completed all works",value:0 },
-    { name: "Completed partial works",value:1 },
-    { name: "Not started",value:2 },
+    { name: "Completed",value:0 },
+    { name: "Ongoing",value:1 },
+    { name: "Upcoming",value:2 },
 ];

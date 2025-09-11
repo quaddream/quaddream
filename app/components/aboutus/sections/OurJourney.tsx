@@ -7,22 +7,11 @@ import { Splide as SplideCore } from '@splidejs/splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import { motion } from "framer-motion";
  
-
-type datapop = {
-  heading: string;
-
-  items: {
-    year: string;
-    description: string;
-    image: string;
-    title: string;
-  }[];
-};
-type MissionProps = {
-  Data: datapop[];
-};
-
-const OurJourney: React.FC<MissionProps> = ({ Data }) => { 
+ 
+ 
+     import { aboutus } from '../type'
+      
+      const OurJourney = ({data}: {data: aboutus["historySection"]}) => {
   
 
   const [mainSplide, setMainSplide] = useState<SplideCore | null>(null);
@@ -93,7 +82,7 @@ const OurJourney: React.FC<MissionProps> = ({ Data }) => {
       <motion.h2 className="text-80 leading-[1.125]  text-black"
       variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}
         >
-        {Data[0].heading}
+        {data.title}
       </motion.h2>
             <div className="flex justify-end gap-3 md:gap-4">
               {/* Prev button */}
@@ -136,7 +125,7 @@ const OurJourney: React.FC<MissionProps> = ({ Data }) => {
           }}
           className="h-full"
         >
-          {Data[0].items.map((itm, i) => (
+          { data.items.map((itm, i) => (
             <SplideSlide key={i}>
               <div
                 className="afterline relative h-full cursor-pointer" 
@@ -168,7 +157,7 @@ onMouseLeave={() => setIsHovering(false)}>
             setMainSplide(splide);
           }}
         >
-          {Data[0].items.map((item, index) => (
+          { data.items.map((item, index) => (
             <SplideSlide key={index}>
               <div className="grid grid-cols-1 md:grid-cols-[40%_60%] gap-5 md:gap-15 lg:gap-25 items-end">
                 {/* Left Column */}

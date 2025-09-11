@@ -6,11 +6,8 @@ import { useRouter } from "next/navigation";
 import Pagination from "@/app/components/common/Pagination";
 import { motion } from "motion/react";
 import { moveUp } from "../../motionVarients";
-import { Projects,Location,sector } from "../type";
-
- 
-
- 
+import { Projects, Location, sector, StatusOption, BaseOption } from "../type";
+import { statusData } from "@/app/components/AdminProject/statusData";
 
 type PjtProps = { 
   firstSection: Projects["firstSection"];
@@ -19,57 +16,59 @@ type PjtProps = {
   sectordata: sector;
 }
 
-// Filter options
- 
-
-const statusOptions = [
-  { id: 0, name: "Status" },
-  { id: 1, name: "Completed all works" },
-  { id: 2, name: "Completed partial works" },
-  { id: 3, name: "Not started" },
-];
-
- 
-
 const FeaturedPjt: React.FC<PjtProps> = ({ firstSection ,projectlist,locationdata,sectordata }) => {
   const router = useRouter(); 
-
-  const locationOptions = [
+  // Create filter options with proper types
+  const statusOptions: StatusOption[] = [
+    { id: 0, name: "Status", value: -1 },
+    ...(Array.isArray(statusData) 
+      ? statusData.map((sta, index) => ({
+          id: index + 1,
+          name: sta.name, 
+          value: sta.value
+        } as StatusOption))
+      : []
+    )
+  ];
+  
+  const locationOptions: BaseOption[] = [
     { id: 1, name: "Location" },
     ...(Array.isArray(locationdata) 
       ? locationdata.map((city, index) => ({
           id: index + 2,
-          name: city.name || city,
+          name: city.name || String(city),
         }))
       : []
     )
   ];
 
-  const sectorOptions = [
+  const sectorOptions: BaseOption[] = [
     { id: 1, name: "Sector" },
     ...(Array.isArray(sectordata) 
-      ? sectordata.map((city, index) => ({
+      ? sectordata.map((sector, index) => ({
           id: index + 2,
-          name: city.name || city,
+          name: sector.name || String(sector),
         }))
       : []
     )
   ];
-  // Filters state
-  const [sectorSelected, setSectorSelected] = useState(sectorOptions[0]);
-  const [statusSelected, setStatusSelected] = useState(statusOptions[0]);
-  const [locationSelected, setLocationSelected] = useState(locationOptions[0]);
+  // Filters state with proper types
+  const [sectorSelected, setSectorSelected] = useState<BaseOption>(sectorOptions[0]);
+  const [statusSelected, setStatusSelected] = useState<StatusOption>(statusOptions[0]);
+  const [locationSelected, setLocationSelected] = useState<BaseOption>(locationOptions[0]);
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
   // Filter items
-  const filteredItems = projectlist.filter((item) => {
+  const filteredItems = projectlist.filter((item) => { 
     const sectorMatch =
       sectorSelected.name === "Sector" || item.firstSection.sector.name === sectorSelected.name;
     const statusMatch =
-      statusSelected.name === "Status" || item.firstSection.status === statusSelected.name;
+      statusSelected.name === "Status" || 
+      (statusSelected.value !== -1 && 
+       item.firstSection.status === statusSelected.value.toString());
     const locationMatch =
       locationSelected.name === "Location" ||
       item.firstSection.location.name === locationSelected.name;
@@ -80,9 +79,8 @@ const FeaturedPjt: React.FC<PjtProps> = ({ firstSection ,projectlist,locationdat
   // Pagination calculations
   const totalItems = filteredItems.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const paginatedItems = filteredItems.slice(startIndex, endIndex);
+  // const startIndex = (currentPage - 1) * itemsPerPage;
+  // const endIndex = startIndex + itemsPerPage; 
 
   return (
     <section className="py-150 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10 bg-white mt-[-4.5%]">
@@ -116,17 +114,17 @@ const FeaturedPjt: React.FC<PjtProps> = ({ firstSection ,projectlist,locationdat
             {[
               {
                 state: sectorSelected,
-                setState: setSectorSelected,
+                setState: setSectorSelected as (value: BaseOption) => void,
                 options: sectorOptions,
               },
               {
                 state: statusSelected,
-                setState: setStatusSelected,
+                setState: setStatusSelected as (value: StatusOption) => void,
                 options: statusOptions,
               },
               {
                 state: locationSelected,
-                setState: setLocationSelected,
+                setState: setLocationSelected as (value: BaseOption) => void,
                 options: locationOptions,
               },
             ].map((filter, idx) => (
@@ -138,7 +136,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ firstSection ,projectlist,locationdat
                 key={idx}
                 className="mb-5 md:mb-0"
               >
-                <Listbox value={filter.state} onChange={filter.setState}>
+                <Listbox value={filter.state} onChange={filter.setState} as="div" className="relative w-full lg:w-auto">
                   <div className="relative">
                     <Listbox.Button className="cursor-pointer focus:outline-none flex w-full items-center justify-between rounded-full bg-[#F9F9F9] p-5 lg:p-7 text-left border-0">
                       <span>
@@ -162,7 +160,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ firstSection ,projectlist,locationdat
                       leaveTo="opacity-0"
                     >
                       <Listbox.Options className="focus:outline-none absolute mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200 z-10 bg-white">
-                        {filter.options.map((option) => (
+                        {filter.options.map((option: BaseOption | StatusOption) => (
                           <Listbox.Option
                             key={option.id}
                             value={option}
@@ -256,7 +254,8 @@ const FeaturedPjt: React.FC<PjtProps> = ({ firstSection ,projectlist,locationdat
                   </div>
                   <div>
                     <p className="transition-all duration-300 text-white">
-                      {item.firstSection.status}
+                       
+                      {statusData.find((status) => status.value.toString() === item.firstSection.status)?.name}
                     </p>
                   </div>
                   <div className="absolute bottom-[-3px] w-0 h-[3px] group-hover:w-full bg-primary transition-all duration-300"></div>

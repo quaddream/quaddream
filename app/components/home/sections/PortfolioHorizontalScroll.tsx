@@ -9,22 +9,18 @@ import { moveUp, containerStagger, paragraphItem } from '../../motionVarients';
 
 gsap.registerPlugin(ScrollTrigger);
 
-type Project = {
-  id: number;
-  title: string;
-  location: string;
-  imageUrl: string;
-  badge: string;
+import { Projects } from "../../projects/type";
+
+type ProjectSwiperProps = { 
+  projectsdata: Projects;
 };
 
-type ProjectSwiperProps = {
-  title?: string;
-  buttonText?: string;
-  buttonLink?: string;
-  projects: Project[];
-};
+const PortfolioHorizontalScroll: React.FC<ProjectSwiperProps> = ({  
+  projectsdata 
+}) => {
+  // Access the projects array from the projectsdata object
+  const projects = projectsdata.projects || [];
 
-const PortfolioHorizontalScroll: React.FC<ProjectSwiperProps> = ({ title, buttonLink, buttonText, projects }) => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const horizontalRef = useRef<HTMLDivElement | null>(null);
 
@@ -69,8 +65,7 @@ const PortfolioHorizontalScroll: React.FC<ProjectSwiperProps> = ({ title, button
           viewport={{ amount: 0.1, once: true }}
         >
           Portfolio
-        </motion.h2>
-        {buttonLink && (
+        </motion.h2> 
           <motion.div
             variants={moveUp(0.5)}
             initial="hidden"
@@ -82,7 +77,7 @@ const PortfolioHorizontalScroll: React.FC<ProjectSwiperProps> = ({ title, button
               href={'/projects'}
               className="flex items-center gap-2 cursor-pointer text-16 border border-black py-[5px] md:py-[10px] px-[10px] md:px-[20px] rounded-[60px] w-fit z-10 group font-normal"
             >
-              <span>{buttonText}</span>
+              <span>View Projects</span>
               <span className="bg-primary w-8 h-8 md:w-[51.7px] md:h-[51.7px] flex items-center justify-center rounded-full group-hover:translate-x-[10px] transition-all duration-300">
                 <Image
                   src="/assets/images/home/arrow-right.svg"
@@ -94,7 +89,7 @@ const PortfolioHorizontalScroll: React.FC<ProjectSwiperProps> = ({ title, button
               </span>
             </Link>
           </motion.div>
-        )}
+      
       </div>
         <div className="container">
       <div
@@ -103,16 +98,17 @@ const PortfolioHorizontalScroll: React.FC<ProjectSwiperProps> = ({ title, button
         style={{ width: `${projects.length * 44}vw` }}
       >
         {projects.map(project => (
-          <div
-            key={project.id}
-            className="relative rounded-[12px] overflow-hidden shadow-lg h-[300px] w-[350px] lg:h-[500px] 2xl:h-[542px] lg:w-[630px] 2xl:w-[757.67px] flex-shrink-0"
+          <Link href={`/projects/${project.slug}`} key={project.slug}>
+            <div 
+            className="relative rounded-[12px] overflow-hidden group shadow-lg h-[300px] w-[350px] lg:h-[500px] 2xl:h-[542px] lg:w-[630px] 2xl:w-[757.67px] flex-shrink-0"
           >
             <Image
-              src={project.imageUrl}
-              alt={project.title}
+              src={project.thumbnail}
+              alt={project.thumbnailAlt || project.firstSection.title}
               fill
-              className="object-cover transition-transform duration-300 hover:scale-105"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
+            <div className='relative z-10 h-full w-full'>
             <div className="absolute top-[33px] left-[43px] bg-[#fafafa70] px-[10px] py-[11px] rounded-full text-19 font-light flex items-center backdrop-blur-[18px] w-[250px] h-[53px]">
               <Image
                 src="/assets/images/home/portfolio/location.svg"
@@ -121,10 +117,10 @@ const PortfolioHorizontalScroll: React.FC<ProjectSwiperProps> = ({ title, button
                 alt=""
                 className="mr-[15px]"
               />
-              {project.badge}
+              {project.firstSection.location?.name || ''}
             </div>
             <motion.div
-              className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/50 to-transparent text-white"
+              className="absolute bottom-0 left-0 right-0 p-6  to-transparent text-white"
               variants={containerStagger}
               initial="hidden"
               whileInView="show"
@@ -135,16 +131,19 @@ const PortfolioHorizontalScroll: React.FC<ProjectSwiperProps> = ({ title, button
                 className="text-33 leading-[1.2] capitalize"
                 variants={paragraphItem}
               >
-                {project.title}
+                {project.firstSection.title}
               </motion.h3>
               <motion.p
                 className="text-33 leading-[1.2] capitalize"
                 variants={paragraphItem}
               >
-                {project.location}
+                {project.firstSection.location?.name || ''}
               </motion.p>
             </motion.div>
+            </div>
+            <div className="absolute h-full w-full z-[1] bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/20 to-transparent text-white" ></div>
           </div>
+          </Link>
         ))}
       </div>
       </div>

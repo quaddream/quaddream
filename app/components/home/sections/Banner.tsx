@@ -7,7 +7,7 @@ import "swiper/css/pagination"
 import "swiper/css/effect-fade"
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules'
 import Image from 'next/image'
-import { homeData } from '../data'
+import Link from 'next/link'
 
 import { Home } from  '../type'
  
@@ -40,8 +40,14 @@ const Banner = ({data}: {data: Home['bannerSection']}) => {
   return ( 
     <section className='h-[400px] md:h-screen 2xl:h-[100vh] bg-black relative z-[1] hero overflow-hidden'> 
       <div className='absolute top-0 left-0 w-full h-full bg-black z-0 transition-all duration-300'>
-        
-          <video src={data.video} autoPlay loop muted  poster={data.poster} 
+          <video src={data.video}  
+          playsInline 
+          controlsList="nodownload nofullscreen noremoteplayback"
+          disablePictureInPicture
+          autoPlay 
+          loop 
+          muted  
+          poster={data.poster} 
           className="w-full h-full object-cover" />
 
       </div>
@@ -75,8 +81,7 @@ const Banner = ({data}: {data: Home['bannerSection']}) => {
           className="flex flex-col gap-4 md:gap-12  "
         >
           <h2 className="text-65 leading-[1.125] text-white opacity-0">{item.title}</h2>
-                      <a
-                        href='/projects'
+                      <Link href='/projects'
                         className="opacity-0 fade-item flex items-center gap-2 cursor-pointer text-16 border-1 border-white py-1 2xl:py-[10px] px-3 2xl:px-5 rounded-[60px] w-fit text-white relative group overflow-hidden z-20 isolation-isolate fade-item"
                       >
                         <div className="absolute top-0 left-0 w-0 h-full bg-primary z-[-1] transition-all duration-300 group-hover:w-full"></div>
@@ -91,7 +96,7 @@ const Banner = ({data}: {data: Home['bannerSection']}) => {
                           />
                         </span>
                         
-                      </a>
+                      </Link>
                      
                     </div>
                   </div>

@@ -1,5 +1,4 @@
-'use client'
-import { homeData } from "../data";
+'use client' 
 import Image from "next/image";
 import { motion } from "motion/react";
 import { moveUp } from "../../motionVarients";

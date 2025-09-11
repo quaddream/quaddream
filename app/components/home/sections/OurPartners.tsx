@@ -4,8 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Autoplay, Pagination } from 'swiper/modules'
-import Image from 'next/image'
-import { StaticImageData } from 'next/image'
+import Image from 'next/image' 
 import { motion } from 'motion/react';
 import { moveUp } from '../../motionVarients';
 import { Home } from '../type';
@@ -40,9 +39,7 @@ export default function PartnersSection( data: Home['partnersSection'] ) {
           className="mySwiperPartners"
         >
           {data.items.map((_, i) => {
-            if (i % 2 !== 0) return null
-            const first = data.items[i]
-            const second = data.items[i + 1]
+            if (i % 2 !== 0) return null 
 
             return (
               <SwiperSlide key={i} className={i + 2 >= data.items.length ? '' : 'lg:border-r-[0.3px] border-solid border-lite-gray mr-0'} >

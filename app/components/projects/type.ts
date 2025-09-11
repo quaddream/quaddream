@@ -81,8 +81,21 @@ export type Projects =
 export type Location = 
 { 
     name: string 
+} 
+
+
+
+export type sector = {
+  name: string
 }
-export type sector = 
-{ 
-    name: string 
-}
+
+export type BaseOption = {
+  id: number;
+  name: string;
+};
+
+export type StatusOption = BaseOption & {
+  value: number;
+};
+
+export type FilterOption = BaseOption | StatusOption;

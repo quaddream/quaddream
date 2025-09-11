@@ -4,21 +4,13 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { moveUp } from "../../motionVarients";
 import Link from "next/link";
-type items = {
-  title: string;
-  image: string;
-  city: string;
-  status: string;
-  icon: string;
-};
-type datapop = {
-  heading: string;
-  items: items[];
-};
-type PjtProps = {
-  Data: datapop[];
-};
-const ExploreMore: React.FC<PjtProps> = ({ Data }) => {
+import { Projects } from "../../projects/type";
+
+import { statusData } from "@/app/components/AdminProject/statusData";
+ 
+  
+  
+  const ExploreMore = ({data}: {data: Projects}) => {
   return (
     <section className="pb-150 relative z-10  ">
       <div className="container ">
@@ -30,7 +22,7 @@ const ExploreMore: React.FC<PjtProps> = ({ Data }) => {
             viewport={{ once: true }}
             className="text-80 leading-[1.125]   text-black"
           >
-            {Data[0].heading}
+            More to Explore
           </motion.h2>
           {/* Button */}
           <motion.div
@@ -59,7 +51,7 @@ const ExploreMore: React.FC<PjtProps> = ({ Data }) => {
           </motion.div>
         </div>
         <div className="grid md:grid-cols-3 gap-5 ">
-          {Data[0].items.map((item, index) => (
+          {data.projects.slice(-3).map((item, index) => (
             <motion.div
               variants={moveUp(index * 0.3)}
               initial="hidden"
@@ -67,34 +59,38 @@ const ExploreMore: React.FC<PjtProps> = ({ Data }) => {
               viewport={{ once: true }}
               key={index}
               className="h-[300px] lg:h-[408px] xl:h-[502px] overflow-hidden rounded-xl bg-cover bg-center relative group bgrd"
-              style={{ backgroundImage: `url(${item.image})` }}
+              style={{ backgroundImage: `url(${item.thumbnail})` }}
             >
+              <Link href={`/projects/${item.slug}`}>
               <div className="absolute bottom-0 w-full p-5 lg:p-10 z-10 ">
                 <div className=" flex items-center justify-between lg:mb-7 lg:pb-7 mb-3 pb-3 border-b-3  border-white group-hover:border-primary transition-all duration-300">
                   <div className="flex items-center gap-2">
                     <Image
-                      src={item.icon}
-                      alt={item.title}
+                      src={'/assets/images/projects/location.svg'}
+                      alt={item.firstSection.location.name}
                       width={20}
                       height={20}
                     />
                     <p className="transition-all duration-300 text-white">
-                      {item.city}
+                      {item.firstSection.location.name}
                     </p>
                   </div>
                   <div>
-                    <p className="transition-all duration-300 text-white">
-                      {item.status}
+                    <p className="transition-all duration-300 text-white"> 
+                      
+           {statusData.find((status) => status.value.toString() === item.firstSection.status)?.name}
                     </p>
                   </div>
                 </div>
                 <div>
-                  <p className=" text-33 uppercase text-white">{item.title}</p>
+                  <p className=" text-33 uppercase text-white">{item.firstSection.title}</p>
                 </div>
               </div>
-              <div className="absolute top-0 w-full h-full bg-black opacity-50  rounded-xl  transition-all duration-300"></div>
+              <div className="absolute top-0 w-full h-full bg-black opacity-60  rounded-xl  transition-all duration-300"></div>
               <div className="absolute bottom-0 w-full h-0 group-hover:h-full rounded-xl   hrbg transition-all duration-300"></div>
-            </motion.div>
+           
+           </Link>
+             </motion.div>
           ))}
         </div>
       </div>

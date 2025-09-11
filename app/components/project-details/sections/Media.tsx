@@ -7,20 +7,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { moveLeft, moveUp } from "../../motionVarients";
-
-type QAItem = {
-  image: string;
-};
-
-interface QualityAssuranceProps {
-  qaData: {
-    heading: string;
-    items: QAItem[];
-  };
-}
-
-const Media: React.FC<QualityAssuranceProps> = ({ qaData }) => {
+import { moveLeft, moveUp } from "../../motionVarients"; 
+import { Projectsdetails } from "../type";
+  
+  const Media = ({data}: {data: Projectsdetails['images']}) => {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
@@ -74,7 +64,7 @@ const Media: React.FC<QualityAssuranceProps> = ({ qaData }) => {
               viewport={{ once: true }}
               className="text-80 leading-[1.12]  text-black"
             >
-              {qaData.heading}
+              Media
             </motion.h2>
 
             <div className="flex xl:flex-row flex-col items-end xl:gap-[75px] gap-[10px]  ">
@@ -147,7 +137,7 @@ const Media: React.FC<QualityAssuranceProps> = ({ qaData }) => {
                 }
               }}
             >
-              {qaData.items.map((item, idx) => (
+              {data.map((item, idx) => (
                 <SwiperSlide key={idx}>
                   <motion.div
                     variants={moveUp(idx * 0.3)}
@@ -157,8 +147,8 @@ const Media: React.FC<QualityAssuranceProps> = ({ qaData }) => {
                     className="flex flex-col "
                   >
                     <Image
-                      src={item.image}
-                      alt={item.image}
+                      src={item}
+                      alt={item}
                       width={560}
                       height={459}
                       className="rounded-2xl w-full h-full object-cover"

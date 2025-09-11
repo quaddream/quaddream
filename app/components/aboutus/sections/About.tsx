@@ -6,10 +6,11 @@ import { motion } from 'motion/react'
 import { containerStagger, paragraphItem, moveRight, moveLeft } from '../../motionVarients' 
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { aboutus } from '../type'
 
 gsap.registerPlugin(ScrollTrigger);
 
-const About = () => {
+const About = ({data}: {data: aboutus["firstSection"]}) => {
     const containerRef = useRef<HTMLUListElement | null>(null);
     const contentRef = useRef<HTMLLIElement | null>(null);
     const textRef = useRef<HTMLHeadingElement | null>(null);
@@ -77,7 +78,7 @@ const About = () => {
                     <motion.div className='2xl:col-span-1 mt-6' variants={moveRight(0.2)} initial="hidden" whileInView="show" viewport={{ amount: 0.1, once: true }}>
                         <Link href="/about" className='border border-primary rounded-full py-[5px] px-[12px] text-nowrap cursor-pointer flex items-center gap-2 text-19 w-[163px] overflow-x-hidden'>
                             <ul className='flex items-center list-inside list-disc animate-ticker gap-2' ref={containerRef}>
-                                <li className="ticker ml-[5px] text-19" id="tickerList" ref={contentRef}>Who we are</li>
+                                <li className="ticker ml-[5px] text-19" id="tickerList" ref={contentRef}>{data.movingText}</li>
                             </ul>
                         </Link>
                     </motion.div>
@@ -91,29 +92,19 @@ const About = () => {
                             viewport={{ amount: 0.1, once: true }}
                             className='text-65 leading-[1.153846153846154]  mb-5 md:mb-8 lg:mb-12'
                         >
-                            Quaddream Scaffolding, leading suppliers of scaffolding solutions since 2012.
-                        </motion.h2>
-                        <motion.p
+                            {data.title}
+                        </motion.h2> 
+                        {data.description.split("\n").map((line, index, arr) => (
+                            <motion.p
                             variants={paragraphItem}
                             initial="hidden"
                             whileInView="show"
                             transition={{ duration: 0.6 }}
-                            viewport={{ amount: 0.1, once: true }}
-                            className='text-19 text-[#7f7f7f] leading-[1.684210526315789] mb-3'
-                        >
-                            Representing a large number of companies in UAE for products and services of hire and sales of Cuplock Scaffoldings Components, Aluminium mobile access towers, Aluminium Scaffolding Components & Scaffolding Accessories.
-                        </motion.p>
-                        
-                        <motion.p
-                            variants={paragraphItem}
-                            initial="hidden"
-                            whileInView="show"
-                            transition={{ duration: 0.6 }}
-                            viewport={{ amount: 0.1, once: true }}
-                            className='text-19 text-[#7f7f7f] leading-[1.684210526315789] mb-0'
-                        > 
-                            In this new millennium where construction activities are significant across the globe it is essential to source materials and other such construction related equipments from experienced , trusted, time tested and quality conscious manufacturers complying with international safety norms and standards.
-                        </motion.p>
+                            viewport={{ amount: 0.1, once: true }} 
+                            key={index} className={`text-19 text-[#7f7f7f] leading-[1.684210526315789] mb-0 ${index !== arr.length - 1 ? "mb-3" : ""}`}>
+                            {line}
+                            </motion.p>
+                            ))} 
                     </motion.div>
                 </div>
 
