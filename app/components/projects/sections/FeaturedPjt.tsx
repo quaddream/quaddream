@@ -346,6 +346,10 @@ const FeaturedPjt: React.FC<PjtProps> = ({
             whileInView="show"
             viewport={{ amount: 0.1, once: true }}
             style={{ flexGrow: 0.4, flexShrink: 1, flexBasis: "0%" }}
+            animate={{
+              flexGrow: searchQuery ? 0.6 : 0.4,
+              transition: { duration: 0.4, ease: "easeInOut" },
+            }}
             whileHover={{
               flexGrow: 0.6,
               transition: { duration: 0.3, ease: "easeOut" },
