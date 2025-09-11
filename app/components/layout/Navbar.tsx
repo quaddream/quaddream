@@ -482,7 +482,9 @@ const Navbar = () => {
                     setActiveParent(null);
                     setActiveChild(null);
                   }}
-                  className={`font-semibold opacity-50`}
+                  className={`font-semibold transition-all duration-300 ${
+                    pathname === "/contact-us" ? "text-[#1E1E1E]" : "opacity-50"
+                  }`}
                 >
                   Contact Us
                 </Link>
