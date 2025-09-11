@@ -72,3 +72,15 @@ export interface ProductsServicesData {
     ];
   };
 }
+
+
+export interface WhatYouGetType {
+  title: string;
+  items: [
+    {
+      logo: string;
+      logoAlt: string;
+      title: string;
+    },
+  ];
+}

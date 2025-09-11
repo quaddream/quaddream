@@ -11,9 +11,17 @@ async function getService(slug: string) {
   return res.json();
 }
 
+async function getWhatyougetData() {
+  const url = `${process.env.BASE_URL}/api/admin/services/second-section`;
+  console.log("Fetching service from:", url);
+  const res = await fetch(url, { cache: "no-store" });
+  return res.json();
+}
+
 export default async function ServiceDetailsPage({ params }: Props) {
   const { slug } = await params;
   const service = await getService(slug as string);
+  const whatyouget = await getWhatyougetData();
 
-  return <Index service={service.data} />;
+  return <Index service={service.data} whatyougetData={whatyouget.data} />;
 }

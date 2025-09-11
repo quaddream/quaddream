@@ -3,14 +3,15 @@ import Main from "./Main";
 import ProductsList from "./ProductsList";
 import WhatYouGet from "./WhatYouGet";
 import SaftySection from "./SaftySection";
-import { ProductsServicesData } from "../ProductsServices/type";
+import { ProductsServicesData, WhatYouGetType } from "../ProductsServices/type";
 
 const Index = ({
   service,
+  whatyougetData,
 }: {
   service: ProductsServicesData["thirdSection"]["items"][number];
+  whatyougetData: WhatYouGetType;
 }) => {
-  console.log("service", service)
   return (
     <>
       <BannerInner
@@ -21,7 +22,7 @@ const Index = ({
         }}
       />
       <Main Data={service.firstSection} />
-      <WhatYouGet Data={service.secondSection} />
+      <WhatYouGet Data={whatyougetData} />
       <ProductsList Data={service.productSection} />
       <SaftySection Data={service.fourthSection} />
     </>
