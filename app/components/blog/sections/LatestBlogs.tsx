@@ -162,7 +162,7 @@ const LatestBlog = ({ blogData }: LatestBlogProps) => {
                     alt="Arrow"
                     width={21}
                     height={21}
-                    className="group-hover:translate-x-[5px] group-hover:-translate-y-[5px] transition-all duration-300"
+                    className="-translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300"
                   />
                 </div>
               </div>
