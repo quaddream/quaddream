@@ -9,6 +9,7 @@ type ProductsListProps = {
 };
 
 const ProductsList = ({ Data }: ProductsListProps) => {
+  console.log("Data", Data)
   return (
     <section className="py-150">
       <div className="container">
