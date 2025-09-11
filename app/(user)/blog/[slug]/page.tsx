@@ -1,7 +1,6 @@
 import React from "react";
 import Index from "@/app/components/blog-detail/Index";
 
-
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -18,12 +17,10 @@ async function getAllBlogs() {
   return res.json();
 }
 
-
 export default async function BlogDetailsPage({ params }: Props) {
   const { slug } = await params;
   const blog = await getBlog(slug as string);
   const allBlogs = await getAllBlogs();
-  console.log(allBlogs,"hiss");
 
   return <Index blogDetail={blog.data} allBlogs={allBlogs.data.blogs} />;
-};
+}
