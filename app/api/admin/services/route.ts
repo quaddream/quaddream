@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
 import Service from "@/app/models/Service";
+import Product from "@/app/models/Product";
 import { verifyAdmin } from "@/lib/verifyAdmin";
+import mongoose from "mongoose";
 
 
 export async function GET(request: NextRequest) {
@@ -11,12 +13,32 @@ export async function GET(request: NextRequest) {
         const slug = request.nextUrl.searchParams.get("slug");
 
         if (id) {
-            const service = await Service.findOne({});
+            const service = await Service.findOne({})
             const foundService = service.thirdSection.items.find((service: { _id: string }) => service._id.toString() === id);
             if (!foundService) {
                 return NextResponse.json({ message: "Service not found" }, { status: 404 });
             }
-            return NextResponse.json({ data: foundService, message: "Service fetched successfully" }, { status: 200 });
+            const productIds = foundService.productSection.items.map(
+                (item: { _id: mongoose.Types.ObjectId | string }) => item._id
+              );
+
+            
+              // 2. Fetch only products that are in productIds
+              const products = await Product.findOne({})
+            const productData = products.items.filter((item: { _id: mongoose.Types.ObjectId }) =>
+                productIds.map((id: string) => id.toString()).includes(item._id.toString())
+              );
+              const updatedProductSection = {
+                ...foundService.productSection.toObject(),
+                items: productData, // only the relevant product documents
+              };
+            
+              // 4. Construct the response with the updated productSection
+              const responseData = {
+                ...foundService.toObject(),
+                productSection: updatedProductSection,
+              };
+            return NextResponse.json({ data: responseData, message: "Service fetched successfully" }, { status: 200 });
         }
 
         else if (slug) {
@@ -54,14 +76,15 @@ export async function PATCH(request: NextRequest) {
             if (!foundService) {
                 return NextResponse.json({ message: "Service not found" }, { status: 404 });
             }
-            console.log(body.firstSection)
             foundService.metaTitle = body.metaTitle;
             foundService.metaDescription = body.metaDescription;
             foundService.bannerSection = body.bannerSection;
             foundService.firstSection = body.firstSection;
             foundService.secondSection = body.secondSection;
-            foundService.productSection = body.productSection;
+            foundService.productSection.title = body.productSection.title;
+            foundService.productSection.items = [...body.productSection.items];
             foundService.fourthSection = body.fourthSection;
+            
 
             await service.save();
             return NextResponse.json({ data: service, message: "Service updated successfully" }, { status: 200 });

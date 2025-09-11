@@ -2,7 +2,7 @@
 
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { useForm, useFieldArray, Controller } from "react-hook-form";
 import { Button } from '@/components/ui/button'
@@ -38,12 +38,9 @@ interface IndividualServiceFormProps {
     };
     productSection: {
         title: string;
-        items: {
-            image: string;
-            imageAlt: string;
-            title: string;
-            description: string;
-        }[];
+        items: { 
+            _id:string
+         }[]
     };
     fourthSection: {
         title: string;
@@ -60,8 +57,10 @@ const IndividualService = () => {
 
     const { id } = useParams();
 
+    const [productData, setProductData] = useState<{ _id: string, image: string, imageAlt: string, title: string, description: string, checked: boolean }[] | null>(null);
 
-    const { register, handleSubmit, setValue, control, formState: { errors } } = useForm<IndividualServiceFormProps>();
+
+    const { register, handleSubmit, setValue, control, formState: { errors }, getValues } = useForm<IndividualServiceFormProps>();
 
 
     const { fields: secondSectionItems, append: secondSectionAppend, remove: secondSectionRemove } = useFieldArray({
@@ -70,10 +69,10 @@ const IndividualService = () => {
     });
 
 
-    const { fields: productSectionItems, append: productSectionAppend, remove: productSectionRemove } = useFieldArray({
-        control,
-        name: "productSection.items"
-    });
+    // const { fields: productSectionItems, append: productSectionAppend, remove: productSectionRemove } = useFieldArray({
+    //     control,
+    //     name: "productSection.items"
+    // });
 
     const { fields: fourthSectionItems, append: fourthSectionAppend, remove: fourthSectionRemove } = useFieldArray({
         control,
@@ -85,6 +84,7 @@ const IndividualService = () => {
 
     const handleAddIndividualService = async (data: IndividualServiceFormProps) => {
         try {
+
             const response = await fetch(`/api/admin/services?id=${id}`, {
                 method: "PATCH",
                 body: JSON.stringify(data),
@@ -104,6 +104,7 @@ const IndividualService = () => {
             const response = await fetch(`/api/admin/services?id=${id}`);
             if (response.ok) {
                 const data = await response.json();
+                console.log("data", data)
                 setValue("metaTitle", data.data.metaTitle);
                 setValue("metaDescription", data.data.metaDescription);
                 setValue("bannerSection", data.data.bannerSection);
@@ -111,9 +112,10 @@ const IndividualService = () => {
                 setValue("secondSection", data.data.secondSection);
                 setValue("secondSection.items", data.data.secondSection.items);
                 setValue("productSection", data.data.productSection);
-                setValue("productSection.items", data.data.productSection.items);
+                // setValue("productSection.items", data.data.productSection.items);
                 setValue("fourthSection", data.data.fourthSection);
                 setValue("fourthSection.items", data.data.fourthSection.items);
+
             } else {
                 const data = await response.json();
                 toast.error(data.message);
@@ -123,10 +125,76 @@ const IndividualService = () => {
         }
     }
 
+    const fetchProductData = async () => {
+        try {
+            const response = await fetch(`/api/admin/products`);
+            if (response.ok) {
+                const data = await response.json();
+
+                // Get previously selected items from the form
+                const productSectionItems = getValues("productSection.items") || [];
+
+                console.log("productSectionItems", productSectionItems)
+                // Build productData with 'checked' flag
+                const updatedProductData = data.data.map((item :{ _id: string }) => ({
+                    ...item,
+                    checked: productSectionItems.some((productItem:{_id:string}) => productItem._id === item._id),
+                }));
+
+                console.log("updatedProductData", updatedProductData)
+
+                // Set productData (for display)
+                setProductData(updatedProductData);
+
+                // Set productSection.items in form with only the checked ones (excluding "checked" key)
+                const selectedItems = updatedProductData
+                    .filter((item: { checked: boolean }) => item.checked)
+                    .map((item: { _id: string }) => ({ _id: item._id }));
+                // remove the 'checked' field
+
+                console.log("selectedItems", selectedItems)
+
+                setValue("productSection.items", selectedItems);
+            } else {
+                const data = await response.json();
+                toast.error(data.message);
+            }
+        } catch (error) {
+            console.log("Error in fetching product data", error);
+        }
+    };
+
+
+    const handleCheckboxChange = (id: string) => {
+        if (!productData) return;
+
+        // Toggle checked status
+        const updatedProductData = productData.map((item) =>
+            item._id === id ? { ...item, checked: !item.checked } : item
+        );
+
+        // Update local state
+        setProductData(updatedProductData);
+
+        // Filter only checked items (and remove `checked` before saving to form)
+        const selectedItems = updatedProductData
+            .filter((item: { checked: boolean }) => item.checked)
+            .map((item: { _id: string }) => ({ _id: item._id }));
+        ;
+
+
+
+        console.log("selectedItems", selectedItems)
+
+        // Update form field
+        setValue("productSection.items", selectedItems);
+    };
+
+
 
 
     useEffect(() => {
-        fetchIndividualServiceData();
+        fetchIndividualServiceData().then(() => fetchProductData());
     }, []);
 
 
@@ -335,64 +403,17 @@ const IndividualService = () => {
                             <div className='rounded-md flex flex-col gap-2'>
                                 <Label className=' font-bold'>Items</Label>
                                 <div className='border p-2 rounded-md flex flex-col gap-5'>
-                                    {productSectionItems.map((field, index) => (
-                                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b pb-5'>
+                                    {productData?.map((field, index) => (
+                                        <div key={index} className='grid grid-cols-2 gap-2 relative border p-2 rounded-lg'>
                                             <div className='absolute top-2 right-2'>
-                                                <RiDeleteBinLine onClick={() => productSectionRemove(index)} className='cursor-pointer text-red-600' />
+                                                <input type="checkbox" onChange={() => handleCheckboxChange(field._id)} checked={field.checked} />
                                             </div>
-
-                                            <div className='flex flex-col gap-2'>
-                                                <div className='flex flex-col gap-2'>
-                                                    <div className='flex flex-col gap-2'>
-                                                        <Label className='font-bold'>Image</Label>
-                                                        <Controller
-                                                            name={`productSection.items.${index}.image`}
-                                                            control={control}
-                                                            rules={{ required: "Image is required" }}
-                                                            render={({ field }) => (
-                                                                <ImageUploader
-                                                                    value={field.value}
-                                                                    onChange={field.onChange}
-                                                                />
-                                                            )}
-                                                        />
-                                                        {errors.productSection?.items?.[index]?.image && (
-                                                            <p className="text-red-500">{errors.productSection?.items?.[index]?.image.message}</p>
-                                                        )}
-                                                    </div>
-
-                                                    <div className='flex flex-col gap-2'>
-                                                        <div className='flex flex-col gap-2'>
-                                                            <Label className='font-bold'>Alt Tag</Label>
-                                                            <Input type='text' placeholder='Alt Tag' {...register(`productSection.items.${index}.imageAlt`, {
-                                                                required: "Value is required"
-                                                            })} />
-                                                            {errors.productSection?.items?.[index]?.imageAlt && <p className='text-red-500'>{errors.productSection?.items?.[index]?.imageAlt.message}</p>}
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-
-                                            </div>
-
 
                                             <div className='flex flex-col gap-2'>
 
                                                 <div className='flex flex-col gap-2'>
                                                     <div className='flex flex-col gap-2'>
-                                                        <Label className='font-bold'>Title</Label>
-                                                        <Input type='text' placeholder='Title' {...register(`productSection.items.${index}.title`, {
-                                                            required: "Value is required"
-                                                        })} />
-                                                        {errors.productSection?.items?.[index]?.title && <p className='text-red-500'>{errors.productSection?.items?.[index]?.title.message}</p>}
-                                                    </div>
-                                                    <div className='flex flex-col gap-2'>
-                                                        <Label className='font-bold'>Description</Label>
-                                                        <Textarea placeholder='Description' {...register(`productSection.items.${index}.description`, {
-                                                            required: "Value is required"
-                                                        })} />
-                                                        {errors.productSection?.items?.[index]?.description && <p className='text-red-500'>{errors.productSection?.items?.[index]?.description.message}</p>}
+                                                        {field.title}
                                                     </div>
                                                 </div>
 
@@ -400,10 +421,6 @@ const IndividualService = () => {
 
                                         </div>
                                     ))}
-
-                                    <div className='flex justify-end'>
-                                        <Button type='button' className="" addItem onClick={() => productSectionAppend({ title: "", description: "", image: "", imageAlt: "" })}>Add Item</Button>
-                                    </div>
 
                                 </div>
 
