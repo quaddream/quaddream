@@ -12,11 +12,15 @@ const Index = async ({
 }: {
   data: Projectsdetails;
   pjtdata: Projects;
-}) => {
-  console.log(data);
+}) => { 
   return (
     <>
-      <BannerInner bannerData={data.bannerSection} />
+      <BannerInner  
+       bannerData={{
+        image: data.bannerSection.image,
+        imageAlt: data.bannerSection.imageAlt,
+        title: data.firstSection.title,
+      }}/>
       <Main data={data} />
       <Highlights data={data.fourthSection} />
       <Media data={data.images} />
