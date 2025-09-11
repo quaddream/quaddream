@@ -6,79 +6,98 @@ import { useRouter } from "next/navigation";
 import Pagination from "@/app/components/common/Pagination";
 import { motion } from "motion/react";
 import { moveUp } from "../../motionVarients";
-
-type Item = {
-  title: string;
-  image: string;
-  city: string;
-  status: string;
-  icon: string;
-  sector?: string;
-};
-
-type DataPop = {
-  heading: string;
-  desc: string;
-  items: Item[];
-};
+import { Projects, Location, sector, StatusOption, BaseOption } from "../type";
+import { statusData } from "@/app/components/AdminProject/statusData";
 
 type PjtProps = {
-  Data: DataPop[];
+  firstSection: Projects["firstSection"];
+  projectlist: Projects["projects"];
+  locationdata: Location;
+  sectordata: sector;
 };
 
-// Filter options
-const sectorOptions = [
-  { id: 1, name: "Sector" },
-  { id: 2, name: "Construction & Scaffolding" },
-  { id: 3, name: "Hospitality" },
-  { id: 4, name: "Commercial" },
-];
-
-const statusOptions = [
-  { id: 1, name: "Status" },
-  { id: 2, name: "Completed" },
-  { id: 3, name: "In Progress" },
-  { id: 4, name: "Upcoming" },
-];
-
-const locationOptions = [
-  { id: 1, name: "Location" },
-  { id: 2, name: "Abu Dhabi" },
-  { id: 3, name: "Dubai" },
-  { id: 4, name: "Sharjah" },
-];
-
-const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
+const FeaturedPjt: React.FC<PjtProps> = ({
+  firstSection,
+  projectlist,
+  locationdata,
+  sectordata,
+}) => {
   const router = useRouter();
+  // Create filter options with proper types
+  const statusOptions: StatusOption[] = [
+    { id: 0, name: "Status", value: -1 },
+    ...(Array.isArray(statusData)
+      ? statusData.map(
+          (sta, index) =>
+            ({
+              id: index + 1,
+              name: sta.name,
+              value: sta.value,
+            }) as StatusOption
+        )
+      : []),
+  ];
 
-  // Filters state
-  const [sectorSelected, setSectorSelected] = useState(sectorOptions[0]);
-  const [statusSelected, setStatusSelected] = useState(statusOptions[0]);
-  const [locationSelected, setLocationSelected] = useState(locationOptions[0]);
+  const locationOptions: BaseOption[] = [
+    { id: 1, name: "Location" },
+    ...(Array.isArray(locationdata)
+      ? locationdata.map((city, index) => ({
+          id: index + 2,
+          name: city.name || String(city),
+        }))
+      : []),
+  ];
+
+  const sectorOptions: BaseOption[] = [
+    { id: 1, name: "Sector" },
+    ...(Array.isArray(sectordata)
+      ? sectordata.map((sector, index) => ({
+          id: index + 2,
+          name: sector.name || String(sector),
+        }))
+      : []),
+  ];
+  // Filters state with proper types
+  const [sectorSelected, setSectorSelected] = useState<BaseOption>(
+    sectorOptions[0]
+  );
+  const [statusSelected, setStatusSelected] = useState<StatusOption>(
+    statusOptions[0]
+  );
+  const [locationSelected, setLocationSelected] = useState<BaseOption>(
+    locationOptions[0]
+  );
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
   // Filter items
-  const filteredItems = Data[0].items.filter((item) => {
+  const filteredItems = projectlist.filter((item) => {
     const sectorMatch =
-      sectorSelected.name === "Sector" || item.sector === sectorSelected.name;
+      sectorSelected.name === "Sector" ||
+      item.firstSection.sector.name === sectorSelected.name;
     const statusMatch =
-      statusSelected.name === "Status" || item.status === statusSelected.name;
+      statusSelected.name === "Status" ||
+      (statusSelected.value !== -1 &&
+        item.firstSection.status === statusSelected.value.toString());
     const locationMatch =
       locationSelected.name === "Location" ||
-      item.city === locationSelected.name;
+      item.firstSection.location.name === locationSelected.name;
 
-    return sectorMatch && statusMatch && locationMatch;
+    const searchMatch =
+      !searchQuery ||
+      item.firstSection.title.toLowerCase().includes(searchQuery.toLowerCase());
+
+    return sectorMatch && statusMatch && locationMatch && searchMatch;
   });
 
   // Pagination calculations
   const totalItems = filteredItems.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const paginatedItems = filteredItems.slice(startIndex, endIndex);
+  // const startIndex = (currentPage - 1) * itemsPerPage;
+  // const endIndex = startIndex + itemsPerPage;
 
   return (
     <section className="py-150 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10 bg-white mt-[-4.5%]">
@@ -93,7 +112,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
             transition={{ duration: 0.6 }}
             viewport={{ amount: 0.1, once: true }}
           >
-            {Data[0].heading}
+            {firstSection.title}
           </motion.h2>
           <motion.p
             variants={moveUp(0.3)}
@@ -102,7 +121,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
             viewport={{ amount: 0.1, once: true }}
             className="text-19 leading-[1.684] mb-0 max-w-[65ch] text-gray-para"
           >
-            {Data[0].desc}
+            {firstSection.description}
           </motion.p>
         </div>
 
@@ -112,17 +131,17 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
             {[
               {
                 state: sectorSelected,
-                setState: setSectorSelected,
+                setState: setSectorSelected as (value: BaseOption) => void,
                 options: sectorOptions,
               },
               {
                 state: statusSelected,
-                setState: setStatusSelected,
+                setState: setStatusSelected as (value: StatusOption) => void,
                 options: statusOptions,
               },
               {
                 state: locationSelected,
-                setState: setLocationSelected,
+                setState: setLocationSelected as (value: BaseOption) => void,
                 options: locationOptions,
               },
             ].map((filter, idx) => (
@@ -134,7 +153,12 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                 key={idx}
                 className="mb-5 md:mb-0"
               >
-                <Listbox value={filter.state} onChange={filter.setState}>
+                <Listbox
+                  value={filter.state}
+                  onChange={filter.setState}
+                  as="div"
+                  className="relative w-full lg:w-auto"
+                >
                   <div className="relative">
                     <Listbox.Button className="cursor-pointer focus:outline-none flex w-full items-center justify-between rounded-full bg-[#F9F9F9] p-5 lg:p-7 text-left border-0">
                       <span>
@@ -158,21 +182,23 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
                       leaveTo="opacity-0"
                     >
                       <Listbox.Options className="focus:outline-none absolute mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200 z-10 bg-white">
-                        {filter.options.map((option) => (
-                          <Listbox.Option
-                            key={option.id}
-                            value={option}
-                            className={({ active }) =>
-                              `cursor-pointer px-4 py-2 ${
-                                active
-                                  ? "bg-primary text-white"
-                                  : "text-gray-700"
-                              }`
-                            }
-                          >
-                            <span>{option.name}</span>
-                          </Listbox.Option>
-                        ))}
+                        {filter.options.map(
+                          (option: BaseOption | StatusOption) => (
+                            <Listbox.Option
+                              key={option.id}
+                              value={option}
+                              className={({ active }) =>
+                                `cursor-pointer px-4 py-2 ${
+                                  active
+                                    ? "bg-primary text-white"
+                                    : "text-gray-700"
+                                }`
+                              }
+                            >
+                              <span>{option.name}</span>
+                            </Listbox.Option>
+                          )
+                        )}
                       </Listbox.Options>
                     </Transition>
                   </div>
@@ -189,77 +215,90 @@ const FeaturedPjt: React.FC<PjtProps> = ({ Data }) => {
             viewport={{ amount: 0.1, once: true }}
             className="w-full md:w-2/7 2xl:w-1/7 flex items-center justify-center"
           >
-            <button
-              className="group bg-primary  text-white border-2 border-transparent 
-               p-5 lg:p-7 rounded-full w-full  flex items-center justify-between 
+            <div
+              className="group bg-primary text-white border-2 border-transparent
+               p-5 lg:p-7 rounded-full w-full flex items-center justify-between
                cursor-pointer transition-all duration-300 ease-in-out
                hover:bg-white hover:text-primary hover:border-primary"
-              onClick={() => setCurrentPage(1)} // reset page on filter change
             >
-              <p className="transition-colors duration-300">Search</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="transition-transform duration-300 group-hover:scale-110 group-hover:stroke-primary"
-              >
-                <path
-                  d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M22 22L20 20"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search"
+                className="bg-transparent placeholder-white focus:outline-none w-full text-white
+                 group-hover:text-primary transition-colors duration-300"
+              />
+              <button className="ml-4 flex-shrink-0 text-white group-hover:text-primary transition-colors duration-300">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="transition-transform duration-300 group-hover:scale-110 group-hover:stroke-primary"
+                >
+                  <path
+                    d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M22 22L20 20"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
           </motion.div>
         </div>
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {paginatedItems.map((item, index) => (
+          {filteredItems.map((item, index) => (
             <motion.div
               variants={moveUp(index * 0.15)}
               initial="hidden"
               whileInView="show"
               viewport={{ amount: 0.1, once: true }}
               className="cursor-pointer h-[300px] lg:h-[408px] xl:h-[502px] overflow-hidden rounded-xl bg-cover bg-center relative group bgrd"
-              style={{ backgroundImage: `url(${item.image})` }}
+              style={{ backgroundImage: `url(${item.thumbnail})` }}
               key={index}
-              onClick={() => router.push(`/projects/1`)}
+              onClick={() => router.push(`/projects/${item.slug}`)}
             >
               <div className="absolute bottom-0 w-full p-7 lg:p-10 z-10">
                 <div className="relative flex items-center justify-between lg:mb-7 lg:pb-7 mb-3 pb-3 border-b-3 border-white transition-all duration-300">
                   <div className="flex items-center gap-2">
                     <Image
-                      src={item.icon}
-                      alt={item.title}
+                      src={"/assets/images/projects/location.svg"}
+                      alt={item.firstSection.title}
                       width={20}
                       height={20}
                     />
                     <p className="transition-all duration-300 text-white">
-                      {item.city}
+                      {item.firstSection.location.name}
                     </p>
                   </div>
                   <div>
                     <p className="transition-all duration-300 text-white">
-                      {item.status}
+                      {
+                        statusData.find(
+                          (status) =>
+                            status.value.toString() === item.firstSection.status
+                        )?.name
+                      }
                     </p>
                   </div>
                   <div className="absolute bottom-[-3px] w-0 h-[3px] group-hover:w-full bg-primary transition-all duration-300"></div>
                 </div>
                 <div>
                   <p className="text-33 leading-[1.2] uppercase text-white">
-                    {item.title}
+                    {item.firstSection.title}
                   </p>
                 </div>
               </div>

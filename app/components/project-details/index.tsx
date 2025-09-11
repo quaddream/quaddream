@@ -1,18 +1,30 @@
 import BannerInner from "@/app/components/common/BannerInner";
-import { projectDetails,FeaturedPjtdata } from "./data";
 import Main from "./sections/Main";
-import Highlights from "./sections/Highlights"; 
+import Highlights from "./sections/Highlights";
 import Media from "./sections/Media";
-import { mediaData } from "./data";
 import ExploreMore from "./sections/ExploreMore";
-const Index = () => {
+import { Projectsdetails } from "./type";
+import { Projects } from "../projects/type";
+
+const Index = async ({
+  data,
+  pjtdata,
+}: {
+  data: Projectsdetails;
+  pjtdata: Projects;
+}) => { 
   return (
     <>
-      <BannerInner bannerData={projectDetails.data} />
-      <Main />
-      <Highlights />
-      <Media  qaData={mediaData}/> 
-      <ExploreMore Data={FeaturedPjtdata.data}/>
+      <BannerInner  
+       bannerData={{
+        image: data.bannerSection.image,
+        imageAlt: data.bannerSection.imageAlt,
+        title: data.firstSection.title,
+      }}/>
+      <Main data={data} />
+      <Highlights data={data.fourthSection} />
+      <Media data={data.images} />
+      <ExploreMore data={pjtdata} />
     </>
   );
 };

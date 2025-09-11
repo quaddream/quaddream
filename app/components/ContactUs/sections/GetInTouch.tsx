@@ -9,23 +9,12 @@ import {
   moveUp,
   paragraphItem,
 } from "../../motionVarients";
-
-type ServicesItem = {
-  title: string;
-  description: string;
-  items: {
-    address: string;
-    location: string;
-    contact: string[];
-    mail: string[];
-    image: string;
-  }[];
-};
+import { ContactUs } from "../type";
 
 type BannerProps = {
-  Data: ServicesItem[];
-  titlewidth?: number;
+  Data: ContactUs["firstSection"];
 };
+
 const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -49,7 +38,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
               viewport={{ amount: 0.1, once: true }}
               className="text-80 leading-[1.12] mb-5 md:mb-8 lg:mb-12"
             >
-              {Data[0].title}
+              {Data.title}
             </motion.h2>
             <motion.p
               variants={paragraphItem}
@@ -59,13 +48,14 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
               viewport={{ amount: 0.1, once: true }}
               className="text-19 text-[#7f7f7f] leading-[1.684210526315789] mb-0 max-w-[107ch]"
             >
-              {Data[0].description}
+              {Data.description}
             </motion.p>
           </motion.div>
         </div>
 
         <div>
           <motion.div
+            key={activeIndex}
             className="flex gap-[14px] sm:gap-8 border-b border-[#BEBEBE]"
             variants={moveRight(0.2)}
             initial="hidden"
@@ -73,7 +63,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
             transition={{ duration: 0.6 }}
             viewport={{ amount: 0.1, once: true }}
           >
-            {Data[0].items.map((item, index) => (
+            {Data.items.map((item, index) => (
               <motion.button
                 key={index}
                 onClick={() => setActiveIndex(index)}
@@ -91,7 +81,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
                 viewport={{ once: true }}
               >
                 <h3 className="relative text-19 md:text-25 leading-[1.6] pb-2 md:pb-5 transition-all duration-300 max-w-[15ch]">
-                  {item.location}
+                  {item.title}
                 </h3>
               </motion.button>
             ))}
@@ -132,7 +122,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
                   </div>
                 </div>
                 <div className="flex items-center gap-4 lg:gap-7  flex-wrap">
-                  {Data[0].items[activeIndex].contact.map((item, index) => (
+                  {Data.items[activeIndex].contact.map((item, index) => (
                     <a href={`tel:${item}`} key={index}>
                       <div className="flex items-center gap-3">
                         <Image
@@ -142,7 +132,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
                           height={24}
                           className="w-[18px] h-[18px] lg:w-[24px] lg:h-[24px]"
                         />
-                        <p className="text-19 text-black">{item}</p>
+                        <p className="text-19 text-black">{item.value}</p>
                       </div>
                     </a>
                   ))}
@@ -150,6 +140,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
               </motion.div>
 
               <motion.div
+                key={activeIndex}
                 variants={moveUp(0.2)}
                 initial="hidden"
                 whileInView="show"
@@ -175,9 +166,9 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
                   </div>
                 </div>
                 <div className="flex items-center gap-4 lg:gap-7 flex-wrap">
-                  {Data[0].items[activeIndex].mail?.map((email, index) => (
+                  {Data.items[activeIndex].mail?.map((email, index) => (
                     <a
-                      href={`mailto:${email}`}
+                      href={`mailto:${email.value}`}
                       key={index}
                       className="flex items-center gap-3"
                     >
@@ -188,7 +179,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
                         height={24}
                         className="w-[18px] h-[18px] lg:w-[24px] lg:h-[24px]"
                       />
-                      <p className="text-19 text-black">{email}</p>
+                      <p className="text-19 text-black">{email.value}</p>
                     </a>
                   ))}
                 </div>
@@ -225,8 +216,8 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
                 className="mb-3 md:mb-7"
               >
                 <Image
-                  src={Data[0].items[activeIndex].image}
-                  alt={Data[0].items[activeIndex].location}
+                  src={Data.items[activeIndex].image}
+                  alt={Data.items[activeIndex].imageAlt}
                   className="rounded-2xl"
                   width={721}
                   height={466}
@@ -240,7 +231,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
                 viewport={{ amount: 0.1, once: true }}
                 className="text-19 text-gray-para"
               >
-                {Data[0].items[activeIndex].address}
+                {Data.items[activeIndex].address}
               </motion.p>
             </div>
           </motion.div>

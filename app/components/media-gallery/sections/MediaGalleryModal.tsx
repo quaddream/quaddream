@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { GalleryItem } from "./MediaGallery";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
+import { MediaGalleryData } from "../type";
 
 interface MediaGalleryModalProps {
-  item: GalleryItem;
+  item: MediaGalleryData["gallery"][number];
   onClose: () => void;
 }
 
@@ -62,7 +62,7 @@ const MediaGalleryModal: React.FC<MediaGalleryModalProps> = ({
           <div className="relative flex items-center justify-center mb-[15px]">
             {/* Centered Title */}
             <div className="absolute left-1/2 transform -translate-x-1/2 text-white text-25 leading-[40px] md:text-center w-full">
-              {item.category}
+              {item.title}
             </div>
 
             {/* Close Button on the right */}

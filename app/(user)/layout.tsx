@@ -6,10 +6,9 @@ import Footer from "../components/layout/footer";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
-  weight: "variable",   // loads all weights
+  weight: "variable", // loads all weights
   variable: "--font-open-sans",
 });
-
 
 // const inter = Inter({
 //   weight: ["100", "300", "400", "500", "600", "700", "800"],
@@ -20,8 +19,9 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   title: "QUAD DREAM GROUP",
   description: "Reliable Access Solutions",
-}; 
+};
 
+export const dynamic = "force-dynamic";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${openSans.variable} antialiased`} >
+      <body className={`${openSans.variable} antialiased`}>
         <Navbar />
         {children}
         <Footer />

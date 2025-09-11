@@ -347,4 +347,102 @@ body {
 .yrslider .is-active{
   opacity: 1 !important;
 }
- 
+
+/* Headings */
+#blogContent h2 {
+  font-size: var(--text-25); /* text-25 */
+  line-height: 1.35; /* leading-[1.35] */
+  padding-top: 20px; /* pt-[20px] */
+  font-weight: 400; /* default heading weight in Tailwind is font-bold */
+  color: #000; /* text-black */
+}
+
+#blogContent h1 {
+  font-size: var(--text-30); /* text-30 */
+  line-height: 1.35; /* leading-[1.35] */
+  color: #000; /* text-black */
+}
+
+#blogContent h3 {
+  font-size: 20px; 
+  line-height: 1.35;
+  color: #000; /* text-black */
+}
+
+#blogContent h4 {
+  font-size: var(--text-19); 
+  line-height: 1.35;
+  color: #000; /* text-black */
+}
+
+#blogContent h5 {
+  font-size: var(--text-16); 
+  line-height: 1.35;
+  color: #000; /* text-black */
+}
+
+#blogContent h6 {
+  font-size: var(--text-16); 
+  line-height: 1.35;
+  color: #000; /* text-black */
+}
+
+@media (min-width: 768px) {
+  #blogContent h2 {
+    font-size: var(--text-30); /* md:text-30 */
+    padding-top: 30px; /* lg:pt-[30px] or md breakpoint equivalent */
+  }
+}
+
+/* Paragraphs */
+#blogContent p {
+  padding-top: 13px; /* pt-[13px] */
+  font-size: var(--text-19); /* text-19 */
+  line-height: 1.7; /* leading-[1.7] */
+  color: #6b7280; /* text-gray-para */
+  font-weight: 400; /* normal weight */
+}
+
+@media (min-width: 1024px) {
+  #blogContent p {
+    padding-top: 20px; /* lg:pt-[20px] */
+  }
+}
+
+/* Lists */
+#blogContent ul {
+  list-style: disc; /* list-disc */
+  padding-top: 20px; /* pt-[20px] */
+  padding-left: 1.25rem; /* pl-5 */
+  font-size: var(--text-19); /* text-19 */
+  color: #696969; /* text-gray-para */
+}
+
+#blogContent ul li + li {
+  margin-top: 0.25rem; /* space-y-1 */
+  font-weight: 400; /* normal */
+}
+
+/* Images */
+#blogContent img {
+  border-radius: 16px; /* rounded-[16px] */
+  object-fit: cover; /* object-cover */
+  max-height: 477px; /* lg:max-h-[477px] */
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* First image special size */
+#blogContent img:first-child {
+  max-height: 673px; /* lg:max-h-[673px] */
+  margin-top: 0px;
+}
+
+@keyframes scrollmar {
+  0% {
+    transform: translateX(0%); /* start off-screen right */
+  }
+  100% {
+    transform: translateX(-100%); /* move completely off-screen left */
+  }
+}

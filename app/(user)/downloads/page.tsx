@@ -1,10 +1,15 @@
-import React from 'react'
-import Index from '@/app/components/downloads/Index'
+import React from "react";
+import Index from "@/app/components/downloads/Index";
 
-export default function Downloads() {
+export default async function Downloads() {
+  const response = await fetch(`${process.env.BASE_URL}/api/admin/downloads`, {
+    next: { revalidate: 60 },
+  });
+  const data = await response.json();
+
   return (
     <>
-    <Index/>
+      <Index data={data.data} />
     </>
-  )
+  );
 }

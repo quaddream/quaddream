@@ -1,26 +1,24 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { BlogType } from "../data";
+import { BlogType } from "../type";
 import Image from "next/image";
 import Pagination from "@/app/components/common/Pagination";
 import Select from "react-select";
-import {
-  containerStagger,
-  moveUp,
-} from "@/app/components/motionVarients";
+import { containerStagger, moveUp } from "@/app/components/motionVarients";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
+interface LatestBlogProps {
+  blogData: BlogType["blogs"];
+}
+
+const LatestBlog = ({ blogData }: LatestBlogProps) => {
   const categories = [
     "All",
-    "Scaffolding",
-    "Equipment",
-    "Sustainability",
-    "Industry News",
-    "Safety",
+    ...Array.from(new Set(blogData.map((blog) => blog.category.name))),
   ];
+
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
   const [blogsPerPage, setBlogsPerPage] = useState(9);
@@ -42,7 +40,7 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
   const filteredBlogs =
     selectedCategory === "All"
       ? blogData
-      : blogData.filter((blog) => blog.category === selectedCategory);
+      : blogData.filter((blog) => blog.category.name === selectedCategory);
 
   const totalPages = Math.ceil(filteredBlogs.length / blogsPerPage);
   const startIndex = (currentPage - 1) * blogsPerPage;
@@ -65,12 +63,13 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
       </motion.h1>
       {/* Category Tabs */}
       <div className="hidden lg:block relative">
-        <motion.div 
-        variants={moveUp()}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="flex justify-end space-x-[50px] text-25 leading-[40px] text-gray-para border-b border-lite-gray">
+        <motion.div
+          variants={moveUp()}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="flex justify-end space-x-[50px] text-25 leading-[40px] text-gray-para border-b border-lite-gray"
+        >
           {categories.map((cat, index) => (
             <motion.button
               variants={moveUp(index * 0.15)}
@@ -143,11 +142,11 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
             key={index}
             className="rounded-md overflow-hidden"
           >
-            <Link href={`/blog/${blog.link}`}>
+            <Link href={`/blog/${blog.slug}`}>
               <div className="relative group">
                 <Image
-                  src={blog.image}
-                  alt={blog.title}
+                  src={blog.thumbnail}
+                  alt={blog.thumbnailAlt}
                   width={487}
                   height={348}
                   className="h-[300px] xl:h-[348px] w-full object-cover rounded-[16px]"
@@ -166,8 +165,14 @@ const LatestBlog = ({ blogData }: { blogData: BlogType[] }) => {
 
               <div>
                 <div className="flex justify-between items-center text-19 leading-[1.7] mt-3 mb-1 xl:my-[15px]">
-                  <span className="text-primary">{blog.category}</span>
-                  <span className="text-gray-para">{blog.date}</span>
+                  <span className="text-primary">{blog.category.name}</span>
+                  <span className="text-gray-para">
+                    {new Date(blog.date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </span>
                 </div>
                 <h3 className="text-22 md:text-25 xl:leading-[1.7]  text-black">
                   {blog.title}

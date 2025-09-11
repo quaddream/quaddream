@@ -1,13 +1,13 @@
 import React from "react";
 import BannerInner from "../common/BannerInner";
-import { bannersection, blogData } from "./data";
 import Blog from "./sections/Blog";
+import { BlogType } from "./type";
 
-const Index = () => {
+const Index = ({data}: {data: BlogType}) => {
   return (
     <>
-      <BannerInner bannerData={bannersection.data} />
-      <Blog blogData={blogData} />
+      <BannerInner bannerData={data.bannerSection} />
+      <Blog blogData={data} />
     </> 
   );
 };

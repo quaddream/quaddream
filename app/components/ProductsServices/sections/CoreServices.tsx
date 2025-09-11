@@ -1,20 +1,14 @@
 "use client";
+
 import Link from "next/link";
 import React from "react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { moveUp } from "../../motionVarients";
+import { ProductsServicesData } from "../type";
 
-type items = {
-  title: string;
-  image: string;
-};
-type datapop = {
-  heading: string;
-  items: items[];
-};
 type MissionProps = {
-  Data: datapop[];
+  Data: ProductsServicesData["thirdSection"];
 };
 
 const CoreServices: React.FC<MissionProps> = ({ Data }) => {
@@ -31,11 +25,11 @@ const CoreServices: React.FC<MissionProps> = ({ Data }) => {
             transition={{ duration: 0.6 }}
             viewport={{ amount: 0.1, once: true }}
           >
-            {Data[0].heading}
+            {Data.title}
           </motion.h2>
         </div>
         <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5 ">
-          {Data[0].items.map((item, index) => (
+          {Data.items.map((item, index) => (
             <motion.div
               variants={moveUp(index * 0.2)}
               initial="hidden"
@@ -49,10 +43,10 @@ const CoreServices: React.FC<MissionProps> = ({ Data }) => {
               }
               onMouseLeave={() => setActiveIndex(null)}
             >
-              <Link href={"/services/1"}>
+              <Link href={`/products-and-services/${item.slug}`}>
                 <div
                   className="h-[300px] xl:h-[408px] relative rounded-2xl bg-no-repeat bg-cover p-7 lg:p-10"
-                  style={{ backgroundImage: `url(${item.image})` }}
+                  style={{ backgroundImage: `url(${item.thumbnail})` }}
                 >
                   <div className="flex flex-col justify-between gap-5 h-full relative z-20">
                     <div
@@ -94,7 +88,7 @@ const CoreServices: React.FC<MissionProps> = ({ Data }) => {
                       className={`text-25 md:text-33 leading-[1.2] group-hover:translate-x-1 font-light text-white transition-all duration-500 transform
           ${activeIndex === index ? "translate-x-1" : ""}`}
                     >
-                      {item.title}
+                      {item.thumbnailTitle}
                     </h3>
                   </div>
                   <div className="absolute transition-all duration-300 top-0 left-0 w-full h-full bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,#000000_100%)] rounded-2xl z-10"></div>

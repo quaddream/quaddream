@@ -1,13 +1,13 @@
 import React from "react";
 import DownloadList from "./sections/DownloadList";
-import {bannersection} from "./data";
 import BannerInner from "../common/BannerInner";
+import {DownloadsData} from "./type";
 
-const Index = () => {
+const Index = ({data}: {data: DownloadsData}) => {
   return (
     <>
-      <BannerInner bannerData={bannersection.data} /> 
-      <DownloadList />
+      <BannerInner bannerData={data} /> 
+      <DownloadList Data={data.categories} />
     </>
   );
 };
