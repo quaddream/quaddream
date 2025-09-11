@@ -63,10 +63,6 @@ const IndividualService = () => {
     const { register, handleSubmit, setValue, control, formState: { errors }, getValues } = useForm<IndividualServiceFormProps>();
 
 
-    const { fields: secondSectionItems, append: secondSectionAppend, remove: secondSectionRemove } = useFieldArray({
-        control,
-        name: "secondSection.items"
-    });
 
 
     // const { fields: productSectionItems, append: productSectionAppend, remove: productSectionRemove } = useFieldArray({

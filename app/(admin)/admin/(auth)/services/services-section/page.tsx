@@ -23,7 +23,7 @@ interface ServiceFormProps {
 }
 
 
-const page = () => {
+const ServicesSection = () => {
 
     const { register, handleSubmit, setValue, control, formState: { errors } } = useForm<ServiceFormProps>();
 
@@ -170,4 +170,4 @@ const page = () => {
     )
 }
 
-export default page
+export default ServicesSection
