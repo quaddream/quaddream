@@ -1,26 +1,29 @@
-import React from 'react'
-// import BannerInner from '../common/BannerInner'  
-import FeaturedPjt from './sections/FeaturedPjt' 
-import {FeaturedPjtdata,ctaSection } from "./data"; 
-import CTA from '../common/cta' 
-const Index = () => {
+import React from "react";
+import BannerInner from "../common/BannerInner";
+import FeaturedPjt from "./sections/FeaturedPjt";
+import CTA from "../common/cta";
+import { Projects, Location, sector } from "./type";
+const Index = async ({
+  data,
+  locationdata,
+  sectordata,
+}: {
+  data: Projects;
+  locationdata: Location;
+  sectordata: sector;
+}) => {
   return (
-   <>
-    {/* <BannerInner bannerData={bannersection.data}/>   */}
-    <FeaturedPjt Data={FeaturedPjtdata.data}/>
-  <CTA
-            maxwidth={12}
-             title={ctaSection.title}
-             description={ctaSection.description}
-             buttonLink={ctaSection.buttonLink}
-             buttonText={ctaSection.buttonText}
-             bgImg={ctaSection.bgImg}
-           />
-          
+    <>
+      <BannerInner bannerData={data.bannerSection} />
+      <FeaturedPjt
+        firstSection={data.firstSection}
+        projectlist={data.projects}
+        locationdata={locationdata}
+        sectordata={sectordata}
+      />
+      <CTA maxwidth={12} {...data.lastSection} />
+    </>
+  );
+};
 
-    
-   </>
-  )
-}
-
-export default Index
+export default Index;

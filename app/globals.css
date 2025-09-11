@@ -407,3 +407,12 @@ body {
   max-height: 673px; /* lg:max-h-[673px] */
   margin-top: 0px;
 }
+
+@keyframes scrollmar {
+  0% {
+    transform: translateX(0%); /* start off-screen right */
+  }
+  100% {
+    transform: translateX(-100%); /* move completely off-screen left */
+  }
+}

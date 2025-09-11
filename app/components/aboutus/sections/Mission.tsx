@@ -3,22 +3,10 @@ import React from 'react'
 import Image from 'next/image'
 import { motion } from "framer-motion";
 import { moveUp } from '../../motionVarients' 
- 
- 
-type items={
-    icon:string,
-    title:string,
-    desc:string
-}
-type datapop={
-    heading:string,
-    items:items[];
-}
-type MissionProps = {
-    Data:datapop[];
-}
- 
-  const Mission: React.FC<MissionProps> = ({   Data }) => { 
+  
+   import { aboutus } from '../type'
+    
+    const Mission = ({data}: {data: aboutus["thirdSection"]}) => {
    
 
     return (
@@ -30,12 +18,12 @@ type MissionProps = {
         className="text-80 leading-[1.125] mb-7 md:mb-10 text-black"
         variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}
       >
-        {Data[0].heading}
+        {data.title}
       </motion.h2>
 
       {/* Grid */}
       <div className="grid md:grid-cols-2 gap-8 md:gap-10 xl:gap-17">
-        {Data[0].items.map((item, index) => (
+        {data.items.map((item, index) => (
           <motion.div
             key={index}
             className="group"
@@ -45,8 +33,8 @@ type MissionProps = {
               <div className="flex items-baseline gap-3 md:gap-5">
                 <div className="w-[45px] h-[45px] lg:w-[67px] lg:h-[67px] rounded-xl bg-primary flex items-center justify-center">
                   <Image
-                    src={item.icon}
-                    alt={item.title}
+                    src={item.logo}
+                    alt={item.logoAlt}
                     width={32}
                     height={32}
                     className="w-[18px] h-[18px] lg:w-[32px] lg:h-[32px]"
@@ -63,7 +51,7 @@ type MissionProps = {
 
             {/* Description */}
             <p className="text-gray-para text-19 leading-[1.684210526315789] mb-0">
-              {item.desc}
+              {item.description}
             </p>
           </motion.div>
         ))}
