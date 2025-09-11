@@ -1,18 +1,3 @@
-// import Index from "@/app/components/service-details";
-// import { useParams } from "next/navigation";
-
-// const Page = () => {
-//   const { params } = useParams();
-
-//   return (
-//     <>
-//       <Index />
-//     </>
-//   );
-// };
-
-// export default Page;
-
 import Index from "@/app/components/service-details";
 
 type Props = {

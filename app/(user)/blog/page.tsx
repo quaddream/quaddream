@@ -1,12 +1,17 @@
 import React from "react";
 import Index from "@/app/components/blog/Index";
 
-const page = () => {
+const Blog = async () => {
+  const response = await fetch(`${process.env.BASE_URL}/api/admin/blog`, {
+    // next: { revalidate: 60 },
+  });
+  const data = await response.json();
+  console.log(data, "hi");
   return (
     <>
-    <Index />
+      <Index data={data.data} />
     </>
   );
 };
 
-export default page;
+export default Blog;

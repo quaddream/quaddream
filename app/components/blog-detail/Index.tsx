@@ -1,16 +1,22 @@
-import React from 'react'
-import BlogDetail from './sections/BlogDetail'
-import BannerInner from '../common/BannerInner'
-import {bannersection} from "./data";
-import { blogDetail } from "./data";
+import React from "react";
+import BannerInner from "../common/BannerInner";
+import { BlogType } from "../blog/type";
+import BlogDetail from "./sections/BlogDetail";
 
-const Index = () => {
+const Index = ({ blogDetail }: { blogDetail: BlogType["blogs"][number] }) => {
+  console.log(blogDetail, "njn");
   return (
     <>
-    <BannerInner bannerData={bannersection.data}/>
-    <BlogDetail blogDetail={blogDetail}/>
+      <BannerInner
+        bannerData={{
+          image: blogDetail.bannerSection.image,
+          imageAlt: blogDetail.bannerSection.imageAlt,
+          title: blogDetail.title,
+        }}
+      />
+      <BlogDetail blogDetail={blogDetail} />
     </>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;

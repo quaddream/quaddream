@@ -29,6 +29,7 @@
     "clsx": "^2.1.1",
     "dropbox": "^10.34.0",
     "gsap": "^3.13.0",
+    "html-react-parser": "^5.2.6",
     "jose": "^6.0.12",
     "lucide-react": "^0.533.0",
     "mongoose": "^8.17.2",
