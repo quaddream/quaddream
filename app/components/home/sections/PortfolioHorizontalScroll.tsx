@@ -19,7 +19,7 @@ const PortfolioHorizontalScroll: React.FC<ProjectSwiperProps> = ({
   projectsdata,
 }) => {
   // Access the projects array from the projectsdata object
-  const projects = projectsdata.projects || [];
+  const projects = (projectsdata.projects || []).slice(0, 5);
 
   const sectionRef = useRef<HTMLElement | null>(null);
   const horizontalRef = useRef<HTMLDivElement | null>(null);
@@ -93,9 +93,9 @@ const PortfolioHorizontalScroll: React.FC<ProjectSwiperProps> = ({
         <div
           ref={horizontalRef}
           className="flex gap-6 will-change-transform"
-          style={{ width: `${5 * 44}vw` }}
+          style={{ width: `${projects.length * 44}vw` }}
         >
-          {projects.slice(0, 5).map((project) => (
+          {projects.map((project) => (
             <Link href={`/projects/${project.slug}`} key={project.slug}>
               <div className="relative rounded-[12px] overflow-hidden group shadow-lg h-[300px] w-[350px] lg:h-[500px] 2xl:h-[542px] lg:w-[630px] 2xl:w-[757.67px] flex-shrink-0">
                 <Image
