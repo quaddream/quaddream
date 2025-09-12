@@ -1,68 +1,108 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { homeData } from "../data";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { moveUp, containerStagger, paragraphItem } from "../../motionVarients";
 import { Home } from "../type";
-const WhyChoose = ({data}: {data: Home["fourthSection"]}) => {
+const WhyChoose = ({ data }: { data: Home["fourthSection"] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const delay = 3000;  
- 
+  const delay = 3000;
+
   const startAutoPlay = () => {
-    if (intervalRef.current) return;  
+    if (intervalRef.current) return;
     intervalRef.current = setInterval(() => {
       setActiveIndex((prevIndex) =>
         prevIndex === homeData.whyChoose.items.length - 1 ? 0 : prevIndex + 1
       );
     }, delay);
   };
- 
+
   const stopAutoPlay = () => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
   };
- 
+
   useEffect(() => {
     startAutoPlay();
-    return () => stopAutoPlay();  
+    return () => stopAutoPlay();
   }, []);
   return (
     <section className="py-150 overflow-hidden bg-black">
       <div className="container">
-        <motion.h2 className="text-80 leading-[1.125] mb-6 md:mb-8 lg:mb-12 text-white" variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>{data.title}</motion.h2>
+        <motion.h2
+          className="text-80 leading-[1.125] mb-6 md:mb-8 lg:mb-12 text-white"
+          variants={moveUp(0.2)}
+          initial="hidden"
+          whileInView="show"
+          transition={{ duration: 0.6 }}
+          viewport={{ amount: 0.1, once: true }}
+        >
+          {data.title}
+        </motion.h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-4 2xl:gap-22">
-
-          <motion.div className="flex flex-col gap-5   2xl:gap-[40px]" variants={containerStagger} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+          <motion.div
+            className="flex flex-col gap-5 2xl:gap-[20px]"
+            variants={containerStagger}
+            initial="hidden"
+            whileInView="show"
+            transition={{ duration: 0.6 }}
+            viewport={{ amount: 0.1, once: true }}
+          >
             {data.items.map((item, index) => {
-               const isActive = activeIndex === index;
-               return(
-              <motion.div className="relative group" key={index}  variants={paragraphItem} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
-                   <button  onClick={() => setActiveIndex(index)} 
-            onMouseEnter={stopAutoPlay} 
-            onMouseLeave={startAutoPlay} 
-            className={`  cursor-pointer overflow-hidden rounded-xl w-full pt-[15px] pb-[14px] px-[16.75px] text-left transition-all duration-500 ${isActive
-                     ? "bg-gradient-to-r from-[#111111] from-0% to-[#6C0004] to-100%"
-                       : "bg-[#111111]"
-                     }`}>
-                  <div className=" flex items-center gap-3">
-                  <div className="relative z-[2] bg-[#1b1b1b] rounded-md min-w-[80px] min-h-[80px] md:min-w-[96px] md:min-h-[96px] flex items-center justify-center">
-                    <Image src={item.logo} alt={item.logoAlt} width={40} height={40} className="  transition-all duration-300" />
-                  </div>
-                  <div>
-                    <h3 className="relative z-[2] text-25 leading-[1.6] text-white font-light group-hover:text-white transition-all duration-300">{item.mainTitle}</h3>
-                    <p className="relative z-[2] text-19 leading-[1.684210526315789] text-[#D5D5D5]">{item.subTitle}</p>
-                  </div>
-                  </div>
-                </button>
-                <div onClick={() => setActiveIndex(index)} 
-            onMouseEnter={stopAutoPlay} 
-            onMouseLeave={startAutoPlay} className="cursor-pointer absolute z-[1] rounded-xl opacity-0 group-hover:opacity-100 top-0 left-0 w-full h-full bg-gradient-to-r from-[#111111] from-0% to-[#6C0004] to-100% transition-all duration-300 "></div>
-              </motion.div>
-            )})}
+              const isActive = activeIndex === index;
+              return (
+                <motion.div
+                  className="relative group"
+                  key={index}
+                  variants={paragraphItem}
+                  initial="hidden"
+                  whileInView="show"
+                  transition={{ duration: 0.6 }}
+                  viewport={{ amount: 0.1, once: true }}
+                >
+                  <button
+                    onClick={() => setActiveIndex(index)}
+                    onMouseEnter={stopAutoPlay}
+                    onMouseLeave={startAutoPlay}
+                    className={`  cursor-pointer overflow-hidden rounded-xl w-full pt-[15px] pb-[14px] px-[16.75px] text-left transition-all duration-500 ${
+                      isActive
+                        ? "bg-gradient-to-r from-[#111111] from-0% to-[#6C0004] to-100%"
+                        : "bg-[#111111]"
+                    }`}
+                  >
+                    <div className=" flex items-center gap-3">
+                      <div className="relative z-[2] bg-[#1b1b1b] rounded-md min-w-[80px] min-h-[80px] md:min-w-[96px] md:min-h-[96px] flex items-center justify-center">
+                        <Image
+                          src={item.logo}
+                          alt={item.logoAlt}
+                          width={40}
+                          height={40}
+                          className="  transition-all duration-300"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="relative z-[2] text-25 leading-[1.6] text-white font-light group-hover:text-white transition-all duration-300">
+                          {item.mainTitle}
+                        </h3>
+                        <p className="relative z-[2] text-19 leading-[1.684210526315789] text-[#D5D5D5]">
+                          {item.subTitle}
+                        </p>
+                      </div>
+                    </div>
+                  </button>
+                  <div
+                    onClick={() => setActiveIndex(index)}
+                    onMouseEnter={stopAutoPlay}
+                    onMouseLeave={startAutoPlay}
+                    className="cursor-pointer absolute z-[1] rounded-xl opacity-0 group-hover:opacity-100 top-0 left-0 w-full h-full bg-gradient-to-r from-[#111111] from-0% to-[#6C0004] to-100% transition-all duration-300 "
+                  ></div>
+                </motion.div>
+              );
+            })}
           </motion.div>
 
           <motion.div
@@ -70,9 +110,10 @@ const WhyChoose = ({data}: {data: Home["fourthSection"]}) => {
             className="rounded-2xl overflow-hidden flex flex-col h-full relative "
             variants={moveUp(0.2)}
             initial="hidden"
-            animate={activeIndex === activeIndex ? "show" : "hidden"}  
-            transition={{ duration: 0.6 }}>
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/64 to-100% transition-all duration-300 z-20"></div>
+            animate={activeIndex === activeIndex ? "show" : "hidden"}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/64 to-100% transition-all duration-300 z-20"></div>
             <Image
               src={data.items[activeIndex].image}
               alt={data.title}
@@ -81,11 +122,10 @@ const WhyChoose = ({data}: {data: Home["fourthSection"]}) => {
               className="h-full w-full object-cover absolute top-0 left-0 transition-opacity duration-700 opacity-100"
             />
           </motion.div>
-
         </div>
       </div>
     </section>
   );
-}
+};
 
 export default WhyChoose;
