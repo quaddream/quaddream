@@ -120,34 +120,6 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* <ul className="flex w-fit lg:gap-3 xl:gap-7 2xl:gap-[43px] 2xl:pr-[37px] 2xl:ml-auto">
-              {menuItems.map((item, index) => {
-                const isActive = activeIndex === index;
-                const textColorClass = isActive
-                  ? "text-[#1E1E1E]"
-                  : "opacity-50";
-                const spanWidthClass = isActive
-                  ? "w-full"
-                  : "w-[0px] group-hover:w-full";
-                return (
-                  <div
-                    className="flex flex-col group cursor-pointer"
-                    key={index}
-                    onClick={() => setActiveIndex(index)}
-                  >
-                    <li
-                      className={`text-nowrap font-16 xl:text-19 ${textColorClass}`}
-                    >
-                      <Link href={item.href}>{item.name}</Link>
-                    </li>
-                    <span
-                      className={`bg-primary h-[1px] transition-all duration-300 ${spanWidthClass}`}
-                    />
-                  </div>
-                );
-              })}
-            </ul> */}
-
             <ul className="flex w-fit lg:gap-3 xl:gap-7 2xl:gap-[43px] 2xl:pr-[37px] 2xl:ml-auto z-10">
               {menuItems.map((item, index) => {
                 const isActive = activeParent === index;
@@ -169,8 +141,15 @@ const Navbar = () => {
                       setActiveChild(null);
                     }}
                   >
-                    {/* main link */}
-                    {item.children ? (
+                    {/* 👇 Parent is a Link if Media Center, otherwise span/link */}
+                    {item.name === "Media Center" ? (
+                      <Link
+                        href="/media-gallery"
+                        className={`text-nowrap font-16 xl:text-19 ${textColorClass}`}
+                      >
+                        {item.name}
+                      </Link>
+                    ) : item.children ? (
                       <span
                         className={`text-nowrap font-16 xl:text-19 ${textColorClass}`}
                       >
@@ -190,18 +169,18 @@ const Navbar = () => {
                       className={`bg-primary h-[1px] transition-all duration-300 ${spanWidthClass}`}
                     />
 
-                    {/* dropdown */}
+                    {/* 👇 Dropdown always shows if children exist */}
                     {item.children && (
                       <ul
                         className={`
-      absolute left-1/2 top-full -translate-x-1/2 flex-col rounded-[8px] bg-white w-[190px]
-      transition-all duration-300 ease-in-out pb-5
-      ${
-        openDropdown === index
-          ? "opacity-100 translate-y-0 pointer-events-auto pt-9"
-          : "opacity-0 -translate-y-0 pointer-events-none"
-      }
-    `}
+            absolute left-1/2 top-full -translate-x-1/2 flex-col rounded-[8px] bg-white w-[190px]
+            transition-all duration-300 ease-in-out pb-5
+            ${
+              openDropdown === index
+                ? "opacity-100 translate-y-0 pointer-events-auto pt-9"
+                : "opacity-0 -translate-y-0 pointer-events-none"
+            }
+          `}
                       >
                         {item.children.map((child, idx) => {
                           const childKey = `${index}-${idx}`;
