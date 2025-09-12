@@ -446,3 +446,14 @@ body {
     transform: translateX(-100%); /* move completely off-screen left */
   }
 }
+
+
+@media (width: 1400px) {
+  .btn-1400 {
+    padding: 25px 52px !important;
+  }
+
+  .navbar-top{
+    top: 42px !important;
+  }
+}

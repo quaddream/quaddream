@@ -5,12 +5,6 @@ import { menuItems } from "./menuItems";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaYoutube,
-} from "react-icons/fa";
 import { SlArrowRight } from "react-icons/sl";
 import { usePathname } from "next/navigation";
 import { socialLinks } from "./footerItems";
@@ -79,7 +73,9 @@ const Navbar = () => {
     return (
       <motion.header
         className={`w-full z-[100] hidden lg:block  absolute ${
-          scrollY > 550 ? "top-0 bg-white border-b-gray-100 border-b" : "top-15"
+          scrollY > 550
+            ? "top-0 bg-white border-b-gray-100 border-b"
+            : "top-15 navbar-top"
         }`}
       >
         <div className={`w-full container`}>
@@ -225,7 +221,7 @@ const Navbar = () => {
       ${
         scrollY > 550
           ? "py-[10px] px-4 text-19"
-          : "py-[30px] px-[50px] xl:py-[30px] xl:px-[58.5px] text-19"
+          : "py-[30px] px-[50px] xl:py-[30px] xl:px-[58.5px] text-19 btn-1400"
       }
       hover:bg-white hover:text-primary hover:border-primary hover:translate-x-1 active:scale-95`}
               >
