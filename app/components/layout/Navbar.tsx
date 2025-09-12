@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 import { SlArrowRight } from "react-icons/sl";
 import { usePathname } from "next/navigation";
+import { socialLinks } from "./footerItems";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -439,10 +440,20 @@ const Navbar = () => {
             <div className="mt-auto">
               <hr />
               <div className="flex space-x-4 mt-4">
-                <FaFacebookF className="cursor-pointer w-5 h-5 hover:text-primary transition-all duration-500" />
-                <FaLinkedinIn className="cursor-pointer w-5 h-5 hover:text-primary transition-all duration-500" />
-                <FaInstagram className="cursor-pointer w-5 h-5 hover:text-primary transition-all duration-500" />
-                <FaYoutube className="cursor-pointer w-5 h-5 hover:text-primary transition-all duration-500" />
+                {socialLinks.map((Item, index) => (
+                  <div key={index}>
+                    <Image
+                      src={Item.socialmediaIcon}
+                      alt={Item.socialmediaalt}
+                      width={20}
+                      height={20}
+                      className="cursor-pointer w-5 h-5 hover:text-primary transition-all duration-500 filter brightness-0"
+                      onClick={() =>
+                        window.open(Item.socialmediaLink, "_blank")
+                      }
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </div>

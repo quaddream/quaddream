@@ -16,7 +16,6 @@ type BannerProps = {
 };
 
 const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
-  console.log(Data, "data phn");
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (

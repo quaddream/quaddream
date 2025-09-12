@@ -67,7 +67,7 @@ const Footer = () => {
               {quickLinks.map((item, index) => (
                 <Link
                   key={index}
-                  href={item.qLLink} 
+                  href={item.qLLink}
                   className="text-19 md:text-30 font-light hover:text-[#EC1C24] cursor-pointer leading-[1.333333333333333] transition-all duration-300"
                 >
                   {item.qLTitle}
@@ -131,26 +131,28 @@ const Footer = () => {
           </p>
         </div>
       </div>
-      
+
       <div className="container relative">
-      <div onClick={scrollToTop}
-       className={`fixed right-0 w-full z-10 cursor-pointer transition-all duration-300  ${
-        isBottom ? "bottom-4 md:bottom-22" : "bottom-4 lg:bottom-5 "
-      }`}>
-        <div className="container flex justify-end pointer-events-none">
-          <div className="rounded-full pointer-events-auto">
-            <div className="w-[42px] h-[42px] lg:w-[58px] lg:h-[58px]">
-              <Image
-                src="/assets/images/whatsapp.svg"
-                alt="WhatsApp"
-                width={58}
-                height={58}
-                className="w-full h-full hover:scale-110 transition-all duration-300"
-              />
+        <div
+          onClick={scrollToTop}
+          className={`fixed right-0 w-full z-10 cursor-pointer transition-all duration-300  ${
+            isBottom ? "bottom-4 md:bottom-22" : "bottom-4 lg:bottom-5 "
+          }`}
+        >
+          <div className="container flex justify-end pointer-events-none">
+            <div className="rounded-full pointer-events-auto">
+              <div className="w-[42px] h-[42px] lg:w-[58px] lg:h-[58px]">
+                <Image
+                  src="/assets/images/whatsapp.svg"
+                  alt="WhatsApp"
+                  width={58}
+                  height={58}
+                  className="w-full h-full hover:scale-110 transition-all duration-300"
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
     </footer>
   );
