@@ -189,6 +189,8 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
                 <a
                   href={Data.items[activeIndex].map}
                   className="flex items-center gap-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <motion.div
                     variants={moveUp(0.3)}
