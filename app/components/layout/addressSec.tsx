@@ -1,8 +1,8 @@
-'use client';
-import { useState } from 'react';
-import Image from 'next/image';
+"use client";
+import { useState } from "react";
+import Image from "next/image";
 
-type AddressKey = 'Head Office' | 'Yard' | 'UAE Branch' | 'Canada';
+type AddressKey = "Head Office" | "Yard" | "SHJ Branch" | "Canada";
 
 type AddressData = {
   lines: string[];
@@ -11,85 +11,100 @@ type AddressData = {
 };
 
 const addresses: Record<AddressKey, AddressData> = {
-  'Head Office': {
+  "Head Office": {
     lines: [
-      'Office No. 110, Al Mansour Building, Damascus Street 3,',
-      'Al Qusais Industrial Area 2, Dubai, UAE',
-      
+      "Office No. 110, Al Mansour Building, Damascus Street 3 | Al Qusais Industrial Area 2, Dubai, UAE",
     ],
-    phones: ['+971 4 263 7784', '+971 56 544 5987', '+971 50 545 2385'],
-    emails: ['enquiries@quaddream.com', 'info@quaddream.com'],
+    phones: ["+971 4 263 7784", "+971 56 544 5987", "+971 50 545 2385"],
+    emails: ["info@quaddream.com", "enquiries@quaddream.com"],
   },
   Yard: {
-    lines: [
-      'Al Quoz Industrial Area – 2, Near Bartawi Dubai, UAE',
-    ],
-    phones: ['+971 56 544 5987', '+971 50 545 2385'],
-    emails: ['sales@quaddream.com'],
+    lines: ["Al Quoz Industrial Area – 2, Near Bartawi Dubai, UAE"],
+    phones: ["+971 50 451 8609", "+971 54 514 6495"],
+    emails: ["info@quaddream.com", "enquiries@quaddream.com"],
   },
-  'UAE Branch': {
-   lines: [
-      'Quaddream Branch office, Abu dhabi.', 
-    ],
-    phones: ['+971 503 525 314'],
-    emails: ['sales@quaddream.com'],
+  "SHJ Branch": {
+    lines: ["Quaddream Branch office, Abu dhabi."],
+    phones: ["+971 50 451 8609", "+971 54 514 6495"],
+    emails: ["info@quaddream.com", "enquiries@quaddream.com"],
   },
   Canada: {
-   lines: [
-      'Bradford , Ontario', 
-    ],
-    phones: ['+416 970 1617'],
-    emails: ['sales@quaddream.com'],
+    lines: ["Bradford, Ontario, Canada"],
+    phones: ["+971 50 451 8609", "+971 54 514 6495"],
+    emails: ["info@quaddream.com", "enquiries@quaddream.com"],
   },
 };
 
 const AddressSection = () => {
-  const [selected, setSelected] = useState<AddressKey>('Head Office');
+  const [selected, setSelected] = useState<AddressKey>("Head Office");
   const data = addresses[selected];
 
   return (
     <div className="text-white">
-
       <div className="flex flex-wrap gap-2 gap-x-3 md:gap-x-4 2xl:gap-[46px] mb-4">
-  {Object.keys(addresses).map((key) => (
-    <div key={key} className="flex items-center gap-2 md:gap-4">
-      {/* Round Indicator */}
-      <div className={`w-[6px] h-[6px] md:w-[9px] md:h-[9px] rounded-full ${ selected === key ? 'bg-red-500' : 'bg-[#828D91]' }`} ></div>
+        {Object.keys(addresses).map((key) => (
+          <div key={key} className="flex items-center gap-2 md:gap-4">
+            {/* Round Indicator */}
+            <div
+              className={`w-[6px] h-[6px] md:w-[9px] md:h-[9px] rounded-full ${selected === key ? "bg-red-500" : "bg-[#828D91]"}`}
+            ></div>
 
-      {/* Button */}
-      <button
-        onClick={() => setSelected(key as AddressKey)}
-        className={`transition duration-200 text-[16px] md:text-30 font-normal cursor-pointer leading-[1.3] ${
-          selected === key ? 'text-white' : 'text-[#828D91] hover:text-white '
-        }`}
-      >
-        {key}
-      </button>
-    </div>
-  ))}
-</div>
-
+            {/* Button */}
+            <button
+              onClick={() => setSelected(key as AddressKey)}
+              className={`transition duration-200 text-[16px] md:text-30 font-normal cursor-pointer leading-[1.3] ${
+                selected === key
+                  ? "text-white"
+                  : "text-[#828D91] hover:text-white "
+              }`}
+            >
+              {key}
+            </button>
+          </div>
+        ))}
+      </div>
 
       <div className="md:mt-[26px]">
         {data.lines.map((line, i) => (
-          <p className='text-[14px] md:text-[19px] text-[#B9B9B9] leading-[1.6] md:leading-[1.9]' key={i}>{line}</p>
+          <p
+            className="text-[14px] md:text-[19px] text-[#B9B9B9] leading-[1.6] md:leading-[1.9]"
+            key={i}
+          >
+            {line}
+          </p>
         ))}
         <div className="flex md:items-center gap-2 pt-3 md:pt-2 pb-2 md:pb-0 text-[15px] md:text-19 text-[#B9B9B9] leading-[1.9]">
           <span className="mt-1 text-red-500">
             {/* Phone icon SVG */}
-            <Image src="/assets/phone.svg" alt="Phone Icon" width={50} height={50} className='w-[24px] h-[24px]' />
+            <Image
+              src="/assets/phone.svg"
+              alt="Phone Icon"
+              width={50}
+              height={50}
+              className="w-[24px] h-[24px]"
+            />
           </span>
-          
-     
-          {data.phones.join(' | ')}
+
+          {data.phones.join(" | ")}
         </div>
         {data.emails.map((email, i) => (
-          <div key={i} className="flex items-center gap-2 text-3 md:text-[19px] text-[#B9B9B9] leading-[1.9] mb-1">
+          <div
+            key={i}
+            className="flex items-center gap-2 text-3 md:text-[19px] text-[#B9B9B9] leading-[1.9] mb-1"
+          >
             <span className="text-red-500">
               {/* Mail icon SVG */}
-               <Image src="/assets/mail.svg" alt="Mail Icon" width={50}  height={50}  className='w-[24px] h-[24px]' />
+              <Image
+                src="/assets/mail.svg"
+                alt="Mail Icon"
+                width={50}
+                height={50}
+                className="w-[24px] h-[24px]"
+              />
             </span>
-            <a href={`mailto:${email}`} className="hover:underline">{email}</a>
+            <a href={`mailto:${email}`} className="hover:underline">
+              {email}
+            </a>
           </div>
         ))}
       </div>
