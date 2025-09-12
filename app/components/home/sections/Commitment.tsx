@@ -5,19 +5,18 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import {
   containerStagger,
-  moveUp,
   paragraphItem,
   moveRight,
 } from "../../motionVarients";
-import Counter from "./Counter";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Home } from "../type";
+import ItemsSwiper from "./CounterSwiper";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Commitment = ({ data }: { data: Home["firstSection"] }) => {
-  const sectionRef = useRef<HTMLElement | null>(null); // ✅ new ref for whole section
+  const sectionRef = useRef<HTMLElement | null>(null);
   const containerRef = useRef<HTMLUListElement | null>(null);
   const contentRef = useRef<HTMLLIElement | null>(null);
   const textRef = useRef<HTMLHeadingElement | null>(null);
@@ -179,7 +178,7 @@ const Commitment = ({ data }: { data: Home["firstSection"] }) => {
           transition={{ duration: 0.6 }}
           viewport={{ amount: 0.1, once: true }}
         >
-          <motion.div
+          {/* <motion.div
             className=" grid grid-cols-2 lg:grid-cols-4 justify-between gap-y-8 gap-x-20-20 2xl:gap-20"
             variants={moveUp(0.2)}
             initial="hidden"
@@ -188,7 +187,10 @@ const Commitment = ({ data }: { data: Home["firstSection"] }) => {
             viewport={{ amount: 0.1, once: true }}
           >
             {data.items.map((item, index) => (
-              <motion.div className="flex flex-col gap-2 xl:min-w-[300px]" key={index}>
+              <motion.div
+                className="flex flex-col gap-2 xl:min-w-[300px]"
+                key={index}
+              >
                 <Image
                   src={item.logo}
                   alt={item.logoAlt}
@@ -203,7 +205,8 @@ const Commitment = ({ data }: { data: Home["firstSection"] }) => {
                 <p className="text-19">{item.value}</p>
               </motion.div>
             ))}
-          </motion.div>
+          </motion.div> */}
+          <ItemsSwiper items={data.items} />
         </motion.div>
       </div>
       <div className="2xl:h-[230px] w-full bg-[linear-gradient(to_top,_white_50%,_transparent_90%)] absolute bottom-0 z-30"></div>

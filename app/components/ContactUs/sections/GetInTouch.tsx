@@ -16,7 +16,6 @@ type BannerProps = {
 };
 
 const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
-  console.log(Data, "data phn");
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
@@ -199,7 +198,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
                     whileInView="show"
                     transition={{ duration: 0.6 }}
                     viewport={{ amount: 0.1, once: true }}
-                    className="flex mt-7 md:mt-7 gap-2 cursor-pointer group w-fit ml-auto lg:ml-0"
+                    className="flex mt-7 md:mt-7 gap-2 cursor-pointer group w-fit lg:ml-0"
                   >
                     <p className="text-19 lg:text-30 mb-0 text-primary border-b border-primary transition-all duration-300 group-hover:pb-1 group-hover:border-b-2">
                       GET DIRECTION
