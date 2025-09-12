@@ -21,6 +21,7 @@ export const menuItems = [
   },
   {
     name: "Media Center",
+    href:"/media-gallery",
     children: [
       { name: "Media Gallery", href: "/media-gallery" },
       { name: "Blogs", href: "/blog" },

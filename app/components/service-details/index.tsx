@@ -23,7 +23,9 @@ const Index = ({
       />
       <Main Data={service.firstSection} />
       <WhatYouGet Data={whatyougetData} />
-      <ProductsList Data={service.productSection} />
+      {service.productSection.items.length > 0 && (
+        <ProductsList Data={service.productSection} />
+      )}
       <SaftySection Data={service.fourthSection} />
     </>
   );

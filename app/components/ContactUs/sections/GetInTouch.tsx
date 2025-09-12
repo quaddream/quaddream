@@ -97,6 +97,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
           >
             <div>
               <motion.div
+                key={Data.items[activeIndex].title}
                 variants={moveUp(0.1)}
                 initial="hidden"
                 whileInView="show"
@@ -189,6 +190,8 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
                 <a
                   href={Data.items[activeIndex].map}
                   className="flex items-center gap-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <motion.div
                     variants={moveUp(0.3)}
@@ -215,6 +218,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
 
             <div>
               <motion.div
+                key={activeIndex}
                 variants={moveUp(0.25)}
                 initial="hidden"
                 whileInView="show"
@@ -231,6 +235,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
                 />
               </motion.div>
               <motion.p
+                key={Data.items[activeIndex].address}
                 variants={moveUp(0.3)}
                 initial="hidden"
                 whileInView="show"
