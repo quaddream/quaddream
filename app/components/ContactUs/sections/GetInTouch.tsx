@@ -16,6 +16,7 @@ type BannerProps = {
 };
 
 const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
+  console.log(Data, "data phn");
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
@@ -55,7 +56,6 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
 
         <div>
           <motion.div
-            key={activeIndex}
             className="flex gap-[14px] sm:gap-8 border-b border-[#BEBEBE]"
             variants={moveRight(0.2)}
             initial="hidden"
@@ -185,25 +185,32 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
                 </div>
               </motion.div>
 
-              <motion.div
-                variants={moveUp(0.3)}
-                initial="hidden"
-                whileInView="show"
-                transition={{ duration: 0.6 }}
-                viewport={{ amount: 0.1, once: true }}
-                className="flex mt-7 md:mt-7 gap-2 cursor-pointer group w-fit ml-auto lg:ml-0"
-              >
-                <p className="text-19 lg:text-30 mb-0 text-primary border-b border-primary transition-all duration-300 group-hover:pb-1 group-hover:border-b-2">
-                  GET DIRECTION
-                </p>
-                <Image
-                  src="/assets/images/arrred.svg"
-                  alt="direction"
-                  width={19}
-                  height={19}
-                  className="border-b border-primary transition-transform duration-300 group-hover:translate-x-1  "
-                />
-              </motion.div>
+              {Data.items[activeIndex].map.trim() && (
+                <a
+                  href={Data.items[activeIndex].map}
+                  className="flex items-center gap-2"
+                >
+                  <motion.div
+                    variants={moveUp(0.3)}
+                    initial="hidden"
+                    whileInView="show"
+                    transition={{ duration: 0.6 }}
+                    viewport={{ amount: 0.1, once: true }}
+                    className="flex mt-7 md:mt-7 gap-2 cursor-pointer group w-fit ml-auto lg:ml-0"
+                  >
+                    <p className="text-19 lg:text-30 mb-0 text-primary border-b border-primary transition-all duration-300 group-hover:pb-1 group-hover:border-b-2">
+                      GET DIRECTION
+                    </p>
+                    <Image
+                      src="/assets/images/arrred.svg"
+                      alt="direction"
+                      width={19}
+                      height={19}
+                      className="border-b border-primary transition-transform duration-300 group-hover:translate-x-1"
+                    />
+                  </motion.div>
+                </a>
+              )}
             </div>
 
             <div>
@@ -231,7 +238,8 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
                 viewport={{ amount: 0.1, once: true }}
                 className="text-19 text-gray-para"
               >
-                {Data.items[activeIndex].address}
+                {Data.items[activeIndex].address.trim() &&
+                  Data.items[activeIndex].address}
               </motion.p>
             </div>
           </motion.div>
