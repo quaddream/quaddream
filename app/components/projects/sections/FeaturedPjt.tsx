@@ -178,7 +178,7 @@ const FeaturedPjt: React.FC<PjtProps> = ({
                             onClick={() =>
                               filter.setState(filter.options[0] as StatusOption)
                             }
-                            className="flex items-center justify-center cursor-pointer w-6 h-6 text-primary transition-colors duration-300 text-25"
+                            className="flex items-center justify-center cursor-pointer w-6 h-6 text-primary transition-colors duration-300 text-19"
                           >
                             <IoCloseSharp />
                           </button>
@@ -188,9 +188,9 @@ const FeaturedPjt: React.FC<PjtProps> = ({
                           <Image
                             src="/assets/images/arrow-down.svg"
                             alt="arrow-down"
-                            width={20}
-                            height={8}
-                            className="md:w-[18px] md:h-[12px]"
+                            width={16}
+                            height={12}
+                            className="md:w-[16px] md:h-[12px]"
                           />
                         </Listbox.Button>
                       </div>
