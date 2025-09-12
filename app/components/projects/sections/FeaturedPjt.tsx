@@ -8,6 +8,7 @@ import { motion } from "motion/react";
 import { moveUp } from "../../motionVarients";
 import { Projects, Location, sector, StatusOption, BaseOption } from "../type";
 import { statusData } from "@/app/components/AdminProject/statusData";
+import { IoCloseSharp } from "react-icons/io5";
 
 type PjtProps = {
   firstSection: Projects["firstSection"];
@@ -128,137 +129,6 @@ const FeaturedPjt: React.FC<PjtProps> = ({
           </motion.p>
         </div>
 
-        {/* Filters */}
-        {/* <div className="flex md:flex-row flex-col items-center justify-between gap-5 lg:gap-8 my-7 mb-7 pb-7 md:mb-12 md:pb-12 border-b border-lite-gray">
-          <div className="md:grid md:grid-cols-3 gap-5 lg:gap-8 w-full md:w-5/7 2xl:w-6/7 justify-between">
-            {[
-              {
-                state: sectorSelected,
-                setState: setSectorSelected as (value: BaseOption) => void,
-                options: sectorOptions,
-              },
-              {
-                state: statusSelected,
-                setState: setStatusSelected as (value: StatusOption) => void,
-                options: statusOptions,
-              },
-              {
-                state: locationSelected,
-                setState: setLocationSelected as (value: BaseOption) => void,
-                options: locationOptions,
-              },
-            ].map((filter, idx) => (
-              <motion.div
-                variants={moveUp(idx * 0.2)}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ amount: 0.1, once: true }}
-                key={idx}
-                className="mb-5 md:mb-0"
-              >
-                <Listbox
-                  value={filter.state}
-                  onChange={filter.setState}
-                  as="div"
-                  className="relative w-full lg:w-auto"
-                >
-                  <div className="relative">
-                    <Listbox.Button className="cursor-pointer focus:outline-none flex w-full items-center justify-between rounded-full bg-[#F9F9F9] p-5 lg:p-7 text-left border-0">
-                      <span>
-                        {filter.state.name.length > 12
-                          ? filter.state.name.slice(0, 12) + "..."
-                          : filter.state.name}
-                      </span>
-                      <Image
-                        src="/assets/images/arrow-down.svg"
-                        alt="arrow-down"
-                        width={20}
-                        height={8}
-                        className="md:w-[18px] md:h-[12px]"
-                      />
-                    </Listbox.Button>
-
-                    <Transition
-                      as={Fragment}
-                      leave="transition ease-in duration-150"
-                      leaveFrom="opacity-100"
-                      leaveTo="opacity-0"
-                    >
-                      <Listbox.Options className="focus:outline-none absolute mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200 z-10 bg-white">
-                        {filter.options.map(
-                          (option: BaseOption | StatusOption) => (
-                            <Listbox.Option
-                              key={option.id}
-                              value={option}
-                              className={({ active }) =>
-                                `cursor-pointer px-4 py-2 ${
-                                  active
-                                    ? "bg-primary text-white"
-                                    : "text-gray-700"
-                                }`
-                              }
-                            >
-                              <span>{option.name}</span>
-                            </Listbox.Option>
-                          )
-                        )}
-                      </Listbox.Options>
-                    </Transition>
-                  </div>
-                </Listbox>
-              </motion.div>
-            ))}
-          </div>
-          <motion.div
-            variants={moveUp(0.5)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ amount: 0.1, once: true }}
-            className="w-full md:w-2/7 2xl:w-1/7 flex items-center justify-center"
-          >
-            <div
-              className="group bg-primary text-white border-2 border-transparent
-               p-5 lg:p-7 rounded-full w-full flex items-center justify-between
-               cursor-pointer transition-all duration-300 ease-in-out
-               hover:bg-white hover:text-primary hover:border-primary"
-            >
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search"
-                className="bg-transparent placeholder-white group-hover:placeholder-primary focus:outline-none w-full text-white
-                 group-hover:text-primary transition-colors duration-300"
-              />
-              <button className="ml-4 flex-shrink-0 text-white group-hover:text-primary transition-colors duration-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="transition-transform duration-300 group-hover:scale-110 group-hover:stroke-primary"
-                >
-                  <path
-                    d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M22 22L20 20"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-          </motion.div>
-        </div> */}
-
         <div className="flex md:flex-row flex-col items-center justify-between gap-5 lg:gap-8 my-7 mb-7 pb-7 md:mb-12 md:pb-12 border-b border-lite-gray">
           {/* Filters */}
           <div className="md:flex md:flex-1 md:gap-5 lg:gap-8 w-full md:w-auto transition-all duration-300 flex-col md:flex-row">
@@ -294,20 +164,37 @@ const FeaturedPjt: React.FC<PjtProps> = ({
                   className="relative w-full"
                 >
                   <div className="relative">
-                    <Listbox.Button className="cursor-pointer focus:outline-none flex w-full items-center justify-between rounded-full bg-[#F9F9F9] p-5 lg:p-7 text-left border-0">
-                      <span>
+                    <div className="flex w-full items-center justify-between rounded-full bg-[#F9F9F9] p-5 lg:p-7">
+                      <Listbox.Button className="cursor-pointer focus:outline-none flex-1 text-left border-0">
                         {filter.state.name.length > 12
                           ? filter.state.name.slice(0, 12) + "..."
                           : filter.state.name}
-                      </span>
-                      <Image
-                        src="/assets/images/arrow-down.svg"
-                        alt="arrow-down"
-                        width={20}
-                        height={8}
-                        className="md:w-[18px] md:h-[12px]"
-                      />
-                    </Listbox.Button>
+                      </Listbox.Button>
+
+                      <div className="flex items-center gap-3">
+                        {filter.state.name !== filter.options[0].name && (
+                          <button
+                            type="button"
+                            onClick={() =>
+                              filter.setState(filter.options[0] as StatusOption)
+                            }
+                            className="flex items-center justify-center cursor-pointer w-6 h-6 text-primary transition-colors duration-300 text-25"
+                          >
+                            <IoCloseSharp />
+                          </button>
+                        )}
+
+                        <Listbox.Button className="cursor-pointer focus:outline-none border-0">
+                          <Image
+                            src="/assets/images/arrow-down.svg"
+                            alt="arrow-down"
+                            width={20}
+                            height={8}
+                            className="md:w-[18px] md:h-[12px]"
+                          />
+                        </Listbox.Button>
+                      </div>
+                    </div>
 
                     <Transition
                       as={Fragment}
