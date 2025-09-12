@@ -47,18 +47,23 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
     { title: "Home", slug: "/" },
     ...segments.map((seg, i) => {
       const slug = "/" + segments.slice(0, i + 1).join("/");
-
-      // Format slug to readable title
       const segmentTitle = formatTitle(seg);
 
-      // If it's the last segment, use API title and not clickable
       if (i === segments.length - 1) {
         return { title: title || segmentTitle, slug: "" };
       }
-
-      return { title: segmentTitle, slug, index: i }; // add index for CSS width control
+      return { title: segmentTitle, slug };
     }),
   ];
+
+  // Decide max-width class based on index
+  const getMaxWidthClass = (index: number, navLength: number) => {
+    if (index === 0) return "max-w-none"; // Home always full
+    if (index === 1) {
+      return navLength > 2 ? "max-w-[10ch] md:max-w-none" : "max-w-none"; // 2nd cut only if 3rd exists
+    }
+    return "max-w-[18ch] md:max-w-none"; // 3rd+ always cut
+  };
 
   return (
     <section
@@ -110,13 +115,7 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
                     <div className="flex items-center gap-2 md:gap-3 overflow-hidden">
                       <Link
                         href={nav.slug}
-                        className={`text-16 md:text-19 overflow-hidden text-ellipsis whitespace-nowrap block ${
-                          index === 1
-                            ? "max-w-[10ch] md:max-w-none"
-                            : index === 2
-                              ? "max-w-[30ch] md:max-w-none"
-                              : "max-w-[200px] md:max-w-none"
-                        }`}
+                        className={`text-16 md:text-19 overflow-hidden text-ellipsis whitespace-nowrap block ${getMaxWidthClass(index, navigation.length)}`}
                       >
                         {nav.title}
                       </Link>
@@ -124,13 +123,7 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
                     </div>
                   ) : (
                     <span
-                      className={`text-16 md:text-19 overflow-hidden text-ellipsis whitespace-nowrap block ${
-                        index === 1
-                          ? "max-w-[10ch] md:max-w-none"
-                          : index === 2
-                            ? "max-w-[18ch] md:max-w-none"
-                            : "max-w-[200px] md:max-w-none"
-                      }`}
+                      className={`text-16 md:text-19 overflow-hidden text-ellipsis whitespace-nowrap block ${getMaxWidthClass(index, navigation.length)}`}
                     >
                       {nav.title}
                     </span>
