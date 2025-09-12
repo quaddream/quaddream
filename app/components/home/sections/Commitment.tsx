@@ -5,11 +5,9 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import {
   containerStagger,
-  moveUp,
   paragraphItem,
   moveRight,
 } from "../../motionVarients";
-import Counter from "./Counter";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Home } from "../type";
@@ -18,7 +16,7 @@ import ItemsSwiper from "./CounterSwiper";
 gsap.registerPlugin(ScrollTrigger);
 
 const Commitment = ({ data }: { data: Home["firstSection"] }) => {
-  const sectionRef = useRef<HTMLElement | null>(null); // ✅ new ref for whole section
+  const sectionRef = useRef<HTMLElement | null>(null);
   const containerRef = useRef<HTMLUListElement | null>(null);
   const contentRef = useRef<HTMLLIElement | null>(null);
   const textRef = useRef<HTMLHeadingElement | null>(null);
