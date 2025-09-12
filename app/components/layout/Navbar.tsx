@@ -21,15 +21,6 @@ const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
   const pathname = usePathname();
 
-  //  useEffect(() => {
-  //   const handleScroll = () => {
-  //     setScrolled(window.scrollY > 50) // Change to any value that makes sense
-  //   }
-
-  //   window.addEventListener("scroll", handleScroll)
-  //   return () => window.removeEventListener("scroll", handleScroll)
-  // }, [])
-
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -227,17 +218,18 @@ const Navbar = () => {
             </ul>
 
             <div className="ml-6 z-10">
-              <button
-                className={`bg-primary text-white rounded-full text-nowrap cursor-pointer transition-all duration-300 border border-primary
-              ${
-                scrollY > 550
-                  ? "py-[10px] px-4 text-19"
-                  : "py-[30px] px-[50px] xl:py-[30px] xl:px-[58.5px] text-19"
-              }
-              hover:bg-white hover:text-primary hover:border-primary hover:translate-x-1 active:scale-95`}
+              <Link
+                href="/contact-us"
+                className={`inline-block bg-primary text-white rounded-full text-nowrap cursor-pointer transition-all duration-300 border border-primary
+      ${
+        scrollY > 550
+          ? "py-[10px] px-4 text-19"
+          : "py-[30px] px-[50px] xl:py-[30px] xl:px-[58.5px] text-19"
+      }
+      hover:bg-white hover:text-primary hover:border-primary hover:translate-x-1 active:scale-95`}
               >
-                <Link href="/contact-us">Contact Us</Link>
-              </button>
+                Contact Us
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -247,33 +239,6 @@ const Navbar = () => {
 
   return (
     <>
-      {/* <motion.header className={`fixed w-full z-[100] hidden lg:block transition-all duration-300 ${scrolled ? 'top-0 bg-white':'top-[95px]'}`} variants={fadeIn(0.5)} initial="hidden" whileInView="show">
-        <div className={`w-full container ${scrolled ? '' :''}`}>
-          <div className={`bg-white pr-[37px] flex items-center justify-between w-full ${scrolled ? 'py-2' :'rounded-full shadow-md py-[12px]'}`}>
-            <div className={`mr-4 ${scrolled ? 'xl:w-[250px]' :'xl:w-[404px] xl:pl-[2em]'}`}>
-              <Image src="/assets/images/logo-main.svg" alt="Logo" width={550} height={550} className='h-auto w-auto xl:h-[107px] object-contain' />
-            </div>
-            <ul className='flex w-fit xl:gap-[43px] xl:pr-[37px] ml-auto'>
-              {menuItems.map((item, index) => {
-                const isActive = activeIndex === index;
-                const textColorClass = isActive ? 'text-[#1E1E1E]' : 'opacity-50';
-                const spanWidthClass = isActive ? 'w-full' : 'w-[0px] group-hover:w-full';
-                return (
-                  <div className='flex flex-col group cursor-pointer' key={index} onClick={() => setActiveIndex(index)}>
-                    <li className={`text-nowrap text-19 ${textColorClass}`}>{item.name}</li>
-                    <span className={`bg-primary h-[1px] transition-all duration-300 ${spanWidthClass}`}></span>
-                  </div>
-                )
-              })}
-            </ul>
-            <div className={`ml-6`}>
-              <button className={`bg-primary text-white rounded-full  text-nowrap cursor-pointer  ${scrolled ? 'py-2 px-4 text-sm' :'py-[30px] px-[50px] xl:py-[30px] xl:px-[58.5px] text-19'}`}>
-                Contact Us
-              </button>
-            </div>
-          </div>
-        </div>
-      </motion.header> */}
       <AnimatePresence>
         {renderHeader()}
         {scrollY > 550 && (
