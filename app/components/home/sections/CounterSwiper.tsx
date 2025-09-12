@@ -29,7 +29,7 @@ const ItemsSwiper = ({ items }: ItemsProps) => {
     >
       <Swiper
         modules={[Autoplay, Grid]}
-        autoplay={{ delay: 2000, disableOnInteraction: false }}
+        autoplay={{ delay: 2500, disableOnInteraction: false }}
         loop={true}
         slidesPerView={2}
         spaceBetween={30}
