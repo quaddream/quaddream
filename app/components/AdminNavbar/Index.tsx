@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 import { useRefetchServices } from '@/app/contexts/refetchServices';
 import { toast } from 'sonner';
 import { RiProductHuntLine } from 'react-icons/ri';
+import { Settings } from 'lucide-react';
 
 
 const AdminNavbar = () => {
@@ -66,6 +67,7 @@ const AdminNavbar = () => {
         { name: "QHSE", href: "/admin/qhse", icon: HeartHandshake },
         { name: "Blogs", href: "/admin/blogs", icon: PaperclipIcon },
         { name: "Downloads", href: "/admin/downloads", icon: DownloadIcon },
+        { name: "Settings", href: "/admin/settings", icon: Settings},
       ];
 
   return (
