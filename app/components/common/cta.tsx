@@ -32,7 +32,7 @@ import { Home } from "../home/type";
         <motion.h2 className={`text-80 font-400 leading-[1.125] ${data.maxwidth? `max-w-[${data.maxwidth}ch] m-auto` : ''}`}  variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>
           {data.mainTitle}
         </motion.h2>
-        <motion.p className="my-5 md:my-[39px] text-19 text-lite-gray leading-[1.7]" variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>
+        <motion.p className="my-5 md:my-[39px] text-25 text-white leading-[1.7]" variants={moveUp(0.4)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>
           {data.subTitle}
         </motion.p>
 
