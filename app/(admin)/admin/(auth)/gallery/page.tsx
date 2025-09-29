@@ -22,6 +22,7 @@ import AdminItemContainer from '@/app/components/common/AdminItemContainer';
 import { Textarea } from '@/components/ui/textarea';
 import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
+import { RiAiGenerateText } from 'react-icons/ri';
 
 interface GalleryPageProps {
     metaTitle: string;
@@ -40,8 +41,9 @@ interface GalleryPageProps {
 const AdminGallery = () => {
 
     const [category, setCategory] = useState<string>("")
+    const [slug, setSlug] = useState<string>("")
 
-    const [categoryList, setCategoryList] = useState<{_id: string, title: string}[]>([]);
+    const [categoryList, setCategoryList] = useState<{_id: string, title: string, slug: string}[]>([]);
 
     const { register, handleSubmit, setValue, control, formState: { errors } } = useForm<GalleryPageProps>();
 
@@ -50,7 +52,7 @@ const AdminGallery = () => {
         try {
             const response = await fetch("/api/admin/gallery",{
                 method: "POST",
-                body: JSON.stringify({ name: category }),
+                body: JSON.stringify({ name: category, slug }),
             });
             if(response.ok) {
                 const data = await response.json();
@@ -70,7 +72,7 @@ const AdminGallery = () => {
         try {
             const response = await fetch(`/api/admin/gallery?id=${id}`,{
                 method: "PATCH",
-                body: JSON.stringify({ name: category }),
+                body: JSON.stringify({ name: category, slug }),
             });
             if(response.ok) {
                 const data = await response.json();
@@ -141,6 +143,18 @@ const AdminGallery = () => {
             console.log("Error in submitting project details", error);
         }
     }
+
+    
+        const handleAutoGenerate = () => {
+            const name = category;
+            if (!name) return;
+            const slug = name
+                .toLowerCase()
+                .trim()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, ''); // remove leading/trailing dashes
+            setSlug(slug);
+        };
 
 
     return (
@@ -241,12 +255,21 @@ const AdminGallery = () => {
             <div className='flex justify-between items-center p-5'>
                 <h1 className='text-md font-semibold'>Gallery</h1>
                 <Dialog>
-                        <DialogTrigger className='bg-primary text-white px-3 py-1 rounded-md font-semibold' onClick={()=>setCategory("")}>Add Item</DialogTrigger>
+                        <DialogTrigger className='bg-primary text-white px-3 py-1 rounded-md font-semibold' onClick={()=>{setCategory("");setSlug("")}}>Add Item</DialogTrigger>
                         <DialogContent>
                             <DialogHeader>
                                 <DialogTitle>Add Item</DialogTitle>
                                 <DialogDescription>
-                                    <Input type="text" value={category} onChange={(e) => setCategory(e.target.value)} />
+                                    <Label className='font-bold'>Category</Label>
+                                    <Input type="text" value={category} onChange={(e) => setCategory(e.target.value)} className='mt-2'/>
+                                    <div className='flex gap-2 mt-4'>
+                                    <Label className='font-bold'>Slug</Label>
+                                    <div className='flex gap-2 items-center bg-green-600 text-white p-1 rounded-md cursor-pointer w-fit' onClick={handleAutoGenerate}>
+                                                                        <p>Auto Generate</p>
+                                                                        <RiAiGenerateText />
+                                                                    </div>
+                                                                    </div>
+                                    <Input type="text" value={slug} onChange={(e) => setSlug(e.target.value)} className='mt-2'/>
                                 </DialogDescription>
                             </DialogHeader>
                             <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={handleAddCategory}>Save</DialogClose>
@@ -262,12 +285,21 @@ const AdminGallery = () => {
                 </div>
                 <div className='flex gap-8 items-center'>
                     <Dialog>
-                        <DialogTrigger onClick={()=>setCategory(item.title)}><FaEdit className='text-lg cursor-pointer' /></DialogTrigger>
+                        <DialogTrigger onClick={()=>{setCategory(item.title);setSlug(item.slug)}}><FaEdit className='text-lg cursor-pointer' /></DialogTrigger>
                         <DialogContent>
                             <DialogHeader>
                                 <DialogTitle>Edit Item</DialogTitle>
                                 <DialogDescription>
+                                <Label className='font-bold'>Category</Label>
                                     <Input type="text" value={category} onChange={(e) => setCategory(e.target.value)} />
+                                    <div className='flex gap-2 mt-4'>
+                                    <Label className='font-bold'>Slug</Label>
+                                    <div className='flex gap-2 items-center bg-green-600 text-white p-1 rounded-md cursor-pointer w-fit' onClick={handleAutoGenerate}>
+                                                                        <div>Auto Generate</div>
+                                                                        <RiAiGenerateText />
+                                                                    </div>
+                                                                    </div>
+                                    <Input type="text" value={slug} onChange={(e) => setSlug(e.target.value)} className='mt-2'/>
                                 </DialogDescription>
                             </DialogHeader>
                             <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={()=>handleEditCategory(item._id)}>Save</DialogClose>

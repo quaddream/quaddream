@@ -12,15 +12,8 @@ export async function GET(request: NextRequest) {
             return NextResponse.json({ message: "Gallery not found" }, { status: 404 });
         }
         const id = request.nextUrl.searchParams.get("id");
-        const slug = request.nextUrl.searchParams.get("slug");
         if(id){
             const toUpdateGallery = gallery.gallery.find((item: { _id: string; })=>item._id.toString() === id);
-            if (!toUpdateGallery) {
-                return NextResponse.json({message:"Gallery not found"}, { status: 404 });
-            }
-            return NextResponse.json({data:toUpdateGallery,message:"Gallery fetched successfully"}, { status: 200 });
-        }else if (slug){
-            const toUpdateGallery = gallery.gallery.find((item: { slug: string; })=>item.slug === slug);
             if (!toUpdateGallery) {
                 return NextResponse.json({message:"Gallery not found"}, { status: 404 });
             }
@@ -51,13 +44,9 @@ export async function POST(request: NextRequest) {
             if (!toUpdateGallery) {
                 return NextResponse.json({message:"Gallery not found"}, { status: 404 });
             }
-            toUpdateGallery.images = body.images;
+            toUpdateGallery.categories.push({title:body.name,images:[]})
             await gallery.save();
             return NextResponse.json({message:"Gallery item updated successfully"}, { status: 200 });
-        }else{
-            gallery.gallery.push({title:body.name,slug:body.slug,images:[]})
-            await gallery.save();
-            return NextResponse.json({message:"Gallery updated successfully"}, { status: 200 });
         }
     } catch (error) {
         console.log(error);
@@ -73,19 +62,23 @@ export async function PATCH(request: NextRequest) {
             return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
         }
         const id = request.nextUrl.searchParams.get("id");
+        const galleryId = body.galleryId;
         await connectDB();
         const gallery = await Gallery.findOne({})
         if (!gallery) {
             return NextResponse.json({message:"Gallery not found"}, { status: 404 });
         }
-        const toUpdateGallery = gallery.gallery.find((item: { _id: string; })=>item._id.toString() === id);
+        const toUpdateGallery = gallery.gallery.find((item: { _id: string; })=>item._id.toString() === galleryId);
         if (!toUpdateGallery) {
             return NextResponse.json({message:"Gallery not found"}, { status: 404 });
         }
-        toUpdateGallery.title = body.name;
-        toUpdateGallery.slug = body.slug;
+        const toUpdateCategory = toUpdateGallery.categories.find((item: { _id: string; })=>item._id.toString() === id);
+        if (!toUpdateCategory) {
+            return NextResponse.json({message:"Category not found"}, { status: 404 });
+        }
+        toUpdateCategory.title = body.name;
         await gallery.save();
-        return NextResponse.json({message:"Gallery item updated successfully"}, { status: 200 });
+        return NextResponse.json({message:"Category updated successfully"}, { status: 200 });
     } catch (error) {
         console.log(error);
         return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
@@ -95,22 +88,24 @@ export async function PATCH(request: NextRequest) {
 export async function DELETE(request: NextRequest) {
     try {
         const isAdmin = await verifyAdmin(request);
+        const body = await request.json();
         if (!isAdmin) {
             return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
         }
         const id = request.nextUrl.searchParams.get("id");
+        const galleryId = body.galleryId;
         await connectDB();
         const gallery = await Gallery.findOne({})
         if (!gallery) {
             return NextResponse.json({message:"Gallery not found"}, { status: 404 });
         }
-        const toUpdateGallery = gallery.gallery.find((item: { _id: string; })=>item._id.toString() === id);
+        const toUpdateGallery = gallery.gallery.find((item: { _id: string; })=>item._id.toString() === galleryId);
         if (!toUpdateGallery) {
             return NextResponse.json({message:"Gallery not found"}, { status: 404 });
         }
-        gallery.gallery = gallery.gallery.filter((item: { _id: string; })=>item._id.toString() !== id);
+        toUpdateGallery.categories = toUpdateGallery.categories.filter((item: { _id: string; })=>item._id.toString() !== id);
         await gallery.save();
-        return NextResponse.json({message:"Gallery item deleted successfully"}, { status: 200 });
+        return NextResponse.json({message:"Category deleted successfully"}, { status: 200 });
     } catch (error) {
         console.log(error);
         return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });

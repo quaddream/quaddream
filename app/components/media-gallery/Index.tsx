@@ -6,7 +6,7 @@ import { MediaGalleryData } from "./type";
 const Index = ({ data }: { data: MediaGalleryData }) => {
   return (
     <>
-      <BannerInner bannerData={data.bannerSection} />
+      <BannerInner bannerData={data.bannerSection} insideCategoryTitle={data.title}/>
       <MediaGallery galleryData={data} />
     </>
   );

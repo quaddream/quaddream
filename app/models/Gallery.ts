@@ -12,7 +12,25 @@ const gallerySchema = new mongoose.Schema({
     },
     gallery:[{
         title:{type:String},
+        slug:{type:String},
+        thumbnail:{type:String},
+        thumbnailAlt:{type:String},
+        bannerSection:{
+            image:{type:String},
+            imageAlt:{type:String},
+            title:{type:String},
+        },
+        firstSection:{
+            title:{type:String},
+            description:{type:String},
+        },
+        metaTitle:{type:String},
+        metaDescription:{type:String},
         images:[{type:String}],
+        categories:[{
+            title:{type:String},
+            images:[{type:String}]
+        }]
     }],
     metaTitle:{type:String},
     metaDescription:{type:String},

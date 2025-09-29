@@ -24,9 +24,10 @@ type BannerSectionProps = {
 
 type BannerProps = {
   bannerData: BannerSection | BannerSectionProps;
+  insideCategoryTitle?: string;
 };
 
-const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
+const BannerInner: React.FC<BannerProps> = ({ bannerData,insideCategoryTitle }) => {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
 
@@ -83,6 +84,28 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData }) => {
                 transition={{ duration: 1, ease: "easeOut" }}
               >
                 {title}
+              </motion.h1>
+
+              {/* Border */}
+              <motion.div
+                className="h-[.5px] bg-white/50"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 1, ease: "easeOut", delay: 1 }}
+                style={{ transformOrigin: "left center" }}
+              />
+            </div>
+          )}
+          {insideCategoryTitle && (
+            <div>
+              {/* Page Title */}
+              <motion.h1
+                className="text-white text-75 leading-[1.07] pb-3 font-normal inline-block"
+                initial={{ opacity: 0, x: -50, clipPath: "inset(0 100% 0 0)" }}
+                animate={{ opacity: 1, x: 0, clipPath: "inset(0 0% 0 0)" }}
+                transition={{ duration: 1, ease: "easeOut" }}
+              >
+                {insideCategoryTitle}
               </motion.h1>
 
               {/* Border */}
