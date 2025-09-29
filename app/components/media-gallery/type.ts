@@ -1,4 +1,5 @@
 export interface MediaGalleryData {
+  title:string;
   bannerSection: {
     image: string;
     imageAlt: string;
@@ -12,6 +13,28 @@ export interface MediaGalleryData {
     {
       title: string;
       images: string[];
+      slug:string;
+      categories: [
+        {
+          title: string;
+          images: string[];
+          slug: string;
+        },
+      ];
+    },
+  ];
+  categories: [
+    {
+      title: string;
+      images: string[];
+      slug: string;
+      categories:[
+        {
+          title: string;
+          images: string[];
+          slug: string;
+        },
+      ]
     },
   ];
   metaTitle: string;
