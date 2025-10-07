@@ -20,8 +20,8 @@ const Main = ({data}: {data: Projectsdetails}) => {
         >
           {data.firstSection.title}
         </motion.h2> 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 items-center justify-between mb-6 md:mb-12 gap-y-5 lg:gap-y-0">
-          <motion.div
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 items-center justify-between mb-6 md:mb-12 gap-y-5 lg:gap-y-0">
+          {/* <motion.div
             variants={moveUp(0)}
             initial="hidden"
             whileInView="show"
@@ -45,7 +45,7 @@ const Main = ({data}: {data: Projectsdetails}) => {
               {data.firstSection.client}
               </h4>
             </div>
-          </motion.div>
+          </motion.div> */}
           <motion.div
             variants={moveUp(0.1)}
             initial="hidden"
@@ -72,31 +72,6 @@ const Main = ({data}: {data: Projectsdetails}) => {
             </div>
           </motion.div>
           <motion.div
-            variants={moveUp(0.3)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="flex items-center gap-4 xl:gap-5"
-          >
-            <div className="flex items-center justify-center rounded-full border border-lite-gray w-10 h-10 xl:w-[78px] xl:h-[78px]">
-              <Image
-                src={assets.sectorIcon}
-                alt=""
-                width={24}
-                height={24}
-                className="w-5 xl:w-8 h-auto object-contain"
-              />
-            </div>
-            <div className="flex flex-col gap-1 md:gap-3 ">
-              <h3 className="text-19 leading-lh-text19 text-gray-para ">
-                Sector
-              </h3>
-              <h4 className="text-19 leading-lh-text19 text-black">
-              {data.firstSection.sector.name}
-              </h4>
-            </div>
-          </motion.div>
-          <motion.div
             variants={moveUp(0.4)}
             initial="hidden"
             whileInView="show"
@@ -118,6 +93,32 @@ const Main = ({data}: {data: Projectsdetails}) => {
               </h3>
               <h4 className="text-19 leading-lh-text19 text-black">
               {data.firstSection.location.name}
+              </h4>
+            </div>
+          </motion.div>
+          
+          <motion.div
+            variants={moveUp(0.3)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="flex items-center gap-4 xl:gap-5"
+          >
+            <div className="flex items-center justify-center rounded-full border border-lite-gray w-10 h-10 xl:w-[78px] xl:h-[78px]">
+              <Image
+                src={assets.sectorIcon}
+                alt=""
+                width={24}
+                height={24}
+                className="w-5 xl:w-8 h-auto object-contain"
+              />
+            </div>
+            <div className="flex flex-col gap-1 md:gap-3 ">
+              <h3 className="text-19 leading-lh-text19 text-gray-para ">
+              Scaffolding Type
+              </h3>
+              <h4 className="text-19 leading-lh-text19 text-black">
+              {data.firstSection.sector.name}
               </h4>
             </div>
           </motion.div>

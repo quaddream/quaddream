@@ -37,21 +37,23 @@ const Main = ({ Data }: SIngleServiceProps) => {
           />
         </motion.div>
 
-        {Data.description
-          .split("\n")
-          .filter(Boolean)
-          .map((para, idx) => (
-            <motion.p
-              variants={moveUp(idx * 0.3)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              key={idx}
-              className="  text-19 leading-text19 mb-4 md:mb-5 last:mb-0 text-gray-para"
-            >
-              {para}
-            </motion.p>
-          ))}
+        <div className="mainp">
+            {Data.description
+            .split("\n")
+            .filter(Boolean)
+            .map((para, idx) => (
+              <motion.p
+                variants={moveUp(idx * 0.3)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                key={idx}
+                className="  text-19 leading-text19 mb-4 md:mb-5 last:mb-0 text-gray-para"
+              >
+                {para}
+              </motion.p>
+            ))}
+        </div>
       </div>
     </section>
   );
