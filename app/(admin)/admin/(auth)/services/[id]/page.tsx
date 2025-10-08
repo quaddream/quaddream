@@ -12,6 +12,9 @@ import { Textarea } from '@/components/ui/textarea'
 import AdminItemContainer from '@/app/components/common/AdminItemContainer';
 import { useParams } from 'next/navigation';
 import { toast } from 'sonner';
+const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false })
+import 'react-quill-new/dist/quill.snow.css';
+import dynamic from 'next/dynamic'
 
 interface IndividualServiceFormProps {
 
@@ -311,9 +314,9 @@ const IndividualService = () => {
                             </div>
                             <div className='flex flex-col gap-1'>
                                 <Label className=' font-bold'>Description</Label>
-                                <Textarea placeholder='Description' {...register("firstSection.description", {
-                                    required: "Description is required"
-                                })} />
+                                <Controller name="firstSection.description" control={control} rules={{ required: "Description is required" }} render={({ field }) => {
+                                return <ReactQuill theme="snow" value={field.value} onChange={field.onChange} />
+                            }} />
                                 {errors.firstSection?.description && <p className='text-red-500'>{errors.firstSection?.description.message}</p>}
                             </div>
                             <div className='flex flex-col gap-2'>
