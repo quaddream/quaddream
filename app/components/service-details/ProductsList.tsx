@@ -5,24 +5,38 @@ import { moveUp } from "../motionVarients";
 import { ProductsServicesData } from "../ProductsServices/type";
 
 type ProductsListProps = {
-  Data: ProductsServicesData["thirdSection"]["items"][number]["productSection"];
+  Data: ProductsServicesData["thirdSection"]["items"][number]["productSection2"]["sections"];
+  title: string;
 };
 
-const ProductsList = ({ Data }: ProductsListProps) => {
+const ProductsList = ({ Data,title }: ProductsListProps) => {
+  console.log("Data", Data)
   return (
     <section className="py-150">
       <div className="container">
-        <motion.h2
+      <motion.h2
           variants={moveUp()}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
           className="text-80 leading-[1.125] mb-5 lg:mb-8 2xl:mb-12 text-black"
         >
-          Products
+          {title}
+        </motion.h2>
+        {Data.map((section,index)=>{
+          return(
+            <div key={index}>
+            <motion.h2
+          variants={moveUp()}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="text-30 leading-[1.125] mb-5 lg:mb-8 2xl:mb-12 text-black"
+        >
+          {section.title}
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 xl:gap-10 items-stretch">
-          {Data.items.map((product, index) => (
+          {section.items.map((product, index) => (
             <motion.div
               variants={moveUp(index * 0.1)}
               initial="hidden"
@@ -61,6 +75,9 @@ const ProductsList = ({ Data }: ProductsListProps) => {
             </motion.div>
           ))}
         </div>
+        </div>
+      )
+    })}
       </div>
     </section>
   );

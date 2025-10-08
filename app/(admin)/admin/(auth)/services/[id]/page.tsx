@@ -37,11 +37,20 @@ interface IndividualServiceFormProps {
         }[];
     };
     productSection: {
-        title: string;
-        items: { 
+        items:{
+            title: string;
+            items: { 
             _id:string
          }[]
+        }
     };
+    productSection2: {
+        title:string
+        sections: {
+          title: string;
+          items: { _id: string }[];
+        }[];
+      };
     fourthSection: {
         title: string;
         description: string;
@@ -69,6 +78,11 @@ const IndividualService = () => {
     //     control,
     //     name: "productSection.items"
     // });
+
+    const { fields: productSections, append: addProductSection, remove: removeProductSection } = useFieldArray({
+        control,
+        name: "productSection2.sections",
+      });
 
     const { fields: fourthSectionItems, append: fourthSectionAppend, remove: fourthSectionRemove } = useFieldArray({
         control,
@@ -108,6 +122,8 @@ const IndividualService = () => {
                 setValue("secondSection", data.data.secondSection);
                 setValue("secondSection.items", data.data.secondSection.items);
                 setValue("productSection", data.data.productSection);
+                setValue("productSection2.title", data.data.productSection2.title);
+                setValue("productSection2.sections", data.data.productSection2.sections);
                 // setValue("productSection.items", data.data.productSection.items);
                 setValue("fourthSection", data.data.fourthSection);
                 setValue("fourthSection.items", data.data.fourthSection.items);
@@ -121,76 +137,118 @@ const IndividualService = () => {
         }
     }
 
-    const fetchProductData = async () => {
+    // const fetchProductData = async () => {
+    //     try {
+    //         const response = await fetch(`/api/admin/products`);
+    //         if (response.ok) {
+    //             const data = await response.json();
+
+    //             // Get previously selected items from the form
+    //             const productSectionItems = getValues("productSection.items") || [];
+
+    //             console.log("productSectionItems", productSectionItems)
+    //             // Build productData with 'checked' flag
+    //             const updatedProductData = data.data.map((item :{ _id: string }) => ({
+    //                 ...item,
+    //                 checked: productSectionItems.some((productItem:{_id:string}) => productItem._id === item._id),
+    //             }));
+
+    //             console.log("updatedProductData", updatedProductData)
+
+    //             // Set productData (for display)
+    //             setProductData(updatedProductData);
+
+    //             // Set productSection.items in form with only the checked ones (excluding "checked" key)
+    //             const selectedItems = updatedProductData
+    //                 .filter((item: { checked: boolean }) => item.checked)
+    //                 .map((item: { _id: string }) => ({ _id: item._id }));
+    //             // remove the 'checked' field
+
+    //             console.log("selectedItems", selectedItems)
+
+    //             setValue("productSection.items", selectedItems);
+    //         } else {
+    //             const data = await response.json();
+    //             toast.error(data.message);
+    //         }
+    //     } catch (error) {
+    //         console.log("Error in fetching product data", error);
+    //     }
+    // };
+
+    const fetchProductData2 = async () => {
         try {
-            const response = await fetch(`/api/admin/products`);
-            if (response.ok) {
-                const data = await response.json();
-
-                // Get previously selected items from the form
-                const productSectionItems = getValues("productSection.items") || [];
-
-                console.log("productSectionItems", productSectionItems)
-                // Build productData with 'checked' flag
-                const updatedProductData = data.data.map((item :{ _id: string }) => ({
-                    ...item,
-                    checked: productSectionItems.some((productItem:{_id:string}) => productItem._id === item._id),
-                }));
-
-                console.log("updatedProductData", updatedProductData)
-
-                // Set productData (for display)
-                setProductData(updatedProductData);
-
-                // Set productSection.items in form with only the checked ones (excluding "checked" key)
-                const selectedItems = updatedProductData
-                    .filter((item: { checked: boolean }) => item.checked)
-                    .map((item: { _id: string }) => ({ _id: item._id }));
-                // remove the 'checked' field
-
-                console.log("selectedItems", selectedItems)
-
-                setValue("productSection.items", selectedItems);
-            } else {
-                const data = await response.json();
-                toast.error(data.message);
-            }
-        } catch (error) {
-            console.log("Error in fetching product data", error);
+          const response = await fetch(`/api/admin/products`);
+          if (!response.ok) return;
+      
+          const data = await response.json();
+          const products = data.data; // array of all products
+      
+          // Loop over each section and mark checked
+          const sections = getValues("productSection2.sections") || [];
+          const updatedSections = sections.map((section) => ({
+            ...section,
+            items: section.items
+              .map((item) => {
+                const productExists = products.find((p: { _id: string }) => p._id === item._id);
+                return productExists ? { _id: item._id } : null;
+              })
+              .filter((item): item is { _id: string } => item !== null), // type guard
+          }));
+          
+      
+          setValue("productSection2.sections", updatedSections);
+          setProductData(products.map((p: { _id: string }) => ({ ...p, checked: false })));
+        } catch (err) {
+          console.log("Error fetching product data for section 2:", err);
         }
-    };
+      };
+      
 
 
-    const handleCheckboxChange = (id: string) => {
-        if (!productData) return;
+    // const handleCheckboxChange = (id: string) => {
+    //     if (!productData) return;
 
-        // Toggle checked status
-        const updatedProductData = productData.map((item) =>
-            item._id === id ? { ...item, checked: !item.checked } : item
-        );
+    //     // Toggle checked status
+    //     const updatedProductData = productData.map((item) =>
+    //         item._id === id ? { ...item, checked: !item.checked } : item
+    //     );
 
-        // Update local state
-        setProductData(updatedProductData);
+    //     // Update local state
+    //     setProductData(updatedProductData);
 
-        // Filter only checked items (and remove `checked` before saving to form)
-        const selectedItems = updatedProductData
-            .filter((item: { checked: boolean }) => item.checked)
-            .map((item: { _id: string }) => ({ _id: item._id }));
-        ;
-
-
-
-        console.log("selectedItems", selectedItems)
-
-        // Update form field
-        setValue("productSection.items", selectedItems);
-    };
+    //     // Filter only checked items (and remove `checked` before saving to form)
+    //     const selectedItems = updatedProductData
+    //         .filter((item: { checked: boolean }) => item.checked)
+    //         .map((item: { _id: string }) => ({ _id: item._id }));
+    //     ;
 
 
 
+    //     console.log("selectedItems", selectedItems)
+
+    //     // Update form field
+    //     setValue("productSection.items", selectedItems);
+    // };
+
+
+    // const handleCheckboxChangeForSection = (sectionIndex: number, id: string) => {
+    //     const currentItems = getValues(`productSection2.sections.${sectionIndex}.items`) || [];
+    //     const exists = currentItems.some((item) => item._id === id);
+      
+    //     let updatedItems;
+    //     if (exists) {
+    //       updatedItems = currentItems.filter((item) => item._id !== id);
+    //     } else {
+    //       updatedItems = [...currentItems, { _id: id }];
+    //     }
+      
+    //     setValue(`productSection2.sections.${sectionIndex}.items`, updatedItems);
+    //   };
+      
 
     useEffect(() => {
-        fetchIndividualServiceData().then(() => fetchProductData());
+        fetchIndividualServiceData().then(() => fetchProductData2());
     }, []);
 
 
@@ -382,7 +440,7 @@ const IndividualService = () => {
                 </AdminItemContainer> */}
 
 
-                <AdminItemContainer>
+                {/* <AdminItemContainer>
                     <Label className='' main>Product Section</Label>
                     <div className='p-5  flex flex-col gap-2'>
                         <div className='flex flex-col gap-2'>
@@ -425,8 +483,80 @@ const IndividualService = () => {
 
 
                     </div>
-                </AdminItemContainer>
+                </AdminItemContainer> */}
 
+                <AdminItemContainer>
+  <Label main>Product Section</Label>
+  <div className="p-5 flex flex-col gap-5  rounded-md">
+  <Label className="font-bold">Main Title</Label>
+  <Input
+          type="text"
+          placeholder="Main Title"
+          {...register("productSection2.title", {
+            required: "Title is required",
+          })}
+        />
+    {productSections.map((section, sectionIndex) => (
+      <div key={section.id} className="border p-4 rounded-md relative">
+        <div className="absolute top-2 right-2">
+          <RiDeleteBinLine
+            className="cursor-pointer text-red-500"
+            onClick={() => removeProductSection(sectionIndex)}
+          />
+        </div>
+
+        <Label className="font-bold">Section Title</Label>
+        <Input
+          type="text"
+          placeholder="Section Title"
+          {...register(`productSection2.sections.${sectionIndex}.title`)}
+        />
+
+        {/* Render product checkboxes */}
+        <div className="mt-4 grid grid-cols-2 gap-3">
+        {productData?.map((product) => (
+  <Controller
+    key={product._id}
+    control={control}
+    name={`productSection2.sections.${sectionIndex}.items`}
+    render={({ field }) => {
+      // Convert field.value (array of {_id}) into a checked boolean
+      const isChecked = field.value?.some((item: { _id: string }) => item._id === product._id) || false;
+
+      return (
+        <div className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={() => {
+              const exists = field.value?.some((item: { _id: string }) => item._id === product._id);
+              let updatedItems;
+              if (exists) {
+                updatedItems = field.value.filter((item: { _id: string }) => item._id !== product._id);
+              } else {
+                updatedItems = [...(field.value || []), { _id: product._id }];
+              }
+              field.onChange(updatedItems);
+            }}
+          />
+          <span>{product.title}</span>
+        </div>
+      );
+    }}
+  />
+))}
+
+        </div>
+      </div>
+    ))}
+
+    <div className="flex justify-end">
+      <Button type="button" addItem onClick={() => addProductSection({ title: "", items: [] })}>
+        Add Item
+      </Button>
+    </div>
+  </div>
+</AdminItemContainer>
 
 
                 <AdminItemContainer>
