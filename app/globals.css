@@ -457,3 +457,12 @@ body {
     top: 42px !important;
   }
 }
+.htagst h1, .htagst h2, .htagst h3{
+  font-weight: 600;
+  margin-bottom: 10px;
+  @apply text-25;
+  color: #000;
+}
+.htagst p:not(:last-child){
+  margin-bottom: 13px;
+}
