@@ -31,7 +31,7 @@ const ProductsList = ({ Data,title }: ProductsListProps) => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="text-30 leading-[1.125] mb-5 lg:mb-8 2xl:mb-12 mt-8 font-bold text-black"
+          className="text-30 leading-[1.125] mb-5 lg:mb-8  mt-5 lg:mt-12 font-bold text-black"
         >
           {section.title}
         </motion.p>
