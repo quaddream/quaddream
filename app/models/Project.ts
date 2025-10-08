@@ -26,7 +26,7 @@ const projectSchema = new mongoose.Schema({
             sector:{type:mongoose.Schema.Types.ObjectId,required:true,ref:"Sector"},
             location:{type:mongoose.Schema.Types.ObjectId,required:true,ref:"Location"},
             status:{type:String,required:true},
-            client:{type:String,required:true},
+            client:{type:String},
             coverImage:{type:String,required:true},
             coverImageAlt:{type:String,required:true},
         },    

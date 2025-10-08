@@ -437,14 +437,14 @@ export default function Projects() {
         <div className="flex flex-col gap-2 h-screen">
           <div className="h-1/2 w-full p-5 shadow-md border-gray-300 rounded-md overflow-y-hidden bg-white">
             <div className="flex justify-between border-b-2 pb-2">
-              <Label className="text-sm font-bold">Sector</Label>
+              <Label className="text-sm font-bold">Scaffolding Type</Label>
               <Dialog>
-                <DialogTrigger className="bg-black text-white px-2 py-1 rounded-md" onClick={() => setSector("")}>Add Sector</DialogTrigger>
+                <DialogTrigger className="bg-black text-white px-2 py-1 rounded-md" onClick={() => setSector("")}>Add Scaffolding Type</DialogTrigger>
                 <DialogContent>
                   <DialogHeader>
-                    <DialogTitle>Add Sector</DialogTitle>
+                    <DialogTitle>Add Scaffolding Type</DialogTitle>
                     <DialogDescription>
-                      <Input type="text" placeholder="Sector Name" value={sector} onChange={(e) => setSector(e.target.value)} />
+                      <Input type="text" placeholder="Scaffolding Type" value={sector} onChange={(e) => setSector(e.target.value)} />
                     </DialogDescription>
                   </DialogHeader>
                   <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={handleAddSector}>Save</DialogClose>

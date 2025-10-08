@@ -71,6 +71,20 @@ const serviceSchema = new mongoose.Schema({
                         }
                     ]
                 },
+                productSection2: {
+                    title:{type:String},
+                    sections: {
+                      type: [
+                        {
+                          title: { type: String },
+                          items: [
+                            { _id: { type: mongoose.Schema.Types.ObjectId, ref: "Product" } }
+                          ]
+                        }
+                      ],
+                      default: []
+                    }
+                  },
                 fourthSection:{
                     title:{type:String},
                     description:{type:String},

@@ -57,6 +57,23 @@ export interface ProductsServicesData {
             },
           ];
         };
+        productSection2: {
+          title: string;
+          sections: [
+            {
+              title: string;
+              items: [
+                {
+                  _id: string;
+                  title: string;
+                  image: string;
+                  imageAlt: string;
+                  description: string;
+                },
+              ];
+            },
+          ];
+        };
         fourthSection: {
           title: string;
           description: string;

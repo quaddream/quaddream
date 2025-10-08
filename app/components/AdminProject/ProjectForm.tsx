@@ -377,8 +377,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
 
                         <div>
                             <Label className=''>Client</Label>
-                            <Input type='text' placeholder='Client' {...register("firstSection.client", { required: "Client is required" })} />
-                            {errors.firstSection?.client && <p className='text-red-500'>{errors.firstSection.client.message}</p>}
+                            <Input type='text' placeholder='Client' {...register("firstSection.client")} />
                         </div>
 
                         <div className='grid grid-cols-1 gap-2'>
