@@ -26,15 +26,15 @@ const ProductsList = ({ Data,title }: ProductsListProps) => {
         {Data.map((section,index)=>{
           return(
             <div key={index}>
-            <motion.h2
+            <motion.p
           variants={moveUp()}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="text-30 leading-[1.125] mb-5 lg:mb-8 2xl:mb-12 text-black"
+          className="text-30 leading-[1.125] mb-5 lg:mb-8 2xl:mb-12 mt-8 font-bold text-black"
         >
           {section.title}
-        </motion.h2>
+        </motion.p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 xl:gap-10 items-stretch">
           {section.items.map((product, index) => (
             <motion.div
