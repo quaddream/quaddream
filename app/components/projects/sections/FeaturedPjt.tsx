@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Pagination from "@/app/components/common/Pagination";
 import { motion } from "motion/react";
 import { moveUp } from "../../motionVarients";
-import { Projects, Location, sector, StatusOption, BaseOption } from "../type";
+import { Projects, Location, StatusOption, BaseOption } from "../type";
 import { statusData } from "@/app/components/AdminProject/statusData";
 import { IoCloseSharp } from "react-icons/io5";
 
@@ -14,30 +14,30 @@ type PjtProps = {
   firstSection: Projects["firstSection"];
   projectlist: Projects["projects"];
   locationdata: Location;
-  sectordata: sector;
+  // sectordata: sector;
 };
 
 const FeaturedPjt: React.FC<PjtProps> = ({
   firstSection,
   projectlist,
   locationdata,
-  sectordata,
+  // sectordata,
 }) => {
   const router = useRouter();
   // Create filter options with proper types
-  const statusOptions: StatusOption[] = [
-    { id: 0, name: "Status", value: -1 },
-    ...(Array.isArray(statusData)
-      ? statusData.map(
-          (sta, index) =>
-            ({
-              id: index + 1,
-              name: sta.name,
-              value: sta.value,
-            }) as StatusOption
-        )
-      : []),
-  ];
+  // const statusOptions: StatusOption[] = [
+  //   { id: 0, name: "Status", value: -1 },
+  //   ...(Array.isArray(statusData)
+  //     ? statusData.map(
+  //         (sta, index) =>
+  //           ({
+  //             id: index + 1,
+  //             name: sta.name,
+  //             value: sta.value,
+  //           }) as StatusOption
+  //       )
+  //     : []),
+  // ];
 
   const locationOptions: BaseOption[] = [
     { id: 1, name: "Location" },
@@ -49,22 +49,22 @@ const FeaturedPjt: React.FC<PjtProps> = ({
       : []),
   ];
 
-  const sectorOptions: BaseOption[] = [
-    { id: 1, name: "Sector" },
-    ...(Array.isArray(sectordata)
-      ? sectordata.map((sector, index) => ({
-          id: index + 2,
-          name: sector.name || String(sector),
-        }))
-      : []),
-  ];
+  // const sectorOptions: BaseOption[] = [
+  //   { id: 1, name: "Sector" },
+  //   ...(Array.isArray(sectordata)
+  //     ? sectordata.map((sector, index) => ({
+  //         id: index + 2,
+  //         name: sector.name || String(sector),
+  //       }))
+  //     : []),
+  // ];
   // Filters state with proper types
-  const [sectorSelected, setSectorSelected] = useState<BaseOption>(
-    sectorOptions[0]
-  );
-  const [statusSelected, setStatusSelected] = useState<StatusOption>(
-    statusOptions[0]
-  );
+  // const [sectorSelected, setSectorSelected] = useState<BaseOption>(
+  //   sectorOptions[0]
+  // );
+  // const [statusSelected, setStatusSelected] = useState<StatusOption>(
+  //   statusOptions[0]
+  // );
   const [locationSelected, setLocationSelected] = useState<BaseOption>(
     locationOptions[0]
   );
@@ -78,13 +78,13 @@ const FeaturedPjt: React.FC<PjtProps> = ({
 
   // Filter items
   const filteredItems = projectlist.filter((item) => {
-    const sectorMatch =
-      sectorSelected.name === "Sector" ||
-      item.firstSection.sector.name === sectorSelected.name;
-    const statusMatch =
-      statusSelected.name === "Status" ||
-      (statusSelected.value !== -1 &&
-        item.firstSection.status === statusSelected.value.toString());
+    // const sectorMatch =
+    //   sectorSelected.name === "Sector" ||
+    //   item.firstSection.sector.name === sectorSelected.name;
+    // const statusMatch =
+    //   statusSelected.name === "Status" ||
+    //   (statusSelected.value !== -1 &&
+    //     item.firstSection.status === statusSelected.value.toString());
     const locationMatch =
       locationSelected.name === "Location" ||
       item.firstSection.location.name === locationSelected.name;
@@ -93,7 +93,8 @@ const FeaturedPjt: React.FC<PjtProps> = ({
       !searchQuery ||
       item.firstSection.title.toLowerCase().includes(searchQuery.toLowerCase());
 
-    return sectorMatch && statusMatch && locationMatch && searchMatch;
+    // return sectorMatch && statusMatch && locationMatch && searchMatch;
+    return locationMatch && searchMatch;
   });
 
   // Pagination calculations
@@ -133,16 +134,16 @@ const FeaturedPjt: React.FC<PjtProps> = ({
           {/* Filters */}
           <div className="md:flex md:flex-1 md:gap-5 lg:gap-8 w-full md:w-auto transition-all duration-300 flex-col md:flex-row">
             {[
-              {
-                state: sectorSelected,
-                setState: setSectorSelected as (value: BaseOption) => void,
-                options: sectorOptions,
-              },
-              {
-                state: statusSelected,
-                setState: setStatusSelected as (value: StatusOption) => void,
-                options: statusOptions,
-              },
+              // {
+              //   state: sectorSelected,
+              //   setState: setSectorSelected as (value: BaseOption) => void,
+              //   options: sectorOptions,
+              // },
+              // {
+              //   state: statusSelected,
+              //   setState: setStatusSelected as (value: StatusOption) => void,
+              //   options: statusOptions,
+              // },
               {
                 state: locationSelected,
                 setState: setLocationSelected as (value: BaseOption) => void,
