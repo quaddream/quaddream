@@ -51,7 +51,7 @@
          { 
             location: "UAE Branch", 
             image:"/assets/images/contactus/hoffice.jpg",
-            address:"Quaddream Branch office, Abu dhabi.",
+            address:"Quaddream Branch office, Sharjah.",
             contact:[ "+971 503 525 314"
           ],
           mail: 
