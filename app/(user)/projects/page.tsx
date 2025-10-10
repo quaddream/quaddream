@@ -12,18 +12,18 @@ export default async function Home() {
   );
   const locationdata = await location.json();
 
-  const sector = await fetch(
-    `${process.env.BASE_URL}/api/admin/project/sector`,
-    { next: { revalidate: 60 } }
-  );
-  const sectordata = await sector.json();
+  // const sector = await fetch(
+  //   `${process.env.BASE_URL}/api/admin/project/sector`,
+  //   { next: { revalidate: 60 } }
+  // );
+  // const sectordata = await sector.json();
 
   return (
     <>
       <Index
         data={data.data}
         locationdata={locationdata.data}
-        sectordata={sectordata.data}
+        // sectordata={sectordata.data}
       />
     </>
   );
