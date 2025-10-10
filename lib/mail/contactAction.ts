@@ -9,7 +9,7 @@ export async function sendContactAction(data: LetstalkFormValues) {
     name: data.name,
     email: data.email,
     phone: data.phone,
-    sector: data.sector.name,
+    sector: data.sector,
     message: data.message || "",
   };
 
