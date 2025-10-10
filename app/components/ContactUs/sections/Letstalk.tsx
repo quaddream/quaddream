@@ -28,7 +28,7 @@ type BannerProps = {
 // ];
 
 const Letstalk: React.FC<BannerProps> = ({ Data, serviceData }) => {
-  const [sectorselected, setsectorSelected] = useState(serviceData[0]);
+  const [sectorselected, setsectorSelected] = useState("");
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const {
@@ -191,7 +191,13 @@ const Letstalk: React.FC<BannerProps> = ({ Data, serviceData }) => {
                   >
                     <div className="relative">
                       <Listbox.Button className="flex w-full focus:outline-none items-center justify-between rounded-full text-[#7F7F7F] bg-[#F9F9F9] p-5 md:p-7 text-left border-0">
-                        <span>{sectorselected}</span>
+                      <span
+  className={`${
+    sectorselected ? "text-[#7F7F7F]" : "text-gray-400"
+  }`}
+>
+  {sectorselected || "Select Service *"}
+</span>
                         <Image
                           src="/assets/images/arrow-down.svg"
                           alt="arrow-down"
@@ -224,6 +230,11 @@ const Letstalk: React.FC<BannerProps> = ({ Data, serviceData }) => {
                           ))}
                         </Listbox.Options>
                       </Transition>
+                      {errors.sector && (
+            <span className="text-primary text-md mt-2 block lg:pl-7 pl-5">
+              {errors.sector.message}
+            </span>
+          )}
                     </div>
                   </Listbox>
                 )}
