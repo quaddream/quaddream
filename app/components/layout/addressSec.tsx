@@ -24,7 +24,7 @@ const addresses: Record<AddressKey, AddressData> = {
     emails: ["info@quaddream.com", "enquiries@quaddream.com"],
   },
   "SHJ Branch": {
-    lines: ["Quaddream Branch office, Abu dhabi."],
+    lines: ["Quaddream Branch office, Sharjah."],
     phones: ["+971 50 451 8609", "+971 54 514 6495"],
     emails: ["info@quaddream.com", "enquiries@quaddream.com"],
   },
