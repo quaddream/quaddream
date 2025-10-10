@@ -2,15 +2,14 @@ import React from "react";
 import BannerInner from "../common/BannerInner";
 import FeaturedPjt from "./sections/FeaturedPjt";
 import CTA from "../common/cta";
-import { Projects, Location, sector } from "./type";
+import { Projects, Location } from "./type";
 const Index = async ({
   data,
   locationdata,
-  sectordata,
+  
 }: {
   data: Projects;
-  locationdata: Location;
-  sectordata: sector;
+  locationdata: Location; 
 }) => {
   return (
     <>
@@ -19,7 +18,7 @@ const Index = async ({
         firstSection={data.firstSection}
         projectlist={data.projects}
         locationdata={locationdata}
-        sectordata={sectordata}
+        //sectordata={sectordata}
       />
       <CTA maxwidth={12} {...data.lastSection} />
     </>
