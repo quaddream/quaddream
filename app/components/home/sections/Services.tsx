@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import { moveUp, containerStagger } from "../../motionVarients";
 import { Home } from "../type";
 const Services = ({ data }: { data: Home["servicesSection"] }) => {
+  console.log(data)
   return (
     <section className="py-150 overflow-hidden bg-black">
       <div className="container">
@@ -58,8 +59,9 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
               transition={{ duration: 0.6 }}
               viewport={{ amount: 0.1, once: true }}
             >
+              
               <motion.div
-                className="relative min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto xl:col-span-2 overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group cursor-pointer"
+                className="relative min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto xl:col-span-2 overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group "
                 variants={moveUp(0.2)}
                 initial="hidden"
                 whileInView="show"
@@ -86,12 +88,15 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                     className="w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300"
                   />
                 </div>
-                <div className="relative z-30 mt-auto">
+                <div className="relative z-30 mt-auto"> <Link
+                    href="/products-and-services/scaffolding-contracting"
+                    className="flex items-center gap-2 group cursor-pointer"
+                  >
                   <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6">
                     {data.items[0].title}
-                  </h3>
+                  </h3></Link>
                   <Link
-                    href="/"
+                    href="/products-and-services/scaffolding-contracting"
                     className="flex items-center gap-2 group cursor-pointer"
                   >
                     <span>Explore</span>{" "}
@@ -106,7 +111,7 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                 </div>
               </motion.div>
               <motion.div
-                className="relative min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto xl:col-span-3 overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group cursor-pointer"
+                className="relative min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto xl:col-span-3 overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group "
                 variants={moveUp(0.4)}
                 initial="hidden"
                 whileInView="show"
@@ -133,12 +138,16 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                     className="w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300"
                   />
                 </div>
-                <div className="relative z-30 mt-auto">
+                <div className="relative z-30 mt-auto"> <Link
+                    href="/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales"
+                    className="flex items-center gap-2 group cursor-pointer"
+                  >
                   <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6">
                     {data.items[1].title}
                   </h3>
+                  </Link>
                   <Link
-                    href="/"
+                    href="/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales"
                     className="flex items-center gap-2 group cursor-pointer"
                   >
                     <span>Explore</span>
@@ -154,7 +163,7 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
               </motion.div>
 
               <motion.div
-                className="xl:col-span-3 min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto relative overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col   group cursor-pointer"
+                className="xl:col-span-3 min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto relative overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col   group  "
                 variants={moveUp(0.6)}
                 initial="hidden"
                 whileInView="show"
@@ -181,12 +190,16 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                     className="w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300"
                   />
                 </div>
-                <div className="relative z-30 mt-auto">
+                <div className="relative z-30 mt-auto"> <Link
+                    href="/products-and-services/scaffolding-formwork-rental"
+                    className="flex items-center gap-2 group cursor-pointer"
+                  >
                   <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6 max-w-[10ch]">
                     {data.items[2].title}
                   </h3>
+                  </Link>
                   <Link
-                    href="/"
+                    href="/products-and-services/scaffolding-formwork-rental"
                     className="flex items-center gap-2 group cursor-pointer"
                   >
                     <span>Explore</span>
@@ -201,7 +214,7 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                 </div>
               </motion.div>
               <motion.div
-                className="xl:col-span-2 min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto relative overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group cursor-pointer"
+                className="xl:col-span-2 min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto relative overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group  "
                 variants={moveUp(0.8)}
                 initial="hidden"
                 whileInView="show"
@@ -229,11 +242,15 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                   />
                 </div>
                 <div className="relative z-30 mt-auto">
+                  <Link
+                    href="/products-and-services/equipment-rentals"
+                    className="flex items-center gap-2 group cursor-pointer"
+                  >
                   <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6">
                     {data.items[3].title}
-                  </h3>
+                  </h3></Link>
                   <Link
-                    href="/"
+                    href="/products-and-services/equipment-rentals"
                     className="flex items-center gap-2 group cursor-pointer"
                   >
                     <span>Explore</span>
