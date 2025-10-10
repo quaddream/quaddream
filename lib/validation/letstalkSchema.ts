@@ -1,11 +1,5 @@
 import { z } from "zod";
 
-const sectorList = [
-  { id: 1, name: "Service Looking For" },
-  { id: 2, name: "Scaffolding Contracting" },
-  { id: 3, name: "Scaffolding & Formwork Rentals" },
-  { id: 4, name: "Mobile Tower Sale & Rentals" },
-];
 
 export const letstalkSchema = z.object({
   name: z
@@ -28,10 +22,7 @@ export const letstalkSchema = z.object({
       "Invalid phone number"
     ),
 
-  sector: z.object({
-    id: z.number(),
-    name: z.enum(sectorList.map((s) => s.name) as [string, ...string[]]),
-  }),
+  sector: z.string().min(1, "Sector is required"),
 
   message: z
     .string()

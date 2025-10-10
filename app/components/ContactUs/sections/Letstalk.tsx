@@ -17,17 +17,18 @@ import { ContactUs } from "../type";
 
 type BannerProps = {
   Data: ContactUs["secondSection"];
+  serviceData: string[];
 };
 
-const sector = [
-  { id: 1, name: "Service Looking For" },
-  { id: 2, name: "Scaffolding Contracting" },
-  { id: 3, name: "Scaffolding & Formwork Rentals" },
-  { id: 4, name: "Mobile Tower Sale & Rentals" },
-];
+// const sector = [
+//   { id: 1, name: "Service Looking For" },
+//   { id: 2, name: "Scaffolding Contracting" },
+//   { id: 3, name: "Scaffolding & Formwork Rentals" },
+//   { id: 4, name: "Mobile Tower Sale & Rentals" },
+// ];
 
-const Letstalk: React.FC<BannerProps> = ({ Data }) => {
-  const [sectorselected, setsectorSelected] = useState(sector[0]);
+const Letstalk: React.FC<BannerProps> = ({ Data, serviceData }) => {
+  const [sectorselected, setsectorSelected] = useState(serviceData[0]);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const {
@@ -42,7 +43,7 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
       name: "",
       email: "",
       phone: "",
-      sector: sector[0],
+      sector: sectorselected,
       message: "",
     },
   });
@@ -190,7 +191,7 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
                   >
                     <div className="relative">
                       <Listbox.Button className="flex w-full focus:outline-none items-center justify-between rounded-full text-[#7F7F7F] bg-[#F9F9F9] p-5 md:p-7 text-left border-0">
-                        <span>{sectorselected.name}</span>
+                        <span>{sectorselected}</span>
                         <Image
                           src="/assets/images/arrow-down.svg"
                           alt="arrow-down"
@@ -206,9 +207,9 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
                         leaveTo="opacity-0"
                       >
                         <Listbox.Options className="absolute focus:outline-none mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200 z-10 bg-white">
-                          {sector.map((option) => (
+                          {serviceData.map((option) => (
                             <Listbox.Option
-                              key={option.id}
+                              key={option}
                               value={option}
                               className={({ active }) =>
                                 `cursor-pointer px-4 py-2 ${
@@ -218,7 +219,7 @@ const Letstalk: React.FC<BannerProps> = ({ Data }) => {
                                 }`
                               }
                             >
-                              {option.name}
+                              {option}
                             </Listbox.Option>
                           ))}
                         </Listbox.Options>
