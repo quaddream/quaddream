@@ -177,13 +177,18 @@ const Navbar = () => {
                           return (
                             <li
                               key={idx}
-                              className="flex items-center justify-center cursor-pointer rounded-[8px]"
+                              className="flex items-center  cursor-pointer rounded-[8px]"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 setActiveChild(childKey);
                                 setActiveParent(index);
                               }}
                             >
+                               <Link
+                                  href={child.href}
+                                  className="w-full"
+                                   
+                                >
                               <div className="flex ml-1 items-center gap-[13px] w-full px-7 py-[6px]">
                                 <SlArrowRight
                                   className={`transition-all duration-300 ${
@@ -193,8 +198,7 @@ const Navbar = () => {
                                   }`}
                                   size={11}
                                 />
-                                <Link
-                                  href={child.href}
+                                <p 
                                   className={`transition-all duration-300 ${
                                     isChildActive
                                       ? "text-[#1E1E1E]"
@@ -202,8 +206,9 @@ const Navbar = () => {
                                   }`}
                                 >
                                   {child.name}
-                                </Link>
+                                </p>
                               </div>
+                              </Link>
                             </li>
                           );
                         })}
