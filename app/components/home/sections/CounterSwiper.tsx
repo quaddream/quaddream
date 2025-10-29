@@ -60,7 +60,7 @@ const ItemsSwiper = ({ items }: ItemsProps) => {
                 width={50}
                 height={50}
               />
-              <h3 className="text-75 xl:min-w-max">
+              <h3 className="text-40 xl:min-w-max font-semibold">
                 <Counter from={0} to={Number(item.number)} duration={2} />
                 <span className="text-primary">+</span>
               </h3>
