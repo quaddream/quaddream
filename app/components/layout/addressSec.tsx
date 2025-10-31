@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-type AddressKey = "Head Office" | "Yard" | "SHJ Branch" | "Canada";
+type AddressKey = "Head Office" | "Yard" | "SHJ Branch" | "Canada" | "Abu Dhabi";
 
 type AddressData = {
   lines: string[];
@@ -21,7 +21,7 @@ const addresses: Record<AddressKey, AddressData> = {
   Yard: {
     lines: ["Al Quoz Industrial Area – 2, Near Bartawi Dubai, UAE"],
     phones: ["+971 50 451 8609", "+971 54 514 6495"],
-    emails: ["info@quaddream.com", "enquiries@quaddream.com"],
+    emails: ["yard-2@quaddream.com", "john@quaddream.com"],
   },
   "SHJ Branch": {
     lines: ["Quaddream Branch office, Sharjah."],
@@ -33,6 +33,11 @@ const addresses: Record<AddressKey, AddressData> = {
     phones: ["+971 50 451 8609", "+971 54 514 6495"],
     emails: ["info@quaddream.com", "enquiries@quaddream.com"],
   },
+  "Abu Dhabi": {
+    lines: [" Office No: 27, 7th Floor, Tower 1 Business Center, Mazyad Mall, Musaffah – Abu Dhabi"],
+    phones: ["+971 50 352 5314"],
+    emails: ["info@quaddream.com", "enquiries@quaddream.com"],
+  },
 };
 
 const AddressSection = () => {
@@ -41,9 +46,9 @@ const AddressSection = () => {
 
   return (
     <div className="text-white">
-      <div className="flex flex-wrap gap-2 gap-x-3 md:gap-x-4 2xl:gap-[46px] mb-4">
+      <div className="flex flex-wrap gap-2 gap-x-3 md:gap-x-4 2xl:gap-6 mb-4">
         {Object.keys(addresses).map((key) => (
-          <div key={key} className="flex items-center gap-2 md:gap-4">
+          <div key={key} className="flex items-center gap-2 md:gap-2 2xl:gap-4">
             {/* Round Indicator */}
             <div
               className={`w-[6px] h-[6px] md:w-[9px] md:h-[9px] rounded-full ${selected === key ? "bg-red-500" : "bg-[#828D91]"}`}
@@ -52,7 +57,7 @@ const AddressSection = () => {
             {/* Button */}
             <button
               onClick={() => setSelected(key as AddressKey)}
-              className={`transition duration-200 text-[16px] md:text-30 font-normal cursor-pointer leading-[1.3] ${
+              className={`transition duration-200 text-[18px] md:text-[23px] 2xl:text-[25px] font-normal cursor-pointer leading-[1.3] ${
                 selected === key
                   ? "text-white"
                   : "text-[#828D91] hover:text-white "
