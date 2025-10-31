@@ -15,6 +15,21 @@ import { toast } from 'sonner';
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false })
 import 'react-quill-new/dist/quill.snow.css';
 import dynamic from 'next/dynamic'
+import { closestCorners, DndContext, DragEndEvent } from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import ProductCard from './ProductCard';
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 
 interface IndividualServiceFormProps {
 
@@ -68,6 +83,7 @@ interface IndividualServiceFormProps {
 const IndividualService = () => {
 
     const { id } = useParams();
+
 
     const [productData, setProductData] = useState<{ _id: string, image: string, imageAlt: string, title: string, description: string, checked: boolean }[] | null>(null);
 
@@ -253,6 +269,82 @@ const IndividualService = () => {
     useEffect(() => {
         fetchIndividualServiceData().then(() => fetchProductData2());
     }, []);
+
+
+const handleDragEnd = (event: DragEndEvent, sectionIndex: number) => {
+  const { active, over } = event;
+  if (!over || active.id === over.id) return;
+
+  // Get current section items from form (array of {_id})
+  const currentSectionItems =
+    getValues(`productSection2.sections.${sectionIndex}.items`) || [];
+
+  const oldIndex = currentSectionItems.findIndex(
+    (item: {_id:string}) => item._id === active.id
+  );
+  const newIndex = currentSectionItems.findIndex(
+    (item: {_id:string}) => item._id === over.id
+  );
+
+  if (oldIndex === -1 || newIndex === -1) return;
+
+  // ✅ Reorder only by _id (not full product objects)
+  const newOrder = arrayMove(currentSectionItems, oldIndex, newIndex);
+
+  // ✅ Update form (only store {_id})
+  setValue(
+    `productSection2.sections.${sectionIndex}.items`,
+    newOrder.map((item: {_id:string}) => ({ _id: item._id }))
+  );
+
+  // ✅ Update sheet state for immediate UI reflection
+  setSheetItems((prev) => {
+    const oldPos = prev.findIndex((p) => p._id === active.id);
+    const newPos = prev.findIndex((p) => p._id === over.id);
+    return arrayMove(prev, oldPos, newPos);
+  });
+};
+
+
+
+
+const [sheetItems, setSheetItems] = useState<{ _id: string, image: string, imageAlt: string, title: string, description: string, checked: boolean }[] | []>([])
+const setCheckedProductInSheet = (sectionIndex: number) => {
+  const currentItems =
+    getValues(`productSection2.sections.${sectionIndex}.items`) || [];
+
+  const currentItemIds = currentItems.map((i: { _id: string }) => i._id);
+
+  const orderedProducts = currentItemIds
+    .map((id: string) =>
+      productData?.find(
+        (item: {
+          _id: string;
+          image: string;
+          imageAlt: string;
+          title: string;
+          description: string;
+          checked: boolean;
+        }) => item._id === id
+      )
+    )
+    // ✅ Explicitly tell TypeScript that this filter removes undefined
+    .filter(
+      (item): item is {
+        _id: string;
+        image: string;
+        imageAlt: string;
+        title: string;
+        description: string;
+        checked: boolean;
+      } => Boolean(item)
+    );
+
+  setSheetItems(orderedProducts);
+};
+
+
+
 
 
     return (
@@ -499,6 +591,9 @@ const IndividualService = () => {
             required: "Title is required",
           })}
         />
+
+        
+
     {productSections.map((section, sectionIndex) => (
       <div key={section.id} className="border p-4 rounded-md relative">
         <div className="absolute top-2 right-2">
@@ -507,13 +602,39 @@ const IndividualService = () => {
             onClick={() => removeProductSection(sectionIndex)}
           />
         </div>
-
+    
         <Label className="font-bold">Section Title</Label>
         <Input
           type="text"
           placeholder="Section Title"
           {...register(`productSection2.sections.${sectionIndex}.title`)}
         />
+
+<div className="flex justify-start mt-2">
+        <Sheet>
+  <SheetTrigger onClick={()=>setCheckedProductInSheet(sectionIndex)} className='bg-green-400 p-2 rounded-xl'>Reorder</SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Reorder Items</SheetTitle>
+      <SheetDescription className="flex flex-col gap-2 h-screen overflow-y-auto">
+        <DndContext
+                collisionDetection={closestCorners}
+                onDragEnd={(event)=>handleDragEnd(event, sectionIndex)}
+              >
+                <SortableContext
+                  items={sheetItems.map((item) => item._id)}
+                  strategy={verticalListSortingStrategy}
+                >
+                  {sheetItems.map((item) => (
+                    <ProductCard key={item._id} title={item.title} id={item._id} />
+                  ))}
+                </SortableContext>
+              </DndContext>
+      </SheetDescription>
+    </SheetHeader>
+  </SheetContent>
+</Sheet>
+</div>
 
         {/* Render product checkboxes */}
         <div className="mt-4 grid grid-cols-2 gap-3">
@@ -547,7 +668,10 @@ const IndividualService = () => {
       );
     }}
   />
+  
 ))}
+
+
 
         </div>
       </div>
