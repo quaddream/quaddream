@@ -126,7 +126,7 @@ const Footer = () => {
             </Link>
           </div>
           <p className="text-16 text-[#9CA3AF] text-left">
-            &copy; {new Date().getFullYear()} Quad Dream Scaffolding LLC. All
+            &copy; {new Date().getFullYear()} Quaddream Group. All
             rights reserved.
           </p>
         </div>
@@ -141,6 +141,7 @@ const Footer = () => {
         >
           <div className="container flex justify-end pointer-events-none">
             <div className="rounded-full pointer-events-auto">
+              <a href="https://wa.me/971564331753?text=Hi%20there%2C%20I%20need%20help%20with%20your%20product" target="_blank" rel="noopener noreferrer">
               <div className="w-[42px] h-[42px] lg:w-[58px] lg:h-[58px]">
                 <Image
                   src="/assets/images/whatsapp.svg"
@@ -150,6 +151,7 @@ const Footer = () => {
                   className="w-full h-full hover:scale-110 transition-all duration-300"
                 />
               </div>
+              </a>
             </div>
           </div>
         </div>
