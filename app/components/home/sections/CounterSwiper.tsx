@@ -46,7 +46,7 @@ const ItemsSwiper = ({ items }: ItemsProps) => {
             className="flex justify-between items-center"
           >
             <motion.div
-              className="flex items-start flex-col gap-2 xl:min-w-[300px]"
+              className="flex  flex-col gap-2 xl:min-w-[300px] items-center  "
               variants={moveUp(0.2)}
               initial="hidden"
               whileInView="show"

@@ -17,7 +17,7 @@
       {
       title: "Built on Safety. Driven by Expertise.",
       bgImg: "/assets/images/productservices/pdtmn.jpg", 
-     description:"At Quad Dream Scaffolding LLC, we specialize in providing reliable, high-quality scaffolding services across the UAE. Whether you need a short-term rental or a full-service scaffolding solution, we bring years of hands-on experience, certified manpower, and premium-grade materials to every project."
+     description:"At Quaddream Group, we specialize in providing reliable, high-quality scaffolding services across the UAE. Whether you need a short-term rental or a full-service scaffolding solution, we bring years of hands-on experience, certified manpower, and premium-grade materials to every project."
     }
   ]
   };
