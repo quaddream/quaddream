@@ -616,7 +616,7 @@ const setCheckedProductInSheet = (sectionIndex: number) => {
   <SheetContent>
     <SheetHeader>
       <SheetTitle>Reorder Items</SheetTitle>
-      <SheetDescription className="flex flex-col gap-2 h-screen overflow-y-auto">
+      <SheetDescription className="flex flex-col gap-2 h-[80%] overflow-y-auto">
         <DndContext
                 collisionDetection={closestCorners}
                 onDragEnd={(event)=>handleDragEnd(event, sectionIndex)}
@@ -646,7 +646,6 @@ const setCheckedProductInSheet = (sectionIndex: number) => {
     render={({ field }) => {
       // Convert field.value (array of {_id}) into a checked boolean
       const isChecked = field.value?.some((item: { _id: string }) => item._id === product._id) || false;
-
       return (
         <div className="flex items-center gap-2">
           <input
