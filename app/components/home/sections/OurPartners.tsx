@@ -8,10 +8,7 @@ import Image from 'next/image'
 import { motion } from 'motion/react';
 import { moveUp } from '../../motionVarients';
 import { Home } from '../type';
- const simpleFade = {
-  hidden: { opacity: 0, y: 10 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
-}
+ 
  
 
 export default function PartnersSection( data: Home['partnersSection'] ) {
