@@ -35,8 +35,8 @@ const ItemsSwiper = ({ items }: ItemsProps) => {
         spaceBetween={30}
         grid={{ rows: 2, fill: "row" }}
         breakpoints={{
-          1024: { slidesPerView: 4, grid: { rows: 1 }, spaceBetween: 60 },
-          1536: { slidesPerView: 4, grid: { rows: 1 }, spaceBetween: 80 },
+          1024: { slidesPerView: 3, grid: { rows: 1 }, spaceBetween: 60 },
+          1536: { slidesPerView: 3, grid: { rows: 1 }, spaceBetween: 80 },
         }}
         className="gap-y-8 gap-x-8"
       >
@@ -56,15 +56,16 @@ const ItemsSwiper = ({ items }: ItemsProps) => {
               <Image
                 src={item?.logo}
                 alt={item?.logoAlt}
-                className="md:w-12 md:h-12 w-8 h-8"
+                className="md:w-16 md:h-16 w-10 h-10"
                 width={50}
                 height={50}
               />
-              <h3 className="text-40 xl:min-w-max font-semibold">
+              <h3 className="text-40 lg:text-65 xl:min-w-max font-semibold">
                 <Counter from={0} to={Number(item.number)} duration={2} />
-                <span className="text-primary">+</span>
+                {item.number == 2012 ? "" : <span className="text-primary"> +</span>}
+                
               </h3>
-              <p className="text-19">{item.value}</p>
+              <p className="text-19 lg:text-25">{item.value}</p>
             </motion.div>
           </SwiperSlide>
         ))}

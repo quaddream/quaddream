@@ -38,26 +38,50 @@ export default function PartnersSection( data: Home['partnersSection'] ) {
           }}
           className="mySwiperPartners"
         >
-          {data.items.map((_, i) => {
-            if (i % 2 !== 0) return null 
+        {data.items.map((_, i) => {
+          if (i % 2 !== 0) return null; // Only even indices (pair grouping)
 
-            return (
-              <SwiperSlide key={i} className={i + 2 >= data.items.length ? '' : 'lg:border-r-[0.3px] border-solid border-lite-gray mr-0'} >
-                <motion.div className="flex gap-4 flex-col" variants={moveUp(i * 0.2)} initial="hidden" whileInView="show"
-                 transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}>
+          return (
+            <SwiperSlide
+              key={i}
+              className={i + 2 >= data.items.length ? '' : 'lg:border-r-[0.3px] border-solid border-lite-gray mr-0'}
+            >
+              <motion.div
+                className="flex gap-4 flex-col"
+                 initial={{ opacity: 0, scale: 0.98 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.4, ease: "easeOut" }}
+              >
+                {/* First Item */}
+                <div className="flex justify-center">
+                  <Image
+                    src={data.items[i].logo}
+                    alt={data.items[i].logoAlt}
+                    width={500}
+                    height={500}
+                    className="object-contain h-[50px] md:h-[100px] xl:h-[123.84px] w-auto"
+                  />
+                </div>
+
+                <div className="border-t border-lite-gray" />
+
+                {/* Second Item — Render only if it exists */}
+                {data.items[i + 1] && (
                   <div className="flex justify-center">
-                    <Image src={data.items[i].logo} alt={data.items[i].logoAlt} width={500} height={500} className="object-contain h-[50px] md:h-[100px] xl:h-[123.84px] w-auto" />
+                    <Image
+                      src={data.items[i + 1].logo}
+                      alt={data.items[i + 1].logoAlt}
+                      width={500}
+                      height={500}
+                      className="object-contain h-[50px] md:h-[100px] xl:h-[123.84px] w-auto"
+                    />
                   </div>
-                  <div className="border-t border-lite-gray" />
-               
-                    <div className="flex justify-center">
-                      <Image src={data.items[i + 1].logo} alt={data.items[i + 1].logoAlt} width={500} height={500} className="object-contain h-[50px] md:h-[100px] xl:h-[123.84px] w-auto" />
-                    </div>
-                 
-                </motion.div>
-              </SwiperSlide>
-            )
-          })}
+                )}
+              </motion.div>
+            </SwiperSlide>
+          );
+        })}
+
         </Swiper>
       </div>
     </section>
