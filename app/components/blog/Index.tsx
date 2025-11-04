@@ -4,6 +4,7 @@ import Blog from "./sections/Blog";
 import { BlogType } from "./type";
 
 const Index = ({data}: {data: BlogType}) => {
+  console.log(data)
   return (
     <>
       <BannerInner bannerData={data.bannerSection} />
