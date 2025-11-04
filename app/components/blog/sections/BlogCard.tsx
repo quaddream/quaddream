@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { moveUp } from "../../motionVarients";
 
 const BlogCard = ({ blogData }: { blogData: BlogType["blogs"] }) => {
+  console.log(blogData)
   return (
     <div className="flex flex-col md:flex-row items-center gap-5 md:gap-9 lg:gap-12 xl:gap-[88px]  mb-8 lg:mb-[110px]">
       {/* Left Image */}

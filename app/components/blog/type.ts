@@ -6,7 +6,7 @@ export interface BlogType {
     imageAlt: string;
     title: string;
   };
-  blogs: [
+  blogs: 
     {
       bannerSection: {
         image: string;
@@ -24,6 +24,5 @@ export interface BlogType {
       date: string;
       metaTitle: string;
       metaDescription: string;
-    },
-  ];
+    }[],
 }

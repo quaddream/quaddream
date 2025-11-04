@@ -11,7 +11,7 @@ const Blog = ({ blogData }: { blogData: BlogType }) => {
   return (
     <section className="relative z-10 bg-background pt-150 xl:pb-150 pb-7 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%]">
       <div className="container">
-        <BlogCard blogData={blogData.blogs} />
+        {blogData.blogs.length === 0 ? (<div className="text-center text-lg">Looks like there aren’t any blog posts yet — check back soon!</div>):(<div><BlogCard blogData={blogData.blogs} />
         <motion.hr
           variants={moveUp()}
           initial="hidden"
@@ -26,7 +26,8 @@ const Blog = ({ blogData }: { blogData: BlogType }) => {
           whileInView="show"
           viewport={{ once: true }}
           className="border-0 border-b border-lite-gray"
-        />
+        /></div>)}
+        
       </div>
     </section>
   );
