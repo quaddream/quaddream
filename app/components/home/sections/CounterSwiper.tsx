@@ -40,7 +40,7 @@ const ItemsSwiper = ({ items }: ItemsProps) => {
         }}
         className="gap-y-8 gap-x-8"
       >
-        {items.map((item, index) => (
+       {[...items, ...items].map((item, index) => (
           <SwiperSlide
             key={index}
             className="flex justify-between items-center"
