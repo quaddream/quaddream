@@ -63,12 +63,12 @@ const Footer = () => {
             <h3 className="text-[16px] text-lite-gray tracking-[0.04em] uppercase mb-3 md:mb-[20px] lg:mb-[36px] font-medium">
               Quick Link
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-y-2 md:gap-y-5 xl:gap-y-[30px]">
+            <div className="grid grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-y-2 md:gap-y-5 xl:gap-y-[25px]">
               {quickLinks.map((item, index) => (
                 <Link
                   key={index}
                   href={item.qLLink}
-                  className="text-19 md:text-30 font-light hover:text-[#EC1C24] cursor-pointer leading-[1.333333333333333] transition-all duration-300"
+                  className="text-19 md:text-25 font-light hover:text-[#EC1C24] cursor-pointer leading-[1.333333333333333] transition-all duration-300"
                 >
                   {item.qLTitle}
                 </Link>
