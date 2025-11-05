@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, Fragment, useRef } from "react";
+import React, { useState, Fragment, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Listbox, Transition } from "@headlessui/react";
 import { useRouter } from "next/navigation";
@@ -9,6 +9,12 @@ import { moveUp } from "../../motionVarients";
 import { Projects, Location, StatusOption, BaseOption } from "../type";
 import { statusData } from "@/app/components/AdminProject/statusData";
 import { IoCloseSharp } from "react-icons/io5";
+
+type Status = {
+  id: number;
+  name: string;
+  value: number;
+}
 
 type PjtProps = {
   firstSection: Projects["firstSection"];
@@ -49,6 +55,17 @@ const FeaturedPjt: React.FC<PjtProps> = ({
       : []),
   ];
 
+  const statusOptions: Status[] = [
+    { id: 1, name: "Status",value: -1 },
+    ...(Array.isArray(statusData)
+      ? statusData.map((sta, index) => ({
+          id: index + 2,
+          name: sta.name || String(sta),
+          value: sta.value,
+        }))
+      : []),
+  ];
+
   // const sectorOptions: BaseOption[] = [
   //   { id: 1, name: "Sector" },
   //   ...(Array.isArray(sectordata)
@@ -63,11 +80,16 @@ const FeaturedPjt: React.FC<PjtProps> = ({
   //   sectorOptions[0]
   // );
   // const [statusSelected, setStatusSelected] = useState<StatusOption>(
-  //   statusOptions[0]
+  //   statusOptions[0] 
   // );
   const [locationSelected, setLocationSelected] = useState<BaseOption>(
     locationOptions[0]
   );
+
+  const [statusSelected, setStatusSelected] = useState<Status>(
+    statusOptions[0]
+  );
+
   const [searchQuery, setSearchQuery] = useState("");
 
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -89,13 +111,21 @@ const FeaturedPjt: React.FC<PjtProps> = ({
       locationSelected.name === "Location" ||
       item.firstSection.location.name === locationSelected.name;
 
+    const statusMatch =
+      statusSelected.name === "Status" ||
+      item.firstSection.status === statusSelected.value.toString();
+
     const searchMatch =
       !searchQuery ||
       item.firstSection.title.toLowerCase().includes(searchQuery.toLowerCase());
 
     // return sectorMatch && statusMatch && locationMatch && searchMatch;
-    return locationMatch && searchMatch;
+    return locationMatch && statusMatch && searchMatch;
   });
+
+  useEffect(()=>{
+console.log(statusSelected)
+  },[statusSelected])
 
   // Pagination calculations
   const totalItems = filteredItems.length;
@@ -148,6 +178,104 @@ const FeaturedPjt: React.FC<PjtProps> = ({
                 state: locationSelected,
                 setState: setLocationSelected as (value: BaseOption) => void,
                 options: locationOptions,
+              },
+            ].map((filter, idx) => (
+              <motion.div
+                key={idx}
+                variants={moveUp(idx * 0.15)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ amount: 0.1, once: true }}
+                className="w-full md:flex-1 transition-colors duration-300"
+              >
+                <Listbox
+                  value={filter.state}
+                  onChange={filter.setState}
+                  as="div"
+                  className="relative w-full"
+                >
+                  <div className="relative">
+                    <div className="flex w-full items-center justify-between rounded-full bg-[#F9F9F9] p-5 lg:p-7">
+                      <Listbox.Button className="cursor-pointer focus:outline-none flex-1 text-left border-0">
+                        {filter.state.name.length > 12
+                          ? filter.state.name.slice(0, 12) + "..."
+                          : filter.state.name}
+                      </Listbox.Button>
+
+                      <div className="flex items-center gap-3">
+                        {filter.state.name !== filter.options[0].name && (
+                          <button
+                            type="button"
+                            onClick={() =>
+                              filter.setState(filter.options[0] as StatusOption)
+                            }
+                            className="flex items-center justify-center cursor-pointer w-6 h-6 text-primary transition-colors duration-300 text-19"
+                          >
+                            <IoCloseSharp />
+                          </button>
+                        )}
+
+                        <Listbox.Button className="cursor-pointer focus:outline-none border-0">
+                          <Image
+                            src="/assets/images/arrow-down.svg"
+                            alt="arrow-down"
+                            width={16}
+                            height={12}
+                            className="md:w-[16px] md:h-[12px]"
+                          />
+                        </Listbox.Button>
+                      </div>
+                    </div>
+
+                    <Transition
+                      as={Fragment}
+                      leave="transition ease-in duration-150"
+                      leaveFrom="opacity-100"
+                      leaveTo="opacity-0"
+                    >
+                      <Listbox.Options className="focus:outline-none absolute mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200 z-10 bg-white">
+                        {filter.options.map(
+                          (option: BaseOption | StatusOption) => (
+                            <Listbox.Option
+                              key={option.id}
+                              value={option}
+                              className={({ active }) =>
+                                `cursor-pointer px-4 py-2 ${
+                                  active
+                                    ? "bg-primary text-white"
+                                    : "text-gray-700"
+                                }`
+                              }
+                            >
+                              <span>{option.name}</span>
+                            </Listbox.Option>
+                          )
+                        )}
+                      </Listbox.Options>
+                    </Transition>
+                  </div>
+                </Listbox>
+              </motion.div>
+            ))}
+          </div>
+
+
+          <div className="md:flex md:flex-1 md:gap-5 lg:gap-8 w-full md:w-auto transition-all duration-300 flex-col md:flex-row">
+            {[
+              // {
+              //   state: sectorSelected,
+              //   setState: setSectorSelected as (value: BaseOption) => void,
+              //   options: sectorOptions,
+              // },
+              // {
+              //   state: statusSelected,
+              //   setState: setStatusSelected as (value: StatusOption) => void,
+              //   options: statusOptions,
+              // },
+              {
+                state: statusSelected,
+                setState: setStatusSelected as (value: StatusOption) => void,
+                options: statusOptions,
               },
             ].map((filter, idx) => (
               <motion.div
