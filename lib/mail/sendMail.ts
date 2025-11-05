@@ -16,7 +16,7 @@ export async function sendMail<T>({
   const reactElement = template(props);
 
   const { data, error } = await resend.emails.send({
-    from: "onboarding@resend.dev",
+    from: "Enquiry <enquiry@quaddream.com>",
     to,
     subject,
     react: reactElement,

@@ -14,7 +14,7 @@ export async function sendContactAction(data: LetstalkFormValues) {
   };
 
   await sendMail<ContactUsProps>({
-    to: "quaddreamdxb@gmail.com",
+    to: "info@quaddream.com",
     subject: `New Contact from ${data.name}`,
     template: (p) => ContactUsEmail(p),
     props,
