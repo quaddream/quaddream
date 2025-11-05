@@ -27,20 +27,22 @@ const ItemsSwiper = ({ items }: ItemsProps) => {
       transition={{ duration: 0.6 }}
       viewport={{ amount: 0.1, once: true }}
     >
-      <Swiper
-        modules={[Autoplay, Grid]}
-        autoplay={{ delay: 2500, disableOnInteraction: false }}
-        loop={true}
-        slidesPerView={2}
-        spaceBetween={30}
-        grid={{ rows: 2, fill: "row" }}
-        breakpoints={{
-          1024: { slidesPerView: 3, grid: { rows: 1 }, spaceBetween: 60 },
-          1536: { slidesPerView: 3, grid: { rows: 1 }, spaceBetween: 80 },
-        }}
-        className="gap-y-8 gap-x-8"
-      >
-       {[...items, ...items].map((item, index) => (
+      
+         <Swiper
+            modules={[Autoplay, Grid]}
+            loop={true}
+            autoplay={{ delay: 2500, disableOnInteraction: false }}
+            slidesPerGroup={2}  
+            slidesPerView={2}
+            spaceBetween={30}
+            grid={{ rows: 2, fill: "row" }}
+            breakpoints={{
+              1024: { slidesPerView: 3, slidesPerGroup: 1,  grid: { rows: 1 }, spaceBetween: 60 },
+              1536: { slidesPerView: 3, slidesPerGroup: 1,  grid: { rows: 1 }, spaceBetween: 80 },
+            }}
+                  className="gap-y-8 gap-x-8"
+          > 
+       {items.map((item, index) => (
           <SwiperSlide
             key={index}
             className="flex justify-between items-center"
@@ -60,7 +62,7 @@ const ItemsSwiper = ({ items }: ItemsProps) => {
                 width={50}
                 height={50}
               />
-              <h3 className="text-40 lg:text-65 xl:min-w-max font-semibold">
+              <h3 className="text-30 md:text-40 lg:text-65 xl:min-w-max font-semibold">
                 <Counter from={0} to={Number(item.number)} duration={2} />
                 {item.number == 2012 ? "" : <span className="text-primary"> +</span>}
                 
