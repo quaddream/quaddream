@@ -127,7 +127,7 @@ const Footer = () => {
           </div>
           <p className="text-16 text-[#9CA3AF] text-left">
             &copy; {new Date().getFullYear()} Quaddream Group. All
-            rights reserved.
+            rights reserved. | by <a className="text-16 text-[#9CA3AF] hover:text-white transition-colors duration-300" href="https://www.globalsurf.ae/" target="_blank">Global Surf </a>
           </p>
         </div>
       </div>
