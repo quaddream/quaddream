@@ -94,6 +94,7 @@ const Footer = () => {
                     key={index}
                     href={item.socialmediaLink}
                     className="group"
+                    target="_blank"
                   >
                     <Image
                       src={item.socialmediaIcon}
