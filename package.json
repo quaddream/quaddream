@@ -34,7 +34,7 @@
     "lucide-react": "^0.533.0",
     "mongoose": "^8.17.2",
     "motion": "^12.23.12",
-    "next": "^15.5.2",
+    "next": "15.5.9",
     "node-fetch": "^2.6.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
