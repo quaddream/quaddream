@@ -125,10 +125,15 @@ const Footer = () => {
             >
               Privacy Policy
             </Link>
+            <Link
+              href="/sitemap"
+              className="hover:text-white text-lite-gray text-16 leading-[1.5] font-[400]"
+            >
+              Sitemap
+            </Link>
           </div>
           <p className="text-16 text-[#9CA3AF] text-left">
-            &copy; {new Date().getFullYear()} Quaddream Group. All
-            rights reserved. | <span className="text-16 text-[#9CA3AF]/60">by</span> <a className="text-16 text-[#9CA3AF]/60 hover:text-[#9CA3AF]/80 transition-colors duration-300" href="https://www.globalsurf.ae/" target="_blank">Global Surf </a>
+            &copy; {new Date().getFullYear()} Scaffolding Company - Quaddream.com. All Rights Reserved. | <span className="text-16 text-[#9CA3AF]/60">by</span> <a className="text-16 text-[#9CA3AF]/60 hover:text-[#9CA3AF]/80 transition-colors duration-300" href="https://www.globalsurf.ae/" target="_blank">Global Surf </a>
           </p>
         </div>
       </div>
