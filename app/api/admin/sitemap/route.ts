@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
-import Sitemap from "@/app/models/sitemap";
+import Sitemap from "@/app/models/SitemapModel";
 import { verifyAdmin } from "@/lib/verifyAdmin";
 
 
