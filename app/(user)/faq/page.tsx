@@ -13,6 +13,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: metadataTitle,
     description: metadataDescription,
+    alternates: {
+      canonical: "/faq",
+    },
     openGraph: {
       title: metadataTitle,
       description: metadataDescription,

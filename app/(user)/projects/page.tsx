@@ -12,6 +12,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: metadataTitle,
     description: metadataDescription,
+    alternates: {
+      canonical: "/projects",
+    },
     openGraph: {
       title: metadataTitle,
       description: metadataDescription,

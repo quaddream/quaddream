@@ -14,6 +14,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: metadataTitle,
     description: metadataDescription,
+    alternates: {
+      canonical: "/media-gallery",
+    },
     openGraph: {
       title: metadataTitle,
       description: metadataDescription,
