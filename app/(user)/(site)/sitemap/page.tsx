@@ -1,8 +1,8 @@
-import Index from "../../components/qhse/Index";
+import Index from "@/app/components/Sitemap/index";
 import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const response = await fetch(`${process.env.BASE_URL}/api/admin/qhse`, { next: { revalidate: 60 } });
+    const response = await fetch(`${process.env.BASE_URL}/api/admin/sitemap`, { next: { revalidate: 60 } });
     const data = await response.json();
 
     const metadataTitle = data?.data?.metaTitle || "Quad Dream";
@@ -11,9 +11,6 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
         title: metadataTitle,
         description: metadataDescription,
-        alternates: {
-            canonical: "/qhse",
-        },
         openGraph: {
             title: metadataTitle,
             description: metadataDescription,
@@ -23,10 +20,9 @@ export async function generateMetadata(): Promise<Metadata> {
     };
 }
 
-export default async function Qhse() {
-    const response = await fetch(`${process.env.BASE_URL}/api/admin/qhse`, { next: { revalidate: 60 } });
+export default async function Sitemap() {
+    const response = await fetch(`${process.env.BASE_URL}/api/admin/sitemap`, { next: { revalidate: 60 } });
     const data = await response.json();
-
     return (
         <>
             <Index data={data.data} />

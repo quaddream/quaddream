@@ -27,9 +27,10 @@ type BannerProps = {
   insideCategoryTitle?: string;
 };
 
-const BannerInner: React.FC<BannerProps> = ({ bannerData,insideCategoryTitle }) => {
+const BannerInner: React.FC<BannerProps> = ({ bannerData, insideCategoryTitle }) => {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
+  const isFaq = pathname.includes("faq");
 
   const image = "image" in bannerData ? bannerData.image : bannerData.banner;
   const imageAlt =
@@ -77,14 +78,23 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData,insideCategoryTitle }) 
           {title && (
             <div>
               {/* Page Title */}
-              <motion.h1
+              {!isFaq && <motion.h1
                 className="text-white text-75 leading-[1.07] pb-3 font-normal inline-block"
                 initial={{ opacity: 0, x: -50, clipPath: "inset(0 100% 0 0)" }}
                 animate={{ opacity: 1, x: 0, clipPath: "inset(0 0% 0 0)" }}
                 transition={{ duration: 1, ease: "easeOut" }}
               >
                 {title}
-              </motion.h1>
+              </motion.h1>}
+
+              {isFaq && <motion.p
+                className="text-white text-75 leading-[1.07] pb-3 font-normal inline-block"
+                initial={{ opacity: 0, x: -50, clipPath: "inset(0 100% 0 0)" }}
+                animate={{ opacity: 1, x: 0, clipPath: "inset(0 0% 0 0)" }}
+                transition={{ duration: 1, ease: "easeOut" }}
+              >
+                {title}
+              </motion.p>}
 
               {/* Border */}
               <motion.div
@@ -121,9 +131,8 @@ const BannerInner: React.FC<BannerProps> = ({ bannerData,insideCategoryTitle }) 
 
           {/* Breadcrumb */}
           <div
-            className={`pb-3 lg:pb-15 xl:pb-19 ${
-              title ? "pt-5 lg:pt-16 xl:pt-16 2xl:pt-[135px]" : ""
-            }`}
+            className={`pb-3 lg:pb-15 xl:pb-19 ${title ? "pt-5 lg:pt-16 xl:pt-16 2xl:pt-[135px]" : ""
+              }`}
           >
             <ul className="flex gap-2 md:gap-3 items-center overflow-hidden">
               {navigation.map((nav, index) => (

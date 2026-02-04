@@ -1,4 +1,4 @@
-import Index from "../../components/ContactUs/Index";
+import Index from "@/app/components/ContactUs/Index";
 import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -37,7 +37,7 @@ export default async function ContactUs() {
 
   return (
     <>
-      <Index data={data.data} serviceData={serviceData.data.thirdSection.items.map((item: {firstSection:{title:string}}) => item.firstSection.title)} />
+      <Index data={data.data} serviceData={serviceData.data.thirdSection.items.map((item: { firstSection: { title: string } }) => item.firstSection.title)} />
     </>
   );
 }

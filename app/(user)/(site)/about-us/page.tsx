@@ -1,8 +1,8 @@
-import Index from "../../components/ProductsServices/Index";
+import Index from "@/app/components/aboutus/Index";
 import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const response = await fetch(`${process.env.BASE_URL}/api/admin/services`, { next: { revalidate: 60 } });
+  const response = await fetch(`${process.env.BASE_URL}/api/admin/about`, { next: { revalidate: 60 } });
   const data = await response.json();
 
   const metadataTitle = data?.data?.metaTitle || "Quad Dream";
@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: metadataTitle,
     description: metadataDescription,
     alternates: {
-      canonical: "/products-and-services",
+      canonical: "/about-us",
     },
     openGraph: {
       title: metadataTitle,
@@ -24,11 +24,12 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function ProductsAndServices() {
-  const response = await fetch(`${process.env.BASE_URL}/api/admin/services`, {
+export default async function Home() {
+  const response = await fetch(`${process.env.BASE_URL}/api/admin/about`, {
     next: { revalidate: 60 },
   });
   const data = await response.json();
+
   return (
     <>
       <Index data={data.data} />

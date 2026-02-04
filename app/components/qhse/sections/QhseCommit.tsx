@@ -16,7 +16,7 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ qhseData }) => {
     <section className="relative z-10 bg-background py-124 xl:py-150 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%] overflow-hidden">
       <div className="container">
         {/* Heading */}
-        <motion.h1
+        <motion.h2
           variants={moveUp()}
           initial="hidden"
           whileInView="show"
@@ -24,7 +24,7 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ qhseData }) => {
           className="text-80  leading-[1.12] mb-5 md:mb-8 lg:mb-12 text-black"
         >
           {qhseData.firstSection.title}
-        </motion.h1>
+        </motion.h2>
 
         {/* Paragraphs */}
         {qhseData.firstSection.description
@@ -37,9 +37,9 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ qhseData }) => {
               whileInView="show"
               viewport={{ once: true }}
               key={idx}
-              className="text-gray-para text-19 leading-[1.68] mb-4 xl:mb-10"
+              className="text-gray-para text-19 leading-[1.68] mb-4 xl:mb-10 qhse-firstSection-para"
             >
-              {para}
+              <span dangerouslySetInnerHTML={{ __html: para }}></span>
             </motion.p>
           ))}
 
@@ -61,7 +61,7 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ qhseData }) => {
         </motion.div>
       </div>
 
-      <QualityAssurance qaData={qhseData.secondSection}  />
+      <QualityAssurance qaData={qhseData.secondSection} />
     </section>
   );
 };
