@@ -123,7 +123,7 @@ const Commitment = ({ data }: { data: Home["firstSection"] }) => {
             transition={{ duration: 0.6 }}
             viewport={{ amount: 0.1, once: true }}
           >
-            <motion.h2
+            <motion.h1
               ref={textRef}
               variants={paragraphItem}
               initial="hidden"
@@ -133,7 +133,7 @@ const Commitment = ({ data }: { data: Home["firstSection"] }) => {
               className="text-65 leading-[1.153846153846154] mb-4 md:mb-5 lg:mb-50px "
             >
               {data.title}
-            </motion.h2>
+            </motion.h1>
             <motion.p
               variants={paragraphItem}
               initial="hidden"

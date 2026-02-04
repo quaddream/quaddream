@@ -1,8 +1,10 @@
-import Index from "../../components/aboutus/Index";
+import Index from "@/app/components/ProductsServices/Index";
 import { Metadata } from "next";
+import Script from "next/script";
+import { serviceSchema } from "@/lib/schema/service";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const response = await fetch(`${process.env.BASE_URL}/api/admin/about`, { next: { revalidate: 60 } });
+  const response = await fetch(`${process.env.BASE_URL}/api/admin/services`, { next: { revalidate: 60 } });
   const data = await response.json();
 
   const metadataTitle = data?.data?.metaTitle || "Quad Dream";
@@ -13,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: metadataTitle,
     description: metadataDescription,
     alternates: {
-      canonical: "/about-us",
+      canonical: "/products-and-services",
     },
     openGraph: {
       title: metadataTitle,
@@ -24,14 +26,21 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function Home() {
-  const response = await fetch(`${process.env.BASE_URL}/api/admin/about`, {
+export default async function ProductsAndServices() {
+  const response = await fetch(`${process.env.BASE_URL}/api/admin/services`, {
     next: { revalidate: 60 },
   });
   const data = await response.json();
-
   return (
     <>
+      <Script
+        id="service-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchema),
+        }}
+      />
       <Index data={data.data} />
     </>
   );

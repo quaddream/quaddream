@@ -1,4 +1,4 @@
-import Index from "../../components/projects/Index";
+import Index from "@/app/components/projects/Index";
 import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -47,7 +47,7 @@ export default async function Home() {
       <Index
         data={data.data}
         locationdata={locationdata.data}
-        // sectordata={sectordata.data}
+      // sectordata={sectordata.data}
       />
     </>
   );

@@ -30,7 +30,7 @@ const Main = ({ Data }: SIngleServiceProps) => {
         >
           <Image
             src={Data.image}
-            alt=""
+            alt={Data.imageAlt}
             width={1920}
             height={1280}
             className="object-cover w-full mb-5 lg:mb-8 2xl:mb-12 h-[280px]  md:h-[400px] xl:h-[601px]  rounded-2xl"
@@ -38,7 +38,7 @@ const Main = ({ Data }: SIngleServiceProps) => {
         </motion.div>
 
         <div className="mainp">
-            {Data.description
+          {Data.description
             .split("\n")
             .filter(Boolean)
             .map((para, idx) => (
@@ -49,9 +49,9 @@ const Main = ({ Data }: SIngleServiceProps) => {
                 viewport={{ once: true }}
                 key={idx}
                 className="  text-19 leading-text19 mb-4 md:mb-5 last:mb-0 text-gray-para htagst"
-                dangerouslySetInnerHTML={ {__html: para}}
+                dangerouslySetInnerHTML={{ __html: para }}
               >
-               
+
               </motion.div>
             ))}
         </div>

@@ -1,5 +1,7 @@
 import Index from "../components/home/Index";
 import { Metadata } from "next";
+import { reviewSchema } from "@/lib/schema/review";
+import Script from "next/script";
 
 export async function generateMetadata(): Promise<Metadata> {
   const response = await fetch(`${process.env.BASE_URL}/api/admin/home`, { next: { revalidate: 60 } });
@@ -37,6 +39,14 @@ export default async function Home() {
 
   return (
     <>
+      <Script
+        id="review-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(reviewSchema),
+        }}
+      />
       <Index data={data.data} pjtdata={pjtdata.data} />
     </>
   );

@@ -29,7 +29,7 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
             >
               {data.mainTitle}
             </motion.h2>
-            <motion.h4
+            <motion.h3
               className="text-25 md:text-30 leading-[1.333333333333333] mb-4 xl:mb-[29.7px]"
               variants={moveUp(0.6)}
               initial="hidden"
@@ -38,7 +38,7 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
               viewport={{ amount: 0.1, once: true }}
             >
               {data.subTitle}
-            </motion.h4>
+            </motion.h3>
             <motion.p
               className="text-19 leading-[1.684210526315789] text-lite-gray"
               variants={moveUp(0.8)}
@@ -59,7 +59,7 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
               transition={{ duration: 0.6 }}
               viewport={{ amount: 0.1, once: true }}
             >
-              
+
               <motion.div
                 className="relative min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto xl:col-span-2 overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group "
                 variants={moveUp(0.2)}
@@ -89,9 +89,9 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                   />
                 </div>
                 <div className="relative z-30 mt-auto"> <Link
-                    href="/products-and-services/scaffolding-contracting"
-                    className="flex items-center gap-2 group cursor-pointer"
-                  >
+                  href="/products-and-services/scaffolding-contracting"
+                  className="flex items-center gap-2 group cursor-pointer"
+                >
                   <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6">
                     {data.items[0].title}
                   </h3></Link>
@@ -139,13 +139,13 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                   />
                 </div>
                 <div className="relative z-30 mt-auto"> <Link
-                    href="/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales"
-                    className="flex items-center gap-2 group cursor-pointer"
-                  >
+                  href="/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales"
+                  className="flex items-center gap-2 group cursor-pointer"
+                >
                   <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6">
                     {data.items[1].title}
                   </h3>
-                  </Link>
+                </Link>
                   <Link
                     href="/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales"
                     className="flex items-center gap-2 group cursor-pointer"
@@ -191,13 +191,13 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                   />
                 </div>
                 <div className="relative z-30 mt-auto"> <Link
-                    href="/products-and-services/scaffolding-formwork-rental"
-                    className="flex items-center gap-2 group cursor-pointer"
-                  >
+                  href="/products-and-services/scaffolding-formwork-rental"
+                  className="flex items-center gap-2 group cursor-pointer"
+                >
                   <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6 max-w-[10ch]">
                     {data.items[2].title}
                   </h3>
-                  </Link>
+                </Link>
                   <Link
                     href="/products-and-services/scaffolding-formwork-rental"
                     className="flex items-center gap-2 group cursor-pointer"
@@ -246,9 +246,9 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                     href="/products-and-services/equipment-rentals"
                     className="flex items-center gap-2 group cursor-pointer"
                   >
-                  <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6">
-                    {data.items[3].title}
-                  </h3></Link>
+                    <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6">
+                      {data.items[3].title}
+                    </h3></Link>
                   <Link
                     href="/products-and-services/equipment-rentals"
                     className="flex items-center gap-2 group cursor-pointer"

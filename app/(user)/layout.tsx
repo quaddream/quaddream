@@ -6,6 +6,7 @@ import Footer from "../components/layout/footer";
 import Script from "next/script";
 import { localBusinessSchema } from "@/lib/schema/locaBusiness";
 
+
 const openSans = Open_Sans({
     subsets: ["latin"],
     weight: "variable", // loads all weights
@@ -55,6 +56,7 @@ export default function RootLayout({
                         __html: JSON.stringify(localBusinessSchema),
                     }}
                 />
+
             </head>
             <body className={`${openSans.variable} antialiased`}>
                 <noscript>
