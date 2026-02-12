@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
         title: metadataTitle,
         description: metadataDescription,
         alternates: {
-            canonical: `${process.env.BASE_URL}/qhse`,
+            canonical: `/qhse`,
         },
         openGraph: {
             title: metadataTitle,
