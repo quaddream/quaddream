@@ -36,6 +36,7 @@ const Banner = ({ data }: { data: Home["bannerSection"] }) => {
 
   return (
     <section className="h-[400px] md:h-screen 2xl:h-[100vh] bg-black relative z-[1] hero overflow-hidden ">
+      <h1 className="hidden">Top Scaffolding Company in UAE Delivering Safe & Reliable Access Solutions</h1>
       <div className="absolute top-0 left-0 w-full h-full bg-black z-0 transition-all duration-300">
         <video
           src={data.video}
@@ -77,9 +78,9 @@ const Banner = ({ data }: { data: Home["bannerSection"] }) => {
                       }}
                       className="flex flex-col gap-4 md:gap-12  "
                     >
-                      <h2 className="text-65 leading-[1.125] text-white opacity-0">
+                      <p className="text-65 leading-[1.125] text-white opacity-0">
                         {item.title}
-                      </h2>
+                      </p>
                       <Link
                         href="/projects"
                         className="opacity-0 fade-item flex items-center gap-2 cursor-pointer text-16 border-1 border-white py-1 2xl:py-[10px] px-3 2xl:px-5 rounded-[60px] w-fit text-white relative group overflow-hidden z-20 isolation-isolate fade-item"

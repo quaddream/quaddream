@@ -60,9 +60,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-6 md:gap-[170px] mb-6 lg:mb-10 xl:mb-[93px]">
           {/* Quick Links */}
           <div>
-            <h3 className="text-[16px] text-lite-gray tracking-[0.04em] uppercase mb-3 md:mb-[20px] lg:mb-[36px] font-medium">
+            <p className="text-[16px] text-lite-gray tracking-[0.04em] uppercase mb-3 md:mb-[20px] lg:mb-[36px] font-medium">
               Quick Link
-            </h3>
+            </p>
             <div className="grid grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-y-2 md:gap-y-5 xl:gap-y-[25px]">
               {quickLinks.map((item, index) => (
                 <Link
@@ -79,15 +79,15 @@ const Footer = () => {
           {/* Address & Social */}
           <div className="flex justify-between gap-5 md:gap-10 lg:gap-0 flex-col lg:flex-row">
             <div>
-              <h3 className="text-[16px] text-lite-gray uppercase mb-2 lg:mb-[36px] font-medium">
+              <p className="text-[16px] text-lite-gray uppercase mb-2 lg:mb-[36px] font-medium">
                 Address
-              </h3>
+              </p>
               <AddressSection />
             </div>
             <div>
-              <h3 className="text-[16px] text-lite-gray tracking-[0.04em] uppercase mb-3 md:mb-4 lg:mb-[20px] xl:mb-[41px] font-medium">
+              <p className="text-[16px] text-lite-gray tracking-[0.04em] uppercase mb-3 md:mb-4 lg:mb-[20px] xl:mb-[41px] font-medium">
                 Follow us
-              </h3>
+              </p>
               <div className="flex space-x-4 gap-3">
                 {socialLinks.map((item, index) => (
                   <Link
@@ -125,10 +125,15 @@ const Footer = () => {
             >
               Privacy Policy
             </Link>
+            <Link
+              href="/sitemap"
+              className="hover:text-white text-lite-gray text-16 leading-[1.5] font-[400]"
+            >
+              Sitemap
+            </Link>
           </div>
           <p className="text-16 text-[#9CA3AF] text-left">
-            &copy; {new Date().getFullYear()} Quaddream Group. All
-            rights reserved. | <span className="text-16 text-[#9CA3AF]/60">by</span> <a className="text-16 text-[#9CA3AF]/60 hover:text-[#9CA3AF]/80 transition-colors duration-300" href="https://www.globalsurf.ae/" target="_blank">Global Surf </a>
+            &copy; {new Date().getFullYear()} Scaffolding Company - Quaddream.com. All Rights Reserved. | <span className="text-16 text-[#9CA3AF]/60">by</span> <a className="text-16 text-[#9CA3AF]/60 hover:text-[#9CA3AF]/80 transition-colors duration-300" href="https://www.globalsurf.ae/" target="_blank">Global Surf </a>
           </p>
         </div>
       </div>
@@ -136,22 +141,21 @@ const Footer = () => {
       <div className="container relative">
         <div
           onClick={scrollToTop}
-          className={`fixed right-0 w-full z-10 cursor-pointer transition-all duration-300  ${
-            isBottom ? "bottom-4 md:bottom-22" : "bottom-4 lg:bottom-5 "
-          }`}
+          className={`fixed right-0 w-full z-10 cursor-pointer transition-all duration-300  ${isBottom ? "bottom-4 md:bottom-22" : "bottom-4 lg:bottom-5 "
+            }`}
         >
           <div className="container flex justify-end pointer-events-none">
             <div className="rounded-full pointer-events-auto">
               <a href="https://wa.me/971564331753?text=Hi%20there%2C%20I%20need%20help%20with%20your%20product" target="_blank" rel="noopener noreferrer">
-              <div className="w-[42px] h-[42px] lg:w-[58px] lg:h-[58px]">
-                <Image
-                  src="/assets/images/whatsapp.svg"
-                  alt="WhatsApp"
-                  width={58}
-                  height={58}
-                  className="w-full h-full hover:scale-110 transition-all duration-300"
-                />
-              </div>
+                <div className="w-[42px] h-[42px] lg:w-[58px] lg:h-[58px]">
+                  <Image
+                    src="/assets/images/whatsapp.svg"
+                    alt="WhatsApp"
+                    width={58}
+                    height={58}
+                    className="w-full h-full hover:scale-110 transition-all duration-300"
+                  />
+                </div>
               </a>
             </div>
           </div>

@@ -18,7 +18,7 @@ const EnvironmentalResponsibility: React.FC<
   return (
     <section className="py-124 xl:py-150 bg-[#F9F9F9]">
       <div className="container">
-        <motion.h1
+        <motion.h2
           variants={moveUp(0.1)}
           initial="hidden"
           whileInView="show"
@@ -26,7 +26,7 @@ const EnvironmentalResponsibility: React.FC<
           className="text-80   leading-[1.14] mb-5 md:mb-8 lg:mb-12 text-black"
         >
           {mainTitle}
-        </motion.h1>
+        </motion.h2>
         <motion.h2
           variants={moveUp(0.2)}
           initial="hidden"

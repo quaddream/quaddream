@@ -100,7 +100,7 @@ const Navbar = () => {
               <Link href="/">
                 <Image
                   src="/assets/images/logo-main.svg"
-                  alt="Logo"
+                  alt="Scaffolding Company - Quad Dream"
                   width={550}
                   height={550}
                   className="h-auto w-auto lg:h-[53px] xl:h-[65px] 2xl:h-[107px] object-contain"
@@ -265,7 +265,7 @@ const Navbar = () => {
               <Link href="/">
                 <Image
                   src="/assets/logo-quad.png"
-                  alt="Assent"
+                  alt="Scaffolding Company - Quad Dream"
                   width={300}
                   height={300}
                   className="h-[60px] w-auto object-contain"
@@ -321,7 +321,7 @@ const Navbar = () => {
               <Link href="/">
                 <Image
                   src="/assets/logo-quad.png"
-                  alt="Assent"
+                  alt="Scaffolding Company - Quad Dream"
                   width={80}
                   height={50}
                   className="h-[60px] w-auto"
