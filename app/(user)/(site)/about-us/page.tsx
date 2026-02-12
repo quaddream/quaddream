@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: metadataTitle,
     description: metadataDescription,
     alternates: {
-      canonical: `/about-us`,
+      canonical: `https://www.quaddream.com/about-us`,
     },
     openGraph: {
       title: metadataTitle,
