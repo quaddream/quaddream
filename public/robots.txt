@@ -5,6 +5,6 @@ Sitemap: https://www.quaddream.com/sitemap.xml
 User-agent: OAI-SearchBot
 Disallow:
 # Common Crawl
-User-agent: CCBot
+User-agent: CCBot 
 Disallow:
  
