@@ -15,7 +15,9 @@
 
 # next.js
 /.next/
+/.history/
 /out/
+/.history/
 
 # production
 /build

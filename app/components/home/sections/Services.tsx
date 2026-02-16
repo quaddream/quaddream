@@ -1,118 +1,275 @@
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
+"use client";
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "motion/react";
+import { moveUp, containerStagger } from "../../motionVarients";
+import { Home } from "../type";
+const Services = ({ data }: { data: Home["servicesSection"] }) => {
+  console.log(data)
+  return (
+    <section className="py-150 overflow-hidden bg-black">
+      <div className="container">
+        <div className="grid grid-cols-1 xl:grid-cols-[auto_706.89px] 2xl:grid-cols-[auto_866.89px] lg:gap-x-5 2xl:gap-[97.23px] text-white gap-y-8 lg:gap-y-5">
+          <motion.div
+            className="flex flex-col"
+            variants={containerStagger}
+            initial="hidden"
+            whileInView="show"
+            transition={{ duration: 0.6 }}
+            viewport={{ amount: 0.1, once: true }}
+          >
+            <motion.h2
+              className="text-80 leading-[1.125] mb-5 lg:mb-8 2xl:mb-12"
+              variants={moveUp(0.2)}
+              initial="hidden"
+              whileInView="show"
+              transition={{ duration: 0.6 }}
+              viewport={{ amount: 0.1, once: true }}
+            >
+              {data.mainTitle}
+            </motion.h2>
+            <motion.h3
+              className="text-25 md:text-30 leading-[1.333333333333333] mb-4 xl:mb-[29.7px]"
+              variants={moveUp(0.6)}
+              initial="hidden"
+              whileInView="show"
+              transition={{ duration: 0.6 }}
+              viewport={{ amount: 0.1, once: true }}
+            >
+              {data.subTitle}
+            </motion.h3>
+            <motion.p
+              className="text-19 leading-[1.684210526315789] text-lite-gray"
+              variants={moveUp(0.8)}
+              initial="hidden"
+              whileInView="show"
+              transition={{ duration: 0.6 }}
+              viewport={{ amount: 0.1, once: true }}
+            >
+              {data.description}
+            </motion.p>
+          </motion.div>
+          <div className="flex flex-col w-full gap-3 h-fit">
+            <motion.div
+              className="grid md:grid-cols-2 xl:grid-cols-5 2xl:grid-rows-[336px_339px] gap-3"
+              variants={containerStagger}
+              initial="hidden"
+              whileInView="show"
+              transition={{ duration: 0.6 }}
+              viewport={{ amount: 0.1, once: true }}
+            >
 
-const Services = () => {
-    return (
-        <section className='py-150 overflow-hidden'>
-            <div className='container'>
-                <div className='grid grid-cols-1 2xl:grid-cols-[auto_866.89px] 2xl:gap-[97.23px] text-white gap-y-5'>
-                    <div className='flex flex-col gap-[40px]'>
-                        <h2 className='text-80 leading-[1.125]'>Our Services</h2>
-                        <h4 className='text-30 leading-[1.333333333333333]'>At Quaddream, We offer Rentals and Sales to suit your requirement and Budget.</h4>
-                        <p className='text-19 leading-[1.684210526315789] text-[#bcbcbc]'>Quaddream is committed to your project’s success and budget. With flexible rental and sales
-                            options for high-quality materials, we ensure smooth execution—whether you need temporary equipment
-                            or a permanent solution. Partner with us for reliable results within your financial goals.
-                        </p>
-                    </div>
-                    <div className='flex flex-col w-full gap-3 h-fit'>
-                        <div className='grid grid-cols-2 xl:grid-cols-5 2xl:grid-rows-[336px_339px] gap-3'>
-                            <div className='relative col-span-2 overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer'>
-                                <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
-                                    <Image src="/assets/home/service-1.jpg" alt="Services" width={500} height={300} className='h-full w-full' />
-                                </div>
-                                <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/50 group-hover:to-primary/75 transition-all duration-300 to-100% z-20'></div>
-                                <div className='relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300'>
-                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                                        <path d="M10.8472 1.14795L0.820141 11.175" stroke="white" strokeWidth="1.07432" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                        <path d="M10.8472 8.50349V1.14795H3.49163" stroke="white" strokeWidth="1.07432" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </div>
-                                <div className='relative z-30 mt-auto'>
-                                    <h3 className='text-33 leading-[1.212121212121212] mb-25px'>High-Quality Materials</h3>
-                                    <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-                                        <span>Explore</span> <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                            className='group-hover:translate-x-2 transition-all duration-300'>
-                                            <path d="M11.8843 1.2334L17.9543 7.3034L11.8843 13.3734" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                            <path d="M0.954102 7.30322H17.7841" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </Link>
-                                </div>
-                            </div>
-                            <div className='relative col-span-3 overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer'>
-                                <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
-                                    <Image src="/assets/home/service-2.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
-                                </div>
-                                <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 transition-all duration-300 z-20'></div>
-                                <div className='relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300'>
-                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M10.8472 1.14795L0.820141 11.175" stroke="white" strokeWidth="1.07432" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                        <path d="M10.8472 8.50349V1.14795H3.49163" stroke="white" strokeWidth="1.07432" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </div>
-                                <div className='relative z-30 mt-auto'>
-                                    <h3 className='text-33 leading-[1.212121212121212] mb-25px'>Cuplock Scaffolding & Aluminum Mobile Tower Rental & Sales</h3>
-                                    <Link href="/" className="flex items-center gap-2 group cursor-pointer" >
-                                        <span>Explore</span> <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                            className='group-hover:translate-x-2 transition-all duration-300'>
-                                            <path d="M11.8843 1.2334L17.9543 7.3034L11.8843 13.3734" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                            <path d="M0.954102 7.30322H17.7841" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </Link>
-                                </div>
-                            </div>
-
-                            <div className='col-span-3 relative overflow-hidden rounded-2xl p-8 flex flex-col   group cursor-pointer'>
-                                <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
-                                    <Image src="/assets/home/service-3.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
-                                </div>
-                                <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 transition-all duration-300 z-20'></div>
-                                <div className='relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300'>
-                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M10.8472 1.14795L0.820141 11.175" stroke="white" strokeWidth="1.07432" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                        <path d="M10.8472 8.50349V1.14795H3.49163" stroke="white" strokeWidth="1.07432" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </div>
-                                <div className='relative z-30 mt-auto'>
-                                    <h3 className='text-33 leading-[1.212121212121212] mb-25px'>Scaffolding <br /> Formwork</h3>
-                                    <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-                                        <span>Explore</span>
-                                        <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                            className='group-hover:translate-x-2 transition-all duration-300'>
-                                            <path d="M11.8843 1.2334L17.9543 7.3034L11.8843 13.3734" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                            <path d="M0.954102 7.30322H17.7841" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </Link>
-                                </div>
-                            </div>
-                            <div className='col-span-2 relative overflow-hidden rounded-2xl p-8 flex flex-col group cursor-pointer'>
-                                <div className='absolute top-0 left-0 h-full w-full overflow-hidden'>
-                                    <Image src="/assets/home/service-4.jpg" alt="Services" width={500} height={500} className='h-full w-full' />
-                                </div>
-                                <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 transition-all duration-300 z-20'></div>
-                                <div className='relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300'>
-                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M10.8472 1.14795L0.820141 11.175" stroke="white" strokeWidth="1.07432" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                        <path d="M10.8472 8.50349V1.14795H3.49163" stroke="white" strokeWidth="1.07432" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </div>
-                                <div className='relative z-30 mt-auto'>
-                                    <h3 className='text-33 leading-[1.212121212121212] mb-25px'>Equipment Rentals</h3>
-                                    <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-                                        <span>Explore</span> <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                            className='group-hover:translate-x-2 transition-all duration-300'>
-                                            <path d="M11.8843 1.2334L17.9543 7.3034L11.8843 13.3734" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                            <path d="M0.954102 7.30322H17.7841" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              <motion.div
+                className="relative min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto xl:col-span-2 overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group "
+                variants={moveUp(0.2)}
+                initial="hidden"
+                whileInView="show"
+                transition={{ duration: 0.6 }}
+                viewport={{ amount: 0.1, once: true }}
+              >
+                <div className="absolute top-0 left-0 h-full w-full overflow-hidden">
+                  <Image
+                    src={data.items[0].image}
+                    alt={data.items[0].imageAlt}
+                    width={500}
+                    height={300}
+                    className="object-cover h-full w-full group-hover:scale-110 transition-all duration-300"
+                  />
                 </div>
-            </div>
-        </section>
-    )
-}
+                <div className="absolute bottom-0 left-0 h-full  w-full bg-gradient-to-b from-transparent to-black/80 to-100% group-hover:opacity-0 transition-all duration-300 z-20"></div>
+                <div className="absolute bottom-0 left-0 h-0 w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 group-hover:h-full transition-all duration-300 z-20"></div>
+                <div className="relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <Image
+                    src="/assets/images/arrow-top-right.svg"
+                    alt="Arrow"
+                    width={30}
+                    height={30}
+                    className="w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300"
+                  />
+                </div>
+                <div className="relative z-30 mt-auto"> <Link
+                  href="/products-and-services/scaffolding-contracting"
+                  className="flex items-center gap-2 group cursor-pointer"
+                >
+                  <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6">
+                    {data.items[0].title}
+                  </h3></Link>
+                  <Link
+                    href="/products-and-services/scaffolding-contracting"
+                    className="flex items-center gap-2 group cursor-pointer"
+                  >
+                    <span>Explore</span>{" "}
+                    <Image
+                      src="/assets/images/bold-arrow-white.svg"
+                      alt="Arrow"
+                      width={30}
+                      height={30}
+                      className="w-[24px] h-[24px] group-hover:translate-x-2 transition-all duration-300"
+                    />
+                  </Link>
+                </div>
+              </motion.div>
+              <motion.div
+                className="relative min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto xl:col-span-3 overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group "
+                variants={moveUp(0.4)}
+                initial="hidden"
+                whileInView="show"
+                transition={{ duration: 0.6 }}
+                viewport={{ amount: 0.1, once: true }}
+              >
+                <div className="absolute top-0 left-0 h-full w-full overflow-hidden">
+                  <Image
+                    src={data.items[1].image}
+                    alt={data.items[1].imageAlt}
+                    width={500}
+                    height={500}
+                    className="object-cover h-full w-full group-hover:scale-110 transition-all duration-300"
+                  />
+                </div>
+                <div className="absolute bottom-0 left-0 h-full  w-full bg-gradient-to-b from-transparent to-black/80 to-100% group-hover:opacity-0 transition-all duration-300 z-20"></div>
+                <div className="absolute bottom-0 left-0 h-0 w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 group-hover:h-full transition-all duration-300 z-20"></div>
+                <div className="relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <Image
+                    src="/assets/images/arrow-top-right.svg"
+                    alt="Arrow"
+                    width={30}
+                    height={30}
+                    className="w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300"
+                  />
+                </div>
+                <div className="relative z-30 mt-auto"> <Link
+                  href="/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales"
+                  className="flex items-center gap-2 group cursor-pointer"
+                >
+                  <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6">
+                    {data.items[1].title}
+                  </h3>
+                </Link>
+                  <Link
+                    href="/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales"
+                    className="flex items-center gap-2 group cursor-pointer"
+                  >
+                    <span>Explore</span>
+                    <Image
+                      src="/assets/images/bold-arrow-white.svg"
+                      alt="Arrow"
+                      width={30}
+                      height={30}
+                      className="w-[24px] h-[24px] group-hover:translate-x-2 transition-all duration-300"
+                    />
+                  </Link>
+                </div>
+              </motion.div>
 
-export default Services
+              <motion.div
+                className="xl:col-span-3 min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto relative overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col   group  "
+                variants={moveUp(0.6)}
+                initial="hidden"
+                whileInView="show"
+                transition={{ duration: 0.6 }}
+                viewport={{ amount: 0.1, once: true }}
+              >
+                <div className="absolute top-0 left-0 h-full w-full overflow-hidden">
+                  <Image
+                    src={data.items[2].image}
+                    alt={data.items[2].imageAlt}
+                    width={500}
+                    height={500}
+                    className="object-cover h-full w-full group-hover:scale-110 transition-all duration-300"
+                  />
+                </div>
+                <div className="absolute bottom-0 left-0 h-full  w-full bg-gradient-to-b from-transparent to-black/80 to-100% group-hover:opacity-0 transition-all duration-300 z-20"></div>
+                <div className="absolute bottom-0 left-0 h-0 w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 group-hover:h-full transition-all duration-300 z-20"></div>
+                <div className="relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <Image
+                    src="/assets/images/arrow-top-right.svg"
+                    alt="Arrow"
+                    width={30}
+                    height={30}
+                    className="w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300"
+                  />
+                </div>
+                <div className="relative z-30 mt-auto"> <Link
+                  href="/products-and-services/scaffolding-formwork-rental"
+                  className="flex items-center gap-2 group cursor-pointer"
+                >
+                  <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6 max-w-[10ch]">
+                    {data.items[2].title}
+                  </h3>
+                </Link>
+                  <Link
+                    href="/products-and-services/scaffolding-formwork-rental"
+                    className="flex items-center gap-2 group cursor-pointer"
+                  >
+                    <span>Explore</span>
+                    <Image
+                      src="/assets/images/bold-arrow-white.svg"
+                      alt="Arrow"
+                      width={30}
+                      height={30}
+                      className="w-[24px] h-[24px] group-hover:translate-x-2 transition-all duration-300"
+                    />
+                  </Link>
+                </div>
+              </motion.div>
+              <motion.div
+                className="xl:col-span-2 min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto relative overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group  "
+                variants={moveUp(0.8)}
+                initial="hidden"
+                whileInView="show"
+                transition={{ duration: 0.6 }}
+                viewport={{ amount: 0.1, once: true }}
+              >
+                <div className="absolute top-0 left-0 h-full w-full overflow-hidden">
+                  <Image
+                    src={data.items[3].image}
+                    alt={data.items[3].imageAlt}
+                    width={500}
+                    height={500}
+                    className="object-cover h-full w-full group-hover:scale-110 transition-all duration-300"
+                  />
+                </div>
+                <div className="absolute bottom-0 left-0 h-full  w-full bg-gradient-to-b from-transparent to-black/80 to-100% group-hover:opacity-0 transition-all duration-300 z-20"></div>
+                <div className="absolute bottom-0 left-0 h-0 w-full bg-gradient-to-b from-transparent to-black/50 to-100% group-hover:to-primary/75 group-hover:h-full transition-all duration-300 z-20"></div>
+                <div className="relative z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <Image
+                    src="/assets/images/arrow-top-right.svg"
+                    alt="Arrow"
+                    width={30}
+                    height={30}
+                    className="w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300"
+                  />
+                </div>
+                <div className="relative z-30 mt-auto">
+                  <Link
+                    href="/products-and-services/equipment-rentals"
+                    className="flex items-center gap-2 group cursor-pointer"
+                  >
+                    <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6">
+                      {data.items[3].title}
+                    </h3></Link>
+                  <Link
+                    href="/products-and-services/equipment-rentals"
+                    className="flex items-center gap-2 group cursor-pointer"
+                  >
+                    <span>Explore</span>
+                    <Image
+                      src="/assets/images/bold-arrow-white.svg"
+                      alt="Arrow"
+                      width={30}
+                      height={30}
+                      className="w-[24px] h-[24px] group-hover:translate-x-2 transition-all duration-300"
+                    />
+                  </Link>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Services;

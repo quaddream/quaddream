@@ -1,30 +1,36 @@
-import React from 'react'
-import Banner from './sections/Banner'
-import Commitment from './sections/Commitment'
-import Services from './sections/Services'
-import HomeTicker from './sections/HomeTicker'
-import CTA from './sections/cta'
-import IndustriesList from './sections/IndustriesList'
-import WhyChoose from './sections/WhyChoose'
-import OurPartners from './sections/OurPartners'
-import ProjectSwiperSlider from './sections/ProjectSwiper'
-import { partnersSection ,ctaSection ,projects } from "./data";
-const Index = () => {
-  return (
-   <div className='bg-black'>
-    <Banner/>
-    <Commitment/>
-    <HomeTicker/>
-    <Services/>
-    <IndustriesList/>
-    <WhyChoose/>
-    <ProjectSwiperSlider projects={projects.portfolio.projects} title={projects.portfolio.title} buttonLink={projects.portfolio.buttonLink} buttonText={projects.portfolio.buttonText}/>
-    <OurPartners   title={partnersSection.title}
-        description={partnersSection.description}
-        items={partnersSection.items} bgImg={partnersSection.bgImg}/>
-    <CTA title={ctaSection.title} description={ctaSection.description} buttonLink={ctaSection.buttonLink} buttonText={ctaSection.buttonText} bgImg={ctaSection.bgImg}/>
-   </div>
-  )
-}
+import React from "react";
+import Banner from "./sections/Banner";
+import Services from "./sections/Services";
+import HomeTicker from "./sections/HomeTicker";
+import CTA from "../common/cta";
+import IndustriesList from "./sections/IndustriesList";
+import WhyChoose from "./sections/WhyChoose";
+import OurPartners from "./sections/OurPartners";
+import PortfolioHorizontalScroll from "./sections/PortfolioHorizontalScroll";
+import { Home } from "./type";
+import { Projects } from "../projects/type";
+import Scrollgsap from "./sections/Scrollgsap";
 
-export default Index
+const Index = async ({ data, pjtdata }: { data: Home; pjtdata: Projects }) => {
+  return (
+    <div>
+      <div className="frtsn">
+        <div className="lg:sticky top-0 lg:h-screen z-10">
+          <Banner data={data.bannerSection} />
+        </div>
+
+        <Scrollgsap data={data.firstSection} />
+      </div>
+
+      <HomeTicker />
+      <Services data={data.servicesSection} />
+      <IndustriesList data={data.industriesSection} />
+      <WhyChoose data={data.fourthSection} />
+      <PortfolioHorizontalScroll projectsdata={pjtdata} />
+      <OurPartners {...data.partnersSection} />
+      <CTA maxwidth={19} {...data.seventhSection} />
+    </div>
+  );
+};
+
+export default Index;

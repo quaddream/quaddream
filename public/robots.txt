@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /admin/
+Sitemap: https://www.quaddream.com/sitemap.xml
+# OpenAI SearchBot 
+User-agent: OAI-SearchBot
+Disallow:
+# Common Crawl
+User-agent: CCBot 
+Disallow:
+ 

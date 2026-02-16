@@ -1,0 +1,109 @@
+"use client";
+
+import Link from "next/link";
+import React from "react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { moveUp } from "../../motionVarients";
+import { ProductsServicesData } from "../type";
+
+type MissionProps = {
+  Data: ProductsServicesData["thirdSection"];
+};
+
+const CoreServices: React.FC<MissionProps> = ({ Data }) => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  return (
+    <section className="pb-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative  ">
+      <div className="container ">
+        <div>
+          <motion.h2
+            className="text-80 leading-[1.125] mb-6 md:mb-12 text-black "
+            variants={moveUp(0.2)}
+            initial="hidden"
+            whileInView="show"
+            transition={{ duration: 0.6 }}
+            viewport={{ amount: 0.1, once: true }}
+          >
+            {Data.title}
+          </motion.h2>
+        </div>
+        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5 ">
+          {Data.items.map((item, index) => (
+            <motion.div
+              variants={moveUp(index * 0.2)}
+              initial="hidden"
+              whileInView="show"
+              transition={{ duration: 0.6 }}
+              viewport={{ amount: 0.1, once: true }}
+              key={index}
+              className={`group ${activeIndex === index ? "active" : ""}`}
+              onMouseEnter={() =>
+                setActiveIndex(activeIndex === index ? null : index)
+              }
+              onMouseLeave={() => setActiveIndex(null)}
+            >
+              <Link href={`/products-and-services/${item.slug}`}>
+                <div
+                  className="h-[300px] xl:h-[408px] relative rounded-2xl bg-no-repeat bg-cover p-7 lg:p-10"
+                  style={{ backgroundImage: `url(${item.thumbnail})` }}
+                >
+                  <div className="flex flex-col justify-between gap-5 h-full relative z-20">
+                    <div
+                      className={`transition-all duration-500 group-hover:translate-y-0 w-10 h-10 md:w-[66px] md:h-[66px] group-hover:opacity-100 rounded-md md:rounded-2xl bg-white flex items-center justify-center ml-auto
+          ${
+            activeIndex === index
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-5"
+          }`}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="23"
+                        height="23"
+                        viewBox="0 0 23 23"
+                        fill="none"
+                        className="w-[15px] h-[15px] md:w-[23px] md:h-[23px] "
+                      >
+                        <path
+                          d="M21.5 1.5L1 22"
+                          stroke="#EC1C24"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M22 18.6057V1H4.39428"
+                          stroke="#EC1C24"
+                          strokeWidth="1.5"
+                          strokeMiterlimit="10"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+
+                    <h3
+                      className={`text-25 md:text-33 leading-[1.2] group-hover:translate-x-1 font-light text-white transition-all duration-500 transform
+          ${activeIndex === index ? "translate-x-1" : ""}`}
+                    >
+                      {item.thumbnailTitle}
+                    </h3>
+                  </div>
+                  <div className="absolute transition-all duration-300 top-0 left-0 w-full h-full bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,#000000_100%)] rounded-2xl z-10"></div>
+                  <div
+                    className={`absolute transition-all duration-500 top-0 left-0 w-full h-full bg-primary rounded-2xl z-10 group-hover:opacity-100
+        ${activeIndex === index ? "opacity-100" : "opacity-0"}`}
+                  ></div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CoreServices;

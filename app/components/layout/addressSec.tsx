@@ -1,8 +1,8 @@
-'use client';
-import { useState } from 'react';
-import Image from 'next/image';
+"use client";
+import { useState } from "react";
+import Image from "next/image";
 
-type AddressKey = 'Head Office' | 'Yard' | 'UAE Branch' | 'Canada';
+type AddressKey = "Head Office" | "Yard" | "SHJ Branch" | "Canada" | "Abu Dhabi";
 
 type AddressData = {
   lines: string[];
@@ -11,90 +11,106 @@ type AddressData = {
 };
 
 const addresses: Record<AddressKey, AddressData> = {
-  'Head Office': {
+  "Head Office": {
     lines: [
-      'Office No. 110, Al Mansoor Building, Damascus Street',
-      'Al Qusais Industrial Area 2 – Dubai.',
+      "Office No. 110, Al Mansour Building, Damascus Street 3 | Al Qusais Industrial Area 2, Dubai, UAE",
     ],
-    phones: ['+971 4 263 7784', '+971 56 544 5987', '+971 50 545 2385'],
-    emails: ['enquiries@quaddream.com', 'info@quaddream.com'],
+    phones: ["+971 4 263 7784", "+971 56 544 5987", "+971 50 545 2385"],
+    emails: ["info@quaddream.com", "enquiries@quaddream.com"],
   },
   Yard: {
-    lines: [
-      'Office No. 111,',
-      'Yard',
-    ],
-    phones: ['+971 4 263 7784', '+971 56 544 5987', '+971 50 545 2385'],
-    emails: ['enquiries@quaddream.com', 'info@quaddream.com'],
+    lines: ["Al Quoz Industrial Area – 2, Near Bartawi Dubai, UAE"],
+    phones: ["+971 50 451 8609", "+971 54 514 6495"],
+    emails: ["yard-2@quaddream.com", "john@quaddream.com"],
   },
-  'UAE Branch': {
-   lines: [
-      'Office No. 112',
-      'UAE Branch.',
-    ],
-    phones: ['+971 4 263 7784', '+971 56 544 5987', '+971 50 545 2385'],
-    emails: ['enquiries@quaddream.com', 'info@quaddream.com'],
+  "SHJ Branch": {
+    lines: ["Quaddream Branch office, Sharjah."],
+    phones: ["+971 50 451 8609", "+971 54 514 6495"],
+    emails: ["info@quaddream.com", "enquiries@quaddream.com"],
   },
   Canada: {
-   lines: [
-      'Office No. 113',
-      'Canada.',
-    ],
-    phones: ['+971 4 263 7784', '+971 56 544 5987', '+971 50 545 2385'],
-    emails: ['enquiries@quaddream.com', 'info@quaddream.com'],
+    lines: ["Bradford, Ontario, Canada"],
+    phones: ["+971 50 451 8609", "+971 54 514 6495"],
+    emails: ["info@quaddream.com", "enquiries@quaddream.com"],
+  },
+  "Abu Dhabi": {
+    lines: [" Office No: 27, 7th Floor, Tower 1 Business Center, Mazyad Mall, Musaffah – Abu Dhabi"],
+    phones: ["+971 50 352 5314"],
+    emails: ["info@quaddream.com", "enquiries@quaddream.com"],
   },
 };
 
 const AddressSection = () => {
-  const [selected, setSelected] = useState<AddressKey>('Head Office');
+  const [selected, setSelected] = useState<AddressKey>("Head Office");
   const data = addresses[selected];
 
   return (
     <div className="text-white">
+      <div className="flex flex-wrap gap-2 gap-x-3 md:gap-x-4 2xl:gap-6 mb-4">
+        {Object.keys(addresses).map((key) => (
+          <div key={key} className="flex items-center gap-2 md:gap-2 2xl:gap-4">
+            {/* Round Indicator */}
+            <div
+              className={`w-[6px] h-[6px] md:w-[9px] md:h-[9px] rounded-full ${selected === key ? "bg-red-500" : "bg-[#828D91]"}`}
+            ></div>
 
-      <div className="flex flex-wrap gap-5 2xl:gap-[46px] mb-4">
-  {Object.keys(addresses).map((key) => (
-    <div key={key} className="flex items-center gap-4">
-      {/* Round Indicator */}
-      <div
-        className={`w-[9px] h-[9px] rounded-full ${
-          selected === key ? 'bg-red-500' : 'bg-[#828D91]'
-        }`}
-      ></div>
-
-      {/* Button */}
-      <button
-        onClick={() => setSelected(key as AddressKey)}
-        className={`transition duration-200 text-30 font-normal cursor-pointer leading-[1.3] ${
-          selected === key ? 'text-white' : 'text-[#828D91] hover:text-white '
-        }`}
-      >
-        {key}
-      </button>
-    </div>
-  ))}
-</div>
-
-
-      <div className=" space-y-1 mt-[26px]">
-        {data.lines.map((line, i) => (
-          <p className='text-[19px] text-[#B9B9B9] leading-[1.9]' key={i}>{line}</p>
+            {/* Button */}
+            <button
+              onClick={() => setSelected(key as AddressKey)}
+              className={`transition duration-200 text-[18px] md:text-[23px] 2xl:text-[25px] font-normal cursor-pointer leading-[1.3] ${
+                selected === key
+                  ? "text-white"
+                  : "text-[#828D91] hover:text-white "
+              }`}
+            >
+              {key}
+            </button>
+          </div>
         ))}
-        <p className="flex items-start gap-2 pt-2 text-[19px] text-[#B9B9B9] leading-[1.9]">
+      </div>
+
+      <div className="md:mt-[26px]">
+        {data.lines.map((line, i) => (
+          <p
+            className="text-[14px] md:text-[19px] text-[#B9B9B9] leading-[1.6] md:leading-[1.9]"
+            key={i}
+          >
+            {line}
+          </p>
+        ))}
+        <div className="flex md:items-center gap-2 pt-3 md:pt-2 pb-2 md:pb-0 text-[15px] md:text-19 text-[#B9B9B9] leading-[1.9]">
           <span className="mt-1 text-red-500">
             {/* Phone icon SVG */}
-            <Image src="/assets/phone.svg" alt="Phone Icon" width={16} height={16} />
+            <Image
+              src="/assets/phone.svg"
+              alt="Phone Icon"
+              width={50}
+              height={50}
+              className="w-[24px] h-[24px]"
+            />
           </span>
-          {data.phones.join(' | ')}
-        </p>
+
+          {data.phones.join(" | ")}
+        </div>
         {data.emails.map((email, i) => (
-          <p key={i} className="flex items-center gap-2 text-[19px] text-[#B9B9B9] leading-[1.9]">
+          <div
+            key={i}
+            className="flex items-center gap-2 text-3 md:text-[19px] text-[#B9B9B9] leading-[1.9] mb-1"
+          >
             <span className="text-red-500">
               {/* Mail icon SVG */}
-               <Image src="/assets/mail.svg" alt="Mail Icon" width={16} height={16} />
+              <Image
+                src="/assets/mail.svg"
+                alt="Mail Icon"
+                width={50}
+                height={50}
+                className="w-[24px] h-[24px]"
+              />
             </span>
-            <a href={`mailto:${email}`} className="hover:underline">{email}</a>
-          </p>
+            <a href={`mailto:${email}`} className="hover:underline">
+              {email}
+            </a>
+          </div>
         ))}
       </div>
     </div>
