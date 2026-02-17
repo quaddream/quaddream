@@ -29,6 +29,7 @@ export interface ProductsServicesData {
         bannerSection: {
           image: string;
           imageAlt: string;
+          title: string;
         };
         firstSection: {
           title: string;

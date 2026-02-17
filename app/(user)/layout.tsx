@@ -5,7 +5,7 @@ import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/footer";
 import Script from "next/script";
 import { localBusinessSchema } from "@/lib/schema/locaBusiness";
-
+import { reviewSchema } from "@/lib/schema/review";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -47,13 +47,21 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-NBV7RRSH');`,
                     }}
                 />
-
+  
                 <Script
                     id="local-business-schema"
                     type="application/ld+json"
                     strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
                         __html: JSON.stringify(localBusinessSchema),
+                    }}
+                />
+                <Script
+                    id="review-schema"
+                    type="application/ld+json"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(reviewSchema),
                     }}
                 />
 

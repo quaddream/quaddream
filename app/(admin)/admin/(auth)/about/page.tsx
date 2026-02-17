@@ -110,10 +110,13 @@ const About = () => {
     }
 
     const fetchAboutData = async () => {
+        
         try {
             const response = await fetch(`/api/admin/about`);
             if (response.ok) {
                 const data = await response.json();
+                console.log("Full Data:", data.data);
+
                 setValue("metaTitle", data.data.metaTitle);
                 setValue("metaDescription", data.data.metaDescription);
                 setValue("bannerSection", data.data.bannerSection);
@@ -182,20 +185,20 @@ const About = () => {
                                     </div>
                                 </div>
 
-
-                            </div>
-
-                            <div className='flex flex-col gap-2'>
                                 <div className='flex flex-col gap-2'>
                                     <div className='flex flex-col gap-2'>
                                         <Label className='font-bold'>Title</Label>
                                         <Input type='text' placeholder='Title' {...register(`bannerSection.title`, {
                                             required: "Value is required"
-                                        })} />
+                                        })} /> 
                                         {errors.bannerSection?.title && <p className='text-red-500'>{errors.bannerSection?.title.message}</p>}
                                     </div>
                                 </div>
+                          
+
                             </div>
+
+                           
 
                         </div>
                     </div>

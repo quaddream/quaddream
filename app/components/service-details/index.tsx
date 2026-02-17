@@ -18,7 +18,7 @@ const Index = ({
         bannerData={{
           image: service.bannerSection.image,
           imageAlt: service.bannerSection.imageAlt,
-          title: service.firstSection.title,
+          title: service.bannerSection.title,
         }}
       />
       <Main Data={service.firstSection} />
