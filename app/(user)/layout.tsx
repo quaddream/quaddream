@@ -5,7 +5,7 @@ import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/footer";
 import Script from "next/script";
 import { localBusinessSchema } from "@/lib/schema/locaBusiness";
-import { reviewSchema } from "@/lib/schema/review";
+// import { reviewSchema } from "@/lib/schema/review";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -48,23 +48,13 @@ export default function RootLayout({
                     }}
                 />
   
-                <Script
-                    id="local-business-schema"
-                    type="application/ld+json"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify(localBusinessSchema),
-                    }}
-                />
-                <Script
-                    id="review-schema"
-                    type="application/ld+json"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify(reviewSchema),
-                    }}
-                />
-
+                <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessSchema),
+          }}
+        />
+                
             </head>
             <body className={`${openSans.variable} antialiased`}>
                 <noscript>

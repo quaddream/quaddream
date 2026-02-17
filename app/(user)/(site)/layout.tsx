@@ -1,6 +1,8 @@
 import Script from "next/script";
 import { reviewSchema } from "@/lib/schema/review";
 
+
+
 export default function SiteLayout({
     children,
 }: {
@@ -8,6 +10,8 @@ export default function SiteLayout({
 }) {
     return (
         <>
+           
+
             <Script
                 id="review-schema"
                 type="application/ld+json"

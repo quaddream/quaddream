@@ -1,5 +1,7 @@
 import React from "react";
 import Index from "@/app/components/blog-detail/Index";
+import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
+import Script from "next/script";
 
 type Props = {
     params: Promise<{ slug: string }>;
@@ -44,5 +46,16 @@ export default async function BlogDetailsPage({ params }: Props) {
     const blog = await getBlog(slug as string);
     const allBlogs = await getAllBlogs();
 
-    return <Index blogDetail={blog.data} allBlogs={allBlogs.data.blogs} />;
+    return (
+        <>
+            <script 
+                id="breadcrumb-schema"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(generateBreadcrumbSchema(`/blog/${slug}`)),
+                }}
+            />
+            <Index blogDetail={blog.data} allBlogs={allBlogs.data.blogs} />;
+        </>
+    );
 }

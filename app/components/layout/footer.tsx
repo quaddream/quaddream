@@ -2,7 +2,7 @@
 import Image from "next/image";
 import AddressSection from "./addressSec";
 import Link from "next/link";
-import { quickLinks, socialLinks } from "./footerItems";
+import { quickLinks, socialLinks, servicesLinks } from "./footerItems";
 
 import { useEffect, useState } from "react";
 const Footer = () => {
@@ -57,24 +57,48 @@ const Footer = () => {
           </button>
         </div>
         {/* Links Section */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-6 md:gap-[170px] mb-6 lg:mb-10 xl:mb-[93px]">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_3fr] gap-6 md:gap-10 mb-6 lg:mb-10 xl:mb-[93px]">
           {/* Quick Links */}
-          <div>
-            <p className="text-[16px] text-lite-gray tracking-[0.04em] uppercase mb-3 md:mb-[20px] lg:mb-[36px] font-medium">
-              Quick Link
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-y-2 md:gap-y-5 xl:gap-y-[25px]">
-              {quickLinks.map((item, index) => (
-                <Link
-                  key={index}
-                  href={item.qLLink}
-                  className="text-19 md:text-25 font-light hover:text-[#EC1C24] cursor-pointer leading-[1.333333333333333] transition-all duration-300"
-                >
-                  {item.qLTitle}
-                </Link>
-              ))}
+          <div className="flex justify-start gap-5 md:gap-10 flex-row">
+            <div>
+              <p className="text-[16px] text-lite-gray tracking-[0.04em] uppercase mb-3 md:mb-[20px] lg:mb-[36px] font-medium">
+                Quick Link
+              </p>
+              <div className="grid  gap-y-2 md:gap-y-5 xl:gap-y-[25px]">
+                {quickLinks.map((item, index) => (
+                  <Link
+                    key={index}
+                    href={item.qLLink}
+                    className="text-19 font-light hover:text-[#EC1C24] cursor-pointer leading-[1.333333333333333] transition-all duration-300"
+                  >
+                    {item.qLTitle}
+                  </Link>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div>
+                <p className="text-[16px] text-lite-gray tracking-[0.04em] uppercase mb-3 md:mb-[20px] lg:mb-[36px] font-medium">
+                  Services
+                </p>
+                <div className="grid gap-y-2 md:gap-y-5 xl:gap-y-[25px]">
+                  {servicesLinks.map((item, index) => (
+                    <Link
+                      key={index}
+                      href={item.link}
+                      className="text-19 font-light hover:text-[#EC1C24] cursor-pointer leading-[1.333333333333333] transition-all duration-300"
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
             </div>
           </div>
+          {/* Services (On Hold) */}
+
+
 
           {/* Address & Social */}
           <div className="flex justify-between gap-5 md:gap-10 lg:gap-0 flex-col lg:flex-row">

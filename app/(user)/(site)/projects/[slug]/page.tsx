@@ -1,5 +1,7 @@
 import Index from "@/app/components/project-details";
 import { Metadata } from "next";
+import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
+import Script from "next/script";
 
 
 export async function generateMetadata({params}: {params: Promise<{slug: string}>}): Promise<Metadata> {
@@ -47,6 +49,13 @@ export default async function Home({
 
   return (
     <>
+     <script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateBreadcrumbSchema(`/projects/${slug}`)),
+        }}
+      />
       <Index data={data.data} pjtdata={pjtdata.data} />
     </>
   );

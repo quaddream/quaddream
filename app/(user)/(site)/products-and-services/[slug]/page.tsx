@@ -1,5 +1,7 @@
 import Index from "@/app/components/service-details";
 import { Metadata } from "next";
+import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
+import Script from "next/script";
 
 type Props = {
     params: Promise<{ slug: string }>;
@@ -49,5 +51,16 @@ export default async function ServiceDetailsPage({ params }: Props) {
     const service = await getService(slug as string);
     const whatyouget = await getWhatyougetData();
 
-    return <Index service={service.data} whatyougetData={whatyouget.data} />;
+    return (
+      <>
+        <script
+          id="breadcrumb-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateBreadcrumbSchema(`/products-and-services/${slug}`)),
+          }}
+        />
+        <Index service={service.data} whatyougetData={whatyouget.data} />
+      </>
+    );
 }

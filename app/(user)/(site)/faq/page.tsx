@@ -1,6 +1,8 @@
 import React from 'react'
 import Index from '@/app/components/faq/Index'
 import { Metadata } from 'next';
+import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
+import Script from "next/script";
 
 export async function generateMetadata(): Promise<Metadata> {
   const response = await fetch(`${process.env.BASE_URL}/api/admin/faq`, { next: { revalidate: 60 } });
@@ -31,6 +33,13 @@ export default async function Faq() {
 
   return (
     <>
+      <script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateBreadcrumbSchema("/faq")),
+        }}
+      />
     <Index data={data.data}/>
     </>
   )
