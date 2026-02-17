@@ -15,6 +15,11 @@ const nextConfig: NextConfig = {
         destination: "/about-us", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },  
+      {
+      source: "/index.html",
+      destination: "/",
+      permanent: true,
+    },
     ];
   },
 };

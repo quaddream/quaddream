@@ -112,12 +112,14 @@ const IndividualService = () => {
 
 
     const handleAddIndividualService = async (data: IndividualServiceFormProps) => {
+        
         try {
 
             const response = await fetch(`/api/admin/services?id=${id}`, {
                 method: "PATCH",
                 body: JSON.stringify(data),
             });
+           
             if (response.ok) {
                 const data = await response.json();
                 toast.success(data.message);
@@ -385,6 +387,16 @@ const setCheckedProductInSheet = (sectionIndex: number) => {
                                         {errors.bannerSection?.imageAlt && <p className='text-red-500'>{errors.bannerSection?.imageAlt.message}</p>}
                                     </div>
                                 </div>
+                                <div className='flex flex-col gap-2'>
+                                    <div className='flex flex-col gap-2'>
+                                        <Label className='font-bold'>Title</Label>
+                                        <Input type='text' placeholder='Title' {...register(`bannerSection.title`, {
+                                            required: "Value is required"
+                                        })} />
+                                        {errors.bannerSection?.title && <p className='text-red-500'>{errors.bannerSection?.title.message}</p>}
+                                    </div>
+                                </div>
+
 
 
                             </div>

@@ -46,6 +46,7 @@ const serviceSchema = new mongoose.Schema({
                 bannerSection:{
                     image:{type:String},
                     imageAlt:{type:String},
+                    title:{type:String},
                 },
                 firstSection:{
                     title:{type:String},
