@@ -1,5 +1,7 @@
 import Index from "@/app/components/aboutus/Index";
+import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
 import { Metadata } from "next";
+import Script from "next/script";
 
 export async function generateMetadata(): Promise<Metadata> {
   const response = await fetch(`${process.env.BASE_URL}/api/admin/about`, { next: { revalidate: 60 } });
@@ -29,9 +31,17 @@ export default async function Home() {
     next: { revalidate: 60 },
   });
   const data = await response.json();
+ 
 
   return (
     <>
+      <script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateBreadcrumbSchema("/about-us")),
+        }}
+      />
       <Index data={data.data} />
     </>
   );

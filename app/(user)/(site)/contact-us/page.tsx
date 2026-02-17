@@ -1,5 +1,7 @@
 import Index from "@/app/components/ContactUs/Index";
 import { Metadata } from "next";
+import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
+import Script from "next/script";
 
 export async function generateMetadata(): Promise<Metadata> {
   const response = await fetch(`${process.env.BASE_URL}/api/admin/contact`, { next: { revalidate: 60 } });
@@ -37,6 +39,13 @@ export default async function ContactUs() {
 
   return (
     <>
+      <script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateBreadcrumbSchema("/contact-us")),
+        }}
+      />
       <Index data={data.data} serviceData={serviceData.data.thirdSection.items.map((item: { firstSection: { title: string } }) => item.firstSection.title)} />
     </>
   );

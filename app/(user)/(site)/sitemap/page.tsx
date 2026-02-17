@@ -1,5 +1,7 @@
 import Index from "@/app/components/Sitemap/index";
 import { Metadata } from "next";
+import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
+import Script from "next/script";
 
 export async function generateMetadata(): Promise<Metadata> {
     const response = await fetch(`${process.env.BASE_URL}/api/admin/sitemap`, { next: { revalidate: 60 } });
@@ -25,6 +27,14 @@ export default async function Sitemap() {
     const data = await response.json();
     return (
         <>
+            <Script
+                id="breadcrumb-schema"
+                type="application/ld+json"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(generateBreadcrumbSchema("/sitemap")),
+                }}
+            />
             <Index data={data.data} />
         </>
     );

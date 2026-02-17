@@ -1,7 +1,8 @@
 import Index from "@/app/components/ProductsServices/Index";
 import { Metadata } from "next";
-import Script from "next/script";
 import { serviceSchema } from "@/lib/schema/service";
+import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
+import Script from "next/script";
 
 export async function generateMetadata(): Promise<Metadata> {
   const response = await fetch(`${process.env.BASE_URL}/api/admin/services`, { next: { revalidate: 60 } });
@@ -39,6 +40,13 @@ export default async function ProductsAndServices() {
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(serviceSchema),
+        }}
+      />
+      <script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateBreadcrumbSchema("/products-and-services")),
         }}
       />
       <Index data={data.data} />

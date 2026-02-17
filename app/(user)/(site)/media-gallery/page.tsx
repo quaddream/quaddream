@@ -1,6 +1,8 @@
 import React from "react";
 import Index from "@/app/components/media-gallery/Index";
 import { Metadata } from "next";
+import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
+import Script from "next/script";
 
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -35,6 +37,13 @@ export default async function MediaGallery() {
 
   return (
     <>
+      <script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateBreadcrumbSchema("/media-gallery")),
+        }}
+      />
       <Index data={data.data} />
     </>
   );

@@ -130,7 +130,7 @@ const Navbar = () => {
                     }}
                   >
                     {/* 👇 Parent is a Link if Media Center, otherwise span/link */}
-                    {item.name === "Media Center" ? (
+                    {/* {item.name === "Media Center" ? (
                       <Link
                         href="/media-gallery"
                         className={`text-nowrap font-16 xl:text-19 ${textColorClass}`}
@@ -150,7 +150,22 @@ const Navbar = () => {
                       >
                         {item.name}
                       </Link>
-                    )}
+                    )} */}
+
+{item.href ? (
+  <Link
+    href={item.href}
+    className={`text-nowrap font-16 xl:text-19 ${textColorClass}`}
+  >
+    {item.name}
+  </Link>
+) : (
+  <span
+    className={`text-nowrap font-16 xl:text-19 ${textColorClass}`}
+  >
+    {item.name}
+  </span>
+)}
 
                     {/* underline */}
                     <span
@@ -161,7 +176,7 @@ const Navbar = () => {
                     {item.children && (
                       <ul
                         className={`
-            absolute left-1/2 top-full -translate-x-1/2 flex-col rounded-[8px] bg-white w-[190px]
+            absolute left-1/2 top-full -translate-x-1/2 flex-col rounded-[8px] bg-white  ${item.href === "/products-and-services" ? "w-[260px]" : "w-[190px]"}
             transition-all duration-300 ease-in-out pb-5
             ${
               openDropdown === index
