@@ -1,7 +1,6 @@
 import Index from "@/app/components/qhse/Index";
 import { Metadata } from "next";
 import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
-import Script from "next/script";
 
 export async function generateMetadata(): Promise<Metadata> {
     const response = await fetch(`${process.env.BASE_URL}/api/admin/qhse`, { next: { revalidate: 60 } });
@@ -31,8 +30,8 @@ export default async function Qhse() {
 
     return (
         <>
-           <script
-                id="breadcrumb-schema" 
+            <script
+                id="breadcrumb-schema"
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify(generateBreadcrumbSchema("/qhse")),

@@ -2,7 +2,6 @@ import React from "react";
 import Index from "@/app/components/downloads/Index";
 import { Metadata } from "next";
 import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
-import Script from "next/script";
 
 export async function generateMetadata(): Promise<Metadata> {
   const response = await fetch(`${process.env.BASE_URL}/api/admin/downloads`, { next: { revalidate: 60 } });

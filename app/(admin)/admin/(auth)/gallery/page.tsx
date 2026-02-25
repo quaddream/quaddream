@@ -28,38 +28,38 @@ interface GalleryPageProps {
     metaTitle: string;
     metaDescription: string;
     bannerSection: {
-            image: string;
-            imageAlt: string;
-            title: string;
+        image: string;
+        imageAlt: string;
+        title: string;
     };
     firstSection: {
-      title: string;
-      description: string;
+        title: string;
+        description: string;
     }
-  }
+}
 
 const AdminGallery = () => {
 
     const [category, setCategory] = useState<string>("")
     const [slug, setSlug] = useState<string>("")
 
-    const [categoryList, setCategoryList] = useState<{_id: string, title: string, slug: string}[]>([]);
+    const [categoryList, setCategoryList] = useState<{ _id: string, title: string, slug: string }[]>([]);
 
     const { register, handleSubmit, setValue, control, formState: { errors } } = useForm<GalleryPageProps>();
 
 
-    const handleAddCategory = async() => {
+    const handleAddCategory = async () => {
         try {
-            const response = await fetch("/api/admin/gallery",{
+            const response = await fetch("/api/admin/gallery", {
                 method: "POST",
                 body: JSON.stringify({ name: category, slug }),
             });
-            if(response.ok) {
+            if (response.ok) {
                 const data = await response.json();
                 setCategory("");
                 toast.success(data.message);
                 fetchGalleryData();
-            }else{
+            } else {
                 const data = await response.json();
                 toast.error(data.message);
             }
@@ -68,17 +68,17 @@ const AdminGallery = () => {
         }
     }
 
-    const handleEditCategory = async(id: string) => {
+    const handleEditCategory = async (id: string) => {
         try {
-            const response = await fetch(`/api/admin/gallery?id=${id}`,{
+            const response = await fetch(`/api/admin/gallery?id=${id}`, {
                 method: "PATCH",
                 body: JSON.stringify({ name: category, slug }),
             });
-            if(response.ok) {
+            if (response.ok) {
                 const data = await response.json();
                 toast.success(data.message);
                 fetchGalleryData();
-            }else{
+            } else {
                 const data = await response.json();
                 toast.error(data.message);
             }
@@ -87,16 +87,16 @@ const AdminGallery = () => {
         }
     }
 
-    const handleDeleteCategory = async(id: string) => {
+    const handleDeleteCategory = async (id: string) => {
         try {
-            const response = await fetch(`/api/admin/gallery?id=${id}`,{
+            const response = await fetch(`/api/admin/gallery?id=${id}`, {
                 method: "DELETE",
             });
-            if(response.ok) {
+            if (response.ok) {
                 const data = await response.json();
                 toast.success(data.message);
                 fetchGalleryData();
-            }else{
+            } else {
                 const data = await response.json();
                 toast.error(data.message);
             }
@@ -124,9 +124,9 @@ const AdminGallery = () => {
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchGalleryData();
-    },[])
+    }, [])
 
     const onSubmit = async (data: GalleryPageProps) => {
         try {
@@ -144,77 +144,77 @@ const AdminGallery = () => {
         }
     }
 
-    
-        const handleAutoGenerate = () => {
-            const name = category;
-            if (!name) return;
-            const slug = name
-                .toLowerCase()
-                .trim()
-                .replace(/[^a-z0-9]+/g, '-')
-                .replace(/^-+|-+$/g, ''); // remove leading/trailing dashes
-            setSlug(slug);
-        };
+
+    const handleAutoGenerate = () => {
+        const name = category;
+        if (!name) return;
+        const slug = name
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, ''); // remove leading/trailing dashes
+        setSlug(slug);
+    };
 
 
     return (
         <div className='flex flex-col gap-4'>
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-5'>
-      <AdminItemContainer>
-                          <Label className='' main>Banner Section</Label>
-                          <div className='p-5 rounded-md flex flex-col gap-5'>
-                              <div className='grid grid-cols-2 gap-2 relative pb-5'>
-      
-                                  <div className='flex flex-col gap-2'>
-                                      <div className='flex flex-col gap-2'>
-                                          <Label className='font-bold'>Image</Label>
-                                          <Controller
-                                              name={`bannerSection.image`}
-                                              control={control}
-                                              rules={{ required: "Image is required" }}
-                                              render={({ field }) => (
-                                                  <ImageUploader
-                                                      value={field.value}
-                                                      onChange={field.onChange}
-                                                  />
-                                              )}
-                                          />
-                                          {errors.bannerSection?.image && (
-                                              <p className="text-red-500">{errors.bannerSection?.image.message}</p>
-                                          )}
-                                      </div>
-      
-                                      <div className='flex flex-col gap-2'>
-                                          <div className='flex flex-col gap-2'>
-                                              <Label className='font-bold'>Alt Tag</Label>
-                                              <Input type='text' placeholder='Alt Tag' {...register(`bannerSection.imageAlt`, {
-                                                  required: "Value is required"
-                                              })} />
-                                              {errors.bannerSection?.imageAlt && <p className='text-red-500'>{errors.bannerSection?.imageAlt.message}</p>}
-                                          </div>
-                                      </div>
-      
-      
-                                  </div>
-      
-                                  <div className='flex flex-col gap-2'>
-                                      <div className='flex flex-col gap-2'>
-                                          <div className='flex flex-col gap-2'>
-                                              <Label className='font-bold'>Title</Label>
-                                              <Input type='text' placeholder='Title' {...register(`bannerSection.title`, {
-                                                  required: "Value is required"
-                                              })} />
-                                              {errors.bannerSection?.title && <p className='text-red-500'>{errors.bannerSection?.title.message}</p>}
-                                          </div>
-                                      </div>
-                                  </div>
-      
-                              </div>
-                          </div>
-                      </AdminItemContainer>
+                <AdminItemContainer>
+                    <Label className='' main>Banner Section</Label>
+                    <div className='p-5 rounded-md flex flex-col gap-5'>
+                        <div className='grid grid-cols-2 gap-2 relative pb-5'>
+
+                            <div className='flex flex-col gap-2'>
+                                <div className='flex flex-col gap-2'>
+                                    <Label className='font-bold'>Image</Label>
+                                    <Controller
+                                        name={`bannerSection.image`}
+                                        control={control}
+                                        rules={{ required: "Image is required" }}
+                                        render={({ field }) => (
+                                            <ImageUploader
+                                                value={field.value}
+                                                onChange={field.onChange}
+                                            />
+                                        )}
+                                    />
+                                    {errors.bannerSection?.image && (
+                                        <p className="text-red-500">{errors.bannerSection?.image.message}</p>
+                                    )}
+                                </div>
+
+                                <div className='flex flex-col gap-2'>
+                                    <div className='flex flex-col gap-2'>
+                                        <Label className='font-bold'>Alt Tag</Label>
+                                        <Input type='text' placeholder='Alt Tag' {...register(`bannerSection.imageAlt`, {
+                                            required: "Value is required"
+                                        })} />
+                                        {errors.bannerSection?.imageAlt && <p className='text-red-500'>{errors.bannerSection?.imageAlt.message}</p>}
+                                    </div>
+                                </div>
 
 
-                      <AdminItemContainer>
+                            </div>
+
+                            <div className='flex flex-col gap-2'>
+                                <div className='flex flex-col gap-2'>
+                                    <div className='flex flex-col gap-2'>
+                                        <Label className='font-bold'>Title</Label>
+                                        <Input type='text' placeholder='Title' {...register(`bannerSection.title`, {
+                                            required: "Value is required"
+                                        })} />
+                                        {errors.bannerSection?.title && <p className='text-red-500'>{errors.bannerSection?.title.message}</p>}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </AdminItemContainer>
+
+
+                <AdminItemContainer>
                     <Label className='' main>First Section</Label>
                     <div className='p-5 flex flex-col gap-2'>
                         <div className='flex flex-col gap-2'>
@@ -237,99 +237,104 @@ const AdminGallery = () => {
                     </div>
                 </AdminItemContainer>
 
-                <div className='flex flex-col gap-2'>
-                                    <Label className='font-bold'>Meta Title</Label>
-                                    <Input type='text' placeholder='Meta Title' {...register("metaTitle")} />
-                                </div>
-                                <div className='flex flex-col gap-2'>
-                                    <Label className='font-bold'>Meta Description</Label>
-                                    <Input type='text' placeholder='Meta Description' {...register("metaDescription")} />
-                                </div>
-                
-                                <div className='flex justify-center mt-5'>
-                                    <Button type='submit' className="cursor-pointer text-white text-[16px] w-full">Submit</Button>
-                                </div>
+                <AdminItemContainer>
+                    <Label main>SEO</Label>
+                    <div className="flex flex-col gap-2 p-5">
+                        <div className='flex flex-col gap-2'>
+                            <Label className='font-bold'>Title</Label>
+                            <Input type='text' placeholder='' {...register("metaTitle")} />
+                        </div>
+                        <div className='flex flex-col gap-2'>
+                            <Label className='font-bold'>Description</Label>
+                            <Input type='text' placeholder='' {...register("metaDescription")} />
+                        </div>
+                    </div>
+                </AdminItemContainer>
 
-                </form>
-                              <AdminItemContainer>
-            <div className='flex justify-between items-center p-5'>
-                <h1 className='text-md font-semibold'>Gallery</h1>
-                <Dialog>
-                        <DialogTrigger className='bg-primary text-white px-3 py-1 rounded-md font-semibold' onClick={()=>{setCategory("");setSlug("")}}>Add Item</DialogTrigger>
+                <div className='flex justify-center mt-5'>
+                    <Button type='submit' className="cursor-pointer text-white text-[16px] w-full">Submit</Button>
+                </div>
+
+            </form>
+            <AdminItemContainer>
+                <div className='flex justify-between items-center p-5'>
+                    <h1 className='text-md font-semibold'>Gallery</h1>
+                    <Dialog>
+                        <DialogTrigger className='bg-primary text-white px-3 py-1 rounded-md font-semibold' onClick={() => { setCategory(""); setSlug("") }}>Add Item</DialogTrigger>
                         <DialogContent>
                             <DialogHeader>
                                 <DialogTitle>Add Item</DialogTitle>
                                 <DialogDescription>
                                     <Label className='font-bold'>Category</Label>
-                                    <Input type="text" value={category} onChange={(e) => setCategory(e.target.value)} className='mt-2'/>
+                                    <Input type="text" value={category} onChange={(e) => setCategory(e.target.value)} className='mt-2' />
                                     <div className='flex gap-2 mt-4'>
-                                    <Label className='font-bold'>Slug</Label>
-                                    <div className='flex gap-2 items-center bg-green-600 text-white p-1 rounded-md cursor-pointer w-fit' onClick={handleAutoGenerate}>
-                                                                        <p>Auto Generate</p>
-                                                                        <RiAiGenerateText />
-                                                                    </div>
-                                                                    </div>
-                                    <Input type="text" value={slug} onChange={(e) => setSlug(e.target.value)} className='mt-2'/>
+                                        <Label className='font-bold'>Slug</Label>
+                                        <div className='flex gap-2 items-center bg-green-600 text-white p-1 rounded-md cursor-pointer w-fit' onClick={handleAutoGenerate}>
+                                            <p>Auto Generate</p>
+                                            <RiAiGenerateText />
+                                        </div>
+                                    </div>
+                                    <Input type="text" value={slug} onChange={(e) => setSlug(e.target.value)} className='mt-2' />
                                 </DialogDescription>
                             </DialogHeader>
                             <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={handleAddCategory}>Save</DialogClose>
                         </DialogContent>
 
                     </Dialog>
-            </div>
-            <div className='px-5 flex flex-col gap-4 py-3'>
-            {categoryList.map((item)=>(
-                <div className='flex justify-between items-center border rounded-md p-4 hover:bg-gray-100  hover:shadow-md transform  transition-all' key={item._id}>
-                <div>
-                    <p>{item.title}</p>
                 </div>
-                <div className='flex gap-8 items-center'>
-                    <Dialog>
-                        <DialogTrigger onClick={()=>{setCategory(item.title);setSlug(item.slug)}}><FaEdit className='text-lg cursor-pointer' /></DialogTrigger>
-                        <DialogContent>
-                            <DialogHeader>
-                                <DialogTitle>Edit Item</DialogTitle>
-                                <DialogDescription>
-                                <Label className='font-bold'>Category</Label>
-                                    <Input type="text" value={category} onChange={(e) => setCategory(e.target.value)} />
-                                    <div className='flex gap-2 mt-4'>
-                                    <Label className='font-bold'>Slug</Label>
-                                    <div className='flex gap-2 items-center bg-green-600 text-white p-1 rounded-md cursor-pointer w-fit' onClick={handleAutoGenerate}>
-                                                                        <div>Auto Generate</div>
-                                                                        <RiAiGenerateText />
-                                                                    </div>
-                                                                    </div>
-                                    <Input type="text" value={slug} onChange={(e) => setSlug(e.target.value)} className='mt-2'/>
-                                </DialogDescription>
-                            </DialogHeader>
-                            <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={()=>handleEditCategory(item._id)}>Save</DialogClose>
-                        </DialogContent>
+                <div className='px-5 flex flex-col gap-4 py-3'>
+                    {categoryList.map((item) => (
+                        <div className='flex justify-between items-center border rounded-md p-4 hover:bg-gray-100  hover:shadow-md transform  transition-all' key={item._id}>
+                            <div>
+                                <p>{item.title}</p>
+                            </div>
+                            <div className='flex gap-8 items-center'>
+                                <Dialog>
+                                    <DialogTrigger onClick={() => { setCategory(item.title); setSlug(item.slug) }}><FaEdit className='text-lg cursor-pointer' /></DialogTrigger>
+                                    <DialogContent>
+                                        <DialogHeader>
+                                            <DialogTitle>Edit Item</DialogTitle>
+                                            <DialogDescription>
+                                                <Label className='font-bold'>Category</Label>
+                                                <Input type="text" value={category} onChange={(e) => setCategory(e.target.value)} />
+                                                <div className='flex gap-2 mt-4'>
+                                                    <Label className='font-bold'>Slug</Label>
+                                                    <div className='flex gap-2 items-center bg-green-600 text-white p-1 rounded-md cursor-pointer w-fit' onClick={handleAutoGenerate}>
+                                                        <div>Auto Generate</div>
+                                                        <RiAiGenerateText />
+                                                    </div>
+                                                </div>
+                                                <Input type="text" value={slug} onChange={(e) => setSlug(e.target.value)} className='mt-2' />
+                                            </DialogDescription>
+                                        </DialogHeader>
+                                        <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={() => handleEditCategory(item._id)}>Save</DialogClose>
+                                    </DialogContent>
 
-                    </Dialog>
+                                </Dialog>
 
-                    <Link href={`/admin/gallery/${item._id}`}><IoIosImages className='text-lg cursor-pointer' /></Link>
+                                <Link href={`/admin/gallery/${item._id}`}><IoIosImages className='text-lg cursor-pointer' /></Link>
 
-                    <Dialog>
-                                  <DialogTrigger><MdDelete className='text-lg cursor-pointer' /></DialogTrigger>
-                                  <DialogContent>
-                                    <DialogHeader>
-                                      <DialogTitle>Are you sure?</DialogTitle>
-                                    </DialogHeader>
-                                    <div className="flex gap-2">
-                                      <DialogClose className="bg-black text-white px-2 py-1 rounded-md">No</DialogClose>
-                                      <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={()=>handleDeleteCategory(item._id)}>Yes</DialogClose>
-                                    </div>
-                    
-                                  </DialogContent>
-                    
+                                <Dialog>
+                                    <DialogTrigger><MdDelete className='text-lg cursor-pointer' /></DialogTrigger>
+                                    <DialogContent>
+                                        <DialogHeader>
+                                            <DialogTitle>Are you sure?</DialogTitle>
+                                        </DialogHeader>
+                                        <div className="flex gap-2">
+                                            <DialogClose className="bg-black text-white px-2 py-1 rounded-md">No</DialogClose>
+                                            <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={() => handleDeleteCategory(item._id)}>Yes</DialogClose>
+                                        </div>
+
+                                    </DialogContent>
+
                                 </Dialog>
 
 
-                    
+
+                            </div>
+                        </div>
+                    ))}
                 </div>
-            </div>
-            ))}
-            </div>
             </AdminItemContainer>
         </div>
     )

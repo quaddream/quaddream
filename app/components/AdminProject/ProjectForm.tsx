@@ -32,67 +32,67 @@ import { statusData } from './statusData'
 
 interface ProjectFormProps {
     bannerSection: {
-            image: string;
-            imageAlt: string;
+        image: string;
+        imageAlt: string;
     };
-    firstSection:{
-        title:string;
-        description:string;
-        sector:string;
-        location:string;
-        status:string;
-        client:string;  
-        coverImage:string;
-        coverImageAlt:string;   
+    firstSection: {
+        title: string;
+        description: string;
+        sector: string;
+        location: string;
+        status: string;
+        client: string;
+        coverImage: string;
+        coverImageAlt: string;
     };
-    secondSection:{
-        title:string;
-        description:string;
+    secondSection: {
+        title: string;
+        description: string;
     }
-    thirdSection:{
-        title:string;
-        items:{
-            title:string;
+    thirdSection: {
+        title: string;
+        items: {
+            title: string;
         }[]
     }
-    fourthSection:{
-        title:string;
-        description:string;
-        items:{
-            logo:string;
-            logoAlt:string;
-            title:string;
+    fourthSection: {
+        title: string;
+        description: string;
+        items: {
+            logo: string;
+            logoAlt: string;
+            title: string;
         }[]
     }
-    images:string[];
-    slug:string;
-    thumbnail:string;
-    thumbnailAlt:string;
-    metaTitle:string;
-    metaDescription:string;
+    images: string[];
+    slug: string;
+    thumbnail: string;
+    thumbnailAlt: string;
+    metaTitle: string;
+    metaDescription: string;
 }
 
 const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
 
     const router = useRouter();
-    const {id} = useParams();
+    const { id } = useParams();
 
-    const [sectorList, setSectorList] = useState<{_id: string; name: string }[]>([]);
+    const [sectorList, setSectorList] = useState<{ _id: string; name: string }[]>([]);
     const [locationList, setLocationList] = useState<{ _id: string; name: string }[]>([]);
     const [reorderMode, setReorderMode] = useState(false);
 
     const { register, handleSubmit, setValue, watch, control, formState: { errors } } = useForm<ProjectFormProps>();
 
 
-        const { fields: thirdSectionItems, append: thirdSectionAppend, remove: thirdSectionRemove } = useFieldArray({
-            control,
-            name: "thirdSection.items"
-        });
+    const { fields: thirdSectionItems, append: thirdSectionAppend, remove: thirdSectionRemove } = useFieldArray({
+        control,
+        name: "thirdSection.items"
+    });
 
-        const { fields: fourthSectionItems, append: fourthSectionAppend, remove: fourthSectionRemove } = useFieldArray({
-            control,
-            name: "fourthSection.items"
-        });
+    const { fields: fourthSectionItems, append: fourthSectionAppend, remove: fourthSectionRemove } = useFieldArray({
+        control,
+        name: "fourthSection.items"
+    });
 
 
     const handleAddProject = async (data: ProjectFormProps) => {
@@ -122,7 +122,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                     ...data.data.firstSection,
                     sector: data.data.firstSection.sector?._id || "",
                     location: data.data.firstSection.location?._id || "",
-                  });
+                });
                 setValue("secondSection", data.data.secondSection);
                 setValue("thirdSection", data.data.thirdSection);
                 setValue("thirdSection.items", data.data.thirdSection.items);
@@ -298,7 +298,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                                         value={field.value}
                                         defaultValue=""
                                     >
-                                        
+
                                         <SelectTrigger className="w-full">
                                             <SelectValue placeholder="Select Sector" />
                                         </SelectTrigger>
@@ -436,54 +436,54 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
 
 
                 <AdminItemContainer>
-                                    <Label className='' main>Third Section</Label>
-                                    <div className='p-5 flex flex-col gap-2'>
+                    <Label className='' main>Third Section</Label>
+                    <div className='p-5 flex flex-col gap-2'>
+                        <div className='flex flex-col gap-2'>
+
+                            <div className='flex flex-col gap-1'>
+                                <Label className=' font-bold'>Title</Label>
+                                <Input type='text' placeholder='Title' {...register("thirdSection.title", {
+                                    required: "Title is required"
+                                })} />
+                                {errors.thirdSection?.title && <p className='text-red-500'>{errors.thirdSection?.title.message}</p>}
+                            </div>
+                        </div>
+
+
+                        <div className='flex flex-col gap-2'>
+                            <Label className=' font-bold'>Items</Label>
+                            <div className='border border-black/20 p-2 rounded-md flex flex-col gap-5'>
+
+
+                                {thirdSectionItems.map((field, index) => (
+                                    <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b border-black/20  pb-5'>
+                                        <div className='absolute top-2 right-2'>
+                                            <RiDeleteBinLine onClick={() => thirdSectionRemove(index)} className='cursor-pointer text-red-600' />
+                                        </div>
+
                                         <div className='flex flex-col gap-2'>
-                                            
-                                            <div className='flex flex-col gap-1'>
+                                            <div className='flex flex-col gap-2'>
                                                 <Label className=' font-bold'>Title</Label>
-                                                <Input type='text' placeholder='Title' {...register("thirdSection.title", {
-                                                    required: "Title is required"
-                                                })} />
-                                                {errors.thirdSection?.title && <p className='text-red-500'>{errors.thirdSection?.title.message}</p>}
+                                                <Input type='text' placeholder='Number' {...register(`thirdSection.items.${index}.title`)} />
                                             </div>
                                         </div>
-                
-                
-                                        <div className='flex flex-col gap-2'>
-                                            <Label className=' font-bold'>Items</Label>
-                                            <div className='border p-2 rounded-md flex flex-col gap-5'>
-                
-                
-                                                {thirdSectionItems.map((field, index) => (
-                                                    <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b  pb-5'>
-                                                        <div className='absolute top-2 right-2'>
-                                                            <RiDeleteBinLine onClick={() => thirdSectionRemove(index)} className='cursor-pointer text-red-600' />
-                                                        </div>
-                
-                                                        <div className='flex flex-col gap-2'>
-                                                            <div className='flex flex-col gap-2'>
-                                                                <Label className=' font-bold'>Title</Label>
-                                                                <Input type='text' placeholder='Number' {...register(`thirdSection.items.${index}.title`)} />
-                                                            </div>
-                                                        </div>
-                
-                                                    </div>
-                                                ))}
-                
-                                                <div className='flex justify-end'>
-                                                    <Button type='button' className="" addItem onClick={() => thirdSectionAppend({ title: "" })}>Add Item</Button>
-                                                </div>
-                
-                                            </div>
-                                        </div>
-                
-                
+
                                     </div>
-                                </AdminItemContainer>
+                                ))}
+
+                                <div className='flex justify-end'>
+                                    <Button type='button' className="" addItem onClick={() => thirdSectionAppend({ title: "" })}>Add Item</Button>
+                                </div>
+
+                            </div>
+                        </div>
 
 
-                                <AdminItemContainer>
+                    </div>
+                </AdminItemContainer>
+
+
+                <AdminItemContainer>
                     <Label className='' main>Fourth Section</Label>
                     <div className='p-5 flex flex-col gap-2'>
                         <div className='flex flex-col gap-2'>
@@ -506,11 +506,11 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
 
                         <div className='flex flex-col gap-2'>
                             <Label className=' font-bold'>Items</Label>
-                            <div className='border p-2 rounded-md flex flex-col gap-5'>
+                            <div className='border border-black/20 p-2 rounded-md flex flex-col gap-5'>
 
 
                                 {fourthSectionItems.map((field, index) => (
-                                    <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b  pb-5'>
+                                    <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b border-black/20  pb-5'>
                                         <div className='absolute top-2 right-2'>
                                             <RiDeleteBinLine onClick={() => fourthSectionRemove(index)} className='cursor-pointer text-red-600' />
                                         </div>
@@ -611,21 +611,22 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
 
                 </div>
 
-                <div className="h-fit w-full p-2 border-2 border-gray-300 rounded-md mt-5">
-                    <div className="flex justify-between border-b-2 pb-2">
-                        <Label className="text-sm ">Meta Section</Label>
-                    </div>
-                    <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
-                        <div>
-                            <Label>Meta title</Label>
-                            <Input type="text" {...register("metaTitle")} />
+                <AdminItemContainer>
+                    <Label main>SEO</Label>
+                    <div className="flex flex-col gap-2 p-5">
+
+                        <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
+                            <div>
+                                <Label>Title</Label>
+                                <Input type="text" {...register("metaTitle")} />
+                            </div>
+                            <div>
+                                <Label>Description</Label>
+                                <Input type="text" {...register("metaDescription")} />
+                            </div>
                         </div>
-                        <div>
-                            <Label>Meta Description</Label>
-                            <Input type="text" {...register("metaDescription")} />
-                        </div>
                     </div>
-                </div>
+                </AdminItemContainer>
 
 
                 <div className='flex justify-center'>
