@@ -1,7 +1,6 @@
 import React from "react";
 import Index from "@/app/components/blog-detail/Index";
 import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
-import Script from "next/script";
 
 type Props = {
     params: Promise<{ slug: string }>;
@@ -48,7 +47,7 @@ export default async function BlogDetailsPage({ params }: Props) {
 
     return (
         <>
-            <script 
+            <script
                 id="breadcrumb-schema"
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{

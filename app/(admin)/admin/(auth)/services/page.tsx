@@ -47,9 +47,9 @@ interface ServiceFormProps {
 const ServiceMainPage = () => {
 
 
-    const { register, handleSubmit, setValue, control, formState: { errors },watch } = useForm<ServiceFormProps>();
+    const { register, handleSubmit, setValue, control, formState: { errors }, watch } = useForm<ServiceFormProps>();
 
-    const {refetchServices,setRefetchServices} = useRefetchServices();
+    const { refetchServices, setRefetchServices } = useRefetchServices();
 
     const { fields: thirdSectionItems, append: thirdSectionAppend, remove: thirdSectionRemove } = useFieldArray({
         control,
@@ -263,9 +263,9 @@ const ServiceMainPage = () => {
                         <div>
                             <div className='rounded-md flex flex-col gap-2'>
                                 <Label className=' font-bold'>Items</Label>
-                                <div className='border p-2 rounded-md flex flex-col gap-5'>
+                                <div className='border border-black/20 p-2 rounded-md flex flex-col gap-5'>
                                     {thirdSectionItems.map((field, index) => (
-                                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b pb-5'>
+                                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b border-black/20  pb-5'>
                                             <div className='absolute top-2 right-2'>
                                                 <RiDeleteBinLine onClick={() => thirdSectionRemove(index)} className='cursor-pointer text-red-600' />
                                             </div>
@@ -352,14 +352,19 @@ const ServiceMainPage = () => {
                 </AdminItemContainer>
 
 
-                <div className='flex flex-col gap-2'>
-                    <Label className='font-bold'>Meta Title</Label>
-                    <Input type='text' placeholder='Meta Title' {...register("metaTitle")} />
-                </div>
-                <div className='flex flex-col gap-2'>
-                    <Label className='font-bold'>Meta Description</Label>
-                    <Input type='text' placeholder='Meta Description' {...register("metaDescription")} />
-                </div>
+                <AdminItemContainer>
+                    <Label main>SEO</Label>
+                    <div className="p-5 flex flex-col gap-2">
+                        <div className='flex flex-col gap-2'>
+                            <Label className='font-bold'>Title</Label>
+                            <Input type='text' placeholder='' {...register("metaTitle")} />
+                        </div>
+                        <div className='flex flex-col gap-2'>
+                            <Label className='font-bold'>Description</Label>
+                            <Input type='text' placeholder='' {...register("metaDescription")} />
+                        </div>
+                    </div>
+                </AdminItemContainer>
 
                 <div className='flex justify-center'>
                     <Button type='submit' className="cursor-pointer text-white text-[16px] w-full">Submit</Button>

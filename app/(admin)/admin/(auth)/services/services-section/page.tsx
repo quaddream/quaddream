@@ -90,9 +90,9 @@ const ServicesSection = () => {
                 <div>
                     <div className='rounded-md flex flex-col gap-2'>
                         <Label className=' font-bold'>Items</Label>
-                        <div className='border p-2 rounded-md flex flex-col gap-5'>
+                        <div className='border border-black/20 p-2 rounded-md flex flex-col gap-5'>
                             {secondSectionItems.map((field, index) => (
-                                <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b pb-5'>
+                                <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b border-black/20 pb-5'>
                                     <div className='absolute top-2 right-2'>
                                         <RiDeleteBinLine onClick={() => secondSectionRemove(index)} className='cursor-pointer text-red-600' />
                                     </div>
@@ -161,7 +161,7 @@ const ServicesSection = () => {
                 </div>
 
 
-<div className='flex justify-center'>
+                <div className='flex justify-center'>
                     <Button type='submit' className="cursor-pointer text-white text-[16px] w-full">Submit</Button>
                 </div>
 

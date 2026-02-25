@@ -17,7 +17,7 @@ interface ImageUploaderProps {
   multiple?: boolean;
 }
 
-export function ImageUploader({ value, onChange, className, deleteAfterUpload = false, isLogo = false,multiple = false }: ImageUploaderProps) {
+export function ImageUploader({ value, onChange, className, deleteAfterUpload = false, isLogo = false, multiple = false }: ImageUploaderProps) {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [localImageUrl, setLocalImageUrl] = useState<string | null>(null);
@@ -37,54 +37,54 @@ export function ImageUploader({ value, onChange, className, deleteAfterUpload = 
         setError(null);
         setIsUploadComplete(false);
 
-        if(multiple){
+        if (multiple) {
           const formData = new FormData();
-      acceptedFiles.forEach((file) => {
-        formData.append("files", file); // same key for all files
-      });
-      formData.append("fileType", "image");
-      const response = await fetch("/api/admin/upload-multiple", {
-        method: "POST",
-        body: formData,
-      });
+          acceptedFiles.forEach((file) => {
+            formData.append("files", file); // same key for all files
+          });
+          formData.append("fileType", "image");
+          const response = await fetch("/api/admin/upload-multiple", {
+            method: "POST",
+            body: formData,
+          });
 
-      if (response.status !== 200) {
-        alert("Upload failed");
-        return;
-      }
+          if (response.status !== 200) {
+            alert("Upload failed");
+            return;
+          }
 
-      const data = await response.json();
-      // You get back an array of URLs
-      if (Array.isArray(data.urls)) {
-        data.urls.forEach((url: string, index: number) => {
-          onChange(url, acceptedFiles[index]); // optional second arg
-        });
-      }
+          const data = await response.json();
+          // You get back an array of URLs
+          if (Array.isArray(data.urls)) {
+            data.urls.forEach((url: string, index: number) => {
+              onChange(url, acceptedFiles[index]); // optional second arg
+            });
+          }
 
-        }else{
-        //   const formData = new FormData();
-        // formData.append("file", file);
-        // formData.append("fileType", "image");
-        // const response = await fetch("/api/admin/upload", {
-        //   method: "POST",
-        //   body: formData,
-        // });
+        } else {
+          //   const formData = new FormData();
+          // formData.append("file", file);
+          // formData.append("fileType", "image");
+          // const response = await fetch("/api/admin/upload", {
+          //   method: "POST",
+          //   body: formData,
+          // });
 
-        // if (response.status !== 200) {
-        //   setLocalImageUrl(null);
-        //   alert("Upload failed");
-        //   return;
-        // }
+          // if (response.status !== 200) {
+          //   setLocalImageUrl(null);
+          //   alert("Upload failed");
+          //   return;
+          // }
 
-        // const data = await response.json();
-        const filePath = `/uploads/images/${Date.now()}${file.name}`;
-        const uploadResult = await uploadToDropbox(file, filePath);
-        setLocalImageUrl(uploadResult);
-        onChange(uploadResult, file);
-        setIsUploadComplete(true);
+          // const data = await response.json();
+          const filePath = `/uploads/images/${Date.now()}${file.name}`;
+          const uploadResult = await uploadToDropbox(file, filePath);
+          setLocalImageUrl(uploadResult);
+          onChange(uploadResult, file);
+          setIsUploadComplete(true);
         }
 
-        
+
         if (deleteAfterUpload) {
           setLocalImageUrl(null);
           setIsUploadComplete(false);
@@ -102,7 +102,7 @@ export function ImageUploader({ value, onChange, className, deleteAfterUpload = 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
-      "image/*": [".png", ".jpg", ".jpeg", ".gif",".svg"],
+      "image/*": [".png", ".jpg", ".jpeg", ".gif", ".svg"],
     },
     maxFiles: multiple ? undefined : 1,
     multiple: multiple,
@@ -119,7 +119,7 @@ export function ImageUploader({ value, onChange, className, deleteAfterUpload = 
   return (
     <div className={cn("space-y-4 w-full", className)}>
       {displayUrl && isUploadComplete ? (
-        <div className={`relative w-full max-w-[300px] aspect-[4/3] overflow-hidden rounded-lg border ${isLogo ? "max-w-[100px] h-[100px] bg-black" : "max-w-[300px]"}`}>
+        <div className={`relative w-full max-w-[300px] aspect-[4/3] overflow-hidden rounded-lg border border-black/20 ${isLogo ? "max-w-[100px] h-[100px] bg-black" : "max-w-[300px]"}`}>
           <Image src={value ? value : displayUrl} alt="Uploaded image" className={isLogo ? "object-contain p-2" : "object-cover"} fill />
           <Button
             type="button"

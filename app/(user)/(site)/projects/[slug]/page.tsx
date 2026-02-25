@@ -1,10 +1,9 @@
 import Index from "@/app/components/project-details";
 import { Metadata } from "next";
 import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
-import Script from "next/script";
 
 
-export async function generateMetadata({params}: {params: Promise<{slug: string}>}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const slug = (await params).slug;
   const response = await fetch(`${process.env.BASE_URL}/api/admin/project?slug=${slug}`, { next: { revalidate: 60 } });
   const data = await response.json();
@@ -49,7 +48,7 @@ export default async function Home({
 
   return (
     <>
-     <script
+      <script
         id="breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{

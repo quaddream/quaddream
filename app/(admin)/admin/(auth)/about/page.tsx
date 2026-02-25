@@ -17,9 +17,9 @@ interface AboutFormProps {
     metaTitle: string;
     metaDescription: string;
     bannerSection: {
-            image: string;
-            imageAlt: string;
-            title: string;
+        image: string;
+        imageAlt: string;
+        title: string;
     };
     firstSection: {
         movingText: string;
@@ -35,7 +35,7 @@ interface AboutFormProps {
     };
     thirdSection: {
         title: string;
-       items: {
+        items: {
             logo: string;
             logoAlt: string;
             title: string;
@@ -110,7 +110,7 @@ const About = () => {
     }
 
     const fetchAboutData = async () => {
-        
+
         try {
             const response = await fetch(`/api/admin/about`);
             if (response.ok) {
@@ -190,15 +190,15 @@ const About = () => {
                                         <Label className='font-bold'>Title</Label>
                                         <Input type='text' placeholder='Title' {...register(`bannerSection.title`, {
                                             required: "Value is required"
-                                        })} /> 
+                                        })} />
                                         {errors.bannerSection?.title && <p className='text-red-500'>{errors.bannerSection?.title.message}</p>}
                                     </div>
                                 </div>
-                          
+
 
                             </div>
 
-                           
+
 
                         </div>
                     </div>
@@ -304,9 +304,9 @@ const About = () => {
                         <div>
                             <div className='rounded-md flex flex-col gap-2'>
                                 <Label className=' font-bold'>Items</Label>
-                                <div className='border p-2 rounded-md flex flex-col gap-5'>
+                                <div className='border border-black/20 p-2 rounded-md flex flex-col gap-5'>
                                     {thirdSectionItems.map((field, index) => (
-                                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b pb-5'>
+                                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b border-black/20 pb-5'>
                                             <div className='absolute top-2 right-2'>
                                                 <RiDeleteBinLine onClick={() => thirdSectionRemove(index)} className='cursor-pointer text-red-600' />
                                             </div>
@@ -388,7 +388,7 @@ const About = () => {
                 </AdminItemContainer>
 
 
-                
+
                 <AdminItemContainer>
                     <Label className='' main>Fourth Section</Label>
                     <div className='p-5  flex flex-col gap-2'>
@@ -412,9 +412,9 @@ const About = () => {
                         <div>
                             <div className='rounded-md flex flex-col gap-2'>
                                 <Label className=' font-bold'>Items</Label>
-                                <div className='border p-2 rounded-md flex flex-col gap-5'>
+                                <div className='border border-black/20 p-2 rounded-md flex flex-col gap-5'>
                                     {fourthSectionItems.map((field, index) => (
-                                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b pb-5'>
+                                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b border-black/20 pb-5'>
                                             <div className='absolute top-2 right-2'>
                                                 <RiDeleteBinLine onClick={() => fourthSectionRemove(index)} className='cursor-pointer text-red-600' />
                                             </div>
@@ -498,9 +498,9 @@ const About = () => {
 
                         <div className=''>
                             <Label className=' font-bold'>Items</Label>
-                            <div className='rounded-md flex flex-col gap-5 border p-2'>
+                            <div className='rounded-md flex flex-col gap-5 border border-black/20 p-2'>
                                 {historySectionItems.map((field, index) => (
-                                    <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b pb-5'>
+                                    <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b border-black/20 pb-5'>
                                         <div className='absolute top-0 right-2'>
                                             <RiDeleteBinLine onClick={() => historySectionRemove(index)} className='cursor-pointer text-red-600' />
                                         </div>
@@ -530,7 +530,7 @@ const About = () => {
                                         </div>
 
                                         <div className='flex flex-col gap-2'>
-                                        <div className='flex flex-col'>
+                                            <div className='flex flex-col'>
                                                 <Label className=' font-bold'>Title</Label>
                                                 <Input type='text' placeholder='Title' {...register(`historySection.items.${index}.title`)} />
                                             </div>
@@ -617,14 +617,23 @@ const About = () => {
 
                 </AdminItemContainer>
 
-                <div className='flex flex-col gap-2'>
-                    <Label className='font-bold'>Meta Title</Label>
-                    <Input type='text' placeholder='Meta Title' {...register("metaTitle")} />
-                </div>
-                <div className='flex flex-col gap-2'>
-                    <Label className='font-bold'>Meta Description</Label>
-                    <Input type='text' placeholder='Meta Description' {...register("metaDescription")} />
-                </div>
+
+                <AdminItemContainer>
+                    <Label className='' main>SEO</Label>
+                    <div className='p-5 flex flex-col gap-2'>
+                        <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-1'>
+                                <Label className=' font-bold'>Title</Label>
+                                <Input type='text' placeholder='' {...register("metaTitle")} />
+                            </div>
+                            <div className='flex flex-col gap-1'>
+                                <Label className=' font-bold'>Description</Label>
+                                <Input type='text' placeholder='' {...register("metaDescription")} />
+                            </div>
+                        </div>
+                    </div>
+                </AdminItemContainer>
+
 
                 <div className='flex justify-center'>
                     <Button type='submit' className="cursor-pointer text-white text-[16px] w-full">Submit</Button>
