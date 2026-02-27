@@ -154,9 +154,9 @@ const FaqList = ({ faqData }: { faqData: FaqData }) => {
             >
               {/* Question Text */}
               <div className="flex justify-between lg:items-center gap-[15px] items-center">
-                <h3 className="lg:text-30 text-19  leading-[1.35] text-black">
+                <h2 className="lg:text-30 text-19  leading-[1.35] text-black">
                   {item.question}
-                </h3>
+                </h2>
                 {item.answer && (
                   <span className="flex items-start lg:items-center flex-shrink-0">
                     {openQuestion === item.question ? (
