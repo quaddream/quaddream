@@ -12,15 +12,15 @@ export async function generateMetadata(): Promise<Metadata> {
     data?.data?.metaDescription || "Quad Dream";
 
   return {
-    title: metadataTitle,
-    description: metadataDescription,
+    title: "Frequently Asked Questions | Quad Dream",
+    description: "Have questions about scaffolding rental in UAE? Our FAQ covers pricing, safety compliance, contracts, and service details. Learn more! ",
     alternates: {
       canonical: "/faq",
     },
     openGraph: {
-      title: metadataTitle,
-      description: metadataDescription,
-      url: process.env.BASE_URL,
+      title: "Frequently Asked Questions | Quad Dream",
+      description: "Have questions about scaffolding rental in UAE? Our FAQ covers pricing, safety compliance, contracts, and service details. Learn more! ",
+      url: "/faq",
       siteName: "Quad Dream",
     },
   };

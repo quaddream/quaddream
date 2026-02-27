@@ -1,28 +1,20 @@
 export const serviceSchema = {
-  "@context": "https://schema.org",
+  "@context": "https://schema.org/",
   "@type": "Service",
   "@id": "https://www.quaddream.com/#service",
   serviceType: "Scaffolding Services",
   name: "Scaffolding Services in UAE",
+
   provider: {
     "@type": "LocalBusiness",
     "@id": "https://www.quaddream.com/#localbusiness",
     name: "Quad Dream",
     url: "https://www.quaddream.com/"
   },
-  areaServed: [
-    {
-      "@type": "Country",
-      name: "United Arab Emirates"
-    },
-    {
-      "@type": "Country",
-      name: "Canada"
-    }
-  ],
+
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Scaffolding Services",
+    name: "Scaffolding", // updated from new schema
     itemListElement: [
       {
         "@type": "Offer",
@@ -69,6 +61,3 @@ export const serviceSchema = {
     ]
   }
 };
-
-
-
