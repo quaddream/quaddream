@@ -93,7 +93,7 @@ const SitemapAdmin = () => {
             <Label main>Sitemap Page</Label>
 
             <form onSubmit={handleSubmit(handleSave)} className="p-5 flex flex-col gap-6">
-                <div className="border p-4 rounded-md flex flex-col gap-3">
+                <div className="border border-black/20 p-4 rounded-md flex flex-col gap-3">
                     <Label className="font-bold">Banner Section</Label>
 
                     <Controller
@@ -107,11 +107,11 @@ const SitemapAdmin = () => {
                     <Input placeholder="Banner Title" {...register("bannerSection.title")} />
                 </div>
 
-                <div className="border p-4 rounded-md flex flex-col gap-4">
+                <div className="border border-black/20 p-4 rounded-md flex flex-col gap-4">
                     <Label className="font-bold">Sitemap Links</Label>
 
                     {sitemapFields.map((field, index) => (
-                        <div key={field.id} className="border p-3 rounded-md relative">
+                        <div key={field.id} className="border border-black/20 p-3 rounded-md relative">
                             <RiDeleteBinLine
                                 className="absolute top-2 right-2 text-red-600 cursor-pointer"
                                 onClick={() => remove(index)}
@@ -137,13 +137,19 @@ const SitemapAdmin = () => {
                     </Button>
                 </div>
 
-                <div className="border p-4 rounded-md flex flex-col gap-3">
-                    <Label className="font-bold">Meta Data</Label>
+                <AdminItemContainer>
+                    <Label main>SEO</Label>
+                    <div className="flex flex-col gap-2 p-5">
+                        <div className="border border-black/20 p-4 rounded-md flex flex-col gap-3">
+                            <Label className="font-bold">Title</Label>
 
-                    <Input placeholder="Meta Title" {...register("metaTitle")} />
+                            <Input placeholder="" {...register("metaTitle")} />
 
-                    <Input placeholder="Meta Description" {...register("metaDescription")} />
-                </div>
+                            <Label className="font-bold">Description</Label>
+                            <Input placeholder="" {...register("metaDescription")} />
+                        </div>
+                    </div>
+                </AdminItemContainer>
 
                 <Button className="text-white text-sm" type="submit">
                     Save Sitemap Page
@@ -162,48 +168,48 @@ const ChildrenFields = ({ control, parentIndex }: ChildrenFieldsProps) => {
     });
 
     return (
-<div className="mt-4 ml-6 pl-4 border-l-2 border-dashed border-gray-300">
-    <Label className="font-medium text-sm text-gray-600">
-        Children
-    </Label>
+        <div className="mt-4 ml-6 pl-4 border-l-2 border-dashed border-gray-300">
+            <Label className="font-medium text-sm text-gray-600">
+                Children
+            </Label>
 
-    <div className="mt-2 flex flex-col gap-2 bg-gray-50 rounded-md">
-        {fields.map((field, index) => (
-            <div
-                key={field.id}
-                className="grid grid-cols-[1fr_1fr_auto] gap-2 items-center"
-            >
-                <Input
-                    placeholder="Child Label"
-                    {...control.register(
-                        `sitemap.${parentIndex}.children.${index}.label`
-                    )}
-                />
+            <div className="mt-2 flex flex-col gap-2 bg-gray-50 rounded-md">
+                {fields.map((field, index) => (
+                    <div
+                        key={field.id}
+                        className="grid grid-cols-[1fr_1fr_auto] gap-2 items-center"
+                    >
+                        <Input
+                            placeholder="Child Label"
+                            {...control.register(
+                                `sitemap.${parentIndex}.children.${index}.label`
+                            )}
+                        />
 
-                <Input
-                    placeholder="Child URL"
-                    {...control.register(
-                        `sitemap.${parentIndex}.children.${index}.href`
-                    )}
-                />
+                        <Input
+                            placeholder="Child URL"
+                            {...control.register(
+                                `sitemap.${parentIndex}.children.${index}.href`
+                            )}
+                        />
 
-                <RiDeleteBinLine
-                    className="text-red-600 cursor-pointer"
-                    onClick={() => remove(index)}
-                />
+                        <RiDeleteBinLine
+                            className="text-red-600 cursor-pointer"
+                            onClick={() => remove(index)}
+                        />
+                    </div>
+                ))}
+
+                <Button
+                    className="w-fit"
+                    type="button"
+                    addItem
+                    onClick={() => append({ label: "", href: "" })}
+                >
+                    Add Child
+                </Button>
             </div>
-        ))}
-
-        <Button
-            className="w-fit"
-            type="button"
-            addItem
-            onClick={() => append({ label: "", href: "" })}
-        >
-            Add Child
-        </Button>
-    </div>
-</div>
+        </div>
 
     );
 };

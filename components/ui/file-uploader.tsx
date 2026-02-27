@@ -9,7 +9,7 @@ import { uploadToDropbox } from "@/lib/connectDropbox";
 
 interface FileUploaderProps {
   value?: string;
-  onChange: (url: string, fileName: string,size:string) => void;
+  onChange: (url: string, fileName: string, size: string) => void;
   className?: string;
   accept?: Record<string, string[]>;
 }
@@ -81,7 +81,7 @@ export function FileUploader({
         const uploadResult = await uploadToDropbox(file, filePath);
         setFileName(file.name);
         console.log(file.size)
-        onChange(uploadResult, file.name,formatBytes(file.size));
+        onChange(uploadResult, file.name, formatBytes(file.size));
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to upload file");
       } finally {
@@ -100,13 +100,13 @@ export function FileUploader({
 
   const removeFile = useCallback(() => {
     setFileName("");
-    onChange("", "","0");
+    onChange("", "", "0");
   }, [onChange]);
 
   return (
     <div className={cn("space-y-4 w-full", className)}>
       {value && fileName ? (
-        <div className="flex items-center justify-between p-4 border rounded-lg">
+        <div className="flex items-center justify-between p-4 border border-black/20 rounded-lg">
           <div className="flex items-center space-x-2">
             <File className="h-5 w-5 text-blue-500" />
             <span className="text-sm">{fileName}</span>

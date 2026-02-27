@@ -194,12 +194,12 @@ export default function Projects() {
 
                             <div>
                                 <Label className='font-bold'>Items</Label>
-                                <div className='border p-2 rounded-md flex flex-col gap-5'>
+                                <div className='border border-black/20 p-2 rounded-md flex flex-col gap-5'>
 
 
                                     {firstSectionItems.map((field, index) => (
                                         <div key={field.id}>
-                                            <div className='grid grid-cols-2 gap-2 relative border p-2 rounded-md'>
+                                            <div className='grid grid-cols-2 gap-2 relative border border-black/20 p-2 rounded-md'>
                                                 <div className='absolute top-2 right-2'>
                                                     <RiDeleteBinLine onClick={() => firstSectionRemove(index)} className='cursor-pointer text-red-600' />
                                                 </div>
@@ -276,7 +276,7 @@ export default function Projects() {
                                                     </div>
                                                     <div className='grid grid-cols-1 gap-2 mt-5'>
                                                         {watch(`firstSection.items.${index}.contact`).map((_, contactIndex) => (
-                                                            <div key={contactIndex} className='grid grid-cols-1 gap-2 relative border p-2 rounded-md'>
+                                                            <div key={contactIndex} className='grid grid-cols-1 gap-2 relative border border-black/20 p-2 rounded-md'>
                                                                 <div className='absolute top-2 right-2'>
                                                                     <RiDeleteBinLine onClick={() => handleRemoveContact(index, contactIndex)} className='cursor-pointer text-red-600' />
                                                                 </div>
@@ -310,7 +310,7 @@ export default function Projects() {
                                                     </div>
                                                     <div className='grid grid-cols-1 gap-2 mt-5'>
                                                         {watch(`firstSection.items.${index}.mail`).map((_, mailIndex) => (
-                                                            <div key={mailIndex} className='grid grid-cols-1 gap-2 relative border p-2 rounded-md'>
+                                                            <div key={mailIndex} className='grid grid-cols-1 gap-2 relative border border-black/20 p-2 rounded-md'>
                                                                 <div className='absolute top-2 right-2'>
                                                                     <RiDeleteBinLine onClick={() => handleRemoveMail(index, mailIndex)} className='cursor-pointer text-red-600' />
                                                                 </div>
@@ -385,14 +385,19 @@ export default function Projects() {
 
                 </AdminItemContainer>
 
-                <div className='flex flex-col gap-2'>
-                    <Label className='font-bold'>Meta Title</Label>
-                    <Input type='text' placeholder='Meta Title' {...register("metaTitle")} />
-                </div>
-                <div className='flex flex-col gap-2'>
-                    <Label className='font-bold'>Meta Description</Label>
-                    <Input type='text' placeholder='Meta Description' {...register("metaDescription")} />
-                </div>
+                <AdminItemContainer>
+                    <Label main>SEO</Label>
+                    <div className="flex flex-col gap-2 p-5">
+                        <div className='flex flex-col gap-2'>
+                            <Label className='font-bold'>Title</Label>
+                            <Input type='text' placeholder='' {...register("metaTitle")} />
+                        </div>
+                        <div className='flex flex-col gap-2'>
+                            <Label className='font-bold'>Description</Label>
+                            <Input type='text' placeholder='' {...register("metaDescription")} />
+                        </div>
+                    </div>
+                </AdminItemContainer>
 
                 <div className='flex justify-center mt-5'>
                     <Button type='submit' className="cursor-pointer text-white text-[16px] w-full">Submit</Button>

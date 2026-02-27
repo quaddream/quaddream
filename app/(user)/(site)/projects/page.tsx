@@ -1,7 +1,6 @@
 import Index from "@/app/components/projects/Index";
 import { Metadata } from "next";
 import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
-import Script from "next/script";
 
 export async function generateMetadata(): Promise<Metadata> {
   const response = await fetch(`${process.env.BASE_URL}/api/admin/project`, { next: { revalidate: 60 } });

@@ -184,54 +184,54 @@ const Home = () => {
                 <AdminItemContainer>
                     <Label className='' main>Banner Section</Label>
                     <div className='p-5 rounded-md flex flex-col gap-5'>
-                    <div className='flex flex-col gap-2'>
-                                    <div className='flex flex-col gap-2'>
-                                        <Label className=''>Video</Label>
-                                        <Controller
-                                            name={`bannerSection.video`}
-                                            control={control}
-                                            rules={{ required: "Video is required" }}
-                                            render={({ field }) => (
-                                                <VideoUploader
-                                                    value={field.value}
-                                                    onChange={field.onChange}
-                                                />
-                                            )}
+                        <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-2'>
+                                <Label className=''>Video</Label>
+                                <Controller
+                                    name={`bannerSection.video`}
+                                    control={control}
+                                    rules={{ required: "Video is required" }}
+                                    render={({ field }) => (
+                                        <VideoUploader
+                                            value={field.value}
+                                            onChange={field.onChange}
                                         />
-                                        {errors.bannerSection?.video && (
-                                            <p className="text-red-500">{errors.bannerSection?.video.message}</p>
-                                        )}
-                                    </div>
-
-                                    
-
-                                </div>
-                                <div className='flex flex-col gap-2'>
-                                <div className='flex flex-col gap-2'>
-                                        <Label className='text-[16px] font-light'>Poster</Label>
-                                        <Controller
-                                            name={`bannerSection.poster`}
-                                            control={control}
-                                            rules={{ required: "Poster is required" }}
-                                            render={({ field }) => (
-                                                <ImageUploader
-                                                    value={field.value}
-                                                    onChange={field.onChange}
-                                                />
-                                            )}
-                                        />
-                                        {errors.bannerSection?.poster && (
-                                            <p className="text-red-500">{errors.bannerSection?.poster.message}</p>
-                                        )}
-                                    </div>
-                                    <div>
-                                    
-                                </div>
-                                
+                                    )}
+                                />
+                                {errors.bannerSection?.video && (
+                                    <p className="text-red-500">{errors.bannerSection?.video.message}</p>
+                                )}
                             </div>
 
+
+
+                        </div>
+                        <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-2'>
+                                <Label className='text-[16px] font-light'>Poster</Label>
+                                <Controller
+                                    name={`bannerSection.poster`}
+                                    control={control}
+                                    rules={{ required: "Poster is required" }}
+                                    render={({ field }) => (
+                                        <ImageUploader
+                                            value={field.value}
+                                            onChange={field.onChange}
+                                        />
+                                    )}
+                                />
+                                {errors.bannerSection?.poster && (
+                                    <p className="text-red-500">{errors.bannerSection?.poster.message}</p>
+                                )}
+                            </div>
+                            <div>
+
+                            </div>
+
+                        </div>
+
                         {bannerSectionItems.map((field, index) => (
-                            <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b pb-5'>
+                            <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b border-black/20 pb-5'>
                                 <div className='absolute top-2 right-2'>
                                     <RiDeleteBinLine onClick={() => bannerSectionRemove(index)} className='cursor-pointer text-red-600' />
                                 </div>
@@ -296,11 +296,11 @@ const Home = () => {
 
                         <div className='flex flex-col gap-2'>
                             <Label className=' font-bold'>Items</Label>
-                            <div className='border p-2 rounded-md flex flex-col gap-5'>
+                            <div className='border border-black/20 p-2 rounded-md flex flex-col gap-5'>
 
 
                                 {firstSectionItems.map((field, index) => (
-                                    <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b  pb-5'>
+                                    <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b border-black/20 pb-5'>
                                         <div className='absolute top-2 right-2'>
                                             <RiDeleteBinLine onClick={() => firstSectionRemove(index)} className='cursor-pointer text-red-600' />
                                         </div>
@@ -392,9 +392,9 @@ const Home = () => {
                         <div>
                             <div className='rounded-md flex flex-col gap-2'>
                                 <Label className=' font-bold'>Items</Label>
-                                <div className='border p-2 rounded-md flex flex-col gap-5'>
+                                <div className='border border-black/20 p-2 rounded-md flex flex-col gap-5'>
                                     {servicesSectionItems.map((field, index) => (
-                                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b pb-5'>
+                                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b border-black/20 pb-5'>
                                             <div className='absolute top-2 right-2'>
                                                 <RiDeleteBinLine onClick={() => servicesSectionRemove(index)} className='cursor-pointer text-red-600' />
                                             </div>
@@ -491,9 +491,9 @@ const Home = () => {
 
                         <div className=''>
                             <Label className=' font-bold'>Items</Label>
-                            <div className='rounded-md flex flex-col gap-5 border p-2'>
+                            <div className='rounded-md flex flex-col gap-5 border border-black/20 p-2'>
                                 {industriesSectionItems.map((field, index) => (
-                                    <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b pb-5'>
+                                    <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b border-black/20 pb-5'>
                                         <div className='absolute top-0 right-2'>
                                             <RiDeleteBinLine onClick={() => industriesSectionRemove(index)} className='cursor-pointer text-red-600' />
                                         </div>
@@ -581,9 +581,9 @@ const Home = () => {
 
                         <div className=''>
                             <Label className=' font-bold'>Items</Label>
-                            <div className='rounded-md flex flex-col gap-5 border p-2'>
+                            <div className='rounded-md flex flex-col gap-5 border border-black/20 p-2'>
                                 {fourthSectionItems.map((field, index) => (
-                                    <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b pb-5'>
+                                    <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b border-black/20 pb-5'>
                                         <div className='absolute top-0 right-2'>
                                             <RiDeleteBinLine onClick={() => fourthSectionRemove(index)} className='cursor-pointer text-red-600' />
                                         </div>
@@ -685,9 +685,9 @@ const Home = () => {
                         <div>
                             <div className='rounded-md flex flex-col gap-2'>
                                 <Label className=' font-bold'>Items</Label>
-                                <div className='border p-2 rounded-md grid grid-cols-3 gap-5'>
+                                <div className='border border-black/20 p-2 rounded-md grid grid-cols-3 gap-5'>
                                     {partnersSectionItems.map((field, index) => (
-                                        <div key={field.id} className='grid grid-cols-1 gap-2 relative border-r pr-5'>
+                                        <div key={field.id} className='grid grid-cols-1 gap-2 relative border-r border-black/20 pr-5'>
                                             <div className='absolute top-2 right-2'>
                                                 <RiDeleteBinLine onClick={() => partnersSectionRemove(index)} className='cursor-pointer text-red-600' />
                                             </div>
@@ -791,14 +791,19 @@ const Home = () => {
 
                 </AdminItemContainer>
 
-                <div className='flex flex-col gap-2'>
-                    <Label className='font-bold'>Meta Title</Label>
-                    <Input type='text' placeholder='Meta Title' {...register("metaTitle")} />
-                </div>
-                <div className='flex flex-col gap-2'>
-                    <Label className='font-bold'>Meta Description</Label>
-                    <Input type='text' placeholder='Meta Description' {...register("metaDescription")} />
-                </div>
+                <AdminItemContainer>
+                    <Label main>SEO</Label>
+                    <div className="p-5 flex flex-col gap-2">
+                        <div className='flex flex-col gap-2'>
+                            <Label className='font-bold'>Title</Label>
+                            <Input type='text' placeholder='' {...register("metaTitle")} />
+                        </div>
+                        <div className='flex flex-col gap-2'>
+                            <Label className='font-bold'>Description</Label>
+                            <Input type='text' placeholder='' {...register("metaDescription")} />
+                        </div>
+                    </div>
+                </AdminItemContainer>
 
                 <div className='flex justify-center'>
                     <Button type='submit' className="cursor-pointer text-white text-[16px] w-full">Submit</Button>
