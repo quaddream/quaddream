@@ -35,7 +35,7 @@ export const localBusinessSchema = {
         "latitude": 25.2805683,
         "longitude": 55.3847372
       },
-      "hasMap": "https://www.google.com/maps/place/Quad+Dream+Scaffolding+%26+Trading+LLC/@25.2805683,55.3847372"
+      "hasMap": "https://www.google.com/maps/place/Quad+Dream+Scaffolding+%26+Trading+LLC/@25.2805683,55.3847372,796m/data=!3m1!1e3!4m6!3m5!1s0x3e5f5d0256c252a5:0x5df3bfe1132f1251!8m2!3d25.2805683!4d55.3873121!16s%2Fg%2F11h3k941kd!5m1!1e4?entry=ttu&g_ep=EgoyMDI2MDIwMS4wIKXMDSoASAFQAw%3D%3D"
     },
     {
       "@type": "LocalBusiness",
@@ -101,7 +101,7 @@ export const localBusinessSchema = {
         "latitude": 25.3264362,
         "longitude": 55.627109
       },
-      "hasMap": "https://www.google.com/maps/place/QUAD+DREAM+SCAFFOLDING+CONTRACTING+LLC+-SHJ+BR+1/@25.3264362,55.627109"
+      "hasMap": "https://www.google.com/maps/place/QUAD+DREAM+SCAFFOLDING+CONTRACTING+LLC+-SHJ+BR+1/@25.3264362,55.627109,787m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3ef5f3007850bbb9:0x12542d2ba14ba8c1!8m2!3d25.3264362!4d55.627109!16s%2Fg%2F11yfkfjxsb?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D"
     }
   ]
 };
