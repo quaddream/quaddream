@@ -14,6 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: metadataTitle,
     description: metadataDescription,
+    robots: "index, follow",
     alternates: {
       canonical: "/",
     },

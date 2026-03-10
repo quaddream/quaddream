@@ -14,6 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Frequently Asked Questions | Quad Dream",
     description: "Have questions about scaffolding rental in UAE? Our FAQ covers pricing, safety compliance, contracts, and service details. Learn more! ",
+    robots: "index, follow",
     alternates: {
       canonical: "/faq",
     },
