@@ -4,12 +4,12 @@ import { Metadata } from 'next';
 import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const response = await fetch(`${process.env.BASE_URL}/api/admin/faq`, { next: { revalidate: 60 } });
-  const data = await response.json();
+  // const response = await fetch(`${process.env.BASE_URL}/api/admin/faq`, { next: { revalidate: 60 } });
+  // const data = await response.json();
 
-  const metadataTitle = data?.data?.metaTitle || "Quad Dream";
-  const metadataDescription =
-    data?.data?.metaDescription || "Quad Dream";
+  // const metadataTitle = data?.data?.metaTitle || "Quad Dream";
+  // const metadataDescription =
+  //   data?.data?.metaDescription || "Quad Dream";
 
   return {
     title: "Frequently Asked Questions | Quad Dream",
