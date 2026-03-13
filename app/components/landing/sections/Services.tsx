@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
@@ -7,6 +7,18 @@ import { moveUp, containerStagger } from "../../motionVarients";
 import { Home } from "../type";
 const Services = ({ data }: { data: Home["servicesSection"] }) => {
   console.log(data)
+  const [hover1, setHover1] = useState(false)
+const [hover2, setHover2] = useState(false)
+const [hover3, setHover3] = useState(false)
+const [hover4, setHover4] = useState(false)
+const [isTouch, setIsTouch] = useState(false)
+
+useEffect(() => {
+  setIsTouch(
+    'ontouchstart' in window ||
+    navigator.maxTouchPoints > 0
+  )
+}, [])
   return (
     <section className="py-150 overflow-hidden bg-black">
       <div className="container">
@@ -82,6 +94,10 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
             >
 
               <motion.div
+
+  onMouseEnter={() => !isTouch && setHover1(true)}
+  onMouseLeave={() => !isTouch && setHover1(false)}
+  onClick={() => isTouch && setHover1(!hover1)}
                 className="relative min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto xl:col-span-2 overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group "
                 variants={moveUp(0.2)}
                 initial="hidden"
@@ -113,25 +129,21 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                   href="/products-and-services/scaffolding-contracting"
                   className="flex items-center gap-2 group cursor-pointer"
                 >
-                  <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6">
+                  <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-5">
                     {data.items[0].title}
-                  </h3></Link>
-                  {/* <Link
-                    href="/products-and-services/scaffolding-contracting"
-                    className="flex items-center gap-2 group cursor-pointer"
-                  >
-                    <span>Explore</span>{" "}
-                    <Image
-                      src="/assets/images/bold-arrow-white.svg"
-                      alt="Arrow"
-                      width={30}
-                      height={30}
-                      className="w-[24px] h-[24px] group-hover:translate-x-2 transition-all duration-300"
-                    />
-                  </Link> */}
+                  </h3>
+                  </Link>
+                  <p className={`overflow-hidden transition-all duration-500 ${
+    hover1 ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"
+  }`}>Complete construction scaffolding solutions including design, erection, supervision, and dismantling. </p>
+                   
                 </div>
               </motion.div>
               <motion.div
+
+  onMouseEnter={() => !isTouch && setHover2(true)}
+  onMouseLeave={() => !isTouch && setHover2(false)}
+  onClick={() => isTouch && setHover2(!hover1)}
                 className="relative min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto xl:col-span-3 overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group "
                 variants={moveUp(0.4)}
                 initial="hidden"
@@ -163,10 +175,14 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                   href="/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales"
                   className="flex items-center gap-2 group cursor-pointer"
                 >
-                  <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6">
+                  <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-5">
                     {data.items[1].title}
                   </h3>
                 </Link>
+                
+                  <p className={`overflow-hidden transition-all duration-500 ${
+    hover2 ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"
+  }`}>High-performance cuplock systems and lightweight aluminum towers available for rental and purchase. </p>
                   {/* <Link
                     href="/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales"
                     className="flex items-center gap-2 group cursor-pointer"
@@ -184,6 +200,10 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
               </motion.div>
 
               <motion.div
+
+  onMouseEnter={() => !isTouch && setHover3(true)}
+  onMouseLeave={() => !isTouch && setHover3(false)}
+  onClick={() => isTouch && setHover3(!hover1)}
                 className="xl:col-span-3 min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto relative overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col   group  "
                 variants={moveUp(0.6)}
                 initial="hidden"
@@ -215,10 +235,13 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                   href="/products-and-services/scaffolding-formwork-rental"
                   className="flex items-center gap-2 group cursor-pointer"
                 >
-                  <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6 max-w-[10ch]">
+                  <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-5 max-w-[10ch]">
                     {data.items[2].title}
                   </h3>
                 </Link>
+                  <p className={`overflow-hidden transition-all duration-500 ${
+    hover3 ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"
+  }`}>Quality formwork systems for slabs, beams, and columns. </p>
                   {/* <Link
                     href="/products-and-services/scaffolding-formwork-rental"
                     className="flex items-center gap-2 group cursor-pointer"
@@ -235,6 +258,10 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                 </div>
               </motion.div>
               <motion.div
+
+  onMouseEnter={() => !isTouch && setHover4(true)}
+  onMouseLeave={() => !isTouch && setHover4(false)}
+  onClick={() => isTouch && setHover4(!hover1)}
                 className="xl:col-span-2 min-h-[195px] xl:min-h-[280px] 2xl:min-h-auto relative overflow-hidden rounded-2xl p-4 lg:p-5 2xl:p-8 flex flex-col group  "
                 variants={moveUp(0.8)}
                 initial="hidden"
@@ -267,9 +294,12 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                     href="/products-and-services/equipment-rentals"
                     className="flex items-center gap-2 group cursor-pointer"
                   >
-                    <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6">
+                    <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-5">
                       {data.items[3].title}
                     </h3></Link>
+                    <p className={`overflow-hidden transition-all duration-500 ${
+    hover4 ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"
+  }`}>A wide range of heavy construction equipment offered through flexible rental plans to suit both short-term and long-term demands.</p>
                   {/* <Link
                     href="/products-and-services/equipment-rentals"
                     className="flex items-center gap-2 group cursor-pointer"
