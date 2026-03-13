@@ -15,7 +15,10 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: metadataTitle,
     description: metadataDescription,
-    robots: "index, follow",
+     robots: {
+    index: false,
+    follow: false,
+  },
     alternates: {
       canonical: "/",
     },
