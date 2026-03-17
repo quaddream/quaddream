@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
     },
       {
         source: "/products-and-services/equipment-rentals", // The old URL path
-        destination: "/products-and-services/construction-equipment-rentals ", // The new URL path
+        destination: "/products-and-services/construction-equipment-rentals", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
     ];
