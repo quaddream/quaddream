@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { moveUp } from "../motionVarients";
-import { Home } from "../home/type";
+import { Home } from "../home-old/type";
 
  
  

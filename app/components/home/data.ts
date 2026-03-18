@@ -167,3 +167,53 @@ export const partnersSection= {
 };
 
 
+
+
+export const faqContent = {
+  heading: "FAQs",
+  description: "",
+
+  categories: [
+    {
+      category: "Services",
+      items: [
+        {
+          question:
+            "How much does scaffolding rental cost in Dubai and the UAE?",
+          answer:
+            "Scaffolding rental costs depend on project size, duration, material type, and installation requirements. We provide customized quotations based on site assessment and project scope. ",
+        },
+        {
+          question: "Is scaffolding installation included in the rental price? ",
+          answer:
+            "Installation can be included depending on your contract requirements. We offer complete scaffolding installation and erection services alongside rental options. ",
+        }, 
+        {
+          question: "Do you handle scaffolding permits and approvals in the UAE? ",
+          answer:
+            "Yes, we assist with compliance documentation and ensure all scaffolding structures meet UAE safety regulations and approval standards. ",
+        }, 
+        {
+          question: "Do you offer scaffolding for high-rise buildings? ",
+          answer:
+            "Yes. We provide industrial scaffolding and engineered solutions suitable for high-rise construction and complex access requirements. ",
+        }, 
+        {
+          question: "How long can I rent scaffolding for? ",
+          answer:
+            "We offer flexible scaffolding rental plans ranging from short-term project support to long-term industrial requirements. ",
+        }, 
+        {
+          question: "Do you provide on-site inspection and safety checks? ",
+          answer:
+            "Yes. Regular inspections and safety checks are conducted to ensure structural integrity and regulatory compliance throughout the project. ",
+        }, 
+        {
+          question: "Do you handle scaffolding installation and dismantling? ",
+          answer:
+            "Yes. Our certified scaffolders manage complete installation, supervision, and dismantling to ensure safe and efficient project completion. ",
+        },  
+      ],
+    }, 
+  ],
+};
