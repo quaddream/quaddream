@@ -26,7 +26,7 @@ const allItems = categories.flatMap((cat) => cat.items);
     <section className="relative z-10 bg-background py-150 overflow-hidden">
       <div className="container">
         {/* Heading */}
-        <motion.h1
+        <motion.h2
           variants={moveUp(0)}
           initial="hidden"
           whileInView="show"
@@ -34,7 +34,7 @@ const allItems = categories.flatMap((cat) => cat.items);
           className="text-80  leading-[1.12] mb-6 md:mb-8 lg:mb-12 text-black"
         >
           {heading}
-        </motion.h1>
+        </motion.h2>
          
         {/* Tabs */}
          
@@ -62,9 +62,9 @@ const allItems = categories.flatMap((cat) => cat.items);
             >
               {/* Question Text */}
               <div className="flex justify-between lg:items-center gap-[15px] items-center">
-                <h2 className="lg:text-30 text-19  leading-[1.35] text-black">
+                <h3 className="lg:text-30 text-19  leading-[1.35] text-black">
                   {item.question}
-                </h2>
+                </h3>
                 {item.answer && (
                   <span className="flex items-start lg:items-center flex-shrink-0">
                     {openQuestion === item.question ? (

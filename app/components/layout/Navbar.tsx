@@ -176,7 +176,7 @@ const Navbar = () => {
                     {item.children && (
                       <ul
                         className={`
-            absolute left-1/2 top-full -translate-x-1/2 flex-col rounded-[8px] bg-white  ${item.href === "/products-and-services" ? "w-[260px]" : "w-[190px]"}
+          shadow-sm  absolute left-1/2 top-full -translate-x-1/2 flex-col rounded-[8px] bg-white  ${item.href === "/products-and-services" ? "w-[260px]" : "w-[190px]"}
             transition-all duration-300 ease-in-out pb-5
             ${
               openDropdown === index

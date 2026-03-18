@@ -1,9 +1,8 @@
-import Index from "../../../components/landing/Index";
+import Index from "../components/home-old/Index";
 import { Metadata } from "next";
 import { faqSchema } from "@/lib/schema/faqSchema";
 import Script from "next/script";
 
-import { faqContent } from "../../../components/landing/data";
 export async function generateMetadata(): Promise<Metadata> {
   const response = await fetch(`${process.env.BASE_URL}/api/admin/home`, { next: { revalidate: 60 } });
   const data = await response.json();
@@ -15,10 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: metadataTitle,
     description: metadataDescription,
-     robots: {
-    index: false,
-    follow: false,
-  },
+    robots: "index, follow",
     alternates: {
       canonical: "/",
     },
@@ -53,7 +49,7 @@ export default async function Home() {
         __html: JSON.stringify(faqSchema),
       }}
     />
-      <Index data={data.data} pjtdata={pjtdata.data} faqContent={faqContent} />
+      <Index data={data.data} pjtdata={pjtdata.data} />
     </>
   );
 }

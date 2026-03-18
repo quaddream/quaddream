@@ -83,6 +83,11 @@ export default function PartnersSection( data: Home['partnersSection'] ) {
         })}
 
         </Swiper>
+        <div>
+          <motion.p variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{duration: 0.6}} viewport={{amount: 0.1, once: true}}  className="text-19 xl:text-25 text-black leading-[1.6] pt-4 xl:pt-[50px] font-normal">
+            Serving 650+ active clients across construction, industrial, and commercial sectors in Dubai and the UAE.
+          </motion.p>
+        </div>
       </div>
     </section>
   )

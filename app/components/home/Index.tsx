@@ -7,11 +7,12 @@ import IndustriesList from "./sections/IndustriesList";
 import WhyChoose from "./sections/WhyChoose";
 import OurPartners from "./sections/OurPartners";
 import PortfolioHorizontalScroll from "./sections/PortfolioHorizontalScroll";
-import { Home } from "./type";
+import { Home,FaqData } from "./type";
 import { Projects } from "../projects/type";
 import Scrollgsap from "./sections/Scrollgsap";
+import FaqList from "./sections/FaqList";
 
-const Index = async ({ data, pjtdata }: { data: Home; pjtdata: Projects }) => {
+const Index = async ({ data, pjtdata ,faqContent}: { data: Home; pjtdata: Projects ;faqContent: FaqData}) => {
   return (
     <div>
       <div className="frtsn">
@@ -28,6 +29,7 @@ const Index = async ({ data, pjtdata }: { data: Home; pjtdata: Projects }) => {
       <WhyChoose data={data.fourthSection} />
       <PortfolioHorizontalScroll projectsdata={pjtdata} />
       <OurPartners {...data.partnersSection} />
+      <FaqList faqData={faqContent} />
       <CTA maxwidth={19} {...data.seventhSection} />
     </div>
   );

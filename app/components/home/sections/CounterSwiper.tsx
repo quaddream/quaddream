@@ -67,7 +67,7 @@ const ItemsSwiper = ({ items }: ItemsProps) => {
                 {item.number == 2012 ? "" : <span className="text-primary"> +</span>}
 
               </p>
-              <p className="text-19 lg:text-25">{item.value}</p>
+              <p className="text-19   text-foreground">{item.value}</p>
             </motion.div>
           </SwiperSlide>
         ))}

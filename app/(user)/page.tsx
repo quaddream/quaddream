@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { faqSchema } from "@/lib/schema/faqSchema";
 import Script from "next/script";
 
+import { faqContent } from "../components/home/data";
 export async function generateMetadata(): Promise<Metadata> {
   const response = await fetch(`${process.env.BASE_URL}/api/admin/home`, { next: { revalidate: 60 } });
   const data = await response.json();
@@ -49,7 +50,7 @@ export default async function Home() {
         __html: JSON.stringify(faqSchema),
       }}
     />
-      <Index data={data.data} pjtdata={pjtdata.data} />
+      <Index data={data.data} pjtdata={pjtdata.data} faqContent={faqContent} />
     </>
   );
 }
