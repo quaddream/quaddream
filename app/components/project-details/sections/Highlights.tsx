@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { moveUp } from "../../motionVarients";
 import { Projectsdetails } from "../type";
 
-const Highlights = ({data}: {data: Projectsdetails['fourthSection']}) => {
+const Highlights = ({ data }: { data: Projectsdetails['fourthSection'] }) => {
   return (
     <section className="py-150   relative bg-black  ">
       <div className="container ">
