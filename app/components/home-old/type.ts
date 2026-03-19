@@ -1,14 +1,3 @@
-export interface FaqData {
-  heading: string;
-  description?: string;
-  categories: {
-    category: string;
-    items: {
-      question: string;
-      answer: string;
-    }[];
-  }[];
-}
 
 
 export type Home =  

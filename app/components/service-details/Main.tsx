@@ -42,17 +42,18 @@ const Main = ({ Data }: SIngleServiceProps) => {
             .split("\n")
             .filter(Boolean)
             .map((para, idx) => (
-              <motion.div
-                variants={moveUp(idx * 0.3)}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                key={idx}
-                className="  text-19 leading-text19 mb-4 md:mb-5 last:mb-0 text-gray-para htagst"
-                dangerouslySetInnerHTML={{ __html: para }}
-              >
-
-              </motion.div>
+             <motion.div
+  variants={moveUp(idx * 0.3)}
+  initial="hidden"
+  whileInView="show"
+  viewport={{ once: true }}
+  key={idx}
+  className="text-19 leading-text19 mb-4 md:mb-5 last:mb-0 text-gray-para htagst"
+  dangerouslySetInnerHTML={{
+    __html: para?.replace(/&nbsp;/g, " ")
+  }}
+>
+</motion.div>
             ))}
         </div>
       </div>
