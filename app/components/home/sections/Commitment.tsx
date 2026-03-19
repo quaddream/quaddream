@@ -12,30 +12,30 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Home } from "../type";
 import ItemsSwiper from "./CounterSwiper";
-const features = { 
+const features = {
   subtitle: "What Sets Us Apart",
   items: [
-  {
-    id: 1,
-    icon: "/assets/images/home/iconh1.svg",
-    text: "ISO Certified <br>Scaffolders", 
-  },
-  {
-    id: 2,
-    icon: "/assets/images/home/iconh2.svg",
-    text: "End-to-End Scaffold Project Management", 
-  },
-  {
-    id: 3,
-    icon: "/assets/images/home/iconh3.svg",
-    text: "Compliant with UAE Safety Regulations", 
-  },
-  {
-    id: 4,
-    icon: "/assets/images/home/iconh4.svg",
-    text: "24/7 Scaffolding & Equipment Rental Fleet", 
-  },
-]
+    {
+      id: 1,
+      icon: "/assets/images/home/iconh1.svg",
+      text: "ISO Certified <br>Scaffolders",
+    },
+    {
+      id: 2,
+      icon: "/assets/images/home/iconh2.svg",
+      text: "End-to-End Scaffold Project Management",
+    },
+    {
+      id: 3,
+      icon: "/assets/images/home/iconh3.svg",
+      text: "Compliant with UAE Safety Regulations",
+    },
+    {
+      id: 4,
+      icon: "/assets/images/home/iconh4.svg",
+      text: "24/7 Scaffolding & Equipment Rental Fleet",
+    },
+  ]
 };
 gsap.registerPlugin(ScrollTrigger);
 export const moveUp = (delay = 0) => ({
@@ -172,34 +172,34 @@ const Commitment = ({ data }: { data: Home["firstSection"] }) => {
               transition={{ duration: 0.6 }}
               viewport={{ amount: 0.1, once: true }}
               className="text-19 text-[#7f7f7f] leading-[1.684210526315789]  mb-4 xl:mb-[30px]"
-            >
-              {data.description}
+              dangerouslySetInnerHTML={{ __html: data.description }}>
+              {/* {data.description} */}
             </motion.p>
             <div>
               <motion.h3 variants={paragraphItem}
-              initial="hidden"
-              whileInView="show"
-              transition={{ duration: 0.6 }}
-              viewport={{ amount: 0.1, once: true }}
-              className="mb-5 text-30 2xl:text-[33px] leading-[1.2]">{features.subtitle}</motion.h3>
-               <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-2 mb-5 xl:mb-[50px]">
-                  {features.items.map((feature, index) => (
-                    <motion.div
-                      key={feature.id}
-                      variants={moveUp(index * 0.15)}
-                      initial="hidden"
-                      whileInView="show"
-                      viewport={{ once: true }}
-                      className={`${index % 2 === 0 ? "bg-primary" : "bg-black"} p-5 rounded-[16px] min-h-[131px] xl:min-h-auto`}
-                    >
-                      <Image src={feature.icon} alt={feature.text} width={38} height={40} />
-                      <h3
-                        className="text-white text-19 2xl:text-[20px]  mt-[6px]"
-                        dangerouslySetInnerHTML={{ __html: feature.text }}
-                      />
-                    </motion.div>
-                  ))}
-                </div>
+                initial="hidden"
+                whileInView="show"
+                transition={{ duration: 0.6 }}
+                viewport={{ amount: 0.1, once: true }}
+                className="mb-5 text-30 2xl:text-[33px] leading-[1.2]">{features.subtitle}</motion.h3>
+              <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-2 mb-5 xl:mb-[50px]">
+                {features.items.map((feature, index) => (
+                  <motion.div
+                    key={feature.id}
+                    variants={moveUp(index * 0.15)}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    className={`${index % 2 === 0 ? "bg-primary" : "bg-black"} p-5 rounded-[16px] min-h-[131px] xl:min-h-auto`}
+                  >
+                    <Image src={feature.icon} alt={feature.text} width={38} height={40} />
+                    <h3
+                      className="text-white text-19 2xl:text-[20px]  mt-[6px]"
+                      dangerouslySetInnerHTML={{ __html: feature.text }}
+                    />
+                  </motion.div>
+                ))}
+              </div>
             </div>
             <motion.div
               variants={paragraphItem}
