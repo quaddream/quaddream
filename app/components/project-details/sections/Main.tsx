@@ -185,8 +185,8 @@ const Main = ({ data }: { data: Projectsdetails }) => {
                     viewport={{ once: true }}
                     key={index}
                     className="text-18 leading-[1.7] text-gray-para "
-                  >
-                    {service.title}
+                    dangerouslySetInnerHTML={{ __html: service.title }}>
+                    {/* {service.title} */}
                   </motion.li>
                 )
               )}
