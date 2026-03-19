@@ -24,9 +24,7 @@ const Highlights = ({ data }: { data: Projectsdetails['fourthSection'] }) => {
             whileInView="show"
             viewport={{ once: true }}
             className="text-lite-gray text-19 leading-[1.684210526315789]   max-w-[75ch] mb-8 lg:mb-7"
-          >
-            {data.description}
-          </motion.p>
+          dangerouslySetInnerHTML={{ __html: data.description }}/>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:flex gap-10 lg:gap-5 2xl:gap-12">
           {data.items.map((item, index) => (
