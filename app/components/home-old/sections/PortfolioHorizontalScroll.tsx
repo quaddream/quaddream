@@ -13,10 +13,12 @@ import { Projects } from "../../projects/type";
 
 type ProjectSwiperProps = {
   projectsdata: Projects;
+  title?: string;
 };
 
 const PortfolioHorizontalScroll: React.FC<ProjectSwiperProps> = ({
   projectsdata,
+  title = "Portfolio", // 👈 default value
 }) => {
   // Access the projects array from the projectsdata object
   const projects = (projectsdata.projects || []).slice(0, 5);
@@ -63,7 +65,7 @@ const PortfolioHorizontalScroll: React.FC<ProjectSwiperProps> = ({
           transition={{ duration: 0.6 }}
           viewport={{ amount: 0.1, once: true }}
         >
-          Portfolio
+         {title}
         </motion.h2>
         <motion.div
           variants={moveUp(0.5)}

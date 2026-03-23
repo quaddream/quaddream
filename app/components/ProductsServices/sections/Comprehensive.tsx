@@ -7,11 +7,13 @@ import { ProductsServicesData } from "../type";
 type ComprehensiveProps = {
   firstSection: ProductsServicesData["firstSection"];
   secondSection: ProductsServicesData["secondSection"];
+  secondTitleMaxWidth?: string | false; // optional, false = no max-width
 };
 
 const Comprehensive: React.FC<ComprehensiveProps> = ({
   firstSection,
   secondSection,
+  secondTitleMaxWidth = "17ch", // default
 }) => {
   return (
     <section className="py-150 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10  bg-white mt-[-4.5%] ">
@@ -64,7 +66,8 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
               whileInView="show"
               transition={{ duration: 0.6 }}
               viewport={{ amount: 0.1, once: true }}
-              className={`text-white text-80 leading-[1.07] pb-6 md:pb-12 max-w-[17ch]`}
+              className={`text-white text-80 leading-[1.07] pb-6 md:pb-12 ${ secondTitleMaxWidth ? `max-w-[${secondTitleMaxWidth}]` : ""
+}`}
             >
               {secondSection.title}
             </motion.h2>
