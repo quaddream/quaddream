@@ -6,24 +6,36 @@ import { motion } from "framer-motion";
 import { moveUp } from "../../motionVarients";
 import { FaqData } from "../type";
 
-const FaqList = ({ faqData }: { faqData: FaqData }) => {
+interface FaqListProps {
+  faqData: FaqData;
+  bg?: string;        // Optional background class
+  pt?: string;        // Optional padding-top class
+  pb?: string;        // Optional padding-bottom class
+  className?: string; // For any other extra classes
+}
+
+const FaqList = ({ 
+  faqData, 
+  bg = "bg-background", 
+  pt = "pt-150", 
+  pb = "pb-150",
+  className = "" 
+}: FaqListProps) => {
   const heading = faqData.heading; 
   const categories = faqData.categories.map((f) => ({
-  category: f.category,  // string
-  items: f.items,
-}));
-const allItems = categories.flatMap((cat) => cat.items); 
+    category: f.category,
+    items: f.items,
+  }));
+  const allItems = categories.flatMap((cat) => cat.items); 
   const [openQuestion, setOpenQuestion] = useState<string | null>(null);
- 
- 
- 
 
   const handleToggle = (question: string) => {
     setOpenQuestion(openQuestion === question ? null : question);
   };
 
   return (
-    <section className="relative z-10 bg-background py-150 overflow-hidden">
+    // Combined the dynamic props into the section class
+    <section className={`relative z-10 overflow-hidden ${bg} ${pt} ${pb} ${className}`}>
       <div className="container">
         {/* Heading */}
         <motion.h2
@@ -31,14 +43,10 @@ const allItems = categories.flatMap((cat) => cat.items);
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="text-80  leading-[1.12] mb-6 md:mb-8 lg:mb-12 text-black"
+          className="text-80 leading-[1.12] mb-6 md:mb-8 lg:mb-12 text-black"
         >
           {heading}
         </motion.h2>
-         
-        {/* Tabs */}
-         
- 
 
         {/* FAQ Items */}
         <motion.div
@@ -46,7 +54,7 @@ const allItems = categories.flatMap((cat) => cat.items);
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="space-y-4 lg:space-y-[50px] "
+          className="space-y-4 lg:space-y-[50px]"
         >
           {allItems?.map((item, index) => (
             <motion.div
@@ -60,9 +68,8 @@ const allItems = categories.flatMap((cat) => cat.items);
                 if (item.answer) handleToggle(item.question);
               }}
             >
-              {/* Question Text */}
               <div className="flex justify-between lg:items-center gap-[15px] items-center">
-                <h3 className="lg:text-30 text-19  leading-[1.35] text-black">
+                <h3 className="lg:text-30 text-19 leading-[1.35] text-black">
                   {item.question}
                 </h3>
                 {item.answer && (
@@ -88,7 +95,6 @@ const allItems = categories.flatMap((cat) => cat.items);
                 )}
               </div>
 
-              {/* Answer */}
               {openQuestion === item.question && (
                 <p className="text-19 leading-[1.7] text-gray-para pt-[10px] xl:pt-[20px] pr-[20px] lg:pr-[100px]">
                   {item.answer}
@@ -97,8 +103,6 @@ const allItems = categories.flatMap((cat) => cat.items);
             </motion.div>
           ))}
         </motion.div>
-
-       
       </div>
     </section>
   );
