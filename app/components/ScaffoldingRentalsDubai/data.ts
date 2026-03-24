@@ -2,110 +2,134 @@ import { ScaffoldingRentalsDubaiData } from "./types";
 
 export const scaffoldingRentalsDubaiData: ScaffoldingRentalsDubaiData = {
   bannerSection: {
-    title: "Scaffolding Rental in Dubai & Across the UAE",
-    bgImg: "/assets/images/productservices/pdtbanner.jpg",
-    image: "/assets/images/productservices/pdtbanner.jpg",
-    imageAlt: "Scaffolding Rental in Dubai",
+    title: "Scaffolding Rental Dubai & Across the UAE  ",
+    bgImg: "assets/images/scaffoldingSolutions/pdtbanner.jpg",
+    image: "assets/images/scaffoldingSolutions/pdtbanner.jpg",
+    imageAlt: "Scaffolding Rental Dubai  ",
     navigation: [
       { title: "Home", slug: "/" },
-      { title: "Scaffolding Rental in Dubai & Across the UAE", slug: "" },
+      { title: "Scaffolding Rental Dubai  ", slug: "" },
     ],
   },
   firstSection: {
-    title: "Scaffolding Rental in Dubai and Across the UAE ",
+    title: " ",
     description:
-      "Scaffolding rental for construction, maintenance, and industrial work, supported by certified scaffolders and full-service site execution. ",
+      " ",
   },
   secondSection: {
-    title: "Full-Service Scaffolding Rental for Construction and Industrial Projects",
+    title: "Full-Service Scaffolding Rental for Construction and Industrial Projects ",
     description:
-      "Quad Dream Group provides scaffolding rental covering the supply of materials, erection, on-site supervision, inspections, and dismantling of temporary access structures. These services support construction and industrial activities including façade access, structural works, plant maintenance, and refurbishment programmes. We have completed access structure projects across Dubai, Abu Dhabi, Sharjah, and the Northern Emirates, from villa developments such as Private Canal Villa at Jumeirah Second to high-rise projects including DMCC Uptown Plaza, Regalia by Deyaar, and Emaar Beach Front Palace Beach Residence. ",
-    image: "/assets/images/scaffolding/full-service-main.jpg",
+      "",
+    image: "assets/images/scaffoldingSolutions/full-service-main.jpg",
     imageAlt: "Scaffolding project across UAE",
   },
+
+  bottomDescription:
+    "Quad Dream Group provides scaffolding rental covering the supply of materials, erection, on-site supervision, inspections, and dismantling of temporary access structures. These services support construction and industrial activities including façade access, structural works, plant maintenance, and refurbishment programmes. We have completed access structure projects across Dubai, Abu Dhabi, Sharjah, and the Northern Emirates, from villa developments such as Private Canal Villa at Jumeirah Second to high-rise projects including DMCC Uptown Plaza, Regalia by Deyaar, and Emaar Beach Front Palace Beach Residence. ",
+
+  bottomStats: [
+    { icon: "assets/images/scaffoldingSolutions/safety.svg", label: "UAE Safety", sublabel: "Compliant" },
+    { icon: "assets/images/scaffoldingSolutions/certified.svg", label: "ISO Certified", sublabel: "Scaffolders" },
+    { icon: "assets/images/scaffoldingSolutions/delivery.svg", label: "Fast Delivery", sublabel: "Across UAE" },
+    { icon: "assets/images/scaffoldingSolutions/rental.svg", label: "Flexible Rental", sublabel: "Periods" },
+    { icon: "assets/images/scaffoldingSolutions/since.svg", label: "Since", sublabel: "2012" },
+  ],
   scaffoldingSystems: {
     title: "Scaffolding Solutions We Provide ",
     items: [
       {
-        title: "Access Scaffolding",
-        image: "/assets/images/scaffolding/access-scaffolding.jpg",
+        title: "Access Scaffolding ",
+        image: "assets/images/scaffoldingSolutions/access-scaffolding.jpg",
         imageAlt: "Access Scaffolding Rental Dubai",
-        points: ["Safe vertical and horizontal access", "Suitable for all building heights", "Quick assembly and dismantling"],
+        description: "Temporary access platforms used for construction, façade work, and maintenance activities. ",
+        points: ["Modular steel scaffolding components ", "Adjustable platform heights depending on structure ", "Compatible with multiple access configurations "],
       },
       {
-        title: "Crash Deck Scaffolding",
-        image: "/assets/images/scaffolding/crash-deck.jpg",
+        title: "Crash Deck Scaffolding ",
+        image: "assets/images/scaffoldingSolutions/crash-deck.jpg",
         imageAlt: "Crash Deck Scaffolding UAE",
-        points: ["Overhead protection for workers below", "Heavy load-bearing capacity", "Ideal for busy construction zones"],
+        description: "Protective scaffold system installed at low levels to reduce fall risks during structural and internal construction works. ",
+        points: ["Heavy-duty steel framework ", "Designed for high load-bearing platforms ", "Installed at low working heights for protection "],
       },
       {
-        title: "Cantilever Access Scaffolding",
-        image: "/assets/images/scaffolding/cantilever.jpg",
+        title: "Cantilever Access Scaffolding ",
+        image: "assets/images/scaffoldingSolutions/cantilever.jpg",
         imageAlt: "Cantilever Scaffolding for restricted access",
-        points: ["Extends beyond the building footprint", "No ground support required", "Perfect for restricted site access"],
+        description: "Scaffold structures projecting outward from buildings to provide access where ground support is restricted or unavailable. ",
+        points: ["Structural steel support frames ", "Designed for extended access platforms ", "Suitable for restricted ground areas "],
       },
       {
-        title: "Suspended Access Scaffolding",
-        image: "/assets/images/scaffolding/suspended.jpg",
+        title: "Suspended Access Scaffolding ",
+        image: "assets/images/scaffoldingSolutions/suspended.jpg",
         imageAlt: "Suspended Scaffolding for facades",
-        points: ["Suspended from roof or top structure", "Adjustable working height", "Ideal for facade and window work"],
+        description: "Suspended working platforms supported from overhead structures for exterior construction and maintenance on tall buildings, commonly used on high-rise developments in Dubai and Abu Dhabi. ",
+        points: ["Suspended steel platform systems", "Adjustable working height mechanisms ", "Designed for façade access operations "],
       },
       {
-        title: "Heavy Duty Birdcage Scaffolding",
-        image: "/assets/images/scaffolding/birdcage.jpg",
-        imageAlt: "Heavy Duty Birdcage Scaffolding Dubai",
-        points: ["Steel scaffold framework", "Protective overhead platform structures", "Configurable installation along site boundaries"],
+        title: "Hoarding Access Scaffolding ",
+        image: "assets/images/scaffoldingSolutions/hoardingaccess.jpg",
+        imageAlt: "Hoarding Access Scaffolding ",
+        description: "Scaffolding installed alongside site hoarding to support safe construction access in areas with pedestrian movement. ",
+        points: ["Steel scaffold framework ", "Steel scaffold framework ", "Configurable installation along site boundaries "],
       },
       {
-        title: "Staircase Access Tower",
-        image: "/assets/images/scaffolding/staircase-tower.jpg",
+        title: "Heavy Duty Birdcage Scaffolding ",
+        image: "assets/images/scaffoldingSolutions/birdcage.jpg",
         imageAlt: "Modular Staircase Access Tower",
-        points: ["Safe stairway access on site", "Modular and adjustable height", "Non-slip treads for safety compliance"],
+        description: "Grid-based scaffold structure forming large internal working platforms for structural construction and ceiling installation. ",
+        points: ["Multi-point steel scaffold support system ", "Suitable for large internal platform areas", "Designed for heavy load applications "],
       },
       {
-        title: "Access Towers",
-        image: "/assets/images/scaffolding/access-towers.jpg",
+        title: "Staircase Access Tower  ",
+        image: "assets/images/scaffoldingSolutions/staircase-tower.jpg",
         imageAlt: "Mobile Access Tower Systems",
-        points: ["Freestanding mobile tower systems", "Quick setup with castors or base plates", "Ideal for internal and external work"],
+        description: "Scaffold stair towers providing safe vertical movement between working levels on construction sites. ",
+        points: ["Steel staircase modules ", "Multi-level scaffold integration ", "Guardrails and platform landings "],
+      },
+      {
+        title: "Access Towers (Aluminium Mobile Scaffolding)    ",
+        image: "assets/images/scaffoldingSolutions/access-towers.jpg",
+        imageAlt: "Mobile Access Tower Systems",
+        description: "Mobile aluminium scaffold towers used for temporary work at height during maintenance and installation.  ",
+        points: ["Lightweight aluminium frame structure  ", "Adjustable working platforms  ", "Lockable caster wheels for mobility  "],
       },
     ],
   },
   howToRent: {
-    title: "How to Rent Scaffolding from Quad Dream",
-    image: "/assets/images/scaffoldingSolutions/leftsrdubai.png",
+    title: "How to Rent Scaffolding from Quad Dream ",
     steps: [
       {
         title: "Share Your Project Requirement",
-        description: "Provide details such as project type, site location, working heights, estimated quantities, and rental duration. Drawings, BOQs, or site photos may also be shared to clarify access requirements.",
+        description: "Provide details such as project type, site location, working heights, estimated quantities, and rental duration. Drawings, BOQs, or site photos may also be shared to clarify access requirements. ",
       },
       {
-        title: "Site Assessment (if Required)",
-        description: "Our team will assess the site to evaluate access, ground conditions, and any structural considerations before finalizing the solution.",
+        title: "Site Assessment (If Required) ",
+        description: "For complex structures or large project sites, a site assessment may be conducted to review access conditions and determine the appropriate scaffolding configuration.",
       },
       {
         title: "Receive Your Quote",
-        description: "We'll prepare a detailed quotation covering equipment, installation, supervision, and dismantling based on your project scope.",
+        description: "Itemised quotations are typically issued within 24 hours for standard projects, covering component quantities, rental rates, labour estimates, delivery schedule and extension terms.",
       },
       {
         title: "Confirm & Schedule",
-        description: "Once the quote is approved, we schedule the delivery and erection timeline to align with your project program.",
+        description: "Once approved, the rental agreement is confirmed and delivery and erection dates are scheduled according to the project programme. ",
       },
       {
-        title: "Delivery & Erection",
-        description: "Our certified team delivers and installs the scaffolding system on-site, ensuring full compliance with UAE safety standards.",
+        title: "Delivery & Erection ",
+        description: "Scaffolding materials are delivered to the site and erected according to the agreed access plan and project requirements. ",
       },
       {
-        title: "Supervision & Inspection",
-        description: "Regular site inspections are carried out to ensure structural integrity and safety throughout the rental period.",
+        title: "Supervision & Inspection ",
+        description: "Where required, inspections and supervision are carried out during the rental period to ensure the structure remains safe and correctly configured.",
       },
       {
-        title: "Dismantling & Site Clearance",
-        description: "Once work is complete, we dismantle the scaffolding and clear the site efficiently with minimal disruption.",
+        title: "Dismantling & Site Clearance ",
+        description: "After project completion or at the end of the rental period, the scaffolding is dismantled and materials are cleared from the site. ",
       },
     ],
   },
   industriesSection: {
-    title: "Industries We Serve",
+    title: "Industries We Serve  ",
     items: [
       {
         logo: "/assets/images/home/industries/icon-1.svg",
@@ -142,9 +166,16 @@ export const scaffoldingRentalsDubaiData: ScaffoldingRentalsDubaiData = {
         image: "/assets/images/home/industries/ind-bg4.jpg",
         imageAlt: "Industrial factory access",
       },
+      {
+        logo: "/assets/images/scaffoldingSolutions/icon-6.svg",
+        logoAlt: "Renovation & Maintenance",
+        title: "Renovation & Maintenance",
+        image: "/assets/images/home/industries/ind-bg4.jpg",
+        imageAlt: "Industrial factory access",
+      },
     ],
   },
-portfolioSection: {
+  portfolioSection: {
     title: "Portfolio",
     buttonText: "View Projects",
     buttonLink: "#",
@@ -172,7 +203,7 @@ portfolioSection: {
       },
     ],
   },
- faqContent: {       
+  faqContent: {
     heading: "FAQs",
     description: "",
     categories: [
@@ -180,44 +211,36 @@ portfolioSection: {
         category: "Services",
         items: [
           {
-            question: "How much does scaffolding rental cost in Dubai and the UAE?",
-            answer: "Scaffolding rental costs depend on project size, duration, material type, and installation requirements. We provide customized quotations based on site assessment and project scope.",
+            question: "How much does scaffolding rental cost in the UAE?",
+            answer: "Scaffolding rental costs depend on the type of scaffold, working height, quantity of materials, and rental duration. Services such as erection, inspection, and dismantling may also affect pricing. Quotations are typically prepared based on site conditions and access requirements.",
           },
           {
-            question: "Is scaffolding installation included in the rental price?",
-            answer: "Installation can be included depending on your contract requirements. We offer complete scaffolding installation and erection services alongside rental options.",
+            question: "What is the minimum rental period for scaffolding in Dubai and across the UAE?",
+            answer: "The minimum rental period is typically 4 weeks. Short-term rentals for maintenance work may be arranged for 2–3 week programmes, subject to confirmation at enquiry stage. Extensions can be agreed in writing before the end of the current rental period at the rate specified in the original quotation.",
           },
           {
-            question: "Do you handle scaffolding permits and approvals in the UAE?",
-            answer: "Yes, we assist with compliance documentation and ensure all scaffolding structures meet UAE safety regulations and approval standards.",
+            question: "Do you provide erection and dismantling as part of the rental?",
+            answer: "Yes. Scaffolding rental can include delivery, erection, inspection, and dismantling. These activities are scheduled according to project requirements and site access conditions.",
           },
           {
-            question: "Do you offer scaffolding for high-rise buildings?",
-            answer: "Yes. We provide industrial scaffolding and engineered solutions suitable for high-rise construction and complex access requirements.",
+            question: "Is your scaffolding compliant with UAE safety regulations?",
+            answer: "Scaffolding structures follow recognised safety standards and UAE work-at-height regulations. Materials and components are selected according to relevant BS standards and local authority requirements to ensure safe access structures on site.",
           },
           {
-            question: "How long can I rent scaffolding for?",
-            answer: "We offer flexible scaffolding rental plans ranging from short-term project support to long-term industrial requirements.",
-          },
-          {
-            question: "Do you provide on-site inspection and safety checks?",
-            answer: "Yes. Regular inspections and safety checks are conducted to ensure structural integrity and regulatory compliance throughout the project.",
-          },
-          {
-            question: "Do you handle scaffolding installation and dismantling?",
-            answer: "Yes. Our certified scaffolders manage complete installation, supervision, and dismantling to ensure safe and efficient project completion.",
+            question: "How do I choose a scaffolding rental company in the UAE?",
+            answer: "When evaluating scaffolding rental providers in the UAE, key considerations include the availability of certified scaffolders, proper safety documentation such as RAMS and inspection records, experience with similar project scales, and clear itemised quotations. It is also important to review project references and compliance with relevant safety standards before finalising a provider.",
           },
         ],
       },
     ],
   },
-ctaSection: {
-  title: "Ready to Hire Scaffolding for Your Project? Let’s Get Started. ",
-  bgImg: "/assets/images/projects/abtcta.jpg",
-  description:
-    "If you require scaffolding rental in Dubai or elsewhere in the UAE for construction, maintenance, or industrial projects,<br class='d-none d-lg-block'> our team can review your project requirements and provide an itemised quotation for<br class='d-none d-lg-block'> scaffolding hire based on your site requirements. ",
-  buttonText: "Contact Us Now",
-  buttonLink: "/contact-us",
-},
+  ctaSection: {
+    title: "Ready to Hire Scaffolding for Your<br class='d-none d-lg-block'>  Project? Let’s Get Started.",
+    bgImg: "/assets/images/scaffoldingSolutions/cta-bg.jpg",
+    description:
+      "If you require scaffolding rental in Dubai or elsewhere in the UAE for construction, maintenance, or industrial projects,<br class='d-none d-lg-block'> our team can review your project requirements and provide an itemised quotation for<br class='d-none d-lg-block'>  scaffolding hire based on your site requirements. ",
+    buttonText: "Contact Us Now",
+    buttonLink: "/contact-us",
+  },
 };
 

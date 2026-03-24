@@ -27,7 +27,7 @@ const HowToRent: React.FC<Props> = ({ data }) => {
 
       <div className="container relative z-10">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-start">
-          
+
           {/* Left Column */}
           <div className="w-full lg:w-5/12 pt-6">
             <h2 className="text-80 leading-[1.153846153846154] mb-6 text-gray-900 max-w-[14ch]">
@@ -69,18 +69,16 @@ const HowToRent: React.FC<Props> = ({ data }) => {
                           backgroundColor: isActive ? "#EC1C24" : "transparent",
                           padding: isActive ? "40px" : "0rem",
                         }}
-                        className={`rounded-[16px] transition-all duration-300 border-none outline-none ${
-                          !isActive ? "border-b border-gray-100 pb-6" : "shadow-xl"
-                        }`}
+                        className={`rounded-[16px] transition-all duration-300 border-none outline-none ${!isActive ? "border-b border-gray-100 pb-6" : "shadow-xl"
+                          }`}
                       >
                         {/* Title - Always visible, color transitions */}
                         <motion.h3
                           layout="position"
-                          className={`font-medium transition-colors duration-300 ${
-                            isActive 
-                              ? "text-white text-33 leading-[1.2]" 
+                          className={`font-medium transition-colors duration-300 ${isActive
+                              ? "text-white text-33 leading-[1.2]"
                               : "text-25 leading-[1.6] group-hover:text-[#EC1C24]"
-                          }`}
+                            }`}
                         >
                           {step.title}
                         </motion.h3>

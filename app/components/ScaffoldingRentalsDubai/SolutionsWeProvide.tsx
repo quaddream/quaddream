@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { containerStagger, paragraphItem, moveUp } from "../motionVarients";
 import { motion, AnimatePresence } from "motion/react"; // Added AnimatePresence
 import Image from "next/image";
 import { ScaffoldingRentalsDubaiData } from "./types";
@@ -15,9 +16,14 @@ const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
   return (
     <section className="pb-[150px] bg-white">
       <div className="container">
-        <h2 className="text-4xl lg:text-[80px] leading-[1.1] mb-10 font-bold text-gray-900">
+         <motion.h2
+                       variants={paragraphItem}
+                       initial="hidden"
+                       whileInView="show"
+                       transition={{ duration: 0.6 }}
+                       viewport={{ amount: 0.1, once: true }} className="text-80 font-400 leading-[1.125] mb-10 text-black">
           {data.title}
-        </h2>
+        </motion.h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {data.items.map((item, index) => {
@@ -36,9 +42,8 @@ const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
                     src={item.image}
                     alt={item.imageAlt}
                     fill
-                    className={`object-cover transition-transform duration-700 ease-out ${
-                      isHovered ? "scale-110" : "scale-100"
-                    }`}
+                    className={`object-cover transition-transform duration-700 ease-out ${isHovered ? "scale-110" : "scale-100"
+                      }`}
                   />
                 </div>
 
@@ -69,7 +74,7 @@ const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
                       {item.title}
                     </p>
 
-                    {/* Expandable Bullets using AnimatePresence to avoid jumping */}
+                    {/* Expandable content on hover */}
                     <AnimatePresence>
                       {isHovered && (
                         <motion.div
@@ -79,6 +84,14 @@ const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
                           transition={{ duration: 0.3, delay: 0.05 }}
                         >
                           <div className="w-full h-px bg-white/30 my-4" />
+
+                          {/* Optional description paragraph */}
+                          {item.description && (
+                            <p className="text-white/90 text-[17px] lg:text-[19px] leading-relaxed mb-4">
+                              {item.description}
+                            </p>
+                          )}
+
                           {item.points && item.points.length > 0 && (
                             <ul className="flex flex-col gap-3">
                               {item.points.map((point, i) => (

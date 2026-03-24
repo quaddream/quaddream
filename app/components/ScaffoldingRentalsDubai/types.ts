@@ -1,3 +1,8 @@
+type BottomStat = {
+  icon: string;
+  label: string;
+  sublabel: string;
+};
 export interface ScaffoldingRentalsDubaiData {
   bannerSection: {
     title: string;
@@ -11,6 +16,7 @@ export interface ScaffoldingRentalsDubaiData {
     title: string;
     description: string;
   };
+  
 
   secondSection: {
     title: string;
@@ -18,6 +24,8 @@ export interface ScaffoldingRentalsDubaiData {
     image: string;
     imageAlt: string;
   };
+  bottomDescription?: string;   
+  bottomStats?: BottomStat[];
 
   scaffoldingSystems: {
     title: string;
@@ -26,12 +34,12 @@ export interface ScaffoldingRentalsDubaiData {
       image: string;
       imageAlt: string;
       points?: string[];
+      description?: string;
     }[];
   };
 
   howToRent: {
     title: string;
-    image: string;
     steps: { title: string; description: string }[];
   };
 

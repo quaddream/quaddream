@@ -29,9 +29,12 @@ export default function CTA(data: Home['seventhSection']) {
 
       {/* Content */}
       <div className="relative z-10 px-4 py-150">
-        <motion.h2 className={`text-80 font-400 leading-[1.125] ${data.maxwidth ? `max-w-[${data.maxwidth}ch] m-auto` : ''}`} variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>
-          {data.mainTitle}
-        </motion.h2>
+        <motion.h2
+          className={`text-80 font-400 leading-[1.125] 
+          ${data.maxwidth ? `max-w-[${data.maxwidth}ch] m-auto` : ''}`}
+          variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}
+          dangerouslySetInnerHTML={{ __html: data.mainTitle }}
+        />
         <motion.p
           className="my-5 md:my-[39px] text-19 text-[#D9D9D9] leading-[1.7]"
           dangerouslySetInnerHTML={{ __html: data.subTitle }}

@@ -6,21 +6,9 @@ import { useState } from "react";
 interface Region {
   id: string;
   label: string;
-  /** Exact center of each red dot already drawn in the SVG (viewBox 870 × 628) */
   pinX: number;
   pinY: number;
 }
-
-// All 7 red dot centers taken directly from the SVG paths:
-//  Dubai        → plain dot  cx=636.389, cy=160.104  ← large dot, represents Dubai area
-//  Abu Dhabi    → filter0    cx=381.632, cy=488.368  ← lower-left, Abu Dhabi
-//  Sharjah      → filter1    cx=669.618, cy=109.757
-//  Ajman        → filter2    cx=684.722, cy=94.652
-//  Ras Al Khaimah → filter3  cx=728.021, cy=69.480
-//  Fujairah     → filter4    cx=701.841, cy=81.563
-//  Umm Al Quwain → filter5   cx=805.556, cy=215.486
-//
-// Order: Dubai first, then north → east order for the rest.
 
 const REGIONS: Region[] = [
   {
@@ -56,14 +44,14 @@ const REGIONS: Region[] = [
   {
     id: "fujairah",
     label: "Fujairah",
-    pinX: (701.841 / 870) * 100,
-    pinY: (81.563 / 628) * 100,
+    pinX: (805.556 / 870) * 100,
+    pinY: (215.486 / 628) * 100,
   },
   {
     id: "umm-al-quwain",
     label: "Umm Al Quwain",
-    pinX: (805.556 / 870) * 100,
-    pinY: (215.486 / 628) * 100,
+    pinX: (701.841 / 870) * 100,
+    pinY: (81.563 / 628) * 100,
   },
 ];
 
@@ -71,17 +59,17 @@ export default function ServiceAreas() {
   const [activeId, setActiveId] = useState<string>("dubai");
 
   return (
-    <section className="w-full bg-white py-14">
-      <div className="container mx-auto px-4">
+    <section className="bg-white pb-150">
+      <div className="container">
 
         {/* Title */}
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-7">
+        <h2 className="text-80 font-400 leading-[1.125] text-black mb-[46px]">
           Service Areas
         </h2>
 
         {/* Tab Buttons */}
         <div
-          className="flex flex-wrap gap-2 mb-10"
+          className="flex flex-wrap gap-[20px] mb-[60px]"
           role="tablist"
           aria-label="UAE service regions"
         >
@@ -94,11 +82,10 @@ export default function ServiceAreas() {
                 aria-selected={isActive}
                 aria-controls={`panel-${region.id}`}
                 onClick={() => setActiveId(region.id)}
-                className={`px-5 py-2 rounded-full text-sm font-medium border transition-all duration-200 outline-none cursor-pointer whitespace-nowrap ${
-                  isActive
-                    ? "bg-[#EC1C24] border-[#EC1C24] text-white"
-                    : "bg-white border-gray-300 text-gray-500 hover:border-[#EC1C24] hover:text-[#EC1C24]"
-                }`}
+                className={`px-8 py-2 rounded-[70px] text-19  border transition-all duration-200 outline-none cursor-pointer whitespace-nowrap ${isActive
+                  ? "bg-[#EC1C24] border-[#EC1C24] text-white"
+                  : "bg-[#F5E7E7] border-[#EC1C24] text-black "
+                  }`}
               >
                 {region.label}
               </button>
@@ -106,17 +93,15 @@ export default function ServiceAreas() {
           })}
         </div>
 
-        {/* Map + Stats — two equal columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-end">
+        {/* Map + Stats — col-7 / col-5 split */}
+        <div className="grid grid-cols-1 lg:grid-cols-[58fr_42fr] gap-10 items-end">
 
-          {/* Left — Map */}
+          {/* Left — Map (col-7 equivalent) */}
           <div
             className="relative w-full"
             role="tabpanel"
             id={`panel-${activeId}`}
           >
-            {/* The SVG already has all red dots drawn inside it — we just overlay
-                the ripple animation on top of whichever dot is active */}
             <Image
               src="/assets/images/scaffoldingSolutions/countrymap.svg"
               alt="UAE map showing service areas"
@@ -126,32 +111,33 @@ export default function ServiceAreas() {
               className="w-full h-auto"
             />
 
-            {/* Ripple-only overlay — no extra dot rendered, just the pulse rings */}
+            {/* Ripple overlay */}
             <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
               {REGIONS.map((region) => {
                 const isActive = activeId === region.id;
                 return (
                   <span
                     key={region.id}
-                    className={`absolute -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 ${
-                      isActive ? "opacity-100" : "opacity-0"
-                    }`}
+                    className={`absolute -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 ${isActive ? "opacity-100" : "opacity-0"
+                      }`}
                     style={{
                       left: `${region.pinX}%`,
                       top: `${region.pinY}%`,
                     }}
                   >
-                    {/* Rings only — the red dot underneath is already in the SVG */}
-                    <span className="relative flex items-center justify-center w-12 h-12">
-                      <span className="absolute w-12 h-12 rounded-full border border-[#EC1C24]/35 animate-ping" />
+                    <span className="relative flex items-center justify-center">
+                      {/* Outermost ring */}
                       <span
-                        className="absolute w-8 h-8 rounded-full border border-[#EC1C24]/50 animate-ping"
-                        style={{ animationDelay: "0.35s" }}
+                        className="absolute w-16 h-16 rounded-full bg-[#EC1C24]/10 border-[1.7px] border-[#EC1C24]/40 animate-ping"
+                        style={{ animationDuration: "1.5s" }}
                       />
+                      {/* Middle ring */}
                       <span
-                        className="absolute w-4 h-4 rounded-full border border-[#EC1C24]/65 animate-ping"
-                        style={{ animationDelay: "0.7s" }}
+                        className="absolute w-10 h-10 rounded-full bg-[#EC1C24]/20 border-[1.7px] border-[#EC1C24]/55 animate-ping"
+                        style={{ animationDuration: "1.5s", animationDelay: "0.4s" }}
                       />
+                      {/* Solid center dot */}
+                      <span className="relative w-3 h-3 rounded-full bg-[#EC1C24] z-10 shadow-md" />
                     </span>
                   </span>
                 );
@@ -159,25 +145,51 @@ export default function ServiceAreas() {
             </div>
           </div>
 
-          {/* Right — Stats */}
-          <div className="flex flex-col gap-8 pb-4">
-            <div className="flex flex-col gap-1">
-              <span className="text-3xl font-bold text-gray-900 tracking-tight">
-                180+
-              </span>
-              <span className="text-sm text-gray-500">Trained Scaffolders</span>
+          {/* Right — Stats (col-5 equivalent) */}
+          <div className="relative w-full h-full min-h-[320px] flex items-end pb-6">
+
+            {/* Background decorative image — anchored to bottom-right, fades at bottom */}
+            <div className="absolute inset-0 bottom-[17%] overflow-hidden pointer-events-none">
+              <div className="absolute bottom-0 right-0 w-full h-full">
+                <Image
+                  src="assets/images/scaffoldingSolutions/rightmapov.png"
+                  width={629}
+                  height={549}
+                  alt=""
+                  className="absolute bottom-0 right-0 w-full h-full  object-bottom object-contain"
+                  style={{ opacity: 1 }}
+                />
+                {/* Bottom fade overlay to replicate the soft fade at the bottom of the image */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-2/5 pointer-events-none"
+                  style={{
+                    background:
+                      "linear-gradient(to top, rgb(255 255 255) 0%, rgb(255 255 255 / 3%) 40%, rgb(255 255 255 / 0%) 100%)",
+                  }}
+                />
+              </div>
             </div>
 
-            <div className="w-full h-px bg-gray-200" />
+            {/* Stats content — sits on top of the decorative image */}
+            <div className="relative z-10 flex w-full gap-[60px] items-end">
+              <div className="flex flex-col gap-1">
+                <span className="text-33 mb-[20px] text-[#EC1C24] tracking-tight">
+                  180+
+                </span>
+                <span className="text-19 text-black">Trained Scaffolders</span>
+              </div>
 
-            <div className="flex flex-col gap-1">
-              <span className="text-2xl font-bold text-[#EC1C24] tracking-tight leading-tight">
-                Completed 33600+
-              </span>
-              <span className="text-sm text-gray-500">Projects across the UAE</span>
+              <div className="h-[100px] w-[1px] bg-[#BCBCBC]" />
+
+              <div className="flex flex-col gap-1">
+                <span className="text-33 mb-[20px] text-[#EC1C24] tracking-tight leading-tight">
+                  Completed 33600+
+                </span>
+                <span className="text-19 text-black">Projects across the UAE</span>
+              </div>
             </div>
+
           </div>
-
         </div>
       </div>
     </section>
