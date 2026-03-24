@@ -170,7 +170,7 @@ export const scaffoldingRentalsDubaiData: ScaffoldingRentalsDubaiData = {
         logo: "/assets/images/scaffoldingSolutions/icon-6.svg",
         logoAlt: "Renovation & Maintenance",
         title: "Renovation & Maintenance",
-        image: "/assets/images/home/industries/ind-bg4.jpg",
+        image: "/assets/images/scaffoldingSolutions/ind-bg6.jpg",
         imageAlt: "Industrial factory access",
       },
     ],
@@ -235,10 +235,10 @@ export const scaffoldingRentalsDubaiData: ScaffoldingRentalsDubaiData = {
     ],
   },
   ctaSection: {
-    title: "Ready to Hire Scaffolding for Your<br class='d-none d-lg-block'>  Project? Let’s Get Started.",
+    title: "Ready to Hire Scaffolding for Your<br class='hidden lg:block'>  Project? Let’s Get Started.",
     bgImg: "/assets/images/scaffoldingSolutions/cta-bg.jpg",
     description:
-      "If you require scaffolding rental in Dubai or elsewhere in the UAE for construction, maintenance, or industrial projects,<br class='d-none d-lg-block'> our team can review your project requirements and provide an itemised quotation for<br class='d-none d-lg-block'>  scaffolding hire based on your site requirements. ",
+      "If you require scaffolding rental in Dubai or elsewhere in the UAE for construction, maintenance, or industrial projects,<br class='hidden lg:block'> our team can review your project requirements and provide an itemised quotation for<br class='hidden lg:block'>  scaffolding hire based on your site requirements. ",
     buttonText: "Contact Us Now",
     buttonLink: "/contact-us",
   },
