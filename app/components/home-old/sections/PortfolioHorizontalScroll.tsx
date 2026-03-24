@@ -71,7 +71,7 @@ const PortfolioHorizontalScroll: React.FC<ProjectSwiperProps> = ({
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
         <div className="relative z-10 h-full w-full">
-          <div className="absolute top-[33px] left-[43px] bg-[#fafafa70] px-[10px] py-[11px] rounded-full text-19 font-light flex items-center backdrop-blur-[18px] w-[250px] h-[53px]">
+          <div className="absolute top-[33px] left-[43px] bg-[#fafafa70] px-[10px] py-[11px] rounded-full text-19 font-light flex items-center backdrop-blur-[18px] w-[160px] lg:w-[250px] h-[53px]">
             <Image
               src="/assets/images/home/portfolio/location.svg"
               width={30}

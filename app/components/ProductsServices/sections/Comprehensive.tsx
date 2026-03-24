@@ -139,43 +139,59 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
           </motion.p>
         )}
 
-        {/* Optional stats/icons bar */}
-        {hasBottomStats && (
-          <motion.div
-            variants={moveUp(0.2)}
-            initial="hidden"
-            whileInView="show"
-            transition={{ duration: 0.6 }}
-            viewport={{ amount: 0.1, once: true }}
-            className="flex flex-wrap justify-between"
-          >
-            {bottomStats.map((stat, index) => (
-              <React.Fragment key={index}>
-                <div className="flex flex-col gap-3 py-4 pr-8 items-start">
-                  <Image
-                    src={stat.icon}
-                    alt={stat.label}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    className="w-auto h-[42px] object-contain"
-                  />
-                  <span className="text-33 text-black ">
-                    {stat.label}
-                  </span>
-                  <span className="text-19 text-[#EC1C24]">
-                    {stat.sublabel}
-                  </span>
-                </div>
-                {/* Divider — skip after last item */}
-                {index < bottomStats.length - 1 && (
-                  <div className="w-[1px] bg-[#bcbcbc8c] self-stretch mx-4 my-4" />
-                )}
-              </React.Fragment>
-            ))}
-          </motion.div>
+      {/* Optional stats/icons bar */}
+{hasBottomStats && (
+  <motion.div
+    variants={moveUp(0.2)}
+    initial="hidden"
+    whileInView="show"
+    transition={{ duration: 0.6 }}
+    viewport={{ amount: 0.1, once: true }}
+    className="
+      grid 
+     
+     grid-cols-2 
+      md:grid-cols-3 
+      lg:grid-cols-4 
+      xl:grid-cols-5
+      gap-x-[80px]
+      gap-y-8
+    "
+  >
+    {bottomStats.map((stat, index) => (
+      <div key={index} className="relative flex flex-col gap-3 py-4 items-start">
+        
+        {/* Divider Line */}
+        {index !== bottomStats.length - 1 && (
+          <span
+            className="
+              hidden xl:block
+              absolute right-[-30px] top-1/2 -translate-y-1/2
+              w-[1px] h-[60%] bg-[#bcbcbc8c]
+            "
+          />
         )}
 
+        <Image
+          src={stat.icon}
+          alt={stat.label}
+          width={0}
+          height={0}
+          sizes="100vw"
+          className="w-auto h-[42px] object-contain"
+        />
+
+        <span className="text-33 text-black">
+          {stat.label}
+        </span>
+
+        <span className="text-19 text-[#EC1C24]">
+          {stat.sublabel}
+        </span>
+      </div>
+    ))}
+  </motion.div>
+)}
       </div>
     </section>
   );
