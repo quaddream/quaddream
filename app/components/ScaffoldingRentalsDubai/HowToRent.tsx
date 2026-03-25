@@ -40,25 +40,22 @@ const HowToRent: React.FC<Props> = ({ data }) => {
             {/* Vertical Line */}
             <div className="absolute left-[18px] top-0 h-full w-px bg-gray-200 z-0" />
 
-            <div className="flex flex-col gap-[30px] relative">
+            <div className="flex flex-col  relative">
               {data.steps.map((step, index) => {
                 const isActive = activeIndex === index;
 
                 return (
-                  <div
-                    key={index}
-                    className={`relative flex gap-6 cursor-pointer group ${
-  isActive ? "items-start" : "items-center"
-}`}
-                  onClick={(e) => {
-  e.preventDefault();
-  e.stopPropagation();
-  setActiveIndex(index);
-}}
-                  >
+                <button
+  key={index}
+  type="button"
+  className={`relative flex gap-6 cursor-pointer group w-full text-left pb-[30px] ${
+    isActive ? "items-start" : "items-center"
+  }`}
+  onClick={() => setActiveIndex(index)}
+>
 
                     {/* Number Circle */}
-                    <div className="relative z-10 shrink-0 mt-2">
+                    <div className="relative z-10 shrink-0 ">
                       <div
                         className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white transition-colors duration-300 ${
                           isActive ? "bg-[#EC1C24]" : "bg-black"
@@ -70,8 +67,8 @@ const HowToRent: React.FC<Props> = ({ data }) => {
 
                     {/* Card */}
                     <div
-                      className={`flex-1 rounded-[16px] p-5 transition-all duration-300 ${
-                        isActive ? "bg-[#EC1C24]" : "bg-transparent"
+                      className={`flex-1 rounded-[16px]   transition-all duration-300 ${
+                        isActive ? "bg-[#EC1C24] p-[20px]" : "bg-transparent py-[10px]"
                       }`}
                     >
 
@@ -98,7 +95,7 @@ const HowToRent: React.FC<Props> = ({ data }) => {
 
                     </div>
 
-                  </div>
+                  </button>
                 );
               })}
             </div>
