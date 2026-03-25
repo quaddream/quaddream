@@ -6,16 +6,16 @@ import { ScaffoldingRentalsDubaiData } from "./types";
 import Image from "next/image";
 
 type BottomStat = {
-  icon: string;       // image src
+  image: string;       // image src
   label: string;
-  sublabel: string;   // red text below
+  value: string;   // red text below
 };
 
 type ComprehensiveProps = {
   secondSection: ScaffoldingRentalsDubaiData["secondSection"];
   secondTitleMaxWidth?: string | false;
   /** Optional paragraph below the image card */
-  bottomDescription?: string;
+  bottomDescription: string;
   /** Optional stats/icons bar */
   bottomStats?: BottomStat[];
 };
@@ -26,14 +26,14 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
   bottomDescription,
   bottomStats,
 }) => {
-  const hasSecondSection = !!(secondSection?.title?.trim() || secondSection?.description?.trim() || secondSection?.image?.trim());
+  // const hasSecondSection = !!(secondSection?.title?.trim() || secondSection?.description?.trim() || secondSection?.image?.trim());
   const hasBottomDescription = !!bottomDescription?.trim();
   const hasBottomStats = !!(bottomStats && bottomStats.length > 0);
 
   // If nothing to render, return null entirely
-  if (!hasSecondSection && !hasBottomDescription && !hasBottomStats) {
-    return null;
-  }
+  // if (!hasSecondSection && !hasBottomDescription && !hasBottomStats) {
+  //   return null;
+  // }
 
   return (
     <section className="py-150 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10 bg-white mt-[-4.5%]">
@@ -42,7 +42,7 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
 
 
         {/* Second section — image card */}
-        {hasSecondSection && (
+        {
           <motion.div
             variants={moveUp()}
             initial="hidden"
@@ -66,7 +66,7 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
                   {secondSection.title}
                 </motion.h2>
               )}
-              {secondSection?.description?.trim() && (
+              {/* {secondSection?.description?.trim() && (
                 <motion.p
                   variants={moveUp(0.2)}
                   initial="hidden"
@@ -77,13 +77,13 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
                 >
                   {secondSection.description}
                 </motion.p>
-              )}
+              )} */}
             </div>
             <div className="rounded-xl overflow-hidden">
               <div className="overlayimage rounded-xl"></div>
             </div>
           </motion.div>
-        )}
+        }
 
         {/* Optional paragraph below the image card */}
         {hasBottomDescription && (
@@ -94,8 +94,9 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
             transition={{ duration: 0.6 }}
             viewport={{ amount: 0.1, once: true }}
             className="text-19 text-[#696969] leading-[1.684210526315789] "
+            dangerouslySetInnerHTML={{ __html: bottomDescription }}
           >
-            {bottomDescription}
+            {/* {bottomDescription} */}
           </motion.p>
         )}
 
@@ -133,7 +134,7 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
                 )}
 
                 <Image
-                  src={stat.icon}
+                  src={stat.image}
                   alt={stat.label}
                   width={0}
                   height={0}
@@ -146,7 +147,7 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
                 </span>
 
                 <span className="text-19 text-[#EC1C24]">
-                  {stat.sublabel}
+                  {stat.value}
                 </span>
               </div>
             ))}

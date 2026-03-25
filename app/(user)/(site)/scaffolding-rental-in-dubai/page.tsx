@@ -45,7 +45,7 @@ export default async function ScaffoldingRentalsDubai() { // 👈 async
           ),
         }}
       />
-      <Index data={scaffoldingRentalsDubaiData} projectsdata={pjtdata.data} /> 
+      {/* <Index data={scaffoldingRentalsDubaiData} projectsdata={pjtdata.data} />  */}
     </>
   );
 }
