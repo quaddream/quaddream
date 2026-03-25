@@ -11,20 +11,13 @@ export interface ScaffoldingRentalsDubaiData {
     imageAlt: string;
     navigation: { title: string; slug: string }[];
   };
-
-  firstSection: {
-    title: string;
-    description: string;
-  };
-  
-
   secondSection: {
     title: string;
     description: string;
     image: string;
     imageAlt: string;
   };
-  bottomDescription?: string;   
+  bottomDescription?: string;
   bottomStats?: BottomStat[];
 
   scaffoldingSystems: {
@@ -53,7 +46,7 @@ export interface ScaffoldingRentalsDubaiData {
       imageAlt: string;
     }[];
   };
- ctaSection: {
+  ctaSection: {
     title: string;
     bgImg: string;
     description: string;
