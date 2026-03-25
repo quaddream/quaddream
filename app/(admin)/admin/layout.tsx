@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <RefetchServicesProvider>
-      <body className={`antialiased overflow-x-hidden overflow-y-hidden`}>{children}<Toaster /></body>
+        <body className={`antialiased overflow-x-hidden overflow-y-hidden`}>{children}<Toaster /></body>
       </RefetchServicesProvider>
     </html>
   );

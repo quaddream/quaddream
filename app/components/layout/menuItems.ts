@@ -5,10 +5,10 @@ export const menuItems = [
   },
   {
     name: "About Us",
-    href:"/about-us",
+    href: "/about-us",
     children: [
       { name: "Faq", href: "/faq" },
-      
+
     ],
   },
   {
@@ -19,6 +19,7 @@ export const menuItems = [
       { name: "Cuplock Scaffolding", href: "/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales" },
       { name: "Formwork Rentals", href: "/products-and-services/scaffolding-formwork-rental" },
       { name: "Equipment Rentals", href: "/products-and-services/construction-equipment-rentals" },
+      { name: "Scaffolding Rental", href: "/products-and-services/scaffolding-rental-dubai-across-the-uae" },
     ],
   },
   {
@@ -31,7 +32,7 @@ export const menuItems = [
   },
   {
     name: "Media Center",
-    href:"/media-gallery",
+    href: "/media-gallery",
     children: [
       { name: "Media Gallery", href: "/media-gallery" },
       { name: "Blogs", href: "/blog" },
