@@ -1,6 +1,6 @@
 import React from "react";
 import BannerInner from "../common/BannerInner";
-import Comprehensive from "../ProductsServices/sections/Comprehensive";
+import Comprehensive from "./Comprehensive";
 import ScaffoldingSystems from "./SolutionsWeProvide";
 import IndustriesList from "./IndustriesList";
 import HowToRent from "./HowToRent";
@@ -20,7 +20,6 @@ const Index = ({ data, projectsdata }: {
     <>
       <BannerInner bannerData={data.bannerSection} />
       <Comprehensive
-        firstSection={data.firstSection}
         secondSection={data.secondSection}
         secondTitleMaxWidth={false}
         bottomDescription={data.bottomDescription}

@@ -11,11 +11,6 @@ export const scaffoldingRentalsDubaiData: ScaffoldingRentalsDubaiData = {
       { title: "Scaffolding Rental Dubai  ", slug: "" },
     ],
   },
-  firstSection: {
-    title: " ",
-    description:
-      " ",
-  },
   secondSection: {
     title: "Full-Service Scaffolding Rental for Construction and Industrial Projects ",
     description:

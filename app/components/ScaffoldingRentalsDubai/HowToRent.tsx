@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { ScaffoldingRentalsDubaiData } from "./types";
 
@@ -9,10 +8,11 @@ type Props = {
 };
 
 const HowToRent: React.FC<Props> = ({ data }) => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
 
   return (
     <section className="py-[50px] md:py-[100px] lg:py-[150px] bg-[#F9F9F9] relative overflow-hidden">
+
       {/* Decorative Image */}
       <div className="absolute bottom-0 left-0 pointer-events-none select-none z-0">
         <Image
@@ -26,77 +26,76 @@ const HowToRent: React.FC<Props> = ({ data }) => {
 
       <div className="container relative z-10">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-24 items-start">
+
+          {/* Left Side */}
           <div className="w-full lg:w-5/12">
             <h2 className="text-80 leading-[1.1] mb-6 text-gray-900 max-w-[14ch]">
               {data.title}
             </h2>
           </div>
 
+          {/* Right Side */}
           <div className="flex-1 relative w-full">
-            {/* Vertical Line */}
-            <div className="absolute left-[18px] top-4 bottom-10 w-px bg-gray-200 z-0" />
 
-            {/* 1. This container needs 'layout' to make siblings slide smoothly */}
-            <motion.div layout className="flex flex-col gap-[30px]">
+            {/* Vertical Line */}
+            <div className="absolute left-[18px] top-0 h-full w-px bg-gray-200 z-0" />
+
+            <div className="flex flex-col  relative">
               {data.steps.map((step, index) => {
                 const isActive = activeIndex === index;
 
                 return (
-                  <motion.div
+                  <button
                     key={index}
-                    layout // 2. Critical: allows the whole row to animate its position
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    className="relative flex items-start gap-6 cursor-pointer group"
+                    type="button"
+                    className={`relative flex gap-6 cursor-pointer group w-full text-left pb-[30px] ${isActive ? "items-start" : "items-center"
+                      }`}
                     onClick={() => setActiveIndex(index)}
                   >
+
                     {/* Number Circle */}
-                    <div className="relative z-10 shrink-0 mt-2">
-                      <motion.div
-                        animate={{ backgroundColor: isActive ? "#EC1C24" : "#000" }}
-                        className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white"
+                    <div className="relative z-10 shrink-0 ">
+                      <div
+                        className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white transition-colors duration-300 ${isActive ? "bg-[#EC1C24]" : "bg-black"
+                          }`}
                       >
                         {index + 1}
-                      </motion.div>
+                      </div>
                     </div>
 
-                    <div className="flex-1">
-                      {/* 3. The Red Box */}
-                      <motion.div
-                        layout // 4. Handles the padding & size change automatically
-                        className={`rounded-[16px] transition-colors duration-500 ${
-                          isActive ? "bg-[#EC1C24] p-5 shadow-2xl" : "bg-transparent py-2"
+                    {/* Card */}
+                    <div
+                      className={`flex-1 rounded-[16px]   transition-all duration-300 ${isActive ? "bg-[#EC1C24] p-[20px]" : "bg-transparent py-[10px]"
                         }`}
-                      >
-                        <motion.h3
-                          layout="position" // 5. Prevents text warping during expansion
-                          className={`font-medium transition-colors duration-200 ${
-                            isActive ? "text-white text-33" : "text-25 text-gray-900 group-hover:text-[#EC1C24]"
-                          }`}
-                        >
-                          {step.title}
-                        </motion.h3>
+                    >
 
-                        <AnimatePresence>
-                          {isActive && (
-                            <motion.div
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              exit={{ opacity: 0 }}
-                              transition={{ duration: 0.7 }}
-                            >
-                              <div className="w-full h-[1px] bg-white/30 my-5" />
-                              <p className="text-white text-19 leading-relaxed max-w-[90%]">
-                                {step.description}
-                              </p>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </motion.div>
+                      {/* Title */}
+                      <h3
+                        className={`font-medium transition-all duration-200 ${isActive
+                            ? "text-white text-33"
+                            : "text-25 text-gray-900 group-hover:text-[#EC1C24]"
+                          }`}
+                      >
+                        {step.title}
+                      </h3>
+
+                      {/* Description — rendered inside the card when active */}
+                      {isActive && (
+                        <>
+                          <div className="w-full h-[1px] bg-white/30 my-5" />
+                          <p className="text-white text-19 leading-relaxed">
+                            {step.description}
+                          </p>
+                        </>
+                      )}
+
                     </div>
-                  </motion.div>
+
+                  </button>
                 );
               })}
-            </motion.div>
+            </div>
+
           </div>
         </div>
       </div>
