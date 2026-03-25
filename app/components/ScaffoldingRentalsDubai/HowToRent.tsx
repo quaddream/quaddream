@@ -50,7 +50,11 @@ const HowToRent: React.FC<Props> = ({ data }) => {
                     className={`relative flex gap-6 cursor-pointer group ${
   isActive ? "items-start" : "items-center"
 }`}
-                    onClick={() => setActiveIndex(index)}
+                  onClick={(e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  setActiveIndex(index);
+}}
                   >
 
                     {/* Number Circle */}
