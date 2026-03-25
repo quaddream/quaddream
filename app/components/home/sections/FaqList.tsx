@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react"; 
-import Image from "next/image"; 
+import React, { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { moveUp } from "../../motionVarients";
 import { FaqData } from "../type";
@@ -14,19 +14,19 @@ interface FaqListProps {
   className?: string; // For any other extra classes
 }
 
-const FaqList = ({ 
-  faqData, 
-  bg = "bg-background", 
-  pt = "pt-150", 
+const FaqList = ({
+  faqData,
+  bg = "bg-background",
+  pt = "pt-150",
   pb = "pb-150",
-  className = "" 
+  className = ""
 }: FaqListProps) => {
-  const heading = faqData.heading; 
+  const heading = faqData.heading;
   const categories = faqData.categories.map((f) => ({
     category: f.category,
     items: f.items,
   }));
-  const allItems = categories.flatMap((cat) => cat.items); 
+  const allItems = categories.flatMap((cat) => cat.items);
   const [openQuestion, setOpenQuestion] = useState<string | null>(null);
 
   const handleToggle = (question: string) => {
