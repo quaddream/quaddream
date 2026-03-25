@@ -3,13 +3,6 @@
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import React, { useEffect, useState } from 'react'
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
 import { useForm, useFieldArray, Controller } from "react-hook-form";
 import { Button } from '@/components/ui/button'
 import { ImageUploader } from '@/components/ui/image-uploader'
@@ -94,7 +87,7 @@ const IndividualService = () => {
     const [productData, setProductData] = useState<{ _id: string, image: string, imageAlt: string, title: string, description: string, checked: boolean }[] | null>(null);
 
 
-    const { register, handleSubmit, setValue, control, formState: { errors }, getValues, watch } = useForm<IndividualServiceFormProps>();
+    const { register, handleSubmit, setValue, control, formState: { errors }, getValues } = useForm<IndividualServiceFormProps>();
 
 
 

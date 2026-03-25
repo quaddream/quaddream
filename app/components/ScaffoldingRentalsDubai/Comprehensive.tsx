@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "motion/react";
-import { containerStagger, paragraphItem, moveUp } from "../motionVarients";
+import { moveUp } from "../motionVarients";
 import { ScaffoldingRentalsDubaiData } from "./types";
 import Image from "next/image";
 

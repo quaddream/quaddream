@@ -2,7 +2,7 @@
 
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import { useForm, useFieldArray, Controller } from "react-hook-form";
 import { Button } from '@/components/ui/button'
@@ -15,10 +15,6 @@ import { toast } from 'sonner';
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false })
 import 'react-quill-new/dist/quill.snow.css';
 import dynamic from 'next/dynamic'
-import { DragEndEvent } from "@dnd-kit/core";
-import {
-    arrayMove,
-} from "@dnd-kit/sortable";
 
 
 interface IndividualServiceFormProps {
@@ -104,11 +100,7 @@ const IndividualService = () => {
 
     const { id } = useParams();
 
-
-    const [productData, setProductData] = useState<{ _id: string, image: string, imageAlt: string, title: string, description: string, checked: boolean }[] | null>(null);
-
-
-    const { register, handleSubmit, setValue, control, formState: { errors }, getValues } = useForm<IndividualServiceFormProps>();
+    const { register, handleSubmit, setValue, control, formState: { errors } } = useForm<IndividualServiceFormProps>();
 
 
     const { fields: firstSectionItems, append: firstSectionAppend, remove: firstSectionRemove } = useFieldArray({
@@ -232,33 +224,6 @@ const IndividualService = () => {
     //     }
     // };
 
-    const fetchProductData2 = async () => {
-        try {
-            const response = await fetch(`/api/admin/products`);
-            if (!response.ok) return;
-
-            const data = await response.json();
-            const products = data.data; // array of all products
-
-            // Loop over each section and mark checked
-            const sections = getValues("productSection2.sections") || [];
-            const updatedSections = sections.map((section) => ({
-                ...section,
-                items: section.items
-                    .map((item) => {
-                        const productExists = products.find((p: { _id: string }) => p._id === item._id);
-                        return productExists ? { _id: item._id } : null;
-                    })
-                    .filter((item): item is { _id: string } => item !== null), // type guard
-            }));
-
-
-            setValue("productSection2.sections", updatedSections);
-            setProductData(products.map((p: { _id: string }) => ({ ...p, checked: false })));
-        } catch (err) {
-            console.log("Error fetching product data for section 2:", err);
-        }
-    };
 
 
 
@@ -304,81 +269,13 @@ const IndividualService = () => {
 
 
     useEffect(() => {
-        fetchIndividualServiceData().then(() => fetchProductData2());
+        fetchIndividualServiceData();
     }, []);
 
 
-    const handleDragEnd = (event: DragEndEvent, sectionIndex: number) => {
-        const { active, over } = event;
-        if (!over || active.id === over.id) return;
-
-        // Get current section items from form (array of {_id})
-        const currentSectionItems =
-            getValues(`productSection2.sections.${sectionIndex}.items`) || [];
-
-        const oldIndex = currentSectionItems.findIndex(
-            (item: { _id: string }) => item._id === active.id
-        );
-        const newIndex = currentSectionItems.findIndex(
-            (item: { _id: string }) => item._id === over.id
-        );
-
-        if (oldIndex === -1 || newIndex === -1) return;
-
-        // ✅ Reorder only by _id (not full product objects)
-        const newOrder = arrayMove(currentSectionItems, oldIndex, newIndex);
-
-        // ✅ Update form (only store {_id})
-        setValue(
-            `productSection2.sections.${sectionIndex}.items`,
-            newOrder.map((item: { _id: string }) => ({ _id: item._id }))
-        );
-
-        // ✅ Update sheet state for immediate UI reflection
-        setSheetItems((prev) => {
-            const oldPos = prev.findIndex((p) => p._id === active.id);
-            const newPos = prev.findIndex((p) => p._id === over.id);
-            return arrayMove(prev, oldPos, newPos);
-        });
-    };
 
 
 
-
-    const [sheetItems, setSheetItems] = useState<{ _id: string, image: string, imageAlt: string, title: string, description: string, checked: boolean }[] | []>([])
-    const setCheckedProductInSheet = (sectionIndex: number) => {
-        const currentItems =
-            getValues(`productSection2.sections.${sectionIndex}.items`) || [];
-
-        const currentItemIds = currentItems.map((i: { _id: string }) => i._id);
-
-        const orderedProducts = currentItemIds
-            .map((id: string) =>
-                productData?.find(
-                    (item: {
-                        _id: string;
-                        image: string;
-                        imageAlt: string;
-                        title: string;
-                        description: string;
-                        checked: boolean;
-                    }) => item._id === id
-                )
-            )
-            // ✅ Explicitly tell TypeScript that this filter removes undefined
-            .filter(
-                (item): item is {
-                    _id: string;
-                    image: string;
-                    imageAlt: string;
-                    title: string;
-                    description: string;
-                    checked: boolean;
-                } => Boolean(item)
-            );
-
-        setSheetItems(orderedProducts);
-    };
 
 
 
