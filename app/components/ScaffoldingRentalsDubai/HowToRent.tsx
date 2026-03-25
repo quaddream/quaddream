@@ -45,21 +45,19 @@ const HowToRent: React.FC<Props> = ({ data }) => {
                 const isActive = activeIndex === index;
 
                 return (
-                <button
-  key={index}
-  type="button"
-  className={`relative flex gap-6 cursor-pointer group w-full text-left pb-[30px] ${
-    isActive ? "items-start" : "items-center"
-  }`}
-  onClick={() => setActiveIndex(index)}
->
+                  <button
+                    key={index}
+                    type="button"
+                    className={`relative flex gap-6 cursor-pointer group w-full text-left pb-[30px] ${isActive ? "items-start" : "items-center"
+                      }`}
+                    onClick={() => setActiveIndex(index)}
+                  >
 
                     {/* Number Circle */}
                     <div className="relative z-10 shrink-0 ">
                       <div
-                        className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white transition-colors duration-300 ${
-                          isActive ? "bg-[#EC1C24]" : "bg-black"
-                        }`}
+                        className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white transition-colors duration-300 ${isActive ? "bg-[#EC1C24]" : "bg-black"
+                          }`}
                       >
                         {index + 1}
                       </div>
@@ -67,18 +65,16 @@ const HowToRent: React.FC<Props> = ({ data }) => {
 
                     {/* Card */}
                     <div
-                      className={`flex-1 rounded-[16px]   transition-all duration-300 ${
-                        isActive ? "bg-[#EC1C24] p-[20px]" : "bg-transparent py-[10px]"
-                      }`}
+                      className={`flex-1 rounded-[16px]   transition-all duration-300 ${isActive ? "bg-[#EC1C24] p-[20px]" : "bg-transparent py-[10px]"
+                        }`}
                     >
 
                       {/* Title */}
                       <h3
-                        className={`font-medium transition-all duration-200 ${
-                          isActive
+                        className={`font-medium transition-all duration-200 ${isActive
                             ? "text-white text-33"
                             : "text-25 text-gray-900 group-hover:text-[#EC1C24]"
-                        }`}
+                          }`}
                       >
                         {step.title}
                       </h3>
