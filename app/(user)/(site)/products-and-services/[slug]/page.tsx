@@ -26,25 +26,40 @@ async function getWhatyougetData() {
   return res.json();
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: { params: Promise<{ slug: string }> }
+): Promise<Metadata> {
   const slug = (await params).slug;
-  const response = await fetch(`${process.env.BASE_URL}/api/admin/services?slug=${slug}`, { next: { revalidate: 60 } });
+
+  const response = await fetch(
+    `${process.env.BASE_URL}/api/admin/services?slug=${slug}`,
+    { next: { revalidate: 60 } }
+  );
   const data = await response.json();
 
   const metadataTitle = data?.data?.metaTitle || "Quad Dream";
   const metadataDescription = data?.data?.metaDescription || "Quad Dream";
 
+  // Slugs that should be noindex
+  const noIndexSlugs = [
+    "scaffolding-rental-dubai-uae",
+    "aluminum-mobile-scaffolding-tower-rental",
+    "cuplock-scaffolding-rental-dubai",
+  ];
+
+  const isNoIndexPage = noIndexSlugs.includes(slug);
+
   return {
     title: metadataTitle,
     description: metadataDescription,
-    robots: "index, follow",
+    robots: isNoIndexPage ? "noindex, nofollow" : "index, follow",
     alternates: {
       canonical: `/products-and-services/${slug}`,
     },
     openGraph: {
       title: metadataTitle,
       description: metadataDescription,
-      url: process.env.BASE_URL,
+      url: `${process.env.BASE_URL}/products-and-services/${slug}`,
       siteName: "Quad Dream",
     },
   };
