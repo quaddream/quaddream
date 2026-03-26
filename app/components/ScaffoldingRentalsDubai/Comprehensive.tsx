@@ -115,7 +115,7 @@ px-[22px]
 grid
      grid-cols-2 
       md:grid-cols-3 
-      lg:grid-cols-4 
+      xl:grid-cols-4 
        
       gap-y-8
     "
@@ -128,7 +128,7 @@ grid
                   <span
                     className="
               hidden xl:block
-              absolute  right-[-40px] xl:right-[-60px] top-1/2 -translate-y-1/2
+              absolute  right-[-30px] 2xl:right-[-60px] top-1/2 -translate-y-1/2
               w-[1px] h-[60%] bg-[#bcbcbc8c]
             "
                   />
