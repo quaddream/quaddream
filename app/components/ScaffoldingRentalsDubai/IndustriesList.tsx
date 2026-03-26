@@ -16,21 +16,11 @@ const IndustriesList = ({ data }: Props) => {
 
   return (
     <section className="pt-[50px] md:pt-[100px] lg:pt-[150px] bg-white">
-      <div className="container">
-        <motion.h2
-          className="text-4xl lg:text-[80px] leading-[1.125] mb-6 md:mb-8 lg:mb-12"
-          variants={moveUp(0.2)}
-          initial="hidden"
-          whileInView="show"
-          transition={{ duration: 0.6 }}
-          viewport={{ amount: 0.1, once: true }}
-        >
-          {data.title}
-        </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5 xl:gap-[1px] relative">
-          {/* Decorative horizontal line for large screens */}
-          <div className="absolute top-[50%] left-0 translate-y-[-50%] h-[0.5px] w-full bg-black/10 z-0 hidden 2xl:block" />
+      <div className="container">
+        <motion.h2 className="text-80 leading-[1.125] mb-6 md:mb-8 lg:mb-12" variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>Industries We Serve</motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5  xl:gap-[1px] relative">
+          {/* <div className="absolute top-[50%] left-0 translate-y-[-50%] h-[0.5px] w-full bg-black z-40 hidden 2xl:block"></div> */}
 
           {data.items.map((item, index) => {
             const isActive = activeIndex === index;
@@ -38,70 +28,74 @@ const IndustriesList = ({ data }: Props) => {
             return (
               <motion.div
                 key={index}
-                className="bg-[#F5E7E7] overflow-hidden rounded-2xl relative group flex flex-col justify-between cursor-pointer min-h-[210px] xl:min-h-auto border border-gray-100 xl:border-none"
-                variants={moveUp(index * 0.1)}
+                className={`bg-theme-pink overflow-hidden rounded-2xl relative group flex flex-col justify-between cursor-pointer min-h-[210px] xl:min-h-auto`}
+                variants={moveUp(index * 0.2)}
                 initial="hidden"
                 whileInView="show"
                 transition={{ duration: 0.6 }}
                 viewport={{ amount: 0.1, once: true }}
                 onClick={() => setActiveIndex(isActive ? null : index)}
               >
-                {/* Background image — Visible on hover/active */}
+                {/* Background image */}
                 <div
-                  className={`absolute inset-0 z-0 transition-opacity duration-500 ${isActive ? "opacity-100 scale-105" : "opacity-0 scale-100 group-hover:opacity-100 group-hover:scale-105"
-                    } transition-transform duration-700`}
+                  className={`absolute top-0 left-0 w-full h-full bg-white z-0 transition-all duration-300 ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                    }`}
                 >
                   <Image
                     src={item.image}
-                    alt={item.imageAlt}
-                    fill
-                    className="object-cover"
+                    alt={item.title}
+                    width={500}
+                    height={500}
+                    className="h-full w-full object-cover"
                   />
-                  {/* Gradient overlay for text readability */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60" />
                 </div>
 
-                {/* Animated progress line */}
+                {/* Gradient overlay */}
                 <div
-                  className={`absolute top-[50%] left-0 h-[2px] bg-white z-40 transition-all duration-500 ease-in-out ${isActive ? "w-full opacity-100" : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
+                  className={`absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/40 z-10 transition-all duration-300 ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
                     }`}
-                />
+                ></div>
+
+                {/* Animated line */}
+                <div className={`absolute top-[50%] translate-y-[-50%] left-0 h-[0.5px]  transition-all duration-300 bg-black w-full group-hover:opacity-0`}></div>
+                <div
+                  className={`absolute top-[50%] translate-y-[-50%] left-0 h-[3px] z-40 bg-white transition-all duration-300 ${isActive ? "opacity-100 w-full bg-white" : "opacity-0 w-0 group-hover:opacity-100 group-hover:w-full"
+                    }`}
+                >
+                </div>
 
                 {/* Arrow circle */}
                 <div
-                  className={`absolute top-[50%] -translate-y-1/2 w-[51px] h-[51px] bg-white rounded-full z-40 flex items-center justify-center transition-all duration-500 ease-out ${isActive
-                    ? "opacity-100 left-[75%] shadow-xl"
+                  className={`absolute top-[50%] translate-y-[-50%] left-0 w-[51px] h-[51px] bg-white rounded-full z-40 flex items-center justify-center transition-all duration-500 ${isActive
+                    ? "opacity-100 left-[75%]"
                     : "opacity-0 left-0 group-hover:opacity-100 group-hover:left-[75%]"
                     }`}
                 >
                   <Image
                     src="/assets/images/bold-arrow.svg"
                     alt="Arrow"
-                    width={24}
-                    height={24}
-                    className="w-6 h-6"
+                    width={30}
+                    height={30}
+                    className="w-[24px] h-[24px]"
                   />
                 </div>
 
-                {/* Logo/Icon */}
-                <div className="pb-5 2xl:pb-[57.7px] px-[30px] pt-[30px] relative z-10">
-                  <div className={`relative w-[50px] h-[50px] transition-all duration-300 ${isActive || "group-hover:scale-110"}`}>
-                    <Image
-                      src={item.logo}
-                      alt={item.logoAlt}
-                      fill
-                      className={`object-contain transition-all duration-300 ${isActive
-                        ? "invert brightness-0"
-                        : "group-hover:invert group-hover:brightness-0"
-                        }`}
-                    />
-                  </div>
+                {/* Icon */}
+                <div className="pb-5 2xl:pb-[57.7px] px-30px pt-30px relative z-10">
+                  <Image
+                    src={item.logo}
+                    alt={item.logoAlt}
+                    width={50}
+                    height={50}
+                    className={`transition-all duration-300 ${isActive ? "invert brightness-0" : "group-hover:invert brightness-0"
+                      }`}
+                  />
                 </div>
 
-                {/* Industry Title */}
-                <div className="px-[30px] 2xl:pt-[33.3px] pb-6 2xl:pb-[28px] relative z-10">
+                {/* Title */}
+                <div className="px-30px 2xl:pt-[33.3px] pb-4 2xl:pb-[28px] relative z-10">
                   <h3
-                    className={`text-2xl leading-[1.3] font-medium transition-colors duration-300 max-w-[15ch] ${isActive ? "text-white" : "text-gray-900 group-hover:text-white"
+                    className={`text-25 leading-[1.6] font-light transition-all duration-300 max-w-[15ch] ${isActive ? "text-white" : "group-hover:text-white"
                       }`}
                   >
                     {item.title}

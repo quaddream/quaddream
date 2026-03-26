@@ -92,21 +92,24 @@ const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
 
                   {/* Description */}
                   {item.description && (
-                    <p
-                      className="text-white/90 text-[17px] lg:text-[19px] leading-relaxed m-0"
-                      style={{
-                        maxHeight: isHovered ? "120px" : "0px",
-                        opacity: isHovered ? 1 : 0,
-                        overflow: "hidden",
-                        transition: "max-height 0.4s cubic-bezier(0.23,1,0.32,1) 0.08s, opacity 0.35s ease 0.08s",
-                      }}
-                    >
-                      {item.description}
-                    </p>
+                    <div className=" indi-service-second-section">
+                      <div
+                        className="text-white/90 text-[17px] lg:text-[19px] leading-relaxed m-0"
+                        style={{
+                          maxHeight: isHovered ? "120px" : "0px",
+                          opacity: isHovered ? 1 : 0,
+                          overflow: "hidden",
+                          transition: "max-height 0.4s cubic-bezier(0.23,1,0.32,1) 0.08s, opacity 0.35s ease 0.08s",
+                        }}
+                        dangerouslySetInnerHTML={{ __html: item.description }}
+                      >
+                        {/* {item.description} */}
+                      </div>
+                    </div>
                   )}
 
                   {/* Points list */}
-                  {item.points && item.points.length > 0 && (
+                  {/* {item.points && item.points.length > 0 && (
                     <ul
                       className="flex flex-col gap-3 list-none m-0 p-0"
                       style={{
@@ -126,7 +129,7 @@ const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
                         </li>
                       ))}
                     </ul>
-                  )}
+                  )} */}
                 </div>
               </div>
             );
