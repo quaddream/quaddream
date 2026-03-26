@@ -18,8 +18,8 @@ const IndustriesList = ({ data }: Props) => {
     <section className="pt-[50px] md:pt-[100px] lg:pt-[150px] bg-white">
 
       <div className="container">
-        <motion.h2 className="text-80 leading-[1.125] mb-6 md:mb-8 lg:mb-12" variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>Industries We Serve</motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5  xl:gap-[1px] relative">
+        <motion.h2 className="text-80 leading-[1.125] mb-6 md:mb-8 lg:mb-12" variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>{data.title}</motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5  xl:gap-[1px] relative">
           {/* <div className="absolute top-[50%] left-0 translate-y-[-50%] h-[0.5px] w-full bg-black z-40 hidden 2xl:block"></div> */}
 
           {data.items.map((item, index) => {
@@ -52,7 +52,7 @@ const IndustriesList = ({ data }: Props) => {
 
                 {/* Gradient overlay */}
                 <div
-                  className={`absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/40 z-10 transition-all duration-300 ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                  className={`absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/80 z-10 transition-all duration-300 ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
                     }`}
                 ></div>
 

@@ -12,6 +12,8 @@ type Props = {
 const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
+  const sanitizeHtml = (html: string) => html.replace(/&nbsp;/g, " ");
+
   return (
     <section className="pb-[50px] md:pb-[100px] lg:pb-[150px] bg-white">
       <div className="container">
@@ -73,9 +75,9 @@ const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
 
                 {/* Content — NO layout, NO AnimatePresence */}
                 <div className="absolute inset-0 flex flex-col justify-end p-8 lg:p-12">
-                  <p className="text-2xl lg:text-[33px] font-medium leading-[1.2] text-white m-0">
+                  <h3 className="text-2xl lg:text-[33px] font-medium leading-[1.2] text-white m-0">
                     {item.title}
-                  </p>
+                  </h3>
 
                   {/* Divider draws in via scaleX */}
                   <div
@@ -96,12 +98,17 @@ const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
                       <div
                         className="text-white/90 text-[17px] lg:text-[19px] leading-relaxed m-0"
                         style={{
-                          maxHeight: isHovered ? "120px" : "0px",
                           opacity: isHovered ? 1 : 0,
+                          transform: isHovered
+                            ? "translateY(0px)"
+                            : "translateY(20px)",
+                          maxHeight: isHovered ? "500px" : "0px",
+                          transition:
+                            "transform 0.4s cubic-bezier(0.23,1,0.32,1), opacity 0.3s ease, max-height 0.4s ease",
                           overflow: "hidden",
-                          transition: "max-height 0.4s cubic-bezier(0.23,1,0.32,1) 0.08s, opacity 0.35s ease 0.08s",
                         }}
-                        dangerouslySetInnerHTML={{ __html: item.description }}
+
+                        dangerouslySetInnerHTML={{ __html: sanitizeHtml(item.description) }}
                       >
                         {/* {item.description} */}
                       </div>

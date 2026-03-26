@@ -29,7 +29,7 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
   // const hasSecondSection = !!(secondSection?.title?.trim() || secondSection?.description?.trim() || secondSection?.image?.trim());
   const hasBottomDescription = !!bottomDescription?.trim();
   const hasBottomStats = !!(bottomStats && bottomStats.length > 0);
-
+  const sanitizeHtml = (html: string) => html.replace(/&nbsp;/g, " ");
   // If nothing to render, return null entirely
   // if (!hasSecondSection && !hasBottomDescription && !hasBottomStats) {
   //   return null;
@@ -94,7 +94,7 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
             transition={{ duration: 0.6 }}
             viewport={{ amount: 0.1, once: true }}
             className="text-19 text-[#696969] leading-[1.684210526315789] "
-            dangerouslySetInnerHTML={{ __html: bottomDescription }}
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(bottomDescription) }}
           >
             {/* {bottomDescription} */}
           </motion.p>
@@ -109,13 +109,14 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
             transition={{ duration: 0.6 }}
             viewport={{ amount: 0.1, once: true }}
             className="
-      grid 
-     
+      xl:flex
+justify-between
+px-[22px]
+grid
      grid-cols-2 
       md:grid-cols-3 
       lg:grid-cols-4 
-      xl:grid-cols-5
-      gap-x-[80px]
+       
       gap-y-8
     "
           >
@@ -127,7 +128,7 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
                   <span
                     className="
               hidden xl:block
-              absolute right-[-30px] top-1/2 -translate-y-1/2
+              absolute  right-[-40px] xl:right-[-60px] top-1/2 -translate-y-1/2
               w-[1px] h-[60%] bg-[#bcbcbc8c]
             "
                   />
