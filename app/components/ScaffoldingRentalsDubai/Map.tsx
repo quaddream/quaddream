@@ -152,7 +152,7 @@ export default function ServiceAreas() {
             <div className="absolute inset-0 bottom-[17%] overflow-hidden pointer-events-none ">
               <div className="absolute bottom-0 right-0 w-full h-full hidden lg:block">
                 <Image
-                  src="assets/images/scaffoldingSolutions/rightmapov.png"
+                  src="/assets/images/scaffoldingSolutions/rightmapov.png"
                   width={629}
                   height={549}
                   alt=""

@@ -109,13 +109,14 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
             transition={{ duration: 0.6 }}
             viewport={{ amount: 0.1, once: true }}
             className="
-      grid 
-     
+      xl:flex
+justify-between
+px-[22px]
+grid
      grid-cols-2 
       md:grid-cols-3 
       lg:grid-cols-4 
-      xl:grid-cols-5
-      gap-x-[77px]
+      gap-x-[77px] 
       gap-y-8
     "
           >
@@ -127,7 +128,7 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
                   <span
                     className="
               hidden xl:block
-              absolute right-[-20px] top-1/2 -translate-y-1/2
+              absolute right-[-78px] top-1/2 -translate-y-1/2
               w-[1px] h-[60%] bg-[#bcbcbc8c]
             "
                   />
