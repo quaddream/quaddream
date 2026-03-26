@@ -87,7 +87,9 @@ const IndustriesList = ({ data }: Props) => {
                     alt={item.logoAlt}
                     width={50}
                     height={50}
-                    className={`transition-all duration-300 ${isActive ? "invert brightness-0" : "group-hover:invert brightness-0"
+                    className={`transition-all duration-300 ${isActive
+                        ? "invert brightness-0"
+                        : "group-hover:invert group-hover:brightness-0"
                       }`}
                   />
                 </div>
