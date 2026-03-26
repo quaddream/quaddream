@@ -541,3 +541,34 @@ body {
 .project-description-para a {
   color: var(--primary);
 }
+
+.indi-service-second-section p {
+  font-weight: bold;
+}
+
+.indi-service-second-section ol {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.indi-service-second-section li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* Hide Quill's default marker */
+.indi-service-second-section .ql-ui {
+  display: none;
+}
+
+/* Add custom bullet */
+.indi-service-second-section li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-top: 12px;
+  border-radius: 50%;
+  background: white;
+  flex-shrink: 0;
+}

@@ -31,8 +31,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const response = await fetch(`${process.env.BASE_URL}/api/admin/services?slug=${slug}`, { next: { revalidate: 60 } });
   const data = await response.json();
 
-  console.log(data);
-
   const metadataTitle = data?.data?.metaTitle || "Quad Dream";
   const metadataDescription = data?.data?.metaDescription || "Quad Dream";
 
