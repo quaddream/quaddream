@@ -15,7 +15,7 @@ const IndustriesList = ({ data }: Props) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <section className="pt-[50px] md:pt-[100px] lg:pt-[150px] bg-white">
+    <section className="pt-150 bg-white">
 
       <div className="container">
         <motion.h2 className="text-80 leading-[1.125] mb-6 md:mb-8 lg:mb-12" variants={moveUp(0.2)} initial="hidden" whileInView="show" transition={{ duration: 0.6 }} viewport={{ amount: 0.1, once: true }}>{data.title}</motion.h2>
