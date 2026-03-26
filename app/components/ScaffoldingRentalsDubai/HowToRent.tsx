@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { ScaffoldingRentalsDubaiData } from "./types";
+import { NewDesignType } from "./types";
 
 type Props = {
-  data: ScaffoldingRentalsDubaiData["howToRent"];
+  data: NewDesignType['thirdSection'];
 };
 
 const HowToRent: React.FC<Props> = ({ data }) => {
@@ -41,7 +41,7 @@ const HowToRent: React.FC<Props> = ({ data }) => {
             <div className="absolute left-[18px] top-0 h-full w-px bg-gray-200 z-0" />
 
             <div className="flex flex-col  relative">
-              {data.steps.map((step, index) => {
+              {data.items.map((step, index) => {
                 const isActive = activeIndex === index;
 
                 return (
@@ -72,8 +72,8 @@ const HowToRent: React.FC<Props> = ({ data }) => {
                       {/* Title */}
                       <h3
                         className={`font-medium transition-all duration-200 ${isActive
-                            ? "text-white text-33"
-                            : "text-25 text-gray-900 group-hover:text-[#EC1C24]"
+                          ? "text-white text-33"
+                          : "text-25 text-gray-900 group-hover:text-[#EC1C24]"
                           }`}
                       >
                         {step.title}

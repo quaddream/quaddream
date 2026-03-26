@@ -1,12 +1,18 @@
-import Index from "@/app/components/service-details";
+import IndexOld from "@/app/components/service-details";
 import { Metadata } from "next";
 import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
+import Script from "next/script";
+import { serviceSchema } from "@/lib/schema/service";
+import Index from "@/app/components/ScaffoldingRentalsDubai/Index";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
 async function getService(slug: string) {
+  console.log("slug", slug);
+
+  if (!slug) return;
   const url = `${process.env.BASE_URL}/api/admin/services?slug=${slug}`;
   console.log("Fetching service from:", url);
   const res = await fetch(url, { cache: "no-store" });
@@ -24,8 +30,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const slug = (await params).slug;
   const response = await fetch(`${process.env.BASE_URL}/api/admin/services?slug=${slug}`, { next: { revalidate: 60 } });
   const data = await response.json();
-
-  console.log(data);
 
   const metadataTitle = data?.data?.metaTitle || "Quad Dream";
   const metadataDescription = data?.data?.metaDescription || "Quad Dream";
@@ -49,18 +53,50 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ServiceDetailsPage({ params }: Props) {
   const { slug } = await params;
   const service = await getService(slug as string);
-  const whatyouget = await getWhatyougetData();
+  console.log(service.data.type)
+  if (service.data.type == "new-design") {
+    const pjt = await fetch(`${process.env.BASE_URL}/api/admin/project`, {
+      next: { revalidate: 60 },
+    });
+    const pjtdata = await pjt.json();
+    return (
+      <>
+        <Script
+          id="service-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(serviceSchema),
+          }}
+        />
+        {/* <script
+          id="breadcrumb-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              generateBreadcrumbSchema("/scaffolding-rental-in-dubai")
+            ),
+          }}
+        /> */}
+        <Index data={service.data} projectsdata={pjtdata.data} />
+      </>
+    );
 
-  return (
-    <>
-      <script
-        id="breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateBreadcrumbSchema(`/products-and-services/${slug}`)),
-        }}
-      />
-      <Index service={service.data} whatyougetData={whatyouget.data} />
-    </>
-  );
+  } else {
+
+    const whatyouget = await getWhatyougetData();
+    return (
+      <>
+        <script
+          id="breadcrumb-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateBreadcrumbSchema(`/products-and-services/${slug}`)),
+          }}
+        />
+        <IndexOld service={service.data} whatyougetData={whatyouget.data} />
+      </>
+    );
+  }
+
 }

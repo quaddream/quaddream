@@ -6,38 +6,38 @@ import IndustriesList from "./IndustriesList";
 import HowToRent from "./HowToRent";
 import PortfolioHorizontalScroll from "../../components/home-old/sections/PortfolioHorizontalScroll";
 import Map from "../../components/ScaffoldingRentalsDubai/Map"
-import FaqList from "../../components/home/sections/FaqList";
+import FaqList from "./FaqList";
 import CTA from "./cta";
-import { ScaffoldingRentalsDubaiData } from "./types";
+import { NewDesignType } from "./types";
 import { Projects } from "../../components/projects/type";
 
 
 const Index = ({ data, projectsdata }: {
-  data: ScaffoldingRentalsDubaiData;
+  data: NewDesignType;
   projectsdata: Projects;
 }) => {
   return (
     <>
       <BannerInner bannerData={data.bannerSection} />
       <Comprehensive
-        secondSection={data.secondSection}
+        secondSection={data.firstSection}
         secondTitleMaxWidth={false}
-        bottomDescription={data.bottomDescription}
-        bottomStats={data.bottomStats}
+        bottomDescription={data.firstSection.description}
+        bottomStats={data.firstSection.items}
       />
-      <ScaffoldingSystems data={data.scaffoldingSystems} />
-      <HowToRent data={data.howToRent} />
-      <IndustriesList data={data.industriesSection} />
+      <ScaffoldingSystems data={data.secondSection} />
+      <HowToRent data={data.thirdSection} />
+      <IndustriesList data={data.fourthSection} />
       <PortfolioHorizontalScroll projectsdata={projectsdata} title="Projects" scrollMode={false} />
       <Map />
-      <FaqList faqData={data.faqContent} bg="bg-gray-100" />
+      <FaqList faqData={data.fifthSection} bg="bg-gray-100" />
       <CTA
 
-        mainTitle={data.ctaSection.title}
-        subTitle={data.ctaSection.description}
-        buttonText={data.ctaSection.buttonText}
-        image={data.ctaSection.bgImg}
-        imageAlt="Project Contact Image" // Or add this to your data/types
+        mainTitle={data.sixthSection.title}
+        subTitle={data.sixthSection.description}
+        buttonText={data.sixthSection.buttonText}
+        image={data.sixthSection.image}
+        imageAlt={data.sixthSection.imageAlt} // Or add this to your data/types
       />
     </>
   );

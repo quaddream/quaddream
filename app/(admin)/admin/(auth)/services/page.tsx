@@ -13,6 +13,8 @@ import AdminItemContainer from '@/app/components/common/AdminItemContainer';
 import { RiAiGenerateText } from 'react-icons/ri'
 import { useRefetchServices } from '@/app/contexts/refetchServices';
 import { toast } from 'sonner';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 
 interface ServiceFormProps {
 
@@ -40,6 +42,8 @@ interface ServiceFormProps {
             thumbnailAlt: string;
             thumbnailTitle: string;
             slug: string;
+            type: string;
+            isHidden: boolean;
         }[];
     };
 }
@@ -270,6 +274,28 @@ const ServiceMainPage = () => {
                                                 <RiDeleteBinLine onClick={() => thirdSectionRemove(index)} className='cursor-pointer text-red-600' />
                                             </div>
 
+                                            <div className='absolute bottom-3 right-2'>
+                                                <Controller
+                                                    name={`thirdSection.items.${index}.isHidden`}
+                                                    control={control}
+                                                    render={({ field }) => (
+                                                        field.value ? (
+                                                            <RiEyeOffLine
+                                                                className="cursor-pointer text-gray-500"
+                                                                size={20}
+                                                                onClick={() => field.onChange(false)}
+                                                            />
+                                                        ) : (
+                                                            <RiEyeLine
+                                                                className="cursor-pointer text-green-600"
+                                                                size={20}
+                                                                onClick={() => field.onChange(true)}
+                                                            />
+                                                        )
+                                                    )}
+                                                />
+                                            </div>
+
                                             <div className='flex flex-col gap-2'>
                                                 <div className='flex flex-col gap-2'>
                                                     <div className='flex flex-col gap-2'>
@@ -331,6 +357,36 @@ const ServiceMainPage = () => {
                                                         })} />
                                                         {errors.thirdSection?.items?.[index]?.slug && <p className='text-red-500'>{errors.thirdSection?.items?.[index]?.slug.message}</p>}
                                                     </div>
+
+                                                    <div className='flex flex-col gap-2 w-1/2'>
+                                                        <Label className='font-bold'>Design Type</Label>
+                                                        <Controller
+                                                            name={`thirdSection.items.${index}.type`}
+                                                            control={control}
+
+                                                            render={({ field }) => (
+                                                                <Select
+                                                                    onValueChange={field.onChange}
+                                                                    value={field.value}
+                                                                    defaultValue="old-design"
+                                                                >
+                                                                    <SelectTrigger className="w-full">
+                                                                        <SelectValue placeholder="Select Design Style" />
+                                                                    </SelectTrigger>
+                                                                    <SelectContent>
+                                                                        <SelectItem value="old-design">
+                                                                            Old Design
+                                                                        </SelectItem>
+                                                                        <SelectItem value="new-design">
+                                                                            New Design
+                                                                        </SelectItem>
+                                                                    </SelectContent>
+                                                                </Select>
+                                                            )}
+                                                        />
+
+                                                    </div>
+
                                                 </div>
 
                                             </div>
@@ -339,7 +395,7 @@ const ServiceMainPage = () => {
                                     ))}
 
                                     <div className='flex justify-end'>
-                                        <Button type='button' className="" addItem onClick={() => thirdSectionAppend({ thumbnail: "", thumbnailAlt: "", thumbnailTitle: "", slug: "" })}>Add Item</Button>
+                                        <Button type='button' className="" addItem onClick={() => thirdSectionAppend({ thumbnail: "", thumbnailAlt: "", thumbnailTitle: "", slug: "", type: "", isHidden: false })}>Add Item</Button>
                                     </div>
 
                                 </div>

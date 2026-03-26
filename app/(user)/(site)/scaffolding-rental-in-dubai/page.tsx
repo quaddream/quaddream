@@ -1,5 +1,3 @@
-import Index from "@/app/components/ScaffoldingRentalsDubai/Index";
-import { scaffoldingRentalsDubaiData } from "@/app/components/ScaffoldingRentalsDubai/data";
 import { Metadata } from "next";
 import { serviceSchema } from "@/lib/schema/service";
 import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
@@ -21,10 +19,10 @@ export const metadata: Metadata = {
 };
 
 export default async function ScaffoldingRentalsDubai() { // 👈 async
-  const pjt = await fetch(`${process.env.BASE_URL}/api/admin/project`, {
-    next: { revalidate: 60 },
-  });
-  const pjtdata = await pjt.json();
+  // const pjt = await fetch(`${process.env.BASE_URL}/api/admin/project`, {
+  //   next: { revalidate: 60 },
+  // });
+  // const pjtdata = await pjt.json();
 
   return (
     <>
@@ -45,7 +43,7 @@ export default async function ScaffoldingRentalsDubai() { // 👈 async
           ),
         }}
       />
-      <Index data={scaffoldingRentalsDubaiData} projectsdata={pjtdata.data} /> 
+      {/* <Index data={scaffoldingRentalsDubaiData} projectsdata={pjtdata.data} />  */}
     </>
   );
 }
