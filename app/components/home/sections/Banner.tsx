@@ -39,6 +39,7 @@ const Banner = ({ data }: { data: Home["bannerSection"] }) => {
       <div className="absolute top-0 left-0 w-full h-full bg-black z-0 transition-all duration-300">
         <video
           src={data.video}
+          preload="auto"
           playsInline
           controlsList="nodownload nofullscreen noremoteplayback"
           disablePictureInPicture
