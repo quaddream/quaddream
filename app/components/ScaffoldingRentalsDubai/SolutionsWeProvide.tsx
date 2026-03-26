@@ -96,11 +96,16 @@ const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
                       <div
                         className="text-white/90 text-[17px] lg:text-[19px] leading-relaxed m-0"
                         style={{
-                          maxHeight: isHovered ? "120px" : "0px",
                           opacity: isHovered ? 1 : 0,
+                          transform: isHovered
+                            ? "translateY(0px)"
+                            : "translateY(20px)",
+                          maxHeight: isHovered ? "500px" : "0px",
+                          transition:
+                            "transform 0.4s cubic-bezier(0.23,1,0.32,1), opacity 0.3s ease, max-height 0.4s ease",
                           overflow: "hidden",
-                          transition: "max-height 0.4s cubic-bezier(0.23,1,0.32,1) 0.08s, opacity 0.35s ease 0.08s",
                         }}
+
                         dangerouslySetInnerHTML={{ __html: item.description }}
                       >
                         {/* {item.description} */}

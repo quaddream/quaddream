@@ -115,7 +115,7 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
       md:grid-cols-3 
       lg:grid-cols-4 
       xl:grid-cols-5
-      gap-x-[80px]
+      gap-x-[77px]
       gap-y-8
     "
           >
@@ -127,7 +127,7 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
                   <span
                     className="
               hidden xl:block
-              absolute right-[-30px] top-1/2 -translate-y-1/2
+              absolute right-[-20px] top-1/2 -translate-y-1/2
               w-[1px] h-[60%] bg-[#bcbcbc8c]
             "
                   />
