@@ -15,7 +15,7 @@ const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
   const sanitizeHtml = (html: string) => html.replace(/&nbsp;/g, " ");
 
   return (
-    <section className="pb-[50px] md:pb-[100px] lg:pb-[150px] bg-white">
+    <section className="pb-150 bg-white">
       <div className="container">
         <motion.h2
           variants={paragraphItem}
@@ -23,10 +23,11 @@ const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
           whileInView="show"
           transition={{ duration: 0.6 }}
           viewport={{ amount: 0.1, once: true }}
-          className="text-80 font-400 leading-[1.125] mb-[50px] text-black"
+          className="text-80 font-400 leading-[1.125] mb-[30px] xl:mb-[50px] text-black"
         >
           {data.title}
         </motion.h2>
+        <p className="text-19 text-[#696969]  mb-[30px] xl:mb-[50px]">Each aluminum mobile tower rental includes the essential components required for safe assembly and stable working platforms on site. These components support secure tower positioning, safe platform access, and structural stability during construction, installation, and maintenance work. </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {data.items.map((item, index) => {

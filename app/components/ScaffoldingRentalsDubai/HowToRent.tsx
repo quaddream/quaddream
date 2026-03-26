@@ -11,7 +11,7 @@ const HowToRent: React.FC<Props> = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   return (
-    <section className="py-[50px] md:py-[100px] lg:py-[150px] bg-[#F9F9F9] relative overflow-hidden">
+    <section className="py-150 bg-[#F9F9F9] relative overflow-hidden">
 
       {/* Decorative Image */}
       <div className="absolute bottom-0 left-0 pointer-events-none select-none z-0">
