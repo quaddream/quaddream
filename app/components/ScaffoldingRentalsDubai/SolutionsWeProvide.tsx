@@ -12,6 +12,8 @@ type Props = {
 const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
+  const sanitizeHtml = (html: string) => html.replace(/&nbsp;/g, " ");
+
   return (
     <section className="pb-[50px] md:pb-[100px] lg:pb-[150px] bg-white">
       <div className="container">
@@ -73,9 +75,9 @@ const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
 
                 {/* Content — NO layout, NO AnimatePresence */}
                 <div className="absolute inset-0 flex flex-col justify-end p-8 lg:p-12">
-                  <p className="text-2xl lg:text-[33px] font-medium leading-[1.2] text-white m-0">
+                  <h3 className="text-2xl lg:text-[33px] font-medium leading-[1.2] text-white m-0">
                     {item.title}
-                  </p>
+                  </h3>
 
                   {/* Divider draws in via scaleX */}
                   <div
@@ -106,7 +108,7 @@ const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
                           overflow: "hidden",
                         }}
 
-                        dangerouslySetInnerHTML={{ __html: item.description }}
+                        dangerouslySetInnerHTML={{ __html: sanitizeHtml(item.description) }}
                       >
                         {/* {item.description} */}
                       </div>

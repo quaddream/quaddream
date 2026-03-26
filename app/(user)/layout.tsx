@@ -47,14 +47,14 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-NBV7RRSH');`,
                     }}
                 />
-  
+
                 <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessSchema),
-          }}
-        />
-                
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(localBusinessSchema),
+                    }}
+                />
+
             </head>
             <body className={`${openSans.variable} antialiased`}>
                 <noscript>
