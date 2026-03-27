@@ -64,6 +64,7 @@ const serviceSchema = new mongoose.Schema({
                 },
                 secondSection: {
                     title: { type: String },
+                    description: { type: String },
                     items: [
                         {
                             image: { type: String },
