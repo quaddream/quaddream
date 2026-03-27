@@ -58,6 +58,7 @@ useEffect(() => {
   alt="hero"
   fill
   priority
+  sizes="100vw"
   className="object-cover"
 />
 {loadVideo && (
