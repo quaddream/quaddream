@@ -40,6 +40,7 @@ interface IndividualServiceFormProps {
     };
     secondSection: {
         title: string;
+        description: string;
         items: {
             image: string;
             imageAlt: string;
@@ -464,13 +465,10 @@ const IndividualService = () => {
                                 })} />
                                 {errors.secondSection?.title && <p className='text-red-500'>{errors.secondSection?.title.message}</p>}
                             </div>
-                            {/* <div className='flex flex-col gap-1'>
+                            <div className='flex flex-col gap-1'>
                                 <Label className=' font-bold'>Description</Label>
-                                <Textarea placeholder='Description' {...register("fourthSection.description", {
-                                    required: "Description is required"
-                                })} />
-                                {errors.fourthSection?.description && <p className='text-red-500'>{errors.fourthSection?.description.message}</p>}
-                            </div> */}
+                                <Textarea placeholder='Description' {...register("secondSection.description")} />
+                            </div>
                         </div>
 
                         <div>

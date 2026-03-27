@@ -19,7 +19,9 @@ const Banner = ({ data }: { data: Home["bannerSection"] }) => {
 const [loadVideo, setLoadVideo] = useState(false);
 
 useEffect(() => {
-  setTimeout(() => setLoadVideo(true), 1000);
+  requestIdleCallback(() => {
+    setLoadVideo(true);
+  });
 }, []);
   // animate on slide change
   useEffect(() => {
