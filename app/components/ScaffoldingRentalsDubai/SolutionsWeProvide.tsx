@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { motion } from "motion/react";
 import { paragraphItem } from "../motionVarients";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { ScaffoldingRentalsDubaiData } from "./types";
 
 type Props = {
@@ -14,17 +13,17 @@ const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const sanitizeHtml = (html: string) => html.replace(/&nbsp;/g, " ");
-const pathname = usePathname();
+  // const pathname = usePathname();
 
-const aluminumPath =
-  "/products-and-services/aluminum-mobile-scaffolding-tower-rental";
+  // const aluminumPath =
+  //   "/products-and-services/aluminum-mobile-scaffolding-tower-rental";
 
-const cuplockPath =
-  "/products-and-services/cuplock-scaffolding-rental-dubai";
+  // const cuplockPath =
+  //   "/products-and-services/cuplock-scaffolding-rental-dubai";
 
-const aluminumContent = `Each aluminum mobile tower rental includes the essential components required for safe assembly and stable working platforms on site. These components support secure tower positioning, safe platform access, and structural stability during construction, installation, and maintenance work.`;
+  // const aluminumContent = `Each aluminum mobile tower rental includes the essential components required for safe assembly and stable working platforms on site. These components support secure tower positioning, safe platform access, and structural stability during construction, installation, and maintenance work.`;
 
-const cuplockContent = `Quad Dream maintains a complete inventory of cuplock scaffolding components used to assemble temporary access and support structures, supporting contractors looking for a cuplock scaffolding supplier in the UAE. Components are available as complete system packages or as individual parts to supplement existing scaffold installations on project sites.`;
+  // const cuplockContent = `Quad Dream maintains a complete inventory of cuplock scaffolding components used to assemble temporary access and support structures, supporting contractors looking for a cuplock scaffolding supplier in the UAE. Components are available as complete system packages or as individual parts to supplement existing scaffold installations on project sites.`;
   return (
     <section className="pb-150 bg-white">
       <div className="container">
@@ -38,11 +37,11 @@ const cuplockContent = `Quad Dream maintains a complete inventory of cuplock sca
         >
           {data.title}
         </motion.h2>
-{(pathname === aluminumPath || pathname === cuplockPath) && (
-  <p className="text-19 text-[#696969] mb-[30px] xl:mb-[50px]">
-    {pathname === aluminumPath ? aluminumContent : cuplockContent}
-  </p>
-)}
+        {data.description && (
+          <p className="text-19 text-[#696969] mb-[30px] xl:mb-[50px]">
+            {data.description}
+          </p>
+        )}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {data.items.map((item, index) => {
             const isHovered = hoveredIndex === index;

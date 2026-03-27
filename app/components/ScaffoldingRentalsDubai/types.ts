@@ -22,6 +22,7 @@ export interface ScaffoldingRentalsDubaiData {
 
   scaffoldingSystems: {
     title: string;
+    description?: string;
     items: {
       title: string;
       image: string;
