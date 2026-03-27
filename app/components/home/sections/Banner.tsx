@@ -16,7 +16,11 @@ import gsap from "gsap";
 const Banner = ({ data }: { data: Home["bannerSection"] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
+const [loadVideo, setLoadVideo] = useState(false);
 
+useEffect(() => {
+  setTimeout(() => setLoadVideo(true), 1000);
+}, []);
   // animate on slide change
   useEffect(() => {
     if (contentRefs.current[activeIndex]) {
@@ -37,8 +41,9 @@ const Banner = ({ data }: { data: Home["bannerSection"] }) => {
   return (
     <section className="h-[400px] md:h-screen 2xl:h-[100vh] bg-black relative z-[1] hero overflow-hidden "> 
       <div className="absolute top-0 left-0 w-full h-full bg-black z-0 transition-all duration-300">
-        <video
+        {/* <video
           src={data.video}
+          preload="none"
           playsInline
           controlsList="nodownload nofullscreen noremoteplayback"
           disablePictureInPicture
@@ -47,7 +52,27 @@ const Banner = ({ data }: { data: Home["bannerSection"] }) => {
           muted
           poster={data.poster}
           className="w-full h-full object-cover"
-        />
+        /> */}
+        <Image
+  src={data.poster}
+  alt="hero"
+  fill
+  priority
+  className="object-cover"
+/>
+{loadVideo && (
+  <video
+    src={data.video}
+    preload="none"
+    playsInline
+    controlsList="nodownload nofullscreen noremoteplayback"
+    disablePictureInPicture
+    autoPlay
+    loop
+    muted 
+    className="w-full h-full object-cover absolute"
+  />
+)}
       </div>
 
       <div className="absolute top-0 left-0 w-full h-full bg-black/55 z-0 transition-all duration-300"></div>
