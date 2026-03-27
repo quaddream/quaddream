@@ -101,8 +101,8 @@ const Navbar = () => {
                 <Image
                   src="/assets/images/logo-main.svg"
                   alt="Scaffolding Company - Quad Dream"
-                  width={550}
-                  height={550}
+                  width={317}
+                  height={107}
                   className="h-auto w-auto lg:h-[53px] xl:h-[65px] 2xl:h-[107px] object-contain"
                 />
               </Link>
@@ -286,6 +286,7 @@ const Navbar = () => {
                   className="h-[60px] w-auto object-contain"
                 />
               </Link>
+              
             </div>
             {/* Search Button */}
             <div className="flex items-center">
