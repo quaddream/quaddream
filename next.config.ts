@@ -32,7 +32,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   images: {
     dangerouslyAllowSVG:true,
-    unoptimized:true,
+    // unoptimized:true,
     domains: ["dl.dropboxusercontent.com","plus.unsplash.com"] // Add Dropbox domain here
   },
   
