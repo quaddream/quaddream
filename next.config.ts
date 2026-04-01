@@ -37,10 +37,10 @@ const nextConfig: NextConfig = {
   // },
 
 
-  experimental: {
-    optimizeCss: true,
-    // optimizePackageImports: ["gsap", "swiper"],
-  },
+  // experimental: {
+  //   optimizeCss: true,
+  //   // optimizePackageImports: ["gsap", "swiper"],
+  // },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },

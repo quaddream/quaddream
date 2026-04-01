@@ -16,7 +16,7 @@ const Index = ({
         bannerData={{
           image: blogDetail.bannerSection.image,
           imageAlt: blogDetail.bannerSection.imageAlt,
-          title: blogDetail.title,
+          title: '',
         }}
       />
       <BlogDetail blogDetail={blogDetail} allBlogs={allBlogs} />
