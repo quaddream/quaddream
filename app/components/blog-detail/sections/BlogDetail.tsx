@@ -21,7 +21,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ blogDetail, allBlogs }) => {
         <div className="  mx-auto">
           <div className="md:px-4 mx-auto mb-[30px] md:mb-[50px] xl:mb-[124px]">
             {/* Title */}
-            <motion.h1
+            {/* <motion.h1
               variants={moveRight()}
               initial="hidden"
               whileInView="show"
@@ -29,7 +29,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ blogDetail, allBlogs }) => {
               className="font-normal text-80 text-black mb-[25px] lg:mb-[50px] leading-[1.12]"
             >
               {blogDetail.title}
-            </motion.h1>
+            </motion.h1> */}
             <motion.div
               variants={moveUp()}
               initial="hidden"
