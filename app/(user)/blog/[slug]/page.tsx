@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: Props) {
     return {
         title: metadataTitle,
         description: metadataDescription,
+        robots: "index, follow",
         alternates: {
             canonical: `/blog/${slug}`,
         },

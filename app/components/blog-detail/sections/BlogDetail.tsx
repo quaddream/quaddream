@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-// import { GoShareAndroid } from "react-icons/go";
+import { GoShareAndroid } from "react-icons/go";
 import LikeSlider from "./LikeSlider";
 import { motion } from "framer-motion";
 import { moveRight, moveUp } from "../../motionVarients";
@@ -50,7 +50,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ blogDetail, allBlogs }) => {
                     })}
                   </span>
                 </div>
-                {/* <GoShareAndroid size={22} /> */}
+                <GoShareAndroid size={22} />
               </div>
             </motion.div>
             {/* Content Rendering */}
