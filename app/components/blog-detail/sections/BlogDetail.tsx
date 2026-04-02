@@ -58,7 +58,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ blogDetail, allBlogs }) => {
           </div>
         </div>
         <hr />
-        <div className="2xl:px-[100px] md:px-4">
+        <div className="">
           <div className="md:px-4 mx-auto">
             <LikeSlider blogList={allBlogs} />
           </div>
