@@ -80,7 +80,7 @@ const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
 
                 {/* Red overlay — fades in on hover */}
                 <div
-                  className="absolute inset-0 bg-[#D0021B]"
+                  className="absolute inset-0 bg-[#EC1C24]"
                   style={{
                     opacity: isHovered ? 0.95 : 0,
                     transition: "opacity 0.4s ease",
