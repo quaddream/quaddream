@@ -24,10 +24,11 @@ useEffect(() => {
   });
 }, []);
   // animate on slide change
-  useEffect(() => {
-    if (contentRefs.current[activeIndex]) {
+useEffect(() => {
+    const el = contentRefs.current[activeIndex];
+    if (el) {
       gsap.fromTo(
-        contentRefs.current[activeIndex].children,
+        el.children,
         { y: 50, opacity: 0 },
         {
           y: 0,
