@@ -1,6 +1,7 @@
 import IndexOld from "@/app/components/service-details";
 import { Metadata } from "next";
 import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
+import { generateFaqSchema } from "@/lib/schema/faqSchemaServices";
 import Script from "next/script";
 import { serviceSchema } from "@/lib/schema/service";
 import Index from "@/app/components/ScaffoldingRentalsDubai/Index";
@@ -74,6 +75,7 @@ export default async function ServiceDetailsPage({ params }: Props) {
       next: { revalidate: 60 },
     });
     const pjtdata = await pjt.json();
+    const faqSchema = generateFaqSchema(service.data?.fifthSection);
     return (
       <>
         <Script
@@ -84,6 +86,16 @@ export default async function ServiceDetailsPage({ params }: Props) {
             __html: JSON.stringify(serviceSchema),
           }}
         />
+        {faqSchema && (
+          <Script
+            id="faq-schema"
+            type="application/ld+json"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(faqSchema),
+            }}
+          />
+        )}
         {/* <script
           id="breadcrumb-schema"
           type="application/ld+json"
