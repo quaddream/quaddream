@@ -41,18 +41,18 @@ export async function generateMetadata(
   const metadataDescription = data?.data?.metaDescription || "Quad Dream";
 
   // Slugs that should be noindex
-  const noIndexSlugs = [
-    "scaffolding-rental-dubai-uae",
-    "aluminum-mobile-scaffolding-tower-rental",
-    "cuplock-scaffolding-rental-dubai",
-  ];
+  // const noIndexSlugs = [
+  //   "scaffolding-rental-dubai-uae",
+  //   "aluminum-mobile-scaffolding-tower-rental",
+  //   "cuplock-scaffolding-rental-dubai",
+  // ];
 
-  const isNoIndexPage = noIndexSlugs.includes(slug);
+  // const isNoIndexPage = noIndexSlugs.includes(slug);
 
   return {
     title: metadataTitle,
     description: metadataDescription,
-    robots: isNoIndexPage ? "noindex, nofollow" : "index, follow",
+    robots: "index, follow",
     alternates: {
       canonical: `/products-and-services/${slug}`,
     },

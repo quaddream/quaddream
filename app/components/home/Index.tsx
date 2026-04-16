@@ -1,18 +1,18 @@
 import React from "react";
 import Banner from "./sections/Banner";
-import Services from "./sections/Services";
+import Services from "./sections/ServicesNew";
 import HomeTicker from "./sections/HomeTicker";
 import CTA from "../common/cta";
 import IndustriesList from "./sections/IndustriesList";
 import WhyChoose from "./sections/WhyChoose";
 import OurPartners from "./sections/OurPartners";
 import PortfolioHorizontalScroll from "./sections/PortfolioHorizontalScroll";
-import { Home,FaqData } from "./type";
+import { Home, FaqData } from "./type";
 import { Projects } from "../projects/type";
 import Scrollgsap from "./sections/Scrollgsap";
 import FaqList from "./sections/FaqList";
 
-const Index = async ({ data, pjtdata ,faqContent}: { data: Home; pjtdata: Projects ;faqContent: FaqData}) => {
+const Index = async ({ data, pjtdata, faqContent }: { data: Home; pjtdata: Projects; faqContent: FaqData }) => {
   return (
     <div>
       <div className="frtsn">
