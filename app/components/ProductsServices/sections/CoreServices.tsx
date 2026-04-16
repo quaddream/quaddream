@@ -37,7 +37,10 @@ const CoreServices: React.FC<MissionProps> = ({ Data }) => {
               transition={{ duration: 0.6 }}
               viewport={{ amount: 0.1, once: true }}
               key={index}
-              className={`group ${activeIndex === index ? "active" : ""}`}
+              className={`group 
+      ${activeIndex === index ? "active" : ""} 
+      ${index < 4 ? "hidden" : ""}
+    `}
               onMouseEnter={() =>
                 setActiveIndex(activeIndex === index ? null : index)
               }
@@ -51,11 +54,10 @@ const CoreServices: React.FC<MissionProps> = ({ Data }) => {
                   <div className="flex flex-col justify-between gap-5 h-full relative z-20">
                     <div
                       className={`transition-all duration-500 group-hover:translate-y-0 w-10 h-10 md:w-[66px] md:h-[66px] group-hover:opacity-100 rounded-md md:rounded-2xl bg-white flex items-center justify-center ml-auto
-          ${
-            activeIndex === index
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-5"
-          }`}
+          ${activeIndex === index
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-5"
+                        }`}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
