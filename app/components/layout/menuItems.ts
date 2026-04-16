@@ -15,11 +15,13 @@ export const menuItems = [
     name: "Products & Services",
     href: "/products-and-services",
     children: [
-      { name: "Scaffolding Contracting", href: "/products-and-services/scaffolding-contracting" },
-      { name: "Cuplock Scaffolding", href: "/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales" },
-      { name: "Formwork Rentals", href: "/products-and-services/scaffolding-formwork-rental" },
-      { name: "Equipment Rentals", href: "/products-and-services/construction-equipment-rentals" },
-      // { name: "Scaffolding Rental", href: "/products-and-services/scaffolding-rental-dubai-uae" },
+      { name: "Cuplock Scaffolding", href: "/products-and-services/cuplock-scaffolding-rental-dubai " },
+      { name: "Scaffolding Contracting", href: "/products-and-services/scaffolding-contracting-in-dubai-and-across-the-uae " },
+      { name: "Scaffolding Rental", href: "/products-and-services/scaffolding-rental-dubai-uae " },
+      { name: "Aluminum Mobile Scaffolding Rental ", href: "/products-and-services/aluminum-mobile-scaffolding-tower-rental " },
+      { name: "Construction Equipment Rental", href: "/products-and-services/construction-equipment-rental-in-dubai " },
+      { name: "Formwork Rental", href: "/products-and-services/formwork-rental-in-dubai-uae " },
+
     ],
   },
   {

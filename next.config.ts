@@ -2,10 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
 
-   reactStrictMode: false, 
+  reactStrictMode: false,
 
   /* Cache headers */
- async headers() {
+  async headers() {
     return [
       {
         source: "/:path*\\.(svg|webp|avif|gif|jpg|jpeg|png|ico|woff|woff2|ttf|otf|js|css)",
@@ -45,50 +45,75 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === "production",
   },
   images: {
-  dangerouslyAllowSVG: true,
+    dangerouslyAllowSVG: true,
 
-  // ✅ allow external images (modern way)
-  remotePatterns: [
-    {
-      protocol: "https",
-      hostname: "dl.dropboxusercontent.com",
-      pathname: "/**",
-    },
-    {
-      protocol: "https",
-      hostname: "plus.unsplash.com",
-      pathname: "/**",
-    },
-  ],
+    // ✅ allow external images (modern way)
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "dl.dropboxusercontent.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "plus.unsplash.com",
+        pathname: "/**",
+      },
+    ],
 
-  // ✅ modern formats
-  formats: ["image/webp", "image/avif"],
+    // ✅ modern formats
+    formats: ["image/webp", "image/avif"],
 
-  // ✅ responsive breakpoints
-  deviceSizes: [640, 750, 828, 1080, 1200, 1920],
-  imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // ✅ responsive breakpoints
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
 
-  // ✅ cache optimization
-  minimumCacheTTL: 60,
-},
+    // ✅ cache optimization
+    minimumCacheTTL: 60,
+  },
 
-  
-  
+
+
   async redirects() {
     return [
       {
         source: "/about", // The old URL path
         destination: "/about-us", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
-      },  
+      },
       {
-      source: "/index.html",
-      destination: "/",
-      permanent: true,
-    },
+        source: "/index.html",
+        destination: "/",
+        permanent: true,
+      },
       {
         source: "/products-and-services/equipment-rentals", // The old URL path
         destination: "/products-and-services/construction-equipment-rentals", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/products-and-services/scaffolding-rental", // The old URL path
+        destination: "/products-and-services/scaffolding-rental-dubai", // The new URL path   
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/products-and-services/scaffolding-contracting", // The old URL path
+        destination: "/products-and-services/scaffolding-contracting-in-dubai-and-across-the-uae ", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales", // The old URL path
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai ", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/products-and-services/scaffolding-formwork-rental", // The old URL path
+        destination: "//products-and-services/formwork-rental-in-dubai-uae ", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/products-and-services/construction-equipment-rentals", // The old URL path
+        destination: "/products-and-services/construction-equipment-rental-in-dubai  ", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
     ];
