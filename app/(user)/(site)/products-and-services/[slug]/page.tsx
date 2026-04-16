@@ -1,7 +1,7 @@
 import IndexOld from "@/app/components/service-details";
 import { Metadata } from "next";
-import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
 import { generateFaqSchema } from "@/lib/schema/faqSchemaServices";
+import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchemaServices";
 import Script from "next/script";
 import { serviceSchema } from "@/lib/schema/service";
 import Index from "@/app/components/ScaffoldingRentalsDubai/Index";
@@ -69,7 +69,13 @@ export async function generateMetadata(
 export default async function ServiceDetailsPage({ params }: Props) {
   const { slug } = await params;
   const service = await getService(slug as string);
-  console.log(service.data.type)
+  if (!service?.data) return null;
+  const serviceData = service.data;
+  const breadcrumbSchema = generateBreadcrumbSchema({
+    baseUrl: process.env.BASE_URL as string,
+    slug,
+    title: serviceData?.title,
+  });
   if (service.data.type == "new-design") {
     const pjt = await fetch(`${process.env.BASE_URL}/api/admin/project`, {
       next: { revalidate: 60 },
@@ -86,6 +92,13 @@ export default async function ServiceDetailsPage({ params }: Props) {
             __html: JSON.stringify(serviceSchema),
           }}
         />
+        <Script
+          id="breadcrumb-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbSchema),
+          }}
+        />
         {faqSchema && (
           <Script
             id="faq-schema"
@@ -96,15 +109,6 @@ export default async function ServiceDetailsPage({ params }: Props) {
             }}
           />
         )}
-        {/* <script
-          id="breadcrumb-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
-              generateBreadcrumbSchema("/scaffolding-rental-in-dubai")
-            ),
-          }}
-        /> */}
         <Index data={service.data} projectsdata={pjtdata.data} />
       </>
     );
@@ -114,13 +118,6 @@ export default async function ServiceDetailsPage({ params }: Props) {
     const whatyouget = await getWhatyougetData();
     return (
       <>
-        <script
-          id="breadcrumb-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateBreadcrumbSchema(`/products-and-services/${slug}`)),
-          }}
-        />
         <IndexOld service={service.data} whatyougetData={whatyouget.data} />
       </>
     );
