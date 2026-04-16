@@ -128,7 +128,7 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                         </motion.h2>
                         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-6 py-[50px]">
                             <motion.p
-                                className="text-19 leading-[32px] text-[#BCBCBC] lg:max-w-[1000px] "
+                                className="text-19 leading-[32px] text-[#BCBCBC] lg:max-w-[1180px] "
                                 variants={moveUp(0.8)}
                                 dangerouslySetInnerHTML={{ __html: data.description }}
                             />
