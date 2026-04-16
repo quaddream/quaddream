@@ -128,7 +128,7 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                         </motion.h2>
                         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-6 py-[50px]">
                             <motion.p
-                                className="text-19 leading-[32px] text-[#BCBCBC] max-w-[750px] mr-5"
+                                className="text-19 leading-[32px] text-[#BCBCBC] lg:max-w-[1000px] "
                                 variants={moveUp(0.8)}
                                 dangerouslySetInnerHTML={{ __html: data.description }}
                             />
@@ -192,7 +192,7 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                                                  * On tablet (md): 2.5 visible
                                                  * On mobile (sm): 1.3 visible
                                                  */
-                                                width: "clamp(220px, calc((100% - 3 * 12px) / 3.5), 400px)",
+                                                width: "clamp(220px, calc((100% - 3 * 12px) / 3.5), 459px)",
                                                 height: "clamp(260px, 30vw, 541px)",
                                                 scrollSnapAlign: "start",
                                                 userSelect: "none",
