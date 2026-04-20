@@ -88,27 +88,27 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/products-and-services/equipment-rentals", // The old URL path
-        destination: "/products-and-services/construction-equipment-rentals", // The new URL path
+        destination: "/products-and-services/construction-equipment-rental-dubai-uae", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
         source: "/products-and-services/scaffolding-rental", // The old URL path
-        destination: "/products-and-services/scaffolding-rental-dubai", // The new URL path   
+        destination: "/products-and-services/scaffolding-rental-dubai-uae", // The new URL path   
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
         source: "/products-and-services/scaffolding-contracting", // The old URL path
-        destination: "/products-and-services/scaffolding-contracting-in-dubai-and-across-the-uae ", // The new URL path
+        destination: "/products-and-services/scaffolding-contracting-in-dubai-uae ", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
         source: "/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales", // The old URL path
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai ", // The new URL path
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae ", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
         source: "/products-and-services/scaffolding-formwork-rental", // The old URL path
-        destination: "//products-and-services/formwork-rental-in-dubai-uae ", // The new URL path
+        destination: "/products-and-services/formwork-rental-in-dubai-uae ", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
@@ -116,6 +116,31 @@ const nextConfig: NextConfig = {
         destination: "/products-and-services/construction-equipment-rental-in-dubai  ", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
+      {
+        source: "/products-and-services/construction-equipment-rental-in-dubai", // The old URL path
+        destination: "/products-and-services/construction-equipment-rental-dubai-uae ", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/products-and-services/scaffolding-contracting-in-dubai-and-across-the-uae", // The old URL path
+        destination: "/products-and-services/scaffolding-contracting-in-dubai-uae", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/products-and-services/aluminum-mobile-scaffolding-tower-rental", // The old URL path
+        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/products-and-services/cuplock-scaffolding-rental-dubai", // The old URL path
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/products-and-services/scaffolding-rental-dubai", // The old URL path
+        destination: "/products-and-services/scaffolding-rental-dubai-uae", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      }
     ];
   },
 };
