@@ -14,9 +14,12 @@ interface LatestBlogProps {
 }
 
 const LatestBlog = ({ blogData }: LatestBlogProps) => {
+  const sortedBlogs = [...blogData].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
   const categories = [
     "All",
-    ...Array.from(new Set(blogData.map((blog) => blog.category.name))),
+    ...Array.from(new Set(sortedBlogs.map((blog) => blog.category.name))),
   ];
 
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -39,8 +42,8 @@ const LatestBlog = ({ blogData }: LatestBlogProps) => {
 
   const filteredBlogs =
     selectedCategory === "All"
-      ? blogData
-      : blogData.filter((blog) => blog.category.name === selectedCategory);
+      ? sortedBlogs
+      : sortedBlogs.filter((blog) => blog.category.name === selectedCategory);
 
   const totalPages = Math.ceil(filteredBlogs.length / blogsPerPage);
   const startIndex = (currentPage - 1) * blogsPerPage;
