@@ -11,7 +11,8 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
     const [isTouch, setIsTouch] = useState(false);
 
     // Triple the items to ensure enough "runway" for seamless looping
-    const loopedItems = [...data.items, ...data.items, ...data.items];
+    // const loopedItems = [...data.items, ...data.items, ...data.items];
+    const loopedItems = data.items;
     const originalLength = data.items.length;
 
     const sliderRef = useRef<HTMLDivElement>(null);
