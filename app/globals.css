@@ -495,8 +495,7 @@ body {
   /* rounded-[16px] */
   object-fit: cover;
   /* object-cover */ 
-  margin-top: 20px;
-  width: 100%;
+  margin-top: 20px; 
 }
 
 /* First image special size */
