@@ -602,3 +602,11 @@ body {
   background: white;
   flex-shrink: 0;
 }
+
+.tox-notifications-container {
+  z-index: 99999 !important;
+}
+
+.tox-notification {
+  z-index: 99999 !important;
+}
