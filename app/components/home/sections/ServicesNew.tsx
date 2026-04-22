@@ -172,6 +172,7 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                                 {loopedItems.map((item, i) => {
                                     const realIndex = i % originalLength;
                                     const isActive = activeIndex === i;
+                                    const isOriginalItem = i < originalLength; // Check if this is from the first/original set
 
                                     return (
                                         <div
@@ -213,9 +214,14 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                                                 />
                                             </div>
                                             <div className="relative z-30 mt-auto p-[30px]">
-                                                <Link href={getMeta(i)?.href ?? "#"} className="block">
-                                                    <h3 className="text-33 mb-3">{item.title}</h3>
-                                                </Link>
+                                                {/* Only wrap the title in Link if it's from the original set */}
+                                                {isOriginalItem ? (
+                                                    <Link href={getMeta(i)?.href ?? "#"} className="block">
+                                                        <h3 className="text-33 mb-3">{item.title}</h3>
+                                                    </Link>
+                                                ) : (
+                                                    <p className="text-33 mb-3">{item.title}</p>
+                                                )}
                                                 <p className={` text-19 leading-[32px] transition-all duration-500 ${isActive ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"}`}>
                                                     {getMeta(i)?.description}
                                                 </p>
