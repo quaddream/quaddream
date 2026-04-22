@@ -43,6 +43,18 @@ const BlogContent = ({ html }: BlogContentProps) => {
                   </motion.p>
                 );
 
+              case "h2":
+                return (
+                  <motion.p
+                    variants={moveUp(0.07)}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                  >
+                    {children}
+                  </motion.p>
+                );
+
               case "ul":
                 return (
                   <motion.ul
