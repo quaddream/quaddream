@@ -610,3 +610,6 @@ body {
 .tox-notification {
   z-index: 99999 !important;
 }
+.link-primary a {
+  color: var(--primary);
+}
