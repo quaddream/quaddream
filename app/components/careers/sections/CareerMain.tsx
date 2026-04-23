@@ -67,7 +67,7 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ careerData }) => {
               viewport={{ amount: 0.1, once: true }}
             >
               <Link
-                href="/about-us"
+                href="/careers/careers-details"
                 className="flex items-center gap-2 cursor-pointer text-16 font-normal border-1 border-black py-2 px-4 md:px-5 rounded-[60px] w-fit z-10 group"
               >
                 <span>{careerData.buttonText}</span>

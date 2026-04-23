@@ -24,12 +24,13 @@ export const careerContent = {
   // imageAlt: "QHSE Training",
 };
 export const ctaSection = {
-  mainTitle: "Have A Project In Mind?",
-   subTitle: 'string',  
-          imageAlt: 'string',
-          maxwidth:'',
-  image: "/assets/images/projects/abtcta.jpg", 
-  buttonText: "Contact Us Now", 
+  mainTitle: "Didn’t Find the Right Role?",
+   subTitle: 'Send us your resume and we’ll get in touch if a relevant opportunity arises.',  
+          imageAlt: 'Didn’t Find the Right Role',
+          maxwidth:'14',
+  image: "/assets/images/careers/footerbanner.jpg", 
+  email: "hr@quaddream.com",
+  whatsapp: "0544 4271 45",
 };
 
   
