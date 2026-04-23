@@ -3,7 +3,7 @@ import BannerInner from "../common/BannerInner";
 import CareerMain from "./sections/CareerMain"; 
 import WhyJoinUs from "./sections/WhyJoinUs";
 import JobListings from "./sections/JobListings";
-import Careercta from "./sections/careercta";
+import Careercta from "./sections/Careercta";
 import { bannersection, careerContent, ctaSection } from "./data"; 
 const Index = () => {
   return (

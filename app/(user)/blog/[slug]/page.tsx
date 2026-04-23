@@ -2,7 +2,18 @@ import React from "react";
 import Index from "@/app/components/blog-detail/Index";
 import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
 import Script from "next/script";
-
+interface FaqSchema {
+    "@context": string;
+    "@type": string;
+    mainEntity: {
+        "@type": string;
+        name: string;
+        acceptedAnswer: {
+            "@type": string;
+            text: string;
+        };
+    }[];
+}
 type Props = {
     params: Promise<{ slug: string }>;
 };
@@ -76,7 +87,7 @@ export default async function BlogDetailsPage({ params }: Props) {
         datePublished: blogData?.createdAt,
         dateModified: blogData?.updatedAt || blogData?.createdAt,
     };
-    let faqSchema: any = null;
+    let faqSchema: FaqSchema | null = null;
 
     // Blog 1
     if (slug === "is-cheap-scaffolding-rental-safe-in-uae") {
