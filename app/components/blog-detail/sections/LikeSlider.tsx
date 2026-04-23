@@ -12,6 +12,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { moveRight, moveLeft } from "../../motionVarients";
 import { BlogType } from "../../blog/type";
+import Link from "next/link";
 
 const LikeSlider = ({ blogList }: { blogList: BlogType["blogs"] }) => {
   return (
@@ -92,16 +93,19 @@ const LikeSlider = ({ blogList }: { blogList: BlogType["blogs"] }) => {
       >
         {blogList?.map((blog, index) => (
           <SwiperSlide key={index}>
-            <div className="flex flex-col cursor-pointer transform transition-all duration-300 hover:-translate-y-[5px] py-[5px]">
+            <div className="flex flex-col  transform transition-all duration-300 hover:-translate-y-[5px] py-[5px]">
               {/* Image wrapper for zoom effect */}
               <div className="overflow-hidden rounded-[16px]">
-                <Image
+            
+              <Link href={`/blog/${blog.slug}`} >
+              <Image
                   src={blog.thumbnail}
                   alt={blog.title}
                   width={586}
                   height={348}
                   className="w-full max-w-[586px] h-[300px] md:h-[348px] object-cover rounded-[16px] transform transition-transform duration-500 ease-in-out hover:scale-105"
                 />
+                </Link>    
               </div>
 
               {/* Category & Date */}
@@ -115,9 +119,11 @@ const LikeSlider = ({ blogList }: { blogList: BlogType["blogs"] }) => {
               </div>
 
               {/* Title */}
-              <h3 className="mt-[12px] lg:mt-[15px] text-black text-25 leading-[32px] xl:leading-[42px]">
+              <Link href={`/blog/${blog.slug}`} >
+               <h3 className="mt-[12px] lg:mt-[15px] text-black text-25 leading-[32px] xl:leading-[42px]">
                 {blog.title}
               </h3>
+              </Link>
             </div>
 
             {/* Mobile-only button (appears after each content) */}

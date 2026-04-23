@@ -4,7 +4,7 @@ import React from "react";
 import { GoShareAndroid } from "react-icons/go";
 import LikeSlider from "./LikeSlider";
 import { motion } from "framer-motion";
-import { moveRight, moveUp } from "../../motionVarients";
+import { moveUp } from "../../motionVarients";
 import { BlogType } from "../../blog/type";
 import BlogContentParser from "./utils/BlogContentParser";
 
