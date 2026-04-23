@@ -169,8 +169,7 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                                 onTouchMove={onTouchMove}
                                 onTouchEnd={() => startAutoplay()}
                             >
-                                {loopedItems.map((item, i) => {
-                                    const realIndex = i % originalLength;
+                                {loopedItems.map((item, i) => { 
                                     const isActive = activeIndex === i;
                                     const isOriginalItem = i < originalLength; // Check if this is from the first/original set
 
