@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { submitCareer } from "@/lib/mail/careerAction";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 interface CareerApplyModalProps {
@@ -62,7 +63,7 @@ const CloseIcon = () => (
   </svg>
 );
 
- 
+
 
 // ── Input Field ───────────────────────────────────────────────────────────────
 interface InputFieldProps {
@@ -80,9 +81,8 @@ const InputField = ({ placeholder, value, onChange, error, type = "text" }: Inpu
       placeholder={placeholder}
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className={`w-full bg-[#f9f9f9] rounded-full px-6 py-4 2xl:px-[36px] 2xl:py-[27px] text-19 text-gray-700 placeholder-[#7F7F7F] outline-none focus:ring-2 transition-all duration-200 ${
-        error ? "ring-2 ring-red-400 bg-red-50" : "focus:ring-gray-300"
-      }`}
+      className={`w-full bg-[#f9f9f9] rounded-full px-6 py-4 2xl:px-[36px] 2xl:py-[27px] text-19 text-gray-700 placeholder-[#7F7F7F] outline-none focus:ring-2 transition-all duration-200 ${error ? "ring-2 ring-red-400 bg-red-50" : "focus:ring-gray-300"
+        }`}
     />
     {error && <p className="text-red-500 text-xs pl-4">{error}</p>}
   </div>
@@ -135,13 +135,52 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     if (!validate()) return;
+
     setIsSubmitting(true);
-    // Simulate API call — replace with your actual submission logic
-    await new Promise((r) => setTimeout(r, 1500));
-    setIsSubmitting(false);
-    setSubmitted(true);
+
+    try {
+      const formData = new FormData();
+
+      formData.append("firstName", form.firstName);
+      formData.append("lastName", form.lastName);
+      formData.append("email", form.email);
+      formData.append("phone", form.phone);
+      formData.append("nationality", form.nationality);
+      formData.append("currentLocation", form.currentLocation);
+      formData.append("jobTitle", jobTitle);
+
+      if (form.resume) {
+        formData.append("resume", form.resume);
+      }
+
+      const result = await submitCareer(formData);
+
+      if (result?.success) {
+        setSubmitted(true);
+
+        // reset state
+        setForm({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          nationality: "",
+          currentLocation: "",
+          resume: null,
+        });
+      } else {
+        alert("Something went wrong");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Submission failed");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -236,7 +275,7 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
                     </button>
                   </motion.div>
                 ) : (
-                  <>
+                  <form id="form" onSubmit={handleSubmit}>
                     {/* Form */}
                     <motion.div
                       initial={{ opacity: 0, y: 16 }}
@@ -311,13 +350,12 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
                       {/* Resume Upload */}
                       <div className="flex flex-col gap-1">
                         <div
-                          className={`w-full bg-[#f9f9f9] rounded-full px-6 py-4 2xl:px-[36px] 2xl:py-[27px] flex items-center gap-3 cursor-pointer hover:bg-gray-200 transition-colors duration-200 ${
-                            errors.resume ? "ring-2 ring-red-400 bg-red-50" : ""
-                          }`}
+                          className={`w-full bg-[#f9f9f9] rounded-full px-6 py-4 2xl:px-[36px] 2xl:py-[27px] flex items-center gap-3 cursor-pointer hover:bg-gray-200 transition-colors duration-200 ${errors.resume ? "ring-2 ring-red-400 bg-red-50" : ""
+                            }`}
                           onClick={() => fileInputRef.current?.click()}
                         >
-                          
-                              <Image src="/assets/images/careers/attach.svg" alt="attach" width={24} height={11} />
+
+                          <Image src="/assets/images/careers/attach.svg" alt="attach" width={24} height={11} />
                           <span className="text-19 text-[#7F7F7F] truncate">
                             {form.resume
                               ? form.resume.name
@@ -336,8 +374,8 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
                     </motion.div>
 
                     {/* Submit Button */}
-                   
-                      {/* <button
+
+                    {/* <button
                         className="inline-flex items-center gap-3 border border-gray-300 text-gray-800 text-sm font-medium pl-5 pr-2 py-2 rounded-full hover:border-[#7F7F7F] transition-all duration-300 group disabled:opacity-60"
                       >
                         <span>{isSubmitting ? "Submitting..." : "Submit Application"}</span>
@@ -351,31 +389,32 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
                           )}
                         </span>
                       </button>  */}
-                     <motion.div
+                    <motion.div
                       initial={{ opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
                       className="mt-8"
                     >
                       <button
-                        onClick={handleSubmit}
+                        // onClick={handleSubmit}
+                        type="submit"
                         disabled={isSubmitting}
-                className="m-auto md:m-0 flex items-center gap-2 xl:gap-[18px] cursor-pointer text-16 font-normal border-1 border-black py-2 xl:py-[9px] px-4 md:px-5   rounded-[60px] w-fit z-10 group"
-              >
-                <span>{isSubmitting ? "Submitting..." : "Submit Application"}</span>
-                        
-                <span className="bg-primary w-[35px] h-[35px] lg:w-[51.7px] lg:h-[51.7px] flex items-center justify-center rounded-full  group-hover:translate-x-[10px] transition-all duration-300">
-                  <Image
-                    src="/assets/images/home/arrow-right.svg"
-                    alt="Arrow"
-                    width={30}
-                    height={30}
-                    className="w-[18px] h-[18px] lg:w-[24px] lg:h-[24px]"
-                  />
-                </span>
-              </button>
-              </motion.div>
-                  </>
+                        className="m-auto md:m-0 flex items-center gap-2 xl:gap-[18px] cursor-pointer text-16 font-normal border-1 border-black py-2 xl:py-[9px] px-4 md:px-5   rounded-[60px] w-fit z-10 group"
+                      >
+                        <span>{isSubmitting ? "Submitting..." : "Submit Application"}</span>
+
+                        <span className="bg-primary w-[35px] h-[35px] lg:w-[51.7px] lg:h-[51.7px] flex items-center justify-center rounded-full  group-hover:translate-x-[10px] transition-all duration-300">
+                          <Image
+                            src="/assets/images/home/arrow-right.svg"
+                            alt="Arrow"
+                            width={30}
+                            height={30}
+                            className="w-[18px] h-[18px] lg:w-[24px] lg:h-[24px]"
+                          />
+                        </span>
+                      </button>
+                    </motion.div>
+                  </form>
                 )}
               </div>
             </div>
