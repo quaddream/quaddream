@@ -4,44 +4,14 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { moveUp } from "@/app/components/motionVarients";
 import Image from "next/image";
+import { careerType } from "../type";
 
-interface WhyJoinItem {
-  icon: string;
-  title: string;
-}
 
-interface WhyJoinUsProps {
-  items?: WhyJoinItem[];
-}
-
-const defaultItems: WhyJoinItem[] = [
-  {
-    icon:  '/assets/images/careers/join1.svg',
-    title: "Growth \nOpportunities",
-  },
-  {
-    icon:  '/assets/images/careers/join2.svg',
-    title: "Innovative \nProjects",
-  },
-  {
-   icon:  '/assets/images/careers/join3.svg',
-    title: "Flexible Work \nCulture",
-  },
-  {
-    icon:  '/assets/images/careers/join4.svg',
-    title: "Learning & \nDevelopment",
-  },
-  {
-    icon:  '/assets/images/careers/join5.svg',
-    title: "Competitive \nBenefits",
-  },
-];
-
-const WhyJoinUs = ({ items = defaultItems }: WhyJoinUsProps) => {
+const WhyJoinUs = ({ data }: {data:careerType['secondSection']}) => {
   const [activeIndex, setActiveIndex] = useState(0);  
 
   // Build grid: 3 columns, items fill row by row
-  const gridItems = [...items];
+  const gridItems = [...data.items];
   // Pad to fill last row if needed (for visual consistency)
    
 
@@ -60,7 +30,7 @@ const WhyJoinUs = ({ items = defaultItems }: WhyJoinUsProps) => {
                   viewport={{ once: true }}
                   className="text-80  leading-[1.12] text-white max-w-[20ch]"
                 >
-                  Why Join Us
+                  {data.title}
                 </motion.h2>
         
       </div>
@@ -95,7 +65,7 @@ const WhyJoinUs = ({ items = defaultItems }: WhyJoinUsProps) => {
                       {/* <span className={`${isActive ? "text-white" : "text-red-500"} mb-6 block`}>
                         {item.icon}
                       </span> */}
-                      <Image src={item.icon} alt={item.title} width={42} height={42} className={`${isActive ? "brightness-0 invert" : ""} `} />
+                      <Image src={item.logo} alt={item.logoAlt} width={42} height={42} className={`${isActive ? "brightness-0 invert" : ""} `} />
                       <h3 className={`text-33   leading-tight whitespace-pre-line  ${isActive ? "text-white" : "text-gray-300"}`}>
                         {item.title}
                       </h3>

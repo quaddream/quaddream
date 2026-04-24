@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import CareerApplyModal from "./CareerApplyModal";
 import Image from "next/image";
 import { moveUp } from "@/app/components/motionVarients";
+import { careerType } from "../../careers/type";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 export interface JobDetailsData {
@@ -20,7 +21,10 @@ export interface JobDetailsData {
 }
 
 interface JobDetailsProps {
-  data: JobDetailsData;
+  firstSection: careerType['careers'][number]['firstSection'];
+  secondSection: careerType['careers'][number]['secondSection'];
+  thirdSection: careerType['careers'][number]['thirdSection'];
+  fourthSection: careerType['careers'][number]['fourthSection'];
 }
 
 // ── Sample JSON data ──────────────────────────────────────────────────────────
@@ -35,7 +39,7 @@ interface MetaItemProps {
   delay: number;
 }
 
-const MetaItem = ({ icon, label, value, delay }: MetaItemProps) => (
+const MetaItem = ({ icon, label, value }: MetaItemProps) => (
   < div  className="flex flex-col gap-[10px]">
     <div className="flex items-center gap-[10px]"> 
             <Image src={icon} alt={label} width={32} height={32}  className="w-[28px] h-[28px] md:w-[32px] md:h-[32px]"/>
@@ -50,7 +54,9 @@ const MetaItem = ({ icon, label, value, delay }: MetaItemProps) => (
 // ── Bullet List Section ───────────────────────────────────────────────────────
 interface BulletListProps {
   title: string;
-  items: string[];
+  items: {
+    title:string;
+  }[];
   delay?: number;
 }
 
@@ -76,7 +82,7 @@ const BulletList = ({ title, items, delay = 0 }: BulletListProps) => (
           className="flex items-start gap-[10px] text-foreground text-19 leading-[1.7]"
         >
           <span className="mt-3 w-2.5 h-2.5 rounded-full bg-primary flex-shrink-0" />
-          {item}
+          {item.title}
         </motion.li>
       ))}
     </ul>
@@ -84,12 +90,12 @@ const BulletList = ({ title, items, delay = 0 }: BulletListProps) => (
 );
 
 // ── Main Component ────────────────────────────────────────────────────────────
-const JobDetails = ({ data }: JobDetailsProps) => {
+const JobDetails = ({ firstSection,secondSection,thirdSection,fourthSection }: JobDetailsProps) => {
   const metaItems = [
-    { icon:"/assets/images/careers/jobspec1.svg", label: "Job Title",   value: data.jobTitle },
-    { icon: "/assets/images/careers/jobspec2.svg",      label: "Experience",  value: data.experience },
-    { icon: "/assets/images/careers/jobspec3.svg",    label: "Department",  value: data.department },
-    { icon: "/assets/images/careers/jobspec4.svg",  label: "Location",    value: data.location },
+    { icon:"/assets/images/careers/jobspec1.svg", label: "Job Title",   value: firstSection.title },
+    { icon: "/assets/images/careers/jobspec2.svg",      label: "Experience",  value: firstSection.experience },
+    { icon: "/assets/images/careers/jobspec3.svg",    label: "Department",  value: firstSection.department.name },
+    { icon: "/assets/images/careers/jobspec4.svg",  label: "Location",    value: firstSection.location },
   ];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -104,7 +110,7 @@ const JobDetails = ({ data }: JobDetailsProps) => {
                       viewport={{ once: true }}
                       className="text-80  leading-[1.12] mb-5 md:mb-8 lg:mb-12 text-black  "
                     >
-                      {data.jobTitle}
+                      {firstSection.title}
                     </motion.h2>
                     <motion.button
                variants={moveUp()}
@@ -128,7 +134,7 @@ const JobDetails = ({ data }: JobDetailsProps) => {
                <CareerApplyModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        jobTitle={data.jobTitle}
+        jobTitle={firstSection.title}
       />
           </div>
       {/* ── Job Specifications ─────────────────────────────────── */}
@@ -166,15 +172,15 @@ const JobDetails = ({ data }: JobDetailsProps) => {
 
       {/* ── Job Description ────────────────────────────────────── */}
       <BulletList
-        title="Job Description"
-        items={data.jobDescription}
+        title={secondSection.title}
+        items={secondSection.items}
         delay={0.05}
       />
 
       {/* ── Key Requirements ───────────────────────────────────── */}
       <BulletList
-        title="Key Requirements:"
-        items={data.keyRequirements}
+        title={thirdSection.title}
+        items={thirdSection.items}
         delay={0.05}
       />
 
@@ -186,14 +192,14 @@ const JobDetails = ({ data }: JobDetailsProps) => {
                       whileInView="show"
                       viewport={{ once: true }}
                        className="text-[33px]   mb-5 leading-[1.2]">
-          {data.applyTitle}
+          {fourthSection.title}
         </motion.h2>
         <motion.p
                       variants={moveUp()}
                       initial="hidden"
                       whileInView="show"
                       viewport={{ once: true }} className="text-19 text-foreground    mb-5">
-          {data.applyDescription}
+          {fourthSection.description}
         </motion.p>
 
         {/* Apply Button */} 
@@ -219,7 +225,7 @@ const JobDetails = ({ data }: JobDetailsProps) => {
               <CareerApplyModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        jobTitle={data.jobTitle}
+        jobTitle={firstSection.title}
       />
       </div>
 </div>

@@ -9,6 +9,7 @@ import { Listbox } from "@headlessui/react";
 import { 
   paragraphItem, 
 } from "../../motionVarients";
+import { careerType } from "../type";
 
 export interface Job {
   id: string | number;
@@ -21,46 +22,10 @@ export interface Job {
   slug: string;
 }
 
-interface JobListingsProps {
-  jobs?: Job[];
-}
-
-const defaultJobs: Job[] = [
-  {
-    id: 1,
-    category: "Engineering",
-    title: "Scaffolding Design Engineer",
-    location: "Dubai, UAE",
-    experience: "3+ Years Exp.",
-    department: "Engineering",
-    jobType: "Full Time",
-    slug: "scaffolding-design-engineer",
-  },
-  {
-    id: 2,
-    category: "Operations",
-    title: "Scaffolding Supervisor",
-    location: "Dubai, UAE",
-    experience: "3+ Years Exp.",
-    department: "Operations",
-    jobType: "Full Time",
-    slug: "scaffolding-supervisor",
-  },
-  {
-    id: 3,
-    category: "Health & Safety",
-    title: "HSE Officer",
-    location: "Dubai, UAE",
-    experience: "3+ Years Exp.",
-    department: "Health & Safety",
-    jobType: "Full Time",
-    slug: "hse-officer",
-  },
-];
 
 const ChevronDown = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M19.92 8.94995L13.4 15.47C12.63 16.24 11.37 16.24 10.6 15.47L4.07996 8.94995" stroke="black" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M19.92 8.94995L13.4 15.47C12.63 16.24 11.37 16.24 10.6 15.47L4.07996 8.94995" stroke="black" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
 </svg> 
 );
 
@@ -68,16 +33,17 @@ const ChevronDown = () => (
 
  
 
-const JobListings = ({ jobs = defaultJobs }: JobListingsProps) => {
-  const departments = ["All", ...Array.from(new Set(jobs.map((j) => j.department)))];
-  const jobTypes = ["All", ...Array.from(new Set(jobs.map((j) => j.jobType)))];
+const JobListings = ({ title,items }: {title:string;items:careerType['careers']}) => {
+  
+  const departments = ["All", ...Array.from(new Set(items.map((j) => j.firstSection.department.name)))];
+  const jobTypes = ["All", ...Array.from(new Set(items.map((j) => j.firstSection.jobType.name)))];
 
   const [selectedDept, setSelectedDept] = useState("All");
   const [selectedType, setSelectedType] = useState("All"); 
 
-  const filtered = jobs.filter((job) => {
-    const deptMatch = selectedDept === "All" || job.department === selectedDept;
-    const typeMatch = selectedType === "All" || job.jobType === selectedType;
+  const filtered = items.filter((job) => {
+    const deptMatch = selectedDept === "All" || job.firstSection.department.name === selectedDept;
+    const typeMatch = selectedType === "All" || job.firstSection.jobType.name === selectedType;
     return deptMatch && typeMatch;
   });
 
@@ -92,7 +58,7 @@ const JobListings = ({ jobs = defaultJobs }: JobListingsProps) => {
                         viewport={{ once: true }}
                         className="text-80  leading-[1.12] text-black  "
                       >
-                        Current Openings
+                        {title}
                       </motion.h2>
        {/* Filters */}
       <motion.div
@@ -160,7 +126,7 @@ const JobListings = ({ jobs = defaultJobs }: JobListingsProps) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
         {filtered.map((job, i) => (
           <motion.div
-            key={job.id}
+            key={i}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -169,23 +135,23 @@ const JobListings = ({ jobs = defaultJobs }: JobListingsProps) => {
           >
             {/* Category Badge */}
             <span className="self-start bg-black text-white text-19   px-5 py-[8px] rounded-full leading-[1.7] mb-3 lg:mb-5">
-              {job.category}
+              {job.firstSection.department.name}
             </span>
 
             {/* Title */}
             <p className="text-black text-33 leading-[1.213]">
-              {job.title}
+              {job.firstSection.title}
             </p>
 
             {/* Meta */}
             <div className="flex sm:flex-col lg:flex-row  lg:items-center gap-4 lg:gap-[30px] text-gray-para text-19">
               <span className="flex items-center gap-1.5 md:gap-[10px] ">
                 <Image src="/assets/images/careers/locationicon.svg" alt="location" width="24" height="24" />
-                {job.location}
+                {job.firstSection.location}
               </span>
               <span className="flex items-center gap-1.5 md:gap-[10px]">
                 <Image src="/assets/images/careers/jobicon.svg" alt="job" width="24" height="24" />
-                {job.experience}
+                {job.firstSection.experience}
               </span>
             </div>
 
