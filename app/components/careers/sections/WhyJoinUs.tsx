@@ -15,8 +15,6 @@ const WhyJoinUs = ({ data }: {data:careerType['secondSection']}) => {
   // Pad to fill last row if needed (for visual consistency)
    
 
-   
-
   return (
     <section className="bg-black py-124 xl:py-150">
       <div className="container">
