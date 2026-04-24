@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion"; 
@@ -10,23 +10,16 @@ type Navigation = {
   slug: string;
 };
 
-type BannerSection = { 
-  title: string;
-  heading: string;
-};
-
- 
-
 type BannerProps = {
-  bannerData: BannerSection ;
+  title: string ;
   insideCategoryTitle?: string;
 };
 
-const CareerDetailsMain: React.FC<BannerProps> = ({ bannerData, insideCategoryTitle }) => {
+const CareerDetailsMain: React.FC<BannerProps> = ({ title }) => {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean); 
   
-  const title = bannerData.title;
+  // const title = bannerData.title;
 
   // Helper function to format slug to title
   const formatTitle = (slug: string) =>
@@ -57,7 +50,6 @@ const CareerDetailsMain: React.FC<BannerProps> = ({ bannerData, insideCategoryTi
     }
     return "max-w-[18ch] md:max-w-none"; // 3rd+ always cut
   };
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <section
@@ -66,6 +58,7 @@ const CareerDetailsMain: React.FC<BannerProps> = ({ bannerData, insideCategoryTi
     > 
       <div className="relative z-10">
         <div className="container"> 
+          
           {/* Breadcrumb */}
           <div
             className={`pb-10 lg:pb-15 2xl:pb-[120px]  `}

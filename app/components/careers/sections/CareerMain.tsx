@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 import { careerType } from "../type";
 
 interface QHSECommitmentProps {
-  careerData: careerType;
+  data: careerType['firstSection'];
 }
 
 // Custom hook to copy margin-right from one element to another
@@ -29,7 +29,7 @@ const useCopyMarginRight = () => {
 
   return { sourceRef, targetRef };
 };
-const QHSECommitment: React.FC<QHSECommitmentProps> = ({ careerData }) => {
+const QHSECommitment: React.FC<QHSECommitmentProps> = ({ data }) => {
     const { sourceRef, targetRef } = useCopyMarginRight();
   return (
     <section className="relative z-10 bg-background py-124 xl:py-150 rounded-t-[20px] xl:rounded-tl-[40px] xl:rounded-tr-[40px] 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] mt-[-4.5%] overflow-hidden">
@@ -42,9 +42,9 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ careerData }) => {
           viewport={{ once: true }}
           className="text-80  leading-[1.12] mb-5 md:mb-8 lg:mb-12 text-black max-w-[20ch]"
         >
-          {careerData.heading}
+          {data.title}
         </motion.h2>
-{careerData.description
+{data.description
           .split("\n")
           .filter(Boolean)
           .map((para, idx) => (
@@ -70,7 +70,7 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ careerData }) => {
                 href="/careers/careers-details"
                 className="flex items-center gap-2 cursor-pointer text-16 font-normal border-1 border-black py-2 px-4 md:px-5 rounded-[60px] w-fit z-10 group"
               >
-                <span>{careerData.buttonText}</span>
+                <span>{data.buttonText}</span>
                 <span className="bg-primary w-[35px] h-[35px] lg:w-[51.7px] lg:h-[51.7px] flex items-center justify-center rounded-full  group-hover:translate-x-[10px] transition-all duration-300">
                   <Image
                     src="/assets/images/home/arrow-right.svg"

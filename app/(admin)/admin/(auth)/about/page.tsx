@@ -417,7 +417,7 @@ const About = () => {
                                         <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b border-black/20 pb-5'>
                                             <div className='absolute top-2 right-2'>
                                                 <RiDeleteBinLine onClick={() => fourthSectionRemove(index)} className='cursor-pointer text-red-600' />
-                                            </div>
+                                            </div> 
 
                                             <div className='flex flex-col gap-2'>
                                                 <div className='flex flex-col gap-2'>

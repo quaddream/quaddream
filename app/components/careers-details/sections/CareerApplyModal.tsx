@@ -62,19 +62,6 @@ const CloseIcon = () => (
   </svg>
 );
 
-const ArrowRightIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-    <path d="M3 9h12M9 3l6 6-6 6" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const UploadIcon = () => (
-  <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M11.5137 5.75332L6.16418 11.102C5.55419 11.7336 5.21666 12.5795 5.22429 13.4575C5.23192 14.3355 5.58409 15.1754 6.20497 15.7963C6.82585 16.4172 7.66575 16.7694 8.54377 16.777C9.42179 16.7846 10.2677 16.4471 10.8992 15.8371L16.5435 10.192C17.5219 9.16343 18.0596 7.79322 18.0419 6.37374C18.0241 4.95426 17.4524 3.59789 16.4487 2.59403C15.4449 1.59017 14.0886 1.0183 12.6691 1.00043C11.2497 0.982562 9.87938 1.52011 8.85068 2.49838L3.20476 8.14681C2.15177 9.20003 1.43478 10.5419 1.14445 12.0026C0.854129 13.4634 1.00352 14.9774 1.57373 16.3532C2.14394 17.7291 3.10936 18.9049 4.34788 19.732C5.5864 20.5592 7.0424 21.0004 8.53172 21C9.52103 21.0022 10.501 20.809 11.4155 20.4314C12.3299 20.0539 13.1608 19.4994 13.8603 18.7999L19.2099 13.4503" stroke="#EC1C24" stroke-width="2"/>
-</svg>
-
-);
-
  
 
 // ── Input Field ───────────────────────────────────────────────────────────────
@@ -239,7 +226,7 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
                     </div>
                     <h3 className="text-2xl font-semibold text-gray-900 mb-2">Application Submitted!</h3>
                     <p className="text-gray-500 text-sm max-w-sm">
-                      Thank you for applying. We'll review your application and get back to you soon.
+                      Thank you for applying. We&apos;ll review your application and get back to you soon.
                     </p>
                     <button
                       onClick={onClose}

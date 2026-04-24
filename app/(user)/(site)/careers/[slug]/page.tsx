@@ -1,8 +1,8 @@
 import Index from "@/app/components/careers-details/Index";
-import { Metadata } from "next"; 
+import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const response = await fetch(`${process.env.BASE_URL}/api/admin/qhse`, { next: { revalidate: 60 } });
+    const response = await fetch(`${process.env.BASE_URL}/api/admin/careers`, { next: { revalidate: 60 } });
     const data = await response.json();
 
     const metadataTitle = data?.data?.metaTitle || "Quad Dream";
@@ -24,12 +24,23 @@ export async function generateMetadata(): Promise<Metadata> {
     };
 }
 
-export default async function Qhse() { 
+export default async function Qhse({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+
+    const slug = (await params).slug;
+    const response = await fetch(
+        `${process.env.BASE_URL}/api/admin/careers?slug=${slug}`,
+        { next: { revalidate: 60 } }
+    );
+    const data = await response.json();
 
     return (
         <>
-            
-            <Index  />
+
+            <Index data={data.data}/>
         </>
     );
 }
