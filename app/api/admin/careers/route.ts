@@ -105,13 +105,13 @@ export async function DELETE(request: NextRequest) {
             return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
         }
         await connectDB();
-        const project = await Project.findOne({});
-        if (!project) {
+        const career = await Career.findOne({});
+        if (!career) {
             return NextResponse.json({ message: "Project not found" }, { status: 404 });
         }
-        project.projects = project.projects.filter((project: { _id: string }) => project._id.toString() !== id);
-        await project.save();
-        return NextResponse.json({ data: project, message: "Project deleted successfully" }, { status: 200 });
+        career.careers = career.careers.filter((career: { _id: string }) => career._id.toString() !== id);
+        await career.save();
+        return NextResponse.json({ data: career, message: "Career deleted successfully" }, { status: 200 });
     } catch (error) {
         console.log(error);
         return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
