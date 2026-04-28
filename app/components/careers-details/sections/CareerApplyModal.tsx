@@ -1,8 +1,10 @@
 "use client";
 import Image from "next/image";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, Fragment, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { submitCareer } from "@/lib/mail/careerAction";
+import { Listbox, Transition } from "@headlessui/react";
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 interface CareerApplyModalProps {
@@ -19,6 +21,7 @@ interface FormData {
   nationality: string;
   currentLocation: string;
   resume: File | null;
+  sector?: string; // Added sector field
 }
 
 interface FormErrors {
@@ -29,6 +32,7 @@ interface FormErrors {
   nationality?: string;
   currentLocation?: string;
   resume?: string;
+  sector?: string;
 }
 
 // ── Nationalities ─────────────────────────────────────────────────────────────
@@ -56,6 +60,8 @@ const NATIONALITIES = [
   "Zambian", "Zimbabwean",
 ];
 
+ 
+
 // ── Icons ─────────────────────────────────────────────────────────────────────
 const CloseIcon = () => (
   <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -63,7 +69,11 @@ const CloseIcon = () => (
   </svg>
 );
 
-
+const ArrowRightIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
 
 // ── Input Field ───────────────────────────────────────────────────────────────
 interface InputFieldProps {
@@ -81,7 +91,7 @@ const InputField = ({ placeholder, value, onChange, error, type = "text" }: Inpu
       placeholder={placeholder}
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className={`w-full bg-[#f9f9f9] rounded-full px-6 py-4 2xl:px-[36px] 2xl:py-[27px] text-19 text-gray-700 placeholder-[#7F7F7F] outline-none focus:ring-2 transition-all duration-200 ${error ? "ring-2 ring-red-400 bg-red-50" : "focus:ring-gray-300"
+      className={`w-full bg-[#f9f9f9] rounded-full px-6 py-4 2xl:px-[36px] 2xl:py-[27px] text-base text-gray-700 placeholder-[#7F7F7F] outline-none focus:ring-2 transition-all duration-200 ${error ? "ring-2 ring-red-400 bg-red-50" : "focus:ring-gray-300"
         }`}
     />
     {error && <p className="text-red-500 text-xs pl-4">{error}</p>}
@@ -93,6 +103,7 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [sectorSelected, setSectorSelected] = useState("");
 
   const [form, setForm] = useState<FormData>({
     firstName: "",
@@ -102,6 +113,7 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
     nationality: "",
     currentLocation: "",
     resume: null,
+    sector: "",
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -114,12 +126,22 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
       document.body.style.overflow = "";
       setSubmitted(false);
       setErrors({});
-      setForm({ firstName: "", lastName: "", email: "", phone: "", nationality: "", currentLocation: "", resume: null });
+      setForm({ 
+        firstName: "", 
+        lastName: "", 
+        email: "", 
+        phone: "", 
+        nationality: "", 
+        currentLocation: "", 
+        resume: null,
+        sector: "",
+      });
+      setSectorSelected("");
     }
     return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
-  const set = (field: keyof FormData) => (val: string) =>
+  const set = (field: keyof FormData) => (val: string | File | null) =>
     setForm((prev) => ({ ...prev, [field]: val }));
 
   const validate = (): boolean => {
@@ -131,6 +153,7 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
     if (!form.nationality) errs.nationality = "Please select a nationality";
     if (!form.currentLocation.trim()) errs.currentLocation = "Current location is required";
     if (!form.resume) errs.resume = "Please upload your resume";
+    if (!form.sector) errs.sector = "Please select a service";
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -152,6 +175,7 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
       formData.append("nationality", form.nationality);
       formData.append("currentLocation", form.currentLocation);
       formData.append("jobTitle", jobTitle);
+      formData.append("sector", form.sector || "");
 
       if (form.resume) {
         formData.append("resume", form.resume);
@@ -171,7 +195,9 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
           nationality: "",
           currentLocation: "",
           resume: null,
+          sector: "",
         });
+        setSectorSelected("");
       } else {
         alert("Something went wrong");
       }
@@ -235,13 +261,13 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="text-65 leading-[1.153846153846154]  leading-[1.08] pr-8"
+                    className="text-[23px] lg:text-5xl leading-tight pr-8"
                   >
                     {jobTitle}
                   </motion.h2>
                   <button
                     onClick={onClose}
-                    className="closeicn  flex-shrink-0 w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-gray-500 hover:text-gray-800 transition-all duration-200  "
+                    className="flex-shrink-0 w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-gray-500 hover:text-gray-800 transition-all duration-200"
                     aria-label="Close"
                   >
                     <CloseIcon />
@@ -275,7 +301,7 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
                     </button>
                   </motion.div>
                 ) : (
-                  <form id="form" onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit}>
                     {/* Form */}
                     <motion.div
                       initial={{ opacity: 0, y: 16 }}
@@ -288,13 +314,13 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
                         <InputField
                           placeholder="Enter First Name *"
                           value={form.firstName}
-                          onChange={set("firstName")}
+                          onChange={set("firstName") as (val: string) => void}
                           error={errors.firstName}
                         />
                         <InputField
                           placeholder="Enter Last Name *"
                           value={form.lastName}
-                          onChange={set("lastName")}
+                          onChange={set("lastName") as (val: string) => void}
                           error={errors.lastName}
                         />
                       </div>
@@ -304,14 +330,14 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
                         <InputField
                           placeholder="Enter Email *"
                           value={form.email}
-                          onChange={set("email")}
+                          onChange={set("email") as (val: string) => void}
                           error={errors.email}
                           type="email"
                         />
                         <InputField
                           placeholder="Enter Phone Number *"
                           value={form.phone}
-                          onChange={set("phone")}
+                          onChange={set("phone") as (val: string) => void}
                           error={errors.phone}
                           type="tel"
                         />
@@ -321,45 +347,71 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {/* Nationality Select */}
                         <div className="flex flex-col gap-1">
-                          <div className={`relative w-full bg-[#f9f9f9] rounded-full px-6 py-4 2xl:px-[36px] 2xl:py-[27px] ${errors.nationality ? "ring-2 ring-red-400 bg-red-50" : ""}`}>
-                            <select
-                              value={form.nationality}
-                              onChange={(e) => set("nationality")(e.target.value)}
-                              className="w-full bg-transparent text-19 outline-none appearance-none text-[#7F7F7F] cursor-pointer pr-6"
-                            >
-                              <option value="" disabled>Nationality *</option>
-                              {NATIONALITIES.map((n) => (
-                                <option key={n} value={n} className="text-gray-700">{n}</option>
-                              ))}
-                            </select>
-                            <span className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
+                          <Listbox
+                          value={form.sector}
+                          onChange={(val) => {
+                            set("sector")(val);
+                            setSectorSelected(val || "");
+                          }}
+                        >
+                          <div className="relative">
+                            <Listbox.Button className={`flex w-full focus:outline-none items-center justify-between rounded-full text-[#7F7F7F] bg-[#F9F9F9] px-6 py-4 2xl:px-[36px] 2xl:py-[27px] text-left ${errors.sector ? "ring-2 ring-red-400 bg-red-50" : ""}`}>
+                              <span className={`${sectorSelected ? "text-gray-700" : "text-[#7F7F7F]"}`}>
+                                {sectorSelected || "Nationality *"}
+                              </span>
                               <Image src="/assets/images/careers/downicon.svg" alt="downicon" width={24} height={11} />
-                            </span>
+                            </Listbox.Button>
+                            <Transition
+                              as={Fragment}
+                              leave="transition ease-in duration-150"
+                              leaveFrom="opacity-100"
+                              leaveTo="opacity-0"
+                            >
+                              <Listbox.Options className="absolute focus:outline-none mt-1 max-h-60 w-full overflow-auto rounded-xl border border-gray-200 z-10 bg-white">
+                                {NATIONALITIES.map((option) => (
+                                  <Listbox.Option
+                                    key={option}
+                                    value={option}
+                                    className={({ active }) =>
+                                      `cursor-pointer px-4 py-2 ${
+                                        active
+                                          ? "bg-red-600 text-white"
+                                          : "text-[#7F7F7F]"
+                                      }`
+                                    }
+                                  >
+                                    {option}
+                                  </Listbox.Option>
+                                ))}
+                              </Listbox.Options>
+                            </Transition>
                           </div>
-                          {errors.nationality && <p className="text-red-500 text-xs pl-4">{errors.nationality}</p>}
+                        </Listbox>
+                        {errors.sector && <p className="text-red-500 text-xs pl-4">{errors.sector}</p>}
                         </div>
 
                         <InputField
                           placeholder="Current Location *"
                           value={form.currentLocation}
-                          onChange={set("currentLocation")}
+                          onChange={set("currentLocation") as (val: string) => void}
                           error={errors.currentLocation}
                         />
                       </div>
 
+                      
+
                       {/* Resume Upload */}
                       <div className="flex flex-col gap-1">
                         <div
-                          className={`w-full bg-[#f9f9f9] rounded-full px-6 py-4 2xl:px-[36px] 2xl:py-[27px] flex items-center gap-3 cursor-pointer hover:bg-gray-200 transition-colors duration-200 ${errors.resume ? "ring-2 ring-red-400 bg-red-50" : ""
+                          className={`w-full bg-[#f9f9f9] rounded-full px-6 py-4 2xl:px-[36px] 2xl:py-[27px] flex items-center gap-3 cursor-pointer hover:bg-gray-100 transition-colors duration-200 ${errors.resume ? "ring-2 ring-red-400 bg-red-50" : ""
                             }`}
                           onClick={() => fileInputRef.current?.click()}
                         >
-
-                          <Image src="/assets/images/careers/attach.svg" alt="attach" width={24} height={11} />
-                          <span className="text-19 text-[#7F7F7F] truncate">
+                          <Image src="/assets/images/careers/attach.svg" alt="attach" width={24} height={24} />
+                          <span className="text-base text-[#7F7F7F] truncate">
                             {form.resume
                               ? form.resume.name
-                              : "Upload Your Resume (Pdf, Docx, Doc | Max File Size: 20 Mb)"}
+                              : "Upload Your Resume (PDF, DOC, DOCX | Max File Size: 20 MB)"}
                           </span>
                           <input
                             ref={fileInputRef}
@@ -374,21 +426,6 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
                     </motion.div>
 
                     {/* Submit Button */}
-
-                    {/* <button
-                        className="inline-flex items-center gap-3 border border-gray-300 text-gray-800 text-sm font-medium pl-5 pr-2 py-2 rounded-full hover:border-[#7F7F7F] transition-all duration-300 group disabled:opacity-60"
-                      >
-                        <span>{isSubmitting ? "Submitting..." : "Submit Application"}</span>
-                        <span className={`w-9 h-9 bg-red-600 rounded-full flex items-center justify-center group-hover:bg-red-700 transition-all duration-300 ${isSubmitting ? "" : "group-hover:scale-105"}`}>
-                          {isSubmitting ? (
-                            <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
-                              <circle cx="12" cy="12" r="10" stroke="white" strokeWidth="3" strokeDasharray="40 20" />
-                            </svg>
-                          ) : (
-                            <ArrowRightIcon />
-                          )}
-                        </span>
-                      </button>  */}
                     <motion.div
                       initial={{ opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -396,14 +433,12 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
                       className="mt-8"
                     >
                       <button
-                        // onClick={handleSubmit}
                         type="submit"
                         disabled={isSubmitting}
-                        className="m-auto md:m-0 flex items-center gap-2 xl:gap-[18px] cursor-pointer text-16 font-normal border-1 border-black py-2 xl:py-[9px] px-4 md:px-5   rounded-[60px] w-fit z-10 group"
+                        className="m-auto md:m-0 flex items-center gap-2 xl:gap-[18px] cursor-pointer text-base font-normal border border-black py-2 xl:py-[9px] px-4 md:px-5 rounded-[60px] w-fit z-10 group"
                       >
                         <span>{isSubmitting ? "Submitting..." : "Submit Application"}</span>
-
-                        <span className="bg-primary w-[35px] h-[35px] lg:w-[51.7px] lg:h-[51.7px] flex items-center justify-center rounded-full  group-hover:translate-x-[10px] transition-all duration-300">
+                        <span className="bg-red-600 w-[35px] h-[35px] lg:w-[51.7px] lg:h-[51.7px] flex items-center justify-center rounded-full group-hover:translate-x-[10px] transition-all duration-300">
                           <Image
                             src="/assets/images/home/arrow-right.svg"
                             alt="Arrow"
@@ -426,3 +461,5 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
 };
 
 export default CareerApplyModal;
+
+               
