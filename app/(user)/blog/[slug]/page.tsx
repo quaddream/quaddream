@@ -60,28 +60,35 @@ export default async function BlogDetailsPage({ params }: Props) {
     const allBlogs = await getAllBlogs();
     const blogData = blog?.data;
 
+    const bannerImage = blogData?.bannerSection?.image;
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+    const imageUrl =
+        bannerImage?.startsWith("http")
+            ? bannerImage
+            : bannerImage
+                ? `${baseUrl}${bannerImage}`
+                : undefined;
+
     const articleSchema = {
         "@context": "https://schema.org",
         "@type": "Article",
         mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": `${process.env.BASE_URL}/blog/${slug}`,
+            "@id": `${baseUrl}/blog/${slug}`,
         },
         headline: blogData?.title,
-        image: blogData?.image
-            ? [`${process.env.BASE_URL}${blogData.image}`]
-            : [],
+        image: imageUrl ? [imageUrl] : undefined,
         author: {
             "@type": "Organization",
             name: "Quad Dream",
-            url: process.env.BASE_URL,
+            url: baseUrl,
         },
         publisher: {
             "@type": "Organization",
             name: "Quad Dream",
             logo: {
                 "@type": "ImageObject",
-                url: `${process.env.BASE_URL}/assets/images/logo-main.svg`,
+                url: `${baseUrl}/assets/images/logo-main.svg`,
             },
         },
         datePublished: blogData?.createdAt,

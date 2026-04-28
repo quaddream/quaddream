@@ -5,6 +5,7 @@ import { uploadToDropbox } from "@/lib/connectDropbox";
 import { sendMail } from "./sendMail";
 import { CareerTemplate } from "../templates/careerTemplate";
 import { getToEmail } from "../getToEmail";
+import connectDB from "../mongodb";
 // import { CareerTemplate } from "@/templates/careerTemplate";
 
 export async function submitCareer(formData: FormData) {
@@ -56,6 +57,7 @@ export async function submitCareer(formData: FormData) {
       filePath = await uploadToDropbox(resume, dropboxPath);
     }
 
+    await connectDB()
     // 5. Save to DB
     await CareerEnquiry.create({
       ...props,
