@@ -65,9 +65,10 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ data }) => {
               whileInView="show"
               transition={{ duration: 0.6 }}
               viewport={{ amount: 0.1, once: true }}
+              className="relative z-[2]"
             >
-              <Link
-                href="/careers/careers-details"
+              <a
+                href="#opening-careers"
                 className="flex items-center gap-2 cursor-pointer text-16 font-normal border-1 border-black py-2 px-4 md:px-5 rounded-[60px] w-fit z-10 group"
               >
                 <span>{data.buttonText}</span>
@@ -80,7 +81,7 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ data }) => {
                     className="w-[18px] h-[18px] lg:w-[24px] lg:h-[24px]"
                   />
                 </span>
-              </Link>
+              </a>
             </motion.div>
       </div>
       <div className="absolute w-fit -right-8 bottom-0 z-0" ref={targetRef} >
