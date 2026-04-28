@@ -495,8 +495,7 @@ body {
   /* rounded-[16px] */
   object-fit: cover;
   /* object-cover */ 
-  margin-top: 20px;
-  width: 100%;
+  margin-top: 20px; 
 }
 
 /* First image special size */
@@ -602,4 +601,15 @@ body {
   border-radius: 50%;
   background: white;
   flex-shrink: 0;
+}
+
+.tox-notifications-container {
+  z-index: 99999 !important;
+}
+
+.tox-notification {
+  z-index: 99999 !important;
+}
+.link-primary a {
+  color: var(--primary);
 }

@@ -1,11 +1,20 @@
-export const generateFaqSchema = (faqSection: any) => {
+interface FaqItem {
+    question: string;
+    answer: string;
+}
+
+interface FaqSection {
+    items?: FaqItem[][];
+}
+
+export const generateFaqSchema = (faqSection: FaqSection) => {
     if (!faqSection?.items) return null;
 
-    const allItems = faqSection.items.flatMap((cat: any) => cat);
+    const allItems = faqSection.items.flatMap((cat: FaqItem[]) => cat);
 
     const mainEntity = allItems
-        .filter((item: any) => item.question && item.answer)
-        .map((item: any) => ({
+        .filter((item: FaqItem) => item.question && item.answer)
+        .map((item: FaqItem) => ({
             "@type": "Question",
             name: item.question,
             acceptedAnswer: {

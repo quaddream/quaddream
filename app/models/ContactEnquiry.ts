@@ -1,0 +1,11 @@
+import mongoose from "mongoose";
+
+const contactEnquirySchema = new mongoose.Schema({
+    name:{type:String,required:true},
+    email:{type:String,required:true},
+    phone:{type:String,required:true},
+    sector:{type:String,required:true},
+    message:{type:String,required:true},
+})
+
+export default mongoose.models.ContactEnquiry || mongoose.model("ContactEnquiry", contactEnquirySchema);
