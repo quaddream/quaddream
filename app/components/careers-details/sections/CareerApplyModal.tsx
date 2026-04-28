@@ -241,7 +241,7 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
                   </motion.h2>
                   <button
                     onClick={onClose}
-                    className="flex-shrink-0 w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-gray-500 hover:text-gray-800 transition-all duration-200 mt-1"
+                    className="closeicn  flex-shrink-0 w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-gray-500 hover:text-gray-800 transition-all duration-200  "
                     aria-label="Close"
                   >
                     <CloseIcon />
