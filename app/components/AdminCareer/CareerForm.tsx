@@ -305,8 +305,7 @@ const CareerForm = ({ editMode }: { editMode?: boolean }) => {
                     <div className='p-5 rounded-md flex flex-col gap-5'>
                         <div>
                             <Label className=''>Title</Label>
-                            <Input type='text' placeholder='Title' {...register("secondSection.title", { required: "Title is required" })} />
-                            {errors.secondSection?.title && <p className='text-red-500'>{errors.secondSection.title.message}</p>}
+                            <Input type='text' placeholder='Title' {...register("secondSection.title")} />       
                         </div>
                         <div className='rounded-md flex flex-col gap-2'>
                             <Label className=' font-bold'>Items</Label>
@@ -322,10 +321,8 @@ const CareerForm = ({ editMode }: { editMode?: boolean }) => {
                                                 <div className='flex flex-col gap-2'>
                                                     <div className='flex flex-col gap-2'>
                                                         <Label className='font-bold'>Title</Label>
-                                                        <Input type='text' placeholder='Title' {...register(`secondSection.items.${index}.title`, {
-                                                            required: "Value is required"
-                                                        })} />
-                                                        {errors.secondSection?.items?.[index]?.title && <p className='text-red-500'>{errors.secondSection?.items?.[index]?.title.message}</p>}
+                                                        <Input type='text' placeholder='Title' {...register(`secondSection.items.${index}.title`)} />
+                                                        
                                                     </div>
                                                 </div>
 

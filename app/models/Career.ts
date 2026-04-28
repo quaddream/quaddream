@@ -37,7 +37,7 @@ const careerSchema = new mongoose.Schema({
                 location:{type:String},
             },    
             secondSection:{
-                title:{type:String,required:true},
+                title:{type:String},
                 items:[
                     {
                         title:String
