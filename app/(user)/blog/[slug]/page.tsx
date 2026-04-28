@@ -320,6 +320,50 @@ export default async function BlogDetailsPage({ params }: Props) {
             }]
         };
     }
+    // Blog 5
+    if (slug === "cuplock-vs-ringlock-scaffolding-uae-which-system-should-you-specify#section5") {
+        faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [{
+                "@type": "Question",
+                name: "What is the main difference between Cuplock and Ringlock scaffolding?",
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Cuplock uses a top-cup-and-blade locking mechanism that connects horizontals at fixed 90-degree nodes. It is a fast and efficient system on repetitive structures. Ringlock uses a rosette disc that accepts up to eight connections at variable angles, making it the more capable system for complex geometry and multi-directional bracing without requiring additional fittings."
+                }
+            }, {
+                "@type": "Question",
+                name: "Which system is better for UAE high-rise construction?",
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "For towers with standard rectangular floor plates, Cuplock is generally the stronger choice based on erection speed and local availability. Where the tower includes curved facades, irregular setbacks, or complex cantilevered platforms, Ringlock provides structural and logistical advantages that justify the higher hire cost over the life of the project."
+                }
+            }, {
+                "@type": "Question",
+                name: "Is Ringlock scaffolding compliant with UAE safety regulations?",
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes. Both systems are compliant with OSHAD guidelines when the scaffold is properly designed, erected by competent persons, and inspected to the required standard. Compliance is a function of the design and inspection process, not of the system itself."
+                }
+            }, {
+                "@type": "Question",
+                name: "Can Cuplock and Ringlock be used together on the same project?",
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "They cannot be mixed within a single scaffold structure, as the two systems are structurally incompatible. However, they can be deployed in separate zones on the same project, provided each zone is independently designed and inspected."
+                }
+            }, {
+                "@type": "Question",
+                name: "Which system is more cost-effective for petrochemical projects?",
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Ringlock is the standard choice for petrochemical and industrial turnarounds at facilities like KIZAD and Ruwais. The vessel and pipe geometry at these sites requires multi-directional access that Ringlock handles natively. Although the day rate is higher, reduced reconfiguration time means total scaffold hours are typically lower, making Ringlock the more cost-effective option across the full project lifecycle."
+                }
+            }]
+        };
+    }
+    
 
     return (
         <>
