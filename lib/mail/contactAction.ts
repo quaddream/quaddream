@@ -5,6 +5,7 @@ import { ContactUsEmail, ContactUsProps } from "../templates/contactUsTemplate";
 import { LetstalkFormValues } from "../validation/letstalkSchema";
 import ContactEnquiry from "@/app/models/ContactEnquiry";
 import { getToEmail } from "../getToEmail";
+import connectDB from "../mongodb";
 
 export async function sendContactAction(data: LetstalkFormValues) {
   try {
@@ -21,6 +22,7 @@ export async function sendContactAction(data: LetstalkFormValues) {
       message: data.message || "",
     };
 
+    await connectDB()
     // 1. Save to DB
     await ContactEnquiry.create(data);
 
