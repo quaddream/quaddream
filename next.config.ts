@@ -41,9 +41,9 @@ const nextConfig: NextConfig = {
     optimizeCss: true,
     // optimizePackageImports: ["gsap", "swiper"],
   },
-  compiler: {
-    removeConsole: process.env.NODE_ENV === "production",
-  },
+  // compiler: {
+  //   removeConsole: process.env.NODE_ENV === "production",
+  // },
   images: {
     dangerouslyAllowSVG: true,
 
