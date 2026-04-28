@@ -225,6 +225,12 @@ body {
   }
 }
 
+  @media (max-width: 992.98px) {
+   .closeicn {
+    position: absolute;
+    right: 27px;
+  }
+}
 
 
 @keyframes ticker-scroll {
