@@ -249,6 +249,77 @@ export default async function BlogDetailsPage({ params }: Props) {
 
         };
     }
+    // Blog 4
+    if (slug === "how-to-choose-a-scaffolding-company-in-dubai-6-things-to-check-before-you-hire") {
+        faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [{
+                "@type": "Question",
+                name: "What should I check first when hiring a scaffolding company in Dubai?",
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Start with OSHAD compliance and scaffold design capability. A contractor without in-house design capability will create permit delays from the outset."
+                }
+            }, {
+                "@type": "Question",
+                name: "Do scaffolding companies in Dubai handle permit applications?",
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Some do; some do not. Confirm at RFQ stage whether they manage this in-house or subcontract it."
+                }
+            }, {
+                "@type": "Question",
+                name: "Are scaffold inspection costs charged separately in Dubai?",
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Under a scaffolding rental agreement, ongoing inspection is typically excluded. Under a contracting package it should be included."
+                }
+            }, {
+                "@type": "Question",
+                name: "Why is the cheapest scaffolding company not always the best choice?",
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "The day rate covers material hire only. Erection, inspection, adaptation, and permits all carry additional cost outside it."
+                }
+            }, {
+                "@type": "Question",
+                name: "What permits are required for scaffolding in Dubai Municipality projects?",
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "DM-B18 requires signed design calculations above defined height thresholds. Build the approval timeline into the pre-construction programme."
+                }
+            }, {
+                "@type": "Question",
+                name: "What is the difference between OSHAD-compliant scaffolding and standard site scaffolding?",
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "OSHAD compliance requires documented competent persons, a scaffold register, and regular inspection records. Without these the structure does not meet UAE mainland regulatory requirements."
+                }
+            }, {
+                "@type": "Question",
+                name: "Can a scaffolding contractor in Dubai handle free zone projects?",
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Not all contractors are approved for Trakhees-regulated zones. Confirm free zone approval status before shortlisting for JAFZA or DP World projects."
+                }
+            }, {
+                "@type": "Question",
+                name: "What documentation should a scaffolding contractor provide at handover?",
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "As-built drawings, inspection records, scaffold register, and crew certification records. ADNOC and DEWA projects additionally require independent structural assessment documentation."
+                }
+            }, {
+                "@type": "Question",
+                name: "How long does a Dubai scaffolding permit take to approve?",
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Timelines vary by project classification. Allow lead time for design preparation and authority review within the pre-construction programme."
+                }
+            }]
+        };
+    }
 
     return (
         <>
