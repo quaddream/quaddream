@@ -48,7 +48,7 @@ const JobListings = ({ title,items }: {title:string;items:careerType['careers']}
   });
 
   return (
-    <section className="  py-124 xl:py-150">
+    <section className="  py-124 xl:py-150" id="opening-careers">
      <div className="container">
       <div className="flex flex-col lg:flex-row gap-8 items-center justify-between  ">
         <motion.h2
