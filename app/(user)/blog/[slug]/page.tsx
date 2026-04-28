@@ -214,36 +214,36 @@ export default async function BlogDetailsPage({ params }: Props) {
                 "@type": "Question",
                 name: "What is the maximum height for aluminium scaffolding towers?",
                 acceptedAnswer: {
-                "@type": "Answer",
-                text: "In UAE site conditions, aluminium mobile towers are typically used up to around 12 metres for single-width and higher for double-width systems with proper stabilisation. Exceeding these limits without tie-ins increases risk. In any aluminium vs steel scaffolding decision, height is a key factor influencing safety."
+                    "@type": "Answer",
+                    text: "In UAE site conditions, aluminium mobile towers are typically used up to around 12 metres for single-width and higher for double-width systems with proper stabilisation. Exceeding these limits without tie-ins increases risk. In any aluminium vs steel scaffolding decision, height is a key factor influencing safety."
                 }
-            },{
+            }, {
                 "@type": "Question",
                 name: "Can aluminium scaffolding be used in coastal areas of Dubai and Abu Dhabi?",
                 acceptedAnswer: {
-                "@type": "Answer",
-                text: "Yes, aluminium scaffolding is well suited for coastal UAE environments such as Dubai and Abu Dhabi due to its natural corrosion resistance. In a scaffolding safety comparison, aluminium performs well in humid, salt-laden air where untreated steel may degrade faster if not properly protected."
+                    "@type": "Answer",
+                    text: "Yes, aluminium scaffolding is well suited for coastal UAE environments such as Dubai and Abu Dhabi due to its natural corrosion resistance. In a scaffolding safety comparison, aluminium performs well in humid, salt-laden air where untreated steel may degrade faster if not properly protected."
                 }
-            },{
+            }, {
                 "@type": "Question",
                 name: "What scaffolding system is best for façade work on commercial buildings in the UAE?",
                 acceptedAnswer: {
-                "@type": "Answer",
-                text: "For façade work in the UAE, aluminium mobile towers are commonly used for low to mid-rise access and repositioning tasks. For high-rise buildings or extended work durations, steel systems provide better stability. The right scaffolding material depends on height, exposure, and project duration."
+                    "@type": "Answer",
+                    text: "For façade work in the UAE, aluminium mobile towers are commonly used for low to mid-rise access and repositioning tasks. For high-rise buildings or extended work durations, steel systems provide better stability. The right scaffolding material depends on height, exposure, and project duration."
                 }
-            },{
+            }, {
                 "@type": "Question",
                 name: "How does scaffolding material affect worker fatigue on UAE sites?",
                 acceptedAnswer: {
-                "@type": "Answer",
-                text: "In UAE heat conditions, scaffolding material directly affects physical strain during handling. Aluminium scaffolding safety advantages include reduced weight, which lowers fatigue during erection and dismantling. In contrast, heavier steel systems may increase effort but offer better stability for long-duration and high-load applications."
+                    "@type": "Answer",
+                    text: "In UAE heat conditions, scaffolding material directly affects physical strain during handling. Aluminium scaffolding safety advantages include reduced weight, which lowers fatigue during erection and dismantling. In contrast, heavier steel systems may increase effort but offer better stability for long-duration and high-load applications."
                 }
-            },{
+            }, {
                 "@type": "Question",
                 name: "What are the wind speed limitations for aluminium scaffolding in the UAE?",
                 acceptedAnswer: {
-                "@type": "Answer",
-                text: "Aluminium mobile scaffolding towers in the UAE should not be used in wind speeds exceeding safe operating limits, typically around 17 mph without additional stabilisation. In an aluminium vs steel scaffolding comparison, steel systems provide greater resistance in exposed or high-rise environments with higher wind loads."
+                    "@type": "Answer",
+                    text: "Aluminium mobile scaffolding towers in the UAE should not be used in wind speeds exceeding safe operating limits, typically around 17 mph without additional stabilisation. In an aluminium vs steel scaffolding comparison, steel systems provide greater resistance in exposed or high-rise environments with higher wind loads."
                 }
             }]
 
@@ -321,7 +321,7 @@ export default async function BlogDetailsPage({ params }: Props) {
         };
     }
     // Blog 5
-    if (slug === "cuplock-vs-ringlock-scaffolding-uae-which-system-should-you-specify#section5") {
+    if (slug === "cuplock-vs-ringlock-scaffolding-uae-which-system-should-you-specify") {
         faqSchema = {
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -363,7 +363,7 @@ export default async function BlogDetailsPage({ params }: Props) {
             }]
         };
     }
-    
+
 
     return (
         <>
