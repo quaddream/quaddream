@@ -96,15 +96,16 @@ const About = ({data}: {data: aboutus["firstSection"]}) => {
                         </motion.h2> 
                         {data.description.split("\n").map((line, index, arr) => (
                             <motion.p
-                            variants={paragraphItem}
-                            initial="hidden"
-                            whileInView="show"
-                            transition={{ duration: 0.6 }}
-                            viewport={{ amount: 0.1, once: true }} 
-                            key={index} className={`text-19 text-[#7f7f7f] leading-[1.684210526315789] mb-0 ${index !== arr.length - 1 ? "mb-3" : ""}`}>
-                            {line}
-                            </motion.p>
-                            ))} 
+                                variants={paragraphItem}
+                                initial="hidden"
+                                whileInView="show"
+                                transition={{ duration: 0.6 }}
+                                viewport={{ amount: 0.1, once: true }}
+                                key={index}
+                                className={`text-19 text-[#7f7f7f] leading-[1.684210526315789] mb-0 ${index !== arr.length - 1 ? "mb-3" : ""}`}
+                                dangerouslySetInnerHTML={{ __html: line }}
+                            />
+                        ))}
                     </motion.div>
                 </div>
 
