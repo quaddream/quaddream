@@ -56,9 +56,8 @@ const FaqList = ({ faqData }: { faqData: FaqData }) => {
           whileInView="show"
           viewport={{ once: true }}
           className="text-gray-para text-19 leading-[1.7] mb-6 md:mb-8 lg:mb-12 max-w-[107ch]"
-        >
-          {description}
-        </motion.p>
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
         {/* Tabs */}
         <motion.div
           variants={moveRight()}
