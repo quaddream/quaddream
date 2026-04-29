@@ -4,7 +4,6 @@ import React, { useState, useRef, Fragment, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { submitCareer } from "@/lib/mail/careerAction";
 import { Listbox, Transition } from "@headlessui/react";
-import { useForm, Controller, SubmitHandler } from "react-hook-form";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 interface CareerApplyModalProps {
@@ -21,7 +20,6 @@ interface FormData {
   nationality: string;
   currentLocation: string;
   resume: File | null;
-  sector?: string; // Added sector field
 }
 
 interface FormErrors {
@@ -32,7 +30,6 @@ interface FormErrors {
   nationality?: string;
   currentLocation?: string;
   resume?: string;
-  sector?: string;
 }
 
 // ── Nationalities ─────────────────────────────────────────────────────────────
@@ -103,7 +100,6 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [sectorSelected, setSectorSelected] = useState("");
 
   const [form, setForm] = useState<FormData>({
     firstName: "",
@@ -113,7 +109,6 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
     nationality: "",
     currentLocation: "",
     resume: null,
-    sector: "",
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -134,9 +129,7 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
         nationality: "", 
         currentLocation: "", 
         resume: null,
-        sector: "",
       });
-      setSectorSelected("");
     }
     return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
@@ -153,7 +146,6 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
     if (!form.nationality) errs.nationality = "Please select a nationality";
     if (!form.currentLocation.trim()) errs.currentLocation = "Current location is required";
     if (!form.resume) errs.resume = "Please upload your resume";
-    if (!form.sector) errs.sector = "Please select a service";
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -175,7 +167,6 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
       formData.append("nationality", form.nationality);
       formData.append("currentLocation", form.currentLocation);
       formData.append("jobTitle", jobTitle);
-      formData.append("sector", form.sector || "");
 
       if (form.resume) {
         formData.append("resume", form.resume);
@@ -195,9 +186,7 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
           nationality: "",
           currentLocation: "",
           resume: null,
-          sector: "",
         });
-        setSectorSelected("");
       } else {
         alert("Something went wrong");
       }
@@ -348,16 +337,15 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
                         {/* Nationality Select */}
                         <div className="flex flex-col gap-1">
                           <Listbox
-                          value={form.sector}
+                          value={form.nationality}
                           onChange={(val) => {
-                            set("sector")(val);
-                            setSectorSelected(val || "");
+                            set("nationality")(val);
                           }}
                         >
                           <div className="relative">
-                            <Listbox.Button className={`flex w-full focus:outline-none items-center justify-between rounded-full text-[#7F7F7F] bg-[#F9F9F9] px-6 py-4 2xl:px-[36px] 2xl:py-[27px] text-left ${errors.sector ? "ring-2 ring-red-400 bg-red-50" : ""}`}>
-                              <span className={`${sectorSelected ? "text-gray-700" : "text-[#7F7F7F]"}`}>
-                                {sectorSelected || "Nationality *"}
+                            <Listbox.Button className={`flex w-full focus:outline-none items-center justify-between rounded-full text-[#7F7F7F] bg-[#F9F9F9] px-6 py-4 2xl:px-[36px] 2xl:py-[27px] text-left ${errors.nationality ? "ring-2 ring-red-400 bg-red-50" : ""}`}>
+                              <span className={`${form.nationality ? "text-gray-700" : "text-[#7F7F7F]"}`}>
+                                {form.nationality || "Nationality *"}
                               </span>
                               <Image src="/assets/images/careers/downicon.svg" alt="downicon" width={24} height={11} />
                             </Listbox.Button>
@@ -387,7 +375,7 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
                             </Transition>
                           </div>
                         </Listbox>
-                        {errors.sector && <p className="text-red-500 text-xs pl-4">{errors.sector}</p>}
+                        {errors.nationality && <p className="text-red-500 text-xs pl-4">{errors.nationality}</p>}
                         </div>
 
                         <InputField
