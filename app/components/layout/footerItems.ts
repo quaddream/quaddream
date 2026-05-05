@@ -7,6 +7,7 @@ export const quickLinks = [
   { qLTitle: "Downloads", qLLink: "/downloads" },
   { qLTitle: "FAQ", qLLink: "/faq" },
   { qLTitle: "Sitemap", qLLink: "/sitemap" },
+  { qLTitle: "Careers", qLLink: "/careers" },
 ];
 export const servicesLinks = [
   {
