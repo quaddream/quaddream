@@ -370,6 +370,94 @@ export default async function BlogDetailsPage({ params }: Props) {
             }]
         };
     }
+    // Blog 6
+    if (slug === "what-is-the-maximum-safe-height-for-an-aluminum-mobile-scaffold-tower-in-the-uae") {
+        faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+                {
+                    "@type": "Question",
+                    name: "What is the main difference between Cuplock and Ringlock scaffolding?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Cuplock uses a top-cup-and-blade locking mechanism that connects horizontals at fixed 90-degree nodes. It is a fast and efficient system on repetitive structures. Ringlock uses a rosette disc that accepts up to eight connections at variable angles, making it the more capable system for complex geometry and multi-directional bracing without requiring additional fittings."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Which system is better for UAE high-rise construction?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "For towers with standard rectangular floor plates, Cuplock is generally the stronger choice based on erection speed and local availability. Where the tower includes curved facades, irregular setbacks, or complex cantilevered platforms, Ringlock provides structural and logistical advantages that justify the higher hire cost over the life of the project."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Is Ringlock scaffolding compliant with UAE safety regulations?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Yes. Both systems are compliant with OSHAD guidelines when the scaffold is properly designed, erected by competent persons, and inspected to the required standard. Compliance is a function of the design and inspection process, not of the system itself."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Can Cuplock and Ringlock be used together on the same project?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "They cannot be mixed within a single scaffold structure, as the two systems are structurally incompatible. However, they can be deployed in separate zones on the same project, provided each zone is independently designed and inspected."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Which system is more cost-effective for petrochemical projects?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Ringlock is the standard choice for petrochemical and industrial turnarounds at facilities like KIZAD and Ruwais. The vessel and pipe geometry at these sites requires multi-directional access that Ringlock handles natively. Although the day rate is higher, reduced reconfiguration time means total scaffold hours are typically lower, making Ringlock the more cost-effective option across the full project lifecycle."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What is the maximum height of an aluminum mobile scaffold tower in the UAE?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "The maximum working height is 12 metres outdoors with outriggers deployed, and 8 metres indoors under BS EN 1004. Both figures are subject to manufacturer specification, duty class, and site-specific conditions that may reduce the permissible height below the standard maximum."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Do I need Dubai Municipality approval to use an aluminum scaffold tower above a certain height?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "BS EN 1004-compliant towers used within their certified configuration are self-verifying under the standard. However, on DM-regulated project sites, towers used above certain height thresholds may be subject to additional inspection or permit requirements depending on the project classification. Quad Dream's rental towers carry BS EN 1004 certification and are used regularly on Dubai Municipality-regulated projects."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Can I stack extra frames on a rented aluminum tower to reach a higher ceiling?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "No. Modifying a rented tower beyond the manufacturer's specified configuration voids its BS EN 1004 certification and creates an unengineered structure with no compliant load or stability data. The correct approach is to contact the rental supplier and request a tower pre-configured for the required working height."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What is the difference between platform height and working height for a scaffold tower?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Platform height is the level at which the operative stands. Working height adds approximately two metres for arm reach and is the figure referenced in standards as the usable access height. A tower with a 10-metre working height has its platform positioned at approximately 8 metres."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Are aluminum scaffold towers suitable for outdoor use in UAE desert conditions?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Yes, when correctly configured for the environment. UAE outdoor deployments must account for shamal wind loading and sand accumulation on platforms, both of which affect stability calculations. Experienced scaffolding contractors specify outriggers even at heights below the outdoor maximum on exposed sites, and caster wheel performance on outdoor surfaces requires verification before the tower is put into service."
+                    }
+                }]
+        };
+    }
 
 
     return (
