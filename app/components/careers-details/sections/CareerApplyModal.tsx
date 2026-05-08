@@ -347,7 +347,7 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
                               <span className={`${form.nationality ? "text-gray-700" : "text-[#7F7F7F]"}`}>
                                 {form.nationality || "Nationality *"}
                               </span>
-                              <Image src="/assets/images/careers/downicon.svg" alt="downicon" width={24} height={11} />
+                              <Image src="/assets/images/careers/downicon.svg" alt="downicon" width={24} height={11} className="w-[14px]" />
                             </Listbox.Button>
                             <Transition
                               as={Fragment}
