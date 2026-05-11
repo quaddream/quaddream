@@ -78,11 +78,10 @@ const FaqList = ({ faqData }: { faqData: FaqData }) => {
                 setOpenQuestion(null);
                 setCurrentPage(1);
               }}
-              className={`pb-[20px] text-25 leading-[40px] ${
-                activeTab === cat.category
+              className={`pb-[20px] text-25 leading-[40px] ${activeTab === cat.category
                   ? "border-b-3 border-primary text-black"
                   : "text-foreground"
-              }`}
+                }`}
             >
               {cat.category}
             </motion.button>
@@ -181,9 +180,10 @@ const FaqList = ({ faqData }: { faqData: FaqData }) => {
 
               {/* Answer */}
               {openQuestion === item.question && (
-                <p className="text-19 leading-[1.7] text-gray-para pt-[10px] xl:pt-[20px] pr-[20px] lg:pr-[100px]">
-                  {item.answer}
-                </p>
+                <p
+                  className="text-19 leading-[1.7] text-gray-para pt-[10px] xl:pt-[20px] pr-[20px] lg:pr-[100px] [&_a]:!text-primary [&_a]:underline"
+                  dangerouslySetInnerHTML={{ __html: item.answer }}
+                />
               )}
             </motion.div>
           ))}
