@@ -96,8 +96,8 @@ const FaqList = ({
               </div>
 
               {openQuestion === item.question && (
-                <p className="text-19 leading-[1.7] text-gray-para pt-[10px] xl:pt-[20px] pr-[20px] lg:pr-[100px]">
-                  {item.answer}
+                <p className="text-19 leading-[1.7] text-gray-para pt-[10px] xl:pt-[20px] pr-[20px] lg:pr-[100px] [&_a]:!text-primary [&_a]:underline" dangerouslySetInnerHTML={{ __html: item.answer }} >
+                  {/* {item.answer} */}
                 </p>
               )}
             </motion.div>
