@@ -1,5 +1,6 @@
 import Index from "@/app/components/careers/Index";
 import { Metadata } from "next";
+import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchemaCareers";
 
 export async function generateMetadata(): Promise<Metadata> {
     const response = await fetch(`${process.env.BASE_URL}/api/admin/careers`, { next: { revalidate: 60 } });
@@ -30,9 +31,15 @@ export default async function Qhse() {
     });
     const data = await response.json();
 
-
+    const breadcrumbSchema = generateBreadcrumbSchema("/careers");
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(breadcrumbSchema),
+                }}
+            />
 
             <Index data={data.data}/>
         </>

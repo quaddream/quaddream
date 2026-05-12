@@ -103,7 +103,7 @@ const JobDetails = ({ firstSection,secondSection,thirdSection,fourthSection }: J
     <section className="pb-124 xl:pb-150  ">
 <div className="container">
  <div className="pb-6 sm:pb-10 xl:pb-12">
-             <motion.h2
+             <motion.h1
                       variants={moveUp()}
                       initial="hidden"
                       whileInView="show"
@@ -111,7 +111,7 @@ const JobDetails = ({ firstSection,secondSection,thirdSection,fourthSection }: J
                       className="text-80  leading-[1.12] mb-5 md:mb-8 lg:mb-12 text-black  "
                     >
                       {firstSection.title}
-                    </motion.h2>
+                    </motion.h1>
                     <motion.button
                variants={moveUp()}
                       initial="hidden"
@@ -143,13 +143,13 @@ const JobDetails = ({ firstSection,secondSection,thirdSection,fourthSection }: J
                       initial="hidden"
                       whileInView="show"
                       viewport={{ once: true }}>
-        <motion.h1  variants={moveUp()}
+        <motion.h2  variants={moveUp()}
                       initial="hidden"
                       whileInView="show"
                       viewport={{ once: true }}
                       className="text-33 leading-[1.2]  mb-8 xl:mb-[44px]">
           Job Specifications
-        </motion.h1>
+        </motion.h2>
        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
           {metaItems.map((item, i) => (
             <motion.div

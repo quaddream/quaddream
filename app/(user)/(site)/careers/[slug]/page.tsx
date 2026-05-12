@@ -1,8 +1,19 @@
 import Index from "@/app/components/careers-details/Index";
 import { Metadata } from "next";
+import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchemaCareers";
 
-export async function generateMetadata(): Promise<Metadata> {
-    const response = await fetch(`${process.env.BASE_URL}/api/admin/careers`, { next: { revalidate: 60 } });
+export async function generateMetadata({
+    params,
+}: {
+    params: { slug: string };
+}): Promise<Metadata> {
+
+    const slug = (await params).slug;  // ✅ get slug from params
+
+    const response = await fetch(
+        `${process.env.BASE_URL}/api/admin/careers?slug=${slug}`,  // ✅ pass slug here
+        { next: { revalidate: 60 } }
+    );
     const data = await response.json();
 
     const metadataTitle = data?.data?.metaTitle || "Quad Dream";
@@ -13,12 +24,12 @@ export async function generateMetadata(): Promise<Metadata> {
         description: metadataDescription,
         robots: "index, follow",
         alternates: {
-            canonical: `/careers`,
+            canonical: `/careers/${slug}`,          // ✅ was `/careers` before
         },
         openGraph: {
             title: metadataTitle,
             description: metadataDescription,
-            url: process.env.BASE_URL,
+            url: `${process.env.BASE_URL}/careers/${slug}`,  // ✅ was BASE_URL only before
             siteName: "Quad Dream",
         },
     };
@@ -27,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Qhse({
     params,
 }: {
-    params: Promise<{ slug: string }>;
+        params: { slug: string };
 }) {
 
     const slug = (await params).slug;
@@ -36,10 +47,16 @@ export default async function Qhse({
         { next: { revalidate: 60 } }
     );
     const data = await response.json();
+    const breadcrumbSchema = generateBreadcrumbSchema(`/careers/${slug}`);
 
     return (
         <>
-
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(breadcrumbSchema),
+                }}
+            />
             <Index data={data.data}/>
         </>
     );
