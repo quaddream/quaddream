@@ -527,6 +527,141 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/tag/scaffold-contracting-services/feed",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffold-swivel-coupler",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffold-swivel-coupler/feed",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-and-formwork-companies-in-the-uae",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-and-formwork-companies-in-the-uae/feed",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-companies-in-dubai",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-companies-in-dubai/feed",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-double-coupler",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-double-coupler/feed",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-for-rent-in-dubai",
+        destination: "/products-and-services/scaffolding-rental-dubai-uae",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-for-rent-in-dubai/feed",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-manufacturers-in-the-uae",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-manufacturers-in-the-uae/feed",
+        destination: "/products-and-services/scaffolding-rental-dubai-uae",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-rental-and-installation",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-rental-and-installation/feed",
+        destination: "/products-and-services/scaffolding-rental-dubai-uae",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-rental-services",
+        destination: "/products-and-services/scaffolding-rental-dubai-uae",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-rental-services/feed",
+        destination: "/products-and-services/scaffolding-rental-dubai-uae",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-rentals-in-dubai",
+        destination: "/products-and-services/scaffolding-rental-dubai-uae",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-rentals-in-dubai/feed",
+        destination: "/products-and-services/scaffolding-rental-dubai-uae",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-suppliers-in-the-uae",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/scaffolding-suppliers-in-the-uae/feed",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/socket-base-scaffolding",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/socket-base-scaffolding/feed",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/top-scaffolding-companies-in-the-uae",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/top-scaffolding-companies-in-the-uae/feed",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/wooden-planks-for-construction",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/tag/wooden-planks-for-construction/feed",
+        destination: "/",
+        permanent: true,
+      },
+      {
         source: "/the-role-of-formwork-systems-in-modern-construction-projects-in-dubai",
         destination: "/blog",
         permanent: true,
