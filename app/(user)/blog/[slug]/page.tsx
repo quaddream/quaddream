@@ -458,6 +458,55 @@ export default async function BlogDetailsPage({ params }: Props) {
                 }]
         };
     }
+    // Blog 7
+    if (slug === "what-scaffolding-system-is-best-for-high-rise-construction-in-dubai") {
+        faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+                {
+                    "@type": "Question",
+                    name: "What scaffolding system is used for high-rise construction in Dubai?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Cuplock scaffolding is the primary system used for external high-rise construction in Dubai. Its node-locking mechanism provides high load capacity, rigid tie-back integration, and predictable structural performance under UAE wind conditions. It is widely deployed on repetitive floor plates and vertical elevations across major tower projects."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Does Dubai Municipality require scaffolding design approval for high-rise buildings?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Yes. Scaffolding above defined height thresholds must be supported by structural calculations prepared by a qualified engineer prior to erection. Dubai Municipality inspection teams review compliance during installation and throughout the works. Structures erected without stamped engineering calculations are subject to enforcement action."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What is the load capacity of cuplock scaffolding?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Cuplock scaffolding can support loads up to approximately 675 kg per square metre in heavy-duty configurations. Actual capacity depends on bay dimensions, ledger spacing, tie pattern, duty classification, and total scaffold height. Final permissible loads must always be verified through project-specific engineering design."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Can aluminum mobile scaffold towers be used on high-rise construction sites in Dubai?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Yes, aluminum mobile scaffold towers are suitable for interior high-rise works such as MEP installation, fit-out, and finishing activities, provided they remain within certified working height limits under BS EN 1004. External façade or structural access on high-rise buildings requires a fixed, tied scaffolding system engineered for wind loading."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "How does wind affect scaffolding system selection for tall buildings in Dubai?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Wind loading is a critical engineering consideration for tall buildings in Dubai. External scaffolding above approximately 10 metres requires calculated wind load assessment, tie-back configuration, and global stability verification. Coastal exposure and seasonal shamal winds increase lateral load demand, making tied cuplock systems the standard solution for high-rise construction."
+                    }
+                }
+            ]
+        };
+    }
 
 
     return (
