@@ -8,11 +8,12 @@ export const quickLinks = [
   { qLTitle: "FAQ", qLLink: "/faq" },
   { qLTitle: "Sitemap", qLLink: "/sitemap" },
   { qLTitle: "Careers", qLLink: "/careers" },
+  { qLTitle: "Blog", qLLink: "/blog" },
 ];
 export const servicesLinks = [
   {
     title: "Scaffolding Contracting",
-    link: "/products-and-services/scaffolding-contracting",
+    link: "/products-and-services/scaffolding-contracting-in-dubai-uae",
   },
   {
     title: "Scaffolding Rental",
@@ -20,7 +21,7 @@ export const servicesLinks = [
   },
   {
     title: "Cuplock Scaffolding",
-    link: "/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales",
+    link: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
   },
   {
     title: "Aluminum Mobile Scaffolding",
@@ -28,11 +29,11 @@ export const servicesLinks = [
   },
   {
     title: "Formwork Rentals",
-    link: "/products-and-services/scaffolding-formwork-rental",
+    link: "/products-and-services/formwork-rental-in-dubai-uae",
   },
   {
     title: "Equipment Rentals",
-    link: "/products-and-services/construction-equipment-rentals",
+    link: "/products-and-services/construction-equipment-rental-dubai-uae",
   },
 ];
 

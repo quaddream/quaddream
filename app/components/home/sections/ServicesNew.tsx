@@ -10,44 +10,66 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const [isTouch, setIsTouch] = useState(false);
 
-    // Triple the items to ensure enough "runway" for the loop
-    const loopedItems = [...data.items, ...data.items, ...data.items];
-    const originalLength = data.items.length;
+    // ── Single set — no cloning ───────────────────────────────────
+    const items = data.items;
+    const count = items.length;
 
-    const sliderRef = useRef<HTMLDivElement>(null);
+    const trackRef = useRef<HTMLDivElement>(null);
+
+    // Continuous offset in pixels (not clamped — wraps virtually)
+    const offsetRef = useRef(0);
+    // Card width + gap, measured once and cached
+    const cardWidthRef = useRef(0);
+
     const isDragging = useRef(false);
-    const startX = useRef(0);
-    const scrollLeft = useRef(0);
+    const dragStartX = useRef(0);
+    const dragStartOffset = useRef(0);
     const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
     const isHovered = useRef(false);
+    const rafRef = useRef<number | null>(null);
+
+    // ── Measure card width ────────────────────────────────────────
+    const measureCard = useCallback(() => {
+        const track = trackRef.current;
+        if (!track) return;
+        const card = track.firstElementChild as HTMLElement | null;
+        if (!card) return;
+        // gap-3 = 12px
+        cardWidthRef.current = card.offsetWidth + 12;
+    }, []);
 
     useEffect(() => {
-        setIsTouch("ontouchstart" in window || navigator.maxTouchPoints > 0);
+        measureCard();
+        const ro = new ResizeObserver(measureCard);
+        if (trackRef.current) ro.observe(trackRef.current);
+        return () => ro.disconnect();
+    }, [measureCard]);
 
-        // Start in the middle set of items for seamless left/right scrolling
-        if (sliderRef.current) {
-            const el = sliderRef.current;
-            const cardWidth = (el.firstElementChild as HTMLElement).offsetWidth + 12;
-            el.scrollLeft = cardWidth * originalLength;
-        }
-    }, [originalLength]);
+    // ── Apply transform to every card ─────────────────────────────
+    // Each card i sits at a "natural" position: i * cardWidth.
+    // We subtract the current offset and then wrap each card so it
+    // always appears within one full "track width" of the viewport,
+    // giving the illusion of infinite content from a finite node set.
+    const applyPositions = useCallback(() => {
+        const track = trackRef.current;
+        if (!track || cardWidthRef.current === 0) return;
 
-    // ── Loop Logic ──────────────────────────────────────────────────
-    const handleInfiniteScroll = useCallback(() => {
-        if (!sliderRef.current) return;
-        const el = sliderRef.current;
-        const cardWidth = (el.firstElementChild as HTMLElement).offsetWidth + 12;
-        const scrollWidth = cardWidth * originalLength;
+        const cw = cardWidthRef.current;
+        const totalWidth = cw * count;
+        const cards = track.children;
 
-        // If we scroll too far right (into the 3rd set), snap back to 2nd set
-        if (el.scrollLeft >= scrollWidth * 2) {
-            el.scrollLeft = el.scrollLeft - scrollWidth;
+        for (let i = 0; i < cards.length; i++) {
+            const card = cards[i] as HTMLElement;
+            // Raw position before wrapping
+            let pos = i * cw - offsetRef.current;
+            // Wrap so every card is always within [-totalWidth, totalWidth)
+            pos = ((pos % totalWidth) + totalWidth) % totalWidth;
+            // Re-center: shift cards that are too far right back by totalWidth
+            // so they wrap around to the left side
+            if (pos > totalWidth - cw * 0.5) pos -= totalWidth;
+            card.style.transform = `translateX(${pos}px)`;
         }
-        // If we scroll too far left (into the 1st set), snap forward to 2nd set
-        else if (el.scrollLeft <= 0) {
-            el.scrollLeft = scrollWidth;
-        }
-    }, [originalLength]);
+    }, [count]);
 
     // ── Autoplay ──────────────────────────────────────────────────
     const stopAutoplay = useCallback(() => {
@@ -60,58 +82,94 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
     const startAutoplay = useCallback(() => {
         stopAutoplay();
         autoplayRef.current = setInterval(() => {
-            if (!sliderRef.current || isHovered.current || isDragging.current) return;
-            const el = sliderRef.current;
-            const cardWidth = (el.firstElementChild as HTMLElement).offsetWidth + 12;
+            if (isHovered.current || isDragging.current) return;
+            const cw = cardWidthRef.current;
+            if (!cw) return;
 
-            el.scrollBy({ left: cardWidth, behavior: "smooth" });
+            // Animate smoothly over ~400 ms
+            const start = offsetRef.current;
+            const target = start + cw;
+            const duration = 400;
+            const startTime = performance.now();
+
+            const animate = (now: number) => {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                // ease-in-out cubic
+                const ease = progress < 0.5
+                    ? 4 * progress ** 3
+                    : 1 - (-2 * progress + 2) ** 3 / 2;
+
+                offsetRef.current = start + cw * ease;
+                applyPositions();
+
+                if (progress < 1) {
+                    rafRef.current = requestAnimationFrame(animate);
+                }
+            };
+
+            if (rafRef.current) cancelAnimationFrame(rafRef.current);
+            rafRef.current = requestAnimationFrame(animate);
         }, 3000);
-    }, [stopAutoplay]);
+    }, [stopAutoplay, applyPositions]);
 
     useEffect(() => {
+        // Initial paint
+        applyPositions();
         startAutoplay();
-        return () => stopAutoplay();
-    }, [startAutoplay, stopAutoplay]);
+        return () => {
+            stopAutoplay();
+            if (rafRef.current) cancelAnimationFrame(rafRef.current);
+        };
+    }, [applyPositions, startAutoplay, stopAutoplay]);
 
     // ── Mouse drag ────────────────────────────────────────────────
-    const onMouseDown = (e: React.MouseEvent) => {
+    const onMouseDown = useCallback((e: React.MouseEvent) => {
         isDragging.current = true;
-        startX.current = e.pageX - (sliderRef.current?.offsetLeft ?? 0);
-        scrollLeft.current = sliderRef.current?.scrollLeft ?? 0;
-        if (sliderRef.current) sliderRef.current.style.cursor = "grabbing";
+        dragStartX.current = e.clientX;
+        dragStartOffset.current = offsetRef.current;
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
         stopAutoplay();
-    };
+        if (trackRef.current) trackRef.current.style.cursor = "grabbing";
+    }, [stopAutoplay]);
 
-    const onMouseMove = (e: React.MouseEvent) => {
-        if (!isDragging.current || !sliderRef.current) return;
-        e.preventDefault();
-        const x = e.pageX - sliderRef.current.offsetLeft;
-        sliderRef.current.scrollLeft = scrollLeft.current - (x - startX.current) * 1.2;
-        handleInfiniteScroll(); // Check for loop boundary during drag
-    };
+    const onMouseMove = useCallback((e: React.MouseEvent) => {
+        if (!isDragging.current) return;
+        const delta = dragStartX.current - e.clientX;
+        offsetRef.current = dragStartOffset.current + delta;
+        applyPositions();
+    }, [applyPositions]);
 
-    const onMouseUp = () => {
+    const onMouseUp = useCallback(() => {
+        if (!isDragging.current) return;
         isDragging.current = false;
-        if (sliderRef.current) sliderRef.current.style.cursor = "grab";
+        if (trackRef.current) trackRef.current.style.cursor = "grab";
         startAutoplay();
-    };
+    }, [startAutoplay]);
 
     // ── Touch drag ────────────────────────────────────────────────
-    const onTouchMove = (e: React.TouchEvent) => {
-        if (!sliderRef.current) return;
-        const x = e.touches[0].pageX - sliderRef.current.offsetLeft;
-        sliderRef.current.scrollLeft = scrollLeft.current - (x - startX.current) * 1.2;
-        handleInfiniteScroll();
-    };
+    const onTouchStart = useCallback((e: React.TouchEvent) => {
+        dragStartX.current = e.touches[0].clientX;
+        dragStartOffset.current = offsetRef.current;
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
+        stopAutoplay();
+    }, [stopAutoplay]);
 
-    // ── Meta Data Mapping ─────────────────────────────────────────
-    // Map the looped index back to the original index for itemsMeta
-    const getMeta = (index: number) => itemsMeta[index % originalLength];
+    const onTouchMove = useCallback((e: React.TouchEvent) => {
+        const delta = dragStartX.current - e.touches[0].clientX;
+        offsetRef.current = dragStartOffset.current + delta;
+        applyPositions();
+    }, [applyPositions]);
 
+    const onTouchEnd = useCallback(() => {
+        startAutoplay();
+    }, [startAutoplay]);
+
+    // ── Meta Data ─────────────────────────────────────────────────
     const itemsMeta = [
         { href: "products-and-services/scaffolding-contracting", description: "Complete construction scaffolding solutions including design, erection, supervision, and dismantling." },
         { href: "products-and-services/scaffolding-rental-dubai-uae", description: "Scaffolding rental for construction & maintenance work, supported by certified scaffolders." },
-        { href: "products-and-services/cuplock-scaffolding-rental-dubai", description: "Quality formwork systems for slabs, beams, and columns." },
+        { href: "products-and-services/cuplock-scaffolding-rental-dubai", description: "High-load cuplock system scaffolding supplied, delivered, and installed for construction and industrial projects across the UAE." },
         { href: "products-and-services/aluminum-mobile-scaffolding-tower-rental", description: "Lightweight, mobile scaffolding towers designed for safe indoor and outdoor access at height." },
         { href: "products-and-services/formwork-rental-in-dubai-uae", description: "Quality formwork systems for slabs, beams, and columns." },
         { href: "products-and-services/construction-equipment-rental-in-dubai", description: "Heavy construction equipment offered through flexible rental plans." },
@@ -121,18 +179,18 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
         <section className="py-150 overflow-hidden bg-black">
             <div className="container">
                 <div className="text-white gap-y-8 lg:gap-y-5">
-                    {/* Header code remains identical to your original */}
+                    {/* Header */}
                     <motion.div variants={containerStagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
                         <motion.h2 className="text-80 leading-[1.125] mb-12" variants={moveUp(0.2)}>
                             {data.mainTitle}
                         </motion.h2>
                         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-6 py-[50px]">
                             <motion.p
-                                className="text-19 leading-[32px] text-[#BCBCBC] lg:max-w-[1180px] "
+                                className="text-19 leading-[32px] text-[#BCBCBC] lg:max-w-[1180px]"
                                 variants={moveUp(0.8)}
                                 dangerouslySetInnerHTML={{ __html: data.description }}
                             />
-                            <Link href="/products-and-services" className="shrink-0 border border-white pr-5  rounded-[60px] flex items-center gap-4 group">
+                            <Link href="/products-and-services" className="shrink-0 border border-white pr-5 rounded-[60px] flex items-center gap-4 group">
                                 <span className="text-white whitespace-nowrap pt-5 pb-5 pl-5 text-16">Our Services</span>
                                 <span className="bg-primary w-12 h-12 flex items-center justify-center rounded-full group-hover:translate-x-2 transition-transform">
                                     <Image src="/assets/images/home/arrow-right.svg" alt="Arrow" width={24} height={24} />
@@ -141,88 +199,109 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                         </div>
                     </motion.div>
 
-                    {/* Slider */}
-                    <motion.div variants={moveUp(0.4)} initial="hidden" whileInView="show" viewport={{ once: true }} className="">
-                        <div className="overflow-hidden" style={{ marginRight: "calc(-1 * (100vw - 100%) / 2 )" }}>
+                    {/* Slider — single DOM instance per card */}
+                    <motion.div variants={moveUp(0.4)} initial="hidden" whileInView="show" viewport={{ once: true }}>
+                        <div
+                            className="overflow-hidden"
+                            style={{ marginRight: "calc(-1 * (100vw - 100%) / 2)" }}
+                        >
+                            {/*
+                             * The track has `position: relative` and a fixed height.
+                             * Each card is `position: absolute` and moves via translateX.
+                             * No clones — count === data.items.length exactly.
+                             */}
                             <div
-                                ref={sliderRef}
-                                onScroll={handleInfiniteScroll} // Critical for smooth/auto loop
-                                className="flex gap-3 overflow-x-auto pb-2 no-scrollbar"
+                                ref={trackRef}
+                                className="relative no-scrollbar"
                                 style={{
+                                    height: "clamp(260px, 30vw, 541px)",
                                     cursor: "grab",
-                                    scrollbarWidth: "none",
-                                    msOverflowStyle: "none",
-                                    WebkitOverflowScrolling: "touch",
-                                    scrollSnapType: isDragging.current ? "none" : "x mandatory",
+                                    userSelect: "none",
+                                    // Reserve horizontal space so the container doesn't collapse
+                                    minWidth: "100%",
                                 }}
                                 onMouseDown={onMouseDown}
                                 onMouseMove={onMouseMove}
                                 onMouseUp={onMouseUp}
                                 onMouseLeave={onMouseUp}
                                 onMouseEnter={() => { isHovered.current = true; }}
-                                onMouseOut={(e) => { if (!sliderRef.current?.contains(e.relatedTarget as Node)) isHovered.current = false; }}
-                                onTouchStart={(e) => {
-                                    startX.current = e.touches[0].pageX - (sliderRef.current?.offsetLeft ?? 0);
-                                    scrollLeft.current = sliderRef.current?.scrollLeft ?? 0;
-                                    stopAutoplay();
+                                onMouseOut={(e) => {
+                                    if (!trackRef.current?.contains(e.relatedTarget as Node)) {
+                                        isHovered.current = false;
+                                    }
                                 }}
+                                onTouchStart={onTouchStart}
                                 onTouchMove={onTouchMove}
-                                onTouchEnd={() => startAutoplay()}
+                                onTouchEnd={onTouchEnd}
                             >
-                                {loopedItems.map((item, i) => { 
+                                {items.map((item, i) => {
                                     const isActive = activeIndex === i;
-                                    const isOriginalItem = i < originalLength; // Check if this is from the first/original set
+                                    const meta = itemsMeta[i];
 
                                     return (
                                         <div
-                                            key={i}
+                                            key={item.title}        // stable key — no index-from-clone issues
                                             onMouseEnter={() => !isTouch && setActiveIndex(i)}
                                             onMouseLeave={() => !isTouch && setActiveIndex(null)}
-                                            onClick={() =>
-                                                isTouch &&
-                                                setActiveIndex(activeIndex === i ? null : i)
-                                            }
-                                            className="relative overflow-hidden rounded-2xl flex flex-col flex-shrink-0 group"
+                                            onClick={() => isTouch && setActiveIndex(activeIndex === i ? null : i)}
+                                            className="absolute top-0 left-0 overflow-hidden rounded-2xl flex flex-col group"
                                             style={{
-                                                /*
-                                                 * Desktop: show exactly 3 full cards + ~half of the 4th.
-                                                 * Formula: (container - gaps) / 3.5
-                                                 * gap-3 = 12px, there are 3 gaps across 3.5 cards.
-                                                 *
-                                                 * On tablet (md): 2.5 visible
-                                                 * On mobile (sm): 1.3 visible
-                                                 */
+                                                // Width matches the old inline calc; height fills the track
                                                 width: "clamp(220px, calc((100% - 3 * 12px) / 3.5), 459px)",
-                                                height: "clamp(260px, 30vw, 541px)",
-                                                scrollSnapAlign: "start",
-                                                userSelect: "none",
+                                                height: "100%",
+                                                // translateX is injected imperatively via applyPositions()
+                                                willChange: "transform",
                                             }}
                                         >
-                                            <Image src={item.image} alt={item.imageAlt} fill className={`object-cover transition-transform duration-500 w-full h-full ${isActive ? "scale-110" : "scale-100"}`} draggable={false} />
+                                            <Link href={meta?.href ?? "#"} className="absolute inset-0 z-40" aria-label={item.title} />
 
-                                            {/* Gradients & Hover Effects */}
-                                            <div className="absolute inset-0 z-20 transition-opacity duration-300" style={{ background: "linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.82))", opacity: isActive ? 0 : 1 }} />
-                                            <div className="absolute bottom-0 left-0 w-full z-20 transition-all duration-500" style={{ height: isActive ? "100%" : "0%", background: "linear-gradient(to bottom, transparent, rgba(180,20,20,0.78))" }} />
-                                            <div className="absolute top-4 right-4 z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 ml-auto">
-                                                <Image
-                                                    src="/assets/images/arrow-top-right.svg"
-                                                    alt="Arrow"
-                                                    width={30}
-                                                    height={30}
-                                                    className="w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300"
-                                                />
-                                            </div>
+                                            <Image
+                                                src={item.image}
+                                                alt={item.imageAlt}
+                                                fill
+                                                className={`object-cover transition-transform duration-500 w-full h-full ${isActive ? "scale-110" : "scale-100"}`}
+                                                draggable={false}
+                                            />
+
+                                            {/* Gradients */}
+                                            <div
+                                                className="absolute inset-0 z-20 transition-opacity duration-300"
+                                                style={{
+                                                    background: "linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.82))",
+                                                    opacity: isActive ? 0 : 1,
+                                                }}
+                                            />
+                                            <div
+                                                className="absolute bottom-0 left-0 w-full z-20 transition-all duration-500"
+                                                style={{
+                                                    height: isActive ? "100%" : "0%",
+                                                    background: "linear-gradient(to bottom, transparent, rgba(180,20,20,0.78))",
+                                                }}
+                                            />
+
+                                            {/* Arrow button */}
+                                            <Link href={meta?.href ?? "#"} className="block">
+                                                <div className="absolute top-4 right-4 z-20 w-[53px] h-[53px] flex items-center justify-center bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 ml-auto">
+                                                    <Image
+                                                        src="/assets/images/arrow-top-right.svg"
+                                                        alt="Arrow"
+                                                        width={30}
+                                                        height={30}
+                                                        className="w-[24px] h-[24px] -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300"
+                                                    />
+                                                </div>
+                                            </Link>
+
+                                            {/* Title + description */}
                                             <div className="relative z-30 mt-auto p-[30px]">
-                                                {/* Only wrap the title in Link if it's from the original set */}
-                                                {isOriginalItem ? (
-                                                    <Link href={getMeta(i)?.href ?? "#"} className="block">
-                                                        <h3 className="text-33 mb-3">{item.title}</h3>
-                                                    </Link>
-                                                ) : (
-                                                    <p className="text-33 mb-3">{item.title}</p>
-                                                )}
-                                                <p className={` text-19 leading-[32px] transition-all duration-500 ${isActive ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"}`}>
-                                                    {getMeta(i)?.description}
+                                                <Link href={meta?.href ?? "#"} className="block">
+                                                    <h3 className="text-33 mb-3">{item.title}</h3>
+                                                </Link>
+                                                <p
+                                                    className={`text-19 leading-[32px] transition-all duration-500 ${isActive ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"
+                                                        }`}
+                                                >
+                                                    {meta?.description}
                                                 </p>
                                             </div>
                                         </div>

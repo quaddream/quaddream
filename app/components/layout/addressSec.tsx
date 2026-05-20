@@ -90,7 +90,14 @@ const AddressSection = () => {
             />
           </span>
 
-          {data.phones.join(" | ")}
+          {data.phones.map((phone, i) => (
+            <span key={i}>
+              {i > 0 && " | "}
+              <a href={`tel:${phone.replace(/\s+/g, "")}`} className="hover:underline">
+                {phone}
+              </a>
+            </span>
+          ))}
         </div>
         {data.emails.map((email, i) => (
           <div
