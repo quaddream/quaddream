@@ -2,6 +2,7 @@ import React from 'react'
 import Index from '@/app/components/faq/Index'
 import { Metadata } from 'next';
 import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
+import { faqpageSchema } from '@/lib/schema/faqSchema';
 
 export async function generateMetadata(): Promise<Metadata> {
   // const response = await fetch(`${process.env.BASE_URL}/api/admin/faq`, { next: { revalidate: 60 } });
@@ -39,6 +40,10 @@ export default async function Faq() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(generateBreadcrumbSchema("/faq")),
         }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqpageSchema) }}
       />
       <Index data={data.data} />
     </>
