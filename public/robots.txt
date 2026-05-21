@@ -17,6 +17,6 @@ User-agent: Claude-Web
 Disallow:
 
 User-agent: bingbot
-Crawl-delay: 5
+Crawl-delay: 5 
 
 Sitemap: https://www.quaddream.com/sitemap.xml
