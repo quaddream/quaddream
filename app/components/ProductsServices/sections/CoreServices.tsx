@@ -39,7 +39,6 @@ const CoreServices: React.FC<MissionProps> = ({ Data }) => {
               key={index}
               className={`group 
       ${activeIndex === index ? "active" : ""} 
-      ${index < 4 ? "hidden" : ""}
     `}
               onMouseEnter={() =>
                 setActiveIndex(activeIndex === index ? null : index)
