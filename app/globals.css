@@ -99,6 +99,7 @@ body {
   color: black;
   font-family: var(--font-open-sans), sans-serif;
   overflow-x: hidden;
+  @apply antialiased;
 }
 
 .container {

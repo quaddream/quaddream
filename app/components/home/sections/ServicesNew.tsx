@@ -167,12 +167,12 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
 
     // ── Meta Data ─────────────────────────────────────────────────
     const itemsMeta = [
-        { href: "products-and-services/scaffolding-contracting", description: "Complete construction scaffolding solutions including design, erection, supervision, and dismantling." },
+        { href: "products-and-services/scaffolding-contracting-in-dubai-uae", description: "Complete construction scaffolding solutions including design, erection, supervision, and dismantling." },
         { href: "products-and-services/scaffolding-rental-dubai-uae", description: "Scaffolding rental for construction & maintenance work, supported by certified scaffolders." },
-        { href: "products-and-services/cuplock-scaffolding-rental-dubai", description: "High-load cuplock system scaffolding supplied, delivered, and installed for construction and industrial projects across the UAE." },
-        { href: "products-and-services/aluminum-mobile-scaffolding-tower-rental", description: "Lightweight, mobile scaffolding towers designed for safe indoor and outdoor access at height." },
+        { href: "products-and-services/cuplock-scaffolding-rental-dubai-uae", description: "High-load cuplock system scaffolding supplied, delivered, and installed for construction and industrial projects across the UAE." },
+        { href: "products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae", description: "Lightweight, mobile scaffolding towers designed for safe indoor and outdoor access at height." },
         { href: "products-and-services/formwork-rental-in-dubai-uae", description: "Quality formwork systems for slabs, beams, and columns." },
-        { href: "products-and-services/construction-equipment-rental-in-dubai", description: "Heavy construction equipment offered through flexible rental plans." },
+        { href: "products-and-services/construction-equipment-rental-dubai-uae", description: "Heavy construction equipment offered through flexible rental plans." },
     ];
 
     return (
@@ -181,7 +181,7 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                 <div className="text-white gap-y-8 lg:gap-y-5">
                     {/* Header */}
                     <motion.div variants={containerStagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
-                        <motion.h2 className="text-80 leading-[1.125] mb-12" variants={moveUp(0.2)}>
+                        <motion.h2 className="text-80 leading-[1.125] " variants={moveUp(0.2)}>
                             {data.mainTitle}
                         </motion.h2>
                         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-6 py-[50px]">
