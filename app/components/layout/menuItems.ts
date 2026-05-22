@@ -7,7 +7,6 @@ export const menuItems = [
     name: "About Us",
     href: "/about-us",
     children: [
-      { name: "Careers", href: "/careers" },
       { name: "Faq", href: "/faq" },
     ],
   },
