@@ -94,7 +94,7 @@ const Navbar = () => {
               className={`mr-4 ${
                 scrollY > 550
                   ? "xl:w-[250px]"
-                  : "xl:w-[404px] xl:pl-[1em] 2xl:pl-[2em]"
+                : "xl:w-[274px] xl:pl-[1em] 2xl:pl-[2em]"
               }`}
             >
               <Link href="/">
@@ -103,12 +103,12 @@ const Navbar = () => {
                   alt="Scaffolding Company - Quad Dream"
                   width={317}
                   height={107}
-                  className="h-auto w-auto lg:h-[53px] xl:h-[65px] 2xl:h-[107px] object-contain"
+                  className="h-auto xl:[200px] 2xl:w-[274px] lg:h-[53px] xl:h-[65px] 2xl:h-[94px] object-contain"
                 />
               </Link>
             </div>
 
-            <ul className="flex w-fit lg:gap-3 xl:gap-7 2xl:gap-[43px] 2xl:pr-[37px] 2xl:ml-auto z-10">
+            <ul className="flex w-fit lg:gap-3 xl:gap-5 2xl:gap-[40px] 2xl:pr-[37px] 2xl:ml-auto z-10">
               {menuItems.map((item, index) => {
                 const isActive = activeParent === index;
                 const textColorClass = isActive
@@ -121,7 +121,7 @@ const Navbar = () => {
                 return (
                   <li
                     key={index}
-                    className="relative flex flex-col group cursor-pointer"
+                    className="relative flex flex-col group cursor-pointer "
                     onMouseEnter={() => setOpenDropdown(index)}
                     onMouseLeave={() => setOpenDropdown(null)}
                     onClick={() => {

@@ -42,4 +42,8 @@ export const menuItems = [
       { name: "Blogs", href: "/blog" },
     ],
   },
+  {
+    name: "Careers",
+    href: "/careers",
+  },
 ];
