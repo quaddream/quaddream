@@ -57,7 +57,7 @@ export default function RootLayout({
                 />
 
             </head>
-            <body className={`${openSans.variable} antialiased`}>
+            <body className={openSans.variable}>
                 <noscript>
                     <iframe
                         src="https://www.googletagmanager.com/ns.html?id=GTM-NBV7RRSH"
