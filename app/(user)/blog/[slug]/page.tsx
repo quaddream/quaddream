@@ -83,14 +83,14 @@ export default async function BlogDetailsPage({ params }: Props) {
             name: "Quad Dream",
             url: baseUrl,
         },
-        publisher: {
-            "@type": "Organization",
-            name: "Quad Dream",
-            logo: {
-                "@type": "ImageObject",
-                url: `${baseUrl}/assets/images/logo-main.svg`,
-            },
-        },
+        // publisher: {
+        //     "@type": "Organization",
+        //     name: "Quad Dream",
+        //     logo: {
+        //         "@type": "ImageObject",
+        //         url: `${baseUrl}/assets/images/logo-main.svg`,
+        //     },
+        // },
         datePublished: blogData?.createdAt,
         dateModified: blogData?.updatedAt || blogData?.createdAt,
     };

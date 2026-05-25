@@ -1,6 +1,7 @@
 const localBusinessSchemaData = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  // "@type": "Organization",
+  "@type": "LocalBusiness",
   "name": "Quad Dream",
   "url": "https://www.quaddream.com/",
   "logo": "https://www.quaddream.com/assets/images/logo-main.svg",
