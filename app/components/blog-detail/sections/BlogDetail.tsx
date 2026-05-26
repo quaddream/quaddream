@@ -8,11 +8,20 @@ import { moveUp } from "../../motionVarients";
 import { BlogType } from "../../blog/type";
 import BlogContentParser from "./utils/BlogContentParser";
 
-
 interface BlogDetailProps {
   blogDetail: BlogType["blogs"][number];
   allBlogs: BlogType["blogs"];
 }
+
+const formatDate = (dateStr: string) => {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+};
 
 const BlogDetail: React.FC<BlogDetailProps> = ({ blogDetail, allBlogs }) => {
   return (
@@ -43,11 +52,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ blogDetail, allBlogs }) => {
                     {blogDetail.category.name}
                   </span>
                   <span className="text-gray-para">
-                    {new Date(blogDetail.date).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
+                    {formatDate(blogDetail.date)}
                   </span>
                 </div>
                 <GoShareAndroid size={22} />
