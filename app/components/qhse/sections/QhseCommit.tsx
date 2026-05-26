@@ -31,7 +31,7 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ qhseData }) => {
           .split("\n")
           .filter(Boolean)
           .map((para, idx) => (
-            <motion.p
+            <motion.div
               variants={moveUp(idx * 0.25)}
               initial="hidden"
               whileInView="show"
@@ -40,7 +40,7 @@ const QHSECommitment: React.FC<QHSECommitmentProps> = ({ qhseData }) => {
               className="text-gray-para text-19 leading-[1.68] mb-4 xl:mb-10 qhse-firstSection-para"
             >
               <span dangerouslySetInnerHTML={{ __html: para }}></span>
-            </motion.p>
+            </motion.div>
           ))}
 
         {/* Image */}
