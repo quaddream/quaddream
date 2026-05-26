@@ -507,6 +507,55 @@ export default async function BlogDetailsPage({ params }: Props) {
             ]
         };
     }
+    // Blog 8
+    if (slug === "scaffolding-rental-vs-contracting-uae") {
+        faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+                {
+                    "@type": "Question",
+                    name: "What is the difference between scaffolding rental and scaffolding contracting in the UAE?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Rental provides equipment only. Contracting covers the full managed service including design, erection, inspection, and dismantling. UAE construction sites with DM permits typically require contracting rather than self-managed rental for any scaffold above ground floor."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Is scaffolding contracting more expensive than rental in Dubai?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "The hire rate appears lower under rental, but total cost includes erection labour, inspection fees, and compliance management. For projects above ground floor or on DM permit sites, contracting is often comparable or better value when the full project cost is considered."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Who is responsible for scaffolding safety on a Dubai construction site?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Under rental, the client or main contractor is responsible for erection, inspection, and compliance. Under contracting, the scaffolding contractor assumes duty of care for the structure they design, erect, and inspect. That liability distinction is why contracting is required on high-risk and DM-regulated project scopes."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Can I rent scaffolding and have Quad Dream erect it on my site?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Yes. Quad Dream offers both equipment-only rental for client-managed sites and full contracting from design through dismantling. Contact the team for a site assessment to determine which model suits your project requirements and compliance obligations."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What certifications should a scaffolding contractor in the UAE hold?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Key credentials include Dubai Municipality registration, ISO certification, OSHAD-aligned QHSE management, and scaffolder competency certifications from recognised bodies. Quad Dream has operated since 2012 with these credentials across Dubai and the wider UAE."
+                    }
+                }
+            ]
+        };
+    }
 
 
     return (
