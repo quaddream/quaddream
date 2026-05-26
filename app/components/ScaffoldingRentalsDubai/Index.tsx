@@ -16,14 +16,15 @@ const Index = ({ data, projectsdata }: {
   data: NewDesignType;
   projectsdata: Projects;
 }) => {
+  console.log(data, "fs");
   return (
     <>
       <BannerInner bannerData={data.bannerSection} />
       <Comprehensive
-        secondSection={data.firstSection}
+        secondSection={data?.firstSection}
         secondTitleMaxWidth={false}
-        bottomDescription={data.firstSection.description}
-        bottomStats={data.firstSection.items}
+        bottomDescription={data?.firstSection?.description}
+        bottomStats={data?.firstSection?.items}
       />
       <ScaffoldingSystems data={data.secondSection} />
       <HowToRent data={data.thirdSection} />

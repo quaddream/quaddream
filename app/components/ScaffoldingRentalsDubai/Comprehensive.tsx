@@ -29,7 +29,7 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
   // const hasSecondSection = !!(secondSection?.title?.trim() || secondSection?.description?.trim() || secondSection?.image?.trim());
   const hasBottomDescription = !!bottomDescription?.trim();
   const hasBottomStats = !!(bottomStats && bottomStats.length > 0);
-  const sanitizeHtml = (html: string) => html.replace(/&nbsp;/g, " ");
+const sanitizeHtml = (html: string) => (html ?? "").replace(/&nbsp;/g, " ");
   // If nothing to render, return null entirely
   // if (!hasSecondSection && !hasBottomDescription && !hasBottomStats) {
   //   return null;
@@ -87,7 +87,7 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
 
         {/* Optional paragraph below the image card */}
         {hasBottomDescription && (
-          <motion.p
+          <motion.div
             variants={moveUp(0.1)}
             initial="hidden"
             whileInView="show"
@@ -95,9 +95,8 @@ const Comprehensive: React.FC<ComprehensiveProps> = ({
             viewport={{ amount: 0.1, once: true }}
             className="text-19 text-[#696969] leading-[1.684210526315789] "
             dangerouslySetInnerHTML={{ __html: sanitizeHtml(bottomDescription) }}
-          >
-            {/* {bottomDescription} */}
-          </motion.p>
+          />
+
         )}
 
         {/* Optional stats/icons bar */}
