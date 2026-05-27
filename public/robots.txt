@@ -1,22 +1,30 @@
 User-agent: *
+
 Disallow: /admin/
+Disallow: /_next/static/
+
 
 User-agent: GPTBot
 Disallow:
+ 
 
 User-agent: ChatGPT-User
 Disallow:
 
+
 User-agent: Google-Extended
 Disallow:
+
 
 User-agent: anthropic-ai
 Disallow:
 
+
 User-agent: Claude-Web
 Disallow:
 
+
 User-agent: bingbot
-Crawl-delay: 5 
+Crawl-delay: 5
 
 Sitemap: https://www.quaddream.com/sitemap.xml
