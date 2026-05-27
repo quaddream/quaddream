@@ -32,6 +32,23 @@ const BlogContent = ({ html }: BlogContentProps) => {
                 );
 
               case "p":
+                const hasImg = el.children?.some(
+                  (child: any) => "name" in child && child.name === "img",
+                );
+
+                if (hasImg) {
+                  return (
+                    <motion.div
+                      variants={moveUp(0.07)}
+                      initial="hidden"
+                      whileInView="show"
+                      viewport={{ once: true }}
+                    >
+                      {children}
+                    </motion.div>
+                  );
+                }
+
                 return (
                   <motion.p
                     variants={moveUp(0.07)}
@@ -43,7 +60,7 @@ const BlogContent = ({ html }: BlogContentProps) => {
                   </motion.p>
                 );
 
-               case "h3":
+              case "h3":
                 return (
                   <motion.h3
                     variants={moveUp(0.07)}
