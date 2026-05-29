@@ -74,7 +74,7 @@ export default async function BlogDetailsPage({ params }: Props) {
         "@type": "Article",
         mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": `${baseUrl}/blog/${slug}`,
+            "@id": `https://www.quaddream.com/blog/${slug}`,
         },
         headline: blogData?.title,
         image: imageUrl ? [imageUrl] : undefined,
@@ -551,6 +551,63 @@ export default async function BlogDetailsPage({ params }: Props) {
                     acceptedAnswer: {
                         "@type": "Answer",
                         text: "Key credentials include Dubai Municipality registration, ISO certification, OSHAD-aligned QHSE management, and scaffolder competency certifications from recognised bodies. Quad Dream has operated since 2012 with these credentials across Dubai and the wider UAE."
+                    }
+                }
+            ]
+        };
+    }
+    // Blog 9
+    if (slug === "short-term-vs-long-term-scaffolding-rental-uae") {
+        faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+                {
+                    "@type": "Question",
+                    name: "Is short-term or long-term scaffolding rental cheaper in the UAE?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Short-term rental is more cost-effective for brief, defined tasks. However, if scaffolding is required for several weeks or longer, long-term rental usually becomes more economical due to lower monthly rates. The right option depends on how long the scaffolding will remain in use."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What is the typical minimum hire period for scaffolding rental in the UAE?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Minimum hire periods vary by provider, but short-term rentals are usually arranged on a daily or weekly basis, while long-term rentals typically start from one month. The exact duration depends on project scope and contract terms."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Can I switch from a short-term to a long-term scaffolding rental agreement mid-project?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Yes, in many cases rental agreements can be adjusted if project requirements change. This depends on the provider’s terms and the stage of the project, so it is best to clarify flexibility and conversion options during the initial agreement."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "How does the UAE summer outdoor work ban affect scaffolding rental agreements?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "The UAE summer midday break can impact project timelines, especially for outdoor work. For long-term rentals, it is important to account for this period in the contract to avoid paying for idle time. Some providers may offer adjusted terms if agreed in advance."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What should a long-term scaffolding rental contract in the UAE include?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "A long-term contract should clearly define rental duration, pricing structure, extension terms, inspection responsibilities, and safety compliance requirements. Transparent terms help avoid unexpected costs and ensure smooth project execution."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Can one scaffolding provider cover multiple construction sites across the UAE under a single contract?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Yes, depending on the provider’s capacity and coverage, scaffolding services can be arranged across multiple sites under a single agreement. This can simplify coordination, reduce administrative effort, and improve consistency across projects."
                     }
                 }
             ]
