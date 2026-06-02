@@ -2,6 +2,7 @@ import React from "react";
 import Index from "@/app/components/blog-detail/Index";
 import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
 import Script from "next/script";
+import { redirect } from "next/navigation";
 interface FaqSchema {
     "@context": string;
     "@type": string;
@@ -58,6 +59,9 @@ export default async function BlogDetailsPage({ params }: Props) {
     const { slug } = await params;
     const blog = await getBlog(slug as string);
     const allBlogs = await getAllBlogs();
+    if (!blog?.data) {
+        redirect("/404");
+    }
     const blogData = blog?.data;
 
     const bannerImage = blogData?.bannerSection?.image;
