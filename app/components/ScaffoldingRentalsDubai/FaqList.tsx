@@ -91,9 +91,26 @@ const FaqList = ({
                                 )}
                             </div>
 
-                            {openQuestion === item.question && (
+                            {/* {openQuestion === item.question && (
                                 <p className="text-19 leading-[1.7] text-gray-para pt-[10px] xl:pt-[20px] pr-[20px] lg:pr-[100px]" dangerouslySetInnerHTML={{ __html: item.answer }} />
-                                    
+
+                            )} */}
+                            {item.answer && (
+                                <motion.div
+                                    initial={false}
+                                    animate={{
+                                        height: openQuestion === item.question ? "auto" : 0,
+                                        opacity: openQuestion === item.question ? 1 : 0,
+                                    }}
+                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                    style={{ overflow: "hidden" }}
+                                    aria-hidden={openQuestion !== item.question}
+                                >
+                                    <p
+                                        className="text-19 leading-[1.7] text-gray-para pt-[10px] xl:pt-[20px] pr-[20px] lg:pr-[100px] [&_a]:!text-primary [&_a]:underline"
+                                        dangerouslySetInnerHTML={{ __html: item.answer }}
+                                    />
+                                </motion.div>
                             )}
                         </motion.div>
                     ))}
