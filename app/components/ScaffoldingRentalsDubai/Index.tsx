@@ -33,7 +33,6 @@ const Index = ({ data, projectsdata }: {
       <Map />
       <FaqList faqData={data.fifthSection} bg="bg-gray-100" />
       <CTA
-
         mainTitle={data.sixthSection.title}
         subTitle={data.sixthSection.description}
         buttonText={data.sixthSection.buttonText}

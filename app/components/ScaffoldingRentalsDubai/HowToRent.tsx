@@ -64,31 +64,31 @@ const HowToRent: React.FC<Props> = ({ data }) => {
                     </div>
 
                     {/* Card */}
+                    {/* Card */}
                     <div
-                      className={`flex-1 rounded-[16px]   transition-all duration-300 ${isActive ? "bg-[#EC1C24] p-[20px]" : "bg-transparent py-[10px]"
+                      className={`flex-1 rounded-[16px] transition-all duration-300 ${isActive ? "bg-[#EC1C24] p-[20px]" : "bg-transparent py-[10px]"
                         }`}
                     >
-
                       {/* Title */}
                       <h3
                         className={`font-medium transition-all duration-200 ${isActive
-                          ? "text-white text-33"
-                          : "text-25 text-gray-900 group-hover:text-[#EC1C24]"
+                            ? "text-white text-33"
+                            : "text-25 text-gray-900 group-hover:text-[#EC1C24]"
                           }`}
                       >
                         {step.title}
                       </h3>
 
-                      {/* Description — rendered inside the card when active */}
-                      {isActive && (
-                        <>
-                          <div className="w-full h-[1px] bg-white/30 my-5" />
-                          <p className="text-white text-19 leading-relaxed">
-                            {step.description}
-                          </p>
-                        </>
-                      )}
-
+                      {/* Description — always in DOM, toggled visually */}
+                      <div
+                        className={`overflow-hidden transition-all duration-300 ${isActive ? "max-h-[500px] opacity-100 mt-5" : "max-h-0 opacity-0"
+                          }`}
+                      >
+                        <div className="w-full h-[1px] bg-white/30 mb-5" />
+                        <p className="text-white text-19 leading-relaxed">
+                          {step.description}
+                        </p>
+                      </div>
                     </div>
 
                   </button>

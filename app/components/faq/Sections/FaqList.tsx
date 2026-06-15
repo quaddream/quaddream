@@ -79,8 +79,8 @@ const FaqList = ({ faqData }: { faqData: FaqData }) => {
                 setCurrentPage(1);
               }}
               className={`pb-[20px] text-25 leading-[40px] ${activeTab === cat.category
-                  ? "border-b-3 border-primary text-black"
-                  : "text-foreground"
+                ? "border-b-3 border-primary text-black"
+                : "text-foreground"
                 }`}
             >
               {cat.category}
@@ -150,40 +150,42 @@ const FaqList = ({ faqData }: { faqData: FaqData }) => {
                 if (item.answer) handleToggle(item.question);
               }}
             >
+          
               {/* Question Text */}
               <div className="flex justify-between lg:items-center gap-[15px] items-center">
-                <h2 className="lg:text-30 text-19  leading-[1.35] text-black">
+                <h2 className="lg:text-30 text-19 leading-[1.35] text-black">
                   {item.question}
                 </h2>
                 {item.answer && (
                   <span className="flex items-start lg:items-center flex-shrink-0">
-                    {openQuestion === item.question ? (
-                      <Image
-                        src="/assets/images/faqUp.svg"
-                        alt="faqUp"
-                        width={20}
-                        height={8}
-                        className="md:w-[24px] md:h-[11px]"
-                      />
-                    ) : (
-                      <Image
-                        src="/assets/images/faqDown.svg"
-                        alt="faqDown"
-                        width={20}
-                        height={8}
-                        className="md:w-[24px] md:h-[11px]"
-                      />
-                    )}
+                    <Image
+                      src={openQuestion === item.question ? "/assets/images/faqUp.svg" : "/assets/images/faqDown.svg"}
+                      alt="faq toggle"
+                      width={20}
+                      height={8}
+                      className="md:w-[24px] md:h-[11px]"
+                    />
                   </span>
                 )}
               </div>
 
               {/* Answer */}
-              {openQuestion === item.question && (
-                <p
-                  className="text-19 leading-[1.7] text-gray-para pt-[10px] xl:pt-[20px] pr-[20px] lg:pr-[100px] [&_a]:!text-primary [&_a]:underline"
-                  dangerouslySetInnerHTML={{ __html: item.answer }}
-                />
+              {item.answer && (
+                <motion.div
+                  initial={false}
+                  animate={{
+                    height: openQuestion === item.question ? "auto" : 0,
+                    opacity: openQuestion === item.question ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  style={{ overflow: "hidden" }}
+                  aria-hidden={openQuestion !== item.question}
+                >
+                  <p
+                    className="text-19 leading-[1.7] text-gray-para pt-[10px] xl:pt-[20px] pr-[20px] lg:pr-[100px] [&_a]:!text-primary [&_a]:underline"
+                    dangerouslySetInnerHTML={{ __html: item.answer }}
+                  />
+                </motion.div>
               )}
             </motion.div>
           ))}
