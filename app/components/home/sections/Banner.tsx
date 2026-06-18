@@ -116,11 +116,11 @@ useEffect(() => {
                       </h2>
                     )}
                       <Link
-                        href="/projects"
+                        href="/contact-us"
                         className="opacity-0 fade-item flex items-center gap-2 cursor-pointer text-16 border-1 border-white py-1 2xl:py-[10px] px-3 2xl:px-5 rounded-[60px] w-fit text-white relative group overflow-hidden z-20 isolation-isolate fade-item"
                       >
                         <div className="absolute top-0 left-0 w-0 h-full bg-primary z-[-1] transition-all duration-300 group-hover:w-full"></div>
-                        <span>View Our Projects</span>
+                        <span>Get a Quote</span>
                         <span className="bg-primary group-hover:bg-white group-hover:translate-x-[10px] h-8 w-8 md:w-[51.7px] md:h-[51.7px] flex items-center justify-center rounded-full transition-all duration-300">
                           <Image
                             src="/assets/images/bold-arrow.svg"

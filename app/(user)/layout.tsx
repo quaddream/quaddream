@@ -6,6 +6,7 @@ import Footer from "../components/layout/footer";
 import Script from "next/script";
 // import { localBusinessSchema } from "@/lib/schema/locaBusiness";
 import { reviewSchema } from "@/lib/schema/review";
+import { localBusinessSchema, organizationSchema } from "@/lib/schema/CommonSchema"
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -45,6 +46,20 @@ export default function RootLayout({
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-NBV7RRSH');`,
+                    }}
+                />
+                <Script
+                    type="application/ld+json"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(localBusinessSchema)
+                    }}
+                />
+                <Script
+                    type="application/ld+json"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(organizationSchema)
                     }}
                 />
 
