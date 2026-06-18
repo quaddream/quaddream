@@ -63,9 +63,15 @@ const ItemsSwiper = ({ items }: ItemsProps) => {
                 height={50}
               />
               <p className="text-30 md:text-40 lg:text-65 xl:min-w-max font-semibold">
-                <Counter from={0} to={Number(item.number)} duration={2} />
-                {item.number == 2012 ? "" : <span className="text-primary"> +</span>}
+                <Counter
+                  from={0}
+                  to={Number(item.number.toString().replace("+", ""))}
+                  duration={2}
+                />
 
+                {item.number !== 2012 && item.number.toString().includes("+") && (
+                  <span className="text-primary"> +</span>
+                )}
               </p>
               <p className="text-19   text-foreground">{item.value}</p>
             </motion.div>

@@ -1,6 +1,7 @@
 import Index from "@/app/components/project-details";
 import { Metadata } from "next";
 import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
+import { redirect } from "next/navigation";
 
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -41,6 +42,9 @@ export default async function Home({
     { next: { revalidate: 60 } }
   );
   const data = await response.json();
+  if (!data?.data) {
+    redirect("/404");
+  }
 
   const pjt = await fetch(`${process.env.BASE_URL}/api/admin/project`, {
     next: { revalidate: 60 },

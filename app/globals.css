@@ -91,9 +91,11 @@
     /* --foreground: var(--foreground); */
   }
 }
+
 html {
   scroll-behavior: smooth;
 }
+
 body {
   background: var(--background);
   color: black;
@@ -226,8 +228,8 @@ body {
   }
 }
 
-  @media (max-width: 992.98px) {
-   .closeicn {
+@media (max-width: 992.98px) {
+  .closeicn {
     position: absolute;
     right: 27px;
   }
@@ -391,14 +393,23 @@ body {
   color: #000;
   /* text-black */
 }
-#blogContent table{margin-top: 20px;}
+
+#blogContent table {
+  margin-top: 20px;
+}
 
 #blogContent .numbered-list li {
   list-style: auto;
   margin-bottom: 15px;
-  color: #000;
 }
-#blogContent .overflowsc{overflow: auto;}
+#blogContent .numbered-list li strong{
+  color: #000000b5;
+}
+
+#blogContent .overflowsc {
+  overflow: auto;
+}
+
 #blogContent h1 {
   font-size: var(--text-30);
   /* text-30 */
@@ -438,13 +449,15 @@ body {
 }
 
 @media (min-width: 1024px) {
-#blogContent div {
-  scroll-margin-top: 85px;  
+  #blogContent div {
+    scroll-margin-top: 85px;
+  }
 }
+
+#blogContent .numbered-list li:last-child {
+  margin-bottom: 0px;
 }
-#blogContent .numbered-list li:last-child { 
-    margin-bottom: 0px; 
-}
+
 @media (min-width: 768px) {
   #blogContent h2 {
     font-size: var(--text-30);
@@ -501,14 +514,15 @@ body {
   border-radius: 16px;
   /* rounded-[16px] */
   object-fit: cover;
-  /* object-cover */ 
-  margin-top: 20px; 
+  /* object-cover */
+  margin-top: 20px;
 }
 
 /* First image special size */
-#blogContent img:first-child { 
+#blogContent img:first-child {
   margin-top: 0px;
 }
+
 @keyframes scrollmar {
   0% {
     transform: translateX(0%);
@@ -524,22 +538,22 @@ body {
 
 @media (min-width: 1500px) {
 
-  
-#blogContent #section1,
-#blogContent #section2 ,
-#blogContent #section3,
-#blogContent #section4,
-#blogContent #section5,
-#blogContent #section6,
-#blogContent #section7,
-#blogContent #section8,
-#blogContent #section9,
-#blogContent #section10,
-#blogContent #section11
-#blogContent #section12{
-  padding-top: 30px;
+
+  #blogContent #section1,
+  #blogContent #section2,
+  #blogContent #section3,
+  #blogContent #section4,
+  #blogContent #section5,
+  #blogContent #section6,
+  #blogContent #section7,
+  #blogContent #section8,
+  #blogContent #section9,
+  #blogContent #section10,
+  #blogContent #section11 #blogContent #section12 {
+    padding-top: 30px;
+  }
 }
-}
+
 @media (width: 1400px) {
   .btn-1400 {
     padding: 25px 52px !important;
@@ -617,6 +631,7 @@ body {
 .tox-notification {
   z-index: 99999 !important;
 }
+
 .link-primary a {
   color: var(--primary);
 }

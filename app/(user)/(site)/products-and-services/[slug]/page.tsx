@@ -5,6 +5,7 @@ import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchemaServices"
 import Script from "next/script";
 import { serviceSchema } from "@/lib/schema/service";
 import Index from "@/app/components/ScaffoldingRentalsDubai/Index";
+import { notFound, redirect } from "next/navigation";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -69,7 +70,9 @@ export async function generateMetadata(
 export default async function ServiceDetailsPage({ params }: Props) {
   const { slug } = await params;
   const service = await getService(slug as string);
-  if (!service?.data) return null;
+  if (!service?.data) {
+    redirect("/404");
+  }
   const serviceData = service.data;
   const breadcrumbSchema = generateBreadcrumbSchema({
     baseUrl: process.env.BASE_URL as string,

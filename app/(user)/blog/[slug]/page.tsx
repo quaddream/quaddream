@@ -2,6 +2,7 @@ import React from "react";
 import Index from "@/app/components/blog-detail/Index";
 import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchema";
 import Script from "next/script";
+import { redirect } from "next/navigation";
 interface FaqSchema {
     "@context": string;
     "@type": string;
@@ -58,6 +59,9 @@ export default async function BlogDetailsPage({ params }: Props) {
     const { slug } = await params;
     const blog = await getBlog(slug as string);
     const allBlogs = await getAllBlogs();
+    if (!blog?.data) {
+        redirect("/404");
+    }
     const blogData = blog?.data;
 
     const bannerImage = blogData?.bannerSection?.image;
@@ -662,6 +666,47 @@ if (slug === "working-at-height-equipment-guide-uae") {
         ]
     };
 }
+    // Blog 12
+    if (slug === "scissor-lift-vs-aluminum-mobile-tower-which-is-better-for-indoor-access-work-in-the-uae") {
+        faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+                {
+                    "@type": "Question",
+                    name: "Can a scissor lift be used indoors in the UAE?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Yes, but only electric (non-diesel) models should be used indoors. Diesel scissor lifts generate exhaust emissions that are unsuitable for enclosed environments. Electric scissor lifts are standard on UAE fit-out and construction projects. Always verify floor load capacity before deployment, as most units weigh between 2,500 and 4,000 kg."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What is the maximum height of an aluminum mobile scaffold tower?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Standard aluminum mobile towers available for rental in the UAE typically provide working heights ranging from 6m to 10m, depending on configuration. For most indoor fit-out applications such as ceiling works, lighting installation, and HVAC maintenance, a 6m or 8m tower is usually sufficient. Quad Dream supplies multiple tower height options."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Do I need a licence to operate a scissor lift in Dubai?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Yes. Scissor lift operators should hold valid training and certification in accordance with UAE safety requirements. Most contractors arrange operator certification through their HSE departments before equipment arrives on site. Aluminum mobile towers do not require an operator licence, although safe assembly and inspection remain essential."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Which is cheaper to hire - a scissor lift or aluminum mobile tower in Dubai?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Aluminum mobile towers are generally more affordable to hire. Daily rental rates typically range from AED 80–180 for mobile towers compared to AED 300–600 for electric scissor lifts, depending on height, duration, and project requirements. Weekly and monthly rental arrangements often provide better value for longer projects. Contact Quad Dream for a tailored quotation."
+                    }
+                }
+            ]
+        };
+    }
 
     return (
         <>

@@ -1,6 +1,7 @@
 import Index from "@/app/components/careers-details/Index";
 import { Metadata } from "next";
 import { generateBreadcrumbSchema } from "@/lib/schema/breadcrumbSchemaCareers";
+import { redirect } from "next/navigation";
 
 export async function generateMetadata({
     params,
@@ -47,6 +48,9 @@ export default async function Qhse({
         { next: { revalidate: 60 } }
     );
     const data = await response.json();
+      if (!data?.data) {
+        redirect("/404");
+      }
     const breadcrumbSchema = generateBreadcrumbSchema(`/careers/${slug}`);
 
     return (

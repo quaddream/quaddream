@@ -1,6 +1,5 @@
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!--   created with Free Online Sitemap Generator www.xml-sitemaps.com   -->
+<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
 <url>
 <loc>https://www.quaddream.com/</loc>
 <lastmod>2026-05-26T08:32:17+00:00</lastmod>
@@ -153,11 +152,6 @@
 </url>
 <url>
 <loc>https://www.quaddream.com/blog/is-cheap-scaffolding-rental-safe-in-uae</loc>
-<lastmod>2026-05-26T08:32:17+00:00</lastmod>
-<priority>0.64</priority>
-</url>
-<url>
-<loc>https://www.quaddream.com/blog/scissor-lift-vs-aluminum-mobile-tower-which-is-better-for-indoor-access-work-in-the-uae</loc>
 <lastmod>2026-05-26T08:32:17+00:00</lastmod>
 <priority>0.64</priority>
 </url>
