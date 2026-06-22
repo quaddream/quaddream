@@ -757,6 +757,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/aluminium-mobile-tower",
+        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        permanent: true,
+      },
+      {
         source: "/contact",
         destination: "/contact-us",
         permanent: true,
