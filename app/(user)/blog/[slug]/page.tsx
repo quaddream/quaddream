@@ -707,6 +707,55 @@ if (slug === "working-at-height-equipment-guide-uae") {
             ]
         };
     }
+    // Blog 13
+    if (slug === "how-high-can-a-scissor-lift-reach-in-dubai") {
+        faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+                {
+                    "@type": "Question",
+                    name: "How high can a scissor lift reach in the UAE?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Electric scissor lifts commonly available for hire in the UAE provide platform heights ranging from 4m to 18m, with working reach extending approximately 1.8 to 2m above the platform. For most commercial fit-out and maintenance projects, 6m to 10m platform-height models are the most frequently used. Larger industrial and logistics applications may require 12m or higher units."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What is the weight limit on a scissor lift platform?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Scissor lift platform capacity depends on the model. Compact units typically support 230 to 250 kg, while mid-range models commonly accommodate 300 to 320 kg. Larger lifts may carry 400 to 500 kg. Always check the manufacturer's nameplate before use, as exceeding the rated capacity can compromise safety and compliance."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Can I hire a scissor lift by the day in Dubai?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Yes. Scissor lift hire is available on daily, weekly, and monthly rental terms throughout Dubai and the UAE. Daily hire works well for short-duration maintenance tasks, while longer projects often benefit from weekly or monthly rates. Quad Dream provides flexible rental options across Dubai, Sharjah, and Abu Dhabi."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What is the difference between a scissor lift and a boom lift?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "A scissor lift raises the platform vertically and is designed for work directly above the machine. A boom lift provides both vertical and horizontal reach, allowing operators to access areas beyond obstacles. For most indoor access and maintenance work in Dubai, a scissor lift offers a practical and cost-effective solution."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Do scissor lifts work on uneven ground?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Standard electric scissor lifts are intended for level, stable surfaces such as concrete floors and finished indoor environments. For outdoor applications and uneven terrain, rough-terrain scissor lifts are available with larger tyres, enhanced stability, and greater ground clearance. Ground conditions should always be assessed before equipment delivery."
+                    }
+                }
+            ]
+        };
+    }
 
     return (
         <>
