@@ -14,10 +14,13 @@ import {
 } from "@/lib/validation/letstalkSchema";
 import { sendContactAction } from "@/lib/mail/contactAction";
 import { ContactUs } from "../type";
+import { features } from "../data";
+import { IoCheckmark } from "react-icons/io5";
 
 type BannerProps = {
   Data: ContactUs["secondSection"];
   serviceData: string[];
+  id?: string;
 };
 
 // const sector = [
@@ -27,7 +30,7 @@ type BannerProps = {
 //   { id: 4, name: "Mobile Tower Sale & Rentals" },
 // ];
 
-const Letstalk: React.FC<BannerProps> = ({ Data, serviceData }) => {
+const Letstalk: React.FC<BannerProps> = ({ Data, serviceData, id }) => {
   const [sectorselected, setsectorSelected] = useState("");
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
@@ -66,7 +69,10 @@ const Letstalk: React.FC<BannerProps> = ({ Data, serviceData }) => {
   };
 
   return (
-    <section className="pb-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10">
+    <section
+      id={id}
+      className="scroll-mt-[120px] lg:scroll-mt-[150px] pb-150 rounded-t-2xl 2xl:rounded-tl-[80px] 2xl:rounded-tr-[80px] relative z-10"
+    >
       <div className="container flex flex-col gap-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 border-b border-[#BEBEBE] pb-12 lg:pb-31">
           <div>
@@ -191,13 +197,13 @@ const Letstalk: React.FC<BannerProps> = ({ Data, serviceData }) => {
                   >
                     <div className="relative">
                       <Listbox.Button className="flex w-full focus:outline-none items-center justify-between rounded-full text-[#7F7F7F] bg-[#F9F9F9] p-5 md:p-7 text-left border-0">
-                      <span
-  className={`${
-    sectorselected ? "text-[#7F7F7F]" : "text-gray-400"
-  }`}
->
-  {sectorselected || "Select Service *"}
-</span>
+                        <span
+                          className={`${
+                            sectorselected ? "text-[#7F7F7F]" : "text-gray-400"
+                          }`}
+                        >
+                          {sectorselected || "Select Service *"}
+                        </span>
                         <Image
                           src="/assets/images/arrow-down.svg"
                           alt="arrow-down"
@@ -231,10 +237,10 @@ const Letstalk: React.FC<BannerProps> = ({ Data, serviceData }) => {
                         </Listbox.Options>
                       </Transition>
                       {errors.sector && (
-            <span className="text-primary text-md mt-2 block lg:pl-7 pl-5">
-              {errors.sector.message}
-            </span>
-          )}
+                        <span className="text-primary text-md mt-2 block lg:pl-7 pl-5">
+                          {errors.sector.message}
+                        </span>
+                      )}
                     </div>
                   </Listbox>
                 )}
@@ -284,7 +290,7 @@ const Letstalk: React.FC<BannerProps> = ({ Data, serviceData }) => {
                 className="flex items-center gap-2 hover:bg-primary hover:border-primary cursor-pointer text-16 font-normal border-1 border-black py-2 px-4 md:px-5 rounded-[60px] w-fit z-10 group transition-all duration-300"
               >
                 <span className="group-hover:text-white transition-all duration-300">
-                  Submit
+                  Request a Quote
                 </span>
                 <span className="bg-primary group-hover:bg-white w-[35px] h-[35px] lg:w-[51.7px] lg:h-[51.7px] flex items-center justify-center rounded-full group-hover:translate-x-[10px] transition-all duration-300">
                   <Image
@@ -297,6 +303,26 @@ const Letstalk: React.FC<BannerProps> = ({ Data, serviceData }) => {
                 </span>
               </button>
             </motion.div>
+            <div className="mt-6 2xl:mt-8">
+              {features.items.map((feature) => (
+                <div className="flex items-center gap-3" key={feature.id}>
+                  <div
+                    className="h-6 w-6 rounded-full border flex items-center justify-center mt-1"
+                    style={{ borderColor: "#2E9E68" }}
+                  >
+                    <IoCheckmark
+                      className="text-lg"
+                      style={{ color: "#2E9E68" }}
+                    />
+                  </div>
+
+                  <h3
+                    className="text-gray-para text-19 2xl:text-[20px] mt-[6px]"
+                    dangerouslySetInnerHTML={{ __html: feature.text }}
+                  />
+                </div>
+              ))}
+            </div>
           </form>
         </div>
       </div>
