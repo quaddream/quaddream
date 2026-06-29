@@ -950,6 +950,16 @@ const nextConfig: NextConfig = {
         source: "/aluminium-foldable-tower",
         destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
+      },
+      {
+        source: "/careers/project-coordinator-formwork",
+        destination: "/careers" ,
+        permanent: true,
+      },
+      {
+        source: "/careers/sales-executive-female",
+        destination: "/careers",
+        permanent: true,
       }
 
     ];
