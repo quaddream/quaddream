@@ -1,90 +1,55 @@
 import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
-import "../globals.css";
+import Script from "next/script";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/footer";
-import Script from "next/script";
-// import { localBusinessSchema } from "@/lib/schema/locaBusiness";
 import { reviewSchema } from "@/lib/schema/review";
-import { localBusinessSchema, organizationSchema } from "@/lib/schema/CommonSchema"
+import { localBusinessSchema, organizationSchema } from "@/lib/schema/CommonSchema";
+import HeadInjector from "../components/common/HeadInjector";
 
-const openSans = Open_Sans({
-    subsets: ["latin"],
-    weight: "variable", // loads all weights
-    variable: "--font-open-sans",
-});
 
-// const inter = Inter({
-//   weight: ["100", "300", "400", "500", "600", "700", "800"],
-//   variable: "--font-inter",
-//   subsets: ["latin"],
-// });
 
 export const metadata: Metadata = {
     title: "Scaffolding Rental & Sales in UAE | Quad Dream",
     description:
         "Looking for scaffolding rental or sales in the UAE? Quad Dream offers durable, certified cuplock, tower, & formwork systems tailored to meet your project needs.",
-    metadataBase: new URL(process.env.BASE_URL!),
 };
 
+
+
 export const dynamic = "force-dynamic";
-export default function RootLayout({
+
+
+
+export default async function UserLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const tagResponse = await fetch(`${process.env.BASE_URL}/api/admin/tags`);
+    const tagData = await tagResponse.json();
+
+
+
     return (
-        <html lang="en">
-            <head>
-                {/* Google Tag Manager Script */}
-                <Script
-                    id="gtm-script"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: ` (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-NBV7RRSH');`,
-                    }}
-                />
-                <Script
-                    type="application/ld+json"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify(localBusinessSchema)
-                    }}
-                />
-                <Script
-                    type="application/ld+json"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify(organizationSchema)
-                    }}
-                />
-
-                {/* <Script
-                    strategy="afterInteractive"
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify(localBusinessSchema),
-                    }}
-                /> */}
-
-            </head>
-            <body className={openSans.variable}>
-                <noscript>
-                    <iframe
-                        src="https://www.googletagmanager.com/ns.html?id=GTM-NBV7RRSH"
-                        height="0"
-                        width="0"
-                        style={{ display: "none", visibility: "hidden" }}
-                    ></iframe>
-                </noscript>
-                <Navbar />
-                {children}
-                <Footer />
-            </body>
-        </html>
+        <>
+            <Script
+                type="application/ld+json"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(localBusinessSchema),
+                }}
+            />
+            <Script
+                type="application/ld+json"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(organizationSchema),
+                }}
+            />
+            <HeadInjector html={tagData.tag.headerScript} />
+            <Navbar />
+            {children}
+            <Footer />
+        </>
     );
 }
