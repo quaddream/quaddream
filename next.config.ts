@@ -961,6 +961,12 @@ const nextConfig: NextConfig = {
         destination: "/careers",
         permanent: true,
       }
+      ,
+      {
+        source: "/blog/short-term-vs-long-term-sacffolding-rental-uae",
+        destination: "/blog/short-term-vs-long-term-scaffolding-rental-uae",
+        permanent: true,
+      }
 
     ];
   },
