@@ -24,6 +24,7 @@ type BannerProps = {
   id?: string;
 };
 
+
 // const sector = [
 //   { id: 1, name: "Service Looking For" },
 //   { id: 2, name: "Scaffolding Contracting" },
