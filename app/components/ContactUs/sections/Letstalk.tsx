@@ -16,12 +16,14 @@ import { sendContactAction } from "@/lib/mail/contactAction";
 import { ContactUs } from "../type";
 import { features } from "../data";
 import { IoCheckmark } from "react-icons/io5";
+import { useRouter } from "next/navigation";
 
 type BannerProps = {
   Data: ContactUs["secondSection"];
   serviceData: string[];
   id?: string;
 };
+
 
 // const sector = [
 //   { id: 1, name: "Service Looking For" },
@@ -33,7 +35,7 @@ type BannerProps = {
 const Letstalk: React.FC<BannerProps> = ({ Data, serviceData, id }) => {
   const [sectorselected, setsectorSelected] = useState("");
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-
+  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -59,7 +61,8 @@ const Letstalk: React.FC<BannerProps> = ({ Data, serviceData, id }) => {
 
     try {
       await sendContactAction(data);
-      alert("Your message has been sent successfully!");
+      router.replace('/thank-you')
+      // alert("Your message has been sent successfully!");
       recaptchaRef.current?.reset();
       reset();
     } catch (error) {
