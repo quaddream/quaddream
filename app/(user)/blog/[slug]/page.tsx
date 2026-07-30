@@ -756,6 +756,63 @@ if (slug === "working-at-height-equipment-guide-uae") {
             ]
         };
     }
+    // Blog 14
+    if (slug === "scaffolding-rental-cost-uae") {
+        faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+                {
+                    "@type": "Question",
+                    name: "How much does scaffolding rental cost per day in the UAE?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Scaffolding rental costs vary depending on the type of scaffold and the project requirements. Aluminium mobile towers are typically hired on a per-tower, per-day basis, while steel tube-and-coupler and Cuplock systems are usually priced according to the number of bays or the overall scaffold configuration. The final cost depends on factors such as rental duration, scaffold height, location, and any additional services included."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Is scaffolding rental cheaper than buying for a single project?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "In most cases, yes. Renting eliminates the upfront investment of purchasing scaffolding while also reducing responsibilities for storage, maintenance, inspections, and transportation. For one-off or short-term projects, scaffolding rental is generally the more practical and cost-effective solution, particularly when certified equipment and technical support are included."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Do scaffolding rental quotes in the UAE include erection and dismantling?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Not always. Some suppliers provide equipment-only rental, while others offer complete scaffolding services that include erection, dismantling, and on-site supervision. Before accepting a quotation, confirm whether installation labour is included or charged separately, as this can have a significant impact on the overall project cost."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Why do scaffolding rental quotes vary so much between suppliers?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Two scaffolding rental quotes may appear to cover the same project but include different scopes of work. Variations can result from differences in scaffold type, rental duration, transport, installation, equipment quality, engineering requirements, and additional services. Comparing itemised quotations rather than headline prices provides a more accurate picture of overall value."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Does scaffolding rental cost more in remote industrial zones?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Yes, it can. Projects in locations such as KIZAD, Ruwais, or other remote industrial areas may incur additional transport and mobilisation charges due to longer travel distances and delivery times. While the exact amount varies by supplier and project, additional logistics costs can typically add 5–15% to the overall rental quotation, depending on the location and scope of work."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What is included in a compliant scaffolding rental quote in the UAE?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "A compliant scaffolding rental quote should clearly specify the equipment being supplied along with any supporting compliance documentation. Depending on the project scope, this may include inspection records, certification details, engineering drawings or calculations where required, and documentation demonstrating that the scaffold meets applicable safety standards and project specifications. Reviewing these documents before work begins helps ensure compliance and avoids delays during site inspections."
+                    }
+                }
+            ]
+        };
+    }
 
     return (
         <>
