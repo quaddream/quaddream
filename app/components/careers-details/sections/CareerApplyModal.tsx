@@ -4,6 +4,7 @@ import React, { useState, useRef, Fragment, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { submitCareer } from "@/lib/mail/careerAction";
 import { Listbox, Transition } from "@headlessui/react";
+import { useRouter } from "next/navigation";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 interface CareerApplyModalProps {
@@ -100,6 +101,7 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter()
 
   const [form, setForm] = useState<FormData>({
     firstName: "",
@@ -175,7 +177,7 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
       const result = await submitCareer(formData);
 
       if (result?.success) {
-        setSubmitted(true);
+        // setSubmitted(true);
 
         // reset state
         setForm({
@@ -187,6 +189,7 @@ const CareerApplyModal = ({ isOpen, onClose, jobTitle }: CareerApplyModalProps) 
           currentLocation: "",
           resume: null,
         });
+        router.replace('/thank-you')
       } else {
         alert("Something went wrong");
       }
