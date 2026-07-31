@@ -813,6 +813,72 @@ if (slug === "working-at-height-equipment-guide-uae") {
             ]
         };
     }
+    
+    // Blog 15
+    if (slug === "manlift-vs-scissor-lift-uae-rental-guide") {
+        faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+                {
+                    "@type": "Question",
+                    name: "What is the difference between a manlift and a scissor lift?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "A manlift uses an articulated or telescopic boom to extend the platform up and outward, allowing it to work around obstacles and reach heights from 12 metres to 40 metres and above. A scissor lift raises the platform vertically only, suits flat indoor environments, and typically reaches between 6 and 15 metres. The choice depends on height, terrain, and whether horizontal reach is required."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Which is safer, a boom lift or a scissor lift?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Both machines carry equivalent regulatory requirements in the UAE and both require certified operators. Safety depends on correct equipment selection for the site conditions, not the equipment type itself. A scissor lift deployed on unsuitable ground is more hazardous than a boom lift used correctly on an appropriate site. Matching the machine to the environment is the primary safety decision."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Can a scissor lift be used outdoors in the UAE?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Yes, but with conditions. Standard electric scissor lifts are designed for flat, hard indoor surfaces. Rough-terrain diesel models handle outdoor environments with firmer unprepared ground. Deploying a standard electric scissor lift on sand, soft soil, or sloped outdoor ground in the UAE is a common misuse that creates tip-over risk and regulatory non-compliance."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What height does a scissor lift reach?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Most electric scissor lifts used in UAE fit-out and MEP projects reach a working height of between 6 and 12 metres. Heavy-duty models can reach up to 15 metres. Above 15 metres, a manlift becomes the appropriate specification. Confirm the exact working height required before selecting the machine, accounting for the platform height plus operative arm reach."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Do I need a licence to operate a manlift in the UAE?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Yes. All aerial work platform operators in the UAE are required to hold a recognised competency certification. An IPAF (International Powered Access Federation) card is widely accepted across UAE project sites and rental suppliers. Verifying operator certification before the machine is put into use is the main contractor's responsibility on site."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What is the rental cost of a manlift vs scissor lift in Dubai?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Scissor lift rental cost Dubai and manlift pricing varies depending on machine type, working height, fuel configuration, rental duration, and site location. Scissor lifts carry a lower day rate than boom lifts in most configurations. For an accurate comparison, contact Quad Dream with your machine type, working height requirement, and hire duration and we will provide a fully itemised quote."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What is an IPAF card and is it required in the UAE?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "An IPAF card is an internationally recognised operator certification issued by the International Powered Access Federation for mobile elevating work platforms. It is widely required by main contractors and project owners across UAE construction, industrial, and infrastructure sites as proof of competency before an operator can use any aerial work platform. Quad Dream can advise on certification requirements specific to your project type and site classification."
+                    }
+                }
+            ]
+        };
+    }
 
     return (
         <>
