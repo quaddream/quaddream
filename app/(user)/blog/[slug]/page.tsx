@@ -39,6 +39,15 @@ export async function generateMetadata({ params }: Props) {
     const metadataTitle = blog?.data?.metaTitle || "Quad Dream";
     const metadataDescription = blog?.data?.metaDescription || "Quad Dream";
 
+    const bannerImage = blog?.data?.bannerSection?.image;
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+    const imageUrl =
+        bannerImage?.startsWith("http")
+            ? bannerImage
+            : bannerImage
+                ? `${baseUrl}${bannerImage}`
+                : undefined;
+
     return {
         title: metadataTitle,
         description: metadataDescription,
@@ -49,8 +58,9 @@ export async function generateMetadata({ params }: Props) {
         openGraph: {
             title: metadataTitle,
             description: metadataDescription,
-            url: process.env.BASE_URL,
+            url: `${process.env.BASE_URL}/blog/${slug}`,
             siteName: "Quad Dream",
+            images: imageUrl ? [{ url: imageUrl }] : undefined,
         },
     };
 }
