@@ -134,7 +134,7 @@ export const faqpageSchema = {
       "name": "How long does it take to set up scaffolding?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "It varies by structure and system. An aluminum mobile tower is typically up in under an hour. A multi-level scaffold on a mid-rise building takes one to three days. Quad Dream provides project-specific erection timelines at quotation stage based on your full scope."
+        "text": "It varies by structure and system. An aluminium mobile tower is typically up in under an hour. A multi-level scaffold on a mid-rise building takes one to three days. Quad Dream provides project-specific erection timelines at quotation stage based on your full scope."
       }
     },
     {
@@ -147,10 +147,10 @@ export const faqpageSchema = {
     },
     {
       "@type": "Question",
-      "name": "Where can I buy or rent aluminum mobile scaffolding in the UAE?",
+      "name": "Where can I buy or rent aluminium mobile scaffolding in the UAE?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Quad Dream supplies and rents aluminum mobile scaffolding towers across the UAE from its Dubai base. Contact the team to discuss purchase or rental options for your requirements."
+        "text": "Quad Dream supplies and rents aluminium mobile scaffolding towers across the UAE from its Dubai base. Contact the team to discuss purchase or rental options for your requirements."
       }
     },
     {
@@ -166,7 +166,7 @@ export const faqpageSchema = {
       "name": "How many types of scaffolding are there?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Common types used in UAE construction include Cuplock, Ringlock, tube-and-coupler, aluminum mobile towers, suspended scaffolding, and cantilever systems. System selection depends on project geometry and load requirements."
+        "text": "Common types used in UAE construction include Cuplock, Ringlock, tube-and-coupler, aluminium mobile towers, suspended scaffolding, and cantilever systems. System selection depends on project geometry and load requirements."
       }
     },
     {
