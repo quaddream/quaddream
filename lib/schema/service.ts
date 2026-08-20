@@ -20,14 +20,14 @@ export const serviceSchema = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Cuplock Scaffolding & Aluminum Mobile Tower Rental & Sales"
+          name: "Cuplock Scaffolding & Aluminium Mobile Tower Rental & Sales"
         }
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Aluminum Mobile Tower Rental"
+          name: "Aluminium Mobile Tower Rental"
         }
       },
       {
