@@ -24,9 +24,9 @@ export const blogData: BlogType[] = [
   {
     category: "Scaffolding",
     date: "March 18, 2025",
-    title: "Why is Aluminum Scaffolding Best for Construction in the UAE?",
+    title: "Why is Aluminium Scaffolding Best for Construction in the UAE?",
     description:
-      "Aluminum scaffolding is lightweight, rust-resistant, and ideal for UAE’s climate. Find out why it’s preferred.",
+      "Aluminium scaffolding is lightweight, rust-resistant, and ideal for UAE’s climate. Find out why it’s preferred.",
     image: "/assets/images/blog/blogCon1.jpg",
     link: "1",
   },
@@ -51,7 +51,7 @@ export const blogData: BlogType[] = [
   {
     category: "Equipment",
     date: "March 18, 2025",
-    title: "Why Choose Foldable Aluminum Scaffolding for Your Project?",
+    title: "Why Choose Foldable Aluminium Scaffolding for Your Project?",
     description:
       "Keep your gear in top condition by following maintenance routines tailored to the UAE’s climate.",
     image: "/assets/images/blog-detail/slider1.jpg",
@@ -80,9 +80,9 @@ export const blogData: BlogType[] = [
   {
     category: "Equipment",
     date: "March 18, 2025",
-    title: "Foldable Aluminum Scaffolding: Quick, Safe, and Efficient Access",
+    title: "Foldable Aluminium Scaffolding: Quick, Safe, and Efficient Access",
     description:
-      "Foldable aluminum scaffolding is a game-changer for quick, safe, and efficient access. Learn how it works.",
+      "Foldable aluminium scaffolding is a game-changer for quick, safe, and efficient access. Learn how it works.",
     image: "/assets/images/blog-detail/img4.jpg",
     link: "2",
   },
@@ -117,7 +117,7 @@ export const blogData: BlogType[] = [
   // {
   //   category: "Equipment",
   //   date: "March 18, 2025",
-  //   title: "Comparing Aluminum vs Steel Scaffolding in UAE Projects",
+  //   title: "Comparing Aluminium vs Steel Scaffolding in UAE Projects",
   //   description:
   //     "Not sure which metal is right for your scaffold structure? We compare their performance, safety, and price.",
   //   image: "/assets/images/blog-detail/img3.jpg",
@@ -126,9 +126,9 @@ export const blogData: BlogType[] = [
   // {
   //   category: "Scaffolding",
   //   date: "March 18, 2025",
-  //   title: "Why is Aluminum Scaffolding Best for Construction in the UAE?",
+  //   title: "Why is Aluminium Scaffolding Best for Construction in the UAE?",
   //   description:
-  //     "Aluminum scaffolding is lightweight, rust-resistant, and ideal for UAE’s climate. Find out why it’s preferred.",
+  //     "Aluminium scaffolding is lightweight, rust-resistant, and ideal for UAE’s climate. Find out why it’s preferred.",
   //     image: "/assets/images/blog-detail/img3.jpg",
   //   link: "#",
   // },

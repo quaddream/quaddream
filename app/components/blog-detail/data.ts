@@ -1,6 +1,6 @@
 export const blogDetail = {
-  id: "aluminum-scaffolding-uae",
-  title: "Why is Aluminum Scaffolding Best for Construction in the UAE?",
+  id: "aluminium-scaffolding-uae",
+  title: "Why is Aluminium Scaffolding Best for Construction in the UAE?",
   date: "March 18, 2025",
   category: "Equipment",
   mainImage: "/assets/images/blog-detail/img1.png",
@@ -8,20 +8,20 @@ export const blogDetail = {
     {
       type: "paragraph",
       content:
-        "In the UAE’s fast-moving construction scene, aluminum scaffolding is gaining popularity for its lightweight, safe, and efficient design—perfect for quick access and complex builds alike.",
+        "In the UAE’s fast-moving construction scene, aluminium scaffolding is gaining popularity for its lightweight, safe, and efficient design—perfect for quick access and complex builds alike.",
     },
     {
       type: "heading",
-      content: "Why is Aluminum the Preferred Material for UAE Construction?",
+      content: "Why is Aluminium the Preferred Material for UAE Construction?",
     },
     {
       type: "paragraph",
       content:
-        "With steel, the combination of being lightweight, strong, and capable of withstanding harsh weather is impossible to find. Construction workers doing their duties in the UAE brace for extreme heat, humidity, and dusty winds. Unlike all other materials, aluminum scaffolding doesn’t rust or burn under sunlight and is significantly easier to transport and set up than other heavy options.",
+        "With steel, the combination of being lightweight, strong, and capable of withstanding harsh weather is impossible to find. Construction workers doing their duties in the UAE brace for extreme heat, humidity, and dusty winds. Unlike all other materials, aluminium scaffolding doesn’t rust or burn under sunlight and is significantly easier to transport and set up than other heavy options.",
     },
     {
       type: "heading",
-      content: "Advantages of Aluminum Considering UAE Conditions:",
+      content: "Advantages of Aluminium Considering UAE Conditions:",
     },
     {
       type: "list",
@@ -30,27 +30,27 @@ export const blogDetail = {
         "Lightweight: Eased for transport, lifting, and installation.",
         "Temperature stable: Maintained structural integrity under direct sunlight.",
         "Low maintenance: Needs little maintenance over a long period.",
-        "Aluminum is increasingly being marketed by contractors in Abu Dhabi, Dubai, and Sharjah for its long-term efficiency and optimum performance.",
+        "Aluminium is increasingly being marketed by contractors in Abu Dhabi, Dubai, and Sharjah for its long-term efficiency and optimum performance.",
       ],
     },
     {
       type: "heading",
-      content: "What are the Pros of a Folding Aluminum Platform?",
+      content: "What are the Pros of a Folding Aluminium Platform?",
     },
     {
       type: "paragraph",
       content:
-        "Folding aluminum platforms are ideal for quick indoor and outdoor tasks, especially in fit-outs, maintenance, and repairs. They’re compact, easy to move, and set up in minutes without tools—perfect for tight spaces like malls, airports, and hotels where speed and safety matter. Ask ChatGPT",
+        "Folding aluminium platforms are ideal for quick indoor and outdoor tasks, especially in fit-outs, maintenance, and repairs. They’re compact, easy to move, and set up in minutes without tools—perfect for tight spaces like malls, airports, and hotels where speed and safety matter. Ask ChatGPT",
     },
     {
       type: "heading",
       content:
-        "Why Aluminum Tower Scaffolding is the Best for Jobs Done Above Ground?",
+        "Why Aluminium Tower Scaffolding is the Best for Jobs Done Above Ground?",
     },
     {
       type: "paragraph",
       content:
-        "Aluminum tower scaffolding offers a safe, modular solution for high-reach tasks like facades and ceiling work. It’s lightweight yet strong, easy to adjust, mobile, and built to international safety standards—ideal for boosting efficiency on UAE construction sites. Ask ChatGPT",
+        "Aluminium tower scaffolding offers a safe, modular solution for high-reach tasks like facades and ceiling work. It’s lightweight yet strong, easy to adjust, mobile, and built to international safety standards—ideal for boosting efficiency on UAE construction sites. Ask ChatGPT",
     },
     {
       type: "heading",
@@ -76,12 +76,12 @@ export const blogDetail = {
     },
     {
       type: "heading",
-      content: "Aluminum Scaffolding: Efficient, Flexible, and Safer",
+      content: "Aluminium Scaffolding: Efficient, Flexible, and Safer",
     },
     {
       type: "paragraph",
       content:
-        "Aluminum scaffolding is reshaping UAE construction with its lightweight, modular design—ideal for quick setup, less manpower, and greater safety. From folding platforms to tower systems, it's perfect for fast, flexible, and weather-resistant access.",
+        "Aluminium scaffolding is reshaping UAE construction with its lightweight, modular design—ideal for quick setup, less manpower, and greater safety. From folding platforms to tower systems, it's perfect for fast, flexible, and weather-resistant access.",
     },
     {
       type: "heading",
@@ -90,7 +90,7 @@ export const blogDetail = {
     {
       type: "paragraph",
       content:
-        "Scaffolding rentals provide ready-to-use, cost-effective solutions for changing project needs. Aluminum adds sustainability with its durability, recyclability, and LEED-friendly design—ensuring safe, efficient, and eco-smart performance.",
+        "Scaffolding rentals provide ready-to-use, cost-effective solutions for changing project needs. Aluminium adds sustainability with its durability, recyclability, and LEED-friendly design—ensuring safe, efficient, and eco-smart performance.",
     },
   ],
 };
@@ -112,7 +112,7 @@ export const bannersection = {
 export const blogList = [
   {
     id: "blog-1",
-    title: "Why Choose Foldable Aluminum Scaffolding for Your Project?",
+    title: "Why Choose Foldable Aluminium Scaffolding for Your Project?",
     category: "Equipment",
     date: "March 18, 2025",
     image: "/assets/images/blog-detail/slider1.jpg",

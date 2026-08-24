@@ -227,7 +227,7 @@ export default async function BlogDetailsPage({ params }: Props) {
     }
 
     // Blog 3
-    if (slug === "is-aluminum-scaffolding-always-safer-than-steel-scaffolding") {
+    if (slug === "is-aluminium-scaffolding-always-safer-than-steel-scaffolding") {
         faqSchema = {
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -385,7 +385,7 @@ export default async function BlogDetailsPage({ params }: Props) {
         };
     }
     // Blog 6
-    if (slug === "what-is-the-maximum-safe-height-for-an-aluminum-mobile-scaffold-tower-in-the-uae") {
+    if (slug === "what-is-the-maximum-safe-height-for-an-aluminium-mobile-scaffold-tower-in-the-uae") {
         faqSchema = {
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -432,7 +432,7 @@ export default async function BlogDetailsPage({ params }: Props) {
                 },
                 {
                     "@type": "Question",
-                    name: "What is the maximum height of an aluminum mobile scaffold tower in the UAE?",
+                    name: "What is the maximum height of an aluminium mobile scaffold tower in the UAE?",
                     acceptedAnswer: {
                         "@type": "Answer",
                         text: "The maximum working height is 12 metres outdoors with outriggers deployed, and 8 metres indoors under BS EN 1004. Both figures are subject to manufacturer specification, duty class, and site-specific conditions that may reduce the permissible height below the standard maximum."
@@ -440,7 +440,7 @@ export default async function BlogDetailsPage({ params }: Props) {
                 },
                 {
                     "@type": "Question",
-                    name: "Do I need Dubai Municipality approval to use an aluminum scaffold tower above a certain height?",
+                    name: "Do I need Dubai Municipality approval to use an aluminium scaffold tower above a certain height?",
                     acceptedAnswer: {
                         "@type": "Answer",
                         text: "BS EN 1004-compliant towers used within their certified configuration are self-verifying under the standard. However, on DM-regulated project sites, towers used above certain height thresholds may be subject to additional inspection or permit requirements depending on the project classification. Quad Dream's rental towers carry BS EN 1004 certification and are used regularly on Dubai Municipality-regulated projects."
@@ -448,7 +448,7 @@ export default async function BlogDetailsPage({ params }: Props) {
                 },
                 {
                     "@type": "Question",
-                    name: "Can I stack extra frames on a rented aluminum tower to reach a higher ceiling?",
+                    name: "Can I stack extra frames on a rented aluminium tower to reach a higher ceiling?",
                     acceptedAnswer: {
                         "@type": "Answer",
                         text: "No. Modifying a rented tower beyond the manufacturer's specified configuration voids its BS EN 1004 certification and creates an unengineered structure with no compliant load or stability data. The correct approach is to contact the rental supplier and request a tower pre-configured for the required working height."
@@ -464,7 +464,7 @@ export default async function BlogDetailsPage({ params }: Props) {
                 },
                 {
                     "@type": "Question",
-                    name: "Are aluminum scaffold towers suitable for outdoor use in UAE desert conditions?",
+                    name: "Are aluminium scaffold towers suitable for outdoor use in UAE desert conditions?",
                     acceptedAnswer: {
                         "@type": "Answer",
                         text: "Yes, when correctly configured for the environment. UAE outdoor deployments must account for shamal wind loading and sand accumulation on platforms, both of which affect stability calculations. Experienced scaffolding contractors specify outriggers even at heights below the outdoor maximum on exposed sites, and caster wheel performance on outdoor surfaces requires verification before the tower is put into service."
@@ -504,10 +504,10 @@ export default async function BlogDetailsPage({ params }: Props) {
                 },
                 {
                     "@type": "Question",
-                    name: "Can aluminum mobile scaffold towers be used on high-rise construction sites in Dubai?",
+                    name: "Can aluminium mobile scaffold towers be used on high-rise construction sites in Dubai?",
                     acceptedAnswer: {
                         "@type": "Answer",
-                        text: "Yes, aluminum mobile scaffold towers are suitable for interior high-rise works such as MEP installation, fit-out, and finishing activities, provided they remain within certified working height limits under BS EN 1004. External façade or structural access on high-rise buildings requires a fixed, tied scaffolding system engineered for wind loading."
+                        text: "Yes, aluminium mobile scaffold towers are suitable for interior high-rise works such as MEP installation, fit-out, and finishing activities, provided they remain within certified working height limits under BS EN 1004. External façade or structural access on high-rise buildings requires a fixed, tied scaffolding system engineered for wind loading."
                     }
                 },
                 {
@@ -677,7 +677,7 @@ if (slug === "working-at-height-equipment-guide-uae") {
     };
 }
     // Blog 12
-    if (slug === "scissor-lift-vs-aluminum-mobile-tower-which-is-better-for-indoor-access-work-in-the-uae") {
+    if (slug === "scissor-lift-vs-aluminium-mobile-tower-which-is-better-for-indoor-access-work-in-the-uae") {
         faqSchema = {
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -692,10 +692,10 @@ if (slug === "working-at-height-equipment-guide-uae") {
                 },
                 {
                     "@type": "Question",
-                    name: "What is the maximum height of an aluminum mobile scaffold tower?",
+                    name: "What is the maximum height of an aluminium mobile scaffold tower?",
                     acceptedAnswer: {
                         "@type": "Answer",
-                        text: "Standard aluminum mobile towers available for rental in the UAE typically provide working heights ranging from 6m to 10m, depending on configuration. For most indoor fit-out applications such as ceiling works, lighting installation, and HVAC maintenance, a 6m or 8m tower is usually sufficient. Quad Dream supplies multiple tower height options."
+                        text: "Standard aluminium mobile towers available for rental in the UAE typically provide working heights ranging from 6m to 10m, depending on configuration. For most indoor fit-out applications such as ceiling works, lighting installation, and HVAC maintenance, a 6m or 8m tower is usually sufficient. Quad Dream supplies multiple tower height options."
                     }
                 },
                 {
@@ -703,15 +703,15 @@ if (slug === "working-at-height-equipment-guide-uae") {
                     name: "Do I need a licence to operate a scissor lift in Dubai?",
                     acceptedAnswer: {
                         "@type": "Answer",
-                        text: "Yes. Scissor lift operators should hold valid training and certification in accordance with UAE safety requirements. Most contractors arrange operator certification through their HSE departments before equipment arrives on site. Aluminum mobile towers do not require an operator licence, although safe assembly and inspection remain essential."
+                        text: "Yes. Scissor lift operators should hold valid training and certification in accordance with UAE safety requirements. Most contractors arrange operator certification through their HSE departments before equipment arrives on site. Aluminium mobile towers do not require an operator licence, although safe assembly and inspection remain essential."
                     }
                 },
                 {
                     "@type": "Question",
-                    name: "Which is cheaper to hire - a scissor lift or aluminum mobile tower in Dubai?",
+                    name: "Which is cheaper to hire - a scissor lift or aluminium mobile tower in Dubai?",
                     acceptedAnswer: {
                         "@type": "Answer",
-                        text: "Aluminum mobile towers are generally more affordable to hire. Daily rental rates typically range from AED 80–180 for mobile towers compared to AED 300–600 for electric scissor lifts, depending on height, duration, and project requirements. Weekly and monthly rental arrangements often provide better value for longer projects. Contact Quad Dream for a tailored quotation."
+                        text: "Aluminium mobile towers are generally more affordable to hire. Daily rental rates typically range from AED 80–180 for mobile towers compared to AED 300–600 for electric scissor lifts, depending on height, duration, and project requirements. Weekly and monthly rental arrangements often provide better value for longer projects. Contact Quad Dream for a tailored quotation."
                     }
                 }
             ]

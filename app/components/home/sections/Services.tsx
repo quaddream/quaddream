@@ -171,7 +171,7 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                   />
                 </div>
                 <div className="relative z-30 mt-auto"> <Link
-                  href="/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales"
+                  href="/products-and-services/cuplock-scaffolding-aluminium-mobile-tower-rental-sales"
                   className="flex items-center gap-2 group cursor-pointer"
                 >
                   <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-5">
@@ -180,9 +180,9 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                 </Link>
 
                   <p className={`overflow-hidden transition-all duration-500 ${hover2 ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"
-                    }`}>High-performance cuplock systems and lightweight aluminum towers available for rental and purchase. </p>
+                    }`}>High-performance cuplock systems and lightweight aluminium towers available for rental and purchase. </p>
                   {/* <Link
-                    href="/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales"
+                    href="/products-and-services/cuplock-scaffolding-aluminium-mobile-tower-rental-sales"
                     className="flex items-center gap-2 group cursor-pointer"
                   >
                     <span>Explore</span>

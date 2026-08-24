@@ -206,7 +206,7 @@ const Navbar = () => {
                                 >
                               <div className="flex ml-1 items-center gap-[13px] w-full px-7 py-[6px]">
                                 <SlArrowRight
-                                  className={`transition-all duration-300 ${
+                                  className={`transition-all duration-300 shrink-0 ${
                                     isChildActive
                                       ? "text-primary"
                                       : "text-[#1E1E1E] opacity-50"
