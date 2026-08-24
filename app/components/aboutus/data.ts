@@ -17,7 +17,7 @@
       {
       title: "Our Methodology at Quaddream Scaffolding Contracting LLC",
       bgImg: "/assets/images/aboutus/bnas.jpg", 
-     description:"Since 2012, Quaddream Scaffolding Contracting LLC has been a trusted supplier of Cuplock systems, aluminum towers, and scaffolding accessories across the UAE. We prioritize quality, safety, and on-time delivery to meet the demands of today’s fast-paced construction industry."
+     description:"Since 2012, Quaddream Scaffolding Contracting LLC has been a trusted supplier of Cuplock systems, aluminium towers, and scaffolding accessories across the UAE. We prioritize quality, safety, and on-time delivery to meet the demands of today’s fast-paced construction industry."
     }
   ]
   };

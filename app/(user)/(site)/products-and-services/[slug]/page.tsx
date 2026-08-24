@@ -45,7 +45,7 @@ export async function generateMetadata(
   // Slugs that should be noindex
   // const noIndexSlugs = [
   //   "scaffolding-rental-dubai-uae",
-  //   "aluminum-mobile-scaffolding-tower-rental",
+  //   "aluminium-mobile-scaffolding-tower-rental",
   //   "cuplock-scaffolding-rental-dubai",
   // ];
 

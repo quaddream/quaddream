@@ -27,7 +27,7 @@
       heading: "Our Core Services", 
       items: [
         { 
-           title: "Cuplock Scaffolding & Aluminum Mobile Tower Rental & Sales", 
+           title: "Cuplock Scaffolding & Aluminium Mobile Tower Rental & Sales", 
            image:"/assets/images/productservices/coreser1.jpg", 
            }, 
            { 

@@ -182,8 +182,8 @@ export const faqContent = {
           answer: "<a href='https://www.quaddream.com/products-and-services/cuplock-scaffolding-rental-dubai-uae'>Cuplock scaffolding</a> is a modular steel system that locks up to four ledgers at a single node. It is used for repetitive high-rise, residential, and infrastructure projects requiring fast erection. ",
         },
         {
-          question: "Do you offer aluminum mobile scaffolding tower rental in Dubai? ",
-          answer: "Yes. Quad Dream offers <a href='https://www.quaddream.com/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae'>aluminum mobile tower rental in Dubai</a>  for indoor and outdoor access at height, suited to maintenance, MEP installation, fit-out, and inspection tasks across the UAE. ",
+          question: "Do you offer aluminium mobile scaffolding tower rental in Dubai? ",
+          answer: "Yes. Quad Dream offers <a href='https://www.quaddream.com/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae'>aluminium mobile tower rental in Dubai</a>  for indoor and outdoor access at height, suited to maintenance, MEP installation, fit-out, and inspection tasks across the UAE. ",
         },
         {
           question: "What types of formwork systems are available for rental? ",

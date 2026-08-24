@@ -170,7 +170,7 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
         { href: "products-and-services/scaffolding-contracting-in-dubai-uae", description: "Complete construction scaffolding solutions including design, erection, supervision, and dismantling." },
         { href: "products-and-services/scaffolding-rental-dubai-uae", description: "Scaffolding rental for construction & maintenance work, supported by certified scaffolders." },
         { href: "products-and-services/cuplock-scaffolding-rental-dubai-uae", description: "High-load cuplock system scaffolding supplied, delivered, and installed for construction and industrial projects across the UAE." },
-        { href: "products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae", description: "Lightweight, mobile scaffolding towers designed for safe indoor and outdoor access at height." },
+        { href: "products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae", description: "Lightweight, mobile scaffolding towers designed for safe indoor and outdoor access at height." },
         { href: "products-and-services/formwork-rental-in-dubai-uae", description: "Quality formwork systems for slabs, beams, and columns." },
         { href: "products-and-services/construction-equipment-rental-dubai-uae", description: "Heavy construction equipment offered through flexible rental plans." },
     ];

@@ -139,7 +139,7 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                   />
                 </div>
                 <div className="relative z-30 mt-auto"> <Link
-                  href="/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales"
+                  href="/products-and-services/cuplock-scaffolding-aluminium-mobile-tower-rental-sales"
                   className="flex items-center gap-2 group cursor-pointer"
                 >
                   <h3 className="text-25  2xl:text-33 leading-[1.212121212121212] mb-3 2xl:mb-6">
@@ -147,7 +147,7 @@ const Services = ({ data }: { data: Home["servicesSection"] }) => {
                   </h3>
                 </Link>
                   <Link
-                    href="/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales"
+                    href="/products-and-services/cuplock-scaffolding-aluminium-mobile-tower-rental-sales"
                     className="flex items-center gap-2 group cursor-pointer"
                   >
                     <span>Explore</span>

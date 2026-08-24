@@ -1,14 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-
   reactStrictMode: false,
 
   /* Cache headers */
   async headers() {
     return [
       {
-        source: "/:path*\\.(svg|webp|avif|gif|jpg|jpeg|png|ico|woff|woff2|ttf|otf|js|css)",
+        source:
+          "/:path*\\.(svg|webp|avif|gif|jpg|jpeg|png|ico|woff|woff2|ttf|otf|js|css)",
         headers: [
           {
             key: "Cache-Control",
@@ -28,14 +28,12 @@ const nextConfig: NextConfig = {
     ];
   },
 
-
   /* config options here */
   // images: {
   //   dangerouslyAllowSVG:true,
   //   unoptimized:true,
   //   domains: ["dl.dropboxusercontent.com","plus.unsplash.com"] // Add Dropbox domain here
   // },
-
 
   experimental: {
     optimizeCss: true,
@@ -72,8 +70,6 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 60,
   },
 
-
-
   async redirects() {
     return [
       {
@@ -88,22 +84,26 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/products-and-services/equipment-rentals", // The old URL path
-        destination: "/products-and-services/construction-equipment-rental-dubai-uae", // The new URL path
+        destination:
+          "/products-and-services/construction-equipment-rental-dubai-uae", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
         source: "/products-and-services/scaffolding-rental", // The old URL path
-        destination: "/products-and-services/scaffolding-rental-dubai-uae", // The new URL path   
+        destination: "/products-and-services/scaffolding-rental-dubai-uae", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
         source: "/products-and-services/scaffolding-contracting", // The old URL path
-        destination: "/products-and-services/scaffolding-contracting-in-dubai-uae", // The new URL path
+        destination:
+          "/products-and-services/scaffolding-contracting-in-dubai-uae", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
-        source: "/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales", // The old URL path
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae", // The new URL path
+        source:
+          "/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales", // The old URL path
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
@@ -113,27 +113,34 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/products-and-services/construction-equipment-rentals", // The old URL path
-        destination: "/products-and-services/construction-equipment-rental-in-dubai", // The new URL path
+        destination:
+          "/products-and-services/construction-equipment-rental-in-dubai", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
         source: "/products-and-services/construction-equipment-rental-in-dubai", // The old URL path
-        destination: "/products-and-services/construction-equipment-rental-dubai-uae", // The new URL path
+        destination:
+          "/products-and-services/construction-equipment-rental-dubai-uae", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
-        source: "/products-and-services/scaffolding-contracting-in-dubai-and-across-the-uae", // The old URL path
-        destination: "/products-and-services/scaffolding-contracting-in-dubai-uae", // The new URL path
+        source:
+          "/products-and-services/scaffolding-contracting-in-dubai-and-across-the-uae", // The old URL path
+        destination:
+          "/products-and-services/scaffolding-contracting-in-dubai-uae", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
-        source: "/products-and-services/aluminum-mobile-scaffolding-tower-rental", // The old URL path
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae", // The new URL path
+        source:
+          "/products-and-services/aluminum-mobile-scaffolding-tower-rental", // The old URL path
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
         source: "/products-and-services/cuplock-scaffolding-rental-dubai", // The old URL path
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae", // The new URL path
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
@@ -143,7 +150,8 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/aluminum-mobile-tower-sale-and-rentals",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
@@ -162,12 +170,14 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/building-the-future-aluminum-contracting-scaffolding-and-formwork-in-the-uae",
+        source:
+          "/building-the-future-aluminum-contracting-scaffolding-and-formwork-in-the-uae",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/building-the-future-aluminum-contracting-scaffolding-and-formwork-in-the-uae/feed",
+        source:
+          "/building-the-future-aluminum-contracting-scaffolding-and-formwork-in-the-uae/feed",
         destination: "/blog",
         permanent: true,
       },
@@ -197,13 +207,17 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/cuplock-scaffolding-strong-support-for-heavy-duty-construction-work",
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        source:
+          "/cuplock-scaffolding-strong-support-for-heavy-duty-construction-work",
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
         permanent: true,
       },
       {
-        source: "/cuplock-scaffolding-strong-support-for-heavy-duty-construction-work/feed",
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        source:
+          "/cuplock-scaffolding-strong-support-for-heavy-duty-construction-work/feed",
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
         permanent: true,
       },
       {
@@ -217,13 +231,17 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/foldable-aluminum-scaffolding-the-smart-choice-for-quick-and-safe-access",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        source:
+          "/foldable-aluminum-scaffolding-the-smart-choice-for-quick-and-safe-access",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
-        source: "/foldable-aluminum-scaffolding-the-smart-choice-for-quick-and-safe-access/feed",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        source:
+          "/foldable-aluminum-scaffolding-the-smart-choice-for-quick-and-safe-access/feed",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
@@ -232,22 +250,26 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/how-cuplock-scaffolding-improves-safety-and-handles-heavy-load-capacity",
+        source:
+          "/how-cuplock-scaffolding-improves-safety-and-handles-heavy-load-capacity",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/how-cuplock-scaffolding-improves-safety-and-handles-heavy-load-capacity/feed",
+        source:
+          "/how-cuplock-scaffolding-improves-safety-and-handles-heavy-load-capacity/feed",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/how-to-choose-the-right-scaffolding-system-for-dubai-construction-projects",
+        source:
+          "/how-to-choose-the-right-scaffolding-system-for-dubai-construction-projects",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/how-to-choose-the-right-scaffolding-system-for-dubai-construction-projects/feed",
+        source:
+          "/how-to-choose-the-right-scaffolding-system-for-dubai-construction-projects/feed",
         destination: "/blog",
         permanent: true,
       },
@@ -258,17 +280,20 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/products/aluminium-foldable-tower",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/products/aluminium-mobile-tower",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/products/cuplock-scaffolding-sales-and-rentals",
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
         permanent: true,
       },
       {
@@ -283,7 +308,8 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/products/scaffolding-cuplock-system",
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
         permanent: true,
       },
       {
@@ -292,7 +318,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/products/scaffolding-suppliers-in-uae-leading-scaffolding-suppliers-in-uae",
+        source:
+          "/products/scaffolding-suppliers-in-uae-leading-scaffolding-suppliers-in-uae",
         destination: "/products-and-services/scaffolding-rental-dubai-uae",
         permanent: true,
       },
@@ -303,12 +330,14 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/services/aluminum-mobile-tower-sale-and-rentals",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/services/scaffolding-contracting",
-        destination: "/products-and-services/scaffolding-contracting-in-dubai-uae",
+        destination:
+          "/products-and-services/scaffolding-contracting-in-dubai-uae",
         permanent: true,
       },
       {
@@ -428,57 +457,68 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/tag/cuplock-scaffolding",
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/tag/cuplock-scaffolding/feed",
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/tag/cuplock-scaffolding-components",
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/tag/cuplock-scaffolding-components/feed",
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/tag/cuplock-scaffolding-load-capacity",
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/tag/cuplock-scaffolding-load-capacity/feed",
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/tag/cuplock-system-scaffolding",
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/tag/cuplock-system-scaffolding/feed",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/tag/foldable-aluminum-scaffolding",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/tag/foldable-aluminum-scaffolding/feed",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/tag/folding-aluminum-platform",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
@@ -503,22 +543,26 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/tag/formwork-suppliers-in-uae/feed",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/tag/portable-scaffold-tower",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/tag/portable-scaffold-tower/feed",
-        destination: "/products-and-services/scaffolding-contracting-in-dubai-uae",
+        destination:
+          "/products-and-services/scaffolding-contracting-in-dubai-uae",
         permanent: true,
       },
       {
         source: "/tag/scaffold-contracting-services",
-        destination: "/products-and-services/scaffolding-contracting-in-dubai-uae",
+        destination:
+          "/products-and-services/scaffolding-contracting-in-dubai-uae",
         permanent: true,
       },
       {
@@ -662,62 +706,74 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/the-role-of-formwork-systems-in-modern-construction-projects-in-dubai",
+        source:
+          "/the-role-of-formwork-systems-in-modern-construction-projects-in-dubai",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/the-role-of-formwork-systems-in-modern-construction-projects-in-dubai/feed",
+        source:
+          "/the-role-of-formwork-systems-in-modern-construction-projects-in-dubai/feed",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/top-benefits-of-using-aluminum-scaffolding-in-industrial-workspaces",
+        source:
+          "/top-benefits-of-using-aluminum-scaffolding-in-industrial-workspaces",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/top-benefits-of-using-aluminum-scaffolding-in-industrial-workspaces/feed",
+        source:
+          "/top-benefits-of-using-aluminum-scaffolding-in-industrial-workspaces/feed",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/top-factors-to-consider-when-choosing-scaffolding-suppliers-in-uae",
+        source:
+          "/top-factors-to-consider-when-choosing-scaffolding-suppliers-in-uae",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/top-factors-to-consider-when-choosing-scaffolding-suppliers-in-uae/feed",
+        source:
+          "/top-factors-to-consider-when-choosing-scaffolding-suppliers-in-uae/feed",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/top-scaffolding-and-formwork-companies-in-uae-a-comprehensive-guide",
+        source:
+          "/top-scaffolding-and-formwork-companies-in-uae-a-comprehensive-guide",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/top-scaffolding-and-formwork-companies-in-uae-a-comprehensive-guide/feed",
+        source:
+          "/top-scaffolding-and-formwork-companies-in-uae-a-comprehensive-guide/feed",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/top-scaffolding-companies-in-dubai-choosing-the-right-contractor",
+        source:
+          "/top-scaffolding-companies-in-dubai-choosing-the-right-contractor",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/top-scaffolding-companies-in-dubai-choosing-the-right-contractor/feed",
+        source:
+          "/top-scaffolding-companies-in-dubai-choosing-the-right-contractor/feed",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/top-scaffolding-for-rent-in-dubai-safe-reliable-and-affordable-options",
+        source:
+          "/top-scaffolding-for-rent-in-dubai-safe-reliable-and-affordable-options",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/top-scaffolding-for-rent-in-dubai-safe-reliable-and-affordable-options/feed",
+        source:
+          "/top-scaffolding-for-rent-in-dubai-safe-reliable-and-affordable-options/feed",
         destination: "/blog",
         permanent: true,
       },
@@ -727,7 +783,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/why-choose-foldable-aluminum-scaffolding-for-your-project/feed",
+        source:
+          "/why-choose-foldable-aluminum-scaffolding-for-your-project/feed",
         destination: "/blog",
         permanent: true,
       },
@@ -737,28 +794,33 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/why-is-aluminum-scaffolding-best-for-construction-in-the-uae/feed",
+        source:
+          "/why-is-aluminum-scaffolding-best-for-construction-in-the-uae/feed",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/wooden-planks-for-construction-find-the-best-suppliers-in-uae",
+        source:
+          "/wooden-planks-for-construction-find-the-best-suppliers-in-uae",
         destination: "/blog",
         permanent: true,
       },
       {
-        source: "/wooden-planks-for-construction-find-the-best-suppliers-in-uae/feed",
+        source:
+          "/wooden-planks-for-construction-find-the-best-suppliers-in-uae/feed",
         destination: "/blog",
         permanent: true,
       },
       {
         source: "/aluminium-scanffolding",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/aluminium-mobile-tower",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
@@ -768,7 +830,8 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/cuplock-scaffold",
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
         permanent: true,
       },
       {
@@ -788,7 +851,8 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/scaffolding-contracting",
-        destination: "/products-and-services/scaffolding-contracting-in-dubai-uae",
+        destination:
+          "/products-and-services/scaffolding-contracting-in-dubai-uae",
         permanent: true,
       },
       {
@@ -798,7 +862,8 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/scaffolding-cuplock-system",
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
         permanent: true,
       },
       {
@@ -818,27 +883,32 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/Aluminum-Foldable-tower.html",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/Aluminum-Mobile-tower.html",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/Aluminum-Scaffoldings.html",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/Aluminum-Scaffoldings%20.html",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/Cuplock-Scaffoldings.html",
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
         permanent: true,
       },
       {
@@ -848,7 +918,8 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/Scaffolding-Cuplock-system.html",
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
         permanent: true,
       },
       {
@@ -888,7 +959,8 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/aluminum-scaffolding-and-aluminum-ladders-in-dubai",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
@@ -897,7 +969,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/ardente-qlby-gtirn-alovun-itsind-yann-onlayn-kazinomuzda-bahislrinizi-yoxlayn",
+        source:
+          "/ardente-qlby-gtirn-alovun-itsind-yann-onlayn-kazinomuzda-bahislrinizi-yoxlayn",
         destination: "/",
         permanent: true,
       },
@@ -932,13 +1005,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/cuplock-scaffolding-strong-support-for-heavy-duty-construction-work",
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        source:
+          "/cuplock-scaffolding-strong-support-for-heavy-duty-construction-work",
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/cuplock-shystem",
-        destination: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination:
+          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
         permanent: true,
       },
       {
@@ -948,26 +1024,58 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/aluminium-foldable-tower",
-        destination: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
         permanent: true,
       },
       {
         source: "/careers/project-coordinator-formwork",
-        destination: "/careers" ,
+        destination: "/careers",
         permanent: true,
       },
       {
         source: "/careers/sales-executive-female",
         destination: "/careers",
         permanent: true,
-      }
-      ,
+      },
       {
         source: "/blog/short-term-vs-long-term-sacffolding-rental-uae",
         destination: "/blog/short-term-vs-long-term-scaffolding-rental-uae",
         permanent: true,
-      }
-
+      },
+      {
+        source:
+          "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+        destination:
+          "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
+        permanent: true,
+      },
+      {
+        source:
+          "/blog/scissor-lift-vs-aluminum-mobile-tower-which-is-better-for-indoor-access-work-in-the-uae",
+        destination:
+          "/blog/scissor-lift-vs-aluminium-mobile-tower-which-is-better-for-indoor-access-work-in-the-uae",
+        permanent: true,
+      },
+      {
+        source:
+          "/blog/what-is-the-maximum-safe-height-for-an-aluminum-mobile-scaffold-tower-in-the-uae",
+        destination:
+          "/blog/what-is-the-maximum-safe-height-for-an-aluminium-mobile-scaffold-tower-in-the-uae",
+        permanent: true,
+      },
+      {
+        source:
+          "/blog/is-aluminum-scaffolding-always-safer-than-steel-scaffolding",
+        destination:
+          "/blog/is-aluminium-scaffolding-always-safer-than-steel-scaffolding",
+        permanent: true,
+      },
+      {
+        source: "/projects/private-canal-villa-b-g-2-r-at-jumeira-second",
+        destination: "/projects/private-canal-villa-b-g-2-r-at-jumeirah-second",
+        permanent: true,
+      },
     ];
   },
 };

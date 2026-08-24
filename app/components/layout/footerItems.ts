@@ -24,8 +24,8 @@ export const servicesLinks = [
     link: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
   },
   {
-    title: "Aluminum Mobile Scaffolding",
-    link: "/products-and-services/aluminum-mobile-scaffolding-tower-rental-dubai-uae",
+    title: "Aluminium Mobile Scaffolding",
+    link: "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae",
   },
   {
     title: "Formwork Rentals",

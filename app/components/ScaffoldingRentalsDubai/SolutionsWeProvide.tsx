@@ -15,13 +15,13 @@ const ScaffoldingSystems: React.FC<Props> = ({ data }) => {
   const sanitizeHtml = (html: string) => html.replace(/&nbsp;/g, " ");
   // const pathname = usePathname();
 
-  // const aluminumPath =
-  //   "/products-and-services/aluminum-mobile-scaffolding-tower-rental";
+  // const aluminiumPath =
+  //   "/products-and-services/aluminium-mobile-scaffolding-tower-rental";
 
   // const cuplockPath =
   //   "/products-and-services/cuplock-scaffolding-rental-dubai";
 
-  // const aluminumContent = `Each aluminum mobile tower rental includes the essential components required for safe assembly and stable working platforms on site. These components support secure tower positioning, safe platform access, and structural stability during construction, installation, and maintenance work.`;
+  // const aluminiumContent = `Each aluminium mobile tower rental includes the essential components required for safe assembly and stable working platforms on site. These components support secure tower positioning, safe platform access, and structural stability during construction, installation, and maintenance work.`;
 
   // const cuplockContent = `Quad Dream maintains a complete inventory of cuplock scaffolding components used to assemble temporary access and support structures, supporting contractors looking for a cuplock scaffolding supplier in the UAE. Components are available as complete system packages or as individual parts to supplement existing scaffold installations on project sites.`;
   return (
