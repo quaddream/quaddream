@@ -890,6 +890,72 @@ if (slug === "working-at-height-equipment-guide-uae") {
         };
     }
 
+    // Blog XX
+    if (slug === "cuplock-scaffolding-load-capacity") {
+        faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+                {
+                    "@type": "Question",
+                    name: "What is the load capacity of a Cuplock standard?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "There is no single universal capacity for every Cuplock standard. Published manufacturer data can vary considerably according to tube dimensions, steel grade, length, restraint and test configuration. One published test reports a 3 m standard with a 153.47 kN failure load and 51.16 kN safety load using a 3:1 factor."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "How much weight can Cuplock scaffolding hold?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "It depends on the scaffold's design and load class. Under EN 12811-1, working-area load classes range from 0.75 kN/m² to 6.00 kN/m², or approximately 75 to 600 kg/m². These are working-area classifications and should not be interpreted as the capacity of an individual standard."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What is the safe working load of Cuplock scaffolding?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "The safe working load depends on the component or complete scaffold design and the applicable safety methodology. It should be established from certified manufacturer data and engineering calculations rather than assumed from a generic Cuplock rating."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What safety factor is used for Cuplock scaffolding?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "The applicable factor depends on the standard, component and design method being used. OSHA requires scaffold components to support their own weight plus at least four times the maximum intended load applied to them, while published Cuplock manufacturer test data may use a 3:1 factor."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Is Cuplock scaffolding suitable for heavy industrial loads?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Yes, Cuplock systems can be designed for demanding construction and industrial applications, but suitability depends on the required load, scaffold geometry, component specifications, bracing, ties, foundation and engineering design. Higher-load applications should be specifically designed rather than selected using a generic capacity figure."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What UAE standards apply to scaffolding load capacity?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "The applicable requirements depend on the project, authority and contract specification. EN 12811-1 may be referenced for scaffold performance and working-area load classes, while Dubai projects are also subject to the applicable Dubai Building Code and project-specific requirements."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "How is Cuplock load capacity calculated on site?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "The calculation starts by identifying the scaffold configuration and all expected loads, including workers, tools, materials and scaffold self-weight. The engineer then assesses how these loads are distributed through the scaffold and checks the standards, ledgers, transoms, connections, bracing, ties, base jacks and supporting ground against their applicable design capacities."
+                    }
+                }
+            ]
+        };
+    }
+
     return (
         <>
             <Script
