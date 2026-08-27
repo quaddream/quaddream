@@ -717,6 +717,7 @@ if (slug === "working-at-height-equipment-guide-uae") {
             ]
         };
     }
+    
     // Blog 13
     if (slug === "how-high-can-a-scissor-lift-reach-in-dubai") {
         faqSchema = {
@@ -766,6 +767,7 @@ if (slug === "working-at-height-equipment-guide-uae") {
             ]
         };
     }
+
     // Blog 14
     if (slug === "scaffolding-rental-cost-uae") {
         faqSchema = {
@@ -890,7 +892,7 @@ if (slug === "working-at-height-equipment-guide-uae") {
         };
     }
 
-    // Blog XX
+    // Blog 16
     if (slug === "cuplock-scaffolding-load-capacity") {
         faqSchema = {
             "@context": "https://schema.org",
@@ -955,6 +957,65 @@ if (slug === "working-at-height-equipment-guide-uae") {
             ]
         };
     }
+
+    // Blog 17
+    if (slug === "scaffolding-rental-uae-7-mistakes-to-avoid") {
+        faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+                {
+                    "@type": "Question",
+                    name: "What is the biggest mistake contractors make when renting scaffolding in the UAE?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "One of the biggest mistakes is requesting a quotation without clearly defining the scaffold's height, loading, access, duration and site requirements. This can result in mismatched quotations, unexpected variations and delays during erection."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Is scaffolding erection and dismantling included in the rental price?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Not necessarily. Erection and dismantling may be included or charged separately depending on the supplier and agreement. These services should be clearly identified in the quotation and rental contract before the order is confirmed."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "How often should rented scaffolding be inspected on a UAE site?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Inspection requirements depend on the applicable authority, project and safety procedure. As a general site-control measure, scaffolding should be inspected before use and following modifications, adverse weather, impact or damage, as well as at required periodic intervals."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What safety standards apply to scaffolding rental in Dubai and Abu Dhabi?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Requirements depend on the project's location and governing authority. Dubai construction projects are subject to the applicable Dubai construction safety framework, while Abu Dhabi projects follow the relevant Abu Dhabi occupational safety requirements. The project-specific authority and approved HSE procedures should always be confirmed before work begins."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "How can I avoid delays when renting scaffolding for a construction project?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Define the scaffold requirements early, confirm the system and quantities, coordinate delivery and site access, and establish the erection and dismantling schedule before the rental begins. It is also important to plan for modifications if the construction sequence changes."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What should be included in a scaffolding rental contract?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "A rental contract should clearly identify the scaffold system, quantities, rental period, delivery and collection, erection and dismantling, inspection responsibilities, extension rates, damage or replacement terms and the process for approving variations."
+                    }
+                }
+            ]
+        };
+    }
+
 
     return (
         <>
