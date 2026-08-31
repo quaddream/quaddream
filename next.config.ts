@@ -6,25 +6,25 @@ const nextConfig: NextConfig = {
   /* Cache headers */
   async headers() {
     return [
-      {
-        source:
-          "/:path*\\.(svg|webp|avif|gif|jpg|jpeg|png|ico|woff|woff2|ttf|otf|js|css)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-      {
-        source: "/_next/static/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
+      // {
+      //   source:
+      //     "/:path*\\.(svg|webp|avif|gif|jpg|jpeg|png|ico|woff|woff2|ttf|otf|js|css)",
+      //   headers: [
+      //     {
+      //       key: "Cache-Control",
+      //       value: "public, max-age=31536000, immutable",
+      //     },
+      //   ],
+      // },
+      // {
+      //   source: "/_next/static/:path*",
+      //   headers: [
+      //     {
+      //       key: "Cache-Control",
+      //       value: "public, max-age=31536000, immutable",
+      //     },
+      //   ],
+      // },
     ];
   },
 
@@ -35,10 +35,10 @@ const nextConfig: NextConfig = {
   //   domains: ["dl.dropboxusercontent.com","plus.unsplash.com"] // Add Dropbox domain here
   // },
 
-  experimental: {
-    optimizeCss: true,
-    // optimizePackageImports: ["gsap", "swiper"],
-  },
+  // experimental: {
+  //   // optimizeCss: true,
+  //   // optimizePackageImports: ["gsap", "swiper"],
+  // },
   // compiler: {
   //   removeConsole: process.env.NODE_ENV === "production",
   // },
