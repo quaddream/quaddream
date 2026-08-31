@@ -150,7 +150,7 @@ const LatestBlog = ({ blogData }: LatestBlogProps) => {
                 <Image
                   src={blog.thumbnail}
                   alt={blog.thumbnailAlt}
-                  fill
+                  width={1000} height={557}
                   className="object-cover rounded-[16px]"
                 />
 
