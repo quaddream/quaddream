@@ -56,11 +56,15 @@ export async function generateMetadata({ params }: Props) {
             canonical: `/blog/${slug}`,
         },
         openGraph: {
-            title: metadataTitle,
-            description: metadataDescription,
+            title: blog.data?.seo?.ogTitle || metadataTitle,
+            description: blog.data?.seo?.ogDescription || metadataDescription,
             url: `${process.env.BASE_URL}/blog/${slug}`,
             siteName: "Quad Dream",
-            images: imageUrl ? [{ url: imageUrl }] : undefined,
+            images: {
+                url: blog.data?.seo?.ogImage || imageUrl,
+                alt: blog.data?.seo?.ogTitle || ""
+            },
+            // images: imageUrl ? [{ url: imageUrl }] : undefined,
         },
     };
 }
@@ -717,7 +721,7 @@ export default async function BlogDetailsPage({ params }: Props) {
             ]
         };
     }
-    
+
     // Blog 13
     if (slug === "how-high-can-a-scissor-lift-reach-in-dubai") {
         faqSchema = {
@@ -825,7 +829,7 @@ export default async function BlogDetailsPage({ params }: Props) {
             ]
         };
     }
-    
+
     // Blog 15
     if (slug === "manlift-vs-scissor-lift-uae-rental-guide") {
         faqSchema = {

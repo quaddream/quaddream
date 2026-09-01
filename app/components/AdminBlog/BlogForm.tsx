@@ -20,30 +20,33 @@ import AdminItemContainer from '../common/AdminItemContainer'
 import { toast } from 'sonner'
 import TinyEditor from "@/app/components/TinyMce/TinyEditor";
 import { Textarea } from '@/components/ui/textarea'
+import SeoFields from '../common/SeoFields'
+import { SeoFormValues } from '@/app/types/seo'
 
 
 
 interface BlogFormProps {
     bannerSection: {
-            image: string;
-            imageAlt: string;
+        image: string;
+        imageAlt: string;
     };
-    title:string;
-    description:string;
-    category:string;
-    content:string;
-    thumbnail:string;
-    thumbnailAlt:string;
-    date:string;
-    slug:string;
-    metaTitle:string;
-    metaDescription:string;
+    title: string;
+    description: string;
+    category: string;
+    content: string;
+    thumbnail: string;
+    thumbnailAlt: string;
+    date: string;
+    slug: string;
+    metaTitle: string;
+    metaDescription: string;
+    seo: SeoFormValues;
 }
 
 const BlogForm = ({ editMode }: { editMode?: boolean }) => {
 
     const router = useRouter();
-    const {id} = useParams();
+    const { id } = useParams();
 
     const [categoryList, setCategoryList] = useState<{ _id: string; name: string }[]>([]);
 
@@ -84,6 +87,7 @@ const BlogForm = ({ editMode }: { editMode?: boolean }) => {
                 setValue("date", isoDate);
                 setValue("metaTitle", data.data.metaTitle);
                 setValue("metaDescription", data.data.metaDescription);
+                setValue("seo", data.data.seo);
             } else {
                 const data = await response.json();
                 toast.error(data.message);
@@ -202,7 +206,7 @@ const BlogForm = ({ editMode }: { editMode?: boolean }) => {
                                         value={field.value}
                                         defaultValue=""
                                     >
-                                        
+
                                         <SelectTrigger className="w-full">
                                             <SelectValue placeholder="Select Category" />
                                         </SelectTrigger>
@@ -221,39 +225,41 @@ const BlogForm = ({ editMode }: { editMode?: boolean }) => {
                         </div>
 
                         <div className='grid grid-cols-1 gap-2'>
-                                                    <div>
-                                                        <div>
-                                                            <Label className=''>Thumbnail</Label>
-                                                            <ImageUploader onChange={(url) => setValue("thumbnail", url)} value={watch("thumbnail")} />
-                                                            {errors.thumbnail && <p className='text-red-500'>{errors.thumbnail.message}</p>}
-                                                        </div>
-                                                        <div>
-                                                            <Label className=''>Thumbnail Alt</Label>
-                                                            <Input type='text' placeholder='Alt Tag' {...register("thumbnailAlt")} />
-                                                        </div>
-                                                    </div>
-                        
-                        
-                                                </div>
+                            <div>
+                                <div>
+                                    <Label className=''>Thumbnail</Label>
+                                    <ImageUploader onChange={(url) => setValue("thumbnail", url)} value={watch("thumbnail")} />
+                                    {errors.thumbnail && <p className='text-red-500'>{errors.thumbnail.message}</p>}
+                                </div>
+                                <div>
+                                    <Label className=''>Thumbnail Alt</Label>
+                                    <Input type='text' placeholder='Alt Tag' {...register("thumbnailAlt")} />
+                                </div>
+                            </div>
+
+
+                        </div>
 
                         <div className="flex flex-col gap-1">
-                    <Label className=''>Content</Label>
-                    <Controller name="content" control={control} rules={{ required: "Content is required" }} render={({ field }) => {
-                        return <TinyEditor setNewsContent={field.onChange} newsContent={field.value} />
-                    }} />
-                    {errors.content && <p className='text-red-500'>{errors.content.message}</p>}
-                </div>
+                            <Label className=''>Content</Label>
+                            <Controller name="content" control={control} rules={{ required: "Content is required" }} render={({ field }) => {
+                                return <TinyEditor setNewsContent={field.onChange} newsContent={field.value} />
+                            }} />
+                            {errors.content && <p className='text-red-500'>{errors.content.message}</p>}
+                        </div>
 
-                <div>
-                    <Label className=''>Date</Label>
-                    <Input type='date' placeholder='Date' max={new Date().toISOString().split("T")[0]} {...register("date", { required: "Date is required" })} />
-                    {errors.date && <p className='text-red-500'>{errors.date.message}</p>}
-                </div>
+                        <div>
+                            <Label className=''>Date</Label>
+                            <Input type='date' placeholder='Date' max={new Date().toISOString().split("T")[0]} {...register("date", { required: "Date is required" })} />
+                            {errors.date && <p className='text-red-500'>{errors.date.message}</p>}
+                        </div>
 
                     </div>
 
                 </AdminItemContainer>
 
+
+                <SeoFields<BlogFormProps> control={control} register={register} errors={errors} />
 
                 <div className="h-fit w-full p-2 border-2 border-gray-300 rounded-md mt-5">
                     <div className="flex justify-between border-b-2 pb-2">

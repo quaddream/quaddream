@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import seoSchema from "./Seo";
 
 const blogSchema = new mongoose.Schema({
     metaTitle: {
@@ -27,6 +28,9 @@ const blogSchema = new mongoose.Schema({
         slug:{type:String,required:true},
         metaTitle:{type:String},
         metaDescription:{type:String},
+        seo:{
+            type:seoSchema
+        }
     }],
 })
 
