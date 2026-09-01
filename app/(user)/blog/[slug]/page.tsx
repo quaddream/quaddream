@@ -1020,6 +1020,55 @@ export default async function BlogDetailsPage({ params }: Props) {
         };
     }
 
+    // Blog 18
+    if (slug === "mobile-scaffolding-tower-safety-hazards-prevention") {
+        faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+                {
+                    "@type": "Question",
+                    name: "What is the biggest safety risk with mobile scaffolding towers?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Tip-over and falls from height are among the most serious mobile scaffolding hazards. Tip-over risk increases when a tower is placed on unsuitable ground, incorrectly stabilized, exposed to wind, improperly loaded or moved incorrectly. Falls can result from missing edge protection, unsafe access or poor platform housekeeping."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "How often should a mobile scaffold tower be inspected?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Inspection frequency should follow the applicable regulation, manufacturer's instructions and project requirements. OSHA requires scaffolds and components to be inspected for visible defects by a competent person before each work shift and after any event that could affect structural integrity."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Can a mobile scaffold be moved with workers still on it?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "The safest general practice is to clear workers before moving unless occupied movement is expressly permitted by the tower design and applicable safety requirements. OSHA permits occupied movement only under specific conditions involving surface levelness, stability, outriggers and worker positioning; it is not a blanket permission to ride a moving tower."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What wind speed is unsafe for a mobile scaffold tower?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "There is no single figure that should override the tower manufacturer's instructions or site risk assessment. PASMA advises stopping work and dismantling a mobile access tower when average wind speed reaches 17 mph (27 km/h or 7.6 m/s). Local wind conditions around buildings can be considerably higher than general forecasts indicate."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Do mobile scaffold towers need outriggers?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Not every tower configuration requires the same outriggers. Their use depends on the tower design, height, base dimensions and manufacturer's instructions. Where outriggers or stabilizers are specified, they should be correctly installed and fully deployed before the tower is used."
+                    }
+                }
+            ]
+        };
+    }
 
     return (
         <>
