@@ -56,11 +56,15 @@ export async function generateMetadata({ params }: Props) {
             canonical: `/blog/${slug}`,
         },
         openGraph: {
-            title: metadataTitle,
-            description: metadataDescription,
+            title: blog.data?.seo?.ogTitle || metadataTitle,
+            description: blog.data?.seo?.ogDescription || metadataDescription,
             url: `${process.env.BASE_URL}/blog/${slug}`,
             siteName: "Quad Dream",
-            images: imageUrl ? [{ url: imageUrl }] : undefined,
+            images: {
+                url: blog.data?.seo?.ogImage || imageUrl,
+                alt: blog.data?.seo?.ogTitle || ""
+            },
+            // images: imageUrl ? [{ url: imageUrl }] : undefined,
         },
     };
 }
@@ -627,55 +631,55 @@ export default async function BlogDetailsPage({ params }: Props) {
             ]
         };
     }
-// Blog 10
-if (slug === "working-at-height-equipment-guide-uae") {
-    faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: [
-            {
-                "@type": "Question",
-                name: "What is the maximum safe working height for a scissor lift on a UAE construction site?",
-                acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Electric scissor lifts reach a maximum working height of approximately 16 metres. OSHAD-SF requires a risk-assessed platform with guardrails and a documented method statement at any working height above 2 metres. Above 16 metres, a manlift or scaffold becomes the appropriate specification depending on terrain and access geometry."
+    // Blog 10
+    if (slug === "working-at-height-equipment-guide-uae") {
+        faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+                {
+                    "@type": "Question",
+                    name: "What is the maximum safe working height for a scissor lift on a UAE construction site?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Electric scissor lifts reach a maximum working height of approximately 16 metres. OSHAD-SF requires a risk-assessed platform with guardrails and a documented method statement at any working height above 2 metres. Above 16 metres, a manlift or scaffold becomes the appropriate specification depending on terrain and access geometry."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Do manlift operators need a specific licence or certification in the UAE?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Yes. OSHAD-SF requires operators of boom lifts and manlifts to hold a recognised competency certification for the specific equipment category. On site, it is the main contractor's responsibility to verify operator certification before the machine is put into use. The rental company's delivery obligation ends at the machine."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "When does scaffolding become more cost-effective than a manlift rental in Dubai?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "At approximately the five-day mark, the combined cost of manlift hire, mobilisation, and demobilisation typically reaches parity with a scaffold package. For multi-trade access requirements where two or more contractors need simultaneous platform use, scaffolding is almost always the more economical solution regardless of duration."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What wind speed restrictions apply to suspended access cradles in Dubai?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Operational wind speed limits for cradle systems are specified by the structural engineer for the specific building, not set as a universal industry figure. Most systems are restricted to operational use below 12.5 metres per second. Non-compliance mid-project results in an immediate operational shutdown and requires a formal restart assessment before operations can resume."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "How do I verify a scaffolding company in the UAE is OSHAD-SF compliant?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Request the company's scaffold erector competency certificates, third-party inspection records, and their QHSE management documentation. An OSHAD-SF compliant scaffolding company maintains a scaffold register on every project and can provide stamped engineering drawings for any structure above defined height thresholds. Quad Dream's QHSE documentation is available on request."
+                    }
                 }
-            },
-            {
-                "@type": "Question",
-                name: "Do manlift operators need a specific licence or certification in the UAE?",
-                acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Yes. OSHAD-SF requires operators of boom lifts and manlifts to hold a recognised competency certification for the specific equipment category. On site, it is the main contractor's responsibility to verify operator certification before the machine is put into use. The rental company's delivery obligation ends at the machine."
-                }
-            },
-            {
-                "@type": "Question",
-                name: "When does scaffolding become more cost-effective than a manlift rental in Dubai?",
-                acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "At approximately the five-day mark, the combined cost of manlift hire, mobilisation, and demobilisation typically reaches parity with a scaffold package. For multi-trade access requirements where two or more contractors need simultaneous platform use, scaffolding is almost always the more economical solution regardless of duration."
-                }
-            },
-            {
-                "@type": "Question",
-                name: "What wind speed restrictions apply to suspended access cradles in Dubai?",
-                acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Operational wind speed limits for cradle systems are specified by the structural engineer for the specific building, not set as a universal industry figure. Most systems are restricted to operational use below 12.5 metres per second. Non-compliance mid-project results in an immediate operational shutdown and requires a formal restart assessment before operations can resume."
-                }
-            },
-            {
-                "@type": "Question",
-                name: "How do I verify a scaffolding company in the UAE is OSHAD-SF compliant?",
-                acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Request the company's scaffold erector competency certificates, third-party inspection records, and their QHSE management documentation. An OSHAD-SF compliant scaffolding company maintains a scaffold register on every project and can provide stamped engineering drawings for any structure above defined height thresholds. Quad Dream's QHSE documentation is available on request."
-                }
-            }
-        ]
-    };
-}
+            ]
+        };
+    }
     // Blog 12
     if (slug === "scissor-lift-vs-aluminium-mobile-tower-which-is-better-for-indoor-access-work-in-the-uae") {
         faqSchema = {
@@ -717,7 +721,7 @@ if (slug === "working-at-height-equipment-guide-uae") {
             ]
         };
     }
-    
+
     // Blog 13
     if (slug === "how-high-can-a-scissor-lift-reach-in-dubai") {
         faqSchema = {
@@ -825,7 +829,7 @@ if (slug === "working-at-height-equipment-guide-uae") {
             ]
         };
     }
-    
+
     // Blog 15
     if (slug === "manlift-vs-scissor-lift-uae-rental-guide") {
         faqSchema = {
