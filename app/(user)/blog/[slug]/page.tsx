@@ -1070,6 +1070,56 @@ export default async function BlogDetailsPage({ params }: Props) {
         };
     }
 
+    // Blog 19
+    if (slug === "custom-scaffolding-uae") {
+        faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+                {
+                    "@type": "Question",
+                    name: "Who provides custom scaffolding for complex projects in Dubai?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Scaffolding contractors with in-house engineering capability provide custom scaffolding in Dubai. This means a team that can survey the site, produce load calculations, issue stamped drawings, and manage the erection and inspection process from start to finish. Contractors such as Quad Dream provide custom scaffolding solutions across the UAE for high-rise, industrial, marine, and complex access projects."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "What is the difference between custom scaffold design and standard rental?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Standard rental provides equipment in a catalogue configuration for straightforward projects. Custom scaffold design produces a site-specific solution covering geometry, load calculations, tie-in positions, and permit documentation for projects where a standard configuration cannot safely or practically meet the access requirement. Tailored scaffolding solutions for UAE construction sites begin with a site survey and end with stamped engineering drawings."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Do I need Civil Defence or Trakhees approval for a custom scaffold?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "It depends on the project location and scope. Trakhees approval is required for scaffolding within JAFZA, Dubai World, and DP World zones. Civil Defence review is required where the scaffold affects fire egress or emergency access routes. Dubai Municipality permit requirements apply to DM-regulated projects above defined height thresholds. Your scaffolding contractor should advise on the applicable approvals at the enquiry stage."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "How long does design and approval usually take?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Design and approval timelines depend on the complexity of the structure and the applicable authority. A straightforward DM permit submission typically takes one to two weeks from completed design to approval. More complex structures or multi-authority submissions take longer. Trakhees and Civil Defence review periods should be confirmed directly with those authorities at the planning stage. Build permit lead time into the programme before mobilisation."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    name: "Can custom scaffolding be used on occupied or live sites in the UAE?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Yes. Custom scaffold design for occupied sites accounts for the constraints of live operations from the outset, including phased access, pedestrian segregation, fire egress maintenance, and restricted working hours. An occupied site is one of the most common reasons a standard scaffolding package is insufficient. The design must address how the scaffold coexists with the building's operation, not just how it provides access."
+                    }
+                }
+            ]
+        };
+    }
+
     return (
         <>
             <Script
