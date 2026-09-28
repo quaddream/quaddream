@@ -179,7 +179,7 @@ export const faqContent = {
       items: [
         {
           question: "What is Cuplock scaffolding and when is it used? ",
-          answer: "<a href='https://www.quaddream.com/products-and-services/cuplock-scaffolding-rental-dubai-uae'>Cuplock scaffolding</a> is a modular steel system that locks up to four ledgers at a single node. It is used for repetitive high-rise, residential, and infrastructure projects requiring fast erection. ",
+          answer: "<a href='https://www.quaddream.com/products-and-services/cuplock-scaffolding-rental-dubai'>Cuplock scaffolding</a> is a modular steel system that locks up to four ledgers at a single node. It is used for repetitive high-rise, residential, and infrastructure projects requiring fast erection. ",
         },
         {
           question: "Do you offer aluminium mobile scaffolding tower rental in Dubai? ",
