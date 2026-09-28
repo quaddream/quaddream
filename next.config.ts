@@ -90,7 +90,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/products-and-services/scaffolding-rental", // The old URL path
-        destination: "/products-and-services/scaffolding-rental-dubai-uae", // The new URL path
+        destination: "/products-and-services/scaffolding-rental-dubai", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
@@ -102,8 +102,7 @@ const nextConfig: NextConfig = {
       {
         source:
           "/products-and-services/cuplock-scaffolding-aluminum-mobile-tower-rental-sales", // The old URL path
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae", // The new URL path
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
@@ -137,17 +136,17 @@ const nextConfig: NextConfig = {
           "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
-      {
-        source: "/products-and-services/cuplock-scaffolding-rental-dubai", // The old URL path
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
-      {
-        source: "/products-and-services/scaffolding-rental-dubai", // The old URL path
-        destination: "/products-and-services/scaffolding-rental-dubai-uae", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
+      // {
+      //   source: "/products-and-services/cuplock-scaffolding-rental-dubai", // The old URL path
+      //   destination:
+      //     "/products-and-services/cuplock-scaffolding-rental-dubai", // The new URL path
+      //   permanent: true, // Set to true for 301 (permanent) redirect
+      // },
+      // {
+      //   source: "/products-and-services/scaffolding-rental-dubai", // The old URL path
+      //   destination: "/products-and-services/scaffolding-rental-dubai-uae", // The new URL path
+      //   permanent: true, // Set to true for 301 (permanent) redirect
+      // },
       {
         source: "/aluminum-mobile-tower-sale-and-rentals",
         destination:
@@ -209,15 +208,13 @@ const nextConfig: NextConfig = {
       {
         source:
           "/cuplock-scaffolding-strong-support-for-heavy-duty-construction-work",
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai",
         permanent: true,
       },
       {
         source:
           "/cuplock-scaffolding-strong-support-for-heavy-duty-construction-work/feed",
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai",
         permanent: true,
       },
       {
@@ -292,8 +289,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/products/cuplock-scaffolding-sales-and-rentals",
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai",
         permanent: true,
       },
       {
@@ -308,8 +304,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/products/scaffolding-cuplock-system",
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai",
         permanent: true,
       },
       {
@@ -320,7 +315,7 @@ const nextConfig: NextConfig = {
       {
         source:
           "/products/scaffolding-suppliers-in-uae-leading-scaffolding-suppliers-in-uae",
-        destination: "/products-and-services/scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/scaffolding-rental-dubai",
         permanent: true,
       },
       {
@@ -457,44 +452,37 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/tag/cuplock-scaffolding",
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai",
         permanent: true,
       },
       {
         source: "/tag/cuplock-scaffolding/feed",
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai",
         permanent: true,
       },
       {
         source: "/tag/cuplock-scaffolding-components",
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai",
         permanent: true,
       },
       {
         source: "/tag/cuplock-scaffolding-components/feed",
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai",
         permanent: true,
       },
       {
         source: "/tag/cuplock-scaffolding-load-capacity",
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai",
         permanent: true,
       },
       {
         source: "/tag/cuplock-scaffolding-load-capacity/feed",
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai",
         permanent: true,
       },
       {
         source: "/tag/cuplock-system-scaffolding",
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai",
         permanent: true,
       },
       {
@@ -632,7 +620,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/tag/scaffolding-manufacturers-in-the-uae/feed",
-        destination: "/products-and-services/scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/scaffolding-rental-dubai",
         permanent: true,
       },
       {
@@ -642,27 +630,27 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/tag/scaffolding-rental-and-installation/feed",
-        destination: "/products-and-services/scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/scaffolding-rental-dubai",
         permanent: true,
       },
       {
         source: "/tag/scaffolding-rental-services",
-        destination: "/products-and-services/scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/scaffolding-rental-dubai",
         permanent: true,
       },
       {
         source: "/tag/scaffolding-rental-services/feed",
-        destination: "/products-and-services/scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/scaffolding-rental-dubai",
         permanent: true,
       },
       {
         source: "/tag/scaffolding-rentals-in-dubai",
-        destination: "/products-and-services/scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/scaffolding-rental-dubai",
         permanent: true,
       },
       {
         source: "/tag/scaffolding-rentals-in-dubai/feed",
-        destination: "/products-and-services/scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/scaffolding-rental-dubai",
         permanent: true,
       },
       {
@@ -830,8 +818,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/cuplock-scaffold",
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai",
         permanent: true,
       },
       {
@@ -862,8 +849,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/scaffolding-cuplock-system",
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai",
         permanent: true,
       },
       {
@@ -907,8 +893,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/Cuplock-Scaffoldings.html",
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai",
         permanent: true,
       },
       {
@@ -918,8 +903,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/Scaffolding-Cuplock-system.html",
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai",
         permanent: true,
       },
       {
@@ -1007,14 +991,12 @@ const nextConfig: NextConfig = {
       {
         source:
           "/cuplock-scaffolding-strong-support-for-heavy-duty-construction-work",
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai",
         permanent: true,
       },
       {
         source: "/cuplock-shystem",
-        destination:
-          "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+        destination: "/products-and-services/cuplock-scaffolding-rental-dubai",
         permanent: true,
       },
       {
