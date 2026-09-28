@@ -33,7 +33,7 @@ export const servicesLinks = [
   },
   {
     title: "Equipment Rentals",
-    link: "/products-and-services/construction-equipment-rental-dubai-uae",
+    link: "/products-and-services/construction-equipment-rental-dubai",
   },
 ];
 

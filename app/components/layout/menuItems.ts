@@ -20,7 +20,7 @@ export const menuItems = [
       { name: "Cuplock Scaffolding", href: "/products-and-services/cuplock-scaffolding-rental-dubai " },
       { name: "Aluminium Mobile Scaffolding Rental ", href: "/products-and-services/aluminium-mobile-scaffolding-tower-rental-dubai-uae " },
       { name: "Formwork Rental", href: "/products-and-services/formwork-rental-in-dubai-uae " },
-      { name: "Construction Equipment Rental", href: "/products-and-services/construction-equipment-rental-dubai-uae " },
+      { name: "Construction Equipment Rental", href: "/products-and-services/construction-equipment-rental-dubai " },
 
 
     ],
