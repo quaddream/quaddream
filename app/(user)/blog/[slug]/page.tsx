@@ -1195,6 +1195,57 @@ export default async function BlogDetailsPage({ params }: Props) {
       ],
     };
   }
+
+  // Blog 21
+  if (slug === "shoring-vs-scaffolding") {
+    faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What is the main difference between shoring and scaffolding?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Scaffolding provides safe access for people to work at height. Shoring provides temporary structural support for loads or earth pressure. In simple terms, scaffolding supports workers and their working platforms, while shoring supports the structure or ground.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can scaffolding be used as shoring?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Only if it has been specifically engineered and designed as shoring or falsework. Standard access scaffolding is not designed to carry slab or structural loads and should never be used for that purpose without proper engineering and verification.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "When do you need shoring instead of scaffolding?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "You need shoring when the temporary structure must carry significant loads or resist earth pressure. Typical cases include supporting wet concrete, deep excavations, structural alterations, demolition activities, or retaining an existing façade during construction.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is shoring the same as formwork or falsework?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. Formwork is the mould or surface that shapes fresh concrete. Falsework is the temporary structure that supports the formwork and the loads from fresh concrete. Shoring is temporary support used to stabilize an existing structure, excavation, or structural element. In the UAE, the terms shoring and falsework are often used interchangeably, depending on the project and context. ",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What are the limits of access scaffolding on tall buildings?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Access scaffolding has clear limits on high-rise projects. Its design depends on reliable ties and suitable foundations, while increasing height can increase wind loads. Platform loading must remain within its designed capacity, and scaffolding cannot replace engineered formwork support.",
+          },
+        },
+      ],
+    };
+  }
+
   return (
     <>
       <Script
