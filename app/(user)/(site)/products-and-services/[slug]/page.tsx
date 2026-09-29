@@ -12,18 +12,18 @@ type Props = {
 };
 
 async function getService(slug: string) {
-  console.log("slug", slug);
+  // console.log("slug", slug);
 
   if (!slug) return;
   const url = `${process.env.BASE_URL}/api/admin/services?slug=${slug}`;
-  console.log("Fetching service from:", url);
+  
   const res = await fetch(url, { cache: "no-store" });
   return res.json();
 }
 
 async function getWhatyougetData() {
   const url = `${process.env.BASE_URL}/api/admin/services/second-section`;
-  console.log("Fetching service from:", url);
+  // console.log("Fetching service from:", url);
   const res = await fetch(url, { cache: "no-store" });
   return res.json();
 }
@@ -70,6 +70,7 @@ export async function generateMetadata(
 export default async function ServiceDetailsPage({ params }: Props) {
   const { slug } = await params;
   const service = await getService(slug as string);
+  
   if (!service?.data) {
     redirect("/404");
   }

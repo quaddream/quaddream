@@ -72,17 +72,17 @@ const BlogContent = ({ html }: BlogContentProps) => {
                   </motion.h3>
                 );
 
-              case "ul":
-                return (
-                  <motion.ul
-                    variants={moveUp(0.07)}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true }}
-                  >
-                    {children}
-                  </motion.ul>
-                );
+              // case "ul":
+              //   return (
+              //     <motion.ul
+              //       variants={moveUp(0.07)}
+              //       initial="hidden"
+              //       whileInView="show"
+              //       viewport={{ once: true }}
+              //     >
+              //       {children}
+              //     </motion.ul>
+              //   );
 
               case "img":
                 const src = el.attribs.src;

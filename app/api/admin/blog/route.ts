@@ -65,6 +65,7 @@ export async function PATCH(request: NextRequest) {
             foundBlog.date = body.date;
             foundBlog.metaTitle = body.metaTitle;
             foundBlog.metaDescription = body.metaDescription;
+            foundBlog.seo = body.seo;
             await blog.save();
             return NextResponse.json({ data: blog, message: "Blog updated successfully" }, { status: 200 });
         }

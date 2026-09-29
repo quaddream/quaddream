@@ -24,9 +24,9 @@ const BlogCard = ({ blogData }: { blogData: BlogType["blogs"] }) => {
         <Image
           src={lastBlog.thumbnail}
           alt={lastBlog.thumbnailAlt}
-          width={671}
-          height={482}
-          className="w-full max-h-[482px] object-cover rounded-[16px]"
+          width={1000}
+          height={557}
+          className="w-full max-h-[557px] object-cover rounded-[16px]"
         />
       </motion.div>
 

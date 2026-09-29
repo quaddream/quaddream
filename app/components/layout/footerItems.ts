@@ -17,11 +17,11 @@ export const servicesLinks = [
   },
   {
     title: "Scaffolding Rental",
-    link: "/products-and-services/scaffolding-rental-dubai-uae",
+    link: "/products-and-services/scaffolding-rental-dubai",
   },
   {
     title: "Cuplock Scaffolding",
-    link: "/products-and-services/cuplock-scaffolding-rental-dubai-uae",
+    link: "/products-and-services/cuplock-scaffolding-rental-dubai",
   },
   {
     title: "Aluminium Mobile Scaffolding",
@@ -33,7 +33,7 @@ export const servicesLinks = [
   },
   {
     title: "Equipment Rentals",
-    link: "/products-and-services/construction-equipment-rental-dubai-uae",
+    link: "/products-and-services/construction-equipment-rental-dubai",
   },
 ];
 
