@@ -1246,6 +1246,56 @@ export default async function BlogDetailsPage({ params }: Props) {
     };
   }
 
+  // Blog 22
+  if (slug === "scaffold-nets-and-tarpaulins-for-high-rise-construction") {
+    faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "How do scaffold nets protect high-rise construction sites?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Scaffold nets help contain loose debris and offcuts, reduce the spread of some dust and provide partial screening around elevated work areas. They can help protect people and property below, but they do not replace guardrails, safe material handling or fall-arrest systems designed to protect workers.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What is the difference between scaffold nets and tarpaulins?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Scaffold nets are open mesh materials that allow airflow while helping contain debris and some dust. Tarpaulins are solid sheets that provide greater resistance to rain and airborne dust. Tarpaulins also create higher wind loads on scaffolding, so their use requires appropriate design checks.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Do tarpaulins protect scaffolding from wind and rain?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Tarpaulins can protect enclosed areas from rain and sunlight, depending on their specifications and installation. They do not automatically protect scaffolding from wind. Because solid sheeting increases wind resistance, the scaffold and its anchorage must be assessed for the revised loads before installation.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Why are scaffold nets used on high-rise buildings?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Scaffold nets are used on high-rise buildings to help contain loose construction debris, reduce dust spread and provide partial visual screening. These functions are particularly useful where elevated work takes place above pedestrian routes, roads or neighbouring properties.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How can you protect high-rise construction from dust and weather?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Start by assessing the work, surrounding properties and weather exposure. Scaffold nets can help reduce debris and some dust, while suitable tarpaulins provide stronger enclosure against rain and airborne dust. The scaffold design, fixing arrangement, ventilation and inspection plan must account for the selected materials.",
+          },
+        },
+      ],
+    };
+  }
+
   return (
     <>
       <Script
