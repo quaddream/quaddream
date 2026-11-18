@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
-import { MdDelete, MdEdit } from "react-icons/md";
+import { MdDelete, MdEdit, MdOpenInNew } from "react-icons/md";
 import {
     Dialog,
     DialogContent,
@@ -14,7 +14,7 @@ import {
     DialogClose,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import AdminItemContainer from '@/app/components/common/AdminItemContainer';
 import { useForm, Controller } from "react-hook-form";
 import { ImageUploader } from '@/components/ui/image-uploader'
@@ -34,13 +34,48 @@ interface BlogPageProps {
 
 
 
-export default function Blogs() {
+const TABS = [
+    { key: "blog", label: "Blogs" },
+    { key: "category", label: "Categories" },
+    { key: "page", label: "Page" },
+] as const;
+
+type TabKey = typeof TABS[number]["key"];
+
+export default function BlogsPage() {
+    return (
+        <Suspense fallback={null}>
+            <Blogs />
+        </Suspense>
+    );
+}
+
+function Blogs() {
 
     const [category, setCategory] = useState<string>("");
-    const [blogList, setBlogList] = useState<{ _id: string, title: string, description: string }[]>([]);
+    const [blogList, setBlogList] = useState<{ _id: string, title: string, slug: string, description: string }[]>([]);
+    const [blogSearch, setBlogSearch] = useState<string>("");
     const [categoryList, setCategoryList] = useState<{ _id: string, name: string }[]>([]);
 
     const router = useRouter();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+    const tabParam = searchParams.get("tab");
+    const activeTab: TabKey = TABS.some((t) => t.key === tabParam) ? (tabParam as TabKey) : "blog";
+
+    const searchTerm = blogSearch.trim().toLowerCase();
+    const filteredBlogs = searchTerm
+        ? blogList.filter((blog) =>
+            blog.title?.toLowerCase().includes(searchTerm) ||
+            blog.slug?.toLowerCase().includes(searchTerm)
+        )
+        : blogList;
+
+    const handleTabChange = (tab: TabKey) => {
+        const params = new URLSearchParams(searchParams.toString());
+        params.set("tab", tab);
+        router.push(`${pathname}?${params.toString()}`, { scroll: false });
+    };
 
     const { register, handleSubmit, setValue, control, formState: { errors } } = useForm<BlogPageProps>();
 
@@ -192,6 +227,25 @@ export default function Blogs() {
     return (
         <div className="flex flex-col gap-5">
 
+            <div className="sticky -top-8 z-20 -mx-8 -mt-8 px-8 pt-8 bg-gray-100">
+            <div className="flex gap-2 border-b-2 border-black/20">
+                {TABS.map((tab) => (
+                    <button
+                        key={tab.key}
+                        type="button"
+                        onClick={() => handleTabChange(tab.key)}
+                        className={`px-5 py-2 -mb-[2px] border-b-2 text-[16px] font-semibold cursor-pointer transition-colors ${activeTab === tab.key
+                            ? "border-primary text-primary"
+                            : "border-transparent text-black/50 hover:text-black"
+                            }`}
+                    >
+                        {tab.label}
+                    </button>
+                ))}
+            </div>
+            </div>
+
+            {activeTab === "page" && (
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-5'>
                 <AdminItemContainer>
                     <Label className='' main>Banner Section</Label>
@@ -265,10 +319,9 @@ export default function Blogs() {
                 </div>
 
             </form>
+            )}
 
-
-            <div className="h-screen grid grid-cols-2 gap-5">
-
+            {activeTab === "category" && (
                 <div className="flex flex-col gap-2 h-screen">
                     <div className="h-full w-full p-5 shadow-md border-black/20 rounded-md overflow-y-hidden bg-white">
                         <div className="flex justify-between border-b-2 border-black/20 pb-2">
@@ -333,20 +386,45 @@ export default function Blogs() {
                     </div>
 
                 </div>
+            )}
 
+            {activeTab === "blog" && (
                 <div className="h-screen w-full p-5 shadow-md border-black/20 rounded-md overflow-y-hidden bg-white">
                     <div className="flex justify-between border-b-2 border-black/20 pb-2">
                         <Label className="text-sm font-bold">Blogs</Label>
                         <Button onClick={() => router.push("/admin/blogs/add")} className="text-white">Add Blog</Button>
                     </div>
-                    <div className="mt-2 flex flex-col gap-2 overflow-y-scroll h-[90%]">
-                        {blogList.map((item) => (
+                    <div className="mt-3">
+                        <Input
+                            type="search"
+                            placeholder="Search blogs by title or slug..."
+                            value={blogSearch}
+                            onChange={(e) => setBlogSearch(e.target.value)}
+                        />
+                    </div>
+                    <div className="mt-2 flex flex-col gap-2 overflow-y-scroll h-[85%]">
+                        {filteredBlogs.length === 0 && (
+                            <p className="text-center text-black/50 py-5">
+                                {blogList.length === 0 ? "No blogs yet" : "No blogs match your search"}
+                            </p>
+                        )}
+                        {filteredBlogs.map((item) => (
                             <div className="flex justify-between border border-black/20 p-2 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
                                 <div className="text-[16px]">
                                     {item.title}
                                 </div>
-                                <div className="flex gap-5">
-                                    <MdEdit onClick={() => router.push(`/admin/blogs/edit/${item._id}`)} />
+                                <div className="flex gap-5 items-center">
+                                    {item.slug && (
+                                        <a
+                                            href={`/blog/${item.slug}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            title="View on website"
+                                        >
+                                            <MdOpenInNew />
+                                        </a>
+                                    )}
+                                    <MdEdit className="cursor-pointer" title="Edit" onClick={() => router.push(`/admin/blogs/edit/${item._id}`)} />
 
                                     <Dialog>
                                         <DialogTrigger><MdDelete /></DialogTrigger>
@@ -369,7 +447,7 @@ export default function Blogs() {
 
                     </div>
                 </div>
-            </div>
+            )}
         </div>
     );
 }

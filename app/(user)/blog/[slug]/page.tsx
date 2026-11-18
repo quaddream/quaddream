@@ -1296,6 +1296,56 @@ export default async function BlogDetailsPage({ params }: Props) {
     };
   }
 
+  // Blog 23
+  if (slug === "modular-aluminium-scaffolding-industrial-facilities-uae") {
+    faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Why is modular aluminium scaffolding preferred for industrial facilities?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "It is preferred in suitable applications because aluminium components are light to carry into restricted areas, resist corrosion in many environments, and go up and come down quickly as prefabricated parts. The preference has limits: heavy loads, high heat, and long-duration structures usually favour steel.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is aluminium scaffolding strong enough for plant maintenance?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes, for light-to-medium loads within the manufacturer's rated limits. It is not a substitute for steel in heavy-duty work, because aluminium is less stiff and loses strength as temperature rises.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What makes aluminium scaffolding suitable for UAE industrial facilities?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Its low weight and corrosion behaviour suit many indoor and sheltered plant areas. The limits are heat and chlorides: strength falls at high temperature, and coastal or polluted air can cause pitting, so the manufacturer's limits and the site exposure decide suitability.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can modular aluminium scaffolding be used during shutdowns and turnarounds?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes, for lighter access such as platforms, stairs, and decks, and as part of a hybrid setup alongside steel for heavy structural access. Any hybrid must stay within one manufacturer's approved system.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Where should aluminium scaffolding not be used in a plant?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Avoid it near high heat or hot work, near live electrical equipment unless site electrical precautions are in place, in aggressive chemical areas, and wherever heavy loads are required.",
+          },
+        },
+      ],
+    };
+  }
+
   return (
     <>
       <Script

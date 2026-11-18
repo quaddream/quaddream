@@ -6,10 +6,12 @@ export default function TinyEditor({ setNewsContent, newsContent }: { newsConten
     const editorRef = useRef<TinyMCEEditor | null>(null);
     const [isUploadingImage, setIsUploadingImage] = useState(false);
 
+    // Controlled mode: TinyMCE's `value` + `onEditorChange` keeps the caret/selection
+    // stable across re-renders. Previously the content was fed back via `initialValue`,
+    // which tinymce-react treats as a reset — so every change (e.g. pressing Enter)
+    // reloaded the content and jumped the cursor to the start.
     const handleEditorChange = (content: string) => {
-        console.log("called")
-        setNewsContent(content); // Update state as the editor content changes
-        console.log(content); // Log the current content
+        setNewsContent(content);
     };
 
     const uploadImageToDropbox = async (file: File) => {
@@ -38,21 +40,26 @@ export default function TinyEditor({ setNewsContent, newsContent }: { newsConten
                 onInit={(_evt, editor) => {
                     editorRef.current = editor
                 }}
-                initialValue={newsContent && typeof newsContent == "string" ? newsContent : "<p>This is the initial content of the editor.</p>"}
+                value={typeof newsContent === "string" ? newsContent : ""}
+                onEditorChange={handleEditorChange}
                 init={{
                     height: 500,
                     menubar: false,
+                    placeholder: 'Start writing the blog content...',
                     advcode_inline: true,
                     theme: 'silver',
                     image_title: true,
                     automatic_uploads: false,
                     file_picker_types: 'image',
 
-                    content_css: 'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css',
-                    content_style: `
-        @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
-        body { padding: 10px; }
-    `,
+                    // Render editor content with the same styles as the frontend blog detail page
+                    // (#blogContent rules mirrored in public/css/blog-editor-content.css).
+                    body_id: 'blogContent',
+                    content_css: [
+                        'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css',
+                        'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap',
+                        '/css/blog-editor-content.css',
+                    ],
                     plugins: [
                         'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
                         'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
@@ -115,10 +122,7 @@ export default function TinyEditor({ setNewsContent, newsContent }: { newsConten
                         'alignright alignjustify | bullist numlist outdent indent | ' +
                         'removeformat | help | code | image',
 
-                    setup: (editor) => {
-                        editor.on("change", () => {
-                            handleEditorChange(editorRef.current?.getContent() || "");
-                        });
+                    setup: () => {
                         // Ensure jQuery is loaded before the plugin (add jQuery via a global script or import)
                         if (typeof window !== 'undefined' && !window.jQuery) {
                             const script = document.createElement('script');

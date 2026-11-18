@@ -1,0 +1,146 @@
+/*
+ * Blog content styles for the CMS TinyMCE editor (loaded inside the editor iframe).
+ * Mirrors the `#blogContent` rules in app/globals.css so the editor matches
+ * the frontend blog detail page. KEEP IN SYNC when changing those rules.
+ * The editor body gets id="blogContent" via TinyMCE's `body_id` option.
+ */
+
+:root {
+  --text-30: clamp(1.625rem, 2.5vw, 1.875rem);
+  --text-25: clamp(1.375rem, 1.5vw, 1.5625rem);
+  --text-19: clamp(1rem, 1.5vw, 1.1875rem);
+  --text-16: clamp(0.9rem, 1.2vw, 1rem);
+}
+
+body#blogContent {
+  margin: 0;
+  padding: 10px 20px 40px;
+  background: #ffffff;
+  color: #000;
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+#blogContent h1 {
+  font-size: var(--text-30);
+  line-height: 1.35;
+  font-weight: 400;
+  color: #000;
+}
+
+#blogContent h2 {
+  font-size: var(--text-25);
+  line-height: 1.35;
+  padding-top: 20px;
+  font-weight: 400;
+  color: #000;
+}
+
+@media (min-width: 768px) {
+  #blogContent h2 {
+    font-size: var(--text-30);
+    padding-top: 30px;
+  }
+}
+
+#blogContent h3 {
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  line-height: 1.35;
+  font-weight: 400;
+  color: #000;
+  padding-top: 20px;
+}
+
+#blogContent h4 {
+  font-size: var(--text-19);
+  line-height: 1.35;
+  font-weight: 400;
+  color: #000;
+}
+
+#blogContent h5,
+#blogContent h6 {
+  font-size: var(--text-16);
+  line-height: 1.35;
+  font-weight: 400;
+  color: #000;
+}
+
+/* Paragraphs */
+#blogContent p {
+  padding-top: 13px;
+  font-size: var(--text-19);
+  line-height: 1.7;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+@media (min-width: 1024px) {
+  #blogContent p {
+    padding-top: 20px;
+  }
+}
+
+/* Lists */
+#blogContent ul {
+  list-style: disc;
+  padding-top: 20px;
+  padding-left: 1.25rem;
+  font-size: var(--text-19);
+  color: #696969;
+}
+
+#blogContent ol {
+  list-style: decimal;
+  padding-top: 20px;
+  padding-left: 1.25rem;
+  font-size: var(--text-19);
+  color: #696969;
+}
+
+#blogContent ul li + li,
+#blogContent ol li + li {
+  margin-top: 0.25rem;
+  font-weight: 400;
+}
+
+#blogContent ul .numbered-list li {
+  list-style: disc;
+  margin-bottom: 15px;
+}
+
+#blogContent ol .numbered-list li {
+  list-style: decimal;
+  margin-bottom: 15px;
+}
+
+#blogContent ul .numbered-list li strong,
+#blogContent ol .numbered-list li strong {
+  color: #000000b5;
+}
+
+#blogContent .numbered-list li:last-child {
+  margin-bottom: 0px;
+}
+
+/* Tables */
+#blogContent table {
+  margin-top: 20px;
+}
+
+#blogContent .overflowsc {
+  overflow: auto;
+}
+
+/* Images */
+#blogContent img {
+  border-radius: 16px;
+  object-fit: cover;
+  margin-top: 20px;
+}
+
+#blogContent img:first-child {
+  margin-top: 0px;
+}
