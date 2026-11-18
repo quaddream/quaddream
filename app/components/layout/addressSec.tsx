@@ -22,8 +22,8 @@ const addresses: Record<AddressKey, AddressData> = {
     lines: [
       "Plot 1380, Al Ittihad Street, Umm Dera, Umm Al Quwain",
     ],
-    phones: ["+97167793740", " +971509187946", "+971505452385", "+971564150497"],
-    emails: ["sales@quaddream.com ", "info@quaddream.com", "Anu@quaddream.com"],
+    phones: ["+97167793740", "+971509187946", "+971505452385", "+971564150497"],
+    emails: ["sales@quaddream.com ", "info@quaddream.com", "anu@quaddream.com"],
   },
   Yard: {
     lines: ["Al Quoz Industrial Area – 2, Near Bartawi Dubai, UAE"],
@@ -85,9 +85,8 @@ const AddressSection = () => {
             {line}
           </p>
         ))}
-        <div className="flex md:items-center gap-2 pt-3 md:pt-2 pb-2 md:pb-0 text-[15px] md:text-19 text-[#B9B9B9] leading-[1.9]">
-          <span className="mt-1 text-red-500">
-            {/* Phone icon SVG */}
+        <div className="flex items-start md:items-center gap-2 pt-3 md:pt-2 pb-2 md:pb-0 text-[15px] md:text-19 text-[#B9B9B9] leading-[1.9]">
+          <span className="mt-1 text-red-500 shrink-0">
             <Image
               src="/assets/phone.svg"
               alt="Phone Icon"
@@ -97,14 +96,19 @@ const AddressSection = () => {
             />
           </span>
 
-          {data.phones.map((phone, i) => (
-            <span key={i}>
-              {i > 0 && " | "}
-              <a href={`tel:${phone.replace(/\s+/g, "")}`} className="hover:underline">
-                {phone}
-              </a>
-            </span>
-          ))}
+          <div className="overflow-hidden min-w-0">
+            <div className="flex flex-wrap -ml-2 md:-ml-3">
+              {data.phones.map((phone, i) => (
+                <a
+                  key={i}
+                  href={`tel:${phone.replace(/\s+/g, "")}`}
+                  className="whitespace-nowrap px-2 md:px-3 border-l border-[#B9B9B9] leading-[1.4] my-[3px] hover:underline"
+                >
+                  {phone.trim()}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
         {data.emails.map((email, i) => (
           <div

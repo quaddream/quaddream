@@ -55,7 +55,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
 
         <div>
           <motion.div
-            className="flex gap-[14px] sm:gap-8 border-b border-[#BEBEBE] overflow-x-auto"
+            className="flex gap-[14px] sm:gap-8 overflow-x-auto overflow-y-hidden shadow-[inset_0_-1px_0_#BEBEBE]"
             variants={moveRight(0.2)}
             initial="hidden"
             whileInView="show"
@@ -66,7 +66,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
               <motion.button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`shrink-0 border-b-[3px] relative top-[1.5px] cursor-pointer transition-colors duration-300 hover:text-black ${activeIndex === index
+                className={`shrink-0 border-b-[3px] cursor-pointer transition-colors duration-300 hover:text-black ${activeIndex === index
                     ? "border-primary text-black"
                     : "border-transparent text-gray-para"
                   }`}
