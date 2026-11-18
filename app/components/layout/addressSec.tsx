@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-type AddressKey = "Head Office" | "Yard" | "SHJ Branch" | "Canada" | "Abu Dhabi";
+type AddressKey = "Head Office" | "Quad Dream industries LLC" | "Yard" | "SHJ Branch" | "Canada" | "Abu Dhabi";
 
 type AddressData = {
   lines: string[];
@@ -15,8 +15,15 @@ const addresses: Record<AddressKey, AddressData> = {
     lines: [
       "Office No. 110, Al Mansour Building, Damascus Street 3 | Al Qusais Industrial Area 2, Dubai, UAE",
     ],
-    phones: ["+971 4 263 7784", "+971 56 544 5987", "+971 50 545 2385"],
+    phones: ["+971 4 263 7784", "+971 56 415 0497", "+971 50 545 2385"],
     emails: ["info@quaddream.com", "enquiries@quaddream.com"],
+  },
+  "Quad Dream industries LLC": {
+    lines: [
+      "Plot 1380, Al Ittihad Street, Umm Dera, Umm Al Quwain",
+    ],
+    phones: ["+97167793740", " +971509187946", "+971505452385", "+971564150497"],
+    emails: ["sales@quaddream.com ", "info@quaddream.com", "Anu@quaddream.com"],
   },
   Yard: {
     lines: ["Al Quoz Industrial Area – 2, Near Bartawi Dubai, UAE"],
@@ -30,7 +37,7 @@ const addresses: Record<AddressKey, AddressData> = {
   },
   Canada: {
     lines: ["Bradford, Ontario, Canada"],
-    phones: ["+971 50 451 8609", "+971 54 514 6495"],
+    phones: ["+14 169701617"],
     emails: ["info@quaddream.com", "enquiries@quaddream.com"],
   },
   "Abu Dhabi": {
