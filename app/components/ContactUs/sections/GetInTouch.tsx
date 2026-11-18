@@ -55,7 +55,7 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
 
         <div>
           <motion.div
-            className="flex gap-[14px] sm:gap-8 border-b border-[#BEBEBE]"
+            className="flex gap-[14px] sm:gap-8 border-b border-[#BEBEBE] overflow-x-auto"
             variants={moveRight(0.2)}
             initial="hidden"
             whileInView="show"
@@ -66,20 +66,17 @@ const GetInTouch: React.FC<BannerProps> = ({ Data }) => {
               <motion.button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`group flex items-center gap-10 sm:gap-20 border-b-3 
-              ${
-                activeIndex === index
-                  ? "border-primary text-black"
-                  : "border-transparent text-gray-para"
-              } 
-              hover:text-black relative top-[1.5px] transition-colors duration-300 cursor-pointer`}
+                className={`shrink-0 border-b-[3px] relative top-[1.5px] cursor-pointer transition-colors duration-300 hover:text-black ${activeIndex === index
+                    ? "border-primary text-black"
+                    : "border-transparent text-gray-para"
+                  }`}
                 variants={moveRight(index * 0.2)}
                 initial="hidden"
                 whileInView="show"
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <h3 className="relative text-19 md:text-25 leading-[1.6] pb-2 md:pb-5 transition-all duration-300 max-w-[15ch]">
+                <h3 className="text-19 md:text-25 leading-[1.6] pb-2 md:pb-5 whitespace-nowrap">
                   {item.title}
                 </h3>
               </motion.button>
